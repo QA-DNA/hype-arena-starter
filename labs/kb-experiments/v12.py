@@ -14,6 +14,10 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 COPY = np.array([bool(r.get('copy')) for r in ROWS])
 NP_ORIG = int(PAGE[~COPY].max()) + 1
 MODE = {'m': 'base'}
+PSEUDO = []  # per self-training call: (# copies given pseudo 'true', # given pseudo 'false')
+import exp as EXP
+assert len(GAP) == len(ROWS) == len(EXP.PAGE) == len(PAGE) and len(FPAGE) == len(FIDX) == len(YF) == len(FROW)  # no stale globals
+assert (YF[COPY[FROW]] == -1).all()  # copy facts never carry a training target
 TFIDF = TfidfVectorizer(analyzer='char_wb', ngram_range=(3, 5)).fit_transform([r['text'] for r in ROWS])  # label-free, L2-normalised
 _GRAM = {}
 
@@ -64,6 +68,7 @@ _orig_feats = V9M.fact_feats
 
 def feats12(lab, interval=True, role=None):
     X = _orig_feats(lab, interval, role)
+    if role is not None and COPY.any(): PSEUDO.append((int((role[COPY] == 'true').sum()), int((role[COPY] == 'false').sum())))
     m = MODE['m']
     if m == 'base': return X
     E = extra_feats(lab, np.full(len(ROWS), '') if role is None else role, interval)
@@ -98,15 +103,18 @@ def splits_orig(regime):
 
 def run12(name, regime):
     mode, build = VAR[name]; fn = build()
-    ms, cms = [], 0
+    ms, cms, pseudo = [], 0, []
     for lo in splits_orig(regime):
         lab = np.zeros(NP, bool); lab[:NP_ORIG] = lo
-        assert not lab[PAGE[COPY]].any()  # copies are never labelled
+        assert not lab[PAGE[COPY]].any() and (lab[:NP_ORIG] == lo).all() and not lab[NP_ORIG:].any()  # original split, padded False
+        PSEUDO.clear()
         hid = ~lab[PAGE] & ~COPY  # evaluate original hidden rows only
         MODE['m'] = mode
         try: yp, conf = fn(lab)
         finally: MODE['m'] = 'base'
         m = metrics(Y[hid], yp[hid], conf[hid]); ms.append(m); cms = cms + m['cm']
+        if PSEUDO: pseudo.append(PSEUDO[-1])  # last self-training call is the one whose roles feed the final fit
+    if pseudo: print(f'   pseudo roles on copies, mean per split (of {int(COPY.sum())}): true={np.mean([p[0] for p in pseudo]):.1f} false={np.mean([p[1] for p in pseudo]):.1f}')
     avg = {k: float(np.mean([m[k] for m in ms])) for k in ms[0] if k != 'cm'}
     avg['cm'] = cms
     return avg, [{k: v for k, v in m.items() if k != 'cm'} for m in ms]
@@ -170,6 +178,21 @@ if __name__ == '__main__':
                 ps = out[s][nm + '|R10']
                 cell = lambda k: f'{mean(ps, k):.3f}' + ('' if s == 'base' else f' ({mean(ps, k) - mean(b, k):+.3f})')
                 print(f'| {nm} | {s} | ' + ' | '.join(cell(k) for k in keys) + ' |')
+        print('\n### Degradation vs clean, per variant (R10, paired per split, original hidden rows; delta = scenario minus clean)')
+        print('| variant | scenario | metric | mean | sd | k/n degraded |\n|---|---|---|---|---|---|')
+        dg = {}
+        for nm in ('V11lr-self1', 'V12mmr', 'V12mmr-replace'):
+            for s in ('lie', 'control', 'mixed'):
+                for k, mn, sgn in (('frec', 'false-rec', 1), ('fprec', 'false-prec', 1), ('brier', 'Brier', -1), ('acc', 'acc', 1)):
+                    d = np.array([a[k] - b[k] for a, b in zip(out[s][nm + '|R10'], out['base'][nm + '|R10'])]); dg[nm, s, k] = d
+                    print(f'| {nm} | {s} | {mn} | {d.mean():+.4f} | {d.std(ddof=1):.4f} | {int((sgn * d < 0).sum())}/10 |')
+        print('\n### Difference of degradations, V12 minus V11 (positive false-rec/false-prec/acc = V12 degrades less; Brier negative = V12 degrades less)')
+        print('| variant | scenario | metric | mean | sd | k/10 V12 degrades less |\n|---|---|---|---|---|---|')
+        for nm in ('V12mmr', 'V12mmr-replace'):
+            for s in ('lie', 'control', 'mixed'):
+                for k, mn, sgn in (('frec', 'false-rec', 1), ('fprec', 'false-prec', 1), ('brier', 'Brier', -1), ('acc', 'acc', 1)):
+                    d = dg[nm, s, k] - dg['V11lr-self1', s, k]
+                    print(f'| {nm} | {s} | {mn} | {d.mean():+.4f} | {d.std(ddof=1):.4f} | {int((sgn * d > 0).sum())}/10 |')
         print('\n### Stress, paired vs V11lr-self1 within each scenario (R10, delta = variant minus V11)')
         for s in ('base', 'lie', 'control', 'mixed'):
             for nm in ('V12mmr', 'V12mmr-replace'):

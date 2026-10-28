@@ -21,24 +21,33 @@
 | V12mmr-replace | R10 | 0.822 | 0.448 | 0.459 | 0.535 | 0.000 | 1.000 | 0.068 | 0.125 |
    cm: [[12797, 1290, 0], [1356, 1140, 0], [341, 26, 0]] chosen(t,band) Counter({(0.7, 0.0, inf): 11, (0.6, 0.0, inf): 4, (0.4, 0.0, inf): 3, (0.3, 0.0, inf): 2}) Counter()
 ## scenario lie: 831 copies = 3 x 277 false, 2728 rows total
+   pseudo roles on copies, mean per split (of 831): true=527.4 false=15.7
 | V11lr-self1 | R10 | 0.873 | 0.514 | 0.592 | 0.660 | 0.000 | 1.000 | 0.073 | 0.103 |
    cm: [[13319, 768, 0], [1019, 1477, 0], [367, 0, 0]] chosen(t,band) Counter({(0.6, 0.0, inf): 10, (0.4, 0.0, inf): 4, (0.7, 0.0, inf): 4, (0.3, 0.0, inf): 2}) Counter()
+   pseudo roles on copies, mean per split (of 831): true=531.1 false=61.3
 | V12mmr | R10 | 0.872 | 0.519 | 0.656 | 0.646 | 0.000 | 1.000 | 0.073 | 0.099 |
    cm: [[13134, 953, 0], [859, 1637, 0], [367, 0, 0]] chosen(t,band) Counter({(0.6, 0.0, inf): 9, (0.5, 0.0, inf): 4, (0.7, 0.0, inf): 3, (0.3, 0.0, inf): 2, (0.4, 0.0, inf): 2}) Counter()
+   pseudo roles on copies, mean per split (of 831): true=485.3 false=53.2
 | V12mmr-replace | R10 | 0.864 | 0.509 | 0.620 | 0.634 | 0.000 | 1.000 | 0.075 | 0.106 |
    cm: [[13101, 986, 0], [948, 1548, 0], [367, 0, 0]] chosen(t,band) Counter({(0.6, 0.0, inf): 11, (0.7, 0.0, inf): 3, (0.3, 0.0, inf): 3, (0.5, 0.0, inf): 3}) Counter()
 ## scenario control: 831 copies = 3 x 277 sampled true, 2728 rows total
+   pseudo roles on copies, mean per split (of 831): true=657.0 false=3.4
 | V11lr-self1 | R10 | 0.827 | 0.470 | 0.552 | 0.510 | 0.000 | 1.000 | 0.078 | 0.118 |
    cm: [[12639, 1443, 0], [1121, 1375, 0], [310, 57, 0]] chosen(t,band) Counter({(0.6, 0.0, inf): 10, (0.7, 0.0, inf): 5, (0.5, 0.0, inf): 3, (0.7, 0.1, inf): 1, (0.4, 0.0, inf): 1}) Counter()
+   pseudo roles on copies, mean per split (of 831): true=640.9 false=3.8
 | V12mmr | R10 | 0.820 | 0.468 | 0.585 | 0.506 | 0.000 | 1.000 | 0.078 | 0.121 |
    cm: [[12432, 1655, 0], [1039, 1457, 0], [336, 31, 0]] chosen(t,band) Counter({(0.7, 0.0, inf): 8, (0.6, 0.0, inf): 6, (0.3, 0.0, inf): 3, (0.4, 0.05, inf): 1, (0.5, 0.0, inf): 1, (0.4, 0.0, inf): 1}) Counter()
+   pseudo roles on copies, mean per split (of 831): true=627.4 false=4.0
 | V12mmr-replace | R10 | 0.837 | 0.476 | 0.549 | 0.564 | 0.000 | 1.000 | 0.076 | 0.118 |
    cm: [[12821, 1266, 0], [1129, 1367, 0], [331, 36, 0]] chosen(t,band) Counter({(0.6, 0.0, inf): 8, (0.7, 0.0, inf): 8, (0.3, 0.0, inf): 3, (0.5, 0.0, inf): 1}) Counter()
 ## scenario mixed: 828 copies = 3 x 276 rows (half false, half true; post-hoc scenario), 2725 rows total
+   pseudo roles on copies, mean per split (of 828): true=254.6 false=8.4
 | V11lr-self1 | R10 | 0.793 | 0.372 | 0.217 | 0.323 | 0.000 | 1.000 | 0.081 | 0.147 |
    cm: [[12907, 1180, 0], [1957, 539, 0], [357, 10, 0]] chosen(t,band) Counter({(0.7, 0.0, inf): 8, (0.6, 0.0, inf): 8, (0.3, 0.0, inf): 4}) Counter()
+   pseudo roles on copies, mean per split (of 828): true=345.7 false=24.0
 | V12mmr | R10 | 0.799 | 0.417 | 0.362 | 0.425 | 0.000 | 1.000 | 0.069 | 0.136 |
    cm: [[12644, 1443, 0], [1593, 903, 0], [353, 14, 0]] chosen(t,band) Counter({(0.7, 0.0, inf): 12, (0.6, 0.0, inf): 6, (0.4, 0.0, inf): 1, (0.3, 0.0, inf): 1}) Counter()
+   pseudo roles on copies, mean per split (of 828): true=318.2 false=20.0
 | V12mmr-replace | R10 | 0.786 | 0.404 | 0.361 | 0.381 | 0.000 | 1.000 | 0.082 | 0.145 |
    cm: [[12423, 1664, 0], [1599, 897, 0], [347, 20, 0]] chosen(t,band) Counter({(0.7, 0.0, inf): 11, (0.6, 0.0, inf): 6, (0.3, 0.0, inf): 2, (0.5, 0.0, inf): 1}) Counter()
 
@@ -122,6 +131,74 @@
 | V12mmr-replace | control | 0.837 (+0.015) | 0.476 (+0.028) | 0.549 (+0.091) | 0.564 (+0.029) | 0.000 (+0.000) | 1.000 (+0.000) | 0.076 (+0.008) | 0.118 (-0.007) |
 | V12mmr-replace | mixed | 0.786 (-0.037) | 0.404 (-0.044) | 0.361 (-0.098) | 0.381 (-0.153) | 0.000 (+0.000) | 1.000 (+0.000) | 0.082 (+0.014) | 0.145 (+0.020) |
 
+### Degradation vs clean, per variant (R10, paired per split, original hidden rows; delta = scenario minus clean)
+| variant | scenario | metric | mean | sd | k/n degraded |
+|---|---|---|---|---|---|
+| V11lr-self1 | lie | false-rec | +0.1311 | 0.2450 | 1/10 |
+| V11lr-self1 | lie | false-prec | +0.1605 | 0.2152 | 2/10 |
+| V11lr-self1 | lie | Brier | -0.0211 | 0.0259 | 2/10 |
+| V11lr-self1 | lie | acc | +0.0640 | 0.0595 | 1/10 |
+| V11lr-self1 | control | false-rec | +0.0906 | 0.1558 | 4/10 |
+| V11lr-self1 | control | false-prec | +0.0103 | 0.1111 | 4/10 |
+| V11lr-self1 | control | Brier | -0.0054 | 0.0062 | 3/10 |
+| V11lr-self1 | control | acc | +0.0177 | 0.0312 | 3/10 |
+| V11lr-self1 | mixed | false-rec | -0.2444 | 0.2118 | 9/10 |
+| V11lr-self1 | mixed | false-prec | -0.1763 | 0.2205 | 9/10 |
+| V11lr-self1 | mixed | Brier | +0.0230 | 0.0092 | 10/10 |
+| V11lr-self1 | mixed | acc | -0.0159 | 0.0494 | 8/10 |
+| V12mmr | lie | false-rec | +0.1330 | 0.2846 | 2/10 |
+| V12mmr | lie | false-prec | +0.1707 | 0.1972 | 2/10 |
+| V12mmr | lie | Brier | -0.0250 | 0.0258 | 1/10 |
+| V12mmr | lie | acc | +0.0687 | 0.0700 | 2/10 |
+| V12mmr | control | false-rec | +0.0618 | 0.1458 | 5/10 |
+| V12mmr | control | false-prec | +0.0304 | 0.0926 | 3/10 |
+| V12mmr | control | Brier | -0.0034 | 0.0089 | 3/10 |
+| V12mmr | control | acc | +0.0166 | 0.0299 | 3/10 |
+| V12mmr | mixed | false-rec | -0.1612 | 0.1881 | 7/10 |
+| V12mmr | mixed | false-prec | -0.0506 | 0.1267 | 5/10 |
+| V12mmr | mixed | Brier | +0.0116 | 0.0094 | 9/10 |
+| V12mmr | mixed | acc | -0.0035 | 0.0644 | 5/10 |
+| V12mmr-replace | lie | false-rec | +0.1614 | 0.2603 | 1/10 |
+| V12mmr-replace | lie | false-prec | +0.0992 | 0.1497 | 3/10 |
+| V12mmr-replace | lie | Brier | -0.0194 | 0.0263 | 1/10 |
+| V12mmr-replace | lie | acc | +0.0419 | 0.0433 | 2/10 |
+| V12mmr-replace | control | false-rec | +0.0907 | 0.1401 | 2/10 |
+| V12mmr-replace | control | false-prec | +0.0292 | 0.1044 | 4/10 |
+| V12mmr-replace | control | Brier | -0.0074 | 0.0040 | 0/10 |
+| V12mmr-replace | control | acc | +0.0148 | 0.0219 | 2/10 |
+| V12mmr-replace | mixed | false-rec | -0.0976 | 0.1522 | 7/10 |
+| V12mmr-replace | mixed | false-prec | -0.1535 | 0.1203 | 9/10 |
+| V12mmr-replace | mixed | Brier | +0.0196 | 0.0106 | 10/10 |
+| V12mmr-replace | mixed | acc | -0.0367 | 0.0459 | 9/10 |
+
+### Difference of degradations, V12 minus V11 (positive false-rec/false-prec/acc = V12 degrades less; Brier negative = V12 degrades less)
+| variant | scenario | metric | mean | sd | k/10 V12 degrades less |
+|---|---|---|---|---|---|
+| V12mmr | lie | false-rec | +0.0019 | 0.1455 | 7/10 |
+| V12mmr | lie | false-prec | +0.0102 | 0.1383 | 6/10 |
+| V12mmr | lie | Brier | -0.0039 | 0.0138 | 5/10 |
+| V12mmr | lie | acc | +0.0047 | 0.0467 | 5/10 |
+| V12mmr | control | false-rec | -0.0287 | 0.1182 | 2/10 |
+| V12mmr | control | false-prec | +0.0201 | 0.1250 | 5/10 |
+| V12mmr | control | Brier | +0.0020 | 0.0101 | 4/10 |
+| V12mmr | control | acc | -0.0011 | 0.0346 | 5/10 |
+| V12mmr | mixed | false-rec | +0.0833 | 0.1637 | 6/10 |
+| V12mmr | mixed | false-prec | +0.1257 | 0.2404 | 8/10 |
+| V12mmr | mixed | Brier | -0.0115 | 0.0164 | 9/10 |
+| V12mmr | mixed | acc | +0.0124 | 0.0507 | 6/10 |
+| V12mmr-replace | lie | false-rec | +0.0303 | 0.1516 | 6/10 |
+| V12mmr-replace | lie | false-prec | -0.0613 | 0.1662 | 4/10 |
+| V12mmr-replace | lie | Brier | +0.0016 | 0.0255 | 4/10 |
+| V12mmr-replace | lie | acc | -0.0221 | 0.0381 | 3/10 |
+| V12mmr-replace | control | false-rec | +0.0001 | 0.1346 | 5/10 |
+| V12mmr-replace | control | false-prec | +0.0189 | 0.1401 | 6/10 |
+| V12mmr-replace | control | Brier | -0.0020 | 0.0041 | 7/10 |
+| V12mmr-replace | control | acc | -0.0030 | 0.0316 | 6/10 |
+| V12mmr-replace | mixed | false-rec | +0.1469 | 0.1384 | 9/10 |
+| V12mmr-replace | mixed | false-prec | +0.0228 | 0.2129 | 6/10 |
+| V12mmr-replace | mixed | Brier | -0.0035 | 0.0119 | 7/10 |
+| V12mmr-replace | mixed | acc | -0.0208 | 0.0330 | 2/10 |
+
 ### Stress, paired vs V11lr-self1 within each scenario (R10, delta = variant minus V11)
 
 #### V12mmr vs V11lr-self1, scenario base
@@ -188,4 +265,4 @@
 | false-rec | +0.1446 | 0.1328 | 0.0420 | 8/10 | yes |
 | acc | -0.0076 | 0.0228 | 0.0072 | 4/10 | no |
 
-wall-clock 40 s
+wall-clock 41 s
