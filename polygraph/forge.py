@@ -33,7 +33,8 @@ def _words_ok(attribute: str, allow_digits: bool = True) -> bool:
 
 
 def _step_conf(step: Step) -> float:
-    return min(0.99, 0.6 + 0.08 * step.support)
+    """How sure we are of a stair: anchored by a labelled row, or backed by many mentions."""
+    return min(0.99, max(step.confidence, 0.6 + 0.08 * step.support))
 
 
 # ---- fact ------------------------------------------------------------------------------

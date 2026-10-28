@@ -25,6 +25,8 @@ def examples():
             continue
         written = cells[0].strip("`")
         value = json.loads(cells[1].strip("`"))
+        if value["kind"] in ("name", "boolean"):
+            continue  # read by the attributor (they depend on the lexicon / the attribute)
         (not_read if section == "Not read" else read).append(pytest.param(written, value, id=f"{section}:{written}"))
     return read, not_read
 
