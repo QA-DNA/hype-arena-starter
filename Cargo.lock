@@ -622,6 +622,7 @@ name = "veridyct-api"
 version = "0.1.0"
 dependencies = [
  "axum",
+ "csv",
  "serde",
  "serde_json",
  "tokio",

@@ -17,6 +17,7 @@ Original files are checked against [the checksum manifest](upstream-files.json).
 | [CPU decision](decisions/0001-cpu-first.md) | Competition execution target |
 | [Evidence MVP decision](decisions/0002-evidence-mvp.md) | Model, provenance and runtime boundaries |
 | [Live MVP handoff](handoffs/live-mvp.md) | Interfaces, task ownership and validation |
+| [Presentation and accuracy](handoffs/presentation-integration.md) | PNG diagrams, hidden-label test and downloadable LLM comparison |
 | [Handoff template](handoffs/TEMPLATE.md) | Continue a task without rediscovery |
 | [Foundation handoff](handoffs/workspace-foundation.md) | What this milestone delivers |
 | [Practice × Lexicon Lab](../labs/practice-lexicon/README.md) | Offline graph, chronological practice queries, correlations and lab tests |

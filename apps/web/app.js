@@ -511,7 +511,13 @@ async function initialize() {
   if (outcomes[4].status === "fulfilled") {
     setReviewData(outcomes[4].value);
     const saved = outcomes[2].status === "fulfilled" ? outcomes[2].value : null;
-    if (saved?.results?.length === reviewState.references.size && saved.results.every((row) => reviewState.texts.get(row.id) === row.text)) reviewState.active = true;
+    if (saved?.results?.length === reviewState.references.size && saved.results.every((row) => reviewState.texts.get(row.id) === row.text)) {
+      reviewState.active = true; state.csv = reviewState.data.csv;
+      $("source-badge").textContent = "LLM REVIEW DEMO";
+      $("file-name").textContent = `${reviewState.references.size} rows / all runtime labels blank`;
+      $("source-description").textContent = "The reviewed 20-row CSV is selected. Press Run to repeat the model comparison.";
+      $("use-demo").hidden = false;
+    }
   }
   if (outcomes[2].status === "fulfilled" && outcomes[2].value.status !== "idle") updateJob(outcomes[2].value);
   renderClaims();

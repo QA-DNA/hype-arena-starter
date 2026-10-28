@@ -78,3 +78,17 @@ Practice training data is bundled as the organizer permits. Model distributions 
 uncalibrated estimates. An observation's date is not an exact change boundary, and the
 practice demonstration is not independent evaluation. See the
 [MVP decision](decisions/0002-evidence-mvp.md).
+
+## Evaluation and reviewed demonstrations
+
+POST `/api/evaluation` starts a diagnostic holdout; GET on the same path returns
+progress, logs and a detailed report. Reference labels remain outside prediction.
+The report retains every reference/prediction pair, class metrics, confusion matrix,
+coverage and a majority baseline selected from training labels only. Evaluation and
+ordinary runs have separate retained results and share one CPU job limit.
+
+GET `/api/demo-comparison` provides a curated 20-row blank-label CSV plus separately
+cited LLM annotations. The ordinary predictor receives only the CSV. Download routes
+under `/downloads/` expose input, review and the completed model-versus-review table.
+Agreement with a development-time LLM review is distinct from measured reference
+accuracy. [Presentation handoff](handoffs/presentation-integration.md) records checks.

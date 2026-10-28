@@ -35,6 +35,7 @@ struct Job {
     results: Vec<Prediction>,
     generation: GenerationReport,
     summary: Value,
+    report: Option<Value>,
     error: Option<String>,
     #[serde(skip)]
     output: Option<String>,
@@ -51,6 +52,7 @@ impl Default for Job {
             results: vec![],
             generation: GenerationReport::default(),
             summary: json!({}),
+            report: None,
             error: None,
             output: None,
         }
@@ -58,6 +60,12 @@ impl Default for Job {
 }
 
 type Shared = Arc<Mutex<Job>>;
+
+#[derive(Clone)]
+struct AppState {
+    run: Shared,
+    evaluation: Shared,
+}
 
 pub fn app() -> Router {
     Router::new()
@@ -67,6 +75,8 @@ pub fn app() -> Router {
         )
         .route("/styles.css", get(styles))
         .route("/app.js", get(javascript))
+        .route("/assets/stack.png", get(stack_png))
+        .route("/assets/pipeline.png", get(pipeline_png))
         .route(
             "/api/health",
             get(|| async { Json(json!({"status":"ok","service":"veridyct-api"})) }),
@@ -88,9 +98,20 @@ pub fn app() -> Router {
         .route("/api/runs", post(start_run))
         .route("/api/runs/current", get(current_run))
         .route("/api/runs/current/output.csv", get(download))
+        .route(
+            "/api/evaluation",
+            get(current_evaluation).post(start_evaluation),
+        )
+        .route("/api/demo-comparison", get(demo_comparison))
+        .route("/downloads/demo-unlabelled.csv", get(demo_csv))
+        .route("/downloads/demo-reference.csv", get(reference_csv))
+        .route("/downloads/demo-comparison.csv", get(comparison_csv))
         .layer(DefaultBodyLimit::max(32 * 1024 * 1024))
         .layer(axum::middleware::map_response(security_headers))
-        .with_state(Arc::new(Mutex::new(Job::default())))
+        .with_state(AppState {
+            run: Arc::new(Mutex::new(Job::default())),
+            evaluation: Arc::new(Mutex::new(Job::default())),
+        })
 }
 
 fn fail(code: StatusCode, message: impl Into<String>) -> Response {
@@ -117,7 +138,8 @@ fn default_generate() -> bool {
     true
 }
 
-async fn start_run(State(shared): State<Shared>, Json(request): Json<RunRequest>) -> Response {
+async fn start_run(State(state): State<AppState>, Json(request): Json<RunRequest>) -> Response {
+    let shared = state.run;
     let is_demo = request.csv.is_none();
     let mut rows = match read_csv(request.csv.as_deref().unwrap_or(PRACTICE)) {
         Ok(rows) => rows,
@@ -144,7 +166,14 @@ async fn start_run(State(shared): State<Shared>, Json(request): Json<RunRequest>
         .to_string();
     {
         let mut job = shared.lock().unwrap_or_else(|e| e.into_inner());
-        if job.status == "running" {
+        if job.status == "running"
+            || state
+                .evaluation
+                .lock()
+                .unwrap_or_else(|e| e.into_inner())
+                .status
+                == "running"
+        {
             return fail(StatusCode::CONFLICT, "A run is already in progress.");
         }
         *job = Job {
@@ -288,12 +317,12 @@ fn run_pipeline(
     Ok(())
 }
 
-async fn current_run(State(shared): State<Shared>) -> Json<Job> {
-    Json(shared.lock().unwrap_or_else(|e| e.into_inner()).clone())
+async fn current_run(State(state): State<AppState>) -> Json<Job> {
+    Json(state.run.lock().unwrap_or_else(|e| e.into_inner()).clone())
 }
 
-async fn download(State(shared): State<Shared>) -> Response {
-    let job = shared.lock().unwrap_or_else(|e| e.into_inner());
+async fn download(State(state): State<AppState>) -> Response {
+    let job = state.run.lock().unwrap_or_else(|e| e.into_inner());
     match &job.output {
         Some(csv) => (
             [
@@ -311,6 +340,243 @@ async fn download(State(shared): State<Shared>) -> Response {
             "Run the pipeline successfully before downloading output.csv.",
         ),
     }
+}
+
+async fn current_evaluation(State(state): State<AppState>) -> Json<Job> {
+    Json(
+        state
+            .evaluation
+            .lock()
+            .unwrap_or_else(|e| e.into_inner())
+            .clone(),
+    )
+}
+
+async fn start_evaluation(State(state): State<AppState>) -> Response {
+    let id = SystemTime::now()
+        .duration_since(UNIX_EPOCH)
+        .unwrap_or_default()
+        .as_millis()
+        .to_string();
+    {
+        // Lock both stores in the same order in both POST handlers.
+        let run = state.run.lock().unwrap_or_else(|e| e.into_inner());
+        let mut evaluation = state.evaluation.lock().unwrap_or_else(|e| e.into_inner());
+        if run.status == "running" || evaluation.status == "running" {
+            return fail(
+                StatusCode::CONFLICT,
+                "A CPU job is already in progress. Wait for it to complete.",
+            );
+        }
+        *evaluation = Job {
+            id: id.clone(),
+            status: "running".into(),
+            progress: 5,
+            stage: "Preparing hidden-label evaluation".into(),
+            ..Job::default()
+        };
+    }
+    let shared = state.evaluation;
+    tokio::spawn(async move {
+        let worker_state = shared.clone();
+        let result = tokio::task::spawn_blocking(move || run_evaluation(&worker_state)).await;
+        let error = match result {
+            Ok(Ok(())) => None,
+            Ok(Err(e)) => Some(e),
+            Err(e) => Some(format!("Evaluation worker stopped: {e}")),
+        };
+        if let Some(error) = error {
+            let mut job = shared.lock().unwrap_or_else(|e| e.into_inner());
+            job.status = "error".into();
+            job.stage = "Evaluation failed".into();
+            job.error = Some(error.clone());
+            job.logs.push(LogEntry {
+                time: "error".into(),
+                message: error,
+            });
+        }
+    });
+    (
+        StatusCode::ACCEPTED,
+        Json(json!({"id":id,"status":"running"})),
+    )
+        .into_response()
+}
+
+fn run_evaluation(shared: &Shared) -> Result<(), String> {
+    let started = Instant::now();
+    let practice = read_csv(PRACTICE)?;
+    let lexicon: Value = serde_json::from_str(LEXICON).map_err(|e| e.to_string())?;
+    log(
+        shared,
+        started,
+        15,
+        "Reference data loaded",
+        "The test answers stay outside the model. Held-out texts and their duplicates are excluded from training.",
+    );
+    log(
+        shared,
+        started,
+        25,
+        "Training and predicting hidden rows",
+        "Running a fresh forest with no test labels or test forms. Shared templates and facts may remain in training.",
+    );
+    let report = veridyct_core::engine::evaluate_holdout(&practice, &lexicon)?;
+    log(
+        shared,
+        started,
+        90,
+        "Reference labels revealed",
+        format!(
+            "Compared {} predictions: {} correct, {} incorrect; {} predicted unsure.",
+            report.test_rows, report.correct, report.incorrect, report.unsure
+        ),
+    );
+    let value = serde_json::to_value(&report).map_err(|e| e.to_string())?;
+    log(
+        shared,
+        started,
+        100,
+        "Evaluation complete",
+        format!(
+            "Accuracy {:.2}%; macro-F1 {:.3}; majority baseline {:.2}%.",
+            report.accuracy * 100.0,
+            report.macro_f1,
+            report.majority_accuracy * 100.0
+        ),
+    );
+    let mut job = shared.lock().unwrap_or_else(|e| e.into_inner());
+    job.report = Some(value);
+    job.status = "complete".into();
+    job.summary = json!({"test_rows":report.test_rows,"accuracy":report.accuracy,"elapsed_ms":started.elapsed().as_millis()});
+    Ok(())
+}
+
+const DEMO_CSV: &str = include_str!("../../../demos/reviewed-unlabelled.csv");
+const DEMO_REFERENCE: &str = include_str!("../../../demos/llm-reference.json");
+
+async fn demo_comparison() -> Response {
+    let result = (|| -> Result<Value, String> {
+        let mut value: Value = serde_json::from_str(DEMO_REFERENCE).map_err(|e| e.to_string())?;
+        value["csv"] = json!(DEMO_CSV);
+        value["rows"] = serde_json::to_value(read_csv(DEMO_CSV)?).map_err(|e| e.to_string())?;
+        Ok(value)
+    })();
+    match result {
+        Ok(value) => Json(value).into_response(),
+        Err(e) => fail(StatusCode::INTERNAL_SERVER_ERROR, e),
+    }
+}
+
+fn csv_download(filename: &'static str, body: String) -> Response {
+    (
+        [
+            (header::CONTENT_TYPE, "text/csv; charset=utf-8"),
+            (header::CONTENT_DISPOSITION, filename),
+        ],
+        body,
+    )
+        .into_response()
+}
+
+async fn demo_csv() -> Response {
+    csv_download(
+        "attachment; filename=veridyct-demo-unlabelled.csv",
+        DEMO_CSV.to_string(),
+    )
+}
+
+async fn reference_csv() -> Response {
+    csv_download(
+        "attachment; filename=veridyct-llm-reference.csv",
+        include_str!("../../../demos/llm-reference.csv").to_string(),
+    )
+}
+
+async fn comparison_csv(State(state): State<AppState>) -> Response {
+    let result = (|| -> Result<String, String> {
+        let reference: Value = serde_json::from_str(DEMO_REFERENCE).map_err(|e| e.to_string())?;
+        let rows = read_csv(DEMO_CSV)?;
+        let job = state.run.lock().unwrap_or_else(|e| e.into_inner());
+        if job.status != "complete"
+            || job.results.len() != rows.len()
+            || !rows.iter().all(|row| {
+                job.results
+                    .iter()
+                    .any(|p| p.id == row.id && p.text == row.text)
+            })
+        {
+            return Err(
+                "Run the reviewed 20-row demo before downloading its model comparison.".into(),
+            );
+        }
+        let mut writer = csv::Writer::from_writer(Vec::new());
+        writer
+            .write_record([
+                "id",
+                "text",
+                "date",
+                "model_label",
+                "llm_reference",
+                "agreement",
+                "score_true",
+                "score_false",
+                "score_unsure",
+                "reference_reason",
+                "source_ids",
+            ])
+            .map_err(|e| e.to_string())?;
+        for row in rows {
+            let prediction = job
+                .results
+                .iter()
+                .find(|p| p.id == row.id)
+                .ok_or("Missing prediction")?;
+            let annotation = reference["references"]
+                .as_array()
+                .ok_or("Missing references")?
+                .iter()
+                .find(|r| r["id"] == row.id)
+                .ok_or("Missing annotation")?;
+            let expected = annotation["expected"]
+                .as_str()
+                .ok_or("Missing reference label")?;
+            writer
+                .write_record([
+                    row.id,
+                    row.text,
+                    row.date,
+                    prediction.label.clone(),
+                    expected.into(),
+                    (prediction.label == expected).to_string(),
+                    prediction.probabilities.p_true.to_string(),
+                    prediction.probabilities.p_false.to_string(),
+                    prediction.probabilities.p_unsure.to_string(),
+                    annotation["reason"].as_str().unwrap_or_default().into(),
+                    annotation["source_ids"].to_string(),
+                ])
+                .map_err(|e| e.to_string())?;
+        }
+        String::from_utf8(writer.into_inner().map_err(|e| e.to_string())?)
+            .map_err(|e| e.to_string())
+    })();
+    match result {
+        Ok(csv) => csv_download("attachment; filename=veridyct-model-vs-llm.csv", csv),
+        Err(e) => fail(StatusCode::CONFLICT, e),
+    }
+}
+
+async fn stack_png() -> impl IntoResponse {
+    (
+        [(header::CONTENT_TYPE, "image/png")],
+        include_bytes!("../../../apps/web/assets/stack.png").as_slice(),
+    )
+}
+async fn pipeline_png() -> impl IntoResponse {
+    (
+        [(header::CONTENT_TYPE, "image/png")],
+        include_bytes!("../../../apps/web/assets/pipeline.png").as_slice(),
+    )
 }
 
 async fn styles() -> impl IntoResponse {
@@ -354,6 +620,12 @@ mod tests {
             "/api/graph",
             "/api/dataset",
             "/api/runs/current",
+            "/api/evaluation",
+            "/api/demo-comparison",
+            "/assets/stack.png",
+            "/assets/pipeline.png",
+            "/downloads/demo-unlabelled.csv",
+            "/downloads/demo-reference.csv",
         ] {
             let response = router
                 .clone()
@@ -392,5 +664,44 @@ mod tests {
         assert_eq!(response.status(), StatusCode::UNPROCESSABLE_ENTITY);
         let body = to_bytes(response.into_body(), 4096).await.unwrap();
         assert!(serde_json::from_slice::<Value>(&body).unwrap()["error"].is_string());
+    }
+
+    #[tokio::test]
+    async fn review_answers_stay_outside_runtime_input_and_cpu_jobs_are_exclusive() {
+        let rows = read_csv(DEMO_CSV).unwrap();
+        let references: Value = serde_json::from_str(DEMO_REFERENCE).unwrap();
+        assert_eq!(rows.len(), 20);
+        assert!(
+            rows.iter()
+                .all(|row| row.label.is_empty() && row.form.is_empty())
+        );
+        let answers = references["references"].as_array().unwrap();
+        assert_eq!(answers.len(), 20);
+        for row in &rows {
+            assert!(answers.iter().any(|answer| answer["id"] == row.id));
+        }
+        let state = AppState {
+            run: Arc::new(Mutex::new(Job::default())),
+            evaluation: Arc::new(Mutex::new(Job {
+                status: "running".into(),
+                ..Job::default()
+            })),
+        };
+        let response = start_run(
+            State(state.clone()),
+            Json(RunRequest {
+                csv: Some(DEMO_CSV.into()),
+                generate: false,
+            }),
+        )
+        .await;
+        assert_eq!(response.status(), StatusCode::CONFLICT);
+        assert_eq!(state.run.lock().unwrap().status, "idle");
+        let response = comparison_csv(State(state.clone())).await;
+        assert_eq!(response.status(), StatusCode::CONFLICT);
+        state.evaluation.lock().unwrap().status = "idle".into();
+        state.run.lock().unwrap().status = "running".into();
+        let response = start_evaluation(State(state)).await;
+        assert_eq!(response.status(), StatusCode::CONFLICT);
     }
 }
