@@ -22,6 +22,7 @@ from __future__ import annotations
 
 import math
 import re
+from functools import lru_cache
 from collections import Counter, defaultdict
 
 import numpy as np
@@ -38,12 +39,18 @@ WINDOW = 8
 THRESHOLD = 0.15  # tuned by 5-fold CV on practice (precision 0.89, recall 0.81)
 
 
+@lru_cache(maxsize=50_000)  # the same sentence is split for every candidate
+def _words(text: str) -> tuple:
+    return tuple(singular(w) for w in WORD_RE.findall(text) if w.lower() not in STOP and len(w) > 1)
+
+
 def words(text: str) -> list[str]:
-    return [singular(w) for w in WORD_RE.findall(text) if w.lower() not in STOP and len(w) > 1]
+    return list(_words(text))
 
 
-def attr_tokens(attribute: str) -> set[str]:
-    return {singular(t) for t in attribute.split("_") if t and t not in STOP}
+@lru_cache(maxsize=20_000)
+def attr_tokens(attribute: str) -> frozenset:
+    return frozenset(singular(t) for t in attribute.split("_") if t and t not in STOP)
 
 
 def unit_of(v: dict) -> str:

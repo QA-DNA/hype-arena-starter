@@ -12,6 +12,7 @@ lexicon, so the attributor reads those.
 from __future__ import annotations
 
 import re
+from functools import lru_cache
 
 from .model import ValueSpan
 
@@ -105,6 +106,7 @@ IRREGULAR_SINGULAR = {"people": "person", "children": "child", "men": "man", "wo
                       "indices": "index", "series": "series", "news": "news"}
 
 
+@lru_cache(maxsize=100_000)
 def singular(word: str) -> str:
     w = word.lower().replace("’", "'")
     if w in IRREGULAR_SINGULAR:
