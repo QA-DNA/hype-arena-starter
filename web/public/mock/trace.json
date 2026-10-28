@@ -1,0 +1,4217 @@
+{
+ "stages": [
+  {
+   "name": "reader",
+   "ms": 0.3,
+   "count": 0
+  },
+  {
+   "name": "linker",
+   "ms": 27.3,
+   "count": 1973
+  },
+  {
+   "name": "attributor",
+   "ms": 1.3,
+   "count": 2402
+  },
+  {
+   "name": "truth",
+   "ms": 9.4,
+   "count": 474
+  },
+  {
+   "name": "judge",
+   "ms": 6.0,
+   "count": 380
+  },
+  {
+   "name": "forge",
+   "ms": 1452.9,
+   "count": 1000
+  }
+ ],
+ "rows": [
+  {
+   "id": "p-1",
+   "text": "Holdan started at Hooly on 12 January 2026.",
+   "date": "2026-01-12",
+   "page": 0,
+   "given_label": null,
+   "verdict": "true",
+   "confidence": 0.6,
+   "why": "no evidence either way: base rate",
+   "facts": [
+    {
+     "subject": "Holdan",
+     "attribute": "joined",
+     "value": {
+      "kind": "date",
+      "value": "2026-01-12"
+     },
+     "span": null,
+     "status": "unknown"
+    }
+   ]
+  },
+  {
+   "id": "p-6",
+   "text": "Its paid accounts carry a 99.9% uptime promise, which Holdan now owns.",
+   "date": "2026-01-12",
+   "page": 0,
+   "given_label": null,
+   "verdict": "true",
+   "confidence": 0.9,
+   "why": "agrees with the timeline",
+   "facts": [
+    {
+     "subject": "Hooly Cloud",
+     "attribute": "uptime_sla",
+     "value": {
+      "kind": "percent",
+      "value": 99.9
+     },
+     "span": null,
+     "status": "agrees"
+    }
+   ]
+  },
+  {
+   "id": "p-11",
+   "text": "Hooly Cloud Next closed after 3 days at Ringsend Forum.",
+   "date": "2026-06-12",
+   "page": 1,
+   "given_label": null,
+   "verdict": "true",
+   "confidence": 0.9,
+   "why": "agrees with the timeline",
+   "facts": [
+    {
+     "subject": "Hooly Cloud Next 2026",
+     "attribute": "length",
+     "value": {
+      "kind": "duration",
+      "value": 3,
+      "unit": "day"
+     },
+     "span": null,
+     "status": "agrees"
+    },
+    {
+     "subject": "Hooly Cloud Next 2026",
+     "attribute": "venue",
+     "value": {
+      "kind": "name",
+      "value": "Ringsend Forum"
+     },
+     "span": null,
+     "status": "agrees"
+    }
+   ]
+  },
+  {
+   "id": "p-16",
+   "text": "Gavin Bellson opened proceedings on June 9, 2026 with the Hooly Cloud roadmap.",
+   "date": "2026-06-12",
+   "page": 1,
+   "given_label": null,
+   "verdict": "true",
+   "confidence": 0.9,
+   "why": "agrees with the timeline",
+   "facts": [
+    {
+     "subject": "Hooly Cloud Next 2026",
+     "attribute": "opening_keynote",
+     "value": {
+      "kind": "name",
+      "value": "Gavin Bellson"
+     },
+     "span": null,
+     "status": "agrees"
+    },
+    {
+     "subject": "Hooly Cloud Next 2026",
+     "attribute": "date",
+     "value": {
+      "kind": "date",
+      "value": "2026-06-09"
+     },
+     "span": null,
+     "status": "agrees"
+    }
+   ]
+  },
+  {
+   "id": "p-21",
+   "text": "\"Jules is Gemini for code,\" said Richard Hendrix, our CTO.",
+   "date": "2026-04-14",
+   "page": 2,
+   "given_label": null,
+   "verdict": "true",
+   "confidence": 0.9,
+   "why": "agrees with the timeline",
+   "facts": [
+    {
+     "subject": "Hooly",
+     "attribute": "cto",
+     "value": {
+      "kind": "name",
+      "value": "Richard Hendrix"
+     },
+     "span": null,
+     "status": "agrees"
+    }
+   ]
+  },
+  {
+   "id": "p-26",
+   "text": "Hooly Gemini 2.1 ships today with 5 sdks, and Hooly Gemini now sends 6 events.",
+   "date": "2026-06-02",
+   "page": 5,
+   "given_label": null,
+   "verdict": "false",
+   "confidence": 0.8,
+   "why": "premature: Hooly Gemini webhook_events",
+   "facts": [
+    {
+     "subject": "Hooly Gemini",
+     "attribute": "version",
+     "value": {
+      "kind": "version",
+      "value": "2.1"
+     },
+     "span": null,
+     "status": "agrees"
+    },
+    {
+     "subject": "Hooly Gemini",
+     "attribute": "official_sdks",
+     "value": {
+      "kind": "quantity",
+      "value": 5,
+      "unit": "sdk"
+     },
+     "span": null,
+     "status": "agrees"
+    },
+    {
+     "subject": "Hooly Gemini",
+     "attribute": "webhook_events",
+     "value": {
+      "kind": "quantity",
+      "value": 6,
+      "unit": "event"
+     },
+     "span": null,
+     "status": "premature"
+    }
+   ]
+  },
+  {
+   "id": "p-31",
+   "text": "The template gallery in Hooly Docs grows to 80 templates.",
+   "date": "2026-08-25",
+   "page": 6,
+   "given_label": null,
+   "verdict": "false",
+   "confidence": 0.8,
+   "why": "invented: Hooly Docs templates",
+   "facts": [
+    {
+     "subject": "Hooly Docs",
+     "attribute": "templates",
+     "value": {
+      "kind": "quantity",
+      "value": 80,
+      "unit": "template"
+     },
+     "span": null,
+     "status": "invented"
+    }
+   ]
+  },
+  {
+   "id": "p-36",
+   "text": "\"Docs is the heart of Workspace,\" said Patreese.",
+   "date": "2026-08-25",
+   "page": 6,
+   "given_label": null,
+   "verdict": "false",
+   "confidence": 0.8,
+   "why": "premature: Hooly head_of_workspace",
+   "facts": [
+    {
+     "subject": "Hooly",
+     "attribute": "head_of_workspace",
+     "value": {
+      "kind": "name",
+      "value": "Patreese"
+     },
+     "span": null,
+     "status": "premature"
+    }
+   ]
+  },
+  {
+   "id": "p-41",
+   "text": "A single Hooly Docs file takes up to 40 editors at the same time.",
+   "date": "2026-01-27",
+   "page": 7,
+   "given_label": null,
+   "verdict": "false",
+   "confidence": 0.8,
+   "why": "invented: Hooly Docs simultaneous_editors",
+   "facts": [
+    {
+     "subject": "Hooly Docs",
+     "attribute": "simultaneous_editors",
+     "value": {
+      "kind": "quantity",
+      "value": 40,
+      "unit": "editor",
+      "op": "le"
+     },
+     "span": null,
+     "status": "invented"
+    }
+   ]
+  },
+  {
+   "id": "p-46",
+   "text": "Holdan has run Hooly Cloud reliability since January 2026.",
+   "date": "2026-09-03",
+   "page": 8,
+   "given_label": null,
+   "verdict": "true",
+   "confidence": 0.6,
+   "why": "no evidence either way: base rate",
+   "facts": [
+    {
+     "subject": "Hooly Cloud",
+     "attribute": "reliability_lead",
+     "value": {
+      "kind": "name",
+      "value": "Holdan"
+     },
+     "span": null,
+     "status": "agrees"
+    },
+    {
+     "subject": "Holdan",
+     "attribute": "joined",
+     "value": {
+      "kind": "date",
+      "value": "2026-01"
+     },
+     "span": null,
+     "status": "unknown"
+    }
+   ]
+  },
+  {
+   "id": "p-51",
+   "text": "The contractual floor is 99.95 percent, and Holdan says nobody should design to the floor.",
+   "date": "2026-09-03",
+   "page": 8,
+   "given_label": null,
+   "verdict": "true",
+   "confidence": 0.9,
+   "why": "agrees with the timeline",
+   "facts": [
+    {
+     "subject": "Hooly Cloud",
+     "attribute": "uptime_sla",
+     "value": {
+      "kind": "percent",
+      "value": 99.95
+     },
+     "span": null,
+     "status": "agrees"
+    }
+   ]
+  },
+  {
+   "id": "p-56",
+   "text": "From today our headquarters is Lisbon.",
+   "date": "2026-05-01",
+   "page": 10,
+   "given_label": null,
+   "verdict": "true",
+   "confidence": 0.9,
+   "why": "agrees with the timeline",
+   "facts": [
+    {
+     "subject": "Hooly",
+     "attribute": "headquarters",
+     "value": {
+      "kind": "name",
+      "value": "Lisbon"
+     },
+     "span": null,
+     "status": "agrees"
+    }
+   ]
+  },
+  {
+   "id": "p-26",
+   "text": "Hooly Gemini 2.1 ships today with 5 sdks, and Hooly Gemini now sends 6 events.",
+   "date": "2026-06-02",
+   "page": 5,
+   "given_label": null,
+   "verdict": "false",
+   "confidence": 0.8,
+   "why": "premature: Hooly Gemini webhook_events",
+   "facts": [
+    {
+     "subject": "Hooly Gemini",
+     "attribute": "version",
+     "value": {
+      "kind": "version",
+      "value": "2.1"
+     },
+     "span": null,
+     "status": "agrees"
+    },
+    {
+     "subject": "Hooly Gemini",
+     "attribute": "official_sdks",
+     "value": {
+      "kind": "quantity",
+      "value": 5,
+      "unit": "sdk"
+     },
+     "span": null,
+     "status": "agrees"
+    },
+    {
+     "subject": "Hooly Gemini",
+     "attribute": "webhook_events",
+     "value": {
+      "kind": "quantity",
+      "value": 6,
+      "unit": "event"
+     },
+     "span": null,
+     "status": "premature"
+    }
+   ]
+  },
+  {
+   "id": "p-31",
+   "text": "The template gallery in Hooly Docs grows to 80 templates.",
+   "date": "2026-08-25",
+   "page": 6,
+   "given_label": null,
+   "verdict": "false",
+   "confidence": 0.8,
+   "why": "invented: Hooly Docs templates",
+   "facts": [
+    {
+     "subject": "Hooly Docs",
+     "attribute": "templates",
+     "value": {
+      "kind": "quantity",
+      "value": 80,
+      "unit": "template"
+     },
+     "span": null,
+     "status": "invented"
+    }
+   ]
+  },
+  {
+   "id": "p-36",
+   "text": "\"Docs is the heart of Workspace,\" said Patreese.",
+   "date": "2026-08-25",
+   "page": 6,
+   "given_label": null,
+   "verdict": "false",
+   "confidence": 0.8,
+   "why": "premature: Hooly head_of_workspace",
+   "facts": [
+    {
+     "subject": "Hooly",
+     "attribute": "head_of_workspace",
+     "value": {
+      "kind": "name",
+      "value": "Patreese"
+     },
+     "span": null,
+     "status": "premature"
+    }
+   ]
+  },
+  {
+   "id": "p-41",
+   "text": "A single Hooly Docs file takes up to 40 editors at the same time.",
+   "date": "2026-01-27",
+   "page": 7,
+   "given_label": null,
+   "verdict": "false",
+   "confidence": 0.8,
+   "why": "invented: Hooly Docs simultaneous_editors",
+   "facts": [
+    {
+     "subject": "Hooly Docs",
+     "attribute": "simultaneous_editors",
+     "value": {
+      "kind": "quantity",
+      "value": 40,
+      "unit": "editor",
+      "op": "le"
+     },
+     "span": null,
+     "status": "invented"
+    }
+   ]
+  },
+  {
+   "id": "p-61",
+   "text": "Hooly Chrome now ships a stable version every 4 weeks.",
+   "date": "2026-07-08",
+   "page": 11,
+   "given_label": null,
+   "verdict": "false",
+   "confidence": 0.8,
+   "why": "premature: Hooly Chrome release_cadence",
+   "facts": [
+    {
+     "subject": "Hooly Chrome",
+     "attribute": "release_cadence",
+     "value": {
+      "kind": "duration",
+      "value": 4,
+      "unit": "week"
+     },
+     "span": null,
+     "status": "premature"
+    }
+   ]
+  },
+  {
+   "id": "p-66",
+   "text": "Tabs sleep after 10 min when Hooly Chrome saves memory.",
+   "date": "2026-07-08",
+   "page": 11,
+   "given_label": null,
+   "verdict": "false",
+   "confidence": 0.8,
+   "why": "premature: Hooly Chrome tab_sleep_delay",
+   "facts": [
+    {
+     "subject": "Hooly Chrome",
+     "attribute": "tab_sleep_delay",
+     "value": {
+      "kind": "duration",
+      "value": 10,
+      "unit": "min"
+     },
+     "span": null,
+     "status": "premature"
+    }
+   ]
+  },
+  {
+   "id": "p-76",
+   "text": "5 sponsors are on the sponsor list.",
+   "date": "2026-04-24",
+   "page": 12,
+   "given_label": null,
+   "verdict": "false",
+   "confidence": 0.8,
+   "why": "invented: Hooly Maps Day sponsors",
+   "facts": [
+    {
+     "subject": "Hooly Maps Day",
+     "attribute": "sponsors",
+     "value": {
+      "kind": "quantity",
+      "value": 5,
+      "unit": "sponsor"
+     },
+     "span": null,
+     "status": "invented"
+    }
+   ]
+  },
+  {
+   "id": "p-81",
+   "text": "Paid plans start with Hooly Photos Lite at €1.99 per month for 100 GB.",
+   "date": "2025-10-19",
+   "page": 13,
+   "given_label": null,
+   "verdict": "false",
+   "confidence": 0.8,
+   "why": "premature: Hooly Photos Lite price",
+   "facts": [
+    {
+     "subject": "Hooly Photos Lite",
+     "attribute": "price",
+     "value": {
+      "kind": "money",
+      "value": 1.99,
+      "currency": "EUR",
+      "per": "month"
+     },
+     "span": null,
+     "status": "premature"
+    },
+    {
+     "subject": "Hooly Photos Lite",
+     "attribute": "storage",
+     "value": {
+      "kind": "quantity",
+      "value": 100,
+      "unit": "GB"
+     },
+     "span": null,
+     "status": "premature"
+    }
+   ]
+  }
+ ],
+ "timelines": {
+  "Hooly Chrome|tab_sleep_delay": {
+   "steps": [
+    {
+     "from": "2026-08-05",
+     "to": null,
+     "value": {
+      "kind": "duration",
+      "value": 10,
+      "unit": "min"
+     },
+     "confidence": 1.0,
+     "support": 3
+    }
+   ],
+   "mentions": [
+    {
+     "date": "2026-09-15",
+     "value": {
+      "kind": "duration",
+      "value": 10,
+      "unit": "min"
+     },
+     "row_id": "p-284",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-08-05",
+     "value": {
+      "kind": "duration",
+      "value": 10,
+      "unit": "min"
+     },
+     "row_id": "p-534",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-10-20",
+     "value": {
+      "kind": "duration",
+      "value": 30,
+      "unit": "min"
+     },
+     "row_id": "p-894",
+     "verdict": "false"
+    },
+    {
+     "date": "2026-10-12",
+     "value": {
+      "kind": "duration",
+      "value": 10,
+      "unit": "min"
+     },
+     "row_id": "p-1735",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-07-08",
+     "value": {
+      "kind": "duration",
+      "value": 10,
+      "unit": "min"
+     },
+     "row_id": "p-66",
+     "verdict": ""
+    }
+   ]
+  },
+  "Hooly Photos Lite|storage": {
+   "steps": [
+    {
+     "from": "2026-01-14",
+     "to": "2026-07-24",
+     "value": {
+      "kind": "quantity",
+      "value": 100,
+      "unit": "GB"
+     },
+     "confidence": 1.0,
+     "support": 1
+    },
+    {
+     "from": "2026-07-24",
+     "to": null,
+     "value": {
+      "kind": "quantity",
+      "value": 200,
+      "unit": "GB"
+     },
+     "confidence": 1.0,
+     "support": 3
+    }
+   ],
+   "mentions": [
+    {
+     "date": "2026-01-14",
+     "value": {
+      "kind": "quantity",
+      "value": 100,
+      "unit": "GB"
+     },
+     "row_id": "p-304",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-10-16",
+     "value": {
+      "kind": "quantity",
+      "value": 200,
+      "unit": "GB"
+     },
+     "row_id": "p-925",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-09-02",
+     "value": {
+      "kind": "quantity",
+      "value": 200,
+      "unit": "GB"
+     },
+     "row_id": "p-1203",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-07-24",
+     "value": {
+      "kind": "quantity",
+      "value": 200,
+      "unit": "GB"
+     },
+     "row_id": "p-1745",
+     "verdict": "true"
+    },
+    {
+     "date": "2025-10-19",
+     "value": {
+      "kind": "quantity",
+      "value": 100,
+      "unit": "GB"
+     },
+     "row_id": "p-81",
+     "verdict": ""
+    },
+    {
+     "date": "2026-04-02",
+     "value": {
+      "kind": "quantity",
+      "value": 100,
+      "unit": "GB"
+     },
+     "row_id": "p-96",
+     "verdict": ""
+    }
+   ]
+  },
+  "Hooly Cloud Next 2026|length": {
+   "steps": [
+    {
+     "from": "2026-02-16",
+     "to": null,
+     "value": {
+      "kind": "duration",
+      "value": 3,
+      "unit": "day"
+     },
+     "confidence": 1.0,
+     "support": 3
+    }
+   ],
+   "mentions": [
+    {
+     "date": "2026-03-18",
+     "value": {
+      "kind": "duration",
+      "value": 3,
+      "unit": "day"
+     },
+     "row_id": "p-227",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-04-02",
+     "value": {
+      "kind": "duration",
+      "value": 3,
+      "unit": "day"
+     },
+     "row_id": "p-714",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-02-16",
+     "value": {
+      "kind": "duration",
+      "value": 3,
+      "unit": "day"
+     },
+     "row_id": "p-1818",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-06-12",
+     "value": {
+      "kind": "duration",
+      "value": 3,
+      "unit": "day"
+     },
+     "row_id": "p-11",
+     "verdict": ""
+    },
+    {
+     "date": "2026-01-21",
+     "value": {
+      "kind": "duration",
+      "value": 3,
+      "unit": "day"
+     },
+     "row_id": "p-991",
+     "verdict": ""
+    },
+    {
+     "date": "2026-05-04",
+     "value": {
+      "kind": "duration",
+      "value": 3,
+      "unit": "day"
+     },
+     "row_id": "p-1806",
+     "verdict": ""
+    }
+   ]
+  },
+  "Hooly Maps Day|sponsors": {
+   "steps": [
+    {
+     "from": "2026-07-02",
+     "to": null,
+     "value": {
+      "kind": "quantity",
+      "value": 8,
+      "unit": "sponsor"
+     },
+     "confidence": 1.0,
+     "support": 1
+    }
+   ],
+   "mentions": [
+    {
+     "date": "2026-07-02",
+     "value": {
+      "kind": "quantity",
+      "value": 8,
+      "unit": "sponsor"
+     },
+     "row_id": "p-883",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-04-24",
+     "value": {
+      "kind": "quantity",
+      "value": 5,
+      "unit": "sponsor"
+     },
+     "row_id": "p-76",
+     "verdict": ""
+    }
+   ]
+  },
+  "Hooly Cloud Next 2026|venue": {
+   "steps": [
+    {
+     "from": "2026-05-04",
+     "to": null,
+     "value": {
+      "kind": "name",
+      "value": "Ringsend Forum"
+     },
+     "confidence": 1.0,
+     "support": 2
+    }
+   ],
+   "mentions": [
+    {
+     "date": "2026-06-09",
+     "value": {
+      "kind": "name",
+      "value": "Ringsend Forum"
+     },
+     "row_id": "p-215",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-05-04",
+     "value": {
+      "kind": "name",
+      "value": "Ringsend Forum"
+     },
+     "row_id": "p-1808",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-06-12",
+     "value": {
+      "kind": "name",
+      "value": "Ringsend Forum"
+     },
+     "row_id": "p-11",
+     "verdict": ""
+    },
+    {
+     "date": "2026-03-18",
+     "value": {
+      "kind": "name",
+      "value": "Ringsend Forum"
+     },
+     "row_id": "p-226",
+     "verdict": ""
+    },
+    {
+     "date": "2026-04-02",
+     "value": {
+      "kind": "name",
+      "value": "Ringsend Forum"
+     },
+     "row_id": "p-711",
+     "verdict": ""
+    }
+   ]
+  },
+  "Hooly Docs|simultaneous_editors": {
+   "steps": [
+    {
+     "from": "2026-08-25",
+     "to": null,
+     "value": {
+      "kind": "quantity",
+      "value": 75,
+      "unit": "editor"
+     },
+     "confidence": 1.0,
+     "support": 2
+    }
+   ],
+   "mentions": [
+    {
+     "date": "2026-08-25",
+     "value": {
+      "kind": "quantity",
+      "value": 75,
+      "unit": "editor"
+     },
+     "row_id": "p-30",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-05-20",
+     "value": {
+      "kind": "quantity",
+      "value": 75,
+      "unit": "editor"
+     },
+     "row_id": "p-498",
+     "verdict": "false"
+    },
+    {
+     "date": "2026-03-20",
+     "value": {
+      "kind": "quantity",
+      "value": 40,
+      "unit": "editor",
+      "op": "le"
+     },
+     "row_id": "p-1695",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-10-05",
+     "value": {
+      "kind": "quantity",
+      "value": 75,
+      "unit": "editor"
+     },
+     "row_id": "p-1894",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-01-27",
+     "value": {
+      "kind": "quantity",
+      "value": 40,
+      "unit": "editor",
+      "op": "le"
+     },
+     "row_id": "p-41",
+     "verdict": ""
+    }
+   ]
+  },
+  "Hooly|head_of_workspace": {
+   "steps": [
+    {
+     "from": "2026-09-01",
+     "to": null,
+     "value": {
+      "kind": "name",
+      "value": "Patreese"
+     },
+     "confidence": 1.0,
+     "support": 2
+    }
+   ],
+   "mentions": [
+    {
+     "date": "2026-09-03",
+     "value": {
+      "kind": "name",
+      "value": "Patreese"
+     },
+     "row_id": "p-417",
+     "verdict": "false"
+    },
+    {
+     "date": "2026-10-20",
+     "value": {
+      "kind": "name",
+      "value": "Patreese"
+     },
+     "row_id": "p-1020",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-09-01",
+     "value": {
+      "kind": "name",
+      "value": "Patreese"
+     },
+     "row_id": "p-1288",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-08-25",
+     "value": {
+      "kind": "name",
+      "value": "Patreese"
+     },
+     "row_id": "p-36",
+     "verdict": ""
+    }
+   ]
+  },
+  "Holdan|joined": {
+   "steps": [],
+   "mentions": [
+    {
+     "date": "2026-01-12",
+     "value": {
+      "kind": "date",
+      "value": "2026-01-12"
+     },
+     "row_id": "p-1",
+     "verdict": ""
+    },
+    {
+     "date": "2026-09-03",
+     "value": {
+      "kind": "date",
+      "value": "2026-01"
+     },
+     "row_id": "p-46",
+     "verdict": ""
+    }
+   ]
+  },
+  "Hooly Gemini|webhook_events": {
+   "steps": [
+    {
+     "from": "2026-06-03",
+     "to": "2026-09-20",
+     "value": {
+      "kind": "quantity",
+      "value": 6,
+      "unit": "event"
+     },
+     "confidence": 1.0,
+     "support": 2
+    },
+    {
+     "from": "2026-09-20",
+     "to": null,
+     "value": {
+      "kind": "quantity",
+      "value": 11,
+      "unit": "event"
+     },
+     "confidence": 1.0,
+     "support": 1
+    }
+   ],
+   "mentions": [
+    {
+     "date": "2026-09-20",
+     "value": {
+      "kind": "quantity",
+      "value": 11,
+      "unit": "event"
+     },
+     "row_id": "p-337",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-06-12",
+     "value": {
+      "kind": "quantity",
+      "value": 6,
+      "unit": "event"
+     },
+     "row_id": "p-1444",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-08-20",
+     "value": {
+      "kind": "quantity",
+      "value": 11,
+      "unit": "event"
+     },
+     "row_id": "p-1473",
+     "verdict": "false"
+    },
+    {
+     "date": "2026-06-03",
+     "value": {
+      "kind": "quantity",
+      "value": 6,
+      "unit": "event"
+     },
+     "row_id": "p-1525",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-06-02",
+     "value": {
+      "kind": "quantity",
+      "value": 6,
+      "unit": "event"
+     },
+     "row_id": "p-26",
+     "verdict": ""
+    },
+    {
+     "date": "2026-08-19",
+     "value": {
+      "kind": "quantity",
+      "value": 6,
+      "unit": "event"
+     },
+     "row_id": "p-1401",
+     "verdict": ""
+    },
+    {
+     "date": "2026-06-10",
+     "value": {
+      "kind": "quantity",
+      "value": 6,
+      "unit": "event"
+     },
+     "row_id": "p-1721",
+     "verdict": ""
+    }
+   ]
+  },
+  "Hooly Chrome|release_cadence": {
+   "steps": [
+    {
+     "from": "2026-08-18",
+     "to": null,
+     "value": {
+      "kind": "duration",
+      "value": 4,
+      "unit": "week"
+     },
+     "confidence": 1.0,
+     "support": 3
+    }
+   ],
+   "mentions": [
+    {
+     "date": "2026-09-15",
+     "value": {
+      "kind": "duration",
+      "value": 4,
+      "unit": "week"
+     },
+     "row_id": "p-282",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-08-18",
+     "value": {
+      "kind": "duration",
+      "value": 4,
+      "unit": "week"
+     },
+     "row_id": "p-740",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-10-12",
+     "value": {
+      "kind": "duration",
+      "value": 4,
+      "unit": "week"
+     },
+     "row_id": "p-1737",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-07-08",
+     "value": {
+      "kind": "duration",
+      "value": 4,
+      "unit": "week"
+     },
+     "row_id": "p-61",
+     "verdict": ""
+    },
+    {
+     "date": "2026-08-05",
+     "value": {
+      "kind": "duration",
+      "value": 4,
+      "unit": "week"
+     },
+     "row_id": "p-531",
+     "verdict": ""
+    },
+    {
+     "date": "2026-10-20",
+     "value": {
+      "kind": "duration",
+      "value": 4,
+      "unit": "week"
+     },
+     "row_id": "p-896",
+     "verdict": ""
+    },
+    {
+     "date": "2025-12-20",
+     "value": {
+      "kind": "duration",
+      "value": 2,
+      "unit": "week"
+     },
+     "row_id": "p-1031",
+     "verdict": ""
+    },
+    {
+     "date": "2026-06-02",
+     "value": {
+      "kind": "duration",
+      "value": 6,
+      "unit": "week"
+     },
+     "row_id": "p-1181",
+     "verdict": ""
+    }
+   ]
+  },
+  "Hooly Docs|templates": {
+   "steps": [
+    {
+     "from": "2026-01-27",
+     "to": null,
+     "value": {
+      "kind": "quantity",
+      "value": 30,
+      "unit": "template"
+     },
+     "confidence": 1.0,
+     "support": 2
+    }
+   ],
+   "mentions": [
+    {
+     "date": "2026-01-27",
+     "value": {
+      "kind": "quantity",
+      "value": 30,
+      "unit": "template"
+     },
+     "row_id": "p-42",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-05-20",
+     "value": {
+      "kind": "quantity",
+      "value": 80,
+      "unit": "template"
+     },
+     "row_id": "p-499",
+     "verdict": "false"
+    },
+    {
+     "date": "2026-03-20",
+     "value": {
+      "kind": "quantity",
+      "value": 30,
+      "unit": "template"
+     },
+     "row_id": "p-1697",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-10-05",
+     "value": {
+      "kind": "quantity",
+      "value": 30,
+      "unit": "template"
+     },
+     "row_id": "p-1895",
+     "verdict": "false"
+    },
+    {
+     "date": "2026-08-25",
+     "value": {
+      "kind": "quantity",
+      "value": 80,
+      "unit": "template"
+     },
+     "row_id": "p-31",
+     "verdict": ""
+    }
+   ]
+  },
+  "Hooly Gemini|official_sdks": {
+   "steps": [
+    {
+     "from": "2026-03-24",
+     "to": "2026-06-03",
+     "value": {
+      "kind": "quantity",
+      "value": 3,
+      "unit": "sdk"
+     },
+     "confidence": 1.0,
+     "support": 1
+    },
+    {
+     "from": "2026-06-03",
+     "to": null,
+     "value": {
+      "kind": "quantity",
+      "value": 5,
+      "unit": "sdk"
+     },
+     "confidence": 1.0,
+     "support": 5
+    }
+   ],
+   "mentions": [
+    {
+     "date": "2026-09-20",
+     "value": {
+      "kind": "quantity",
+      "value": 5,
+      "unit": "sdk"
+     },
+     "row_id": "p-337",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-03-24",
+     "value": {
+      "kind": "quantity",
+      "value": 3,
+      "unit": "sdk"
+     },
+     "row_id": "p-408",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-07-03",
+     "value": {
+      "kind": "quantity",
+      "value": 5,
+      "unit": "sdk"
+     },
+     "row_id": "p-1024",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-06-12",
+     "value": {
+      "kind": "quantity",
+      "value": 5,
+      "unit": "sdk"
+     },
+     "row_id": "p-1444",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-08-20",
+     "value": {
+      "kind": "quantity",
+      "value": 5,
+      "unit": "sdk"
+     },
+     "row_id": "p-1472",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-06-03",
+     "value": {
+      "kind": "quantity",
+      "value": 5,
+      "unit": "sdk"
+     },
+     "row_id": "p-1525",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-06-02",
+     "value": {
+      "kind": "quantity",
+      "value": 5,
+      "unit": "sdk"
+     },
+     "row_id": "p-26",
+     "verdict": ""
+    },
+    {
+     "date": "2026-08-19",
+     "value": {
+      "kind": "quantity",
+      "value": 5,
+      "unit": "sdk"
+     },
+     "row_id": "p-1401",
+     "verdict": ""
+    }
+   ]
+  },
+  "Hooly Cloud Next 2026|date": {
+   "steps": [
+    {
+     "from": "2026-01-21",
+     "to": null,
+     "value": {
+      "kind": "date",
+      "value": "2026-06-09"
+     },
+     "confidence": 1.0,
+     "support": 5
+    }
+   ],
+   "mentions": [
+    {
+     "date": "2026-06-09",
+     "value": {
+      "kind": "date",
+      "value": "2026"
+     },
+     "row_id": "p-213",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-03-18",
+     "value": {
+      "kind": "date",
+      "value": "2026-06-09"
+     },
+     "row_id": "p-225",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-04-02",
+     "value": {
+      "kind": "date",
+      "value": "2026-06-09"
+     },
+     "row_id": "p-709",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-01-21",
+     "value": {
+      "kind": "date",
+      "value": "2026-06"
+     },
+     "row_id": "p-990",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-05-04",
+     "value": {
+      "kind": "date",
+      "value": "2026-06-09"
+     },
+     "row_id": "p-1808",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-06-12",
+     "value": {
+      "kind": "date",
+      "value": "2026-06-09"
+     },
+     "row_id": "p-16",
+     "verdict": ""
+    },
+    {
+     "date": "2026-02-16",
+     "value": {
+      "kind": "date",
+      "value": "2026-06-02"
+     },
+     "row_id": "p-1816",
+     "verdict": ""
+    }
+   ]
+  },
+  "Hooly Gemini|version": {
+   "steps": [
+    {
+     "from": "2025-10-07",
+     "to": "2025-12-09",
+     "value": {
+      "kind": "version",
+      "value": "1.0"
+     },
+     "confidence": 1.0,
+     "support": 9
+    },
+    {
+     "from": "2025-12-09",
+     "to": "2026-03-24",
+     "value": {
+      "kind": "version",
+      "value": "1.5"
+     },
+     "confidence": 1.0,
+     "support": 9
+    },
+    {
+     "from": "2026-03-24",
+     "to": "2026-06-03",
+     "value": {
+      "kind": "version",
+      "value": "2.0"
+     },
+     "confidence": 1.0,
+     "support": 7
+    },
+    {
+     "from": "2026-06-03",
+     "to": "2026-08-18",
+     "value": {
+      "kind": "version",
+      "value": "2.1"
+     },
+     "confidence": 1.0,
+     "support": 2
+    },
+    {
+     "from": "2026-08-18",
+     "to": null,
+     "value": {
+      "kind": "version",
+      "value": "2.2"
+     },
+     "confidence": 1.0,
+     "support": 11
+    }
+   ],
+   "mentions": [
+    {
+     "date": "2025-12-09",
+     "value": {
+      "kind": "version",
+      "value": "1.5"
+     },
+     "row_id": "p-23",
+     "verdict": "true"
+    },
+    {
+     "date": "2025-12-09",
+     "value": {
+      "kind": "version",
+      "value": "1.5"
+     },
+     "row_id": "p-24",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-08-25",
+     "value": {
+      "kind": "version",
+      "value": "2.2"
+     },
+     "row_id": "p-35",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-01-27",
+     "value": {
+      "kind": "version",
+      "value": "1.5"
+     },
+     "row_id": "p-45",
+     "verdict": "true"
+    },
+    {
+     "date": "2025-10-07",
+     "value": {
+      "kind": "version",
+      "value": "1.0"
+     },
+     "row_id": "p-52",
+     "verdict": "true"
+    },
+    {
+     "date": "2025-10-07",
+     "value": {
+      "kind": "version",
+      "value": "1.0"
+     },
+     "row_id": "p-53",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-03-24",
+     "value": {
+      "kind": "version",
+      "value": "2.0"
+     },
+     "row_id": "p-168",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-03-24",
+     "value": {
+      "kind": "version",
+      "value": "2.0"
+     },
+     "row_id": "p-169",
+     "verdict": "true"
+    },
+    {
+     "date": "2025-12-10",
+     "value": {
+      "kind": "version",
+      "value": "1.5"
+     },
+     "row_id": "p-252",
+     "verdict": "true"
+    },
+    {
+     "date": "2025-10-07",
+     "value": {
+      "kind": "version",
+      "value": "1.0"
+     },
+     "row_id": "p-262",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-09-01",
+     "value": {
+      "kind": "version",
+      "value": "2.2"
+     },
+     "row_id": "p-472",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-09-01",
+     "value": {
+      "kind": "version",
+      "value": "2.2"
+     },
+     "row_id": "p-523",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-03-25",
+     "value": {
+      "kind": "version",
+      "value": "2.0"
+     },
+     "row_id": "p-699",
+     "verdict": "true"
+    },
+    {
+     "date": "2025-11-19",
+     "value": {
+      "kind": "version",
+      "value": "1.0"
+     },
+     "row_id": "p-1012",
+     "verdict": "true"
+    },
+    {
+     "date": "2025-10-08",
+     "value": {
+      "kind": "version",
+      "value": "1.0"
+     },
+     "row_id": "p-1079",
+     "verdict": "true"
+    },
+    {
+     "date": "2025-12-09",
+     "value": {
+      "kind": "version",
+      "value": "1.5"
+     },
+     "row_id": "p-1084",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-03-25",
+     "value": {
+      "kind": "version",
+      "value": "2.0"
+     },
+     "row_id": "p-1090",
+     "verdict": "false"
+    },
+    {
+     "date": "2026-09-16",
+     "value": {
+      "kind": "version",
+      "value": "2.2"
+     },
+     "row_id": "p-1102",
+     "verdict": "false"
+    },
+    {
+     "date": "2025-11-26",
+     "value": {
+      "kind": "version",
+      "value": "1.0"
+     },
+     "row_id": "p-1329",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-04-20",
+     "value": {
+      "kind": "version",
+      "value": "2.0"
+     },
+     "row_id": "p-1337",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-10-15",
+     "value": {
+      "kind": "version",
+      "value": "2.2"
+     },
+     "row_id": "p-1383",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-08-19",
+     "value": {
+      "kind": "version",
+      "value": "2.2"
+     },
+     "row_id": "p-1398",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-03-27",
+     "value": {
+      "kind": "version",
+      "value": "2.0"
+     },
+     "row_id": "p-1418",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-04-17",
+     "value": {
+      "kind": "version",
+      "value": "2.0"
+     },
+     "row_id": "p-1434",
+     "verdict": "true"
+    },
+    {
+     "date": "2025-10-10",
+     "value": {
+      "kind": "version",
+      "value": "1.0"
+     },
+     "row_id": "p-1437",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-06-12",
+     "value": {
+      "kind": "version",
+      "value": "2.1"
+     },
+     "row_id": "p-1444",
+     "verdict": "true"
+    },
+    {
+     "date": "2025-11-14",
+     "value": {
+      "kind": "version",
+      "value": "1.0"
+     },
+     "row_id": "p-1452",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-08-20",
+     "value": {
+      "kind": "version",
+      "value": "2.2"
+     },
+     "row_id": "p-1465",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-02-03",
+     "value": {
+      "kind": "version",
+      "value": "1.5"
+     },
+     "row_id": "p-1488",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-03-31",
+     "value": {
+      "kind": "version",
+      "value": "1.5"
+     },
+     "row_id": "p-1494",
+     "verdict": "false"
+    },
+    {
+     "date": "2026-08-18",
+     "value": {
+      "kind": "version",
+      "value": "2.2"
+     },
+     "row_id": "p-1502",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-08-21",
+     "value": {
+      "kind": "version",
+      "value": "2.2"
+     },
+     "row_id": "p-1515",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-06-03",
+     "value": {
+      "kind": "version",
+      "value": "2.1"
+     },
+     "row_id": "p-1525",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-03-18",
+     "value": {
+      "kind": "version",
+      "value": "1.5"
+     },
+     "row_id": "p-1532",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-10-07",
+     "value": {
+      "kind": "version",
+      "value": "2.2"
+     },
+     "row_id": "p-1553",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-10-09",
+     "value": {
+      "kind": "version",
+      "value": "2.2"
+     },
+     "row_id": "p-1564",
+     "verdict": "true"
+    },
+    {
+     "date": "2025-12-18",
+     "value": {
+      "kind": "version",
+      "value": "1.5"
+     },
+     "row_id": "p-1613",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-03-24",
+     "value": {
+      "kind": "version",
+      "value": "2.0"
+     },
+     "row_id": "p-1623",
+     "verdict": "true"
+    },
+    {
+     "date": "2025-11-04",
+     "value": {
+      "kind": "version",
+      "value": "1.0"
+     },
+     "row_id": "p-1632",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-09-21",
+     "value": {
+      "kind": "version",
+      "value": "2.2"
+     },
+     "row_id": "p-1642",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-03-01",
+     "value": {
+      "kind": "version",
+      "value": "1.5"
+     },
+     "row_id": "p-1805",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-06-02",
+     "value": {
+      "kind": "version",
+      "value": "2.1"
+     },
+     "row_id": "p-26",
+     "verdict": ""
+    },
+    {
+     "date": "2025-10-07",
+     "value": {
+      "kind": "version",
+      "value": "1.0"
+     },
+     "row_id": "p-261",
+     "verdict": ""
+    },
+    {
+     "date": "2025-11-01",
+     "value": {
+      "kind": "version",
+      "value": "1.0"
+     },
+     "row_id": "p-521",
+     "verdict": ""
+    },
+    {
+     "date": "2026-03-24",
+     "value": {
+      "kind": "version",
+      "value": "2.0"
+     },
+     "row_id": "p-1171",
+     "verdict": ""
+    },
+    {
+     "date": "2026-10-26",
+     "value": {
+      "kind": "version",
+      "value": "2.2"
+     },
+     "row_id": "p-1351",
+     "verdict": ""
+    },
+    {
+     "date": "2026-05-12",
+     "value": {
+      "kind": "version",
+      "value": "2.0"
+     },
+     "row_id": "p-1391",
+     "verdict": ""
+    },
+    {
+     "date": "2026-09-08",
+     "value": {
+      "kind": "version",
+      "value": "2.2"
+     },
+     "row_id": "p-1536",
+     "verdict": ""
+    },
+    {
+     "date": "2025-12-10",
+     "value": {
+      "kind": "version",
+      "value": "1.5"
+     },
+     "row_id": "p-1581",
+     "verdict": ""
+    }
+   ]
+  },
+  "Hooly Cloud Next 2026|opening_keynote": {
+   "steps": [
+    {
+     "from": "2026-01-21",
+     "to": null,
+     "value": {
+      "kind": "name",
+      "value": "Gavin Bellson"
+     },
+     "confidence": 1.0,
+     "support": 2
+    }
+   ],
+   "mentions": [
+    {
+     "date": "2026-01-21",
+     "value": {
+      "kind": "name",
+      "value": "Gavin Bellson"
+     },
+     "row_id": "p-994",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-05-04",
+     "value": {
+      "kind": "name",
+      "value": "Gavin Bellson"
+     },
+     "row_id": "p-1809",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-06-12",
+     "value": {
+      "kind": "name",
+      "value": "Gavin Bellson"
+     },
+     "row_id": "p-16",
+     "verdict": ""
+    },
+    {
+     "date": "2026-03-18",
+     "value": {
+      "kind": "name",
+      "value": "Gavin Bellson"
+     },
+     "row_id": "p-231",
+     "verdict": ""
+    }
+   ]
+  },
+  "Hooly Cloud|reliability_lead": {
+   "steps": [
+    {
+     "from": "2026-01-12",
+     "to": null,
+     "value": {
+      "kind": "name",
+      "value": "Holdan"
+     },
+     "confidence": 1.0,
+     "support": 3
+    }
+   ],
+   "mentions": [
+    {
+     "date": "2026-01-12",
+     "value": {
+      "kind": "name",
+      "value": "Holdan"
+     },
+     "row_id": "p-2",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-07-15",
+     "value": {
+      "kind": "name",
+      "value": "Holdan"
+     },
+     "row_id": "p-1158",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-04-02",
+     "value": {
+      "kind": "name",
+      "value": "Holdan"
+     },
+     "row_id": "p-1660",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-09-03",
+     "value": {
+      "kind": "name",
+      "value": "Holdan"
+     },
+     "row_id": "p-46",
+     "verdict": ""
+    },
+    {
+     "date": "2026-03-02",
+     "value": {
+      "kind": "name",
+      "value": "Holdan"
+     },
+     "row_id": "p-1166",
+     "verdict": ""
+    },
+    {
+     "date": "2026-07-02",
+     "value": {
+      "kind": "name",
+      "value": "Holdan"
+     },
+     "row_id": "p-1666",
+     "verdict": ""
+    }
+   ]
+  },
+  "Hooly|cto": {
+   "steps": [
+    {
+     "from": "2026-02-20",
+     "to": "2026-10-09",
+     "value": {
+      "kind": "name",
+      "value": "Richard Hendrix"
+     },
+     "confidence": 1.0,
+     "support": 4
+    },
+    {
+     "from": "2026-10-09",
+     "to": null,
+     "value": {
+      "kind": "name",
+      "value": "Bertram Gilfoil"
+     },
+     "confidence": 1.0,
+     "support": 1
+    }
+   ],
+   "mentions": [
+    {
+     "date": "2026-07-01",
+     "value": {
+      "kind": "name",
+      "value": "Richard Hendrix"
+     },
+     "row_id": "p-778",
+     "verdict": "false"
+    },
+    {
+     "date": "2026-06-10",
+     "value": {
+      "kind": "name",
+      "value": "Richard Hendrix"
+     },
+     "row_id": "p-870",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-02-20",
+     "value": {
+      "kind": "name",
+      "value": "Richard Hendrix"
+     },
+     "row_id": "p-1025",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-04-20",
+     "value": {
+      "kind": "name",
+      "value": "Richard Hendrix"
+     },
+     "row_id": "p-1339",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-04-17",
+     "value": {
+      "kind": "name",
+      "value": "Richard Hendrix"
+     },
+     "row_id": "p-1429",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-10-09",
+     "value": {
+      "kind": "name",
+      "value": "Bertram Gilfoil"
+     },
+     "row_id": "p-1563",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-04-14",
+     "value": {
+      "kind": "name",
+      "value": "Richard Hendrix"
+     },
+     "row_id": "p-21",
+     "verdict": ""
+    },
+    {
+     "date": "2026-07-02",
+     "value": {
+      "kind": "name",
+      "value": "Bertram Gilfoil"
+     },
+     "row_id": "p-1101",
+     "verdict": ""
+    },
+    {
+     "date": "2025-12-10",
+     "value": {
+      "kind": "name",
+      "value": "Richard Hendrix"
+     },
+     "row_id": "p-1586",
+     "verdict": ""
+    },
+    {
+     "date": "2026-07-01",
+     "value": {
+      "kind": "name",
+      "value": "Bertram Gilfoil"
+     },
+     "row_id": "p-1881",
+     "verdict": ""
+    }
+   ]
+  },
+  "Hooly|headquarters": {
+   "steps": [
+    {
+     "from": "2025-11-04",
+     "to": "2026-05-01",
+     "value": {
+      "kind": "name",
+      "value": "Berlin"
+     },
+     "confidence": 1.0,
+     "support": 4
+    },
+    {
+     "from": "2026-05-01",
+     "to": null,
+     "value": {
+      "kind": "name",
+      "value": "Lisbon"
+     },
+     "confidence": 1.0,
+     "support": 6
+    }
+   ],
+   "mentions": [
+    {
+     "date": "2026-05-02",
+     "value": {
+      "kind": "name",
+      "value": "Lisbon"
+     },
+     "row_id": "p-1093",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-09-16",
+     "value": {
+      "kind": "name",
+      "value": "Berlin"
+     },
+     "row_id": "p-1104",
+     "verdict": "false"
+    },
+    {
+     "date": "2026-06-02",
+     "value": {
+      "kind": "name",
+      "value": "Lisbon"
+     },
+     "row_id": "p-1167",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-05-01",
+     "value": {
+      "kind": "name",
+      "value": "Lisbon"
+     },
+     "row_id": "p-1172",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-05-01",
+     "value": {
+      "kind": "name",
+      "value": "Lisbon"
+     },
+     "row_id": "p-1173",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-02-17",
+     "value": {
+      "kind": "name",
+      "value": "Berlin"
+     },
+     "row_id": "p-1273",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-02-17",
+     "value": {
+      "kind": "name",
+      "value": "Berlin"
+     },
+     "row_id": "p-1280",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-10-26",
+     "value": {
+      "kind": "name",
+      "value": "Berlin"
+     },
+     "row_id": "p-1348",
+     "verdict": "false"
+    },
+    {
+     "date": "2025-12-10",
+     "value": {
+      "kind": "name",
+      "value": "Berlin"
+     },
+     "row_id": "p-1587",
+     "verdict": "true"
+    },
+    {
+     "date": "2025-11-04",
+     "value": {
+      "kind": "name",
+      "value": "Berlin"
+     },
+     "row_id": "p-1634",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-09-01",
+     "value": {
+      "kind": "name",
+      "value": "Lisbon"
+     },
+     "row_id": "p-1837",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-07-01",
+     "value": {
+      "kind": "name",
+      "value": "Lisbon"
+     },
+     "row_id": "p-1882",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-05-01",
+     "value": {
+      "kind": "name",
+      "value": "Lisbon"
+     },
+     "row_id": "p-56",
+     "verdict": ""
+    },
+    {
+     "date": "2026-02-17",
+     "value": {
+      "kind": "name",
+      "value": "Berlin"
+     },
+     "row_id": "p-166",
+     "verdict": ""
+    },
+    {
+     "date": "2026-05-01",
+     "value": {
+      "kind": "name",
+      "value": "Lisbon"
+     },
+     "row_id": "p-776",
+     "verdict": ""
+    },
+    {
+     "date": "2026-04-15",
+     "value": {
+      "kind": "name",
+      "value": "Berlin"
+     },
+     "row_id": "p-1591",
+     "verdict": ""
+    },
+    {
+     "date": "2026-03-01",
+     "value": {
+      "kind": "name",
+      "value": "Berlin"
+     },
+     "row_id": "p-1801",
+     "verdict": ""
+    }
+   ]
+  },
+  "Hooly Photos Lite|price": {
+   "steps": [
+    {
+     "from": "2026-01-14",
+     "to": "2026-10-16",
+     "value": {
+      "kind": "money",
+      "value": 1.99,
+      "currency": "EUR",
+      "per": "month"
+     },
+     "confidence": 1.0,
+     "support": 4
+    },
+    {
+     "from": "2026-10-16",
+     "to": null,
+     "value": {
+      "kind": "money",
+      "value": 2.49,
+      "currency": "EUR",
+      "per": "month"
+     },
+     "confidence": 1.0,
+     "support": 2
+    }
+   ],
+   "mentions": [
+    {
+     "date": "2026-01-14",
+     "value": {
+      "kind": "money",
+      "value": 1.99,
+      "currency": "EUR",
+      "per": "month"
+     },
+     "row_id": "p-304",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-02-10",
+     "value": {
+      "kind": "money",
+      "value": 1.99,
+      "currency": "EUR",
+      "per": "month"
+     },
+     "row_id": "p-555",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-10-20",
+     "value": {
+      "kind": "money",
+      "value": 2.49,
+      "currency": "EUR",
+      "per": "month"
+     },
+     "row_id": "p-757",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-10-16",
+     "value": {
+      "kind": "money",
+      "value": 2.49,
+      "currency": "EUR",
+      "per": "month"
+     },
+     "row_id": "p-925",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-05-07",
+     "value": {
+      "kind": "money",
+      "value": 1.99,
+      "currency": "EUR",
+      "per": "month"
+     },
+     "row_id": "p-1194",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-07-24",
+     "value": {
+      "kind": "money",
+      "value": 1.99,
+      "currency": "EUR",
+      "per": "month"
+     },
+     "row_id": "p-1745",
+     "verdict": "true"
+    },
+    {
+     "date": "2025-10-19",
+     "value": {
+      "kind": "money",
+      "value": 1.99,
+      "currency": "EUR",
+      "per": "month"
+     },
+     "row_id": "p-81",
+     "verdict": ""
+    },
+    {
+     "date": "2026-04-02",
+     "value": {
+      "kind": "money",
+      "value": 1.99,
+      "currency": "EUR",
+      "per": "month"
+     },
+     "row_id": "p-96",
+     "verdict": ""
+    },
+    {
+     "date": "2026-09-02",
+     "value": {
+      "kind": "money",
+      "value": 2.49,
+      "currency": "EUR",
+      "per": "month"
+     },
+     "row_id": "p-1201",
+     "verdict": ""
+    }
+   ]
+  },
+  "Hooly Cloud|uptime_sla": {
+   "steps": [
+    {
+     "from": "2025-11-04",
+     "to": "2026-06-09",
+     "value": {
+      "kind": "percent",
+      "value": 99.9
+     },
+     "confidence": 1.0,
+     "support": 6
+    },
+    {
+     "from": "2026-06-09",
+     "to": null,
+     "value": {
+      "kind": "percent",
+      "value": 99.95
+     },
+     "confidence": 1.0,
+     "support": 3
+    }
+   ],
+   "mentions": [
+    {
+     "date": "2026-06-09",
+     "value": {
+      "kind": "percent",
+      "value": 99.95
+     },
+     "row_id": "p-217",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-02-24",
+     "value": {
+      "kind": "percent",
+      "value": 99.9
+     },
+     "row_id": "p-245",
+     "verdict": "true"
+    },
+    {
+     "date": "2025-12-01",
+     "value": {
+      "kind": "percent",
+      "value": 99.9
+     },
+     "row_id": "p-480",
+     "verdict": "true"
+    },
+    {
+     "date": "2025-12-15",
+     "value": {
+      "kind": "percent",
+      "value": 99.9
+     },
+     "row_id": "p-719",
+     "verdict": "true"
+    },
+    {
+     "date": "2025-11-04",
+     "value": {
+      "kind": "percent",
+      "value": 99.9
+     },
+     "row_id": "p-1144",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-04-02",
+     "value": {
+      "kind": "percent",
+      "value": 99.9
+     },
+     "row_id": "p-1658",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-07-02",
+     "value": {
+      "kind": "percent",
+      "value": 99.95
+     },
+     "row_id": "p-1665",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-10-02",
+     "value": {
+      "kind": "percent",
+      "value": 99.95
+     },
+     "row_id": "p-1670",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-05-12",
+     "value": {
+      "kind": "percent",
+      "value": 99.9
+     },
+     "row_id": "p-1690",
+     "verdict": "true"
+    },
+    {
+     "date": "2026-01-12",
+     "value": {
+      "kind": "percent",
+      "value": 99.9
+     },
+     "row_id": "p-6",
+     "verdict": ""
+    },
+    {
+     "date": "2026-09-03",
+     "value": {
+      "kind": "percent",
+      "value": 99.95
+     },
+     "row_id": "p-51",
+     "verdict": ""
+    },
+    {
+     "date": "2026-06-10",
+     "value": {
+      "kind": "percent",
+      "value": 99.95
+     },
+     "row_id": "p-1001",
+     "verdict": ""
+    },
+    {
+     "date": "2025-11-05",
+     "value": {
+      "kind": "percent",
+      "value": 99.9
+     },
+     "row_id": "p-1831",
+     "verdict": ""
+    }
+   ]
+  }
+ },
+ "claims": [
+  {
+   "id": "c0001-fact",
+   "type": "fact",
+   "text": "The beta date of Hooly Jules is 14 April 2026.",
+   "form": {
+    "subject": "Hooly Jules",
+    "attribute": "beta_date",
+    "value": {
+     "kind": "date",
+     "value": "2026-04-14"
+    }
+   },
+   "confidence": 0.99,
+   "sources": [
+    {
+     "subject": "Hooly Jules",
+     "attribute": "beta_date"
+    }
+   ]
+  },
+  {
+   "id": "c0002-fact",
+   "type": "fact",
+   "text": "The version of Hooly Gemini is version 2.2.",
+   "form": {
+    "subject": "Hooly Gemini",
+    "attribute": "version",
+    "value": {
+     "kind": "version",
+     "value": "2.2"
+    }
+   },
+   "confidence": 0.99,
+   "sources": [
+    {
+     "subject": "Hooly Gemini",
+     "attribute": "version"
+    }
+   ]
+  },
+  {
+   "id": "c0003-fact",
+   "type": "fact",
+   "text": "The languages of Hooly Gemini is 12 languages.",
+   "form": {
+    "subject": "Hooly Gemini",
+    "attribute": "languages",
+    "value": {
+     "kind": "quantity",
+     "value": 12,
+     "unit": "language"
+    }
+   },
+   "confidence": 0.99,
+   "sources": [
+    {
+     "subject": "Hooly Gemini",
+     "attribute": "languages"
+    }
+   ]
+  },
+  {
+   "id": "c0004-fact",
+   "type": "fact",
+   "text": "The general availability date of Hooly Jules is 2 June 2026.",
+   "form": {
+    "subject": "Hooly Jules",
+    "attribute": "general_availability_date",
+    "value": {
+     "kind": "date",
+     "value": "2026-06-02"
+    }
+   },
+   "confidence": 0.99,
+   "sources": [
+    {
+     "subject": "Hooly Jules",
+     "attribute": "general_availability_date"
+    }
+   ]
+  },
+  {
+   "id": "c0005-fact",
+   "type": "fact",
+   "text": "The price of Hooly Jules is €19 per month.",
+   "form": {
+    "subject": "Hooly Jules",
+    "attribute": "price",
+    "value": {
+     "kind": "money",
+     "value": 19,
+     "currency": "EUR",
+     "per": "month"
+    }
+   },
+   "confidence": 0.99,
+   "sources": [
+    {
+     "subject": "Hooly Jules",
+     "attribute": "price"
+    }
+   ]
+  },
+  {
+   "id": "c0006-fact",
+   "type": "fact",
+   "text": "The price of Hooly AI Pro is €59 per month.",
+   "form": {
+    "subject": "Hooly AI Pro",
+    "attribute": "price",
+    "value": {
+     "kind": "money",
+     "value": 59,
+     "currency": "EUR",
+     "per": "month"
+    }
+   },
+   "confidence": 0.99,
+   "sources": [
+    {
+     "subject": "Hooly AI Pro",
+     "attribute": "price"
+    }
+   ]
+  },
+  {
+   "id": "c0007-fact",
+   "type": "fact",
+   "text": "The free trial of Hooly AI Pro is 7 days.",
+   "form": {
+    "subject": "Hooly AI Pro",
+    "attribute": "free_trial",
+    "value": {
+     "kind": "duration",
+     "value": 7,
+     "unit": "day"
+    }
+   },
+   "confidence": 0.99,
+   "sources": [
+    {
+     "subject": "Hooly AI Pro",
+     "attribute": "free_trial"
+    }
+   ]
+  },
+  {
+   "id": "c0008-fact",
+   "type": "fact",
+   "text": "The employees of Hooly is 74 employees.",
+   "form": {
+    "subject": "Hooly",
+    "attribute": "employees",
+    "value": {
+     "kind": "quantity",
+     "value": 74,
+     "unit": "employee"
+    }
+   },
+   "confidence": 0.99,
+   "sources": [
+    {
+     "subject": "Hooly",
+     "attribute": "employees"
+    }
+   ]
+  },
+  {
+   "id": "c0009-fact",
+   "type": "fact",
+   "text": "The free storage of Hooly Photos is 10 GB.",
+   "form": {
+    "subject": "Hooly Photos",
+    "attribute": "free_storage",
+    "value": {
+     "kind": "quantity",
+     "value": 10,
+     "unit": "GB"
+    }
+   },
+   "confidence": 0.99,
+   "sources": [
+    {
+     "subject": "Hooly Photos",
+     "attribute": "free_storage"
+    }
+   ]
+  },
+  {
+   "id": "c0010-fact",
+   "type": "fact",
+   "text": "The price of Hooly Pixel Fold is €1,799.",
+   "form": {
+    "subject": "Hooly Pixel Fold",
+    "attribute": "price",
+    "value": {
+     "kind": "money",
+     "value": 1799,
+     "currency": "EUR"
+    }
+   },
+   "confidence": 0.99,
+   "sources": [
+    {
+     "subject": "Hooly Pixel Fold",
+     "attribute": "price"
+    }
+   ]
+  },
+  {
+   "id": "c0011-fact",
+   "type": "fact",
+   "text": "The series a amount of Hooly is €18,000,000.",
+   "form": {
+    "subject": "Hooly",
+    "attribute": "series_a_amount",
+    "value": {
+     "kind": "money",
+     "value": 18000000,
+     "currency": "EUR"
+    }
+   },
+   "confidence": 0.99,
+   "sources": [
+    {
+     "subject": "Hooly",
+     "attribute": "series_a_amount"
+    }
+   ]
+  },
+  {
+   "id": "c0012-fact",
+   "type": "fact",
+   "text": "The date of Hooly I/O 2026 is 24 March 2026.",
+   "form": {
+    "subject": "Hooly I/O 2026",
+    "attribute": "date",
+    "value": {
+     "kind": "date",
+     "value": "2026-03-24"
+    }
+   },
+   "confidence": 0.99,
+   "sources": [
+    {
+     "subject": "Hooly I/O 2026",
+     "attribute": "date"
+    }
+   ]
+  },
+  {
+   "id": "c0013-fact",
+   "type": "fact",
+   "text": "The median response time of Hooly Gemini is 1.4 seconds.",
+   "form": {
+    "subject": "Hooly Gemini",
+    "attribute": "median_response_time",
+    "value": {
+     "kind": "duration",
+     "value": 1.4,
+     "unit": "s"
+    }
+   },
+   "confidence": 0.99,
+   "sources": [
+    {
+     "subject": "Hooly Gemini",
+     "attribute": "median_response_time"
+    }
+   ]
+  },
+  {
+   "id": "c0014-fact",
+   "type": "fact",
+   "text": "The included seats of Hooly Workspace is 10 seats.",
+   "form": {
+    "subject": "Hooly Workspace",
+    "attribute": "included_seats",
+    "value": {
+     "kind": "quantity",
+     "value": 10,
+     "unit": "seat"
+    }
+   },
+   "confidence": 0.99,
+   "sources": [
+    {
+     "subject": "Hooly Workspace",
+     "attribute": "included_seats"
+    }
+   ]
+  },
+  {
+   "id": "c0015-fact",
+   "type": "fact",
+   "text": "The date of Hooly Cloud Next 2026 is 9 June 2026.",
+   "form": {
+    "subject": "Hooly Cloud Next 2026",
+    "attribute": "date",
+    "value": {
+     "kind": "date",
+     "value": "2026-06-09"
+    }
+   },
+   "confidence": 0.99,
+   "sources": [
+    {
+     "subject": "Hooly Cloud Next 2026",
+     "attribute": "date"
+    }
+   ]
+  },
+  {
+   "id": "c0016-fact",
+   "type": "fact",
+   "text": "The official sdks of Hooly Gemini is 5 sdks.",
+   "form": {
+    "subject": "Hooly Gemini",
+    "attribute": "official_sdks",
+    "value": {
+     "kind": "quantity",
+     "value": 5,
+     "unit": "sdk"
+    }
+   },
+   "confidence": 0.99,
+   "sources": [
+    {
+     "subject": "Hooly Gemini",
+     "attribute": "official_sdks"
+    }
+   ]
+  },
+  {
+   "id": "c0017-fact",
+   "type": "fact",
+   "text": "The supported models of Hooly Android 17 is 26 models.",
+   "form": {
+    "subject": "Hooly Android 17",
+    "attribute": "supported_models",
+    "value": {
+     "kind": "quantity",
+     "value": 26,
+     "unit": "model"
+    }
+   },
+   "confidence": 0.99,
+   "sources": [
+    {
+     "subject": "Hooly Android 17",
+     "attribute": "supported_models"
+    }
+   ]
+  },
+  {
+   "id": "c0018-fact",
+   "type": "fact",
+   "text": "The price of Hooly Workspace is €199 per month.",
+   "form": {
+    "subject": "Hooly Workspace",
+    "attribute": "price",
+    "value": {
+     "kind": "money",
+     "value": 199,
+     "currency": "EUR",
+     "per": "month"
+    }
+   },
+   "confidence": 0.99,
+   "sources": [
+    {
+     "subject": "Hooly Workspace",
+     "attribute": "price"
+    }
+   ]
+  },
+  {
+   "id": "c0019-fact",
+   "type": "fact",
+   "text": "The free trial of Hooly Jules is 14 days.",
+   "form": {
+    "subject": "Hooly Jules",
+    "attribute": "free_trial",
+    "value": {
+     "kind": "duration",
+     "value": 14,
+     "unit": "day"
+    }
+   },
+   "confidence": 0.99,
+   "sources": [
+    {
+     "subject": "Hooly Jules",
+     "attribute": "free_trial"
+    }
+   ]
+  },
+  {
+   "id": "c0020-fact",
+   "type": "fact",
+   "text": "The data retention of Hooly Gemini is 90 days.",
+   "form": {
+    "subject": "Hooly Gemini",
+    "attribute": "data_retention",
+    "value": {
+     "kind": "duration",
+     "value": 90,
+     "unit": "day"
+    }
+   },
+   "confidence": 0.99,
+   "sources": [
+    {
+     "subject": "Hooly Gemini",
+     "attribute": "data_retention"
+    }
+   ]
+  },
+  {
+   "id": "c0021-fact",
+   "type": "fact",
+   "text": "The free trial of Hooly Workspace is 14 days.",
+   "form": {
+    "subject": "Hooly Workspace",
+    "attribute": "free_trial",
+    "value": {
+     "kind": "duration",
+     "value": 14,
+     "unit": "day"
+    }
+   },
+   "confidence": 0.99,
+   "sources": [
+    {
+     "subject": "Hooly Workspace",
+     "attribute": "free_trial"
+    }
+   ]
+  },
+  {
+   "id": "c0022-fact",
+   "type": "fact",
+   "text": "The founded of Hooly is 14 January 2025.",
+   "form": {
+    "subject": "Hooly",
+    "attribute": "founded",
+    "value": {
+     "kind": "date",
+     "value": "2025-01-14"
+    }
+   },
+   "confidence": 0.99,
+   "sources": [
+    {
+     "subject": "Hooly",
+     "attribute": "founded"
+    }
+   ]
+  },
+  {
+   "id": "c0023-fact",
+   "type": "fact",
+   "text": "The price of Hooly Workspace Enterprise is €1,200 per month.",
+   "form": {
+    "subject": "Hooly Workspace Enterprise",
+    "attribute": "price",
+    "value": {
+     "kind": "money",
+     "value": 1200,
+     "currency": "EUR",
+     "per": "month"
+    }
+   },
+   "confidence": 0.99,
+   "sources": [
+    {
+     "subject": "Hooly Workspace Enterprise",
+     "attribute": "price"
+    }
+   ]
+  },
+  {
+   "id": "c0024-fact",
+   "type": "fact",
+   "text": "The included seats of Hooly Workspace Enterprise is 50 seats.",
+   "form": {
+    "subject": "Hooly Workspace Enterprise",
+    "attribute": "included_seats",
+    "value": {
+     "kind": "quantity",
+     "value": 50,
+     "unit": "seat"
+    }
+   },
+   "confidence": 0.99,
+   "sources": [
+    {
+     "subject": "Hooly Workspace Enterprise",
+     "attribute": "included_seats"
+    }
+   ]
+  },
+  {
+   "id": "c0025-compare",
+   "type": "compare",
+   "text": "The beta date of Hooly Jules is earlier than the general availability date of Hooly Jules.",
+   "form": {
+    "left": {
+     "subject": "Hooly Jules",
+     "attribute": "beta_date"
+    },
+    "right": {
+     "subject": "Hooly Jules",
+     "attribute": "general_availability_date"
+    },
+    "op": "lt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly Jules",
+     "attribute": "beta_date"
+    },
+    {
+     "subject": "Hooly Jules",
+     "attribute": "general_availability_date"
+    }
+   ]
+  },
+  {
+   "id": "c0026-compare",
+   "type": "compare",
+   "text": "The beta date of Hooly Jules is later than the date of Hooly I/O 2026.",
+   "form": {
+    "left": {
+     "subject": "Hooly Jules",
+     "attribute": "beta_date"
+    },
+    "right": {
+     "subject": "Hooly I/O 2026",
+     "attribute": "date"
+    },
+    "op": "gt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly Jules",
+     "attribute": "beta_date"
+    },
+    {
+     "subject": "Hooly I/O 2026",
+     "attribute": "date"
+    }
+   ]
+  },
+  {
+   "id": "c0027-compare",
+   "type": "compare",
+   "text": "The beta date of Hooly Jules is earlier than the date of Hooly Cloud Next 2026.",
+   "form": {
+    "left": {
+     "subject": "Hooly Jules",
+     "attribute": "beta_date"
+    },
+    "right": {
+     "subject": "Hooly Cloud Next 2026",
+     "attribute": "date"
+    },
+    "op": "lt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly Jules",
+     "attribute": "beta_date"
+    },
+    {
+     "subject": "Hooly Cloud Next 2026",
+     "attribute": "date"
+    }
+   ]
+  },
+  {
+   "id": "c0028-compare",
+   "type": "compare",
+   "text": "The beta date of Hooly Jules is later than the founded of Hooly.",
+   "form": {
+    "left": {
+     "subject": "Hooly Jules",
+     "attribute": "beta_date"
+    },
+    "right": {
+     "subject": "Hooly",
+     "attribute": "founded"
+    },
+    "op": "gt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly Jules",
+     "attribute": "beta_date"
+    },
+    {
+     "subject": "Hooly",
+     "attribute": "founded"
+    }
+   ]
+  },
+  {
+   "id": "c0029-compare",
+   "type": "compare",
+   "text": "The general availability date of Hooly Jules is later than the beta date of Hooly Jules.",
+   "form": {
+    "left": {
+     "subject": "Hooly Jules",
+     "attribute": "general_availability_date"
+    },
+    "right": {
+     "subject": "Hooly Jules",
+     "attribute": "beta_date"
+    },
+    "op": "gt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly Jules",
+     "attribute": "general_availability_date"
+    },
+    {
+     "subject": "Hooly Jules",
+     "attribute": "beta_date"
+    }
+   ]
+  },
+  {
+   "id": "c0030-compare",
+   "type": "compare",
+   "text": "The general availability date of Hooly Jules is later than the date of Hooly I/O 2026.",
+   "form": {
+    "left": {
+     "subject": "Hooly Jules",
+     "attribute": "general_availability_date"
+    },
+    "right": {
+     "subject": "Hooly I/O 2026",
+     "attribute": "date"
+    },
+    "op": "gt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly Jules",
+     "attribute": "general_availability_date"
+    },
+    {
+     "subject": "Hooly I/O 2026",
+     "attribute": "date"
+    }
+   ]
+  },
+  {
+   "id": "c0031-compare",
+   "type": "compare",
+   "text": "The general availability date of Hooly Jules is earlier than the date of Hooly Cloud Next 2026.",
+   "form": {
+    "left": {
+     "subject": "Hooly Jules",
+     "attribute": "general_availability_date"
+    },
+    "right": {
+     "subject": "Hooly Cloud Next 2026",
+     "attribute": "date"
+    },
+    "op": "lt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly Jules",
+     "attribute": "general_availability_date"
+    },
+    {
+     "subject": "Hooly Cloud Next 2026",
+     "attribute": "date"
+    }
+   ]
+  },
+  {
+   "id": "c0032-compare",
+   "type": "compare",
+   "text": "The general availability date of Hooly Jules is later than the founded of Hooly.",
+   "form": {
+    "left": {
+     "subject": "Hooly Jules",
+     "attribute": "general_availability_date"
+    },
+    "right": {
+     "subject": "Hooly",
+     "attribute": "founded"
+    },
+    "op": "gt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly Jules",
+     "attribute": "general_availability_date"
+    },
+    {
+     "subject": "Hooly",
+     "attribute": "founded"
+    }
+   ]
+  },
+  {
+   "id": "c0033-compare",
+   "type": "compare",
+   "text": "The date of Hooly I/O 2026 is earlier than the beta date of Hooly Jules.",
+   "form": {
+    "left": {
+     "subject": "Hooly I/O 2026",
+     "attribute": "date"
+    },
+    "right": {
+     "subject": "Hooly Jules",
+     "attribute": "beta_date"
+    },
+    "op": "lt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly I/O 2026",
+     "attribute": "date"
+    },
+    {
+     "subject": "Hooly Jules",
+     "attribute": "beta_date"
+    }
+   ]
+  },
+  {
+   "id": "c0034-compare",
+   "type": "compare",
+   "text": "The date of Hooly I/O 2026 is earlier than the general availability date of Hooly Jules.",
+   "form": {
+    "left": {
+     "subject": "Hooly I/O 2026",
+     "attribute": "date"
+    },
+    "right": {
+     "subject": "Hooly Jules",
+     "attribute": "general_availability_date"
+    },
+    "op": "lt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly I/O 2026",
+     "attribute": "date"
+    },
+    {
+     "subject": "Hooly Jules",
+     "attribute": "general_availability_date"
+    }
+   ]
+  },
+  {
+   "id": "c0035-compare",
+   "type": "compare",
+   "text": "The date of Hooly I/O 2026 is earlier than the date of Hooly Cloud Next 2026.",
+   "form": {
+    "left": {
+     "subject": "Hooly I/O 2026",
+     "attribute": "date"
+    },
+    "right": {
+     "subject": "Hooly Cloud Next 2026",
+     "attribute": "date"
+    },
+    "op": "lt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly I/O 2026",
+     "attribute": "date"
+    },
+    {
+     "subject": "Hooly Cloud Next 2026",
+     "attribute": "date"
+    }
+   ]
+  },
+  {
+   "id": "c0036-compare",
+   "type": "compare",
+   "text": "The date of Hooly I/O 2026 is later than the founded of Hooly.",
+   "form": {
+    "left": {
+     "subject": "Hooly I/O 2026",
+     "attribute": "date"
+    },
+    "right": {
+     "subject": "Hooly",
+     "attribute": "founded"
+    },
+    "op": "gt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly I/O 2026",
+     "attribute": "date"
+    },
+    {
+     "subject": "Hooly",
+     "attribute": "founded"
+    }
+   ]
+  },
+  {
+   "id": "c0037-compare",
+   "type": "compare",
+   "text": "The date of Hooly Cloud Next 2026 is later than the beta date of Hooly Jules.",
+   "form": {
+    "left": {
+     "subject": "Hooly Cloud Next 2026",
+     "attribute": "date"
+    },
+    "right": {
+     "subject": "Hooly Jules",
+     "attribute": "beta_date"
+    },
+    "op": "gt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly Cloud Next 2026",
+     "attribute": "date"
+    },
+    {
+     "subject": "Hooly Jules",
+     "attribute": "beta_date"
+    }
+   ]
+  },
+  {
+   "id": "c0038-compare",
+   "type": "compare",
+   "text": "The date of Hooly Cloud Next 2026 is later than the general availability date of Hooly Jules.",
+   "form": {
+    "left": {
+     "subject": "Hooly Cloud Next 2026",
+     "attribute": "date"
+    },
+    "right": {
+     "subject": "Hooly Jules",
+     "attribute": "general_availability_date"
+    },
+    "op": "gt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly Cloud Next 2026",
+     "attribute": "date"
+    },
+    {
+     "subject": "Hooly Jules",
+     "attribute": "general_availability_date"
+    }
+   ]
+  },
+  {
+   "id": "c0039-compare",
+   "type": "compare",
+   "text": "The date of Hooly Cloud Next 2026 is later than the date of Hooly I/O 2026.",
+   "form": {
+    "left": {
+     "subject": "Hooly Cloud Next 2026",
+     "attribute": "date"
+    },
+    "right": {
+     "subject": "Hooly I/O 2026",
+     "attribute": "date"
+    },
+    "op": "gt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly Cloud Next 2026",
+     "attribute": "date"
+    },
+    {
+     "subject": "Hooly I/O 2026",
+     "attribute": "date"
+    }
+   ]
+  },
+  {
+   "id": "c0040-compare",
+   "type": "compare",
+   "text": "The date of Hooly Cloud Next 2026 is later than the founded of Hooly.",
+   "form": {
+    "left": {
+     "subject": "Hooly Cloud Next 2026",
+     "attribute": "date"
+    },
+    "right": {
+     "subject": "Hooly",
+     "attribute": "founded"
+    },
+    "op": "gt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly Cloud Next 2026",
+     "attribute": "date"
+    },
+    {
+     "subject": "Hooly",
+     "attribute": "founded"
+    }
+   ]
+  },
+  {
+   "id": "c0041-compare",
+   "type": "compare",
+   "text": "The founded of Hooly is earlier than the beta date of Hooly Jules.",
+   "form": {
+    "left": {
+     "subject": "Hooly",
+     "attribute": "founded"
+    },
+    "right": {
+     "subject": "Hooly Jules",
+     "attribute": "beta_date"
+    },
+    "op": "lt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly",
+     "attribute": "founded"
+    },
+    {
+     "subject": "Hooly Jules",
+     "attribute": "beta_date"
+    }
+   ]
+  },
+  {
+   "id": "c0042-compare",
+   "type": "compare",
+   "text": "The founded of Hooly is earlier than the general availability date of Hooly Jules.",
+   "form": {
+    "left": {
+     "subject": "Hooly",
+     "attribute": "founded"
+    },
+    "right": {
+     "subject": "Hooly Jules",
+     "attribute": "general_availability_date"
+    },
+    "op": "lt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly",
+     "attribute": "founded"
+    },
+    {
+     "subject": "Hooly Jules",
+     "attribute": "general_availability_date"
+    }
+   ]
+  },
+  {
+   "id": "c0043-compare",
+   "type": "compare",
+   "text": "The founded of Hooly is earlier than the date of Hooly I/O 2026.",
+   "form": {
+    "left": {
+     "subject": "Hooly",
+     "attribute": "founded"
+    },
+    "right": {
+     "subject": "Hooly I/O 2026",
+     "attribute": "date"
+    },
+    "op": "lt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly",
+     "attribute": "founded"
+    },
+    {
+     "subject": "Hooly I/O 2026",
+     "attribute": "date"
+    }
+   ]
+  },
+  {
+   "id": "c0044-compare",
+   "type": "compare",
+   "text": "The founded of Hooly is earlier than the date of Hooly Cloud Next 2026.",
+   "form": {
+    "left": {
+     "subject": "Hooly",
+     "attribute": "founded"
+    },
+    "right": {
+     "subject": "Hooly Cloud Next 2026",
+     "attribute": "date"
+    },
+    "op": "lt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly",
+     "attribute": "founded"
+    },
+    {
+     "subject": "Hooly Cloud Next 2026",
+     "attribute": "date"
+    }
+   ]
+  },
+  {
+   "id": "c0045-compare",
+   "type": "compare",
+   "text": "The free trial of Hooly AI Pro is higher than the median response time of Hooly Gemini.",
+   "form": {
+    "left": {
+     "subject": "Hooly AI Pro",
+     "attribute": "free_trial"
+    },
+    "right": {
+     "subject": "Hooly Gemini",
+     "attribute": "median_response_time"
+    },
+    "op": "gt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly AI Pro",
+     "attribute": "free_trial"
+    },
+    {
+     "subject": "Hooly Gemini",
+     "attribute": "median_response_time"
+    }
+   ]
+  },
+  {
+   "id": "c0046-compare",
+   "type": "compare",
+   "text": "The free trial of Hooly AI Pro is lower than the free trial of Hooly Jules.",
+   "form": {
+    "left": {
+     "subject": "Hooly AI Pro",
+     "attribute": "free_trial"
+    },
+    "right": {
+     "subject": "Hooly Jules",
+     "attribute": "free_trial"
+    },
+    "op": "lt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly AI Pro",
+     "attribute": "free_trial"
+    },
+    {
+     "subject": "Hooly Jules",
+     "attribute": "free_trial"
+    }
+   ]
+  },
+  {
+   "id": "c0047-compare",
+   "type": "compare",
+   "text": "The free trial of Hooly AI Pro is lower than the data retention of Hooly Gemini.",
+   "form": {
+    "left": {
+     "subject": "Hooly AI Pro",
+     "attribute": "free_trial"
+    },
+    "right": {
+     "subject": "Hooly Gemini",
+     "attribute": "data_retention"
+    },
+    "op": "lt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly AI Pro",
+     "attribute": "free_trial"
+    },
+    {
+     "subject": "Hooly Gemini",
+     "attribute": "data_retention"
+    }
+   ]
+  },
+  {
+   "id": "c0048-compare",
+   "type": "compare",
+   "text": "The free trial of Hooly AI Pro is lower than the free trial of Hooly Workspace.",
+   "form": {
+    "left": {
+     "subject": "Hooly AI Pro",
+     "attribute": "free_trial"
+    },
+    "right": {
+     "subject": "Hooly Workspace",
+     "attribute": "free_trial"
+    },
+    "op": "lt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly AI Pro",
+     "attribute": "free_trial"
+    },
+    {
+     "subject": "Hooly Workspace",
+     "attribute": "free_trial"
+    }
+   ]
+  },
+  {
+   "id": "c0049-compare",
+   "type": "compare",
+   "text": "The median response time of Hooly Gemini is lower than the free trial of Hooly AI Pro.",
+   "form": {
+    "left": {
+     "subject": "Hooly Gemini",
+     "attribute": "median_response_time"
+    },
+    "right": {
+     "subject": "Hooly AI Pro",
+     "attribute": "free_trial"
+    },
+    "op": "lt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly Gemini",
+     "attribute": "median_response_time"
+    },
+    {
+     "subject": "Hooly AI Pro",
+     "attribute": "free_trial"
+    }
+   ]
+  },
+  {
+   "id": "c0050-compare",
+   "type": "compare",
+   "text": "The median response time of Hooly Gemini is lower than the free trial of Hooly Jules.",
+   "form": {
+    "left": {
+     "subject": "Hooly Gemini",
+     "attribute": "median_response_time"
+    },
+    "right": {
+     "subject": "Hooly Jules",
+     "attribute": "free_trial"
+    },
+    "op": "lt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly Gemini",
+     "attribute": "median_response_time"
+    },
+    {
+     "subject": "Hooly Jules",
+     "attribute": "free_trial"
+    }
+   ]
+  },
+  {
+   "id": "c0051-compare",
+   "type": "compare",
+   "text": "The median response time of Hooly Gemini is lower than the data retention of Hooly Gemini.",
+   "form": {
+    "left": {
+     "subject": "Hooly Gemini",
+     "attribute": "median_response_time"
+    },
+    "right": {
+     "subject": "Hooly Gemini",
+     "attribute": "data_retention"
+    },
+    "op": "lt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly Gemini",
+     "attribute": "median_response_time"
+    },
+    {
+     "subject": "Hooly Gemini",
+     "attribute": "data_retention"
+    }
+   ]
+  },
+  {
+   "id": "c0052-compare",
+   "type": "compare",
+   "text": "The median response time of Hooly Gemini is lower than the free trial of Hooly Workspace.",
+   "form": {
+    "left": {
+     "subject": "Hooly Gemini",
+     "attribute": "median_response_time"
+    },
+    "right": {
+     "subject": "Hooly Workspace",
+     "attribute": "free_trial"
+    },
+    "op": "lt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly Gemini",
+     "attribute": "median_response_time"
+    },
+    {
+     "subject": "Hooly Workspace",
+     "attribute": "free_trial"
+    }
+   ]
+  },
+  {
+   "id": "c0053-compare",
+   "type": "compare",
+   "text": "The free trial of Hooly Jules is higher than the free trial of Hooly AI Pro.",
+   "form": {
+    "left": {
+     "subject": "Hooly Jules",
+     "attribute": "free_trial"
+    },
+    "right": {
+     "subject": "Hooly AI Pro",
+     "attribute": "free_trial"
+    },
+    "op": "gt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly Jules",
+     "attribute": "free_trial"
+    },
+    {
+     "subject": "Hooly AI Pro",
+     "attribute": "free_trial"
+    }
+   ]
+  },
+  {
+   "id": "c0054-compare",
+   "type": "compare",
+   "text": "The free trial of Hooly Jules is higher than the median response time of Hooly Gemini.",
+   "form": {
+    "left": {
+     "subject": "Hooly Jules",
+     "attribute": "free_trial"
+    },
+    "right": {
+     "subject": "Hooly Gemini",
+     "attribute": "median_response_time"
+    },
+    "op": "gt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly Jules",
+     "attribute": "free_trial"
+    },
+    {
+     "subject": "Hooly Gemini",
+     "attribute": "median_response_time"
+    }
+   ]
+  },
+  {
+   "id": "c0055-compare",
+   "type": "compare",
+   "text": "The free trial of Hooly Jules is lower than the data retention of Hooly Gemini.",
+   "form": {
+    "left": {
+     "subject": "Hooly Jules",
+     "attribute": "free_trial"
+    },
+    "right": {
+     "subject": "Hooly Gemini",
+     "attribute": "data_retention"
+    },
+    "op": "lt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly Jules",
+     "attribute": "free_trial"
+    },
+    {
+     "subject": "Hooly Gemini",
+     "attribute": "data_retention"
+    }
+   ]
+  },
+  {
+   "id": "c0056-compare",
+   "type": "compare",
+   "text": "The free trial of Hooly Jules is the same as the free trial of Hooly Workspace.",
+   "form": {
+    "left": {
+     "subject": "Hooly Jules",
+     "attribute": "free_trial"
+    },
+    "right": {
+     "subject": "Hooly Workspace",
+     "attribute": "free_trial"
+    },
+    "op": "eq"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly Jules",
+     "attribute": "free_trial"
+    },
+    {
+     "subject": "Hooly Workspace",
+     "attribute": "free_trial"
+    }
+   ]
+  },
+  {
+   "id": "c0057-compare",
+   "type": "compare",
+   "text": "The data retention of Hooly Gemini is higher than the free trial of Hooly AI Pro.",
+   "form": {
+    "left": {
+     "subject": "Hooly Gemini",
+     "attribute": "data_retention"
+    },
+    "right": {
+     "subject": "Hooly AI Pro",
+     "attribute": "free_trial"
+    },
+    "op": "gt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly Gemini",
+     "attribute": "data_retention"
+    },
+    {
+     "subject": "Hooly AI Pro",
+     "attribute": "free_trial"
+    }
+   ]
+  },
+  {
+   "id": "c0058-compare",
+   "type": "compare",
+   "text": "The data retention of Hooly Gemini is higher than the median response time of Hooly Gemini.",
+   "form": {
+    "left": {
+     "subject": "Hooly Gemini",
+     "attribute": "data_retention"
+    },
+    "right": {
+     "subject": "Hooly Gemini",
+     "attribute": "median_response_time"
+    },
+    "op": "gt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly Gemini",
+     "attribute": "data_retention"
+    },
+    {
+     "subject": "Hooly Gemini",
+     "attribute": "median_response_time"
+    }
+   ]
+  },
+  {
+   "id": "c0059-compare",
+   "type": "compare",
+   "text": "The data retention of Hooly Gemini is higher than the free trial of Hooly Jules.",
+   "form": {
+    "left": {
+     "subject": "Hooly Gemini",
+     "attribute": "data_retention"
+    },
+    "right": {
+     "subject": "Hooly Jules",
+     "attribute": "free_trial"
+    },
+    "op": "gt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly Gemini",
+     "attribute": "data_retention"
+    },
+    {
+     "subject": "Hooly Jules",
+     "attribute": "free_trial"
+    }
+   ]
+  },
+  {
+   "id": "c0060-compare",
+   "type": "compare",
+   "text": "The data retention of Hooly Gemini is higher than the free trial of Hooly Workspace.",
+   "form": {
+    "left": {
+     "subject": "Hooly Gemini",
+     "attribute": "data_retention"
+    },
+    "right": {
+     "subject": "Hooly Workspace",
+     "attribute": "free_trial"
+    },
+    "op": "gt"
+   },
+   "confidence": 0.941,
+   "sources": [
+    {
+     "subject": "Hooly Gemini",
+     "attribute": "data_retention"
+    },
+    {
+     "subject": "Hooly Workspace",
+     "attribute": "free_trial"
+    }
+   ]
+  }
+ ],
+ "architecture": {
+  "stages": [
+   {
+    "id": "reader",
+    "name": "Reader",
+    "what": "Reads every value as the referee does: money, counts, dates, versions, yes/no"
+   },
+   {
+    "id": "linker",
+    "name": "Linker",
+    "what": "Finds which Hooly subjects a sentence names (lexicon + page context)"
+   },
+   {
+    "id": "attributor",
+    "name": "Attributor",
+    "what": "Decides which attribute each value is about"
+   },
+   {
+    "id": "truth",
+    "name": "Truth engine",
+    "what": "Rebuilds each fact's timeline from 20,000 rows, weighting trusted pages"
+   },
+   {
+    "id": "judge",
+    "name": "Judge",
+    "what": "True / false / unsure per row with a calibrated confidence"
+   },
+   {
+    "id": "forge",
+    "name": "Claim forge",
+    "what": "Writes 1,000 new true claims and checks each with our referee clone"
+   }
+  ],
+  "edges": [
+   [
+    "reader",
+    "linker"
+   ],
+   [
+    "linker",
+    "attributor"
+   ],
+   [
+    "attributor",
+    "truth"
+   ],
+   [
+    "truth",
+    "judge"
+   ],
+   [
+    "judge",
+    "forge"
+   ]
+  ]
+ },
+ "_note": "MOCK: made with gold extraction on practice rows; the shape is the contract (docs/BRIEF_frontend.md)."
+}

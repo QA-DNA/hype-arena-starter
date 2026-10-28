@@ -1,0 +1,3 @@
+# What the Docker image needs at run time (keep it small: the image limit is 3 GiB).
+numpy>=2.1,<3
+scikit-learn>=1.6,<2

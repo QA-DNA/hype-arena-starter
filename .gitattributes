@@ -1,0 +1,5 @@
+# Shell scripts and the Dockerfile run on Linux: keep LF endings even on Windows checkouts.
+*.sh text eol=lf
+Dockerfile text eol=lf
+*.py text eol=lf
+*.ps1 text eol=crlf

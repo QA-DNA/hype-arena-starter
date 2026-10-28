@@ -1,0 +1,9 @@
+[project]
+name = "polygraph"
+version = "0.1.0"
+description = "Hype Arena entry: tells Hooly's hype from the truth, without an LLM at run time"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
