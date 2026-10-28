@@ -1,51 +1,136 @@
-# Hype Arena starter
+<p align="center"><img src="docs/assets/banner.svg" alt="VERIDYCT — evidence before verdict" width="100%"></p>
 
-## [hype-arena.vercel.app](https://hype-arena.vercel.app/)
+<p align="center">
+  <a href="https://github.com/teodorbalan/VERIDYCT/actions/workflows/ci.yml"><img src="https://github.com/teodorbalan/VERIDYCT/actions/workflows/ci.yml/badge.svg" alt="Workspace checks"></a>
+  <img src="https://img.shields.io/badge/Rust-1.90.0-d4e9a0?style=flat-square" alt="Rust 1.90.0">
+  <img src="https://img.shields.io/badge/runtime-CPU%20%2F%20offline-243c2d?style=flat-square" alt="CPU and offline runtime">
+</p>
 
-## The universe
+<p align="center"><strong>One repository. Shared context. Decisions you can trace.</strong><br>Built by Teo, Edi and Mihai · Team JEV · Hype or Truth</p>
 
-**Hooly** is a fictional company in a fictional universe, made for the QA DNA challenge of the NEXXT AI Hackathon. Its name alludes to Hooli, the tech giant of the TV series *Silicon Valley*. Its products carry the names of real Google products, used fictitiously: nothing here describes those products or their makers. Its people carry the names of the series' characters with a few letters changed.
+---
 
-Hooly's people, events, decisions and figures are invented, and the universe departs from the series and from Google's real history on purpose. **The truth is what the universe says.** A system that fills gaps from the web, or from what a pretrained model already knows, learns facts the universe contradicts.
+VERIDYCT is our workspace for the QA DNA challenge. A Rust core, a command-line
+adapter and a local HTTP interface live together, with portable tooling and a
+versioned map of the project's rules and decisions.
 
-The universe is a year of Hooly's pages, docs, posts, decks and press releases, in which prices, headcounts, dates and names change, and some pages lie. You get a part of it as sentences, each labelled.
+**Current milestone: the development foundation works.** You can start the workbench,
+explore project relationships, and run checks. Data processing, classification and the
+1,000-claim generator are not implemented yet. The reserved `run` command exits with
+an explicit error instead of producing pretend results.
 
-## The task
+## Start here
 
-Build a system that does two things with rows about Hooly, each with how sure your system is:
-
-- **It labels rows.** Given rows of the universe, some labelled and some not, it labels each unlabelled row `true`, `false` or `unsure`.
-- **It writes new content.** It writes exactly 1,000 new claims about Hooly that connect what the universe says, every one of them true.
-
-How you build it is yours to decide.
-
-- **LLMs may help you build your system,** and make what it learns from, but the system itself may not be an LLM.
-- **Fork this repository and work in your fork,** so we can follow your work. Forks are public.
-- **Your system has a frontend:** a working page that shows the architecture of your system as a diagram and runs the system live on rows you give it. Start it however you like: your video shows it running.
-- **At 09:00 on 29 Oct we add a sample of 20 rows to this repository,** as one CSV file, `sample/sample.csv`: new rows, in the shape of the run's input with every `label` empty (`id`, `text`, `date`, `label`). The video you hand in at 11:00 shows your frontend running your system live on them, beside its architecture diagram.
-- **Your submission is a pull request** from your fork to this repository, one per team, titled with your team's name and opened before 11:00 on 29 Oct. It holds both the `Dockerfile` we run your system from, as [`contracts/README.md`](contracts/README.md) says, and what starts your frontend. What it holds at 11:00 is what we run: a push to it, or closing it, after 11:00 disqualifies the team.
-- **We run every team's system** after 11:00, offline, for up to 30 minutes, on about 20,000 rows of the universe, the practice rows among them with their labels. It hands in one table, `/output/output.csv`: a label for each of the roughly 18,000 unlabelled rows and exactly 1,000 new claims, every one true, and we judge both. How it runs, what it reads and what it hands in is in [`contracts/README.md`](contracts/README.md).
-
-## What is here
-
-| Path | What |
-| --- | --- |
-| `data/practice.csv` | The practice dataset: one row per sentence of the practice part of the universe, each labelled `true`, `false` or `unsure`, with the facts it states |
-| `data/lexicon.json` | The subjects the dataset names, with their aliases and attributes, and the events |
-| `contracts/` | What you get, how we run your system and what it hands in |
-| `sample/sample.csv` | From 09:00 on 29 Oct: the 20 rows of the sample, unlabelled |
-| `scripts/check.sh` | Runs your system as we will, on the practice data, and checks its table |
-
-## Check your system
-
-`scripts/check.sh` builds the image from your `Dockerfile` and runs it as we will: offline, as user 10001, on a read-only root, with 2 CPUs and 6 GiB, until it exits or 30 minutes pass. Its input is the practice dataset in the run's shape, with every fifth row's label hidden. It then checks your table's columns, ids, lengths, labels and confidences, that it holds exactly 1,000 new claims, and counts your labels on the hidden rows against the practice labels. It needs Docker and Python 3.
-
-It does not check a claim's text against `claim-forms.md`, its form against `entry.schema.json`, or its names against the lexicon: we check those after the run. And an image that holds `data/practice.csv` knows the hidden labels, so the label count here is an upper bound.
+Install [Rust through rustup](https://www.rust-lang.org/tools/install) and Git.
+The repository pins its compiler and tools; the first Cargo command installs the
+requested Rust toolchain if needed. Windows users can use WSL2 or native Rust with
+the MSVC C++ build tools. Linux needs a C linker; macOS needs Xcode Command Line Tools.
 
 ```sh
-scripts/check.sh                 # build the image and run it
-scripts/check.sh my-image:tag    # run an image you built
-MINUTES=5 scripts/check.sh       # a shorter run
+git clone https://github.com/teodorbalan/VERIDYCT.git
+cd VERIDYCT
+cargo xtask setup
+cargo xtask doctor
+cargo xtask dev
 ```
 
-A run that passes here can still fail ours on what the practice data does not hold.
+Open **http://127.0.0.1:8787**. Stop with **Ctrl+C**. Assets are embedded in the Rust
+binary; restart the command after changing HTML, CSS, JavaScript or the project map.
+The local app needs no API keys, Node runtime, GPU, or external frontend assets.
+
+Prefer a ready-made Linux environment? Open the repository in a Dev Containers
+compatible editor and choose **Reopen in Container**. Docker must be running.
+The container installs locked dependencies automatically and forwards port 8787.
+
+For a packaged preview:
+
+```sh
+docker compose up --build
+```
+
+This starts the workbench, not the competition solver. Use `docker compose down` to
+stop it. Change the host port with `VERIDYCT_PORT`; change native binding with
+`VERIDYCT_ADDR`. See [development](docs/development.md) for shell examples.
+
+## A map of the repository
+
+```text
+apps/web/          Local workbench · HTML, CSS and browser JavaScript
+crates/core/       Workspace metadata; reserved for the future reasoning engine
+crates/cli/        File-oriented CLI; future competition entry point
+crates/api/        Local HTTP adapter and embedded frontend
+xtask/            Cross-platform development and verification commands
+contracts/        Organizer schemas and grammar, preserved
+data/             Organizer practice data and lexicon, preserved
+scripts/          Organizer checker, preserved
+docs/             Architecture, decisions, handoffs and project knowledge map
+native/           Rules for a future optional C++/CUDA extension
+.devcontainer/    Reproducible Linux development environment
+.github/          CI, code ownership and contribution templates
+```
+
+```mermaid
+flowchart LR
+  CLI[CLI] --> Core[Rust core]
+  Web[Browser] --> API[HTTP API]
+  API --> Core
+  Rules[Agent rules and decisions] --> Tasks[Task context]
+  Cargo[Cargo dependency graph] --> Tasks
+```
+
+## Daily commands
+
+| Command | Purpose |
+| --- | --- |
+| `cargo xtask doctor` | Inspect prerequisites and optional Docker/checker tools |
+| `cargo xtask setup` | Download dependencies using Cargo.lock |
+| `cargo xtask dev` | Start the local workbench |
+| `cargo xtask check` | Formatting, Clippy, document links, graph and upstream checksums |
+| `cargo xtask test` | Run workspace tests |
+| `cargo xtask build` | Build release binaries |
+| `cargo xtask graph` | Export the curated map and actual Cargo dependencies |
+| `cargo xtask context --scope core` | Print bounded, fingerprinted context for a task |
+| `cargo run --locked -p veridyct-cli -- info` | Print workspace status as JSON |
+
+`cargo xtask arena-check` runs the official checker on Linux with Docker and Python 3.
+**It is expected to fail on this foundation**: the solver and claim generator still need
+to be built. The container CI job checks packaging and process startup, not a submission.
+
+## Work together
+
+1. Pick a bounded task and a human owner. Record the intended paths and acceptance criteria.
+2. Create a short branch. Give concurrently working agents separate checkouts.
+3. Read [AGENTS.md](AGENTS.md) and the scoped instructions before editing.
+4. Run relevant checks and leave a [handoff](docs/handoffs/TEMPLATE.md).
+5. Open a small PR with the behavior change and its verification. Keep `main` usable.
+
+Example task context:
+
+```sh
+cargo xtask context --scope api --task workspace-foundation --max-chars 16000
+```
+
+The [project knowledge map](docs/knowledge/README.md) connects modules, rules, and decisions.
+It is separate from the future Hooly evidence graph. Generated snapshots live in ignored
+`artifacts/`, carry a source fingerprint, and never serve as an authority above the code.
+
+## Competition boundary
+
+The default target is **Linux amd64, 2 CPU, 6 GiB RAM, offline, non-root**. The final
+image is built from the root Dockerfile. C++/CUDA is deferred; NVIDIA hardware is not
+a prerequisite. LLMs may assist development, but the submitted system must not be an LLM.
+
+The organizer's README is preserved in [UPSTREAM.md](UPSTREAM.md). Consult the
+[runtime contract](contracts/README.md), [claim grammar](contracts/claim-forms.md), and
+[value grammar](contracts/value-forms.md) before changing submission behavior.
+
+The sample is scheduled for **29 October, 09:00** and submission freezes at **11:00**,
+according to the organizer. Pushing to or closing the submission PR after freeze can
+disqualify the team. Confirm event timing with the organizers; this README does not
+override their rules.
+
+## Further reading
+
+[Development](docs/development.md) · [Architecture](docs/architecture.md) ·
+[Agent roles](docs/agents.md) · [Knowledge map](docs/knowledge/README.md) ·
+[Contribution guide](CONTRIBUTING.md) · [Documentation index](docs/README.md)

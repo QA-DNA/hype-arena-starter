@@ -1,0 +1,19 @@
+name: veridyct
+services:
+  workbench:
+    build:
+      context: .
+      target: runtime
+    entrypoint: ["/app/veridyct-api"]
+    command: []
+    init: true
+    ports:
+      - "127.0.0.1:${VERIDYCT_PORT:-8787}:8787"
+    read_only: true
+    tmpfs:
+      - /tmp:rw,size=128m,mode=1777
+    cap_drop: [ALL]
+    security_opt: ["no-new-privileges:true"]
+    cpus: 2
+    mem_limit: 6g
+    pids_limit: 256

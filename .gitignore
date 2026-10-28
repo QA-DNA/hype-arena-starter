@@ -1,0 +1,41 @@
+# Builds and generated evidence
+/target/
+/artifacts/
+/output/
+/dist/
+/coverage/
+**/node_modules/
+**/__pycache__/
+*.py[cod]
+*.profraw
+*.profdata
+*.log
+*.sqlite
+*.sqlite3
+*.db
+*.db-shm
+*.db-wal
+
+# Local configuration and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.venv/
+.cache/
+.claude/settings.local.json
+
+# Editor and OS state
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+!.vscode/tasks.json
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo
+
+# Cargo.lock is intentionally versioned for this application.

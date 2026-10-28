@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="VERIDYCT — the JEV engineering workspace for Hype or Truth.">
+  <title>VERIDYCT · Workbench</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <div class="shell">
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="VERIDYCT home"><span class="mark" aria-hidden="true">V<span>•</span></span>VERIDYCT<span class="brand-note">WORKBENCH / 01</span></a>
+      <a class="repo-link" href="https://github.com/teodorbalan/VERIDYCT" target="_blank" rel="noreferrer">Open repository ↗</a>
+    </header>
+    <main id="main">
+      <section class="hero" aria-labelledby="title">
+        <div><p class="eyebrow">JEV / HYPE OR TRUTH</p><h1 id="title">Evidence before<br><span>verdict.</span></h1><p class="intro">One workspace. Shared context. A clear path from<br class="desktop-break"> the first commit to a system we can explain.</p></div>
+        <aside class="live-card" aria-label="Workspace status">
+          <div class="live-top"><span class="eyebrow">LOCAL SESSION</span><span id="connection" class="connection" role="status">Connecting</span></div>
+          <p class="version">Foundation <span id="version">—</span></p>
+          <p class="muted">The workbench is ready for development.<br>The reasoning engine is the next milestone.</p>
+          <div class="live-bottom"><span>RUST / CPU / OFFLINE TARGET</span><button id="refresh" type="button">Refresh ↻</button></div>
+        </aside>
+      </section>
+      <nav class="tabs" role="tablist" aria-label="Workbench views">
+        <button role="tab" id="tab-workspace" aria-controls="panel-workspace" aria-selected="true" data-tab="workspace">01 <span>Workspace</span></button>
+        <button role="tab" id="tab-knowledge" aria-controls="panel-knowledge" aria-selected="false" tabindex="-1" data-tab="knowledge">02 <span>Knowledge</span></button>
+        <button role="tab" id="tab-runbook" aria-controls="panel-runbook" aria-selected="false" tabindex="-1" data-tab="runbook">03 <span>Runbook</span></button>
+      </nav>
+      <section id="panel-workspace" role="tabpanel" aria-labelledby="tab-workspace">
+        <div class="section-heading"><div><p class="eyebrow">THE SHAPE OF THE SYSTEM</p><h2>A small core. Clear boundaries.</h2></div><span class="quiet-badge">Foundation preview</span></div>
+        <div class="architecture" aria-label="The CLI and API share the Rust core. The browser calls the API.">
+          <article class="module"><span class="module-id">01 / ENTRY</span><h3>CLI</h3><p>Files in. Results out.<br>A predictable offline process.</p><code>crates/cli</code></article>
+          <span class="arrow" aria-hidden="true">→</span>
+          <article class="module core"><span class="module-id">02 / SHARED</span><h3>Rust core</h3><p>Shared module boundary.<br>Ready for implementation.</p><code>crates/core</code></article>
+          <span class="arrow" aria-hidden="true">←</span>
+          <article class="module"><span class="module-id">03 / ADAPTER</span><h3>API</h3><p>Local requests.<br>Explicit responses and errors.</p><code>crates/api</code></article>
+          <span class="arrow" aria-hidden="true">←</span>
+          <article class="module"><span class="module-id">04 / EXPERIENCE</span><h3>Browser</h3><p>Architecture, interaction,<br>and inspectable evidence.</p><code>apps/web</code></article>
+        </div>
+        <div class="bottom-grid">
+          <article class="note"><p class="eyebrow">AVAILABLE NOW</p><h3>The foundation is tangible.</h3><ul><li>Cargo workspace and portable development tasks</li><li>Live API status and a project knowledge map</li><li>Scoped agent rules, documentation, and CI</li></ul></article>
+          <article class="note next"><p class="eyebrow">NEXT MILESTONE</p><h3>Build the reasoning engine.</h3><p>Classification, evidence resolution, and claim generation are not implemented. This preview never substitutes a mock verdict for a real result.</p><span class="pill">SOLVER NOT IMPLEMENTED</span></article>
+        </div>
+      </section>
+      <section id="panel-knowledge" role="tabpanel" aria-labelledby="tab-knowledge" hidden>
+        <div class="section-heading"><div><p class="eyebrow">CONTEXT THAT TRAVELS WITH THE CODE</p><h2>Explore the project map.</h2></div><span id="graph-count" class="quiet-badge">Loading map</span></div>
+        <p class="map-intro">A curated map of components, rules, and decisions. This describes the project; it is separate from the future Hooly evidence graph.</p>
+        <div class="explorer"><div class="node-list"><label for="node-search">Find a node</label><input id="node-search" type="search" placeholder="core, rules, CPU…" autocomplete="off"><div id="nodes" class="nodes"></div></div><article id="node-detail" class="node-detail" aria-live="polite"><p class="muted">Select a node to inspect its source and relationships.</p></article></div>
+      </section>
+      <section id="panel-runbook" role="tabpanel" aria-labelledby="tab-runbook" hidden>
+        <div class="section-heading"><div><p class="eyebrow">SMALL COMMANDS. SHARED HABITS.</p><h2>From checkout to contribution.</h2></div><span class="quiet-badge">Windows · Linux · macOS</span></div>
+        <div class="commands">
+          <article class="command"><span class="module-id">01 / PREPARE</span><h3>Know your environment.</h3><p>Check local tools, then download locked dependencies.</p><div><code>cargo xtask doctor</code><button class="copy" data-copy="cargo xtask doctor" type="button">Copy</button></div><div><code>cargo xtask setup</code><button class="copy" data-copy="cargo xtask setup" type="button">Copy</button></div></article>
+          <article class="command"><span class="module-id">02 / BUILD</span><h3>Keep the feedback close.</h3><p>Start this workbench. Restart after changing embedded assets.</p><div><code>cargo xtask dev</code><button class="copy" data-copy="cargo xtask dev" type="button">Copy</button></div></article>
+          <article class="command"><span class="module-id">03 / VERIFY</span><h3>Leave evidence, not guesses.</h3><p>Check code and documentation, then run the test suite.</p><div><code>cargo xtask check</code><button class="copy" data-copy="cargo xtask check" type="button">Copy</button></div><div><code>cargo xtask test</code><button class="copy" data-copy="cargo xtask test" type="button">Copy</button></div></article>
+          <article class="command"><span class="module-id">04 / HAND OFF</span><h3>Take the right context.</h3><p>Read scoped rules, architectural neighbors, and decisions.</p><div><code>cargo xtask context --scope core</code><button class="copy" data-copy="cargo xtask context --scope core" type="button">Copy</button></div></article>
+        </div>
+      </section>
+    </main>
+    <footer><span>Built together by <strong>Teo, Edi & Mihai</strong></span><span>VERIDYCT / JEV <span class="footer-dot">●</span> Clarity is a feature.</span></footer>
+  </div>
+</body>
+</html>

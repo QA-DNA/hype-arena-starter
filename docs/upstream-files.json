@@ -1,0 +1,327 @@
+{
+    "upstream":  "QA-DNA/hype-arena-starter",
+    "commit":  "7c32449d878efde84aa1f38ce179778d1e2c4a48",
+    "normalization":  "UTF-8 text with LF line endings",
+    "files":  [
+                  {
+                      "path":  "UPSTREAM.md",
+                      "upstream_path":  "README.md",
+                      "sha256":  "a6c5c9c717414b20a0d1202753cd7ccf67d8763e883378f932419c601c1df233"
+                  },
+                  {
+                      "path":  "contracts/README.md",
+                      "upstream_path":  "contracts/README.md",
+                      "sha256":  "301e2a630d1757fa2c7369abc3769fb181a1db169118edf3f51c05d2c84ddc7d"
+                  },
+                  {
+                      "path":  "contracts/claim-forms.md",
+                      "upstream_path":  "contracts/claim-forms.md",
+                      "sha256":  "dd06a1fadce75edb8c3f00d6653d3d323df5c74160b945f5c8a0fde9f524a913"
+                  },
+                  {
+                      "path":  "contracts/claimed_value.schema.json",
+                      "upstream_path":  "contracts/claimed_value.schema.json",
+                      "sha256":  "a6a770846fee9b46b9e59dbbf900a3feacc9eab759be5572d41a9d8d2e41b0b3"
+                  },
+                  {
+                      "path":  "contracts/entry.schema.json",
+                      "upstream_path":  "contracts/entry.schema.json",
+                      "sha256":  "3e264a43f0d0fc206d25b71ba022e4d9ac40c2e0b72a57e69de2bec28c8e1c35"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/bad/boolean-as-string.json",
+                      "upstream_path":  "contracts/examples/claimed_value/bad/boolean-as-string.json",
+                      "sha256":  "faaea664ec2f9b1dda3453e9824373db22abc5e74fbef5580c6101fb8e5afec6"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/bad/date-free-text.json",
+                      "upstream_path":  "contracts/examples/claimed_value/bad/date-free-text.json",
+                      "sha256":  "19fd7e6b5c24185a5a7fadd726b67a7fa38b8761745828ab3dce774937af17e3"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/bad/date-month-13.json",
+                      "upstream_path":  "contracts/examples/claimed_value/bad/date-month-13.json",
+                      "sha256":  "a792d0d0191c46445d5525abba524dc933c8952f61e745488c5582b2edbe337d"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/bad/date-with-time.json",
+                      "upstream_path":  "contracts/examples/claimed_value/bad/date-with-time.json",
+                      "sha256":  "6382a4dabe9f7dfec18d43f46e544bbeab5c0bfdf159afa7ff887aedcc9b3f8d"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/bad/duration-negative.json",
+                      "upstream_path":  "contracts/examples/claimed_value/bad/duration-negative.json",
+                      "sha256":  "01276fdfe0086bb4dcd3984f10134151499e27cf0237627fedacd075fe87c3e5"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/bad/duration-plural-unit.json",
+                      "upstream_path":  "contracts/examples/claimed_value/bad/duration-plural-unit.json",
+                      "sha256":  "fb8426336274c33c3ef0f09e97dd34b218b89d7629b66f1b462a59d127b75eee"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/bad/extra-field.json",
+                      "upstream_path":  "contracts/examples/claimed_value/bad/extra-field.json",
+                      "sha256":  "26c46328a77f945a193cc953c4e26f66059a1c6f0f11c4373f7369232db412d4"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/bad/missing-kind.json",
+                      "upstream_path":  "contracts/examples/claimed_value/bad/missing-kind.json",
+                      "sha256":  "e27475154bc96f4f5d8d6ce30be9e413dcf5c095c18fb725d7727bd33d4e5d38"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/bad/money-lowercase-currency.json",
+                      "upstream_path":  "contracts/examples/claimed_value/bad/money-lowercase-currency.json",
+                      "sha256":  "df72cf5a735e06e52e031e55cefc82a2b3ed19ee122217632c8beed4f0bac48a"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/bad/money-negative.json",
+                      "upstream_path":  "contracts/examples/claimed_value/bad/money-negative.json",
+                      "sha256":  "9379e6059ae009330e8c4fcad5a8913ae7efab6a632fa3c6ab5322dda5102a4f"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/bad/money-unknown-period.json",
+                      "upstream_path":  "contracts/examples/claimed_value/bad/money-unknown-period.json",
+                      "sha256":  "b347d21e733c22e1a0f9dc37523ab8702ac7f7b530dded87fc8eab0ecd4c2902"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/bad/name-blank.json",
+                      "upstream_path":  "contracts/examples/claimed_value/bad/name-blank.json",
+                      "sha256":  "221e43f3f7c7f962c10c01ce7259a93ce2a07979546cf1edfb62567f1b5ca8f1"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/bad/name-with-op.json",
+                      "upstream_path":  "contracts/examples/claimed_value/bad/name-with-op.json",
+                      "sha256":  "1e1f6b14c2788e9ef091e6e40d351abcea8bcd2cfb5f0635d9907e3a3f443d66"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/bad/quantity-missing-unit.json",
+                      "upstream_path":  "contracts/examples/claimed_value/bad/quantity-missing-unit.json",
+                      "sha256":  "33d24755526c0b3e5e1cba1d7c60a2e877e10e8b27bd9afefb6cb766919b0a6d"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/bad/quantity-value-as-string.json",
+                      "upstream_path":  "contracts/examples/claimed_value/bad/quantity-value-as-string.json",
+                      "sha256":  "e509189caa24ffe432268db0280ce47f39a7a9e89ad89a29d6dd2c78a77927d6"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/bad/quantity-with-time-unit.json",
+                      "upstream_path":  "contracts/examples/claimed_value/bad/quantity-with-time-unit.json",
+                      "sha256":  "22a9fc416939ae362f3e0456fe38629616c3a58a54c7f02bf326225f460b029a"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/bad/unknown-kind.json",
+                      "upstream_path":  "contracts/examples/claimed_value/bad/unknown-kind.json",
+                      "sha256":  "4c1b9910f9e74fe963db517a2a66fcf8c1abeac8e9d12739f9aa14cafcfe97ef"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/bad/unknown-op.json",
+                      "upstream_path":  "contracts/examples/claimed_value/bad/unknown-op.json",
+                      "sha256":  "08c25f8dd617c1872201f149882d24da96be31011bf7dbab3fa4a5be15988d40"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/bad/version-with-v.json",
+                      "upstream_path":  "contracts/examples/claimed_value/bad/version-with-v.json",
+                      "sha256":  "bcf0c0d6a667d298b6d0607ab9d6615d592551c376ffcfe692ae7993ddab7e59"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/good/boolean.json",
+                      "upstream_path":  "contracts/examples/claimed_value/good/boolean.json",
+                      "sha256":  "49ee7a6baba4c53f66c13147f5d30a94bc206ad9595f02864ea1c3246094cecb"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/good/date-day.json",
+                      "upstream_path":  "contracts/examples/claimed_value/good/date-day.json",
+                      "sha256":  "db9a9cb284a100ac0142cdf8db203ede61ca452f5902676d621f90802614635a"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/good/date-month-before.json",
+                      "upstream_path":  "contracts/examples/claimed_value/good/date-month-before.json",
+                      "sha256":  "21c2f89fb2a3869ae3f839236d00c16beb141d5d96b09de1a4134c75fa25af8a"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/good/date-year.json",
+                      "upstream_path":  "contracts/examples/claimed_value/good/date-year.json",
+                      "sha256":  "0d9bb7a69ce0ca72db09104f0d8e191460318ce03c26d44b48ed8e654fa8d892"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/good/duration-under-a-second.json",
+                      "upstream_path":  "contracts/examples/claimed_value/good/duration-under-a-second.json",
+                      "sha256":  "7e7592b76a8024fc3f988ea74a878f0fa60fc19998f595d0d0935bb979d0210b"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/good/duration-weeks.json",
+                      "upstream_path":  "contracts/examples/claimed_value/good/duration-weeks.json",
+                      "sha256":  "d1e2e7d0317afdd3fe0ca26c5614b225a3cb115e95511c118d83c4cf23f6f3b8"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/good/money-monthly.json",
+                      "upstream_path":  "contracts/examples/claimed_value/good/money-monthly.json",
+                      "sha256":  "e941afde5bd14f8cedd26a6684f59f1c22fbe9f232e715bb9bda2ee27a0443bc"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/good/money-one-off-under.json",
+                      "upstream_path":  "contracts/examples/claimed_value/good/money-one-off-under.json",
+                      "sha256":  "8de9da1949adadb78afb4fd0f168828543782403a6acfc27c177305357fbbc7f"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/good/name.json",
+                      "upstream_path":  "contracts/examples/claimed_value/good/name.json",
+                      "sha256":  "c763ab6f2356dde8f4046f874ffb6976e01c799899901a6d4f8faf9ec89d7640"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/good/percent.json",
+                      "upstream_path":  "contracts/examples/claimed_value/good/percent.json",
+                      "sha256":  "65d334ef5b598951599c6cfdf4824586dc960c15b5e86c0b347d8d758ea76177"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/good/quantity-count.json",
+                      "upstream_path":  "contracts/examples/claimed_value/good/quantity-count.json",
+                      "sha256":  "f7424d49f9665328ac000421d7134e7d4fd6ebafe0ead8530b2ca246b2732a7b"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/good/quantity-over.json",
+                      "upstream_path":  "contracts/examples/claimed_value/good/quantity-over.json",
+                      "sha256":  "7fab0817f93ece825f695d63e851bec6f7655c4b37e367b0f86d7c8fa5fdd151"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/good/quantity-physical.json",
+                      "upstream_path":  "contracts/examples/claimed_value/good/quantity-physical.json",
+                      "sha256":  "3b2c0a1245338c3f43c30242e1e1ddcbcbdc0f0adb14d1aab45855007ddf32ee"
+                  },
+                  {
+                      "path":  "contracts/examples/claimed_value/good/version.json",
+                      "upstream_path":  "contracts/examples/claimed_value/good/version.json",
+                      "sha256":  "c4cbfa4d58f2402f6cd071467edbf29850babc6f0c9ea42c390161d73d6d82ac"
+                  },
+                  {
+                      "path":  "contracts/examples/entry/bad/at-event-with-citation.json",
+                      "upstream_path":  "contracts/examples/entry/bad/at-event-with-citation.json",
+                      "sha256":  "31bf7c118199ce52c449f00ece49e141f29de4ecca9ac69babfcd959da8ff72f"
+                  },
+                  {
+                      "path":  "contracts/examples/entry/bad/change-without-to.json",
+                      "upstream_path":  "contracts/examples/entry/bad/change-without-to.json",
+                      "sha256":  "aa9a0da6257b247effb454e7347641d694ef261bb1cee22deec5a6436232c9f5"
+                  },
+                  {
+                      "path":  "contracts/examples/entry/bad/fact-as-graph-id.json",
+                      "upstream_path":  "contracts/examples/entry/bad/fact-as-graph-id.json",
+                      "sha256":  "5204a3461f326595f47008e2ce858738b30258ea692bc06f9697aa33bc8e049a"
+                  },
+                  {
+                      "path":  "contracts/examples/entry/bad/fact-in-compare-shape.json",
+                      "upstream_path":  "contracts/examples/entry/bad/fact-in-compare-shape.json",
+                      "sha256":  "71a7b9b37762b3009e11a9fe0874e52e26666b21977bd1e76ef7d2544f339967"
+                  },
+                  {
+                      "path":  "contracts/examples/entry/bad/fact-with-citation.json",
+                      "upstream_path":  "contracts/examples/entry/bad/fact-with-citation.json",
+                      "sha256":  "af8f938021e5370e6da852261feaa456f795e02297ba17d20458151ee8f8c27f"
+                  },
+                  {
+                      "path":  "contracts/examples/entry/bad/fact-with-op.json",
+                      "upstream_path":  "contracts/examples/entry/bad/fact-with-op.json",
+                      "sha256":  "b02f2703340c29807d3ec9314783db8db9d3690b51378efb008258b1e40016e6"
+                  },
+                  {
+                      "path":  "contracts/examples/entry/bad/missing-text.json",
+                      "upstream_path":  "contracts/examples/entry/bad/missing-text.json",
+                      "sha256":  "6b901281e59d7a7055298cc9e00e30f4e628b8c40f9dcdedbff004190143b680"
+                  },
+                  {
+                      "path":  "contracts/examples/entry/bad/op-ge.json",
+                      "upstream_path":  "contracts/examples/entry/bad/op-ge.json",
+                      "sha256":  "181504f797c229c8878e8e2fdc20fe93ee12252442b6a042f872d723234cb489"
+                  },
+                  {
+                      "path":  "contracts/examples/entry/bad/rank.json",
+                      "upstream_path":  "contracts/examples/entry/bad/rank.json",
+                      "sha256":  "4dcea4f265fe3e8403b28e32045f97c70094b4694492c1f4261accc39eb2ee01"
+                  },
+                  {
+                      "path":  "contracts/examples/entry/bad/relation-without-link.json",
+                      "upstream_path":  "contracts/examples/entry/bad/relation-without-link.json",
+                      "sha256":  "98cd8e13a7464a35229778821eac6847cb02dfe3bec4dd25d3a55ad8ff158c84"
+                  },
+                  {
+                      "path":  "contracts/examples/entry/bad/tag-unsure.json",
+                      "upstream_path":  "contracts/examples/entry/bad/tag-unsure.json",
+                      "sha256":  "ac17841b027e94515c5fa715a41e81e3a61ee231eb0acd0f430843de1db5bea2"
+                  },
+                  {
+                      "path":  "contracts/examples/entry/bad/with-label.json",
+                      "upstream_path":  "contracts/examples/entry/bad/with-label.json",
+                      "sha256":  "8c6c5cae603a96c98d9216e2652ad6922905ad338f59d323f48ae4ad3b065a2a"
+                  },
+                  {
+                      "path":  "contracts/examples/entry/bad/without-confidence.json",
+                      "upstream_path":  "contracts/examples/entry/bad/without-confidence.json",
+                      "sha256":  "c0eb77efbf4ad6363de39efb7999c70fbdfd6ccee28b3279bc6ab39ddf24297f"
+                  },
+                  {
+                      "path":  "contracts/examples/entry/good/at_event.json",
+                      "upstream_path":  "contracts/examples/entry/good/at_event.json",
+                      "sha256":  "a391b670ffb9bca2e155c3b0c81f3d538db40d1b45ccdfdab3b210dc0be2cb31"
+                  },
+                  {
+                      "path":  "contracts/examples/entry/good/change.json",
+                      "upstream_path":  "contracts/examples/entry/good/change.json",
+                      "sha256":  "631c46fcebe780fe9610b92980d4f6bd34abffe7f713f92005baa1956600a316"
+                  },
+                  {
+                      "path":  "contracts/examples/entry/good/compare-dates.json",
+                      "upstream_path":  "contracts/examples/entry/good/compare-dates.json",
+                      "sha256":  "ca34910fd89e6c9eab8b085383241b4179adf1cb517b7cad3571346c818c41e0"
+                  },
+                  {
+                      "path":  "contracts/examples/entry/good/compare.json",
+                      "upstream_path":  "contracts/examples/entry/good/compare.json",
+                      "sha256":  "b3a63c1437bfe70325dcd3963bba0dbe98a70ecefb3b7bfd8db65045baa233ab"
+                  },
+                  {
+                      "path":  "contracts/examples/entry/good/fact-name.json",
+                      "upstream_path":  "contracts/examples/entry/good/fact-name.json",
+                      "sha256":  "80ec57999b8435834a19d1ae47ff47d536dde217612133610642f627f8711c39"
+                  },
+                  {
+                      "path":  "contracts/examples/entry/good/fact.json",
+                      "upstream_path":  "contracts/examples/entry/good/fact.json",
+                      "sha256":  "de1c3847ce9a5d43c29cd4f6ac7dbcaa3ebc87864105ee33e644dba0e1fe31ed"
+                  },
+                  {
+                      "path":  "contracts/examples/entry/good/relation.json",
+                      "upstream_path":  "contracts/examples/entry/good/relation.json",
+                      "sha256":  "585a0e5b831deb27872fad606d2c846f47c3e2ac0e1b0ade9d728cfef44fd327"
+                  },
+                  {
+                      "path":  "contracts/value-forms.md",
+                      "upstream_path":  "contracts/value-forms.md",
+                      "sha256":  "2953ccecbef4564ffbca406c2f980413af8d0c9074ded6d471849b043c0c7d94"
+                  },
+                  {
+                      "path":  "data/lexicon.json",
+                      "upstream_path":  "data/lexicon.json",
+                      "sha256":  "d0fd5e9bdc6b33ad3ec160001f50e00e7f8bf2b25a92779022f893db7c3d5507"
+                  },
+                  {
+                      "path":  "data/practice.csv",
+                      "upstream_path":  "data/practice.csv",
+                      "sha256":  "52743befaa0fa38b89b5c802c0f953d242ae027c86839c9c0f05a9e69a86d8e9"
+                  },
+                  {
+                      "path":  "scripts/check.sh",
+                      "upstream_path":  "scripts/check.sh",
+                      "sha256":  "46090a83d66738ff2703e84a14d77d2829ebaf04647cd705fb86c56b726c3e3d"
+                  },
+                  {
+                      "path":  "scripts/check_output.py",
+                      "upstream_path":  "scripts/check_output.py",
+                      "sha256":  "2edfc80faa8ae552c5b7331343d4eb3f0a8dac94d8e850cc2608eade52c75205"
+                  },
+                  {
+                      "path":  "scripts/input.py",
+                      "upstream_path":  "scripts/input.py",
+                      "sha256":  "01ea99cbe6db748181cd79ce318eaa775cd2fcbe2531b1ea5b2b64dbe8cbb1a4"
+                  }
+              ]
+}
