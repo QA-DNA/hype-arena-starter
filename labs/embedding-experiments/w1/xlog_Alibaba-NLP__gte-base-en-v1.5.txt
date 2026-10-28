@@ -1,0 +1,16 @@
+[Alibaba-NLP/gte-base-en-v1.5] attr_probe/LR_C1: acc_all=0.491 ge5=0.851 1to4=0.206 unseen=0.000
+[Alibaba-NLP/gte-base-en-v1.5] attr_hybrid/C1_z_probe+z_zeroshot: acc_all=0.764 ge5=0.942 1to4=0.604 unseen=0.697
+[Alibaba-NLP/gte-base-en-v1.5] attr_hybrid/C1_z_probe+z_zeroshot_unseen_max: acc_all=0.750 ge5=0.918 1to4=0.571 unseen=0.947
+[Alibaba-NLP/gte-base-en-v1.5] attr_unseen/C1_hybrid_z_probe+z_zeroshot: acc_all=0.560 ge5=nan 1to4=nan unseen=0.560
+[Alibaba-NLP/gte-base-en-v1.5] attr_unseen/C1_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.860 ge5=nan 1to4=nan unseen=0.860
+[Alibaba-NLP/gte-base-en-v1.5] attr_probe/LR_C100: acc_all=0.875 ge5=0.973 1to4=0.875 unseen=0.000
+[Alibaba-NLP/gte-base-en-v1.5] attr_hybrid/C100_z_probe+z_zeroshot: acc_all=0.922 ge5=0.969 1to4=0.916 unseen=0.553
+[Alibaba-NLP/gte-base-en-v1.5] attr_hybrid/C100_z_probe+z_zeroshot_unseen_max: acc_all=0.923 ge5=0.944 1to4=0.903 unseen=0.934
+[Alibaba-NLP/gte-base-en-v1.5] attr_unseen/C100_hybrid_z_probe+z_zeroshot: acc_all=0.498 ge5=nan 1to4=nan unseen=0.498
+[Alibaba-NLP/gte-base-en-v1.5] attr_unseen/C100_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.851 ge5=nan 1to4=nan unseen=0.851
+[Alibaba-NLP/gte-base-en-v1.5] attr_probe/LR_C1000: acc_all=0.877 ge5=0.970 1to4=0.883 unseen=0.000
+[Alibaba-NLP/gte-base-en-v1.5] attr_hybrid/C1000_z_probe+z_zeroshot: acc_all=0.915 ge5=0.954 1to4=0.916 unseen=0.566
+[Alibaba-NLP/gte-base-en-v1.5] attr_hybrid/C1000_z_probe+z_zeroshot_unseen_max: acc_all=0.920 ge5=0.933 1to4=0.905 unseen=0.934
+[Alibaba-NLP/gte-base-en-v1.5] attr_unseen/C1000_hybrid_z_probe+z_zeroshot: acc_all=0.586 ge5=nan 1to4=nan unseen=0.586
+[Alibaba-NLP/gte-base-en-v1.5] attr_unseen/C1000_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.849 ge5=nan 1to4=nan unseen=0.849
+[Alibaba-NLP/gte-base-en-v1.5] EXTRAS DONE

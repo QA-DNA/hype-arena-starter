@@ -1,0 +1,34 @@
+W1028 18:18:45.982000 59056 /private/tmp/veridyct-bench/.venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Could not reach the Hub (Cannot reach https://huggingface.co/api/models/Snowflake/snowflake-arctic-embed-s: offline mode is enabled. To disable it, please unset the `HF_HUB_OFFLINE` environment variable.). Using cached commit hash for 'Snowflake/snowflake-arctic-embed-s'.
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights: 100%|██████████| 197/197 [00:00<00:00, 5713.60it/s]
+[Snowflake/snowflake-arctic-embed-s] loaded in 0.2s params=33.2M disk=126.7MB dim=384 max_seq=512
+[Snowflake/snowflake-arctic-embed-s] speed/encode pass0 took 8.4s
+[Snowflake/snowflake-arctic-embed-s] speed/encode pass1 took 7.9s
+[Snowflake/snowflake-arctic-embed-s] speed/encode pass2 took 7.8s
+[Snowflake/snowflake-arctic-embed-s] speed/bs32_2000texts: sentences_per_s=263.577
+[Snowflake/snowflake-arctic-embed-s] zeroshot describe took 1.2s
+[Snowflake/snowflake-arctic-embed-s] attr_zeroshot/describe: acc_all=0.832, acc_unseen=0.832
+[Snowflake/snowflake-arctic-embed-s] zeroshot words took 0.5s
+[Snowflake/snowflake-arctic-embed-s] attr_zeroshot/attr_words_only: acc_all=0.827, acc_unseen=0.827
+[Snowflake/snowflake-arctic-embed-s] zeroshot describe symrows took 0.0s
+[Snowflake/snowflake-arctic-embed-s] attr_zeroshot/describe_rows_no_query_prefix: acc_all=0.768, acc_unseen=0.768
+[Snowflake/snowflake-arctic-embed-s] key_retrieval took 0.5s
+[Snowflake/snowflake-arctic-embed-s] key_retrieval/cosine_k10: recall_at_k=0.618, mrr=0.858
+[Snowflake/snowflake-arctic-embed-s] truth_false took 0.0s
+[Snowflake/snowflake-arctic-embed-s] truth_false/LR_balanced_C1: auc=0.570, ap=0.191
+[Snowflake/snowflake-arctic-embed-s] truth_three took 0.1s
+[Snowflake/snowflake-arctic-embed-s] truth_three/LR_balanced_C1: acc=0.504, macro_f1=0.316, arena_best=0.139
+[Snowflake/snowflake-arctic-embed-s] attr_knn took 0.1s
+[Snowflake/snowflake-arctic-embed-s] attr_knn/k5: acc_all=0.798, acc_ge5=0.936, acc_1to4=0.752, acc_unseen=0.000
+[Snowflake/snowflake-arctic-embed-s] attr_probe (page folds) took 3.4s
+[Snowflake/snowflake-arctic-embed-s] attr_probe/LR_C10: acc_all=0.770, acc_ge5=0.984, acc_1to4=0.650, acc_unseen=0.000
+[Snowflake/snowflake-arctic-embed-s] attr_hybrid/z_probe+z_zeroshot: acc_all=0.875, acc_ge5=0.955, acc_1to4=0.826, acc_unseen=0.618
+[Snowflake/snowflake-arctic-embed-s] attr_hybrid/z_probe+2*z_zeroshot: acc_all=0.886, acc_ge5=0.929, acc_1to4=0.858, acc_unseen=0.776
+[Snowflake/snowflake-arctic-embed-s] attr_hybrid/z_probe+z_zeroshot_unseen_max: acc_all=0.874, acc_ge5=0.933, acc_1to4=0.813, acc_unseen=0.921
+[Snowflake/snowflake-arctic-embed-s] attr_unseen (attribute folds) took 3.2s
+[Snowflake/snowflake-arctic-embed-s] attr_unseen/probe_alone_LR_C10: acc_all=0.000, acc_unseen=0.000
+[Snowflake/snowflake-arctic-embed-s] attr_unseen/zeroshot_alone: acc_all=0.832, acc_unseen=0.832
+[Snowflake/snowflake-arctic-embed-s] attr_unseen/hybrid_unseen_max: acc_all=0.865, acc_unseen=0.865
+[Snowflake/snowflake-arctic-embed-s] attr_unseen/hybrid_z_probe+z_zeroshot: acc_all=0.540, acc_unseen=0.540
+[Snowflake/snowflake-arctic-embed-s] attr_unseen/hybrid_z_probe+2*z_zeroshot: acc_all=0.725, acc_unseen=0.725
+[Snowflake/snowflake-arctic-embed-s] ALL DONE in 43s

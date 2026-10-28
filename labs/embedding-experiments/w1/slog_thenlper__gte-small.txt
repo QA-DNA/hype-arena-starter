@@ -1,0 +1,5 @@
+W1028 18:35:37.631000 79080 /private/tmp/veridyct-bench/.venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Could not reach the Hub (Cannot reach https://huggingface.co/api/models/thenlper/gte-small: offline mode is enabled. To disable it, please unset the `HF_HUB_OFFLINE` environment variable.). Using cached commit hash for 'thenlper/gte-small'.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 12411.95it/s]
+This model was loaded in torch.float16 on CPU. Depending on your CPU, inference may be significantly slower than with torch.float32. Consider comparing inference speeds by loading with `model_kwargs={"dtype": torch.float32}`.
+thenlper/gte-small {'sentences_per_s': 440.138, 'sents_per_cpu_s': 374.911, 'wall_s': 4.544, 'cpu_s': 5.335, 'est_sec_20k_x86': 90.881, 'cpu_over_wall': 1.174}

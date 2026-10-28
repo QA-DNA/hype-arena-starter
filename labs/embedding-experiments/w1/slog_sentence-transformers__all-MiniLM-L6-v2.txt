@@ -1,0 +1,4 @@
+W1028 18:34:11.659000 77667 /private/tmp/veridyct-bench/.venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Could not reach the Hub (Cannot reach https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2: offline mode is enabled. To disable it, please unset the `HF_HUB_OFFLINE` environment variable.). Using cached commit hash for 'sentence-transformers/all-MiniLM-L6-v2'.
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 7788.94it/s]
+sentence-transformers/all-MiniLM-L6-v2 {'sentences_per_s': 581.437, 'sents_per_cpu_s': 534.113, 'wall_s': 3.44, 'cpu_s': 3.745, 'est_sec_20k_x86': 68.795, 'cpu_over_wall': 1.089}

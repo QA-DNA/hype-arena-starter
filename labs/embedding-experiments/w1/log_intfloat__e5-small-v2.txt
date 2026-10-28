@@ -1,0 +1,32 @@
+W1028 18:16:22.388000 56319 /private/tmp/veridyct-bench/.venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Could not reach the Hub (Cannot reach https://huggingface.co/api/models/intfloat/e5-small-v2: offline mode is enabled. To disable it, please unset the `HF_HUB_OFFLINE` environment variable.). Using cached commit hash for 'intfloat/e5-small-v2'.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5944.24it/s]
+[intfloat/e5-small-v2] loaded in 0.2s params=33.4M disk=127.3MB dim=384 max_seq=512
+[intfloat/e5-small-v2] speed/encode pass0 took 8.2s
+[intfloat/e5-small-v2] speed/encode pass1 took 9.0s
+[intfloat/e5-small-v2] speed/encode pass2 took 8.3s
+[intfloat/e5-small-v2] speed/bs32_2000texts: sentences_per_s=252.854
+[intfloat/e5-small-v2] zeroshot describe took 1.3s
+[intfloat/e5-small-v2] attr_zeroshot/describe: acc_all=0.794, acc_unseen=0.794
+[intfloat/e5-small-v2] zeroshot words took 0.5s
+[intfloat/e5-small-v2] attr_zeroshot/attr_words_only: acc_all=0.776, acc_unseen=0.776
+[intfloat/e5-small-v2] key_retrieval took 0.5s
+[intfloat/e5-small-v2] key_retrieval/cosine_k10: recall_at_k=0.632, mrr=0.884
+[intfloat/e5-small-v2] truth_false took 0.0s
+[intfloat/e5-small-v2] truth_false/LR_balanced_C1: auc=0.601, ap=0.212
+[intfloat/e5-small-v2] truth_three took 0.1s
+[intfloat/e5-small-v2] truth_three/LR_balanced_C1: acc=0.552, macro_f1=0.348, arena_best=0.117
+[intfloat/e5-small-v2] attr_knn took 0.1s
+[intfloat/e5-small-v2] attr_knn/k5: acc_all=0.808, acc_ge5=0.952, acc_1to4=0.759, acc_unseen=0.000
+[intfloat/e5-small-v2] attr_probe (page folds) took 3.4s
+[intfloat/e5-small-v2] attr_probe/LR_C10: acc_all=0.740, acc_ge5=0.972, acc_1to4=0.602, acc_unseen=0.000
+[intfloat/e5-small-v2] attr_hybrid/z_probe+z_zeroshot: acc_all=0.850, acc_ge5=0.961, acc_1to4=0.774, acc_unseen=0.579
+[intfloat/e5-small-v2] attr_hybrid/z_probe+2*z_zeroshot: acc_all=0.868, acc_ge5=0.932, acc_1to4=0.822, acc_unseen=0.737
+[intfloat/e5-small-v2] attr_hybrid/z_probe+z_zeroshot_unseen_max: acc_all=0.848, acc_ge5=0.938, acc_1to4=0.760, acc_unseen=0.882
+[intfloat/e5-small-v2] attr_unseen (attribute folds) took 3.3s
+[intfloat/e5-small-v2] attr_unseen/probe_alone_LR_C10: acc_all=0.000, acc_unseen=0.000
+[intfloat/e5-small-v2] attr_unseen/zeroshot_alone: acc_all=0.794, acc_unseen=0.794
+[intfloat/e5-small-v2] attr_unseen/hybrid_unseen_max: acc_all=0.847, acc_unseen=0.847
+[intfloat/e5-small-v2] attr_unseen/hybrid_z_probe+z_zeroshot: acc_all=0.498, acc_unseen=0.498
+[intfloat/e5-small-v2] attr_unseen/hybrid_z_probe+2*z_zeroshot: acc_all=0.695, acc_unseen=0.695
+[intfloat/e5-small-v2] ALL DONE in 37s

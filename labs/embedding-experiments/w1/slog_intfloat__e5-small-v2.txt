@@ -1,0 +1,4 @@
+W1028 18:36:11.361000 79730 /private/tmp/veridyct-bench/.venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Could not reach the Hub (Cannot reach https://huggingface.co/api/models/intfloat/e5-small-v2: offline mode is enabled. To disable it, please unset the `HF_HUB_OFFLINE` environment variable.). Using cached commit hash for 'intfloat/e5-small-v2'.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 9000.85it/s]
+intfloat/e5-small-v2 {'sentences_per_s': 313.466, 'sents_per_cpu_s': 278.422, 'wall_s': 6.38, 'cpu_s': 7.183, 'est_sec_20k_x86': 127.606, 'cpu_over_wall': 1.126}

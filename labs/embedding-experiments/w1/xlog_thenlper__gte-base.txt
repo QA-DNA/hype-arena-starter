@@ -1,0 +1,20 @@
+W1028 18:30:08.265000 72968 /private/tmp/veridyct-bench/.venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Could not reach the Hub (Cannot reach https://huggingface.co/api/models/thenlper/gte-base: offline mode is enabled. To disable it, please unset the `HF_HUB_OFFLINE` environment variable.). Using cached commit hash for 'thenlper/gte-base'.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5944.41it/s]
+This model was loaded in torch.float16 on CPU. Depending on your CPU, inference may be significantly slower than with torch.float32. Consider comparing inference speeds by loading with `model_kwargs={"dtype": torch.float32}`.
+[thenlper/gte-base] attr_probe/LR_C1: acc_all=0.270 ge5=0.523 1to4=0.061 unseen=0.000
+[thenlper/gte-base] attr_hybrid/C1_z_probe+z_zeroshot: acc_all=0.653 ge5=0.837 1to4=0.474 unseen=0.724
+[thenlper/gte-base] attr_hybrid/C1_z_probe+z_zeroshot_unseen_max: acc_all=0.639 ge5=0.811 1to4=0.448 unseen=0.908
+[thenlper/gte-base] attr_unseen/C1_hybrid_z_probe+z_zeroshot: acc_all=0.569 ge5=nan 1to4=nan unseen=0.569
+[thenlper/gte-base] attr_unseen/C1_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.851 ge5=nan 1to4=nan unseen=0.851
+[thenlper/gte-base] attr_probe/LR_C100: acc_all=0.868 ge5=0.970 1to4=0.864 unseen=0.000
+[thenlper/gte-base] attr_hybrid/C100_z_probe+z_zeroshot: acc_all=0.917 ge5=0.966 1to4=0.909 unseen=0.553
+[thenlper/gte-base] attr_hybrid/C100_z_probe+z_zeroshot_unseen_max: acc_all=0.910 ge5=0.935 1to4=0.887 unseen=0.908
+[thenlper/gte-base] attr_unseen/C100_hybrid_z_probe+z_zeroshot: acc_all=0.470 ge5=nan 1to4=nan unseen=0.470
+[thenlper/gte-base] attr_unseen/C100_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.833 ge5=nan 1to4=nan unseen=0.833
+[thenlper/gte-base] attr_probe/LR_C1000: acc_all=0.874 ge5=0.967 1to4=0.879 unseen=0.000
+[thenlper/gte-base] attr_hybrid/C1000_z_probe+z_zeroshot: acc_all=0.922 ge5=0.960 1to4=0.918 unseen=0.618
+[thenlper/gte-base] attr_hybrid/C1000_z_probe+z_zeroshot_unseen_max: acc_all=0.913 ge5=0.930 1to4=0.898 unseen=0.908
+[thenlper/gte-base] attr_unseen/C1000_hybrid_z_probe+z_zeroshot: acc_all=0.507 ge5=nan 1to4=nan unseen=0.507
+[thenlper/gte-base] attr_unseen/C1000_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.833 ge5=nan 1to4=nan unseen=0.833
+[thenlper/gte-base] EXTRAS DONE

@@ -1,0 +1,29 @@
+[Alibaba-NLP/gte-base-en-v1.5] loaded in 0.2s params=136.8M disk=521.8MB dim=768 max_seq=8192
+[Alibaba-NLP/gte-base-en-v1.5] speed/encode pass0 took 42.0s
+[Alibaba-NLP/gte-base-en-v1.5] speed/encode pass1 took 42.1s
+[Alibaba-NLP/gte-base-en-v1.5] speed/encode pass2 took 40.1s
+[Alibaba-NLP/gte-base-en-v1.5] speed/bs32_2000texts: sentences_per_s=51.405
+[Alibaba-NLP/gte-base-en-v1.5] zeroshot describe took 5.7s
+[Alibaba-NLP/gte-base-en-v1.5] attr_zeroshot/describe: acc_all=0.808, acc_unseen=0.808
+[Alibaba-NLP/gte-base-en-v1.5] zeroshot words took 2.2s
+[Alibaba-NLP/gte-base-en-v1.5] attr_zeroshot/attr_words_only: acc_all=0.776, acc_unseen=0.776
+[Alibaba-NLP/gte-base-en-v1.5] key_retrieval took 0.6s
+[Alibaba-NLP/gte-base-en-v1.5] key_retrieval/cosine_k10: recall_at_k=0.637, mrr=0.875
+[Alibaba-NLP/gte-base-en-v1.5] truth_false took 0.0s
+[Alibaba-NLP/gte-base-en-v1.5] truth_false/LR_balanced_C1: auc=0.593, ap=0.209
+[Alibaba-NLP/gte-base-en-v1.5] truth_three took 0.3s
+[Alibaba-NLP/gte-base-en-v1.5] truth_three/LR_balanced_C1: acc=0.564, macro_f1=0.336, arena_best=0.189
+[Alibaba-NLP/gte-base-en-v1.5] attr_knn took 0.1s
+[Alibaba-NLP/gte-base-en-v1.5] attr_knn/k5: acc_all=0.802, acc_ge5=0.944, acc_1to4=0.753, acc_unseen=0.000
+[Alibaba-NLP/gte-base-en-v1.5] attr_probe (page folds) took 5.3s
+[Alibaba-NLP/gte-base-en-v1.5] attr_probe/LR_C10: acc_all=0.838, acc_ge5=0.976, acc_1to4=0.797, acc_unseen=0.000
+[Alibaba-NLP/gte-base-en-v1.5] attr_hybrid/z_probe+z_zeroshot: acc_all=0.907, acc_ge5=0.966, acc_1to4=0.889, acc_unseen=0.553
+[Alibaba-NLP/gte-base-en-v1.5] attr_hybrid/z_probe+2*z_zeroshot: acc_all=0.902, acc_ge5=0.935, acc_1to4=0.887, acc_unseen=0.750
+[Alibaba-NLP/gte-base-en-v1.5] attr_hybrid/z_probe+z_zeroshot_unseen_max: acc_all=0.907, acc_ge5=0.941, acc_1to4=0.873, acc_unseen=0.934
+[Alibaba-NLP/gte-base-en-v1.5] attr_unseen (attribute folds) took 4.3s
+[Alibaba-NLP/gte-base-en-v1.5] attr_unseen/probe_alone_LR_C10: acc_all=0.000, acc_unseen=0.000
+[Alibaba-NLP/gte-base-en-v1.5] attr_unseen/zeroshot_alone: acc_all=0.808, acc_unseen=0.808
+[Alibaba-NLP/gte-base-en-v1.5] attr_unseen/hybrid_unseen_max: acc_all=0.851, acc_unseen=0.851
+[Alibaba-NLP/gte-base-en-v1.5] attr_unseen/hybrid_z_probe+z_zeroshot: acc_all=0.497, acc_unseen=0.497
+[Alibaba-NLP/gte-base-en-v1.5] attr_unseen/hybrid_z_probe+2*z_zeroshot: acc_all=0.692, acc_unseen=0.692
+[Alibaba-NLP/gte-base-en-v1.5] ALL DONE in 144s

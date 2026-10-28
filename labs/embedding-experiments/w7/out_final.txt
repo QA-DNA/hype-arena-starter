@@ -1,0 +1,113 @@
+extracted 6385 candidates from 1897 rows in 0.32s
+
+M1 values_recall (all 2,402 gold facts)
+kind          n  strict  lenient str_prim len_prim  cands cand_prec
+quantity   1028   1.000    1.000    1.000    1.000   1066     0.964
+money       268   1.000    1.000    1.000    1.000    268     1.000
+duration    229   1.000    1.000    1.000    1.000    232     0.987
+name        209   1.000    1.000    0.909    0.909   2353     0.090
+percent     201   1.000    1.000    1.000    1.000    201     1.000
+boolean     174   1.000    1.000    0.856    0.856   1967     0.087
+date        165   1.000    1.000    0.988    0.988    170     0.971
+version     128   1.000    1.000    1.000    1.000    128     1.000
+ALL {'n': 2402, 'strict': 1.0, 'lenient': 1.0, 'strict_primary': 0.981, 'lenient_primary': 0.981, 'cands_per_row': 3.366, 'primary_cands_per_row': 2.163, 'gold_per_row': 1.266, 'gold_per_cand': 0.376, 'gold_per_primary_cand': 0.585, 'cand_precision': 0.376, 'numeric_primary_cands_per_gold': 1.021}
+gold facts whose every matching candidate is flagged neg/approx/range (the contract reads those as nothing): {}
+
+remaining misses (lenient): {}
+
+Top false-positive rules (kind, rule): fp / tp
+  boolean   bool_sentence          fp= 1726 tp=  172
+  name      name_lexicon           fp= 1486 tp=   40
+  name      name_cap_start         fp=  570 tp=   56
+  name      name_cap               fp=   85 tp=  116
+  boolean   bool_clause            fp=   69 tp=    0
+  quantity  quantity_noun          fp=   38 tp=  857
+  date      date_dmy               fp=    4 tp=  100
+  duration  duration_a             fp=    2 tp=    3
+  date      date_year_in_name      fp=    1 tp=    2
+  duration  duration               fp=    1 tp=  226
+subject-aware (per fact exclude): overall lenient recall 1.000; name recall 1.000
+names: primary recall without vocabulary 0.909; with lower-case vocabulary (1421 words) all 1.000, primary 1.000, name candidates 2353 (primary 1871)
+
+M2 values_unit_recall (quantity facts) {'n': 1028, 'number_found_any_kind': 1.0, 'number_found_as_quantity': 1.0, 'unit_exact_given_number': 1.0, 'unit_exact_overall': 1.0, 'unit_wrong_or_missing_given_number': 0.0, 'primary_number_found': 1.0, 'primary_unit_exact_overall': 1.0, 'primary_unit_exact_given_number': 1.0, 'first_primary_unit_exact_given_number': 0.998}
+  gold unit found by rule: {'quantity_noun': 857, 'quantity_phys': 171}
+
+M3 attribute baseline {'acc_all': 0.873, 'acc_ge5': 0.961, 'acc_1to4': 0.883, 'acc_unseen': 0.0, 'n_all': 1467.0, 'n_ge5': 673.0, 'n_1to4': 718.0, 'n_unseen': 76.0}
+
+M3 form_e2e on 1467 single-fact rows (subject given = gold; attribute from TF-IDF+LinearSVC / gold)
+variant                             exact   attr  value gold_in other|in   none
+pred_attr/first_all                 0.851  0.873  0.882   1.000    0.118  0.073
+pred_attr/first_primary             0.855  0.873  0.889   1.000    0.111  0.092
+pred_attr/ranked                    0.870  0.873  0.904   1.000    0.096  0.073
+gold_attr/first_all                 0.922  1.000  0.922   1.000    0.078  0.052
+gold_attr/first_primary             0.926  1.000  0.926   1.000    0.074  0.067
+gold_attr/ranked                    0.945  1.000  0.945   1.000    0.055  0.052
+gold_attr_gold_kind/ranked          0.994  1.000  0.994   1.000    0.006  0.000
+gold_attr_gold_kind/first_all       0.965  1.000  0.965   1.000    0.035  0.000
+pred_attr/ranked+fallback           0.870  0.873  0.904   1.000    0.096  0.073
+gold_attr/ranked+fallback           0.986  1.000  0.986   1.000    0.014  0.000
+pred_attr/ranked+vocab              0.870  0.873  0.905   1.000    0.095  0.073
+gold_attr/ranked+vocab+fallback     0.987  1.000  0.987   1.000    0.013  0.000
+per-kind (pred_attr/ranked):
+   date      {'n': 99, 'exact': 0.758, 'value': 0.828, 'gold_in_cands': 1.0}
+   name      {'n': 121, 'exact': 0.711, 'value': 0.777, 'gold_in_cands': 1.0}
+   quantity  {'n': 602, 'exact': 0.904, 'value': 0.937, 'gold_in_cands': 1.0}
+   duration  {'n': 129, 'exact': 0.891, 'value': 0.899, 'gold_in_cands': 1.0}
+   percent   {'n': 168, 'exact': 0.917, 'value': 0.917, 'gold_in_cands': 1.0}
+   boolean   {'n': 148, 'exact': 0.811, 'value': 0.851, 'gold_in_cands': 1.0}
+   money     {'n': 128, 'exact': 0.898, 'value': 0.945, 'gold_in_cands': 1.0}
+   version   {'n': 72, 'exact': 0.931, 'value': 0.958, 'gold_in_cands': 1.0}
+per-kind (gold_attr/ranked):
+   date      {'n': 99, 'exact': 0.939, 'value': 0.939, 'gold_in_cands': 1.0}
+   name      {'n': 121, 'exact': 0.851, 'value': 0.851, 'gold_in_cands': 1.0}
+   quantity  {'n': 602, 'exact': 0.957, 'value': 0.957, 'gold_in_cands': 1.0}
+   duration  {'n': 129, 'exact': 0.977, 'value': 0.977, 'gold_in_cands': 1.0}
+   percent   {'n': 168, 'exact': 0.952, 'value': 0.952, 'gold_in_cands': 1.0}
+   boolean   {'n': 148, 'exact': 0.885, 'value': 0.885, 'gold_in_cands': 1.0}
+   money     {'n': 128, 'exact': 0.977, 'value': 0.977, 'gold_in_cands': 1.0}
+   version   {'n': 72, 'exact': 1.0, 'value': 1.0, 'gold_in_cands': 1.0}
+sample selection errors (gold_attr/ranked):
+   p-204 externally_audited gold={"kind": "boolean", "value": true} picked=None | An outside firm checked the numbers.
+   p-205 footprint gold={"kind": "quantity", "value": 640, "unit": "tonne"} picked=None | Our footprint comes to 640 tonnes.
+   p-206 renewable_electricity gold={"kind": "percent", "value": 71} picked=None | Renewable sources provide 71% of our power.
+   p-207 devices_recycled gold={"kind": "quantity", "value": 140, "unit": "device"} picked=None | 140 devices left the offices for recycling.
+   p-208 cycling_commuters gold={"kind": "percent", "value": 22} picked=None | 22% of colleagues commute by bike.
+   p-209 travel_emissions_cut gold={"kind": "percent", "value": 18} picked=None | Business travel emissions are down 18%.
+   p-210 emissions_cut_target gold={"kind": "percent", "value": 40} picked=None | We set out to cut emissions by 40%.
+   p-211 net_zero_date gold={"kind": "date", "value": "2030-12-31"} picked=None | The net zero date in the Hooly Sustainability Report is 2030-12-31.
+   p-212 owner gold={"kind": "name", "value": "Bertram Gilfoil"} picked=None | The Hooly Board hears the figures from Bertram Gilfoil.
+   p-598 livestreamed gold={"kind": "boolean", "value": true} picked=None | Made by Hooly is streamed live.
+   p-601 devices_keynote_speaker gold={"kind": "name", "value": "Jack Barkor"} picked=None | Jack Barkor gives the devices keynote.
+   p-831 footprint gold={"kind": "quantity", "value": 655, "unit": "tonne"} picked=None | Footprint 655 tonnes
+
+M4 multi_fact {'rows': 430, 'facts': 935, 'count_equal_all_candidates': 0.002, 'count_equal_primary_candidates': 0.198, 'numeric_only_rows': 334, 'count_equal_numeric_primary_over_numeric_only_rows': 0.985, 'count_equal_numeric_primary_vs_numeric_gold': 0.986, 'fact_recall_all': 1.0, 'fact_recall_primary': 0.976, 'fact_recall_strict_all': 1.0, 'row_recall_all': 1.0, 'row_recall_primary': 0.949, 'row_injective_primary': 0.944, 'mean_candidates': 4.428, 'mean_primary_candidates': 3.228, 'mean_gold': 2.174}
+
+M5 subject_from_text strict_case=False {'rows': 1897, 'row_recall': 0.657, 'fact_recall': 0.684, 'exact_set_rows': 0.61, 'extra_subjects_per_row': 0.093, 'rows_with_extra_subject': 0.088}
+  failure reasons: {'no_entity_at_all+short_headline': 225, 'no_entity_at_all': 178, 'no_entity_at_all+pronoun': 68, 'other_entity_only': 48, 'no_entity_at_all+speaker_tag+short_headline': 33, 'no_entity_at_all+partial_name': 21, 'other_entity_only+pronoun': 16, 'no_entity_at_all+speaker_tag': 12, 'no_entity_at_all+partial_name+short_headline': 9, 'other_entity_only+short_headline': 8, 'no_entity_at_all+pronoun+short_headline': 7, 'other_entity_only+partial_name': 6, 'other_entity_only+speaker_tag+short_headline': 5, 'no_entity_at_all+pronoun+speaker_tag': 5, 'other_entity_only+speaker_tag': 4, 'no_entity_at_all+partial_name+speaker_tag+short_headline': 2, 'other_entity_only+partial_name+speaker_tag': 2, 'other_entity_only+pronoun+speaker_tag': 1, 'no_entity_at_all+pronoun+partial_name': 1}
+   [no_entity_at_all+short_headline] p-56 missing=['Hooly'] | From today our headquarters is Lisbon.
+   [no_entity_at_all+short_headline] p-64 missing=['Hooly Chrome'] | The extension store lists 61,000 extensions.
+   [no_entity_at_all] p-7 missing=['Hooly Cloud'] | The platform already serves over 100 customers, most of them small software firms.
+   [no_entity_at_all] p-9 missing=['Hooly Cloud'] | When something broke, the median time to recover was 52 min.
+   [no_entity_at_all+pronoun] p-4 missing=['Holdan'] | He begins with a small crew of 4 engineers, and he is hiring.
+   [no_entity_at_all+pronoun] p-13 missing=['Hooly Cloud Next 2026'] | They came out of 3,100 registrations, a turnout we are proud of.
+   [other_entity_only] p-21 missing=['Hooly'] | "Jules is Gemini for code," said Richard Hendrix, our CTO.
+   [other_entity_only] p-36 missing=['Hooly'] | "Docs is the heart of Workspace," said Patreese.
+   [no_entity_at_all+speaker_tag+short_headline] p-282 missing=['Hooly Chrome'] | Cycle: 4 weeks
+   [no_entity_at_all+speaker_tag+short_headline] p-318 missing=['Hooly Search'] | Languages: 80 languages
+   [no_entity_at_all+partial_name] p-37 missing=['Hooly Drive'] | The free tier of Drive, 10 GB, holds plenty of documents.
+   [no_entity_at_all+partial_name] p-143 missing=['Made by Hooly 2026', 'Rheinhalle'] | Doors open on 28 April 2026 in Frankfurt, and the hall holds 9,000 seats.
+   [other_entity_only+pronoun] p-6 missing=['Hooly Cloud'] | Its paid accounts carry a 99.9% uptime promise, which Holdan now owns.
+   [other_entity_only+pronoun] p-112 missing=['Hooly Search'] | Ads brought in 68.5% of Hooly's revenue this quarter, according to the finance team.
+   [no_entity_at_all+speaker_tag] p-848 missing=['Hooly Q1 2026 Results', 'Hooly Q2 2026 Results', 'Hooly Q3 2026 Results', 'Hooly Q4 2025 Results'] | Call: 38 min, 44 min, 41 min, 47 min
+   [no_entity_at_all+speaker_tag] p-866 missing=['Hooly'] | Gavin: We are 74 employees and we serve 1,800 customers.
+
+M5 subject_from_text strict_case=True {'rows': 1897, 'row_recall': 0.654, 'fact_recall': 0.681, 'exact_set_rows': 0.607, 'extra_subjects_per_row': 0.092, 'rows_with_extra_subject': 0.088}
+  failure reasons: {'no_entity_at_all+short_headline': 229, 'no_entity_at_all': 180, 'no_entity_at_all+pronoun': 69, 'other_entity_only': 47, 'no_entity_at_all+speaker_tag+short_headline': 33, 'no_entity_at_all+partial_name': 21, 'other_entity_only+pronoun': 16, 'no_entity_at_all+speaker_tag': 12, 'no_entity_at_all+partial_name+short_headline': 9, 'other_entity_only+short_headline': 8, 'no_entity_at_all+pronoun+short_headline': 7, 'other_entity_only+partial_name': 6, 'other_entity_only+speaker_tag+short_headline': 5, 'no_entity_at_all+pronoun+speaker_tag': 5, 'other_entity_only+speaker_tag': 4, 'no_entity_at_all+partial_name+speaker_tag+short_headline': 2, 'other_entity_only+partial_name+speaker_tag': 2, 'other_entity_only+pronoun+speaker_tag': 1, 'no_entity_at_all+pronoun+partial_name': 1}
+
+M5 page-context upper bound on failed rows: {'failed_rows': 651, 'missing_in_page': 480, 'missing_in_prev_row': 199, 'gold_is_company_Hooly': 41, 'page_has_single_subject_found': 139} top missing subjects: [('Hooly Cloud', 62), ('Hooly Hiring Programme', 54), ('Hooly Cloud Next 2026', 43), ('Hooly', 41), ('Hooly Search', 36), ('Hooly Gemini', 32), ('Hooly Devices', 28), ('Hooly Chrome', 25)]
+
+done in 9.0s
+
+M6 full form (subject from lexicon matcher, attribute from TF-IDF+SVC over the matched subjects, value ranked)
+  text_only  {'subject': 0.622, 'attr': 0.55, 'value': 0.581, 'pred': 0.674, 'subject_attr': 0.549, 'exact': 0.548, 'subject_in_text': 0.629, 'n': 1467, 'exact_given_subject_found': 0.871, 'per_kind_exact': {'date': 0.525, 'name': 0.355, 'quantity': 0.575, 'duration': 0.496, 'percent': 0.429, 'boolean': 0.669, 'money': 0.508, 'version': 0.875}}
+  page_carry {'subject': 0.806, 'attr': 0.71, 'value': 0.764, 'pred': 0.927, 'subject_attr': 0.706, 'exact': 0.704, 'subject_in_text': 0.813, 'n': 1467, 'exact_given_subject_found': 0.867, 'per_kind_exact': {'date': 0.596, 'name': 0.512, 'quantity': 0.739, 'duration': 0.76, 'percent': 0.643, 'boolean': 0.716, 'money': 0.719, 'version': 0.875}}

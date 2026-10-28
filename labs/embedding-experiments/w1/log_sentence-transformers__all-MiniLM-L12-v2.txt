@@ -1,0 +1,32 @@
+W1028 18:11:12.014000 50747 /private/tmp/veridyct-bench/.venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Could not reach the Hub (Cannot reach https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L12-v2: offline mode is enabled. To disable it, please unset the `HF_HUB_OFFLINE` environment variable.). Using cached commit hash for 'sentence-transformers/all-MiniLM-L12-v2'.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 13048.19it/s]
+[sentence-transformers/all-MiniLM-L12-v2] loaded in 0.1s params=33.4M disk=127.3MB dim=384 max_seq=128
+[sentence-transformers/all-MiniLM-L12-v2] speed/encode pass0 took 4.3s
+[sentence-transformers/all-MiniLM-L12-v2] speed/encode pass1 took 4.0s
+[sentence-transformers/all-MiniLM-L12-v2] speed/encode pass2 took 3.9s
+[sentence-transformers/all-MiniLM-L12-v2] speed/bs32_2000texts: sentences_per_s=522.557
+[sentence-transformers/all-MiniLM-L12-v2] zeroshot describe took 0.6s
+[sentence-transformers/all-MiniLM-L12-v2] attr_zeroshot/describe: acc_all=0.843, acc_unseen=0.843
+[sentence-transformers/all-MiniLM-L12-v2] zeroshot words took 0.2s
+[sentence-transformers/all-MiniLM-L12-v2] attr_zeroshot/attr_words_only: acc_all=0.804, acc_unseen=0.804
+[sentence-transformers/all-MiniLM-L12-v2] key_retrieval took 0.4s
+[sentence-transformers/all-MiniLM-L12-v2] key_retrieval/cosine_k10: recall_at_k=0.684, mrr=0.888
+[sentence-transformers/all-MiniLM-L12-v2] truth_false took 0.0s
+[sentence-transformers/all-MiniLM-L12-v2] truth_false/LR_balanced_C1: auc=0.564, ap=0.182
+[sentence-transformers/all-MiniLM-L12-v2] truth_three took 0.1s
+[sentence-transformers/all-MiniLM-L12-v2] truth_three/LR_balanced_C1: acc=0.546, macro_f1=0.330, arena_best=0.181
+[sentence-transformers/all-MiniLM-L12-v2] attr_knn took 0.1s
+[sentence-transformers/all-MiniLM-L12-v2] attr_knn/k5: acc_all=0.825, acc_ge5=0.936, acc_1to4=0.808, acc_unseen=0.000
+[sentence-transformers/all-MiniLM-L12-v2] attr_probe (page folds) took 1.4s
+[sentence-transformers/all-MiniLM-L12-v2] attr_probe/LR_C10: acc_all=0.864, acc_ge5=0.973, acc_1to4=0.852, acc_unseen=0.000
+[sentence-transformers/all-MiniLM-L12-v2] attr_hybrid/z_probe+z_zeroshot: acc_all=0.922, acc_ge5=0.963, acc_1to4=0.916, acc_unseen=0.605
+[sentence-transformers/all-MiniLM-L12-v2] attr_hybrid/z_probe+2*z_zeroshot: acc_all=0.915, acc_ge5=0.933, acc_1to4=0.911, acc_unseen=0.803
+[sentence-transformers/all-MiniLM-L12-v2] attr_hybrid/z_probe+z_zeroshot_unseen_max: acc_all=0.921, acc_ge5=0.938, acc_1to4=0.903, acc_unseen=0.947
+[sentence-transformers/all-MiniLM-L12-v2] attr_unseen (attribute folds) took 1.2s
+[sentence-transformers/all-MiniLM-L12-v2] attr_unseen/probe_alone_LR_C10: acc_all=0.000, acc_unseen=0.000
+[sentence-transformers/all-MiniLM-L12-v2] attr_unseen/zeroshot_alone: acc_all=0.843, acc_unseen=0.843
+[sentence-transformers/all-MiniLM-L12-v2] attr_unseen/hybrid_unseen_max: acc_all=0.864, acc_unseen=0.864
+[sentence-transformers/all-MiniLM-L12-v2] attr_unseen/hybrid_z_probe+z_zeroshot: acc_all=0.507, acc_unseen=0.507
+[sentence-transformers/all-MiniLM-L12-v2] attr_unseen/hybrid_z_probe+2*z_zeroshot: acc_all=0.694, acc_unseen=0.694
+[sentence-transformers/all-MiniLM-L12-v2] ALL DONE in 19s

@@ -1,0 +1,29 @@
+[jinaai/jina-embeddings-v2-small-en] loaded in 1.5s params=32.7M disk=62.4MB dim=512 max_seq=8192
+[jinaai/jina-embeddings-v2-small-en] speed/encode pass0 took 7.5s
+[jinaai/jina-embeddings-v2-small-en] speed/encode pass1 took 7.0s
+[jinaai/jina-embeddings-v2-small-en] speed/encode pass2 took 7.2s
+[jinaai/jina-embeddings-v2-small-en] speed/bs32_2000texts: sentences_per_s=290.295
+[jinaai/jina-embeddings-v2-small-en] zeroshot describe took 1.0s
+[jinaai/jina-embeddings-v2-small-en] attr_zeroshot/describe: acc_all=0.848, acc_unseen=0.848
+[jinaai/jina-embeddings-v2-small-en] zeroshot words took 0.4s
+[jinaai/jina-embeddings-v2-small-en] attr_zeroshot/attr_words_only: acc_all=0.798, acc_unseen=0.798
+[jinaai/jina-embeddings-v2-small-en] key_retrieval took 0.5s
+[jinaai/jina-embeddings-v2-small-en] key_retrieval/cosine_k10: recall_at_k=0.668, mrr=0.885
+[jinaai/jina-embeddings-v2-small-en] truth_false took 0.0s
+[jinaai/jina-embeddings-v2-small-en] truth_false/LR_balanced_C1: auc=0.613, ap=0.211
+[jinaai/jina-embeddings-v2-small-en] truth_three took 0.2s
+[jinaai/jina-embeddings-v2-small-en] truth_three/LR_balanced_C1: acc=0.543, macro_f1=0.334, arena_best=0.164
+[jinaai/jina-embeddings-v2-small-en] attr_knn took 0.1s
+[jinaai/jina-embeddings-v2-small-en] attr_knn/k5: acc_all=0.824, acc_ge5=0.942, acc_1to4=0.801, acc_unseen=0.000
+[jinaai/jina-embeddings-v2-small-en] attr_probe (page folds) took 5.5s
+[jinaai/jina-embeddings-v2-small-en] attr_probe/LR_C10: acc_all=0.772, acc_ge5=0.975, acc_1to4=0.663, acc_unseen=0.000
+[jinaai/jina-embeddings-v2-small-en] attr_hybrid/z_probe+z_zeroshot: acc_all=0.883, acc_ge5=0.963, acc_1to4=0.838, acc_unseen=0.605
+[jinaai/jina-embeddings-v2-small-en] attr_hybrid/z_probe+2*z_zeroshot: acc_all=0.900, acc_ge5=0.942, acc_1to4=0.872, acc_unseen=0.789
+[jinaai/jina-embeddings-v2-small-en] attr_hybrid/z_probe+z_zeroshot_unseen_max: acc_all=0.884, acc_ge5=0.945, acc_1to4=0.822, acc_unseen=0.934
+[jinaai/jina-embeddings-v2-small-en] attr_unseen (attribute folds) took 4.8s
+[jinaai/jina-embeddings-v2-small-en] attr_unseen/probe_alone_LR_C10: acc_all=0.000, acc_unseen=0.000
+[jinaai/jina-embeddings-v2-small-en] attr_unseen/zeroshot_alone: acc_all=0.848, acc_unseen=0.848
+[jinaai/jina-embeddings-v2-small-en] attr_unseen/hybrid_unseen_max: acc_all=0.877, acc_unseen=0.877
+[jinaai/jina-embeddings-v2-small-en] attr_unseen/hybrid_z_probe+z_zeroshot: acc_all=0.540, acc_unseen=0.540
+[jinaai/jina-embeddings-v2-small-en] attr_unseen/hybrid_z_probe+2*z_zeroshot: acc_all=0.730, acc_unseen=0.730
+[jinaai/jina-embeddings-v2-small-en] ALL DONE in 37s

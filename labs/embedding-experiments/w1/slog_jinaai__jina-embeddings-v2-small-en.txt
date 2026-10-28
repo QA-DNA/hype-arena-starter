@@ -1,0 +1,1 @@
+jinaai/jina-embeddings-v2-small-en {'sentences_per_s': 496.995, 'sents_per_cpu_s': 457.775, 'wall_s': 4.024, 'cpu_s': 4.369, 'est_sec_20k_x86': 80.484, 'cpu_over_wall': 1.086}
