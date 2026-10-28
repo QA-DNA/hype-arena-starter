@@ -8,7 +8,7 @@ summary = (here / "summary.md").read_text()
 entries = json.loads((here / "catalogue.json").read_text())
 STEPS = {"S1": "as-of query", "S2": "conflicts + source reliability", "S3": "change over time",
          "S4": "inexact values", "S5": "blame", "S6": "labelling + calibration",
-         "S7": "claim generation", "S8": "explanation"}
+         "S7": "generator interface", "S8": "explanation"}
 order = {"ADOPT": 0, "TRY": 1, "IDEA-ONLY": 2, "REJECT": 3}
 entries.sort(key=lambda e: (min(int(s[1]) for s in e["steps"]), order[e["verdict"]], e["insanity"]))
 

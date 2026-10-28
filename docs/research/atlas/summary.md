@@ -1,11 +1,12 @@
 # Knowledge base research: technologies for Hype or Truth
 
 Status: research for the team, 2026-10-28. Owner: Edi (mogaeduard). Scope: the knowledge base
-that turns normalized propositions into row labels and 1,000 true claims. Normalization is out
-of scope (a teammate builds it). Implementation target: Rust; Python only for labs and tests.
+that turns normalized propositions into row labels and answers the five queries the claim generator
+calls. Normalization (a teammate builds it) and the generator itself are out of scope; the generator
+is in [claim generation](https://github.com/teodorbalan/VERIDYCT/blob/main/docs/research/claim-generation.md). Implementation target: Rust; Python only for labs and tests.
 Interactive version with filters by step and verdict:
 <https://claude.ai/artifact/NJFDojtSqqVys7a6pCCfeN> (private until shared from its Share menu).
-Experiment code: [`labs/kb-experiments/`](../../../labs/kb-experiments/README.md).
+Experiment code: [`labs/kb-experiments/`](https://github.com/teodorbalan/VERIDYCT/blob/main/labs/kb-experiments/README.md).
 
 ## Where everything is
 
@@ -13,7 +14,8 @@ Experiment code: [`labs/kb-experiments/`](../../../labs/kb-experiments/README.md
 | --- | --- |
 | This report (curated, contract-checked) | [`docs/research/knowledge-base.md`](https://github.com/teodorbalan/VERIDYCT/blob/main/docs/research/knowledge-base.md) |
 | Interactive atlas | <https://claude.ai/artifact/NJFDojtSqqVys7a6pCCfeN>; offline copy [`docs/research/atlas/kb-atlas.html`](https://github.com/teodorbalan/VERIDYCT/blob/main/docs/research/atlas/kb-atlas.html) |
-| Atlas sources: 63-entry catalogue, report text, page template, build script | [`docs/research/atlas/`](https://github.com/teodorbalan/VERIDYCT/tree/main/docs/research/atlas) |
+| Claim generator (separate component): candidates, selection, self-check | [`docs/research/claim-generation.md`](https://github.com/teodorbalan/VERIDYCT/blob/main/docs/research/claim-generation.md) |
+| Atlas sources: 59-entry catalogue, report text, page template, build script | [`docs/research/atlas/`](https://github.com/teodorbalan/VERIDYCT/tree/main/docs/research/atlas) |
 | Raw worker reports: truth discovery, temporal KB, blame and calibration, frontier and values, experiments | [`docs/research/notes/`](https://github.com/teodorbalan/VERIDYCT/tree/main/docs/research/notes) |
 | Experiment harness (V0 to V11) and recorded results | [`labs/kb-experiments/`](https://github.com/teodorbalan/VERIDYCT/tree/main/labs/kb-experiments) |
 | Diagnostics behind the error analysis | [`labs/kb-experiments/diagnostics/`](https://github.com/teodorbalan/VERIDYCT/tree/main/labs/kb-experiments/diagnostics) |
@@ -41,11 +43,9 @@ Experiment code: [`labs/kb-experiments/`](../../../labs/kb-experiments/README.md
 5. **Unsure is not predictable from evidence.** The 39 unsure rows match anchors as often as
    true rows do. Emit `unsure` only where no evidence exists, and for every other row give the
    calibrated true or false.
-6. **As-of claims are the riskiest output.** If you hide the last 20% of dates, the latest
-   earlier anchor equals the final value for only 53% of keys. Build most of the 1,000 claims
-   from `change`, `at_event` and `relation` anchored on labelled true facts. Allow a `fact` or
-   `compare` only for values confirmed at the latest dates, then run every claim through a mirror
-   of the referee rules.
+6. **As-of values are the weakest KB answer.** If you hide the last 20% of dates, the latest
+   earlier anchor equals the final value for only 53% of keys. Every as-of answer must carry its
+   P(true) and its support (pages, anchors); how the generator uses that is in [claim generation](https://github.com/teodorbalan/VERIDYCT/blob/main/docs/research/claim-generation.md).
 7. **Stack: plain Rust, no engines.** The full stack is a typed value enum with intervals, a
    `HashMap` timeline index, about 150 lines of features, logistic regression (`linfa-logistic`
    or about 60 lines of hand-written code), about 50 lines of PAV, and a witness list per
@@ -56,7 +56,7 @@ Experiment code: [`labs/kb-experiments/`](../../../labs/kb-experiments/README.md
 
 - **Steps.** S1 as-of query · S2 conflicts and source reliability · S3 change over time ·
   S4 inexact values · S5 blame in multi-fact rows · S6 labelling and calibration ·
-  S7 claim generation · S8 explanation.
+  S7 generator interface · S8 explanation.
 - **Verdict.** ADOPT = build it now. TRY = build after the ADOPT stack works, keep only if it
   measures better. IDEA-ONLY = borrow the idea or the vocabulary, do not import anything.
   REJECT = do not use, with the reason stated.
@@ -74,7 +74,7 @@ Experiment code: [`labs/kb-experiments/`](../../../labs/kb-experiments/README.md
 | S4 inexact values | Typed `Val` enum with `to_interval()`; consistency = non-empty intersection; rules copied from `value-forms.md` | TruthFinder-style implication inside the vote | inari, uom, semver (they disagree with the referee's rules) | std |
 | S5 blame | Noisy-OR: blame_i = P(fact i false) / P(row false); false multi-fact rows never act as true anchors | MaxSAT with page-liar variables | Partial-label learning | std |
 | S6 labelling + calibration | Per-fact logistic regression over S2 to S4 features, row = product, isotonic on out-of-fold scores grouped by page, confidence = max(p, 1-p), `unsure` only without evidence |  Isotonic or Venn-Abers if the reliability diagram is not sigmoid; conformal threshold for the unsure band; perpetual GBM if it clearly beats LR | Snorkel label model next to a supervised stacker (double counting), embeddings | linfa-logistic or ~60 lines; ~40 lines Platt |
-| S7 claim generation | Candidates from the timeline at 2026-10-29; score = product of fact P(true); greedy with type quotas and a cap per root fact; referee-mirror self-check | Conformal selection (BH) as the FDR statement | ILP unless pairwise constraints appear | std |
+| S7 generator interface | Five queries, each with P(true) and witnesses: `value_at(key, date)`, `transitions(key)`, `value_at_event(key, event)`, `linked(subject, link, date)`, `witnesses(key, date)`. The generator is separate: [claim generation](https://github.com/teodorbalan/VERIDYCT/blob/main/docs/research/claim-generation.md) | Support counts (independent pages, anchors) on every answer | A database or query engine behind the queries | std |
 | S8 explanation | Witness lists per verdict (supporting and contradicting observations, page reliability, segment, LR contributions) | Evidence graph drawing in the UI | SHAP crates, argumentation semantics | std + serde |
 
 ## Recommended final version
@@ -89,11 +89,9 @@ flowchart LR
     M --> R["S5 Row = product of facts"]
     R --> C["S6 Isotonic calibration<br/>(fit out-of-fold by page)"]
     C --> O["Row labels + confidence"]
-    T --> G["S7 Claim candidates<br/>change, at_event, relation first"]
-    M --> G
-    G --> S["Greedy selection<br/>type quotas, root-fact cap"]
-    S --> K["Referee mirror check<br/>claim-forms + value-forms"]
-    K --> O2["1,000 claims"]
+    T --> Q["S7 Generator interface<br/>value_at, transitions, value_at_event,<br/>linked, witnesses"]
+    M --> Q
+    Q --> O2["Claim generator<br/>(separate component)"]
     F -.-> X["S8 Witness lists<br/>support, contradict, weights"]
     M -.-> X
 ```
@@ -109,10 +107,10 @@ Build order, each step measurable on the harness before the next:
 4. **Fact model and calibration (S6).** Train logistic regression and isotonic offline on all
    practice rows with page-grouped out-of-fold features, then ship the coefficients and the
    PAV table in the image. Runtime does only arithmetic. Insanity 2.
-5. **Claims (S7).** Generate candidates from the timeline: `change` between two labelled true
-   values, `at_event` where the event date falls between two anchors of the same value,
-   `relation` while the link held, then `fact` and `compare` from values confirmed at the latest
-   dates. Run greedy selection, then the referee-mirror check. Insanity 2 to 3.
+5. **Generator interface (S7).** The five queries over the timeline index and the fact model,
+   each returning a value with P(true), its support and its witnesses. Unit-test each on practice
+   keys with known changes. Candidate rules, selection and the self-check belong to the generator
+   ([claim generation](https://github.com/teodorbalan/VERIDYCT/blob/main/docs/research/claim-generation.md)). Insanity 1.
 6. **Witness lists (S8)** recorded at every step above, serialised for the UI. Insanity 1.
 7. **Upgrades, only if the numbers move:** per-key HMM or segmentation DP, Venn-Abers for the
    unsure band, page-liar latent state, conformal selection as the FDR statement.
@@ -200,8 +198,7 @@ Failure modes still open:
 | Gap-based unsure rule | Does not work | rejected by inner selection in every split |
 | Supervised LR stacker + Snorkel label model on the same signals | Do not combine | double-counts the same evidence; supervised wins when labels exist (literature) |
 | Isotonic with tiny calibration sets | Risky | plateaus and overfitting with few false rows; fit on all out-of-fold practice rows, or fall back to Platt |
-| Conformal selection over claims that share facts | Weakened | BH assumes near-independent p-values; cap claims per root fact first |
-| Carry-forward latest anchor as the as-of value for `fact` claims | Does not work | 53% precision on the forward-time test |
+| Carry-forward latest anchor as the as-of value | Does not work | 53% precision on the forward-time test |
 | Any database, Datalog or logic engine in the runtime | Not needed | every query is a scan of one short sorted vector; engines add build and integration risk |
 
 ## Contract details that change the KB design
@@ -219,8 +216,6 @@ reports suggested the opposite and were corrected):
   the longer one only (`Hooly AI Pro` is not `Hooly`).
 - On the day a value changes, it already holds the new one (claim-forms, Compare section).
 - `unsure` carries no confidence; an unlabelled row with no output row counts as `unsure`.
-- An invalid claim still takes one of the 1,000 slots: the self-check in S7 is worth more than a
-  small gain in labelling accuracy.
 
 ## Risks and open questions
 
@@ -232,9 +227,9 @@ reports suggested the opposite and were corrected):
   (attribute behaviour, staleness) with a default for unseen attributes, never hardcoded.
 - The image may contain `data/practice.csv`, so the official checker's label count is an upper
   bound. Self-evaluation must come from page-held-out runs, not from `scripts/check.sh`.
-- The timeline at the as-of date rests on the last observations of each key; a lie on the last
-  page of a key is the most dangerous case for `fact` claims. Require two independent pages or an
-  anchor for any claim.
+- The as-of answer rests on the last observations of each key; a lie on the last page of a key
+  is the most dangerous case. `value_at` reports how many independent pages and anchors support
+  the value, so the generator can require two.
 
 <!-- CATALOGUE -->
 

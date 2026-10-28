@@ -93,7 +93,7 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--rule)
   <header class="top">
     <div class="eyebrow">VERIDYCT · Hype or Truth · knowledge base research · __DATE__</div>
     <h1>Knowledge base atlas</h1>
-    <p class="lede">Every technique studied for turning normalized propositions into a temporal knowledge base that labels rows and writes 1,000 true claims, with pros, cons, Rust availability, a verdict and how ambitious each one is to build before 29 Oct 11:00. Numbers in the results table were measured on <code>data/practice.csv</code> with page-level held-out splits.</p>
+    <p class="lede">Every technique studied for turning normalized propositions into a temporal knowledge base that labels rows and answers the queries of the separate claim generator, with pros, cons, Rust availability, a verdict and how ambitious each one is to build before 29 Oct 11:00. Numbers in the results table were measured on <code>data/practice.csv</code> with page-level held-out splits.</p>
   </header>
 
   __SUMMARY__
@@ -115,7 +115,7 @@ footer { color: var(--muted); font-size: 13px; border-top: 1px solid var(--rule)
 
 <script>
 const ENTRIES = __ENTRIES__;
-const STEPS = {S1:"as-of query",S2:"conflicts + source reliability",S3:"change over time",S4:"inexact values",S5:"blame",S6:"labelling + calibration",S7:"claim generation",S8:"explanation"};
+const STEPS = {S1:"as-of query",S2:"conflicts + source reliability",S3:"change over time",S4:"inexact values",S5:"blame",S6:"labelling + calibration",S7:"generator interface",S8:"explanation"};
 const VERDICTS = ["ADOPT","TRY","IDEA-ONLY","REJECT"];
 const state = { step: null, verdict: null, q: "" };
 try { const s = JSON.parse(localStorage.getItem("kbatlas") || "{}"); Object.assign(state, s); } catch (e) {}

@@ -20,7 +20,8 @@ Original files are checked against [the checksum manifest](upstream-files.json).
 | [Handoff template](handoffs/TEMPLATE.md) | Continue a task without rediscovery |
 | [Foundation handoff](handoffs/workspace-foundation.md) | What this milestone delivers |
 | [Practice × Lexicon Lab](../labs/practice-lexicon/README.md) | Offline graph, chronological practice queries, correlations and lab tests |
-| [Knowledge base research](research/knowledge-base.md) | 63 techniques per KB step with verdicts, Rust availability and measured practice results; raw worker reports in [research/notes](research/notes/README.md), atlas sources in [research/atlas](research/atlas/README.md) |
+| [Knowledge base research](research/knowledge-base.md) | 59 techniques per KB step with verdicts, Rust availability and measured practice results; raw worker reports in [research/notes](research/notes/README.md), atlas sources in [research/atlas](research/atlas/README.md) |
+| [Claim generation research](research/claim-generation.md) | The separate generator: the five KB queries it calls, the pipeline to 1,000 claims, contract rules and 4 techniques |
 | [MMR research](research/mmr.md) | MMR and diversity for claim selection and labelling, with measured practice experiments; scripts and source reports in [analysis/mmr](../analysis/mmr/README.md) |
 
 ## Official sources
