@@ -1,0 +1,191 @@
+| variant | regime | acc | macroF1 | false-rec | false-prec | unsure-rec | non-unsure cov | ECE | Brier |
+|---|---|---|---|---|---|---|---|---|---|
+| V9lr | R80 | 0.902 | 0.553 | 0.675 | 0.763 | 0.000 | 1.000 | 0.038 | 0.077 |
+   cm: [[1525, 56, 0], [90, 187, 0], [36, 3, 0]] chosen(t,band) Counter({(0.6, 0.0, inf): 4, (0.5, 0.0, inf): 1}) Counter()
+| V9lr | R10 | 0.816 | 0.443 | 0.465 | 0.502 | 0.000 | 1.000 | 0.067 | 0.122 |
+   cm: [[12666, 1421, 0], [1342, 1154, 0], [330, 37, 0]] chosen(t,band) Counter({(0.6, 0.0, inf): 5, (0.7, 0.0, inf): 4, (0.5, 0.0, inf): 1}) Counter()
+| V11lr-self1 | R80 | 0.907 | 0.560 | 0.695 | 0.793 | 0.000 | 1.000 | 0.038 | 0.073 |
+   cm: [[1527, 54, 0], [84, 193, 0], [39, 0, 0]] chosen(t,band) Counter({(0.6, 0.0, inf): 9, (0.5, 0.0, inf): 1}) Counter()
+| V11lr-self1 | R10 | 0.809 | 0.438 | 0.461 | 0.499 | 0.000 | 1.000 | 0.061 | 0.124 |
+   cm: [[12571, 1516, 0], [1352, 1144, 0], [327, 40, 0]] chosen(t,band) Counter({(0.6, 0.0, inf): 8, (0.7, 0.0, inf): 8, (0.3, 0.0, inf): 2, (0.5, 0.0, inf): 1, (0.4, 0.0, inf): 1}) Counter()
+| V12pages | R80 | 0.903 | 0.558 | 0.724 | 0.756 | 0.000 | 1.000 | 0.034 | 0.074 |
+   cm: [[1512, 69, 0], [76, 201, 0], [38, 1, 0]] chosen(t,band) Counter({(0.6, 0.0, inf): 7, (0.7, 0.0, inf): 2, (0.5, 0.0, inf): 1}) Counter()
+| V12pages | R10 | 0.805 | 0.435 | 0.459 | 0.451 | 0.000 | 1.000 | 0.068 | 0.127 |
+   cm: [[12504, 1583, 0], [1356, 1140, 0], [314, 53, 0]] chosen(t,band) Counter({(0.6, 0.0, inf): 10, (0.7, 0.0, inf): 8, (0.5, 0.0, inf): 1, (0.4, 0.0, inf): 1}) Counter()
+| V12mmr | R80 | 0.905 | 0.561 | 0.723 | 0.766 | 0.000 | 1.000 | 0.039 | 0.073 |
+   cm: [[1516, 65, 0], [76, 201, 0], [39, 0, 0]] chosen(t,band) Counter({(0.7, 0.0, inf): 4, (0.6, 0.0, inf): 4, (0.5, 0.0, inf): 1, (0.4, 0.0, inf): 1}) Counter()
+| V12mmr | R10 | 0.803 | 0.447 | 0.523 | 0.475 | 0.000 | 1.000 | 0.072 | 0.124 |
+   cm: [[12307, 1780, 0], [1197, 1299, 0], [326, 41, 0]] chosen(t,band) Counter({(0.6, 0.0, inf): 8, (0.7, 0.0, inf): 8, (0.3, 0.0, inf): 2, (0.5, 0.0, inf): 2}) Counter()
+| V12mmr-replace | R80 | 0.902 | 0.559 | 0.741 | 0.737 | 0.000 | 1.000 | 0.035 | 0.074 |
+   cm: [[1505, 76, 0], [71, 206, 0], [38, 1, 0]] chosen(t,band) Counter({(0.6, 0.0, inf): 8, (0.5, 0.0, inf): 1, (0.4, 0.0, inf): 1}) Counter()
+| V12mmr-replace | R10 | 0.822 | 0.448 | 0.459 | 0.535 | 0.000 | 1.000 | 0.068 | 0.125 |
+   cm: [[12797, 1290, 0], [1356, 1140, 0], [341, 26, 0]] chosen(t,band) Counter({(0.7, 0.0, inf): 11, (0.6, 0.0, inf): 4, (0.4, 0.0, inf): 3, (0.3, 0.0, inf): 2}) Counter()
+## scenario lie: 831 copies = 3 x 277 false, 2728 rows total
+| V11lr-self1 | R10 | 0.873 | 0.514 | 0.592 | 0.660 | 0.000 | 1.000 | 0.073 | 0.103 |
+   cm: [[13319, 768, 0], [1019, 1477, 0], [367, 0, 0]] chosen(t,band) Counter({(0.6, 0.0, inf): 10, (0.4, 0.0, inf): 4, (0.7, 0.0, inf): 4, (0.3, 0.0, inf): 2}) Counter()
+| V12mmr | R10 | 0.872 | 0.519 | 0.656 | 0.646 | 0.000 | 1.000 | 0.073 | 0.099 |
+   cm: [[13134, 953, 0], [859, 1637, 0], [367, 0, 0]] chosen(t,band) Counter({(0.6, 0.0, inf): 9, (0.5, 0.0, inf): 4, (0.7, 0.0, inf): 3, (0.3, 0.0, inf): 2, (0.4, 0.0, inf): 2}) Counter()
+| V12mmr-replace | R10 | 0.864 | 0.509 | 0.620 | 0.634 | 0.000 | 1.000 | 0.075 | 0.106 |
+   cm: [[13101, 986, 0], [948, 1548, 0], [367, 0, 0]] chosen(t,band) Counter({(0.6, 0.0, inf): 11, (0.7, 0.0, inf): 3, (0.3, 0.0, inf): 3, (0.5, 0.0, inf): 3}) Counter()
+## scenario control: 831 copies = 3 x 277 sampled true, 2728 rows total
+| V11lr-self1 | R10 | 0.827 | 0.470 | 0.552 | 0.510 | 0.000 | 1.000 | 0.078 | 0.118 |
+   cm: [[12639, 1443, 0], [1121, 1375, 0], [310, 57, 0]] chosen(t,band) Counter({(0.6, 0.0, inf): 10, (0.7, 0.0, inf): 5, (0.5, 0.0, inf): 3, (0.7, 0.1, inf): 1, (0.4, 0.0, inf): 1}) Counter()
+| V12mmr | R10 | 0.820 | 0.468 | 0.585 | 0.506 | 0.000 | 1.000 | 0.078 | 0.121 |
+   cm: [[12432, 1655, 0], [1039, 1457, 0], [336, 31, 0]] chosen(t,band) Counter({(0.7, 0.0, inf): 8, (0.6, 0.0, inf): 6, (0.3, 0.0, inf): 3, (0.4, 0.05, inf): 1, (0.5, 0.0, inf): 1, (0.4, 0.0, inf): 1}) Counter()
+| V12mmr-replace | R10 | 0.837 | 0.476 | 0.549 | 0.564 | 0.000 | 1.000 | 0.076 | 0.118 |
+   cm: [[12821, 1266, 0], [1129, 1367, 0], [331, 36, 0]] chosen(t,band) Counter({(0.6, 0.0, inf): 8, (0.7, 0.0, inf): 8, (0.3, 0.0, inf): 3, (0.5, 0.0, inf): 1}) Counter()
+## scenario mixed: 828 copies = 3 x 276 rows (half false, half true; post-hoc scenario), 2725 rows total
+| V11lr-self1 | R10 | 0.793 | 0.372 | 0.217 | 0.323 | 0.000 | 1.000 | 0.081 | 0.147 |
+   cm: [[12907, 1180, 0], [1957, 539, 0], [357, 10, 0]] chosen(t,band) Counter({(0.7, 0.0, inf): 8, (0.6, 0.0, inf): 8, (0.3, 0.0, inf): 4}) Counter()
+| V12mmr | R10 | 0.799 | 0.417 | 0.362 | 0.425 | 0.000 | 1.000 | 0.069 | 0.136 |
+   cm: [[12644, 1443, 0], [1593, 903, 0], [353, 14, 0]] chosen(t,band) Counter({(0.7, 0.0, inf): 12, (0.6, 0.0, inf): 6, (0.4, 0.0, inf): 1, (0.3, 0.0, inf): 1}) Counter()
+| V12mmr-replace | R10 | 0.786 | 0.404 | 0.361 | 0.381 | 0.000 | 1.000 | 0.082 | 0.145 |
+   cm: [[12423, 1664, 0], [1599, 897, 0], [347, 20, 0]] chosen(t,band) Counter({(0.7, 0.0, inf): 11, (0.6, 0.0, inf): 6, (0.3, 0.0, inf): 2, (0.5, 0.0, inf): 1}) Counter()
+
+### Paired V9lr vs V11lr-self1, R80 (delta = V9lr minus V11)
+| metric | mean delta | sd of delta | se | wins/total | exceeds noise (abs(mean) > 2 se) |
+|---|---|---|---|---|---|
+| Brier | +0.0036 | 0.0048 | 0.0022 | 1/5 | no |
+| false-prec | -0.0304 | 0.0612 | 0.0274 | 2/5 | no |
+| false-rec | -0.0206 | 0.0582 | 0.0260 | 1/5 | no |
+| acc | -0.0043 | 0.0086 | 0.0038 | 2/5 | no |
+
+### Paired V12pages vs V11lr-self1, R80 (delta = V12pages minus V11)
+| metric | mean delta | sd of delta | se | wins/total | exceeds noise (abs(mean) > 2 se) |
+|---|---|---|---|---|---|
+| Brier | +0.0007 | 0.0014 | 0.0006 | 1/5 | no |
+| false-prec | -0.0373 | 0.0216 | 0.0097 | 0/5 | yes |
+| false-rec | +0.0291 | 0.0447 | 0.0200 | 3/5 | no |
+| acc | -0.0037 | 0.0047 | 0.0021 | 1/5 | no |
+
+### Paired V12mmr vs V11lr-self1, R80 (delta = V12mmr minus V11)
+| metric | mean delta | sd of delta | se | wins/total | exceeds noise (abs(mean) > 2 se) |
+|---|---|---|---|---|---|
+| Brier | +0.0002 | 0.0020 | 0.0009 | 2/5 | no |
+| false-prec | -0.0272 | 0.0195 | 0.0087 | 0/5 | yes |
+| false-rec | +0.0282 | 0.0372 | 0.0166 | 3/5 | no |
+| acc | -0.0016 | 0.0084 | 0.0038 | 1/5 | no |
+
+### Paired V12mmr-replace vs V11lr-self1, R80 (delta = V12mmr-replace minus V11)
+| metric | mean delta | sd of delta | se | wins/total | exceeds noise (abs(mean) > 2 se) |
+|---|---|---|---|---|---|
+| Brier | +0.0009 | 0.0038 | 0.0017 | 2/5 | no |
+| false-prec | -0.0564 | 0.0270 | 0.0121 | 0/5 | yes |
+| false-rec | +0.0460 | 0.0576 | 0.0257 | 3/5 | no |
+| acc | -0.0049 | 0.0116 | 0.0052 | 1/5 | no |
+
+### Paired V9lr vs V11lr-self1, R10 (delta = V9lr minus V11)
+| metric | mean delta | sd of delta | se | wins/total | exceeds noise (abs(mean) > 2 se) |
+|---|---|---|---|---|---|
+| Brier | -0.0021 | 0.0044 | 0.0014 | 8/10 | no |
+| false-prec | +0.0029 | 0.0567 | 0.0179 | 6/10 | no |
+| false-rec | +0.0039 | 0.0609 | 0.0193 | 5/10 | no |
+| acc | +0.0063 | 0.0151 | 0.0048 | 7/10 | no |
+
+### Paired V12pages vs V11lr-self1, R10 (delta = V12pages minus V11)
+| metric | mean delta | sd of delta | se | wins/total | exceeds noise (abs(mean) > 2 se) |
+|---|---|---|---|---|---|
+| Brier | +0.0029 | 0.0065 | 0.0020 | 3/10 | no |
+| false-prec | -0.0481 | 0.0774 | 0.0245 | 3/10 | no |
+| false-rec | -0.0024 | 0.1208 | 0.0382 | 5/10 | no |
+| acc | -0.0043 | 0.0382 | 0.0121 | 3/10 | no |
+
+### Paired V12mmr vs V11lr-self1, R10 (delta = V12mmr minus V11)
+| metric | mean delta | sd of delta | se | wins/total | exceeds noise (abs(mean) > 2 se) |
+|---|---|---|---|---|---|
+| Brier | +0.0006 | 0.0143 | 0.0045 | 7/10 | no |
+| false-prec | -0.0240 | 0.0967 | 0.0306 | 6/10 | no |
+| false-rec | +0.0618 | 0.0928 | 0.0293 | 8/10 | yes |
+| acc | -0.0063 | 0.0446 | 0.0141 | 7/10 | no |
+
+### Paired V12mmr-replace vs V11lr-self1, R10 (delta = V12mmr-replace minus V11)
+| metric | mean delta | sd of delta | se | wins/total | exceeds noise (abs(mean) > 2 se) |
+|---|---|---|---|---|---|
+| Brier | +0.0014 | 0.0166 | 0.0052 | 7/10 | no |
+| false-prec | +0.0353 | 0.1015 | 0.0321 | 6/10 | no |
+| false-rec | -0.0023 | 0.0594 | 0.0188 | 6/10 | no |
+| acc | +0.0132 | 0.0227 | 0.0072 | 7/10 | no |
+
+### Stress (R10, original hidden rows only): mean over 10 splits; in brackets the change vs the same variant on baseline
+| variant | scenario | acc | macroF1 | false-rec | false-prec | unsure-rec | cov | ECE | Brier |
+|---|---|---|---|---|---|---|---|---|---|
+| V11lr-self1 | base | 0.809 | 0.438 | 0.461 | 0.499 | 0.000 | 1.000 | 0.061 | 0.124 |
+| V11lr-self1 | lie | 0.873 (+0.064) | 0.514 (+0.076) | 0.592 (+0.131) | 0.660 (+0.160) | 0.000 (+0.000) | 1.000 (+0.000) | 0.073 (+0.011) | 0.103 (-0.021) |
+| V11lr-self1 | control | 0.827 (+0.018) | 0.470 (+0.032) | 0.552 (+0.091) | 0.510 (+0.010) | 0.000 (+0.000) | 1.000 (+0.000) | 0.078 (+0.016) | 0.118 (-0.005) |
+| V11lr-self1 | mixed | 0.793 (-0.016) | 0.372 (-0.066) | 0.217 (-0.244) | 0.323 (-0.176) | 0.000 (+0.000) | 1.000 (+0.000) | 0.081 (+0.020) | 0.147 (+0.023) |
+| V12mmr | base | 0.803 | 0.447 | 0.523 | 0.475 | 0.000 | 1.000 | 0.072 | 0.124 |
+| V12mmr | lie | 0.872 (+0.069) | 0.519 (+0.072) | 0.656 (+0.133) | 0.646 (+0.171) | 0.000 (+0.000) | 1.000 (+0.000) | 0.073 (+0.001) | 0.099 (-0.025) |
+| V12mmr | control | 0.820 (+0.017) | 0.468 (+0.022) | 0.585 (+0.062) | 0.506 (+0.030) | 0.000 (+0.000) | 1.000 (+0.000) | 0.078 (+0.006) | 0.121 (-0.003) |
+| V12mmr | mixed | 0.799 (-0.003) | 0.417 (-0.030) | 0.362 (-0.161) | 0.425 (-0.051) | 0.000 (+0.000) | 1.000 (+0.000) | 0.069 (-0.003) | 0.136 (+0.012) |
+| V12mmr-replace | base | 0.822 | 0.448 | 0.459 | 0.535 | 0.000 | 1.000 | 0.068 | 0.125 |
+| V12mmr-replace | lie | 0.864 (+0.042) | 0.509 (+0.061) | 0.620 (+0.161) | 0.634 (+0.099) | 0.000 (+0.000) | 1.000 (+0.000) | 0.075 (+0.007) | 0.106 (-0.019) |
+| V12mmr-replace | control | 0.837 (+0.015) | 0.476 (+0.028) | 0.549 (+0.091) | 0.564 (+0.029) | 0.000 (+0.000) | 1.000 (+0.000) | 0.076 (+0.008) | 0.118 (-0.007) |
+| V12mmr-replace | mixed | 0.786 (-0.037) | 0.404 (-0.044) | 0.361 (-0.098) | 0.381 (-0.153) | 0.000 (+0.000) | 1.000 (+0.000) | 0.082 (+0.014) | 0.145 (+0.020) |
+
+### Stress, paired vs V11lr-self1 within each scenario (R10, delta = variant minus V11)
+
+#### V12mmr vs V11lr-self1, scenario base
+| metric | mean delta | sd of delta | se | wins/total | exceeds noise (abs(mean) > 2 se) |
+|---|---|---|---|---|---|
+| Brier | +0.0006 | 0.0143 | 0.0045 | 7/10 | no |
+| false-prec | -0.0240 | 0.0967 | 0.0306 | 6/10 | no |
+| false-rec | +0.0618 | 0.0928 | 0.0293 | 8/10 | yes |
+| acc | -0.0063 | 0.0446 | 0.0141 | 7/10 | no |
+
+#### V12mmr-replace vs V11lr-self1, scenario base
+| metric | mean delta | sd of delta | se | wins/total | exceeds noise (abs(mean) > 2 se) |
+|---|---|---|---|---|---|
+| Brier | +0.0014 | 0.0166 | 0.0052 | 7/10 | no |
+| false-prec | +0.0353 | 0.1015 | 0.0321 | 6/10 | no |
+| false-rec | -0.0023 | 0.0594 | 0.0188 | 6/10 | no |
+| acc | +0.0132 | 0.0227 | 0.0072 | 7/10 | no |
+
+#### V12mmr vs V11lr-self1, scenario lie
+| metric | mean delta | sd of delta | se | wins/total | exceeds noise (abs(mean) > 2 se) |
+|---|---|---|---|---|---|
+| Brier | -0.0033 | 0.0118 | 0.0037 | 7/10 | no |
+| false-prec | -0.0138 | 0.0999 | 0.0316 | 4/10 | no |
+| false-rec | +0.0637 | 0.1340 | 0.0424 | 8/10 | no |
+| acc | -0.0016 | 0.0202 | 0.0064 | 6/10 | no |
+
+#### V12mmr-replace vs V11lr-self1, scenario lie
+| metric | mean delta | sd of delta | se | wins/total | exceeds noise (abs(mean) > 2 se) |
+|---|---|---|---|---|---|
+| Brier | +0.0031 | 0.0142 | 0.0045 | 4/10 | no |
+| false-prec | -0.0259 | 0.1260 | 0.0398 | 4/10 | no |
+| false-rec | +0.0280 | 0.1483 | 0.0469 | 5/10 | no |
+| acc | -0.0089 | 0.0286 | 0.0091 | 5/10 | no |
+
+#### V12mmr vs V11lr-self1, scenario control
+| metric | mean delta | sd of delta | se | wins/total | exceeds noise (abs(mean) > 2 se) |
+|---|---|---|---|---|---|
+| Brier | +0.0027 | 0.0199 | 0.0063 | 7/10 | no |
+| false-prec | -0.0039 | 0.0973 | 0.0308 | 4/10 | no |
+| false-rec | +0.0331 | 0.0962 | 0.0304 | 5/10 | no |
+| acc | -0.0074 | 0.0258 | 0.0082 | 4/10 | no |
+
+#### V12mmr-replace vs V11lr-self1, scenario control
+| metric | mean delta | sd of delta | se | wins/total | exceeds noise (abs(mean) > 2 se) |
+|---|---|---|---|---|---|
+| Brier | -0.0005 | 0.0150 | 0.0047 | 6/10 | no |
+| false-prec | +0.0543 | 0.1166 | 0.0369 | 6/10 | no |
+| false-rec | -0.0022 | 0.1002 | 0.0317 | 5/10 | no |
+| acc | +0.0102 | 0.0211 | 0.0067 | 6/10 | no |
+
+#### V12mmr vs V11lr-self1, scenario mixed
+| metric | mean delta | sd of delta | se | wins/total | exceeds noise (abs(mean) > 2 se) |
+|---|---|---|---|---|---|
+| Brier | -0.0108 | 0.0115 | 0.0036 | 9/10 | yes |
+| false-prec | +0.1017 | 0.1727 | 0.0546 | 9/10 | no |
+| false-rec | +0.1451 | 0.1247 | 0.0394 | 8/10 | yes |
+| acc | +0.0061 | 0.0349 | 0.0110 | 5/10 | no |
+
+#### V12mmr-replace vs V11lr-self1, scenario mixed
+| metric | mean delta | sd of delta | se | wins/total | exceeds noise (abs(mean) > 2 se) |
+|---|---|---|---|---|---|
+| Brier | -0.0020 | 0.0135 | 0.0043 | 7/10 | no |
+| false-prec | +0.0581 | 0.1723 | 0.0545 | 9/10 | no |
+| false-rec | +0.1446 | 0.1328 | 0.0420 | 8/10 | yes |
+| acc | -0.0076 | 0.0228 | 0.0072 | 4/10 | no |
+
+wall-clock 40 s

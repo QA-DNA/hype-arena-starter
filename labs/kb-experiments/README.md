@@ -7,7 +7,9 @@ and is not part of the competition image.
 
 - `exp.py`: data facts, the as-of test, variants V0 to V8 and the metrics.
 - `v9.py`: per-fact bracket-feature models V9 to V11 (imports `exp.py`).
-- `results_v0_v8.txt`, `results_v9.txt`: the recorded outputs, with confusion matrices.
+- `v12.py`, `copies.py`: independent-evidence features (V12pages, V12mmr, V12mmr-replace) and the copied-lie stress
+  test; `copies.py` is loaded only through the default-off `KB_COPY` env hook in `exp.py`. Report: `REPORT_v12.md`.
+- `results_v0_v8.txt`, `results_v9.txt`, `results_v12.txt`: the recorded outputs, with confusion matrices.
 - `diagnostics/`: the scripts behind the error analysis in the report.
   - `cat.py`: label counts by before, same-day and after anchor match.
   - `ana.py`: the same table split by whether a match exists at all, plus the count of false
@@ -31,6 +33,7 @@ cd labs/kb-experiments
 ../../.venv-kb/bin/python exp.py            # everything, about 1 to 2 minutes
 ../../.venv-kb/bin/python exp.py V0 V5      # a subset
 ../../.venv-kb/bin/python v9.py             # V9 to V11, about 80 seconds
+../../.venv-kb/bin/python v12.py            # V12 + stress test, about 40 seconds; v12.py base|lie|control|mixed for one scenario
 PYTHONPATH=. ../../.venv-kb/bin/python diagnostics/cat.py   # diagnostics import exp.py and v9.py
 ```
 
