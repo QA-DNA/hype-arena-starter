@@ -18,3 +18,11 @@ Published grammar was reviewed against samples, including duration symbols, rela
 subject/link wording, boolean polarity, and date comparisons. Private referee truth
 checks are unavailable; true historical observation and immutable-date assumptions
 remain explicit. An output/schema pass does not guarantee hidden-universe truth.
+
+Additional verification: [independent validator](../../tools/validate_claims.py) checked
+all 1,000 generated claims against the organizer JSON schemas, lexicon names/attributes,
+normalized newness, 1,960 source references, ordered change evidence, comparison direction,
+contemporaneous relation links and event-day matches, plus selected public grammar
+conditions. The validator needs Python jsonschema/referencing and takes a report JSON
+(or API job snapshot); it does not implement the private referee. Core Clippy with
+warnings denied passed after the review changes.
