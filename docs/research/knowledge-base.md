@@ -7,6 +7,17 @@ Interactive version with filters by step and verdict:
 <https://claude.ai/artifact/NJFDojtSqqVys7a6pCCfeN> (private until shared from its Share menu).
 Experiment code: [`labs/kb-experiments/`](../../labs/kb-experiments/README.md).
 
+## Where everything is
+
+| What | Where |
+| --- | --- |
+| This report (curated, contract-checked) | [`docs/research/knowledge-base.md`](https://github.com/teodorbalan/VERIDYCT/blob/main/docs/research/knowledge-base.md) |
+| Interactive atlas | <https://claude.ai/artifact/NJFDojtSqqVys7a6pCCfeN>; offline copy [`docs/research/atlas/kb-atlas.html`](https://github.com/teodorbalan/VERIDYCT/blob/main/docs/research/atlas/kb-atlas.html) |
+| Atlas sources: 63-entry catalogue, report text, page template, build script | [`docs/research/atlas/`](https://github.com/teodorbalan/VERIDYCT/tree/main/docs/research/atlas) |
+| Raw worker reports: truth discovery, temporal KB, blame and calibration, frontier and values, experiments | [`docs/research/notes/`](https://github.com/teodorbalan/VERIDYCT/tree/main/docs/research/notes) |
+| Experiment harness (V0 to V11) and recorded results | [`labs/kb-experiments/`](https://github.com/teodorbalan/VERIDYCT/tree/main/labs/kb-experiments) |
+| Diagnostics behind the error analysis | [`labs/kb-experiments/diagnostics/`](https://github.com/teodorbalan/VERIDYCT/tree/main/labs/kb-experiments/diagnostics) |
+
 ## TLDR
 
 1. **Rules alone lose to "always true".** On practice, always-true scores 0.833. Every rule

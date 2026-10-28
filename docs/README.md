@@ -20,7 +20,7 @@ Original files are checked against [the checksum manifest](upstream-files.json).
 | [Handoff template](handoffs/TEMPLATE.md) | Continue a task without rediscovery |
 | [Foundation handoff](handoffs/workspace-foundation.md) | What this milestone delivers |
 | [Practice × Lexicon Lab](../labs/practice-lexicon/README.md) | Offline graph, chronological practice queries, correlations and lab tests |
-| [Knowledge base research](research/knowledge-base.md) | 63 techniques per KB step with verdicts, Rust availability and measured practice results |
+| [Knowledge base research](research/knowledge-base.md) | 63 techniques per KB step with verdicts, Rust availability and measured practice results; raw worker reports in [research/notes](research/notes/README.md), atlas sources in [research/atlas](research/atlas/README.md) |
 
 ## Official sources
 
