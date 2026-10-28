@@ -7,6 +7,7 @@ use regex::Regex;
 use serde::Serialize;
 use serde_json::{Value, json};
 use std::collections::{BTreeMap, BTreeSet};
+use std::time::Instant;
 use unicode_normalization::UnicodeNormalization;
 
 #[derive(Clone)]
@@ -47,7 +48,32 @@ pub struct HoldoutReport {
     pub accuracy: f64,
     pub macro_f1: f64,
     pub confusion: [[usize; 3]; 3],
+    pub majority_accuracy: f64,
+    pub majority_label: String,
+    pub coverage: f64,
+    pub correct: usize,
+    pub incorrect: usize,
+    pub unsure: usize,
+    pub elapsed_ms: u64,
+    pub classes: Vec<ClassMetrics>,
+    pub results: Vec<EvaluationResult>,
     pub note: String,
+}
+
+#[derive(Clone, Debug, Serialize)]
+pub struct ClassMetrics {
+    pub label: String,
+    pub support: usize,
+    pub precision: f64,
+    pub recall: f64,
+    pub f1: f64,
+}
+
+#[derive(Clone, Debug, Serialize)]
+pub struct EvaluationResult {
+    pub expected: String,
+    pub correct: bool,
+    pub prediction: Prediction,
 }
 
 impl Engine {
@@ -728,6 +754,10 @@ impl Engine {
 /// Deterministic every-fifth holdout. Test texts are removed entirely from training.
 /// This is a diagnostic split, not independent application validation.
 pub fn evaluate_holdout(practice: &[InputRow], lexicon: &Value) -> Result<HoldoutReport, String> {
+    let started = Instant::now();
+    if practice.iter().any(|row| class(&row.label).is_none()) {
+        return Err("Accuracy evaluation requires a reference label for every source row".into());
+    }
     let held_texts: BTreeSet<_> = practice
         .iter()
         .enumerate()
@@ -762,20 +792,74 @@ pub fn evaluate_holdout(practice: &[InputRow], lexicon: &Value) -> Result<Holdou
         confusion[class(&expected.label).unwrap_or(2)][class(&prediction.label).unwrap_or(2)] += 1;
     }
     let correct: usize = (0..3).map(|i| confusion[i][i]).sum();
-    let macro_f1 = (0..3)
+    let classes: Vec<ClassMetrics> = (0..3)
         .map(|i| {
             let tp = confusion[i][i] as f64;
             let actual: usize = confusion[i].iter().sum();
             let predicted: usize = confusion.iter().map(|row| row[i]).sum();
-            if actual + predicted == 0 {
+            let f1 = if actual + predicted == 0 {
                 0.0
             } else {
                 2.0 * tp / (actual + predicted) as f64
+            };
+            ClassMetrics {
+                label: label(i).into(),
+                support: actual,
+                precision: if predicted == 0 {
+                    0.0
+                } else {
+                    tp / predicted as f64
+                },
+                recall: if actual == 0 { 0.0 } else { tp / actual as f64 },
+                f1,
             }
         })
-        .sum::<f64>()
-        / 3.0;
-    Ok(HoldoutReport{training_rows:train.len(),test_rows:tests.len(),accuracy:correct as f64/tests.len().max(1) as f64,macro_f1,confusion,note:"Every fifth practice row held out; matching normalized test text removed from all training and evidence. Shared templates/facts remain, so this is a diagnostic only. Labels and forms were absent from test inputs.".into()})
+        .collect();
+    let macro_f1 = classes.iter().map(|metrics| metrics.f1).sum::<f64>() / 3.0;
+    let mut training_counts = [0usize; 3];
+    for row in &train {
+        training_counts[class(&row.label).unwrap_or(2)] += 1;
+    }
+    // Select the baseline label using training data only. Ties use the stable
+    // true/false/unsure order, never information from hidden test labels.
+    let mut majority = 0;
+    for i in 1..3 {
+        if training_counts[i] > training_counts[majority] {
+            majority = i;
+        }
+    }
+    let unsure = confusion.iter().map(|row| row[2]).sum::<usize>();
+    let denominator = tests.len().max(1) as f64;
+    let majority_correct = tests
+        .iter()
+        .filter(|row| class(&row.label) == Some(majority))
+        .count();
+    let results = tests
+        .iter()
+        .zip(predictions)
+        .map(|(expected, prediction)| EvaluationResult {
+            correct: expected.label == prediction.label,
+            expected: expected.label.clone(),
+            prediction,
+        })
+        .collect();
+    Ok(HoldoutReport {
+        training_rows: train.len(),
+        test_rows: tests.len(),
+        accuracy: correct as f64 / denominator,
+        macro_f1,
+        confusion,
+        majority_accuracy: majority_correct as f64 / denominator,
+        majority_label: label(majority).into(),
+        coverage: (tests.len() - unsure) as f64 / denominator,
+        correct,
+        incorrect: tests.len() - correct,
+        unsure,
+        elapsed_ms: started.elapsed().as_millis().min(u128::from(u64::MAX)) as u64,
+        classes,
+        results,
+        note: "Every fifth practice row is held out. Its label and form are removed before prediction, and all matching normalized test texts are excluded from training and source evidence. Shared facts and templates remain. This split informed earlier model tuning, so it is a diagnostic, not independent validation. Majority baseline selects its constant label from training only. Scores are uncalibrated model estimates; rows with no reference label cannot have measured accuracy.".into(),
+    })
 }
 
 fn regex(pattern: &str) -> Result<Regex, String> {
@@ -1001,6 +1085,118 @@ mod tests {
         assert_eq!(
             engine.entities("Hooly Cloud and Hooly"),
             vec!["Hooly", "Hooly Cloud"]
+        );
+    }
+
+    #[test]
+    fn holdout_hides_unique_facts_and_removes_duplicate_test_texts() {
+        let (mut rows, mut lexicon) = fixtures();
+        lexicon["subjects"].as_array_mut().unwrap().push(json!({
+            "name":"Secret Entity", "aliases":[], "attributes":["secret_phrase"]
+        }));
+        let secret = Fact {
+            subject: "Secret Entity".into(),
+            attribute: "secret_phrase".into(),
+            value: json!({"kind":"name","value":"ultramarine-862"}),
+        };
+        rows[0].text = "Secret Entity uses ultramarine-862 as its secret phrase.".into();
+        rows[0].label = "true".into();
+        rows[0].form = vec![secret.clone()];
+        // An otherwise training-position duplicate must not reveal the test answer.
+        rows[1].text = rows[0].text.to_uppercase();
+        rows[1].label = "true".into();
+        rows[1].form = vec![secret.clone()];
+        let report = evaluate_holdout(&rows, &lexicon).unwrap();
+        assert_eq!(report.training_rows, 18);
+        assert_eq!(report.test_rows, 5);
+        let held_ids = ["p-0", "p-5", "p-10", "p-15", "p-20", "p-1"];
+        for result in &report.results {
+            assert!(result.prediction.known_label.is_none());
+            assert!(
+                result
+                    .prediction
+                    .evidence
+                    .iter()
+                    .all(|e| !held_ids.contains(&e.row_id.as_str()))
+            );
+            assert!(
+                !result
+                    .prediction
+                    .reason
+                    .starts_with("Exact text and date match")
+            );
+        }
+        assert!(!report.results[0].prediction.facts.contains(&secret));
+    }
+
+    #[test]
+    fn evaluation_metrics_match_visible_predictions_and_training_baseline() {
+        let (rows, lexicon) = fixtures();
+        let report = evaluate_holdout(&rows, &lexicon).unwrap();
+        let mut recomputed = [[0usize; 3]; 3];
+        for result in &report.results {
+            let prediction = &result.prediction;
+            recomputed[class(&result.expected).unwrap()][class(&prediction.label).unwrap()] += 1;
+            assert_eq!(result.correct, result.expected == prediction.label);
+            assert!(prediction.known_label.is_none());
+            let scores = &prediction.probabilities;
+            assert!((scores.p_true + scores.p_false + scores.p_unsure - 1.0).abs() < 1e-9);
+        }
+        assert_eq!(report.confusion, recomputed);
+        assert_eq!(
+            report.correct,
+            report.results.iter().filter(|r| r.correct).count()
+        );
+        assert_eq!(report.correct + report.incorrect, report.test_rows);
+        assert_eq!(
+            report.unsure,
+            report
+                .results
+                .iter()
+                .filter(|r| r.prediction.label == "unsure")
+                .count()
+        );
+        assert!(
+            (report.coverage - (report.test_rows - report.unsure) as f64 / report.test_rows as f64)
+                .abs()
+                < 1e-9
+        );
+        assert!((report.accuracy - report.correct as f64 / report.test_rows as f64).abs() < 1e-9);
+        assert_eq!(report.majority_label, "true");
+        assert!((report.majority_accuracy - 3.0 / 5.0).abs() < 1e-9);
+        for (i, metrics) in report.classes.iter().enumerate() {
+            let support: usize = recomputed[i].iter().sum();
+            let predicted: usize = recomputed.iter().map(|row| row[i]).sum();
+            let tp = recomputed[i][i] as f64;
+            assert_eq!(metrics.label, label(i));
+            assert_eq!(metrics.support, support);
+            assert_eq!(
+                metrics.precision,
+                if predicted == 0 {
+                    0.0
+                } else {
+                    tp / predicted as f64
+                }
+            );
+            assert_eq!(
+                metrics.recall,
+                if support == 0 {
+                    0.0
+                } else {
+                    tp / support as f64
+                }
+            );
+            assert_eq!(
+                metrics.f1,
+                if support + predicted == 0 {
+                    0.0
+                } else {
+                    2.0 * tp / (support + predicted) as f64
+                }
+            );
+        }
+        assert!(
+            (report.macro_f1 - report.classes.iter().map(|c| c.f1).sum::<f64>() / 3.0).abs() < 1e-9
         );
     }
 }
