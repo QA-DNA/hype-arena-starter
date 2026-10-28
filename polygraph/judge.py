@@ -142,8 +142,7 @@ def fact_status(t: truth_mod.Truth, f: Fact, row: Row) -> tuple[str, dict]:
     a, b = hv.get("value"), rv.get("value")
     if isinstance(a, (int, float)) and isinstance(b, (int, float)) and not isinstance(a, bool):
         info["rel_diff"] = abs(a - b) / max(abs(a), abs(b), 1e-9)
-    info["elsewhere"] = float(any(m2.key == k for (s2, a2), ms2 in t.mentions.items()
-                                  if s2 == f.subject and a2 != f.attribute for m2 in ms2))
+    info["elsewhere"] = float(bool(_values_by_subject(t).get((f.subject, k), set()) - {f.attribute}))
     info["score"] = f.score
     dates_with = [x for x, v in od.items() if v == k]
     if not dates_with:
@@ -153,6 +152,29 @@ def fact_status(t: truth_mod.Truth, f: Fact, row: Row) -> tuple[str, dict]:
     if min(dates_with) > d:
         return "premature", info
     return "invented", info
+
+
+def _agrees(t: truth_mod.Truth, f: Fact, row: Row) -> bool:
+    """The cheap part of fact_status: does the fact hold its timeline's value on the date?"""
+    if f.value.get("op", "eq") != "eq":
+        return fact_status(t, f, row)[0] == "agrees"
+    key = (f.subject, f.attribute)
+    if len(t.mentions.get(key, ())) < 2:  # only this row: "unknown", not agreement
+        return False
+    held = t.on_date.get(key, {}).get(row.date)
+    return held is not None and held == value_key({k: v for k, v in f.value.items() if k != "op"})
+
+
+def _values_by_subject(t: truth_mod.Truth) -> dict:
+    """(subject, value key) -> the attributes of that subject mentioned with that value."""
+    idx = getattr(t, "_vbs", None)
+    if idx is None:
+        idx = defaultdict(set)
+        for (s, a), ms in t.mentions.items():
+            for m in ms:
+                idx[(s, m.key)].add(a)
+        t._vbs = idx
+    return idx
 
 
 _DAY_CACHE: dict[str, int] = {}
@@ -226,7 +248,7 @@ def _page_info(rows: list[Row], t: truth_mod.Truth, facts: dict[str, list[Fact]]
         agree_n = []
         for r in rs:
             fs = facts.get(r.id, [])
-            ok = [fact_status(t, f, r)[0] == "agrees" for f in fs]
+            ok = [_agrees(t, f, r) for f in fs]
             agree_n.append((sum(ok), len(ok)))
         labels = [r.label if r.id not in hide else "" for r in rs]
         tot_a = sum(a for a, _ in agree_n)
