@@ -1,0 +1,25 @@
+name: Team task
+description: A bounded piece of work for a teammate or an agent.
+title: "[Task] "
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Outcome
+      description: What should work when this task is finished?
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Owner and scope
+      description: Human owner, agent role if used, paths, interface changes, and dependencies.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Observable behavior and appropriate verification.
+    validations:
+      required: true
