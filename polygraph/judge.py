@@ -19,6 +19,7 @@ the chosen label is the confidence.
 from __future__ import annotations
 
 import math
+import os
 import re
 from collections import defaultdict
 from dataclasses import replace
@@ -32,7 +33,9 @@ from .model import Fact, Row, Verdict, value_key
 FOLDS = 5
 CLASSES = ["true", "false", "unsure"]
 PRIOR_TRUE = 0.83
-FALSE_CUTOFF = 0.6  # call a row false only when P(false | true or false) is above this (5-fold CV)
+FALSE_CUTOFF = 0.6
+_m = [float(x) for x in os.environ.get("POLY_MODEL", "120,0.06,7,20").split(",")]
+MODEL = {"iter": int(_m[0]), "lr": _m[1], "leaves": int(_m[2]), "min_leaf": int(_m[3])}  # call a row false only when P(false | true or false) is above this (5-fold CV)
 STATUS = ["agrees", "stale", "premature", "invented", "unknown"]
 
 HEDGE_RE = re.compile(r"\b(?:i have been told|i've been told|i hear|i heard|reportedly|rumou?r|apparently|word is|"
@@ -63,7 +66,8 @@ def fact_status(t: truth_mod.Truth, f: Fact, row: Row) -> tuple[str, dict]:
     info = {"n_other": len(others), "same_any": 0, "same_near": 0, "diff_near": 0,
             "anchor_true_same": 0, "anchor_false_same": 0, "anchor_true_near_same": 0, "gap_days": 999,
             "prev_same": -1, "next_same": -1, "top_value": 0, "n_values": 0, "w_same_near": 0.0, "w_diff_near": 0.0,
-            "anchor_false_near_diff": 0}
+            "anchor_false_near_diff": 0, "anchor_true_near_diff": 0, "days_to_true_diff": 400,
+            "days_to_true_same": 400}
     if not others:
         return "unknown", info
     k = value_key({kk: vv for kk, vv in f.value.items() if kk != "op"})
@@ -81,6 +85,13 @@ def fact_status(t: truth_mod.Truth, f: Fact, row: Row) -> tuple[str, dict]:
     info["n_values"] = len(counts)
     info["top_value"] = float(max(counts, key=counts.get) == k)
     for m in others:
+        if m.anchor > 0:  # a confirmed-true row: how close is it, and does it agree?
+            gap = abs(_days(m.date) - dd)
+            if m.key == k:
+                info["days_to_true_same"] = min(info["days_to_true_same"], gap)
+            else:
+                info["days_to_true_diff"] = min(info["days_to_true_diff"], gap)
+                info["anchor_true_near_diff"] += gap <= 60
         if abs(_days(m.date) - dd) <= 60:
             w = m.weight if m.anchor == 0 else 3.0
             if m.key == k:
@@ -167,7 +178,8 @@ def row_features(r: Row, fs: list[Fact], t: truth_mod.Truth, page_info: dict) ->
     wi = worst_info or {"n_other": 0, "same_any": 0, "same_near": 0, "diff_near": 0, "anchor_true_same": 0,
                         "anchor_false_same": 0, "anchor_true_near_same": 0, "gap_days": 999, "prev_same": -1,
                         "next_same": -1, "top_value": 0, "n_values": 0, "w_same_near": 0.0, "w_diff_near": 0.0,
-                        "anchor_false_near_diff": 0}
+                        "anchor_false_near_diff": 0, "anchor_true_near_diff": 0, "days_to_true_diff": 400,
+                        "days_to_true_same": 400}
     n = len(fs)
     text = r.text
     sp = SPEAKER_RE.match(text)
@@ -191,6 +203,8 @@ def row_features(r: Row, fs: list[Fact], t: truth_mod.Truth, page_info: dict) ->
         wi["anchor_false_near_diff"], agg["sum_same_any"] / n if n else 0, agg["sum_diff_near"] / n if n else 0,
         page_info.get("twin", -1),
         wi.get("unit_match", -1), wi.get("rel_diff", -1), wi.get("elsewhere", -1), wi.get("score", -1),
+        wi["anchor_true_near_diff"], wi["days_to_true_diff"], wi["days_to_true_same"],
+        float(wi["days_to_true_diff"] < wi["days_to_true_same"]),
     ]
     return x, details, worst
 
@@ -231,18 +245,74 @@ def _norm(text: str) -> str:
     return " ".join(re.sub(r"[^\w%€$£.]+", " ", text.lower()).split()).rstrip(". ")
 
 
-def featurize(rows: list[Row], facts: dict[str, list[Fact]], lexicon: Lexicon, targets: set[str]):
+def reconcile(rows: list[Row], facts: dict[str, list[Fact]], t: truth_mod.Truth, lexicon: Lexicon,
+              targets: set[str], ctx: dict) -> tuple[dict[str, list[Fact]], int]:
+    """Let the knowledge base fix extraction. A value read in a sentence that exactly matches
+    what one (subject on the page, attribute) holds on the sentence's date is almost surely
+    that fact: if the attributor gave the value to an attribute where it makes no sense, or
+    dropped it, take the match. Lies never match, so this only rescues true rows from
+    looking false because of an extraction slip."""
+    index: dict[str, set] = defaultdict(set)
+    for (s, a), steps in t.kb.timelines.items():
+        for st in steps:
+            index[value_key(st.value)].add((s, a))
+    out, changed = dict(facts), 0
+    for r in rows:
+        if r.id not in targets or r.id not in ctx["readings"]:
+            continue
+        fs = list(facts.get(r.id, []))
+        subjects = set(ctx["subjects"].get(r.id, ()))
+        for v, start, end in ctx["readings"][r.id]:
+            k = value_key({kk: vv for kk, vv in v.items() if kk != "op"})
+            if v.get("op", "eq") != "eq":
+                continue
+            matches = []
+            for s, a in index.get(k, ()):
+                if s in subjects:
+                    st = t.kb.value_on(s, a, r.date)
+                    if st is not None and value_key(st.value) == k:
+                        matches.append((s, a))
+            if len(matches) != 1:
+                continue
+            s, a = matches[0]
+            at_span = [i for i, f in enumerate(fs) if f.span == (start, end)]
+            if any(fs[i].subject == s and fs[i].attribute == a for i in at_span):
+                continue
+            if any(f.subject == s and f.attribute == a for f in fs):
+                continue
+            new = Fact(s, a, v, (start, end), 0.5)
+            if at_span:
+                i = at_span[0]
+                old = fs[i]
+                st_old = t.kb.value_on(old.subject, old.attribute, r.date)
+                if st_old is not None and value_key(st_old.value) == value_key(old.value):
+                    continue  # the attributor's choice already agrees
+                fs[i] = new
+            else:
+                fs.append(new)
+            changed += 1
+        out[r.id] = fs
+    return out, changed
+
+
+def featurize(rows: list[Row], facts: dict[str, list[Fact]], lexicon: Lexicon, targets: set[str],
+              ctx: dict | None = None):
     t = truth_mod.build(lexicon, rows, facts)
+    if ctx:
+        facts, changed = reconcile(rows, facts, t, lexicon, targets, ctx)
+        if changed:
+            t = truth_mod.build(lexicon, rows, facts)
     pinfo = _page_info(rows, t, facts, set())
     out = {}
     for r in rows:
         if r.id in targets:
             out[r.id] = row_features(r, facts.get(r.id, []), t, pinfo[r.id])
+    t.facts = facts
     return out, t
 
 
 def label(rows: list[Row], facts: dict[str, list[Fact]], lexicon: Lexicon,
-          extracted: dict[str, list[Fact]] | None = None) -> tuple[list[Verdict], truth_mod.Truth]:
+          extracted: dict[str, list[Fact]] | None = None, ctx: dict | None = None) -> tuple[list[Verdict], truth_mod.Truth]:
     """facts: every row's facts (gold for labelled practice rows). extracted: what the
     attributor makes of the labelled rows without having seen them; a labelled row being
     hidden for training uses these, exactly like an unlabelled row."""
@@ -261,18 +331,19 @@ def label(rows: list[Row], facts: dict[str, list[Fact]], lexicon: Lexicon,
             continue
         rows_k = [replace(r, label="") if r.id in fold else r for r in rows]
         facts_k = {**facts, **{rid: extracted[rid] for rid in fold if rid in extracted}}
-        feats, _ = featurize(rows_k, facts_k, lexicon, fold)
+        feats, _ = featurize(rows_k, facts_k, lexicon, fold, ctx)
         for rid, (x, _, _) in feats.items():
             X.append(x)
             y.append(lab[rid])
 
-    feats, t = featurize(rows, facts, lexicon, {r.id for r in unlabelled})
+    feats, t = featurize(rows, facts, lexicon, {r.id for r in unlabelled}, ctx)
     if not unlabelled:
         return [], t
     Xu = np.asarray([feats[r.id][0] for r in unlabelled], dtype=float)
     if len(set(y)) >= 2:
-        model = HistGradientBoostingClassifier(max_iter=250, learning_rate=0.06, max_leaf_nodes=15,
-                                               l2_regularization=1.0, min_samples_leaf=10, random_state=0)
+        model = HistGradientBoostingClassifier(max_iter=MODEL["iter"], learning_rate=MODEL["lr"],
+                                               max_leaf_nodes=MODEL["leaves"], l2_regularization=1.0,
+                                               min_samples_leaf=MODEL["min_leaf"], random_state=0)
         model.fit(np.asarray(X, dtype=float), np.asarray(y))
         proba = model.predict_proba(Xu)
         classes = list(model.classes_)

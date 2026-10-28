@@ -1,6 +1,7 @@
 """The whole system as one function, used by run.py (Docker), scripts/eval.py and server/app.py."""
 from __future__ import annotations
 
+import os
 import time
 from dataclasses import dataclass, field
 from itertools import groupby
@@ -17,6 +18,7 @@ from .validate import normalize_text
 
 BUNDLED_PRACTICE = Path(__file__).resolve().parent.parent / "data" / "practice.csv"
 OOF_FOLDS = 5
+RECONCILE = os.environ.get("POLY_RECONCILE", "1") == "1"  # let the knowledge base correct extraction
 
 
 @dataclass
@@ -49,35 +51,6 @@ def run(rows: list[Row], lexicon: Lexicon, bundle: Bundle, *, claims: bool = Tru
     on the truth engine and judge skip the slow extraction.
     """
     stages: list[dict] = []
-    if cache and Path(cache).exists():
-        import pickle
-        facts, extracted = pickle.loads(Path(cache).read_bytes())
-        stages.append({"name": "attributor", "ms": 0.0, "count": sum(map(len, facts.values()))})
-    else:
-        facts, extracted = _extract(rows, lexicon, bundle, gold_extraction, stages)
-        if cache:
-            import pickle
-            Path(cache).parent.mkdir(parents=True, exist_ok=True)
-            Path(cache).write_bytes(pickle.dumps((facts, extracted)))
-
-    t = time.perf_counter()
-    truth.TIMER["ms"] = 0.0
-    verdicts, fitted = judge.label(rows, facts, lexicon, extracted)
-    kb = fitted.kb
-    total = (time.perf_counter() - t) * 1000
-    stages.append({"name": "truth", "ms": round(truth.TIMER["ms"], 1), "count": len(kb.timelines)})
-    stages.append({"name": "judge", "ms": round(total - truth.TIMER["ms"], 1), "count": len(verdicts)})
-
-    t = time.perf_counter()
-    out_claims = forge.generate(kb, {normalize_text(r.text) for r in rows}) if claims else []
-    stages.append({"name": "forge", "ms": round((time.perf_counter() - t) * 1000, 1), "count": len(out_claims)})
-
-    return Result(verdicts, out_claims, kb, facts, stages)
-
-
-def _extract(rows, lexicon, bundle, gold_extraction, stages):
-    """Linker, reader and attributor: every row's facts, plus the out-of-fold extraction of
-    the labelled rows (see judge.label)."""
 
     def stage(name, t0, count):
         stages.append({"name": name, "ms": round((time.perf_counter() - t0) * 1000, 1), "count": count})
@@ -92,8 +65,47 @@ def _extract(rows, lexicon, bundle, gold_extraction, stages):
               for r in rows}
     stage("reader", t, sum(map(len, values.values())))
 
-    # train the attributor on the practice rows the input labels (never on a hidden one)
+    if cache and Path(cache).exists():
+        import pickle
+        facts, extracted = pickle.loads(Path(cache).read_bytes())
+        stages.append({"name": "attributor", "ms": 0.0, "count": sum(map(len, facts.values()))})
+    else:
+        t = time.perf_counter()
+        facts, extracted = _extract(rows, lexicon, bundle, gold_extraction, linker, mentions, values)
+        stage("attributor", t, sum(map(len, facts.values())))
+        if cache:
+            import pickle
+            Path(cache).parent.mkdir(parents=True, exist_ok=True)
+            Path(cache).write_bytes(pickle.dumps((facts, extracted)))
+
+    # what the knowledge base may use to correct extraction (judge.reconcile)
+    ctx = None
+    if not gold_extraction and RECONCILE:
+        ctx = {"readings": {rid: [(v.value, v.start, v.end) for v in vs if not v.negated] +
+                                 [(a, v.start, v.end) for v in vs if not v.negated for a in v.alts]
+                            for rid, vs in values.items()},
+               "subjects": {rid: [m.subject for m in ms] for rid, ms in mentions.items()}}
+
     t = time.perf_counter()
+    truth.TIMER["ms"] = 0.0
+    verdicts, fitted = judge.label(rows, facts, lexicon, extracted, ctx)
+    facts = getattr(fitted, "facts", facts)
+    kb = fitted.kb
+    total = (time.perf_counter() - t) * 1000
+    stages.append({"name": "truth", "ms": round(truth.TIMER["ms"], 1), "count": len(kb.timelines)})
+    stages.append({"name": "judge", "ms": round(total - truth.TIMER["ms"], 1), "count": len(verdicts)})
+
+    t = time.perf_counter()
+    out_claims = forge.generate(kb, {normalize_text(r.text) for r in rows}) if claims else []
+    stages.append({"name": "forge", "ms": round((time.perf_counter() - t) * 1000, 1), "count": len(out_claims)})
+
+    return Result(verdicts, out_claims, kb, facts, stages)
+
+
+def _extract(rows, lexicon, bundle, gold_extraction, linker, mentions, values):
+    """The attributor: every row's facts, plus the out-of-fold extraction of the labelled
+    rows (see judge.label)."""
+    # train the attributor on the practice rows the input labels (never on a hidden one)
     labelled = {r.id for r in rows if r.label}
     train = [r for r in bundle.rows if r.id in labelled and r.id in bundle.forms]
     facts: dict[str, list[Fact]] = {}  # the best facts we have: gold for labelled practice rows
@@ -121,7 +133,6 @@ def _extract(rows, lexicon, bundle, gold_extraction, stages):
                 att_k = attributor_mod.Attributor(lexicon).fit(tr, bundle.forms, bundle_mentions)
                 for r, fs in zip(te, att_k.assign_many([(r, values[r.id], mentions[r.id]) for r in te])):
                     extracted[r.id] = fs
-    stage("attributor", t, sum(map(len, facts.values())))
     return facts, extracted
 
 
