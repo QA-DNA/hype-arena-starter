@@ -1,0 +1,81 @@
+k,strategy,worst_keys,lost_claims,E_given_wrong,drop_vs_E,keys
+1000,S0 top-k,1,104,637.6456,73.02820000000008,Hooly I/O 2026.date(104)
+1000,S0 top-k,5,203,568.5246,142.14920000000006,"Hooly I/O 2026.date(104), The May 2026 outage.date(40), Hooly Gemini.data_retention(23), Hooly Gemini.launched(23), Hooly Vault.planned_general_availability(22)"
+1000,S1 MMR l=0.5,1,97,623.1778,68.30959999999993,Hooly I/O 2026.date(97)
+1000,S1 MMR l=0.5,5,195,554.7214,136.76599999999996,"Hooly I/O 2026.date(97), The May 2026 outage.date(40), Hooly Gemini.data_retention(23), Hooly Gemini.launched(22), Bertram Gilfoil.joined(21)"
+1000,S1 MMR l=0.7,1,97,629.1716,68.30959999999993,Hooly I/O 2026.date(97)
+1000,S1 MMR l=0.7,5,187,565.9154,131.56579999999997,"Hooly I/O 2026.date(97), The May 2026 outage.date(32), Hooly Gemini.data_retention(23), Hooly Gemini.launched(22), Bertram Gilfoil.joined(21)"
+1000,S1 MMR l=0.85,1,100,637.617,70.43180000000007,Hooly I/O 2026.date(100)
+1000,S1 MMR l=0.85,5,196,570.4558,137.59300000000007,"Hooly I/O 2026.date(100), The May 2026 outage.date(38), Hooly Gemini.data_retention(23), Hooly Gemini.launched(23), Bertram Gilfoil.joined(21)"
+1000,S1 MMR l=0.95,1,104,637.4976,73.03059999999994,Hooly I/O 2026.date(104)
+1000,S1 MMR l=0.95,5,203,568.3766,142.15159999999992,"Hooly I/O 2026.date(104), The May 2026 outage.date(40), Hooly Gemini.data_retention(23), Hooly Gemini.launched(23), Hooly Vault.planned_general_availability(22)"
+1000,S2 cap C=3,1,3,634.3858,2.3659999999999854,Bertram Gilfoil.joined(3)
+1000,S2 cap C=3,5,15,627.2726,9.479199999999992,"Bertram Gilfoil.joined(3), Bertram Gilfoil.previous_employer(3), Erlich Bachmann.joined(3), Gemini Launch Night.attendees(3), Gemini Launch Night.date(3)"
+1000,S2 cap C=5,1,5,660.3402,3.814200000000028,Bertram Gilfoil.joined(5)
+1000,S2 cap C=5,5,25,646.799,17.35540000000003,"Bertram Gilfoil.joined(5), Holdan.previous_employer(5), Hooly.founded(5), Hooly.series_a_amount(5), Hooly AI Free.history_retention(5)"
+1000,S2 cap C=10,1,10,682.304,7.3256000000000085,Bertram Gilfoil.joined(10)
+1000,S2 cap C=10,5,47,656.3534,33.27620000000002,"Bertram Gilfoil.joined(10), Hooly.founded(10), Hooly AI Free.history_retention(10), Hooly AI Pro.support_first_response(10), Hooly Calendar.launched(10)"
+1000,S3 quota+MMR .85,1,155,595.7822,103.80320000000006,Hooly I/O 2026.date(155)
+1000,S3 quota+MMR .85,5,310,492.5212,207.06420000000003,"Hooly I/O 2026.date(155), The May 2026 outage.date(104), Hooly Gemini.data_retention(21), Hooly Gemini.launched(20), Bertram Gilfoil.joined(17)"
+1000,S4 cover mu=0.1,1,119,624.5276,81.95920000000001,Hooly I/O 2026.date(119)
+1000,S4 cover mu=0.1,5,206,563.2148,143.27200000000005,"Hooly I/O 2026.date(119), The May 2026 outage.date(30), Hooly Gemini.data_retention(23), Hooly Gemini.launched(22), Bertram Gilfoil.joined(21)"
+1000,S4 cover mu=0.3,1,115,611.8348,78.77179999999998,Hooly I/O 2026.date(115)
+1000,S4 cover mu=0.3,5,186,560.7276,129.8789999999999,"Hooly I/O 2026.date(115), Hooly Gemini.data_retention(21), Hooly Gemini.launched(20), Bertram Gilfoil.joined(19), Hooly Vault.planned_general_availability(19)"
+1000,S5 DPP greedy,1,85,633.1254,60.5942,Hooly I/O 2026.date(85)
+1000,S5 DPP greedy,5,155,582.6762,111.04340000000002,"Hooly I/O 2026.date(85), Hooly Gemini.data_retention(21), Hooly Gemini.launched(20), Hooly Vault.planned_general_availability(19), Bertram Gilfoil.joined(18)"
+1000,S6 cap C=5+MMR l=0.5,1,5,646.4658,3.814200000000028,Bertram Gilfoil.joined(5)
+1000,S6 cap C=5+MMR l=0.5,5,25,634.1162,16.163799999999924,"Bertram Gilfoil.joined(5), Holdan.previous_employer(5), Hooly.customers_in_the_eu(5), Hooly.founded(5), Hooly.series_a_amount(5)"
+1000,S6 cap C=5+MMR l=0.7,1,5,658.2416,3.814200000000028,Bertram Gilfoil.joined(5)
+1000,S6 cap C=5+MMR l=0.7,5,25,645.8646,16.19119999999998,"Bertram Gilfoil.joined(5), Holdan.previous_employer(5), Hooly.customers_in_the_eu(5), Hooly.founded(5), Hooly.series_a_amount(5)"
+1000,S6 cap C=5+MMR l=0.85,1,5,659.7364,3.814200000000028,Bertram Gilfoil.joined(5)
+1000,S6 cap C=5+MMR l=0.85,5,25,647.1814,16.369199999999978,"Bertram Gilfoil.joined(5), Holdan.previous_employer(5), Hooly.founded(5), Hooly.series_a_amount(5), Hooly.soc2_audit_start(5)"
+1000,S6 cap C=10+MMR l=0.5,1,10,665.396,7.3256000000000085,Bertram Gilfoil.joined(10)
+1000,S6 cap C=10+MMR l=0.5,5,47,639.4454,33.27620000000002,"Bertram Gilfoil.joined(10), Hooly.founded(10), Hooly AI Free.history_retention(10), Hooly AI Pro.support_first_response(10), Hooly Calendar.launched(10)"
+1000,S6 cap C=10+MMR l=0.7,1,10,675.8698,7.325599999999895,Bertram Gilfoil.joined(10)
+1000,S6 cap C=10+MMR l=0.7,5,47,649.9192,33.2761999999999,"Bertram Gilfoil.joined(10), Hooly.founded(10), Hooly AI Free.history_retention(10), Hooly AI Pro.support_first_response(10), Hooly Calendar.launched(10)"
+1000,S6 cap C=10+MMR l=0.85,1,10,679.7212,7.3256000000000085,Bertram Gilfoil.joined(10)
+1000,S6 cap C=10+MMR l=0.85,5,47,653.7706,33.27620000000002,"Bertram Gilfoil.joined(10), Hooly.founded(10), Hooly AI Free.history_retention(10), Hooly AI Pro.support_first_response(10), Hooly Calendar.launched(10)"
+1000,S7 cap C=10+top3 l=0.7,1,10,676.2296,7.340000000000032,Bertram Gilfoil.joined(10)
+1000,S7 cap C=10+top3 l=0.7,5,46,650.9392,32.63040000000001,"Bertram Gilfoil.joined(10), Hooly.founded(10), Hooly AI Free.history_retention(10), Hooly AI Pro.support_first_response(10), Hooly Calendar.launched(10)"
+1000,S7 cap C=10+top3 l=0.85,1,10,680.2934,7.340000000000032,Bertram Gilfoil.joined(10)
+1000,S7 cap C=10+top3 l=0.85,5,46,655.003,32.63040000000001,"Bertram Gilfoil.joined(10), Hooly.founded(10), Hooly AI Free.history_retention(10), Hooly AI Pro.support_first_response(10), Hooly Calendar.launched(10)"
+100,S0 top-k,1,3,80.7216,2.5234000000000094,Hooly Gemini.data_retention(3)
+100,S0 top-k,5,9,75.6822,7.56280000000001,"Hooly Gemini.data_retention(3), Hooly Gemini.cloud_provider(2), Hooly I/O 2026.date(2), Hooly Photos.end_to_end_encrypted_backups(2), Hooly Q1 2026 Results.call_length(2)"
+100,S1 MMR l=0.5,1,1,79.0994,0.8593999999999937,Bertram Gilfoil.joined(1)
+100,S1 MMR l=0.5,5,5,75.94,4.018799999999999,"Bertram Gilfoil.joined(1), Brightline Labs.integration_partner_of_flawless(1), Erlich Bachmann.joined(1), Gemini Launch Night.attendees(1), Gemini Launch Night.city(1)"
+100,S1 MMR l=0.7,1,1,81.4678,0.8594000000000079,Bertram Gilfoil.joined(1)
+100,S1 MMR l=0.7,5,5,78.1608,4.16640000000001,"Bertram Gilfoil.joined(1), Brightline Labs.integration_partner_of_flawless(1), Gemini Launch Night.attendees(1), Gemini Launch Night.city(1), Holdan.previous_employer(1)"
+100,S1 MMR l=0.85,1,1,81.9296,0.8594000000000079,Bertram Gilfoil.joined(1)
+100,S1 MMR l=0.85,5,5,78.573,4.216000000000008,"Bertram Gilfoil.joined(1), Bertram Gilfoil.previous_employer(1), Brightline Labs.integration_partner_of_flawless(1), Gemini Launch Night.attendees(1), Gemini Launch Night.city(1)"
+100,S1 MMR l=0.95,1,1,82.3092,0.8593999999999937,Bertram Gilfoil.joined(1)
+100,S1 MMR l=0.95,5,5,78.9526,4.215999999999994,"Bertram Gilfoil.joined(1), Bertram Gilfoil.previous_employer(1), Brightline Labs.integration_partner_of_flawless(1), Gemini Launch Night.attendees(1), Gemini Launch Night.city(1)"
+100,S2 cap C=3,1,3,80.7216,2.5234000000000094,Hooly Gemini.data_retention(3)
+100,S2 cap C=3,5,9,75.6822,7.56280000000001,"Hooly Gemini.data_retention(3), Hooly Gemini.cloud_provider(2), Hooly I/O 2026.date(2), Hooly Photos.end_to_end_encrypted_backups(2), Hooly Q1 2026 Results.call_length(2)"
+100,S2 cap C=5,1,3,80.7216,2.5234000000000094,Hooly Gemini.data_retention(3)
+100,S2 cap C=5,5,9,75.6822,7.56280000000001,"Hooly Gemini.data_retention(3), Hooly Gemini.cloud_provider(2), Hooly I/O 2026.date(2), Hooly Photos.end_to_end_encrypted_backups(2), Hooly Q1 2026 Results.call_length(2)"
+100,S2 cap C=10,1,3,80.7216,2.5234000000000094,Hooly Gemini.data_retention(3)
+100,S2 cap C=10,5,9,75.6822,7.56280000000001,"Hooly Gemini.data_retention(3), Hooly Gemini.cloud_provider(2), Hooly I/O 2026.date(2), Hooly Photos.end_to_end_encrypted_backups(2), Hooly Q1 2026 Results.call_length(2)"
+100,S3 quota+MMR .85,1,20,60.7252,15.315399999999997,Hooly I/O 2026.date(20)
+100,S3 quota+MMR .85,5,41,45.3644,30.676199999999994,"Hooly I/O 2026.date(20), Hooly Cloud.reliability_lead(7), Hooly Gemini.data_retention(7), Bertram Gilfoil.joined(4), Peter Gregori.chairs(4)"
+100,S4 cover mu=0.1,1,1,82.178,0.8594000000000079,Bertram Gilfoil.joined(1)
+100,S4 cover mu=0.1,5,5,78.8214,4.216000000000008,"Bertram Gilfoil.joined(1), Bertram Gilfoil.previous_employer(1), Brightline Labs.integration_partner_of_flawless(1), Gemini Launch Night.attendees(1), Gemini Launch Night.city(1)"
+100,S4 cover mu=0.3,1,1,66.433,0.7263999999999982,Bertram Gilfoil.joined(1)
+100,S4 cover mu=0.3,5,5,63.7106,3.4488000000000056,"Bertram Gilfoil.joined(1), Bertram Gilfoil.previous_employer(1), Brightline Labs.integration_partner_of_flawless(1), Dinesh Chugtay.joined(1), Erlich Bachmann.joined(1)"
+100,S5 DPP greedy,1,1,81.3824,0.8593999999999937,Bertram Gilfoil.joined(1)
+100,S5 DPP greedy,5,5,78.0258,4.215999999999994,"Bertram Gilfoil.joined(1), Bertram Gilfoil.previous_employer(1), Brightline Labs.integration_partner_of_flawless(1), Gemini Launch Night.attendees(1), Gemini Launch Night.city(1)"
+100,S6 cap C=5+MMR l=0.5,1,1,79.0994,0.8593999999999937,Bertram Gilfoil.joined(1)
+100,S6 cap C=5+MMR l=0.5,5,5,75.94,4.018799999999999,"Bertram Gilfoil.joined(1), Brightline Labs.integration_partner_of_flawless(1), Erlich Bachmann.joined(1), Gemini Launch Night.attendees(1), Gemini Launch Night.city(1)"
+100,S6 cap C=5+MMR l=0.7,1,1,81.4678,0.8594000000000079,Bertram Gilfoil.joined(1)
+100,S6 cap C=5+MMR l=0.7,5,5,78.1608,4.16640000000001,"Bertram Gilfoil.joined(1), Brightline Labs.integration_partner_of_flawless(1), Gemini Launch Night.attendees(1), Gemini Launch Night.city(1), Holdan.previous_employer(1)"
+100,S6 cap C=5+MMR l=0.85,1,1,81.9296,0.8594000000000079,Bertram Gilfoil.joined(1)
+100,S6 cap C=5+MMR l=0.85,5,5,78.573,4.216000000000008,"Bertram Gilfoil.joined(1), Bertram Gilfoil.previous_employer(1), Brightline Labs.integration_partner_of_flawless(1), Gemini Launch Night.attendees(1), Gemini Launch Night.city(1)"
+100,S6 cap C=10+MMR l=0.5,1,1,79.0994,0.8593999999999937,Bertram Gilfoil.joined(1)
+100,S6 cap C=10+MMR l=0.5,5,5,75.94,4.018799999999999,"Bertram Gilfoil.joined(1), Brightline Labs.integration_partner_of_flawless(1), Erlich Bachmann.joined(1), Gemini Launch Night.attendees(1), Gemini Launch Night.city(1)"
+100,S6 cap C=10+MMR l=0.7,1,1,81.4678,0.8594000000000079,Bertram Gilfoil.joined(1)
+100,S6 cap C=10+MMR l=0.7,5,5,78.1608,4.16640000000001,"Bertram Gilfoil.joined(1), Brightline Labs.integration_partner_of_flawless(1), Gemini Launch Night.attendees(1), Gemini Launch Night.city(1), Holdan.previous_employer(1)"
+100,S6 cap C=10+MMR l=0.85,1,1,81.9296,0.8594000000000079,Bertram Gilfoil.joined(1)
+100,S6 cap C=10+MMR l=0.85,5,5,78.573,4.216000000000008,"Bertram Gilfoil.joined(1), Bertram Gilfoil.previous_employer(1), Brightline Labs.integration_partner_of_flawless(1), Gemini Launch Night.attendees(1), Gemini Launch Night.city(1)"
+100,S7 cap C=10+top3 l=0.7,1,1,80.8368,0.8594000000000079,Bertram Gilfoil.joined(1)
+100,S7 cap C=10+top3 l=0.7,5,5,77.4802,4.216000000000008,"Bertram Gilfoil.joined(1), Bertram Gilfoil.previous_employer(1), Brightline Labs.integration_partner_of_flawless(1), Gemini Launch Night.attendees(1), Gemini Launch Night.city(1)"
+100,S7 cap C=10+top3 l=0.85,1,1,82.1166,0.8593999999999937,Bertram Gilfoil.joined(1)
+100,S7 cap C=10+top3 l=0.85,5,5,78.76,4.215999999999994,"Bertram Gilfoil.joined(1), Bertram Gilfoil.previous_employer(1), Brightline Labs.integration_partner_of_flawless(1), Gemini Launch Night.attendees(1), Gemini Launch Night.city(1)"
