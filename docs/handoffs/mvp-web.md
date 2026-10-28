@@ -8,4 +8,8 @@ The stack remains local HTML/CSS/JavaScript with system fonts and no added brows
 
 API agreement: [live MVP interfaces](live-mvp.md). Source preview uses GET /api/dataset; submission uses POST /api/runs; ongoing jobs poll GET /api/runs/current only while active; completed CSV uses GET /api/runs/current/output.csv. Poll errors are visible and retried. File input is bounded to 16 MiB before submission; server validation remains authoritative.
 
-Validation: node --check apps/web/app.js passed. Real API/browser validation is performed by the integrator after combining the Rust engine and frontend. No claim is made here that organizer semantic judging or confidence calibration passed.
+Validation: node --check apps/web/app.js passed. Headless Chrome against the real API at 127.0.0.1:8787 passed the complete practice run: 100% progress, five actual processing log events, 1,000 generated claims, source fact and evidence inspection, claim JSON inspection, and a 270,144-byte CSV download. Screenshots were inspected at 1440 pixels; workbench, claims and architecture views had no horizontal overflow at 390 pixels. No JavaScript exceptions occurred.
+
+A second browser run uploaded a real three-row CSV through the file input, preserved a known false label, classified the unknown rows, rendered a hostile HTML string as literal text with no injected image or script execution, and downloaded output. Malformed CSV was rejected with HTTP 422. Ignored QA artifacts are in artifacts/web-live-qa and artifacts/web-upload-qa in the isolated checkout. No claim is made here that organizer semantic judging or confidence calibration passed.
+
+Follow-up display corrections: money uses the contract's per billing period, and score percentages retain one decimal when needed so small nonzero probabilities remain visible. Successful polling clears transient connectivity errors.

@@ -12,7 +12,7 @@ function element(tag, className, value) {
   return node;
 }
 function formatNumber(value) { return Number(value || 0).toLocaleString("en-US"); }
-function percent(value) { return `${Math.round(Math.max(0, Math.min(1, Number(value) || 0)) * 100)}%`; }
+function percent(value) { return `${Number((Math.max(0, Math.min(1, Number(value) || 0)) * 100).toFixed(1))}%`; }
 function known(row) { return typeof row.known_label === "string" && row.known_label.length > 0; }
 function activateTab(name) {
   for (const tab of tabs) {
@@ -83,7 +83,8 @@ function factValue(value) {
   const op = value.op ? `${value.op} ` : "";
   const unit = value.unit ? ` ${value.unit}` : "";
   const currency = value.currency ? ` ${value.currency}` : "";
-  const period = value.period ? ` / ${value.period}` : "";
+  const billingPeriod = value.per || value.period;
+  const period = billingPeriod ? ` / ${billingPeriod}` : "";
   return `${op}${raw}${unit}${currency}${period}${value.kind === "percent" ? "%" : ""}`;
 }
 function factCard(fact) {
@@ -271,7 +272,7 @@ function schedulePoll(delay = 800) {
 async function poll() {
   if (state.polling) return;
   state.polling = true;
-  try { updateJob(await request("/api/runs/current")); }
+  try { const job = await request("/api/runs/current"); actionError(""); updateJob(job); }
   catch (error) { actionError(`Could not read the run: ${error.message}. Retrying…`); schedulePoll(2500); }
   finally { state.polling = false; }
 }
