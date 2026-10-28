@@ -25,6 +25,7 @@ Original files are checked against [the checksum manifest](upstream-files.json).
 | [Claim generation research](research/claim-generation.md) | The separate generator: the five KB queries it calls, the pipeline to 1,000 claims, contract rules and 4 techniques |
 | [MMR research](research/mmr.md) | MMR and diversity for claim selection and labelling, with measured practice experiments; scripts and source reports in [analysis/mmr](../analysis/mmr/README.md) |
 | [Neural text layers](research/neural-embeddings.md) | Embeddings, NLI cross-encoders, fine-tuning, typed-value grammar and subject resolution measured on practice (2026-10-28): what the neural layer is for, what to use, x86 cost; scripts and JSONL results in [labs/embedding-experiments](../labs/embedding-experiments/README.md) |
+| [Generator reverse-engineering](research/generator-reverse-engineering.md) | How deterministic the organizers' generator is, measured on practice (2026-10-28): ids, pages, closed lexicon and label semantics are exact; wording is free paraphrase (89% unique templates); lies are mostly time-shifted real values or upward numeric perturbations; unsure has no text rule; ceiling estimate for a dense universe; scripts in [labs/generator-reverse-engineering](../labs/generator-reverse-engineering/README.md) |
 
 ## Official sources
 

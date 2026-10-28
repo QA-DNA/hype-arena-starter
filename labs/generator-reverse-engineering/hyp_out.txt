@@ -1,0 +1,33 @@
+(a) EXACT MULTIPLES x0.1 x0.2 x0.4 x0.5 x2 x2.5 x5 x10 of the reference true value at the row date (1% or display rounding)
+  numeric false rows whose value differs from the reference: 184; in a multiple bucket: 45 (0.245); buckets {0.2: 2, 0.4: 5, 0.5: 7, 2: 9, 2.5: 12, 5: 5, 10: 5}
+  TRUE numeric rows whose value is such a multiple of ANOTHER true value of the same key: 219 of 1148 (0.191)
+  rule "value is a listed multiple of the reference true value" -> false: fires 78, hits 45; precision 0.577, recall 0.162
+(b) STALE: the row repeats an OLD true value of the key after a different true value appeared (change date <= row date)
+  false rows stale: 57 of 277 (0.206); true rows stale: 13 of 1581 (0.008); unsure stale: 0
+  rule "stale old value" -> false: fires 70, hits 57; precision 0.814, recall 0.206
+  (companion) premature, a value first true LATER than the row: false 44, true 193, unsure 0
+  rule "premature future value" -> false: fires 237, hits 44; precision 0.186, recall 0.159
+(c) KEYS WHOSE TRUE VALUE NEVER CHANGED (>= 2 true rows, one unit-normalised value)
+  rows touching changing          : 1384 rows, false 206 (0.149), unsure 12 (0.009)
+  rows touching stable            :  373 rows, false  38 (0.102), unsure 9 (0.024)
+  rows touching mixed stable/one  :   14 rows, false   6 (0.429), unsure 1 (0.071)
+  rows touching one true row      :  118 rows, false  26 (0.220), unsure 10 (0.085)
+  rows touching no true row       :    8 rows, false   1 (0.125), unsure 7 (0.875)
+  keys: {'changing': 251, 'stable': 148, 'one true row': 103, 'no true row': 12}
+  rule "all facts on never-changing keys" -> TRUE: fires 373, hits 326; precision 0.874, recall 0.206
+(d) PAGE GENRE: first person / social-post style
+  fp_singular                            rows with it: n=  64 false 0.219 unsure 0.078 | rows on its  41 pages: n= 217 false 0.276 unsure 0.065 | rest: n=1680 false 0.129 unsure 0.015
+  fp_plural                              rows with it: n=  78 false 0.205 unsure 0.013 | rows on its  60 pages: n= 417 false 0.141 unsure 0.024 | rest: n=1480 false 0.147 unsure 0.020
+  exclamation                            rows with it: n=   1 false 0.000 unsure 0.000 | rows on its   1 pages: n=   9 false 0.222 unsure 0.000 | rest: n=1888 false 0.146 unsure 0.021
+  speaker_tag                            rows with it: n= 149 false 0.148 unsure 0.000 | rows on its  36 pages: n= 333 false 0.126 unsure 0.012 | rest: n=1564 false 0.150 unsure 0.022
+  hype                                   rows with it: n=  23 false 0.304 unsure 0.261 | rows on its  16 pages: n= 109 false 0.294 unsure 0.083 | rest: n=1788 false 0.137 unsure 0.017
+  social (fp_singular|exclamation|hype)  rows with it: n=  83 false 0.241 unsure 0.108 | rows on its  45 pages: n= 244 false 0.266 unsure 0.057 | rest: n=1653 false 0.128 unsure 0.015
+  rule "row is on a social-genre page" -> false: fires 244, hits 65; precision 0.266, recall 0.235
+  rule "row itself has the social style" -> false: fires 83, hits 20; precision 0.241, recall 0.072
+(e) UNSURE: single rules over all rows (precision, recall on the 39 unsure)
+  joke_tail                          -> unsure: fires 75, hits 12; precision 0.160, recall 0.308; false rows hit 15, true rows hit 48
+  undercutting_clause                -> unsure: fires 68, hits 7; precision 0.103, recall 0.179; false rows hit 6, true rows hit 55
+  long_tail_after_value              -> unsure: fires 321, hits 12; precision 0.037, recall 0.308; false rows hit 52, true rows hit 257
+  missing_subject                    -> unsure: fires 642, hits 14; precision 0.022, recall 0.359; false rows hit 90, true rows hit 538
+  date_in_text_contradicts_row_date  -> unsure: fires 41, hits 2; precision 0.049, recall 0.051; false rows hit 5, true rows hit 34
+  no_true_value_at_or_before_date    -> unsure: fires 518, hits 28; precision 0.054, recall 0.718; false rows hit 63, true rows hit 427

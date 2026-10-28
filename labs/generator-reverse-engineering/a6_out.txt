@@ -1,0 +1,8 @@
+rows 1897 feature counts: {'event': 2, 'two_subjects': 123, 'change': 20, 'now': 86, 'compare': 26, 'relation_words': 52, 'value_is_entity': 40}
+claim type mapping (priority compare > change > at_event > relation > fact): {'fact': 1862, 'change': 20, 'relation': 12, 'compare': 1, 'at_event': 2}
+fact | Holdan started at Hooly on 12 January 2026. || From today, Hooly Cloud's reliability team answers to Holdan. || Before Hooly, Holdan ran incident response at Nimbus Cloud, the provider Gemini still runs on. || He begins with a small crew of 4 engineers, and he is hiring.
+change | Our 14 sponsors filled the demo hall from morning to night. || The template gallery in Hooly Docs grows to 80 templates. || Hooly Docs comes with 30 templates, from meeting notes to invoices. || Our hallucination rate fell to 3.8%, and Gemini connects to 22 integrations.
+relation | "Jules is Gemini for code," said Richard Hendrix, our CTO. || Hooly Jules version 1.2 is the coding assistant built on Gemini, led by Nelson Bighettie. || The Hooly Berlin Office is Hooly's headquarters for now. || Headquarters status: the Hooly Berlin Office is Hooly's headquarters.
+compare | Hooly, the company behind Hooly Gemini, today announced a €18 million Series A financing round led by Raviqa Capital.
+at_event | It was our first major outage, and we have changed how deployments roll out so it is the last. || Hooly has never had a major outage.
+gold forms: every practice form is a list of plain facts (subject, attribute, value); none carries event, link, from/to or op between two facts

@@ -1,0 +1,24 @@
+ORACLE (refs = true rows of other pages): acc 0.861; lies caught 0.834; true rows flagged 0.134
+   true rows (1581): equal 1259 (0.796), between 28 (0.018), outside 212 (0.134), none 82 (0.052)
+   false rows (277): equal 45 (0.162), between 0 (0.000), outside 231 (0.834), none 1 (0.004)
+UNLABELLED (refs = all other-page rows): acc 0.812; lies caught 0.762; true rows flagged 0.180
+   true rows (1581): equal 1216 (0.769), between 34 (0.022), outside 284 (0.180), none 47 (0.030)
+   false rows (277): equal 61 (0.220), between 5 (0.018), outside 211 (0.762), none 0 (0.000)
+DENSITY CURVE, unlabelled refs, random fraction of the other rows kept as references (5 seeds):
+  refs 0.10 x practice (~0.5 rows/key): acc 0.721, lies caught 0.373, true flagged 0.218
+  refs 0.25 x practice (~1.2 rows/key): acc 0.709, lies caught 0.555, true flagged 0.264
+  refs 0.50 x practice (~2.3 rows/key): acc 0.730, lies caught 0.682, true flagged 0.262
+  refs 0.75 x practice (~3.5 rows/key): acc 0.775, lies caught 0.738, true flagged 0.218
+  refs 1.00 x practice (~4.7 rows/key): acc 0.812, lies caught 0.762, true flagged 0.180
+always-true baseline on the 1,858 true+false rows: 0.851
+unsure rows (39) under the ORACLE timeline: {'outside': 14, 'equal': 18, 'none': 7}
+unit-normalised: keys with >=2 true rows 399; all agree 148 (0.371); change 251 (0.629)
+  distinct true values per such key: mean 1.86, median 2; true rows per key mean 4.75; rows per distinct value 2.55
+true facts 1998; (key, value) pairs 847; pairs stated once 338; Good-Turing P(a new true fact states an unseen value of its key) = 0.169
+re-use vs density: share of TRUE facts whose exact (key, value) is stated on another page, references subsampled:
+  refs 0.10 x practice: 0.251
+  refs 0.25 x practice: 0.473
+  refs 0.50 x practice: 0.672
+  refs 0.75 x practice: 0.785
+  refs 1.00 x practice: 0.858
+false (key, value) pairs never true for the key: 139; stated on >= 2 pages: 14
