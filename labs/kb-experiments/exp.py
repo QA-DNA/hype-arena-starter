@@ -1,7 +1,7 @@
 """Truth-timeline experiments on VERIDYCT practice.csv (V0-V8, R80/R10 regimes).
 Run: .venv/bin/python exp.py [variants...]
 """
-import csv, json, math, random, sys, datetime as dt, collections as C
+import csv, json, math, os, random, sys, datetime as dt, collections as C
 import numpy as np
 from sklearn.metrics import f1_score, confusion_matrix
 from sklearn.isotonic import IsotonicRegression
@@ -89,6 +89,9 @@ def load():
 
 
 ROWS = load()
+if os.environ.get('KB_COPY'):  # default off; v12.py stress test appends synthetic hidden copies (see copies.py)
+    from copies import augment
+    ROWS = augment(ROWS, os.environ['KB_COPY'])
 NP = max(r['page'] for r in ROWS) + 1
 PAGE = np.array([r['page'] for r in ROWS])
 Y = np.array([r['label'] for r in ROWS])

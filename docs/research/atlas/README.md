@@ -3,7 +3,7 @@
 Sources for [the knowledge base research](../knowledge-base.md) and its interactive page
 (<https://claude.ai/artifact/NJFDojtSqqVys7a6pCCfeN>). Edit these, not the generated files.
 
-- `catalogue.json`: the 63 entries. Fields: name, kind, steps, verdict, insanity, what, fit,
+- `catalogue.json`: the 59 KB entries (the 4 claim generator entries moved to [claim generation](../claim-generation.md)). Fields: name, kind, steps, verdict, insanity, what, fit,
   pros, cons, rust, python, why, links.
 - `summary.md`: the report text; `<!-- CATALOGUE -->` marks where the entries go.
 - `template.html`: the page shell, with placeholders `__SUMMARY__`, `__ENTRIES__`, `__DATE__`
