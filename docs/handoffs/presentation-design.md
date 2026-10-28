@@ -29,3 +29,29 @@ Verification before initial integration: node --check apps/web/app.js passes;
 static HTML parsing confirms unique IDs and all literal JS DOM references resolve.
 Real API/browser verification will follow once the integrator serves updated
 endpoints and PNG assets. No runtime or model code was changed.
+
+## Verified against the live integrated server
+
+Real Chrome/CDP at http://127.0.0.1:8787 passed on 2026-10-28:
+
+- All four tabs load with no JavaScript exceptions.
+- Hidden-label test runs the actual API and reports 80.3% accuracy, 305 correct of
+  380, nine confusion matrix cells and three class metric rows. The headline uses
+  the same measured report. The view explicitly shows its score below the 85.3%
+  majority baseline. Filtering wrong predictions contains only incorrect rows.
+- Reviewed demo loads 20 rows with all runtime labels empty; actual Run completes
+  and shows 70% agreement (14/20) with separate LLM references. Per-row model and
+  reference labels, review reasons, sources and model evidence are inspectable.
+- All three CSV downloads return 20 data rows. Unlabelled CSV has exactly id,text,
+  date,label with every label empty. Dynamic comparison includes real model labels,
+  LLM references, agreement and all three score columns.
+- Both PNGs load at natural size: stack 1536x1024; pipeline 1774x887. Both have alt
+  descriptions, full-resolution links and download links. Screenshots were visually
+  inspected; the diagrams and evaluation cards render cleanly.
+- Desktop 1440 px and mobile 390 px have no horizontal page overflow across
+  workbench, accuracy and architecture views.
+
+Ignored QA artifacts under this isolated checkout's artifacts/presentation-qa/
+include evaluation, error inspector, model/reference comparison, architecture,
+mobile PNG screenshots and result.json. The API was left with a completed reviewed
+20-row run and a completed measured evaluation so the presentation can show both.
