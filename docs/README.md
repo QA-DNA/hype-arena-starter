@@ -24,6 +24,7 @@ Original files are checked against [the checksum manifest](upstream-files.json).
 | [Knowledge base research](research/knowledge-base.md) | 59 techniques per KB step with verdicts, Rust availability and measured practice results; raw worker reports in [research/notes](research/notes/README.md), atlas sources in [research/atlas](research/atlas/README.md) |
 | [Claim generation research](research/claim-generation.md) | The separate generator: the five KB queries it calls, the pipeline to 1,000 claims, contract rules and 4 techniques |
 | [MMR research](research/mmr.md) | MMR and diversity for claim selection and labelling, with measured practice experiments; scripts and source reports in [analysis/mmr](../analysis/mmr/README.md) |
+| [Neural text layers](research/neural-embeddings.md) | Embeddings, NLI cross-encoders, fine-tuning, typed-value grammar and subject resolution measured on practice (2026-10-28): what the neural layer is for, what to use, x86 cost; scripts and JSONL results in [labs/embedding-experiments](../labs/embedding-experiments/README.md) |
 
 ## Official sources
 
