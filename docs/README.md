@@ -16,6 +16,7 @@ Original files are checked against [the checksum manifest](upstream-files.json).
 | [CPU decision](decisions/0001-cpu-first.md) | Competition execution target |
 | [Handoff template](handoffs/TEMPLATE.md) | Continue a task without rediscovery |
 | [Foundation handoff](handoffs/workspace-foundation.md) | What this milestone delivers |
+| [Practice × Lexicon Lab](../labs/practice-lexicon/README.md) | Offline graph, chronological practice queries, correlations and lab tests |
 
 ## Official sources
 

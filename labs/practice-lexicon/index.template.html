@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>VERIDYCT · Practice & Lexicon Lab</title>
+  <style>/* LAB_STYLES */</style>
+</head>
+<body>
+<aside class="sidebar">
+  <a class="brand" href="#" aria-label="VERIDYCT Lab, resetează"><span class="brand-icon">V<span>•</span></span><span>VERIDYCT<small>DATA EXPLORATION LAB</small></span></a>
+  <div class="sidebar-section">WORKSPACE / 01</div>
+  <nav aria-label="Vederi laborator">
+    <button class="nav active" data-view="graph"><span>⌘</span> Harta conexiunilor <b>01</b></button>
+    <button class="nav" data-view="timeline"><span>≡</span> Query-uri în timp <b>02</b></button>
+    <button class="nav" data-view="correlations"><span>⋈</span> Corelații <b>03</b></button>
+  </nav>
+  <div class="sidebar-note"><span class="live-dot"></span> DATE LOCALE<span>practice.csv<br>lexicon.json</span></div>
+  <div class="sidebar-bottom"><span>JEV / Teo · Edi · Mihai</span><small>Un laborator pentru înțelegere.<br>Universul fictiv Hooly.</small><button id="about-button">Cum citesc această hartă? ↗</button></div>
+</aside>
+<main>
+  <header class="topbar"><span>VERIDYCT <i>/</i> Laborator de date</span><span class="offline"><span class="live-dot"></span> Offline · fără servicii externe</span></header>
+  <section class="intro"><div><div class="eyebrow">PRACTICE × LEXICON</div><h1>Din afirmații, în conexiuni<span>.</span></h1><p>Explorează cine, ce și când. Urmărește fiecare legătură până la rândul care o susține.</p></div><button id="export" class="button export">↓ Exportă selecția CSV</button></section>
+  <section id="stats" class="stats" aria-label="Sumar date"></section>
+  <section class="filters" aria-label="Filtre comune">
+    <label class="search"><span>⌕</span><input id="search" type="search" placeholder="Caută un query, subiect, atribut sau ID…" aria-label="Caută în date"></label>
+    <label>Subiect<select id="subject-filter"><option value="">Toate subiectele</option></select></label>
+    <label>Etichetă<select id="label-filter"><option value="">Toate etichetele</option><option value="true">true</option><option value="false">false</option><option value="unsure">unsure</option></select></label>
+    <label>De la<input id="date-from" type="date" aria-label="Data de început"></label>
+    <label>Până la<input id="date-to" type="date" aria-label="Data de sfârșit"></label>
+    <button id="reset" class="icon-button" title="Resetează toate filtrele" aria-label="Resetează toate filtrele">↺</button>
+  </section>
+  <div id="filter-status" class="filter-status" role="status" aria-live="polite"></div>
+  <section id="monthly" class="monthly" aria-label="Distribuție cronologică"></section>
+  <section id="graph-view" class="view">
+    <div class="workspace-grid" id="graph-workspace">
+      <article class="panel graph-panel"><div class="panel-heading"><div><div class="eyebrow">LEXICON EXPLORER</div><h2 id="graph-title">Harta conexiunilor</h2></div><div class="graph-heading-actions"><div class="segmented" aria-label="Tip de graf"><button id="relations-mode" class="active" aria-pressed="true">Relații</button><button id="attributes-mode" aria-pressed="false">Atribute</button></div><button id="graph-expand" class="button expand-button" aria-label="Deschide graful pe tot ecranul" title="Ecran complet · F">⛶ <span>Ecran complet</span></button><button id="graph-close" class="button" hidden aria-label="Închide graful pe tot ecranul">Închide <kbd>Esc</kbd></button></div></div>
+        <div class="graph-toolbar"><button id="graph-back" class="canvas-button" disabled title="Subiectul anterior" aria-label="Subiectul anterior">←</button><label class="node-search"><span>⌕</span><input id="graph-search" type="search" placeholder="Găsește un nod…" aria-label="Caută un nod în graf" autocomplete="off" list="graph-names"><datalist id="graph-names"></datalist></label><label class="focus-label">Subiect <select id="graph-focus"></select></label><label class="checkbox"><input id="graph-all" type="checkbox"> Tot lexiconul</label><button id="graph-details-toggle" class="canvas-button" aria-pressed="true">◧ Detalii</button></div>
+        <div id="graph-stage" class="graph-stage"><svg id="graph" viewBox="0 0 900 500" tabindex="0" aria-label="Graf interactiv al lexiconului. Rotița pentru zoom, trage pentru deplasare."></svg><div class="canvas-status" id="graph-status" role="status"></div><div class="zoom"><button id="zoom-out" aria-label="Micșorează graful">−</button><output id="graph-zoom" aria-label="Nivel zoom">100%</output><button id="zoom-in" aria-label="Mărește graful">+</button><span></span><button id="graph-fit" aria-label="Încadrează întregul graf" title="Încadrează · 0">⊡</button></div><div class="graph-hint">Trage pentru deplasare <i>·</i> Scroll pentru zoom <i>·</i> Dublu click pentru apropiere</div></div>
+        <div class="graph-footer"><div class="legend"><span><i class="dot true"></i>true</span><span><i class="dot false"></i>false</span><span><i class="dot unsure"></i>unsure</span></div><span id="graph-caption"></span></div>
+      </article>
+      <aside id="entity-panel" class="panel entity-panel" aria-label="Detalii subiect"></aside>
+      <aside id="graph-evidence" class="panel entity-panel" aria-label="Sursele din graf" hidden></aside>
+    </div>
+    <div class="section-title"><div><div class="eyebrow">DE LA HARTĂ LA SURSĂ</div><h2>Afirmațiile din selecție</h2></div><button class="text-button" data-view="timeline">Deschide cronologia ↗</button></div>
+  </section>
+  <section id="correlations-view" class="view" hidden>
+    <div class="section-title"><div><div class="eyebrow">ACELAȘI SUBIECT + ACELAȘI ATRIBUT</div><h2>Valori care merită urmărite</h2></div><label class="checkbox"><input id="variations-only" type="checkbox" checked> Doar valori diferite</label></div>
+    <p class="explanation">Grupări descriptive din <code>form</code>, ordonate după numărul de valori distincte. O valoare diferită poate însemna o actualizare, o afirmație falsă sau o reprezentare diferită; nu este automat o contradicție.</p>
+    <div id="correlation-list" class="correlation-grid"></div><button id="more-correlations" class="button" hidden>Mai multe grupuri</button>
+  </section>
+  <section id="rows-section" class="rows-layout">
+    <article class="panel rows-panel"><div class="panel-heading"><div><div class="eyebrow">PRACTICE / QUERY-URI</div><h2 id="rows-title">Cronologia afirmațiilor</h2></div><select id="sort" aria-label="Ordinea cronologică"><option value="asc">Cele mai vechi întâi ↑</option><option value="desc">Cele mai noi întâi ↓</option></select></div>
+      <div id="scope-banner" class="scope-banner" hidden></div><div id="row-list"></div><div id="pagination" class="pagination"></div>
+    </article>
+    <aside id="query-panel" class="panel query-panel" aria-live="polite" aria-label="Detalii query"></aside>
+  </section>
+  <footer><span>DATE, NU PREDICȚII · Etichetele provin din practice.csv.</span><button id="provenance-button" class="text-button">Surse & metodă ↗</button></footer>
+</main>
+<dialog id="about"><button id="close-about" class="dialog-close" aria-label="Închide">×</button><div class="eyebrow">GHID DE LECTURĂ</div><h2>Cum se leagă datele</h2><div id="about-content"></div></dialog>
+<dialog id="graph-dialog" aria-labelledby="graph-title"></dialog>
+<script type="application/json" id="lab-data">/* LAB_DATA */</script>
+<script type="module">/* LAB_CODE */</script>
+</body>
+</html>
