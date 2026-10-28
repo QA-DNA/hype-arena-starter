@@ -1,6 +1,6 @@
 # Evaluation-suite runs: our solution on the teammate's synthetic suite
 
-- Status: active (worker D still running at 23:00 EET, 2026-10-28; everything else done)
+- Status: done (2026-10-28, 23:10 EET); follow-ups below
 - Human owner: Edi (mogaeduard)
 - Agent role, if used: orchestrator plus four analysis workers (A scorer and engine, B practice-trained extractor,
   C suite-trained extractor, D real-practice transfer)
@@ -35,11 +35,9 @@ reports in [labs/evaluation-suite-runs](../../labs/evaluation-suite-runs/README.
 
 ## Open questions and next step
 
-1. Worker D: B's extractor on the real `data/practice.csv` under page-grouped 5-fold CV (every practice-derived table
-   restricted to training folds), top error classes, then V9 end to end with extracted versus gold forms under R80 and
-   R10. Its partial outputs are in `/tmp/veridyct-evalsuite/D/` and `results/D.jsonl`. If it was interrupted, rerun
-   from `labs/evaluation-suite-runs/D/run_cv.py` and the `e2e*.py` scripts, then fill the "Real practice" section of the
-   results document.
+1. Worker D finished: on real practice the suite-tuned extractor gets 0.610 row-exact forms and V9 with extracted
+   forms scores below always-true (R80 0.646 vs 0.667 points per row, R10 0.596 vs 0.662). Next: plug the w11 page-aware
+   subject resolver into B's extractor, choose V9's threshold by arena points, and re-measure under the same CV.
 2. Fix the V9 `decide()` dtype bug (`labs/kb-experiments/v9.py:128`, `v12.py:356`: `'unsure'` stored as `'unsur'`) and
    rerun the published V9/V12 commands to confirm their numbers are unchanged.
 3. Team decision: port B's extractor (Python, about 600 lines of rules plus a TF-IDF scorer) to Rust, or ship it some

@@ -13,8 +13,10 @@ and per-worker reports: [labs/evaluation-suite-runs](../../labs/evaluation-suite
   states its validity interval ("From 1 October 2025 through 31 January 2026, Pixel 10 comes with 130 GB of storage."),
   so truth is a lookup. Treating anchors as point statements on a random day of their interval, as practice rows are,
   drops gold-form accuracy to 0.72 to 0.76. And the prose is a finite template generator: C learned all of it.
-- **The real-prose number is the one that matters for the competition.** Worker D measures B's extractor on the real
-  practice file under page-grouped cross-validation and feeds it to V9; see "Real practice" below.
+- **It does not transfer to the real practice prose.** The same practice-trained extractor gets 0.610 row-exact forms on
+  the official practice file under page-grouped cross-validation (0.736 on single-fact rows, below our previous best
+  0.807), and V9 fed with those forms scores fewer arena points than always-true at both label ratios. The suite tests
+  rows that name their subject; 34% of real rows do not, and real multi-fact rows come out as one fact per clause.
 
 ## Results on hidden targets (18,103 per main world)
 
@@ -50,10 +52,56 @@ plus 39 s of training, and the engine adds 0.15 s. Everything fits the 30-minute
 
 ## Real practice (worker D)
 
-Pending at the time of writing: B's extractor under page-grouped 5-fold cross-validation on `data/practice.csv` (every
-practice-derived table restricted to the training folds), error classes, and V9 end to end with extracted forms
-against gold forms under the R80 and R10 regimes. Results land in `labs/evaluation-suite-runs/D/` and
-`results/D.jsonl`; the previous best on real practice was 0.807 to 0.834 exact form on single-fact rows.
+B's extractor (v1) on the official `data/practice.csv`, page-grouped 5-fold cross-validation, every practice-derived
+table (TF-IDF scorer, attribute kinds, unit sets) built from the training folds only. The w7 grammar and B's hand rules
+were tuned with practice or the synthetic dev world visible, so cross-validation isolates only the learned parts.
+
+| Slice | Rows | Pair P / R / F1 | Value F1 | Row exact |
+|---|---:|---|---:|---:|
+| All rows, CV | 1,897 | 0.802 / 0.657 / 0.722 | 0.705 | **0.610** |
+| All rows, trained on all (upper bound) | 1,897 | 0.832 / 0.684 / 0.751 | 0.734 | 0.642 |
+| Single-fact, subject named in the row | 923 | 0.933 / 0.944 / 0.938 | 0.923 | 0.914 |
+| Single-fact, subject not named | 544 | 0.476 / 0.441 / 0.458 | 0.450 | 0.432 |
+| Multi-fact, all subjects named | 323 | 0.955 / 0.576 / 0.719 | 0.689 | 0.245 |
+| Multi-fact, a subject not named | 107 | 0.581 / 0.265 / 0.364 | 0.352 | 0.000 |
+
+Single-fact exact: previous best (w7 + w11 resolver + classifier) 0.807 under CV; B v1 0.742; a post-hoc page-context
+tweak (subject from any earlier row of the page, then later rows) 0.815.
+
+Error classes (739 non-exact rows): 387 (52%) need the page (subject never named on the page, named on an earlier or
+later row, multi-fact rows with an unnamed subject); 236 are multi-fact rows reduced to one fact although every subject
+is named; the rest are small generic classes (wrong attribute of the same kind, a yes/no attribute beating a value,
+yes/no facts from asides, "after 10 min" read as "more than").
+
+V9 end to end under the R80 and R10 regimes of `labs/kb-experiments/exp.py` (points: +1 right, -1 wrong, 0 unsure):
+
+| Forms | R80 accuracy | R80 false recall / precision | R80 points per row | R10 accuracy | R10 points per row |
+|---|---:|---|---:|---:|---:|
+| Always true | 0.833 | 0 / - | 0.667 | 0.831 | 0.662 |
+| Gold, published `decide()` | 0.902 | 0.675 / 0.763 | 0.805 | 0.816 | 0.631 |
+| Gold, unsure dtype fixed | 0.867 | 0.675 / 0.763 | 0.777 | 0.817 | 0.639 |
+| **Extracted (CV), fixed** | **0.819** | 0.343 / 0.476 | **0.646** | **0.798** | **0.596** |
+| Extracted, trained on all rows | 0.832 | 0.344 / 0.536 | 0.676 | 0.801 | 0.620 |
+| Gold on labelled pages, extracted on hidden pages | 0.772 | 0.644 / 0.488 | 0.611 | 0.763 | 0.525 |
+
+- Extracted forms put V9 below always-true at both ratios. Errors also hurt rows whose own form is right, because they
+  spoil the evidence from other rows; false recall halves (0.675 to 0.343).
+- Even with gold forms, V9 at R10 scores fewer points than always-true.
+- Mixing clean gold forms with extracted ones is worst: the model reads extraction errors as contradictions.
+- The unsure fix costs points as tuned: the macro-F1 threshold sends 79 rows to unsure and none of them is gold unsure.
+
+Measured fixes (post-hoc, chosen after seeing these results):
+
+| Change | R80 points per row | R10 points per row |
+|---|---:|---|
+| Extracted, baseline | 0.646 | 0.596 |
+| Choose V9's threshold by arena points instead of macro-F1 (one line) | 0.680 | 0.661 |
+| Plus page-context subject tweak | 0.693 | 0.660 |
+| Gold forms for all subject errors (387 rows) | 0.740 | |
+| Gold forms everywhere, points threshold | 0.809 | 0.674 |
+
+The biggest single gain on offer is subject resolution with page context: the previous best resolver (w11, 0.909
+subject accuracy on single-fact rows) plugged into the extractor, then the points-based threshold.
 
 ## Caveats
 
