@@ -1,0 +1,175 @@
+[
+ {
+  "ts": "2026-10-28T22:52:51",
+  "worker": "D",
+  "task": "e2e_v9",
+  "forms": "oracle_fix_page_topic_never_named",
+  "model": "V9lr",
+  "fixu": "1",
+  "regime": "R80",
+  "acc": 0.8345,
+  "macro_f1": 0.4498,
+  "false_recall": 0.3698,
+  "false_precision": 0.5465,
+  "unsure_recall": 0.0182,
+  "brier": 0.1156,
+  "ece": 0.0432,
+  "coverage": 0.9864,
+  "pred_unsure": 26,
+  "gold_unsure": 39,
+  "cm": [
+   [
+    1479,
+    86,
+    16
+   ],
+   [
+    165,
+    103,
+    9
+   ],
+   [
+    35,
+    3,
+    1
+   ]
+  ],
+  "points_per_row": 0.6816,
+  "always_true_points_per_row": 0.6668,
+  "always_true_acc": 0.8334,
+  "chosen": [
+   [
+    0.7,
+    0.05,
+    Infinity
+   ],
+   [
+    0.7,
+    0.0,
+    Infinity
+   ],
+   [
+    0.7,
+    0.0,
+    Infinity
+   ],
+   [
+    0.7,
+    0.0,
+    Infinity
+   ],
+   [
+    0.5,
+    0.1,
+    Infinity
+   ]
+  ],
+  "seconds": 0.4,
+  "rows": 1897,
+  "facts": 1967,
+  "rows_without_facts": 52,
+  "drops": {
+   "kept": 1967
+  },
+  "keys": 523
+ },
+ {
+  "ts": "2026-10-28T22:52:51",
+  "worker": "D",
+  "task": "e2e_v9",
+  "forms": "oracle_fix_page_topic_never_named",
+  "model": "V9lr",
+  "fixu": "1",
+  "regime": "R10",
+  "acc": 0.8052,
+  "macro_f1": 0.3616,
+  "false_recall": 0.1363,
+  "false_precision": 0.4114,
+  "unsure_recall": 0.0265,
+  "brier": 0.1374,
+  "ece": 0.0537,
+  "coverage": 0.9774,
+  "pred_unsure": 386,
+  "gold_unsure": 367,
+  "cm": [
+   [
+    13297,
+    504,
+    286
+   ],
+   [
+    2065,
+    340,
+    91
+   ],
+   [
+    352,
+    6,
+    9
+   ]
+  ],
+  "points_per_row": 0.6319,
+  "always_true_points_per_row": 0.6622,
+  "always_true_acc": 0.8311,
+  "chosen": [
+   [
+    0.3,
+    0.0,
+    Infinity
+   ],
+   [
+    0.7,
+    0.0,
+    Infinity
+   ],
+   [
+    0.7,
+    0.05,
+    Infinity
+   ],
+   [
+    0.7,
+    0.05,
+    Infinity
+   ],
+   [
+    0.6,
+    0.1,
+    Infinity
+   ],
+   [
+    0.3,
+    0.0,
+    Infinity
+   ],
+   [
+    0.3,
+    0.0,
+    Infinity
+   ],
+   [
+    0.6,
+    0.0,
+    Infinity
+   ],
+   [
+    0.7,
+    0.0,
+    Infinity
+   ],
+   [
+    0.4,
+    0.0,
+    Infinity
+   ]
+  ],
+  "seconds": 0.6,
+  "rows": 1897,
+  "facts": 1967,
+  "rows_without_facts": 52,
+  "drops": {
+   "kept": 1967
+  },
+  "keys": 523
+ }
+]

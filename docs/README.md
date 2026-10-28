@@ -26,6 +26,7 @@ Original files are checked against [the checksum manifest](upstream-files.json).
 | [MMR research](research/mmr.md) | MMR and diversity for claim selection and labelling, with measured practice experiments; scripts and source reports in [analysis/mmr](../analysis/mmr/README.md) |
 | [Neural text layers](research/neural-embeddings.md) | Embeddings, NLI cross-encoders, fine-tuning, typed-value grammar and subject resolution measured on practice (2026-10-28): what the neural layer is for, what to use, x86 cost; scripts and JSONL results in [labs/embedding-experiments](../labs/embedding-experiments/README.md) |
 | [Generator reverse-engineering](research/generator-reverse-engineering.md) | How deterministic the organizers' generator is, measured on practice (2026-10-28): ids, pages, closed lexicon and label semantics are exact; wording is free paraphrase (89% unique templates); lies are mostly time-shifted real values or upward numeric perturbations; unsure has no text rule; ceiling estimate for a dense universe; scripts in [labs/generator-reverse-engineering](../labs/generator-reverse-engineering/README.md) |
+| [Evaluation suite results](research/evaluation-suite-results.md) | Our solution on the teammate's synthetic evaluation suite (2026-10-28): timeline engine exact with gold forms, practice-trained extractor 99.62% / 99.45% labels on held-out worlds, suite-trained extractor 100%, why the suite is easier than the competition, V9 decide() bug; scripts in [labs/evaluation-suite-runs](../labs/evaluation-suite-runs/README.md) |
 
 ## Official sources
 

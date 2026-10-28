@@ -1,0 +1,75 @@
+{
+ "worker": "C",
+ "tag": "final",
+ "world": "sealed",
+ "only": null,
+ "held_out": true,
+ "time": "2026-10-28 22:46:39",
+ "anchors": {
+  "pair": {
+   "p": 0.9995,
+   "r": 0.9995,
+   "f1": 0.9995
+  },
+  "trip": {
+   "p": 0.9995,
+   "r": 0.9995,
+   "f1": 0.9995
+  },
+  "row_exact": 0.9995,
+  "rows": 1897,
+  "assertions": 1897,
+  "interval_row_acc": 1.0,
+  "interval_exact_when_stated": 1.0
+ },
+ "targets": {
+  "pair": {
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0
+  },
+  "trip": {
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0
+  },
+  "row_exact": 1.0,
+  "rows": 18103,
+  "assertions": 22507,
+  "interval_row_acc": 1.0
+ },
+ "all": {
+  "pair": {
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0
+  },
+  "trip": {
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0
+  },
+  "row_exact": 1.0,
+  "rows": 20000,
+  "assertions": 24404,
+  "interval_row_acc": 1.0,
+  "interval_exact_when_stated": 1.0
+ },
+ "value_acc_given_pair": {
+  "boolean": 1.0,
+  "date": 1.0,
+  "duration": 1.0,
+  "money": 1.0,
+  "name": 1.0,
+  "percent": 1.0,
+  "quantity": 1.0,
+  "version": 1.0
+ },
+ "error_classes": {
+  "subject wrong": 1
+ }
+}
+
+## subject wrong | They gave 57 minutes as the call length for Hooly's Q4 results.
+  GOLD [('Hooly Q4 2025 Results', 'call_length', {'kind': 'duration', 'unit': 'min', 'value': 57})]
+  PRED [('Hooly Q3 2026 Results', 'call_length', {'kind': 'duration', 'value': 57, 'unit': 'min'})]
