@@ -1,6 +1,6 @@
 # 0002: Offline evidence MVP with a small CPU forest
 
-Authorized: Teodor, 2026-10-28. Status: implementation in progress.
+Authorized: Teodor, 2026-10-28. Status: implemented and locally validated MVP.
 
 The local demonstration and competition CLI call one Rust core. The model is a seeded
 Random Forest with bounded trees and CPU work. The system is not an LLM. The frontend

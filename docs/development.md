@@ -100,6 +100,13 @@ Run artifacts are retained in ignored `artifacts/arena-*`. A passing format chec
 not prove claim grammar or semantic truth; practice scores include familiar training
 rows. The web Run button and the CLI use the same core implementation.
 
+The reproducible CPU benchmark and diagnostic holdout are available with
+`cargo run --release -p veridyct-core --example evaluate`. Record source SHA and run
+under the 2 CPU / 6 GiB container limits when comparing timings. The
+`tools/validate_claims.py` diagnostic reads an HTTP job snapshot and uses Python's
+`jsonschema` and `referencing` packages for the organizer schemas. Its public grammar
+and provenance checks do not replace the private referee.
+
 ## CI and performance
 
 CI checks Ubuntu, Windows and macOS, plus a Linux amd64 runtime container. Caches are
