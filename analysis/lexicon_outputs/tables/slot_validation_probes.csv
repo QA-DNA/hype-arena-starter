@@ -1,0 +1,825 @@
+subject,attribute,expected_legal,reason,actual_legal
+Bertram Gilfoil,joined,True,declared pair,True
+Bertram Gilfoil,previous_employer,True,declared pair,True
+Brightline Labs,integration_partner_of_flawless,True,declared pair,True
+Dinesh Chugtay,joined,True,declared pair,True
+Erlich Bachmann,joined,True,declared pair,True
+Gemini Launch Night,attendees,True,declared pair,True
+Gemini Launch Night,city,True,declared pair,True
+Gemini Launch Night,date,True,declared pair,True
+Holdan,joined,True,declared pair,True
+Holdan,previous_employer,True,declared pair,True
+Holdan,team_size,True,declared pair,True
+Hooly,annual_recurring_revenue,True,declared pair,True
+Hooly,ceo,True,declared pair,True
+Hooly,cto,True,declared pair,True
+Hooly,customer_countries,True,declared pair,True
+Hooly,customers_in_the_eu,True,declared pair,True
+Hooly,data_processing_agreement,True,declared pair,True
+Hooly,employees,True,declared pair,True
+Hooly,founded,True,declared pair,True
+Hooly,founders,True,declared pair,True
+Hooly,fully_remote,True,declared pair,True
+Hooly,had_major_outage,True,declared pair,True
+Hooly,head_of_product,True,declared pair,True
+Hooly,head_of_security,True,declared pair,True
+Hooly,head_of_workspace,True,declared pair,True
+Hooly,headquarters,True,declared pair,True
+Hooly,help_guides,True,declared pair,True
+Hooly,incidents_this_year,True,declared pair,True
+Hooly,net_promoter_score,True,declared pair,True
+Hooly,newsletter_subscribers,True,declared pair,True
+Hooly,offices,True,declared pair,True
+Hooly,paying_customers,True,declared pair,True
+Hooly,raised_series_a,True,declared pair,True
+Hooly,raised_series_b,True,declared pair,True
+Hooly,series_a_amount,True,declared pair,True
+Hooly,series_a_co_investor,True,declared pair,True
+Hooly,series_a_lead,True,declared pair,True
+Hooly,soc2_audit_start,True,declared pair,True
+Hooly,soc2_auditor,True,declared pair,True
+Hooly,soc2_certified,True,declared pair,True
+Hooly,support_satisfaction,True,declared pair,True
+Hooly,support_tickets_per_week,True,declared pair,True
+Hooly,webinars_held,True,declared pair,True
+Hooly AI Free,daily_requests,True,declared pair,True
+Hooly AI Free,history_retention,True,declared pair,True
+Hooly AI Free,max_upload_size,True,declared pair,True
+Hooly AI Free,price,True,declared pair,True
+Hooly AI Pro,annual_price,True,declared pair,True
+Hooly AI Pro,free_trial,True,declared pair,True
+Hooly AI Pro,history_retention,True,declared pair,True
+Hooly AI Pro,included_seats,True,declared pair,True
+Hooly AI Pro,price,True,declared pair,True
+Hooly AI Pro,refund_window,True,declared pair,True
+Hooly AI Pro,saved_projects,True,declared pair,True
+Hooly AI Pro,signed_in_devices,True,declared pair,True
+Hooly AI Pro,support_first_response,True,declared pair,True
+Hooly Android,active_devices,True,declared pair,True
+Hooly Android,lead,True,declared pair,True
+Hooly Android,open_source,True,declared pair,True
+Hooly Android,version,True,declared pair,True
+Hooly Android 16,desktop_mode,True,declared pair,True
+Hooly Android 16,released,True,declared pair,True
+Hooly Android 16,share_of_devices,True,declared pair,True
+Hooly Android 16,supported_models,True,declared pair,True
+Hooly Android 16,update_size,True,declared pair,True
+Hooly Android 17,beta_opened,True,declared pair,True
+Hooly Android 17,beta_testers,True,declared pair,True
+Hooly Android 17,on_device_gemini,True,declared pair,True
+Hooly Android 17,satellite_messaging,True,declared pair,True
+Hooly Android 17,share_of_devices,True,declared pair,True
+Hooly Android 17,stable_release,True,declared pair,True
+Hooly Android 17,supported_models,True,declared pair,True
+Hooly Android 17,update_size,True,declared pair,True
+Hooly Berlin Office,bike_racks,True,declared pair,True
+Hooly Berlin Office,desks,True,declared pair,True
+Hooly Berlin Office,is_engineering_hub,True,declared pair,True
+Hooly Berlin Office,is_headquarters,True,declared pair,True
+Hooly Berlin Office,lease_end,True,declared pair,True
+Hooly Berlin Office,opened,True,declared pair,True
+Hooly Berlin Office,rent,True,declared pair,True
+Hooly Berlin Office,staff,True,declared pair,True
+Hooly Board,attendance,True,declared pair,True
+Hooly Board,audit_committee,True,declared pair,True
+Hooly Board,chair,True,declared pair,True
+Hooly Board,chair_since,True,declared pair,True
+Hooly Board,independent_members,True,declared pair,True
+Hooly Board,meetings_per_year,True,declared pair,True
+Hooly Board,next_meeting,True,declared pair,True
+Hooly Board,raviqa_seat,True,declared pair,True
+Hooly Board,seats,True,declared pair,True
+Hooly Board,sessions_held,True,declared pair,True
+Hooly Calendar,active_users,True,declared pair,True
+Hooly Calendar,appointment_booking,True,declared pair,True
+Hooly Calendar,launched,True,declared pair,True
+Hooly Calendar,max_guests,True,declared pair,True
+Hooly Calendar,version,True,declared pair,True
+Hooly Chrome,ai_sidebar,True,declared pair,True
+Hooly Chrome,browser_market_share,True,declared pair,True
+Hooly Chrome,cold_start_time,True,declared pair,True
+Hooly Chrome,extensions_in_store,True,declared pair,True
+Hooly Chrome,launched,True,declared pair,True
+Hooly Chrome,lead,True,declared pair,True
+Hooly Chrome,memory_saver,True,declared pair,True
+Hooly Chrome,monthly_active_users,True,declared pair,True
+Hooly Chrome,passkey_sync,True,declared pair,True
+Hooly Chrome,release_cadence,True,declared pair,True
+Hooly Chrome,stable_release_date,True,declared pair,True
+Hooly Chrome,stable_version,True,declared pair,True
+Hooly Chrome,tab_sleep_delay,True,declared pair,True
+Hooly Chrome,top_bug_bounty,True,declared pair,True
+Hooly Cloud,archive_storage_price,True,declared pair,True
+Hooly Cloud,availability_zones,True,declared pair,True
+Hooly Cloud,carbon_neutral,True,declared pair,True
+Hooly Cloud,cli_version,True,declared pair,True
+Hooly Cloud,cool_storage_price,True,declared pair,True
+Hooly Cloud,customers,True,declared pair,True
+Hooly Cloud,data_centres,True,declared pair,True
+Hooly Cloud,free_credit,True,declared pair,True
+Hooly Cloud,free_egress_per_month,True,declared pair,True
+Hooly Cloud,free_trial,True,declared pair,True
+Hooly Cloud,home_region,True,declared pair,True
+Hooly Cloud,launched,True,declared pair,True
+Hooly Cloud,median_time_to_recover,True,declared pair,True
+Hooly Cloud,newest_region,True,declared pair,True
+Hooly Cloud,region_outside_europe,True,declared pair,True
+Hooly Cloud,regions,True,declared pair,True
+Hooly Cloud,reliability_lead,True,declared pair,True
+Hooly Cloud,services,True,declared pair,True
+Hooly Cloud,standard_storage_price,True,declared pair,True
+Hooly Cloud,storage_tiers,True,declared pair,True
+Hooly Cloud,uptime_last_quarter,True,declared pair,True
+Hooly Cloud,uptime_sla,True,declared pair,True
+Hooly Cloud Next 2026,attendees,True,declared pair,True
+Hooly Cloud Next 2026,city,True,declared pair,True
+Hooly Cloud Next 2026,date,True,declared pair,True
+Hooly Cloud Next 2026,length,True,declared pair,True
+Hooly Cloud Next 2026,opening_keynote,True,declared pair,True
+Hooly Cloud Next 2026,registrations,True,declared pair,True
+Hooly Cloud Next 2026,sessions,True,declared pair,True
+Hooly Cloud Next 2026,speakers,True,declared pair,True
+Hooly Cloud Next 2026,sponsors,True,declared pair,True
+Hooly Cloud Next 2026,ticket_price,True,declared pair,True
+Hooly Cloud Next 2026,venue,True,declared pair,True
+Hooly Devices,countries_served,True,declared pair,True
+Hooly Devices,founded,True,declared pair,True
+Hooly Devices,german_premium_phone_share,True,declared pair,True
+Hooly Devices,head,True,declared pair,True
+Hooly Devices,manufacturing_partner,True,declared pair,True
+Hooly Devices,max_trade_in_credit,True,declared pair,True
+Hooly Devices,repair_centres,True,declared pair,True
+Hooly Devices,staff,True,declared pair,True
+Hooly Devices,trade_in_programme,True,declared pair,True
+Hooly Docs,active_users,True,declared pair,True
+Hooly Docs,languages,True,declared pair,True
+Hooly Docs,launched,True,declared pair,True
+Hooly Docs,offline_editing,True,declared pair,True
+Hooly Docs,simultaneous_editors,True,declared pair,True
+Hooly Docs,templates,True,declared pair,True
+Hooly Docs,version,True,declared pair,True
+Hooly Drive,active_users,True,declared pair,True
+Hooly Drive,free_storage,True,declared pair,True
+Hooly Drive,launched,True,declared pair,True
+Hooly Drive,max_file_size,True,declared pair,True
+Hooly Drive,price_per_user,True,declared pair,True
+Hooly Drive,version_history,True,declared pair,True
+Hooly Employee Survey,anonymous,True,declared pair,True
+Hooly Employee Survey,growth_opportunities,True,declared pair,True
+Hooly Employee Survey,manageable_workload,True,declared pair,True
+Hooly Employee Survey,manager_rating,True,declared pair,True
+Hooly Employee Survey,next_round,True,declared pair,True
+Hooly Employee Survey,open_for,True,declared pair,True
+Hooly Employee Survey,respondents,True,declared pair,True
+Hooly Employee Survey,response_rate,True,declared pair,True
+Hooly Employee Survey,run_by,True,declared pair,True
+Hooly Employee Survey,would_recommend,True,declared pair,True
+Hooly Gemini,api_version,True,declared pair,True
+Hooly Gemini,cloud_provider,True,declared pair,True
+Hooly Gemini,concurrent_chats,True,declared pair,True
+Hooly Gemini,context_window,True,declared pair,True
+Hooly Gemini,data_retention,True,declared pair,True
+Hooly Gemini,encryption_at_rest,True,declared pair,True
+Hooly Gemini,eu_hosted,True,declared pair,True
+Hooly Gemini,flawbench_score,True,declared pair,True
+Hooly Gemini,hallucination_rate,True,declared pair,True
+Hooly Gemini,hosting_regions,True,declared pair,True
+Hooly Gemini,image_input,True,declared pair,True
+Hooly Gemini,integrations,True,declared pair,True
+Hooly Gemini,languages,True,declared pair,True
+Hooly Gemini,launched,True,declared pair,True
+Hooly Gemini,max_output_length,True,declared pair,True
+Hooly Gemini,max_upload_size,True,declared pair,True
+Hooly Gemini,median_response_time,True,declared pair,True
+Hooly Gemini,official_sdks,True,declared pair,True
+Hooly Gemini,open_source,True,declared pair,True
+Hooly Gemini,p99_response_time,True,declared pair,True
+Hooly Gemini,primary_region,True,declared pair,True
+Hooly Gemini,requests_per_day,True,declared pair,True
+Hooly Gemini,requests_per_minute,True,declared pair,True
+Hooly Gemini,single_sign_on,True,declared pair,True
+Hooly Gemini,supported_file_types,True,declared pair,True
+Hooly Gemini,training_data_cutoff,True,declared pair,True
+Hooly Gemini,uptime_last_quarter,True,declared pair,True
+Hooly Gemini,version,True,declared pair,True
+Hooly Gemini,voice_mode,True,declared pair,True
+Hooly Gemini,webhook_events,True,declared pair,True
+Hooly Gmail,active_users,True,declared pair,True
+Hooly Gmail,attachment_limit,True,declared pair,True
+Hooly Gmail,end_to_end_encryption,True,declared pair,True
+Hooly Gmail,launched,True,declared pair,True
+Hooly Gmail,mailbox_storage,True,declared pair,True
+Hooly Gmail,price_per_user,True,declared pair,True
+Hooly Gmail,spam_catch_rate,True,declared pair,True
+Hooly Hiring Programme,applicants,True,declared pair,True
+Hooly Hiring Programme,cost_per_hire,True,declared pair,True
+Hooly Hiring Programme,executive_sponsor,True,declared pair,True
+Hooly Hiring Programme,first_reply,True,declared pair,True
+Hooly Hiring Programme,hires,True,declared pair,True
+Hooly Hiring Programme,interview_rounds,True,declared pair,True
+Hooly Hiring Programme,launched,True,declared pair,True
+Hooly Hiring Programme,offer_acceptance,True,declared pair,True
+Hooly Hiring Programme,offers,True,declared pair,True
+Hooly Hiring Programme,open_engineering_roles,True,declared pair,True
+Hooly Hiring Programme,open_roles,True,declared pair,True
+Hooly Hiring Programme,recruiters,True,declared pair,True
+Hooly Hiring Programme,referral_bonus,True,declared pair,True
+Hooly Hiring Programme,referral_share,True,declared pair,True
+Hooly Hiring Programme,time_to_hire,True,declared pair,True
+Hooly I/O 2026,attendees,True,declared pair,True
+Hooly I/O 2026,city,True,declared pair,True
+Hooly I/O 2026,date,True,declared pair,True
+Hooly I/O 2026,keynote_length,True,declared pair,True
+Hooly I/O 2026,length,True,declared pair,True
+Hooly I/O 2026,livestream_viewers,True,declared pair,True
+Hooly I/O 2026,sponsors,True,declared pair,True
+Hooly I/O 2026,talks,True,declared pair,True
+Hooly I/O 2026,ticket_price,True,declared pair,True
+Hooly I/O 2026,workshops,True,declared pair,True
+Hooly I/O 2027,city,True,declared pair,True
+Hooly I/O 2027,date,True,declared pair,True
+Hooly Jules,annual_price,True,declared pair,True
+Hooly Jules,beta_date,True,declared pair,True
+Hooly Jules,beta_testers,True,declared pair,True
+Hooly Jules,context_files,True,declared pair,True
+Hooly Jules,free_trial,True,declared pair,True
+Hooly Jules,general_availability_date,True,declared pair,True
+Hooly Jules,lead,True,declared pair,True
+Hooly Jules,price,True,declared pair,True
+Hooly Jules,programming_languages,True,declared pair,True
+Hooly Jules,suggestion_acceptance_rate,True,declared pair,True
+Hooly Jules,supported_ides,True,declared pair,True
+Hooly Jules,users,True,declared pair,True
+Hooly Jules,version,True,declared pair,True
+Hooly Lisbon Office,announced,True,declared pair,True
+Hooly Lisbon Office,bike_racks,True,declared pair,True
+Hooly Lisbon Office,desks,True,declared pair,True
+Hooly Lisbon Office,lease_end,True,declared pair,True
+Hooly Lisbon Office,opened,True,declared pair,True
+Hooly Lisbon Office,rent,True,declared pair,True
+Hooly Lisbon Office,staff,True,declared pair,True
+Hooly Maps,ar_walking,True,declared pair,True
+Hooly Maps,business_listings,True,declared pair,True
+Hooly Maps,charging_stations_listed,True,declared pair,True
+Hooly Maps,countries_covered,True,declared pair,True
+Hooly Maps,latest_release_date,True,declared pair,True
+Hooly Maps,launched,True,declared pair,True
+Hooly Maps,lead,True,declared pair,True
+Hooly Maps,mapped_distance,True,declared pair,True
+Hooly Maps,monthly_active_users,True,declared pair,True
+Hooly Maps,offline_area_limit,True,declared pair,True
+Hooly Maps,offline_maps,True,declared pair,True
+Hooly Maps,places_listed,True,declared pair,True
+Hooly Maps,share_of_ad_revenue,True,declared pair,True
+Hooly Maps,store_rating,True,declared pair,True
+Hooly Maps,version,True,declared pair,True
+Hooly Maps,voice_guidance_languages,True,declared pair,True
+Hooly Maps Day,announced,True,declared pair,True
+Hooly Maps Day,attendees,True,declared pair,True
+Hooly Maps Day,city,True,declared pair,True
+Hooly Maps Day,date,True,declared pair,True
+Hooly Maps Day,features_launched,True,declared pair,True
+Hooly Maps Day,host,True,declared pair,True
+Hooly Maps Day,keynote_length,True,declared pair,True
+Hooly Maps Day,keynote_speaker,True,declared pair,True
+Hooly Maps Day,replay_available,True,declared pair,True
+Hooly Maps Day,sponsors,True,declared pair,True
+Hooly Maps Day,stream_viewers,True,declared pair,True
+Hooly Maps Day,talks,True,declared pair,True
+Hooly Maps Day,ticket_price,True,declared pair,True
+Hooly Maps Day,venue,True,declared pair,True
+Hooly Meet,active_users,True,declared pair,True
+Hooly Meet,caption_languages,True,declared pair,True
+Hooly Meet,cloud_recording,True,declared pair,True
+Hooly Meet,end_to_end_encryption,True,declared pair,True
+Hooly Meet,launched,True,declared pair,True
+Hooly Meet,livestream_viewers,True,declared pair,True
+Hooly Meet,max_call_length,True,declared pair,True
+Hooly Meet,max_participants,True,declared pair,True
+Hooly Photos,ai_editing,True,declared pair,True
+Hooly Photos,end_to_end_encrypted_backups,True,declared pair,True
+Hooly Photos,family_group_size,True,declared pair,True
+Hooly Photos,free_storage,True,declared pair,True
+Hooly Photos,head,True,declared pair,True
+Hooly Photos,latest_release_date,True,declared pair,True
+Hooly Photos,launched,True,declared pair,True
+Hooly Photos,monthly_active_users,True,declared pair,True
+Hooly Photos,photos_stored,True,declared pair,True
+Hooly Photos,store_rating,True,declared pair,True
+Hooly Photos,trash_retention,True,declared pair,True
+Hooly Photos,version,True,declared pair,True
+Hooly Photos,video_upload_limit,True,declared pair,True
+Hooly Photos,yearly_billing_discount,True,declared pair,True
+Hooly Photos Lite,price,True,declared pair,True
+Hooly Photos Lite,storage,True,declared pair,True
+Hooly Photos Max,price,True,declared pair,True
+Hooly Photos Max,storage,True,declared pair,True
+Hooly Photos Plus,price,True,declared pair,True
+Hooly Photos Plus,storage,True,declared pair,True
+Hooly Pixel 10,base_storage,True,declared pair,True
+Hooly Pixel 10,battery_capacity,True,declared pair,True
+Hooly Pixel 10,battery_life,True,declared pair,True
+Hooly Pixel 10,charging_power,True,declared pair,True
+Hooly Pixel 10,colours,True,declared pair,True
+Hooly Pixel 10,main_camera,True,declared pair,True
+Hooly Pixel 10,memory,True,declared pair,True
+Hooly Pixel 10,price,True,declared pair,True
+Hooly Pixel 10,refresh_rate,True,declared pair,True
+Hooly Pixel 10,released,True,declared pair,True
+Hooly Pixel 10,screen_size,True,declared pair,True
+Hooly Pixel 10,shipping_android,True,declared pair,True
+Hooly Pixel 10,store_rating,True,declared pair,True
+Hooly Pixel 10,units_sold,True,declared pair,True
+Hooly Pixel 10,update_promise,True,declared pair,True
+Hooly Pixel 10,weight,True,declared pair,True
+Hooly Pixel 10 Pro,base_storage,True,declared pair,True
+Hooly Pixel 10 Pro,battery_capacity,True,declared pair,True
+Hooly Pixel 10 Pro,battery_life,True,declared pair,True
+Hooly Pixel 10 Pro,charging_power,True,declared pair,True
+Hooly Pixel 10 Pro,colours,True,declared pair,True
+Hooly Pixel 10 Pro,main_camera,True,declared pair,True
+Hooly Pixel 10 Pro,memory,True,declared pair,True
+Hooly Pixel 10 Pro,price,True,declared pair,True
+Hooly Pixel 10 Pro,released,True,declared pair,True
+Hooly Pixel 10 Pro,screen_size,True,declared pair,True
+Hooly Pixel 10 Pro,units_sold,True,declared pair,True
+Hooly Pixel 10 Pro,weight,True,declared pair,True
+Hooly Pixel 9,battery_capacity,True,declared pair,True
+Hooly Pixel 9,discontinued,True,declared pair,True
+Hooly Pixel 9,price,True,declared pair,True
+Hooly Pixel 9,released,True,declared pair,True
+Hooly Pixel 9,screen_size,True,declared pair,True
+Hooly Pixel 9,storage,True,declared pair,True
+Hooly Pixel 9,store_rating,True,declared pair,True
+Hooly Pixel 9,units_sold,True,declared pair,True
+Hooly Pixel 9,update_promise,True,declared pair,True
+Hooly Pixel Buds,adaptive_noise_cancelling,True,declared pair,True
+Hooly Pixel Buds,battery_life,True,declared pair,True
+Hooly Pixel Buds,price,True,declared pair,True
+Hooly Pixel Buds,units_sold,True,declared pair,True
+Hooly Pixel Fold,base_storage,True,declared pair,True
+Hooly Pixel Fold,battery_capacity,True,declared pair,True
+Hooly Pixel Fold,cover_screen_size,True,declared pair,True
+Hooly Pixel Fold,hinge_rating,True,declared pair,True
+Hooly Pixel Fold,inner_screen_size,True,declared pair,True
+Hooly Pixel Fold,price,True,declared pair,True
+Hooly Pixel Fold,released,True,declared pair,True
+Hooly Pixel Fold,store_rating,True,declared pair,True
+Hooly Pixel Fold,units_sold,True,declared pair,True
+Hooly Pixel Fold,weight,True,declared pair,True
+Hooly Pixel Watch,battery_life,True,declared pair,True
+Hooly Pixel Watch,cellular_option,True,declared pair,True
+Hooly Pixel Watch,full_charge_time,True,declared pair,True
+Hooly Pixel Watch,price,True,declared pair,True
+Hooly Pixel Watch,released,True,declared pair,True
+Hooly Pixel Watch,screen_size,True,declared pair,True
+Hooly Pixel Watch,sensors,True,declared pair,True
+Hooly Pixel Watch,store_rating,True,declared pair,True
+Hooly Pixel Watch,units_sold,True,declared pair,True
+Hooly Pixel Watch,water_resistance_depth,True,declared pair,True
+Hooly Pixel Watch,weight,True,declared pair,True
+Hooly Q1 2026 Results,advertising_share,True,declared pair,True
+Hooly Q1 2026 Results,call_length,True,declared pair,True
+Hooly Q1 2026 Results,cash,True,declared pair,True
+Hooly Q1 2026 Results,customers,True,declared pair,True
+Hooly Q1 2026 Results,guidance,True,declared pair,True
+Hooly Q1 2026 Results,headcount,True,declared pair,True
+Hooly Q1 2026 Results,operating_margin,True,declared pair,True
+Hooly Q1 2026 Results,revenue,True,declared pair,True
+Hooly Q1 2026 Results,revenue_growth,True,declared pair,True
+Hooly Q1 2026 Results,webcast_viewers,True,declared pair,True
+Hooly Q2 2026 Results,advertising_share,True,declared pair,True
+Hooly Q2 2026 Results,call_length,True,declared pair,True
+Hooly Q2 2026 Results,cash,True,declared pair,True
+Hooly Q2 2026 Results,customers,True,declared pair,True
+Hooly Q2 2026 Results,guidance,True,declared pair,True
+Hooly Q2 2026 Results,operating_margin,True,declared pair,True
+Hooly Q2 2026 Results,revenue,True,declared pair,True
+Hooly Q2 2026 Results,revenue_growth,True,declared pair,True
+Hooly Q2 2026 Results,webcast_viewers,True,declared pair,True
+Hooly Q3 2026 Results,advertising_share,True,declared pair,True
+Hooly Q3 2026 Results,call_length,True,declared pair,True
+Hooly Q3 2026 Results,cash,True,declared pair,True
+Hooly Q3 2026 Results,customers,True,declared pair,True
+Hooly Q3 2026 Results,guidance,True,declared pair,True
+Hooly Q3 2026 Results,operating_margin,True,declared pair,True
+Hooly Q3 2026 Results,revenue,True,declared pair,True
+Hooly Q3 2026 Results,revenue_growth,True,declared pair,True
+Hooly Q3 2026 Results,webcast_viewers,True,declared pair,True
+Hooly Q4 2025 Results,advertising_share,True,declared pair,True
+Hooly Q4 2025 Results,call_length,True,declared pair,True
+Hooly Q4 2025 Results,cash,True,declared pair,True
+Hooly Q4 2025 Results,customers,True,declared pair,True
+Hooly Q4 2025 Results,guidance,True,declared pair,True
+Hooly Q4 2025 Results,headcount,True,declared pair,True
+Hooly Q4 2025 Results,operating_margin,True,declared pair,True
+Hooly Q4 2025 Results,published,True,declared pair,True
+Hooly Q4 2025 Results,revenue,True,declared pair,True
+Hooly Q4 2025 Results,revenue_growth,True,declared pair,True
+Hooly Q4 2025 Results,webcast_viewers,True,declared pair,True
+Hooly Search,ad_free_option,True,declared pair,True
+Hooly Search,ad_free_price,True,declared pair,True
+Hooly Search,ai_answers,True,declared pair,True
+Hooly Search,executive_owner,True,declared pair,True
+Hooly Search,images_indexed,True,declared pair,True
+Hooly Search,index_size,True,declared pair,True
+Hooly Search,languages_served,True,declared pair,True
+Hooly Search,launched,True,declared pair,True
+Hooly Search,median_response_time,True,declared pair,True
+Hooly Search,monthly_active_users,True,declared pair,True
+Hooly Search,news_refresh_interval,True,declared pair,True
+Hooly Search,personalised_ads_by_default,True,declared pair,True
+Hooly Search,publisher_revenue_share,True,declared pair,True
+Hooly Search,share_of_ad_revenue,True,declared pair,True
+Hooly Sheets,active_users,True,declared pair,True
+Hooly Sheets,functions,True,declared pair,True
+Hooly Sheets,gemini_formula_assist,True,declared pair,True
+Hooly Sheets,launched,True,declared pair,True
+Hooly Sheets,max_cells,True,declared pair,True
+Hooly Sheets,version,True,declared pair,True
+Hooly Sustainability Report,cycling_commuters,True,declared pair,True
+Hooly Sustainability Report,devices_recycled,True,declared pair,True
+Hooly Sustainability Report,emissions_cut_target,True,declared pair,True
+Hooly Sustainability Report,externally_audited,True,declared pair,True
+Hooly Sustainability Report,footprint,True,declared pair,True
+Hooly Sustainability Report,net_zero_date,True,declared pair,True
+Hooly Sustainability Report,owner,True,declared pair,True
+Hooly Sustainability Report,published,True,declared pair,True
+Hooly Sustainability Report,renewable_electricity,True,declared pair,True
+Hooly Sustainability Report,travel_emissions_cut,True,declared pair,True
+Hooly Translate,camera_translation,True,declared pair,True
+Hooly Translate,dialects_supported,True,declared pair,True
+Hooly Translate,languages_supported,True,declared pair,True
+Hooly Translate,launched,True,declared pair,True
+Hooly Translate,monthly_active_users,True,declared pair,True
+Hooly Translate,offline_languages,True,declared pair,True
+Hooly Translate,pro_price,True,declared pair,True
+Hooly Translate,pro_tier,True,declared pair,True
+Hooly Translate,rated_accuracy,True,declared pair,True
+Hooly Translate,text_limit,True,declared pair,True
+Hooly Translate,voice_latency,True,declared pair,True
+Hooly Vault,announced,True,declared pair,True
+Hooly Vault,generally_available,True,declared pair,True
+Hooly Vault,minimum_nodes,True,declared pair,True
+Hooly Vault,planned_general_availability,True,declared pair,True
+Hooly Vault,waitlist,True,declared pair,True
+Hooly Workspace,apps_included,True,declared pair,True
+Hooly Workspace,copilot_included,True,declared pair,True
+Hooly Workspace,customers,True,declared pair,True
+Hooly Workspace,extra_seat_price,True,declared pair,True
+Hooly Workspace,free_trial,True,declared pair,True
+Hooly Workspace,included_seats,True,declared pair,True
+Hooly Workspace,launched,True,declared pair,True
+Hooly Workspace,maximum_seats,True,declared pair,True
+Hooly Workspace,minimum_seats,True,declared pair,True
+Hooly Workspace,price,True,declared pair,True
+Hooly Workspace,storage_per_user,True,declared pair,True
+Hooly Workspace,uptime_sla,True,declared pair,True
+Hooly Workspace Enterprise,apps_included,True,declared pair,True
+Hooly Workspace Enterprise,audit_retention,True,declared pair,True
+Hooly Workspace Enterprise,customers,True,declared pair,True
+Hooly Workspace Enterprise,data_residency_regions,True,declared pair,True
+Hooly Workspace Enterprise,included_seats,True,declared pair,True
+Hooly Workspace Enterprise,launched,True,declared pair,True
+Hooly Workspace Enterprise,onboarding_time,True,declared pair,True
+Hooly Workspace Enterprise,price,True,declared pair,True
+Hooly Workspace Enterprise,single_sign_on,True,declared pair,True
+Hooly Workspace Enterprise,storage_per_user,True,declared pair,True
+Hooly Workspace Enterprise,support_first_response,True,declared pair,True
+Hooly Workspace Enterprise,uptime_sla,True,declared pair,True
+Hoovar,desks_managed,True,declared pair,True
+Hoovar,facilities_team,True,declared pair,True
+Hoovar,joined,True,declared pair,True
+Hoovar,offices_run,True,declared pair,True
+Made by Hooly 2026,attendees,True,declared pair,True
+Made by Hooly 2026,city,True,declared pair,True
+Made by Hooly 2026,date,True,declared pair,True
+Made by Hooly 2026,devices_keynote_speaker,True,declared pair,True
+Made by Hooly 2026,host,True,declared pair,True
+Made by Hooly 2026,livestreamed,True,declared pair,True
+Made by Hooly 2026,replay_available,True,declared pair,True
+Made by Hooly 2026,sponsors,True,declared pair,True
+Made by Hooly 2026,stream_viewers,True,declared pair,True
+Made by Hooly 2026,talks,True,declared pair,True
+Made by Hooly 2026,ticket_price,True,declared pair,True
+Made by Hooly 2026,venue,True,declared pair,True
+Meridian Health,flawless_seats,True,declared pair,True
+Patreese,team_size,True,declared pair,True
+Peter Gregori,chairs,True,declared pair,True
+Peter Gregori,chairs_audit_committee,True,declared pair,True
+Peter Gregori,independent_director,True,declared pair,True
+Quayside Hall,capacity,True,declared pair,True
+Rheinhalle,capacity,True,declared pair,True
+Ron LaFlame,joined,True,declared pair,True
+The May 2026 outage,date,True,declared pair,True
+The May 2026 outage,duration,True,declared pair,True
+Bertram Gilfoil,active_devices,False,attribute belongs elsewhere,False
+Bertram Gilfoil,active_users,False,attribute belongs elsewhere,False
+Bertram Gilfoil,ad_free_option,False,attribute belongs elsewhere,False
+Bertram Gilfoil,ad_free_price,False,attribute belongs elsewhere,False
+Bertram Gilfoil,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Brightline Labs,active_devices,False,attribute belongs elsewhere,False
+Brightline Labs,active_users,False,attribute belongs elsewhere,False
+Brightline Labs,ad_free_option,False,attribute belongs elsewhere,False
+Brightline Labs,ad_free_price,False,attribute belongs elsewhere,False
+Brightline Labs,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Dinesh Chugtay,active_devices,False,attribute belongs elsewhere,False
+Dinesh Chugtay,active_users,False,attribute belongs elsewhere,False
+Dinesh Chugtay,ad_free_option,False,attribute belongs elsewhere,False
+Dinesh Chugtay,ad_free_price,False,attribute belongs elsewhere,False
+Dinesh Chugtay,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Erlich Bachmann,active_devices,False,attribute belongs elsewhere,False
+Erlich Bachmann,active_users,False,attribute belongs elsewhere,False
+Erlich Bachmann,ad_free_option,False,attribute belongs elsewhere,False
+Erlich Bachmann,ad_free_price,False,attribute belongs elsewhere,False
+Erlich Bachmann,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Gemini Launch Night,active_devices,False,attribute belongs elsewhere,False
+Gemini Launch Night,active_users,False,attribute belongs elsewhere,False
+Gemini Launch Night,ad_free_option,False,attribute belongs elsewhere,False
+Gemini Launch Night,ad_free_price,False,attribute belongs elsewhere,False
+Gemini Launch Night,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Holdan,active_devices,False,attribute belongs elsewhere,False
+Holdan,active_users,False,attribute belongs elsewhere,False
+Holdan,ad_free_option,False,attribute belongs elsewhere,False
+Holdan,ad_free_price,False,attribute belongs elsewhere,False
+Holdan,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly,active_devices,False,attribute belongs elsewhere,False
+Hooly,active_users,False,attribute belongs elsewhere,False
+Hooly,ad_free_option,False,attribute belongs elsewhere,False
+Hooly,ad_free_price,False,attribute belongs elsewhere,False
+Hooly,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly AI Free,active_devices,False,attribute belongs elsewhere,False
+Hooly AI Free,active_users,False,attribute belongs elsewhere,False
+Hooly AI Free,ad_free_option,False,attribute belongs elsewhere,False
+Hooly AI Free,ad_free_price,False,attribute belongs elsewhere,False
+Hooly AI Free,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly AI Pro,active_devices,False,attribute belongs elsewhere,False
+Hooly AI Pro,active_users,False,attribute belongs elsewhere,False
+Hooly AI Pro,ad_free_option,False,attribute belongs elsewhere,False
+Hooly AI Pro,ad_free_price,False,attribute belongs elsewhere,False
+Hooly AI Pro,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Android,active_users,False,attribute belongs elsewhere,False
+Hooly Android,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Android,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Android,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Android,advertising_share,False,attribute belongs elsewhere,False
+Hooly Android 16,active_devices,False,attribute belongs elsewhere,False
+Hooly Android 16,active_users,False,attribute belongs elsewhere,False
+Hooly Android 16,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Android 16,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Android 16,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Android 17,active_devices,False,attribute belongs elsewhere,False
+Hooly Android 17,active_users,False,attribute belongs elsewhere,False
+Hooly Android 17,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Android 17,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Android 17,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Berlin Office,active_devices,False,attribute belongs elsewhere,False
+Hooly Berlin Office,active_users,False,attribute belongs elsewhere,False
+Hooly Berlin Office,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Berlin Office,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Berlin Office,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Board,active_devices,False,attribute belongs elsewhere,False
+Hooly Board,active_users,False,attribute belongs elsewhere,False
+Hooly Board,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Board,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Board,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Calendar,active_devices,False,attribute belongs elsewhere,False
+Hooly Calendar,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Calendar,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Calendar,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Calendar,advertising_share,False,attribute belongs elsewhere,False
+Hooly Chrome,active_devices,False,attribute belongs elsewhere,False
+Hooly Chrome,active_users,False,attribute belongs elsewhere,False
+Hooly Chrome,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Chrome,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Chrome,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Cloud,active_devices,False,attribute belongs elsewhere,False
+Hooly Cloud,active_users,False,attribute belongs elsewhere,False
+Hooly Cloud,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Cloud,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Cloud,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Cloud Next 2026,active_devices,False,attribute belongs elsewhere,False
+Hooly Cloud Next 2026,active_users,False,attribute belongs elsewhere,False
+Hooly Cloud Next 2026,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Cloud Next 2026,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Cloud Next 2026,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Devices,active_devices,False,attribute belongs elsewhere,False
+Hooly Devices,active_users,False,attribute belongs elsewhere,False
+Hooly Devices,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Devices,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Devices,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Docs,active_devices,False,attribute belongs elsewhere,False
+Hooly Docs,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Docs,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Docs,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Docs,advertising_share,False,attribute belongs elsewhere,False
+Hooly Drive,active_devices,False,attribute belongs elsewhere,False
+Hooly Drive,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Drive,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Drive,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Drive,advertising_share,False,attribute belongs elsewhere,False
+Hooly Employee Survey,active_devices,False,attribute belongs elsewhere,False
+Hooly Employee Survey,active_users,False,attribute belongs elsewhere,False
+Hooly Employee Survey,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Employee Survey,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Employee Survey,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Gemini,active_devices,False,attribute belongs elsewhere,False
+Hooly Gemini,active_users,False,attribute belongs elsewhere,False
+Hooly Gemini,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Gemini,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Gemini,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Gmail,active_devices,False,attribute belongs elsewhere,False
+Hooly Gmail,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Gmail,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Gmail,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Gmail,advertising_share,False,attribute belongs elsewhere,False
+Hooly Hiring Programme,active_devices,False,attribute belongs elsewhere,False
+Hooly Hiring Programme,active_users,False,attribute belongs elsewhere,False
+Hooly Hiring Programme,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Hiring Programme,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Hiring Programme,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly I/O 2026,active_devices,False,attribute belongs elsewhere,False
+Hooly I/O 2026,active_users,False,attribute belongs elsewhere,False
+Hooly I/O 2026,ad_free_option,False,attribute belongs elsewhere,False
+Hooly I/O 2026,ad_free_price,False,attribute belongs elsewhere,False
+Hooly I/O 2026,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly I/O 2027,active_devices,False,attribute belongs elsewhere,False
+Hooly I/O 2027,active_users,False,attribute belongs elsewhere,False
+Hooly I/O 2027,ad_free_option,False,attribute belongs elsewhere,False
+Hooly I/O 2027,ad_free_price,False,attribute belongs elsewhere,False
+Hooly I/O 2027,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Jules,active_devices,False,attribute belongs elsewhere,False
+Hooly Jules,active_users,False,attribute belongs elsewhere,False
+Hooly Jules,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Jules,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Jules,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Lisbon Office,active_devices,False,attribute belongs elsewhere,False
+Hooly Lisbon Office,active_users,False,attribute belongs elsewhere,False
+Hooly Lisbon Office,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Lisbon Office,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Lisbon Office,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Maps,active_devices,False,attribute belongs elsewhere,False
+Hooly Maps,active_users,False,attribute belongs elsewhere,False
+Hooly Maps,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Maps,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Maps,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Maps Day,active_devices,False,attribute belongs elsewhere,False
+Hooly Maps Day,active_users,False,attribute belongs elsewhere,False
+Hooly Maps Day,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Maps Day,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Maps Day,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Meet,active_devices,False,attribute belongs elsewhere,False
+Hooly Meet,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Meet,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Meet,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Meet,advertising_share,False,attribute belongs elsewhere,False
+Hooly Photos,active_devices,False,attribute belongs elsewhere,False
+Hooly Photos,active_users,False,attribute belongs elsewhere,False
+Hooly Photos,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Photos,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Photos,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Photos Lite,active_devices,False,attribute belongs elsewhere,False
+Hooly Photos Lite,active_users,False,attribute belongs elsewhere,False
+Hooly Photos Lite,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Photos Lite,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Photos Lite,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Photos Max,active_devices,False,attribute belongs elsewhere,False
+Hooly Photos Max,active_users,False,attribute belongs elsewhere,False
+Hooly Photos Max,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Photos Max,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Photos Max,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Photos Plus,active_devices,False,attribute belongs elsewhere,False
+Hooly Photos Plus,active_users,False,attribute belongs elsewhere,False
+Hooly Photos Plus,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Photos Plus,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Photos Plus,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Pixel 10,active_devices,False,attribute belongs elsewhere,False
+Hooly Pixel 10,active_users,False,attribute belongs elsewhere,False
+Hooly Pixel 10,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Pixel 10,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Pixel 10,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Pixel 10 Pro,active_devices,False,attribute belongs elsewhere,False
+Hooly Pixel 10 Pro,active_users,False,attribute belongs elsewhere,False
+Hooly Pixel 10 Pro,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Pixel 10 Pro,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Pixel 10 Pro,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Pixel 9,active_devices,False,attribute belongs elsewhere,False
+Hooly Pixel 9,active_users,False,attribute belongs elsewhere,False
+Hooly Pixel 9,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Pixel 9,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Pixel 9,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Pixel Buds,active_devices,False,attribute belongs elsewhere,False
+Hooly Pixel Buds,active_users,False,attribute belongs elsewhere,False
+Hooly Pixel Buds,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Pixel Buds,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Pixel Buds,advertising_share,False,attribute belongs elsewhere,False
+Hooly Pixel Fold,active_devices,False,attribute belongs elsewhere,False
+Hooly Pixel Fold,active_users,False,attribute belongs elsewhere,False
+Hooly Pixel Fold,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Pixel Fold,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Pixel Fold,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Pixel Watch,active_devices,False,attribute belongs elsewhere,False
+Hooly Pixel Watch,active_users,False,attribute belongs elsewhere,False
+Hooly Pixel Watch,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Pixel Watch,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Pixel Watch,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Q1 2026 Results,active_devices,False,attribute belongs elsewhere,False
+Hooly Q1 2026 Results,active_users,False,attribute belongs elsewhere,False
+Hooly Q1 2026 Results,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Q1 2026 Results,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Q1 2026 Results,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Q2 2026 Results,active_devices,False,attribute belongs elsewhere,False
+Hooly Q2 2026 Results,active_users,False,attribute belongs elsewhere,False
+Hooly Q2 2026 Results,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Q2 2026 Results,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Q2 2026 Results,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Q3 2026 Results,active_devices,False,attribute belongs elsewhere,False
+Hooly Q3 2026 Results,active_users,False,attribute belongs elsewhere,False
+Hooly Q3 2026 Results,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Q3 2026 Results,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Q3 2026 Results,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Q4 2025 Results,active_devices,False,attribute belongs elsewhere,False
+Hooly Q4 2025 Results,active_users,False,attribute belongs elsewhere,False
+Hooly Q4 2025 Results,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Q4 2025 Results,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Q4 2025 Results,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Search,active_devices,False,attribute belongs elsewhere,False
+Hooly Search,active_users,False,attribute belongs elsewhere,False
+Hooly Search,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Search,advertising_share,False,attribute belongs elsewhere,False
+Hooly Search,ai_editing,False,attribute belongs elsewhere,False
+Hooly Sheets,active_devices,False,attribute belongs elsewhere,False
+Hooly Sheets,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Sheets,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Sheets,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Sheets,advertising_share,False,attribute belongs elsewhere,False
+Hooly Sustainability Report,active_devices,False,attribute belongs elsewhere,False
+Hooly Sustainability Report,active_users,False,attribute belongs elsewhere,False
+Hooly Sustainability Report,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Sustainability Report,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Sustainability Report,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Translate,active_devices,False,attribute belongs elsewhere,False
+Hooly Translate,active_users,False,attribute belongs elsewhere,False
+Hooly Translate,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Translate,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Translate,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Vault,active_devices,False,attribute belongs elsewhere,False
+Hooly Vault,active_users,False,attribute belongs elsewhere,False
+Hooly Vault,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Vault,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Vault,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Workspace,active_devices,False,attribute belongs elsewhere,False
+Hooly Workspace,active_users,False,attribute belongs elsewhere,False
+Hooly Workspace,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Workspace,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Workspace,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hooly Workspace Enterprise,active_devices,False,attribute belongs elsewhere,False
+Hooly Workspace Enterprise,active_users,False,attribute belongs elsewhere,False
+Hooly Workspace Enterprise,ad_free_option,False,attribute belongs elsewhere,False
+Hooly Workspace Enterprise,ad_free_price,False,attribute belongs elsewhere,False
+Hooly Workspace Enterprise,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Hoovar,active_devices,False,attribute belongs elsewhere,False
+Hoovar,active_users,False,attribute belongs elsewhere,False
+Hoovar,ad_free_option,False,attribute belongs elsewhere,False
+Hoovar,ad_free_price,False,attribute belongs elsewhere,False
+Hoovar,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Made by Hooly 2026,active_devices,False,attribute belongs elsewhere,False
+Made by Hooly 2026,active_users,False,attribute belongs elsewhere,False
+Made by Hooly 2026,ad_free_option,False,attribute belongs elsewhere,False
+Made by Hooly 2026,ad_free_price,False,attribute belongs elsewhere,False
+Made by Hooly 2026,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Meridian Health,active_devices,False,attribute belongs elsewhere,False
+Meridian Health,active_users,False,attribute belongs elsewhere,False
+Meridian Health,ad_free_option,False,attribute belongs elsewhere,False
+Meridian Health,ad_free_price,False,attribute belongs elsewhere,False
+Meridian Health,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Patreese,active_devices,False,attribute belongs elsewhere,False
+Patreese,active_users,False,attribute belongs elsewhere,False
+Patreese,ad_free_option,False,attribute belongs elsewhere,False
+Patreese,ad_free_price,False,attribute belongs elsewhere,False
+Patreese,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Peter Gregori,active_devices,False,attribute belongs elsewhere,False
+Peter Gregori,active_users,False,attribute belongs elsewhere,False
+Peter Gregori,ad_free_option,False,attribute belongs elsewhere,False
+Peter Gregori,ad_free_price,False,attribute belongs elsewhere,False
+Peter Gregori,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Quayside Hall,active_devices,False,attribute belongs elsewhere,False
+Quayside Hall,active_users,False,attribute belongs elsewhere,False
+Quayside Hall,ad_free_option,False,attribute belongs elsewhere,False
+Quayside Hall,ad_free_price,False,attribute belongs elsewhere,False
+Quayside Hall,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Rheinhalle,active_devices,False,attribute belongs elsewhere,False
+Rheinhalle,active_users,False,attribute belongs elsewhere,False
+Rheinhalle,ad_free_option,False,attribute belongs elsewhere,False
+Rheinhalle,ad_free_price,False,attribute belongs elsewhere,False
+Rheinhalle,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+Ron LaFlame,active_devices,False,attribute belongs elsewhere,False
+Ron LaFlame,active_users,False,attribute belongs elsewhere,False
+Ron LaFlame,ad_free_option,False,attribute belongs elsewhere,False
+Ron LaFlame,ad_free_price,False,attribute belongs elsewhere,False
+Ron LaFlame,adaptive_noise_cancelling,False,attribute belongs elsewhere,False
+The May 2026 outage,active_devices,False,attribute belongs elsewhere,False
+The May 2026 outage,active_users,False,attribute belongs elsewhere,False
+The May 2026 outage,ad_free_option,False,attribute belongs elsewhere,False
+The May 2026 outage,ad_free_price,False,attribute belongs elsewhere,False
+The May 2026 outage,adaptive_noise_cancelling,False,attribute belongs elsewhere,False

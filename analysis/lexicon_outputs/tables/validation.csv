@@ -1,0 +1,10 @@
+check,passes,detail
+No duplicate JSON keys,True,[]
+Canonical names unique,True,Exact spelling
+Event declarations unique,True,Exact spelling
+Events reference canonical subjects,True,[]
+Each subject has at least one attribute,True,Nonempty lists
+No exact duplicate attributes per subject,True,Before deduplication
+Attributes satisfy contract identifier syntax,True,[a-z][a-z0-9_]*
+No leading or trailing whitespace,True,All declared strings
+Canonical names fit entry schema length,True,Maximum 120 characters

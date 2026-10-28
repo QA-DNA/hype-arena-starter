@@ -1,0 +1,13 @@
+stratum,generation_plan,when,expected_output,failure_to_avoid
+All canonical names,One explicit mention per subject,Now,Entity ID and span,Canonical-only success hides alias failures
+Alias variants,"Case, spacing, punctuation context, possessive",Now,Entity ID and span,Deduplicate normalised aliases before weighting
+Nested names,"Parent and variant alone, then both in one sentence",Now,Distinct spans and IDs,Never emit nested parent from same span
+Generic aliases,Product context vs ordinary-language context,Manual contextual annotation,Entity sense or abstention,Dictionary hit is not sufficient
+Rare attributes,At least one example per legal slot,After practice analysis,Entity + attribute + value,Singleton attributes need macro reporting
+Near attributes,Storage vs upload limit; version vs history,After practice analysis,Correct scoped attribute,Shared tokens are not semantic equivalence
+Units and periods,Convertible units; monthly vs annual vs one-off,After practice analysis,Normalised value with dimensions,Same numeric value need not mean same claim
+Time boundaries,Before/on/after verified change dates,After practice analysis,Dated truth label,Latest evidence is not timeless truth
+Events,"Each declared event, including missing date slots",After practice analysis,Resolved event date or uncertainty,Year in event name is not its day
+Relations,Link changes and target facts at overlapping dates,After practice analysis,Supported multi-step derivation,No link target can be inferred from this lexicon
+Multi-claim rows,One false component; one unknown; all true,After practice analysis,Sentence label with component evidence,Do not copy row label onto every fact
+Unseen surface style,Held-out documents and paraphrase templates,After practice analysis,Extraction and truth metrics,Random row splits can leak templates

@@ -1,0 +1,6 @@
+split,grouping_rule,purpose
+Document/group holdout,Keep all rows and transformations from one source group together,Generalisation to new writing contexts
+Template holdout,Hold out paraphrase patterns and their generated siblings,Avoid learning only surface templates
+Temporal holdout,Train/seed on earlier evidence and evaluate later dates,"Measure the cost of unknown changes, not guaranteed future truth"
+Family stress holdout,Hold out reviewed sibling families together,Measure schema transfer; this is harder than the official mixed-universe task
+Official-like transductive run,"Expose all allowed input rows, retain only permitted seed labels",Closest runtime setting; do not accidentally bake hidden labels into evaluation

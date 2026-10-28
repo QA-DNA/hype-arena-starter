@@ -1,0 +1,6 @@
+threshold,edges,components,isolated_subjects,largest_component
+0.25,55,32,21,7
+0.35,33,41,31,5
+0.5,21,48,40,5
+0.75,14,53,48,4
+1.0,8,56,52,3

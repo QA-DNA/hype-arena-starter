@@ -1,0 +1,11 @@
+priority,evidence,finding,design_implication,next_question
+P0,Measured,62 subjects; 514 legal slots; 321 distinct attributes,"Use canonical (subject, attribute) keys",How many legal slots have labelled evidence?
+P0,Measured,58 directed whole-word entity containment pairs,Resolve spans before emitting entities,How often do nested names occur in practice sentences?
+P0,Measured,6 events lack a date attribute,Keep event-date resolution as an explicit dependency,Can practice provide an unambiguous event date?
+P0,Measured,"No values, units, intervals or truth labels in lexicon",Do not promote schema entries into facts,Which types/units/cardinalities are actually observed?
+P1,Measured,241 attributes occur on only one subject,Audit per-slot coverage; report macro metrics,Do rare attributes also have few training sentences?
+P1,Measured,Normalisation can produce redundant aliases,Deduplicate lookup keys while preserving source records,Do case variants affect corpus matching?
+P1,Experiment,Longest-span rules solve designed nesting probes but not generic-word senses,Add context-sensitive candidate selection,Which contextual features distinguish product mentions?
+P1,Measured,Some subjects have identical attribute schemas,Retain entity identity independently of schema similarity,Are sibling products confused in extracted forms?
+P1,Hypothesis,Role/place identifiers may support relational claims,Learn target kinds and validity from evidence,Which links resolve to declared subjects with usable facts?
+P2,Hypothesis,Schema neighbourhoods can organise augmentation and holdouts,Review families; test threshold sensitivity,Do families transfer extraction patterns without leaking values?

@@ -1,0 +1,8 @@
+kind,assertions,distinct_value_objects,non_equality,fact_keys
+money,268,85,5,49
+duration,229,71,9,42
+quantity,1028,400,24,210
+date,165,75,0,60
+version,128,31,0,12
+name,209,35,0,43
+boolean,174,2,0,55

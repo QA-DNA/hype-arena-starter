@@ -1,0 +1,502 @@
+fact_key,rows,page_dates,raw_values,normalized_values,representation_reduction
+Hooly Chrome :: stable_version,10,8,6,6,0
+Hooly Chrome :: stable_release_date,8,8,6,6,0
+Hooly Gemini :: version,46,36,5,5,0
+Hooly Android :: version,14,12,5,5,0
+Hooly Search :: share_of_ad_revenue,9,9,5,5,0
+Hooly Android 16 :: share_of_devices,10,10,4,4,0
+Hooly Gemini :: uptime_last_quarter,9,8,4,4,0
+Hooly Photos :: monthly_active_users,9,9,4,4,0
+Hooly Search :: index_size,8,8,4,4,0
+Hooly Cloud Next 2026 :: date,7,7,4,4,0
+Hooly Maps :: version,7,6,4,4,0
+Hooly Cloud :: uptime_last_quarter,5,5,4,4,0
+Hooly Maps :: mapped_distance,5,5,4,4,0
+Hoovar :: desks_managed,4,4,4,4,0
+Hooly :: employees,23,20,3,3,0
+Hooly :: paying_customers,20,18,3,3,0
+Hooly Cloud :: regions,15,15,3,3,0
+Hooly Cloud :: availability_zones,11,11,3,3,0
+Hooly Devices :: german_premium_phone_share,9,9,3,3,0
+Hooly Search :: languages_served,9,9,3,3,0
+Hooly Search :: median_response_time,9,9,3,3,0
+Hooly Cloud :: data_centres,8,8,3,3,0
+Hooly Devices :: countries_served,8,8,3,3,0
+Hooly Devices :: repair_centres,8,8,3,3,0
+Hooly Docs :: version,8,6,3,3,0
+Hooly Search :: images_indexed,8,8,3,3,0
+Hooly Search :: publisher_revenue_share,8,8,3,3,0
+Hooly Cloud :: cli_version,7,7,3,3,0
+Hooly Cloud :: customers,7,7,3,3,0
+Hooly Devices :: staff,7,7,3,3,0
+Hooly Jules :: version,7,7,3,3,0
+Hooly Pixel 9 :: units_sold,7,7,3,3,0
+Hooly Search :: monthly_active_users,7,7,3,3,0
+Holdan :: team_size,6,6,3,3,0
+Hooly Cloud :: median_time_to_recover,6,6,3,3,0
+Hooly Gemini :: flawbench_score,6,6,3,3,0
+Hooly Gemini :: max_output_length,6,6,3,3,0
+Hooly Hiring Programme :: offers,6,6,3,3,0
+Hooly Maps :: countries_covered,6,6,3,3,0
+Hooly Maps :: places_listed,6,6,3,3,0
+Hooly Photos :: version,6,5,3,3,0
+Hooly Search :: news_refresh_interval,6,6,3,3,0
+Hooly Board :: independent_members,5,5,3,3,0
+Hooly Cloud Next 2026 :: registrations,5,5,3,3,0
+Hooly Hiring Programme :: applicants,5,5,3,3,0
+Hooly Hiring Programme :: offer_acceptance,5,5,3,3,0
+Hooly Hiring Programme :: time_to_hire,5,5,3,3,0
+Hooly Maps :: monthly_active_users,5,5,3,3,0
+Hooly Photos :: latest_release_date,5,5,3,3,0
+Hooly Photos :: photos_stored,5,5,3,3,0
+Hooly Pixel 9 :: price,5,5,3,3,0
+Hooly Pixel Watch :: units_sold,5,5,3,3,0
+Hooly Board :: seats,4,4,3,3,0
+Hooly Docs :: active_users,4,4,3,3,0
+Hooly Drive :: active_users,4,4,3,3,0
+Hooly Hiring Programme :: cost_per_hire,4,4,3,3,0
+Hooly Hiring Programme :: hires,4,4,3,3,0
+Hooly Hiring Programme :: open_roles,4,4,3,3,0
+Hooly Hiring Programme :: referral_share,4,4,3,3,0
+Hooly Maps :: store_rating,4,4,3,3,0
+Hooly Translate :: voice_latency,4,4,3,3,0
+Hooly Hiring Programme :: open_engineering_roles,3,3,3,3,0
+Hooly Maps :: share_of_ad_revenue,3,3,3,3,0
+Hooly AI Pro :: price,26,19,2,2,0
+Hooly AI Pro :: free_trial,24,17,3,2,1
+Hooly Gemini :: languages,24,20,2,2,0
+Hooly Gemini :: context_window,17,17,2,2,0
+Hooly :: headquarters,15,10,2,2,0
+Hooly Gemini :: median_response_time,14,11,2,2,0
+Hooly Cloud :: uptime_sla,13,13,2,2,0
+Hooly Gemini :: integrations,11,9,2,2,0
+Hooly AI Pro :: refund_window,10,8,2,2,0
+Hooly :: cto,9,9,2,2,0
+Hooly AI Free :: daily_requests,9,6,2,2,0
+Hooly Gemini :: hallucination_rate,9,9,2,2,0
+Hooly Jules :: programming_languages,9,9,2,2,0
+Hooly Photos Lite :: price,9,9,2,2,0
+Hooly Photos Max :: price,9,9,2,2,0
+Hooly Pixel 10 :: price,9,5,2,2,0
+Hooly Devices :: head,8,8,2,2,0
+Hooly Gemini :: official_sdks,8,8,2,2,0
+Hooly Photos :: free_storage,8,8,2,2,0
+Hooly Photos Max :: storage,8,8,2,2,0
+Hooly Photos Plus :: price,8,8,2,2,0
+Hooly Pixel 9 :: store_rating,8,8,2,2,0
+Hooly Search :: executive_owner,8,8,2,2,0
+Hooly AI Pro :: annual_price,7,5,2,2,0
+Hooly AI Pro :: saved_projects,7,7,2,2,0
+Hooly AI Pro :: signed_in_devices,7,7,2,2,0
+Hooly Chrome :: release_cadence,7,7,2,2,0
+Hooly Cloud :: region_outside_europe,7,7,2,2,0
+Hooly Gemini :: supported_file_types,7,7,2,2,0
+Hooly I/O 2026 :: date,7,5,2,2,0
+Hooly Jules :: supported_ides,7,7,2,2,0
+Hooly Photos :: end_to_end_encrypted_backups,7,7,2,2,0
+Hooly Photos Plus :: storage,7,7,2,2,0
+Hooly Pixel Fold :: price,7,4,2,2,0
+Hooly :: series_a_lead,6,2,2,2,0
+Hooly Chrome :: browser_market_share,6,6,2,2,0
+Hooly Chrome :: extensions_in_store,6,6,2,2,0
+Hooly Chrome :: monthly_active_users,6,6,2,2,0
+Hooly Cloud :: standard_storage_price,6,6,2,2,0
+Hooly Drive :: free_storage,6,6,2,2,0
+Hooly Gemini :: hosting_regions,6,6,2,2,0
+Hooly Gemini :: voice_mode,6,6,2,2,0
+Hooly Gemini :: webhook_events,6,6,2,2,0
+Hooly Jules :: context_files,6,6,2,2,0
+Hooly Photos :: head,6,6,2,2,0
+Hooly Photos Lite :: storage,6,6,2,2,0
+Hooly :: ceo,5,5,2,2,0
+Hooly AI Pro :: history_retention,5,5,2,2,0
+Hooly Android :: lead,5,5,2,2,0
+Hooly Chrome :: cold_start_time,5,5,2,2,0
+Hooly Cloud :: free_egress_per_month,5,5,2,2,0
+Hooly Cloud :: storage_tiers,5,5,2,2,0
+Hooly Gemini :: max_upload_size,5,5,2,2,0
+Hooly Gmail :: price_per_user,5,5,2,2,0
+Hooly Hiring Programme :: referral_bonus,5,5,2,2,0
+Hooly Jules :: suggestion_acceptance_rate,5,5,2,2,0
+Hooly Photos :: trash_retention,5,5,2,2,0
+Hooly Photos :: yearly_billing_discount,5,5,2,2,0
+Hooly Pixel 10 Pro :: price,5,4,2,2,0
+Hooly Search :: ad_free_price,5,5,2,2,0
+Hooly Search :: ai_answers,5,5,2,2,0
+Hooly :: had_major_outage,4,4,2,2,0
+Hooly :: offices,4,4,2,2,0
+Hooly Android 17 :: share_of_devices,4,4,2,2,0
+Hooly Android :: active_devices,4,4,2,2,0
+Hooly Berlin Office :: rent,4,4,2,2,0
+Hooly Berlin Office :: staff,4,4,2,2,0
+Hooly Board :: attendance,4,4,2,2,0
+Hooly Board :: next_meeting,4,4,2,2,0
+Hooly Board :: raviqa_seat,4,4,2,2,0
+Hooly Cloud :: carbon_neutral,4,4,2,2,0
+Hooly Cloud :: free_credit,4,4,2,2,0
+Hooly Cloud :: launched,4,4,2,2,0
+Hooly Cloud :: newest_region,4,4,2,2,0
+Hooly Cloud :: services,4,4,2,2,0
+Hooly Cloud Next 2026 :: sessions,4,4,2,2,0
+Hooly Devices :: trade_in_programme,4,4,2,2,0
+Hooly Docs :: languages,4,4,2,2,0
+Hooly Docs :: offline_editing,4,4,2,2,0
+Hooly Employee Survey :: manageable_workload,4,4,2,2,0
+Hooly Employee Survey :: manager_rating,4,4,2,2,0
+Hooly Employee Survey :: next_round,4,4,2,2,0
+Hooly Employee Survey :: respondents,4,4,2,2,0
+Hooly Employee Survey :: would_recommend,4,4,2,2,0
+Hooly Gemini :: concurrent_chats,4,4,2,2,0
+Hooly Gemini :: image_input,4,4,2,2,0
+Hooly Gmail :: attachment_limit,4,4,2,2,0
+Hooly Gmail :: mailbox_storage,4,4,2,2,0
+Hooly Hiring Programme :: executive_sponsor,4,4,2,2,0
+Hooly Hiring Programme :: first_reply,4,4,2,2,0
+Hooly Maps :: offline_area_limit,4,4,2,2,0
+Hooly Meet :: active_users,4,4,2,2,0
+Hooly Photos :: family_group_size,4,4,2,2,0
+Hooly Photos :: store_rating,4,4,2,2,0
+Hooly Pixel 10 :: shipping_android,4,3,2,2,0
+Hooly Pixel Watch :: price,4,4,2,2,0
+Hooly Pixel Watch :: store_rating,4,4,2,2,0
+Hooly Search :: personalised_ads_by_default,4,4,2,2,0
+Hooly Vault :: minimum_nodes,4,4,2,2,0
+Made by Hooly 2026 :: date,4,4,2,2,0
+Holdan :: previous_employer,3,3,2,2,0
+Hooly :: customer_countries,3,3,2,2,0
+Hooly :: support_satisfaction,3,3,2,2,0
+Hooly Android 17 :: satellite_messaging,3,3,2,2,0
+Hooly Android 17 :: stable_release,3,3,2,2,0
+Hooly Android 17 :: update_size,3,3,2,2,0
+Hooly Berlin Office :: bike_racks,3,3,2,2,0
+Hooly Berlin Office :: desks,3,3,2,2,0
+Hooly Berlin Office :: is_engineering_hub,3,3,2,2,0
+Hooly Berlin Office :: is_headquarters,3,3,2,2,0
+Hooly Board :: chair,3,3,2,2,0
+Hooly Board :: meetings_per_year,3,3,2,2,0
+Hooly Board :: sessions_held,3,3,2,2,0
+Hooly Calendar :: version,3,3,2,2,0
+Hooly Cloud :: free_trial,3,3,3,2,1
+Hooly Cloud Next 2026 :: ticket_price,3,3,2,2,0
+Hooly Docs :: templates,3,3,2,2,0
+Hooly Employee Survey :: open_for,3,3,2,2,0
+Hooly Employee Survey :: response_rate,3,3,2,2,0
+Hooly Gemini :: api_version,3,3,2,2,0
+Hooly Gemini :: single_sign_on,3,3,2,2,0
+Hooly Gmail :: active_users,3,3,2,2,0
+Hooly Gmail :: end_to_end_encryption,3,3,2,2,0
+Hooly Gmail :: launched,3,3,2,2,0
+Hooly Gmail :: spam_catch_rate,3,3,2,2,0
+Hooly Hiring Programme :: recruiters,3,3,2,2,0
+Hooly Lisbon Office :: desks,3,3,2,2,0
+Hooly Lisbon Office :: staff,3,3,2,2,0
+Hooly Maps :: business_listings,3,3,2,2,0
+Hooly Maps :: charging_stations_listed,3,3,2,2,0
+Hooly Maps :: latest_release_date,3,3,2,2,0
+Hooly Meet :: max_call_length,3,3,3,2,1
+Hooly Photos :: video_upload_limit,3,3,2,2,0
+Hooly Pixel 10 :: base_storage,3,3,2,2,0
+Hooly Pixel 10 :: units_sold,3,3,2,2,0
+Hooly Pixel 10 Pro :: base_storage,3,3,2,2,0
+Hooly Pixel 10 Pro :: battery_life,3,3,2,2,0
+Hooly Pixel 10 Pro :: units_sold,3,3,2,2,0
+Hooly Pixel Buds :: price,3,3,2,2,0
+Hooly Pixel Fold :: units_sold,3,3,2,2,0
+Hooly Sheets :: version,3,3,2,2,0
+Hooly Translate :: languages_supported,3,3,2,2,0
+Hooly Translate :: monthly_active_users,3,3,2,2,0
+Hooly Translate :: offline_languages,3,3,2,2,0
+Hooly Translate :: pro_price,3,3,2,2,0
+Hooly Translate :: rated_accuracy,3,3,2,2,0
+Hoovar :: facilities_team,3,3,2,2,0
+Hoovar :: offices_run,3,3,2,2,0
+Made by Hooly 2026 :: attendees,3,3,2,2,0
+Holdan :: joined,2,2,2,2,0
+Hooly :: incidents_this_year,2,2,2,2,0
+Hooly :: raised_series_a,2,2,2,2,0
+Hooly Android 17 :: beta_testers,2,2,2,2,0
+Hooly Calendar :: appointment_booking,2,2,2,2,0
+Hooly Drive :: price_per_user,2,2,2,2,0
+Hooly Employee Survey :: growth_opportunities,2,2,2,2,0
+Hooly Gemini :: p99_response_time,2,2,2,2,0
+Hooly Lisbon Office :: rent,2,2,2,2,0
+Hooly Maps :: voice_guidance_languages,2,2,2,2,0
+Hooly Maps Day :: attendees,2,2,2,2,0
+Hooly Maps Day :: date,2,2,2,2,0
+Hooly Maps Day :: replay_available,2,2,2,2,0
+Hooly Maps Day :: sponsors,2,2,2,2,0
+Hooly Maps Day :: talks,2,2,2,2,0
+Hooly Maps Day :: ticket_price,2,2,2,2,0
+Hooly Meet :: cloud_recording,2,2,2,2,0
+Hooly Meet :: max_participants,2,2,2,2,0
+Hooly Pixel 10 :: battery_life,2,2,2,2,0
+Hooly Pixel 9 :: discontinued,2,2,2,2,0
+Hooly Pixel Buds :: units_sold,2,2,2,2,0
+Hooly Pixel Watch :: battery_life,2,2,2,2,0
+Hooly Sheets :: gemini_formula_assist,2,2,2,2,0
+Hooly Sustainability Report :: cycling_commuters,2,2,2,2,0
+Hooly Sustainability Report :: devices_recycled,2,2,2,2,0
+Hooly Sustainability Report :: footprint,2,2,2,2,0
+Hooly Sustainability Report :: published,2,2,2,2,0
+Hooly Sustainability Report :: renewable_electricity,2,2,2,2,0
+Hooly Vault :: waitlist,2,2,2,2,0
+Hooly Workspace :: maximum_seats,2,2,2,2,0
+Hooly Workspace Enterprise :: onboarding_time,2,2,2,2,0
+Made by Hooly 2026 :: sponsors,2,2,2,2,0
+Made by Hooly 2026 :: ticket_price,2,2,2,2,0
+Hooly Gemini :: data_retention,13,9,1,1,0
+Hooly Workspace :: included_seats,13,9,1,1,0
+Hooly Gemini :: cloud_provider,12,11,1,1,0
+Hooly Jules :: price,12,7,1,1,0
+Hooly Workspace :: price,12,9,1,1,0
+Hooly :: founded,7,7,1,1,0
+Hooly Cloud Next 2026 :: city,7,7,1,1,0
+Hooly Devices :: manufacturing_partner,7,7,1,1,0
+Hooly Gemini :: primary_region,7,7,1,1,0
+Hooly Jules :: beta_date,7,7,1,1,0
+Hooly Jules :: general_availability_date,7,3,1,1,0
+Hooly Workspace Enterprise :: price,7,6,1,1,0
+Hooly Cloud :: home_region,6,6,1,1,0
+Hooly Cloud :: reliability_lead,6,6,1,1,0
+Hooly Cloud Next 2026 :: length,6,6,1,1,0
+Hooly I/O 2026 :: city,6,4,1,1,0
+Hooly Jules :: free_trial,6,5,1,1,0
+Hooly Workspace :: free_trial,6,6,1,1,0
+Hooly :: series_a_amount,5,2,1,1,0
+Hooly Android 17 :: supported_models,5,5,1,1,0
+Hooly Chrome :: top_bug_bounty,5,5,1,1,0
+Hooly Cloud Next 2026 :: venue,5,5,1,1,0
+Hooly Pixel Fold :: inner_screen_size,5,5,1,1,0
+Hooly Workspace :: extra_seat_price,5,4,1,1,0
+Hooly Workspace Enterprise :: included_seats,5,4,1,1,0
+Brightline Labs :: integration_partner_of_flawless,4,4,1,1,0
+Hooly :: help_guides,4,4,1,1,0
+Hooly AI Free :: history_retention,4,4,1,1,0
+Hooly AI Pro :: included_seats,4,4,1,1,0
+Hooly Chrome :: lead,4,4,1,1,0
+Hooly Chrome :: tab_sleep_delay,4,4,1,1,0
+Hooly Cloud :: archive_storage_price,4,4,1,1,0
+Hooly Cloud :: cool_storage_price,4,4,1,1,0
+Hooly Cloud Next 2026 :: opening_keynote,4,4,1,1,0
+Hooly Gemini :: launched,4,4,1,1,0
+Hooly Hiring Programme :: interview_rounds,4,4,1,1,0
+Hooly I/O 2026 :: attendees,4,3,1,1,0
+Hooly I/O 2026 :: sponsors,4,4,1,1,0
+Hooly Jules :: beta_testers,4,4,1,1,0
+Hooly Jules :: lead,4,4,1,1,0
+Hooly Pixel 9 :: storage,4,4,1,1,0
+Hooly Pixel Fold :: battery_capacity,4,4,1,1,0
+Hooly Vault :: planned_general_availability,4,4,1,1,0
+Hooly Workspace :: uptime_sla,4,3,1,1,0
+Hooly Workspace Enterprise :: uptime_sla,4,4,1,1,0
+Bertram Gilfoil :: joined,3,3,1,1,0
+Hooly :: data_processing_agreement,3,2,1,1,0
+Hooly :: head_of_product,3,3,1,1,0
+Hooly :: head_of_security,3,3,1,1,0
+Hooly :: head_of_workspace,3,3,1,1,0
+Hooly :: soc2_auditor,3,2,1,1,0
+Hooly :: soc2_certified,3,3,1,1,0
+Hooly AI Free :: price,3,3,1,1,0
+Hooly AI Pro :: support_first_response,3,3,1,1,0
+Hooly Android :: open_source,3,3,1,1,0
+Hooly Board :: audit_committee,3,3,1,1,0
+Hooly Chrome :: ai_sidebar,3,3,1,1,0
+Hooly Cloud Next 2026 :: speakers,3,3,1,1,0
+Hooly Docs :: launched,3,3,1,1,0
+Hooly Gemini :: eu_hosted,3,3,1,1,0
+Hooly Gemini :: requests_per_day,3,3,1,1,0
+Hooly I/O 2026 :: talks,3,3,1,1,0
+Hooly Lisbon Office :: bike_racks,3,3,1,1,0
+Hooly Pixel 10 :: released,3,2,1,1,0
+Hooly Pixel 10 :: update_promise,3,2,1,1,0
+Hooly Pixel 10 Pro :: battery_capacity,3,3,1,1,0
+Hooly Pixel 10 Pro :: charging_power,3,3,1,1,0
+Hooly Pixel 9 :: battery_capacity,3,3,1,1,0
+Hooly Pixel 9 :: update_promise,3,3,1,1,0
+Hooly Pixel Fold :: base_storage,3,3,1,1,0
+Hooly Pixel Fold :: cover_screen_size,3,3,1,1,0
+Hooly Pixel Fold :: released,3,3,1,1,0
+Hooly Pixel Fold :: store_rating,3,3,1,1,0
+Hooly Pixel Fold :: weight,3,3,1,1,0
+Hooly Q4 2025 Results :: advertising_share,3,3,1,1,0
+Hooly Q4 2025 Results :: cash,3,3,1,1,0
+Hooly Translate :: text_limit,3,3,1,1,0
+Hooly Vault :: generally_available,3,3,1,1,0
+Hooly Workspace :: minimum_seats,3,3,1,1,0
+Hooly Workspace :: storage_per_user,3,3,1,1,0
+Hooly Workspace Enterprise :: audit_retention,3,3,1,1,0
+Hooly Workspace Enterprise :: single_sign_on,3,3,1,1,0
+Hooly Workspace Enterprise :: storage_per_user,3,3,2,1,1
+Made by Hooly 2026 :: city,3,3,1,1,0
+Made by Hooly 2026 :: devices_keynote_speaker,3,3,1,1,0
+Made by Hooly 2026 :: venue,3,3,1,1,0
+The May 2026 outage :: date,3,3,1,1,0
+The May 2026 outage :: duration,3,3,1,1,0
+Gemini Launch Night :: attendees,2,2,1,1,0
+Gemini Launch Night :: city,2,2,1,1,0
+Hooly :: founders,2,2,1,1,0
+Hooly :: soc2_audit_start,2,2,1,1,0
+Hooly Android 16 :: released,2,2,1,1,0
+Hooly Android 16 :: update_size,2,2,1,1,0
+Hooly Berlin Office :: lease_end,2,2,1,1,0
+Hooly Calendar :: launched,2,2,1,1,0
+Hooly Chrome :: memory_saver,2,2,1,1,0
+Hooly Chrome :: passkey_sync,2,2,1,1,0
+Hooly Cloud Next 2026 :: sponsors,2,2,1,1,0
+Hooly Devices :: founded,2,2,1,1,0
+Hooly Docs :: simultaneous_editors,2,2,1,1,0
+Hooly Employee Survey :: run_by,2,2,1,1,0
+Hooly Gemini :: encryption_at_rest,2,2,1,1,0
+Hooly Gemini :: open_source,2,2,1,1,0
+Hooly Gemini :: requests_per_minute,2,2,1,1,0
+Hooly I/O 2026 :: keynote_length,2,2,1,1,0
+Hooly I/O 2026 :: length,2,2,1,1,0
+Hooly I/O 2026 :: livestream_viewers,2,2,1,1,0
+Hooly I/O 2026 :: ticket_price,2,2,1,1,0
+Hooly I/O 2026 :: workshops,2,2,1,1,0
+Hooly Jules :: annual_price,2,2,1,1,0
+Hooly Maps :: lead,2,2,1,1,0
+Hooly Maps Day :: city,2,2,1,1,0
+Hooly Maps Day :: host,2,2,1,1,0
+Hooly Maps Day :: keynote_speaker,2,2,1,1,0
+Hooly Maps Day :: venue,2,2,1,1,0
+Hooly Photos :: launched,2,2,1,1,0
+Hooly Pixel 10 :: charging_power,2,2,1,1,0
+Hooly Pixel 10 :: colours,2,1,1,1,0
+Hooly Pixel 10 :: main_camera,2,1,1,1,0
+Hooly Pixel 10 :: memory,2,1,1,1,0
+Hooly Pixel 10 :: refresh_rate,2,1,1,1,0
+Hooly Pixel 10 :: screen_size,2,1,1,1,0
+Hooly Pixel 10 :: weight,2,1,1,1,0
+Hooly Pixel 10 Pro :: screen_size,2,2,1,1,0
+Hooly Pixel Fold :: hinge_rating,2,2,1,1,0
+Hooly Q1 2026 Results :: advertising_share,2,2,1,1,0
+Hooly Q1 2026 Results :: call_length,2,2,1,1,0
+Hooly Q1 2026 Results :: cash,2,2,1,1,0
+Hooly Q1 2026 Results :: operating_margin,2,2,1,1,0
+Hooly Q1 2026 Results :: webcast_viewers,2,2,1,1,0
+Hooly Q4 2025 Results :: call_length,2,2,1,1,0
+Hooly Q4 2025 Results :: guidance,2,2,1,1,0
+Hooly Q4 2025 Results :: operating_margin,2,2,1,1,0
+Hooly Q4 2025 Results :: revenue,2,2,1,1,0
+Hooly Q4 2025 Results :: webcast_viewers,2,2,1,1,0
+Hooly Search :: ad_free_option,2,2,1,1,0
+Hooly Sustainability Report :: externally_audited,2,2,1,1,0
+Hooly Sustainability Report :: net_zero_date,2,2,1,1,0
+Hooly Sustainability Report :: travel_emissions_cut,2,2,1,1,0
+Hooly Translate :: camera_translation,2,2,1,1,0
+Hooly Translate :: dialects_supported,2,2,1,1,0
+Hooly Vault :: announced,2,2,1,1,0
+Hooly Workspace :: copilot_included,2,2,1,1,0
+Hooly Workspace :: customers,2,2,1,1,0
+Hooly Workspace Enterprise :: apps_included,2,2,1,1,0
+Hooly Workspace Enterprise :: customers,2,2,1,1,0
+Hoovar :: joined,2,2,1,1,0
+Made by Hooly 2026 :: talks,2,2,1,1,0
+Rheinhalle :: capacity,2,2,1,1,0
+Bertram Gilfoil :: previous_employer,1,1,1,1,0
+Dinesh Chugtay :: joined,1,1,1,1,0
+Erlich Bachmann :: joined,1,1,1,1,0
+Gemini Launch Night :: date,1,1,1,1,0
+Hooly :: customers_in_the_eu,1,1,1,1,0
+Hooly :: fully_remote,1,1,1,1,0
+Hooly :: net_promoter_score,1,1,1,1,0
+Hooly :: newsletter_subscribers,1,1,1,1,0
+Hooly :: raised_series_b,1,1,1,1,0
+Hooly :: support_tickets_per_week,1,1,1,1,0
+Hooly :: webinars_held,1,1,1,1,0
+Hooly AI Free :: max_upload_size,1,1,1,1,0
+Hooly Android 16 :: desktop_mode,1,1,1,1,0
+Hooly Android 16 :: supported_models,1,1,1,1,0
+Hooly Android 17 :: on_device_gemini,1,1,1,1,0
+Hooly Berlin Office :: opened,1,1,1,1,0
+Hooly Board :: chair_since,1,1,1,1,0
+Hooly Calendar :: max_guests,1,1,1,1,0
+Hooly Chrome :: launched,1,1,1,1,0
+Hooly Cloud Next 2026 :: attendees,1,1,1,1,0
+Hooly Devices :: max_trade_in_credit,1,1,1,1,0
+Hooly Drive :: launched,1,1,1,1,0
+Hooly Drive :: version_history,1,1,1,1,0
+Hooly Employee Survey :: anonymous,1,1,1,1,0
+Hooly Gemini :: training_data_cutoff,1,1,1,1,0
+Hooly Hiring Programme :: launched,1,1,1,1,0
+Hooly I/O 2027 :: city,1,1,1,1,0
+Hooly Jules :: users,1,1,1,1,0
+Hooly Lisbon Office :: announced,1,1,1,1,0
+Hooly Lisbon Office :: lease_end,1,1,1,1,0
+Hooly Lisbon Office :: opened,1,1,1,1,0
+Hooly Maps :: ar_walking,1,1,1,1,0
+Hooly Maps :: launched,1,1,1,1,0
+Hooly Maps Day :: announced,1,1,1,1,0
+Hooly Maps Day :: features_launched,1,1,1,1,0
+Hooly Maps Day :: keynote_length,1,1,1,1,0
+Hooly Maps Day :: stream_viewers,1,1,1,1,0
+Hooly Meet :: caption_languages,1,1,1,1,0
+Hooly Meet :: end_to_end_encryption,1,1,1,1,0
+Hooly Meet :: launched,1,1,1,1,0
+Hooly Meet :: livestream_viewers,1,1,1,1,0
+Hooly Photos :: ai_editing,1,1,1,1,0
+Hooly Pixel 10 :: battery_capacity,1,1,1,1,0
+Hooly Pixel 10 :: store_rating,1,1,1,1,0
+Hooly Pixel 10 Pro :: memory,1,1,1,1,0
+Hooly Pixel 10 Pro :: released,1,1,1,1,0
+Hooly Pixel 9 :: released,1,1,1,1,0
+Hooly Pixel Buds :: adaptive_noise_cancelling,1,1,1,1,0
+Hooly Pixel Buds :: battery_life,1,1,1,1,0
+Hooly Pixel Watch :: cellular_option,1,1,1,1,0
+Hooly Pixel Watch :: full_charge_time,1,1,1,1,0
+Hooly Pixel Watch :: released,1,1,1,1,0
+Hooly Pixel Watch :: screen_size,1,1,1,1,0
+Hooly Pixel Watch :: water_resistance_depth,1,1,1,1,0
+Hooly Pixel Watch :: weight,1,1,1,1,0
+Hooly Q1 2026 Results :: customers,1,1,1,1,0
+Hooly Q1 2026 Results :: guidance,1,1,1,1,0
+Hooly Q1 2026 Results :: headcount,1,1,1,1,0
+Hooly Q1 2026 Results :: revenue,1,1,1,1,0
+Hooly Q1 2026 Results :: revenue_growth,1,1,1,1,0
+Hooly Q2 2026 Results :: advertising_share,1,1,1,1,0
+Hooly Q2 2026 Results :: call_length,1,1,1,1,0
+Hooly Q2 2026 Results :: cash,1,1,1,1,0
+Hooly Q2 2026 Results :: customers,1,1,1,1,0
+Hooly Q2 2026 Results :: guidance,1,1,1,1,0
+Hooly Q2 2026 Results :: operating_margin,1,1,1,1,0
+Hooly Q2 2026 Results :: revenue,1,1,1,1,0
+Hooly Q2 2026 Results :: revenue_growth,1,1,1,1,0
+Hooly Q2 2026 Results :: webcast_viewers,1,1,1,1,0
+Hooly Q3 2026 Results :: advertising_share,1,1,1,1,0
+Hooly Q3 2026 Results :: call_length,1,1,1,1,0
+Hooly Q3 2026 Results :: cash,1,1,1,1,0
+Hooly Q3 2026 Results :: customers,1,1,1,1,0
+Hooly Q3 2026 Results :: guidance,1,1,1,1,0
+Hooly Q3 2026 Results :: operating_margin,1,1,1,1,0
+Hooly Q3 2026 Results :: revenue,1,1,1,1,0
+Hooly Q3 2026 Results :: revenue_growth,1,1,1,1,0
+Hooly Q3 2026 Results :: webcast_viewers,1,1,1,1,0
+Hooly Q4 2025 Results :: customers,1,1,1,1,0
+Hooly Q4 2025 Results :: headcount,1,1,1,1,0
+Hooly Q4 2025 Results :: published,1,1,1,1,0
+Hooly Q4 2025 Results :: revenue_growth,1,1,1,1,0
+Hooly Search :: launched,1,1,1,1,0
+Hooly Sheets :: active_users,1,1,1,1,0
+Hooly Sheets :: functions,1,1,1,1,0
+Hooly Sheets :: launched,1,1,1,1,0
+Hooly Sheets :: max_cells,1,1,1,1,0
+Hooly Sustainability Report :: emissions_cut_target,1,1,1,1,0
+Hooly Sustainability Report :: owner,1,1,1,1,0
+Hooly Translate :: launched,1,1,1,1,0
+Hooly Translate :: pro_tier,1,1,1,1,0
+Hooly Workspace :: apps_included,1,1,1,1,0
+Hooly Workspace Enterprise :: data_residency_regions,1,1,1,1,0
+Hooly Workspace Enterprise :: launched,1,1,1,1,0
+Hooly Workspace Enterprise :: support_first_response,1,1,1,1,0
+Made by Hooly 2026 :: host,1,1,1,1,0
+Made by Hooly 2026 :: livestreamed,1,1,1,1,0
+Made by Hooly 2026 :: replay_available,1,1,1,1,0
+Made by Hooly 2026 :: stream_viewers,1,1,1,1,0
+Meridian Health :: flawless_seats,1,1,1,1,0
+Patreese :: team_size,1,1,1,1,0
+Peter Gregori :: chairs,1,1,1,1,0
+Peter Gregori :: chairs_audit_committee,1,1,1,1,0
+Peter Gregori :: independent_director,1,1,1,1,0
+Quayside Hall :: capacity,1,1,1,1,0
+Ron LaFlame :: joined,1,1,1,1,0

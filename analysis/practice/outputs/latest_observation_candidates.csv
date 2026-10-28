@@ -1,0 +1,502 @@
+,id,fact_key,value_json,page_date,age_days_at_as_of
+1768,p-1436,Gemini Launch Night :: date,"{""kind"":""date"",""value"":""2025-10-07""}",2025-10-10,384
+734,p-638,Hooly Pixel Watch :: full_charge_time,"{""kind"":""duration"",""unit"":""min"",""value"":75}",2025-11-05,358
+731,p-635,Hooly Pixel Watch :: weight,"{""kind"":""quantity"",""unit"":""g"",""value"":31}",2025-11-05,358
+730,p-634,Hooly Pixel Watch :: screen_size,"{""kind"":""quantity"",""unit"":""inch"",""value"":1.4}",2025-11-05,358
+736,p-640,Hooly Pixel Watch :: cellular_option,"{""kind"":""boolean"",""value"":true}",2025-11-05,358
+737,p-641,Hooly Pixel Watch :: released,"{""kind"":""date"",""value"":""2025-10-23""}",2025-11-05,358
+732,p-636,Hooly Pixel Watch :: water_resistance_depth,"{""kind"":""quantity"",""unit"":""m"",""value"":50}",2025-11-05,358
+1808,p-1463,Hooly Gemini :: training_data_cutoff,"{""kind"":""date"",""value"":""2025-06""}",2025-11-14,349
+190,p-157,Hooly Pixel 9 :: released,"{""kind"":""date"",""value"":""2025-08-12""}",2025-12-02,331
+1976,p-1585,Hooly :: founders,"{""kind"":""quantity"",""unit"":""founder"",""value"":1}",2025-12-10,323
+905,p-794,Hooly Pixel 9 :: update_promise,"{""kind"":""quantity"",""unit"":""upgrade"",""value"":5}",2025-12-10,323
+393,p-334,Hooly Search :: ad_free_option,"{""kind"":""boolean"",""value"":false}",2026-01-12,290
+369,p-311,Hooly Photos :: ai_editing,"{""kind"":""boolean"",""value"":false}",2026-01-14,288
+1665,p-1372,Hooly AI Free :: max_upload_size,"{""kind"":""quantity"",""unit"":""MB"",""value"":5}",2026-01-19,283
+1160,p-996,Hooly Cloud :: launched,"{""kind"":""date"",""value"":""2025-11-04""}",2026-01-21,281
+1553,p-1300,Hooly Q4 2025 Results :: published,"{""kind"":""date"",""value"":""2026-01-28""}",2026-01-28,274
+1559,p-1306,Hooly Q4 2025 Results :: headcount,"{""kind"":""quantity"",""unit"":""employee"",""value"":12}",2026-01-28,274
+1556,p-1303,Hooly Q4 2025 Results :: revenue_growth,"{""kind"":""percent"",""value"":23.5}",2026-01-28,274
+1334,p-1133,Hooly Q4 2025 Results :: customers,"{""kind"":""quantity"",""unit"":""customer"",""value"":400}",2026-01-29,273
+1458,p-1229,Hooly Devices :: founded,"{""kind"":""date"",""value"":""2025-02-03""}",2026-02-02,269
+2158,p-1711,Hooly I/O 2026 :: ticket_price,"{""currency"":""EUR"",""kind"":""money"",""value"":249}",2026-02-03,268
+773,p-669,Hooly Berlin Office :: opened,"{""kind"":""date"",""value"":""2025-01-14""}",2026-02-10,261
+200,p-165,Hooly :: raised_series_a,"{""kind"":""boolean"",""value"":true}",2026-02-17,254
+1111,p-955,Hooly Pixel Buds :: adaptive_noise_cancelling,"{""kind"":""boolean"",""value"":false}",2026-02-18,253
+690,p-599,Made by Hooly 2026 :: replay_available,"{""kind"":""boolean"",""value"":false}",2026-02-20,251
+691,p-600,Made by Hooly 2026 :: host,"{""kind"":""name"",""value"":""Gavin Bellson""}",2026-02-20,251
+689,p-598,Made by Hooly 2026 :: livestreamed,"{""kind"":""boolean"",""value"":true}",2026-02-20,251
+2275,p-1803,Hooly :: raised_series_b,"{""kind"":""boolean"",""value"":false}",2026-03-01,242
+2349,p-1856,Hooly Android 16 :: desktop_mode,"{""kind"":""boolean"",""value"":true}",2026-03-05,238
+1957,p-1570,Dinesh Chugtay :: joined,"{""kind"":""date"",""value"":""2026-02-01""}",2026-03-05,238
+1567,p-1314,Hooly Employee Survey :: anonymous,"{""kind"":""boolean"",""value"":true}",2026-03-12,231
+2153,p-1707,Hooly Drive :: launched,"{""kind"":""date"",""value"":""2025-12-02""}",2026-03-12,231
+413,p-353,Hooly Android 16 :: supported_models,"{""kind"":""quantity"",""unit"":""model"",""value"":16}",2026-03-20,223
+417,p-357,Hooly Android 16 :: released,"{""kind"":""date"",""value"":""2025-11-18""}",2026-03-20,223
+415,p-355,Hooly Android 16 :: update_size,"{""kind"":""quantity"",""unit"":""GB"",""value"":1.4}",2026-03-20,223
+331,p-276,Hooly Sheets :: max_cells,"{""kind"":""quantity"",""unit"":""cell"",""value"":2000000}",2026-03-24,219
+325,p-270,Hooly Meet :: launched,"{""kind"":""date"",""value"":""2026-03-24""}",2026-03-24,219
+1737,p-1415,Hooly I/O 2026 :: length,"{""kind"":""duration"",""unit"":""day"",""value"":2}",2026-03-27,216
+1749,p-1420,Hooly Gemini :: image_input,"{""kind"":""boolean"",""value"":true}",2026-03-27,216
+1741,p-1416,Hooly I/O 2026 :: keynote_length,"{""kind"":""duration"",""unit"":""min"",""value"":50}",2026-03-27,216
+1743,p-1417,Hooly I/O 2026 :: workshops,"{""kind"":""quantity"",""unit"":""workshop"",""value"":6}",2026-03-27,216
+1740,p-1416,Hooly I/O 2026 :: livestream_viewers,"{""kind"":""quantity"",""unit"":""viewer"",""value"":18000}",2026-03-27,216
+1849,p-1492,Erlich Bachmann :: joined,"{""kind"":""date"",""value"":""2026-01-15""}",2026-03-31,212
+167,p-140,Made by Hooly 2026 :: ticket_price,"{""currency"":""EUR"",""kind"":""money"",""value"":249}",2026-04-01,211
+173,p-143,Rheinhalle :: capacity,"{""kind"":""quantity"",""unit"":""seat"",""value"":9000}",2026-04-01,211
+178,p-147,Hooly Pixel Watch :: store_rating,"{""kind"":""quantity"",""unit"":""star"",""value"":4.4}",2026-04-01,211
+1824,p-1478,Hooly AI Pro :: annual_price,"{""currency"":""EUR"",""kind"":""money"",""per"":""year"",""value"":590}",2026-04-03,209
+764,p-661,Hooly Lisbon Office :: announced,"{""kind"":""date"",""value"":""2026-03-02""}",2026-04-08,204
+1447,p-1220,Hooly Translate :: pro_tier,"{""kind"":""boolean"",""value"":true}",2026-04-09,203
+2381,p-1879,Hooly I/O 2026 :: talks,"{""kind"":""quantity"",""unit"":""talk"",""value"":24}",2026-04-10,202
+2379,p-1879,Hooly I/O 2026 :: city,"{""kind"":""name"",""value"":""Berlin""}",2026-04-10,202
+2380,p-1879,Hooly I/O 2026 :: attendees,"{""kind"":""quantity"",""unit"":""attendee"",""value"":1200}",2026-04-10,202
+2382,p-1879,Hooly I/O 2026 :: sponsors,"{""kind"":""quantity"",""unit"":""sponsor"",""value"":9}",2026-04-10,202
+746,p-648,Hooly Sheets :: launched,"{""kind"":""date"",""value"":""2026-03-03""}",2026-04-15,197
+748,p-650,Hooly Sheets :: active_users,"{""kind"":""quantity"",""unit"":""user"",""value"":1500}",2026-04-15,197
+1990,p-1593,Hooly :: fully_remote,"{""kind"":""boolean"",""value"":false}",2026-04-15,197
+2170,p-1717,Hooly Workspace :: extra_seat_price,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":15}",2026-04-20,192
+1242,p-1065,Made by Hooly 2026 :: venue,"{""kind"":""name"",""value"":""Rheinhalle""}",2026-04-20,192
+1245,p-1067,Made by Hooly 2026 :: devices_keynote_speaker,"{""kind"":""name"",""value"":""Jack Barkor""}",2026-04-20,192
+87,p-71,Quayside Hall :: capacity,"{""kind"":""quantity"",""unit"":""seat"",""value"":3200}",2026-04-24,188
+83,p-69,Hooly Maps Day :: announced,"{""kind"":""date"",""value"":""2026-04-20""}",2026-04-24,188
+893,p-784,Made by Hooly 2026 :: date,"{""kind"":""date"",""value"":""2026-04-28""}",2026-04-27,185
+894,p-784,Made by Hooly 2026 :: city,"{""kind"":""name"",""value"":""Frankfurt""}",2026-04-27,185
+897,p-787,Made by Hooly 2026 :: sponsors,"{""kind"":""quantity"",""unit"":""sponsor"",""value"":9}",2026-04-27,185
+896,p-786,Made by Hooly 2026 :: talks,"{""kind"":""quantity"",""unit"":""talk"",""value"":18}",2026-04-27,185
+895,p-785,Made by Hooly 2026 :: attendees,"{""kind"":""quantity"",""unit"":""attendee"",""value"":6500}",2026-04-27,185
+707,p-615,Hooly Pixel 10 :: colours,"{""kind"":""quantity"",""unit"":""colour"",""value"":4}",2026-04-28,184
+2032,p-1619,Hooly Jules :: beta_testers,"{""kind"":""quantity"",""unit"":""tester"",""value"":500}",2026-04-28,184
+435,p-373,Hooly Pixel 10 :: main_camera,"{""kind"":""quantity"",""unit"":""megapixel"",""value"":50}",2026-04-28,184
+431,p-371,Hooly Pixel 10 :: screen_size,"{""kind"":""quantity"",""unit"":""inch"",""value"":6.3}",2026-04-28,184
+432,p-371,Hooly Pixel 10 :: refresh_rate,"{""kind"":""quantity"",""unit"":""Hz"",""value"":120}",2026-04-28,184
+708,p-616,Hooly Pixel 10 :: memory,"{""kind"":""quantity"",""unit"":""GB"",""value"":12}",2026-04-28,184
+2367,p-1869,Hooly Devices :: trade_in_programme,"{""kind"":""boolean"",""value"":true}",2026-04-28,184
+706,p-614,Hooly Pixel 10 :: weight,"{""kind"":""quantity"",""unit"":""g"",""value"":204}",2026-04-28,184
+2024,p-1615,Hooly AI Pro :: history_retention,"{""kind"":""duration"",""unit"":""day"",""value"":90}",2026-04-28,184
+1327,p-1127,Hooly Q1 2026 Results :: headcount,"{""kind"":""quantity"",""unit"":""employee"",""value"":38}",2026-04-29,183
+721,p-626,Hooly Pixel 10 Pro :: memory,"{""kind"":""quantity"",""unit"":""GB"",""value"":16}",2026-04-29,183
+718,p-624,Hooly Pixel 10 Pro :: screen_size,"{""kind"":""quantity"",""unit"":""inch"",""value"":6.8}",2026-04-29,183
+728,p-632,Hooly Pixel 10 Pro :: released,"{""kind"":""date"",""value"":""2026-05-14""}",2026-04-29,183
+2287,p-1812,Hooly Cloud Next 2026 :: ticket_price,"{""currency"":""EUR"",""kind"":""money"",""value"":490}",2026-05-04,178
+1121,p-964,Peter Gregori :: independent_director,"{""kind"":""boolean"",""value"":true}",2026-05-06,176
+1314,p-1114,Hooly Lisbon Office :: opened,"{""kind"":""date"",""value"":""2026-05-01""}",2026-05-06,176
+1118,p-961,Hooly Board :: meetings_per_year,"{""kind"":""quantity"",""unit"":""sitting"",""value"":6}",2026-05-06,176
+1120,p-963,Peter Gregori :: chairs_audit_committee,"{""kind"":""boolean"",""value"":true}",2026-05-06,176
+1123,p-966,Hooly Board :: chair_since,"{""kind"":""date"",""value"":""2026-02-17""}",2026-05-06,176
+1319,p-1119,Hooly Berlin Office :: is_headquarters,"{""kind"":""boolean"",""value"":false}",2026-05-06,176
+1422,p-1200,Hooly Photos :: video_upload_limit,"{""kind"":""duration"",""unit"":""min"",""value"":60}",2026-05-07,175
+2129,p-1686,Hooly Cloud :: free_credit,"{""currency"":""EUR"",""kind"":""money"",""value"":350}",2026-05-12,170
+1704,p-1397,Hooly :: help_guides,"{""kind"":""quantity"",""unit"":""guide"",""value"":60}",2026-05-12,170
+2130,p-1686,Hooly Cloud :: free_trial,"{""kind"":""duration"",""unit"":""day"",""value"":45}",2026-05-12,170
+1688,p-1388,Hooly AI Free :: price,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":0}",2026-05-12,170
+1691,p-1389,Hooly AI Pro :: signed_in_devices,"{""kind"":""quantity"",""unit"":""device"",""value"":3}",2026-05-12,170
+2133,p-1688,Hooly Cloud :: cool_storage_price,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":9}",2026-05-12,170
+2134,p-1689,Hooly Cloud :: archive_storage_price,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":3}",2026-05-12,170
+1689,p-1388,Hooly AI Free :: daily_requests,"{""kind"":""quantity"",""unit"":""request"",""value"":20}",2026-05-12,170
+1692,p-1389,Hooly AI Pro :: saved_projects,"{""kind"":""quantity"",""unit"":""project"",""value"":12}",2026-05-12,170
+1502,p-1260,Hooly Pixel 9 :: store_rating,"{""kind"":""quantity"",""unit"":""star"",""value"":4.4}",2026-05-14,168
+1494,p-1254,Hooly Pixel 10 :: released,"{""kind"":""date"",""value"":""2026-05-14""}",2026-05-14,168
+1260,p-1077,Hooly Pixel 9 :: storage,"{""kind"":""quantity"",""unit"":""GB"",""value"":128}",2026-05-18,164
+1261,p-1077,Hooly Pixel 9 :: battery_capacity,"{""kind"":""quantity"",""unit"":""mAh"",""value"":4700}",2026-05-18,164
+1259,p-1076,Hooly Pixel 9 :: units_sold,"{""kind"":""quantity"",""unit"":""phone"",""value"":1040000}",2026-05-18,164
+577,p-502,Hooly Docs :: launched,"{""kind"":""date"",""value"":""2026-01-27""}",2026-05-20,162
+277,p-224,Hooly Sheets :: functions,"{""kind"":""quantity"",""unit"":""function"",""value"":310}",2026-06-09,142
+835,p-728,Hooly Gmail :: launched,"{""kind"":""date"",""value"":""2025-11""}",2026-06-10,141
+995,p-867,Hooly :: series_a_amount,"{""currency"":""EUR"",""kind"":""money"",""value"":18000000}",2026-06-10,141
+996,p-867,Hooly :: series_a_lead,"{""kind"":""name"",""value"":""Raviqa""}",2026-06-10,141
+1164,p-1000,Hooly Cloud Next 2026 :: sessions,"{""kind"":""quantity"",""unit"":""session"",""value"":64}",2026-06-10,141
+1167,p-1002,Hooly Cloud :: standard_storage_price,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":18}",2026-06-10,141
+1165,p-1000,Hooly Cloud Next 2026 :: speakers,"{""kind"":""quantity"",""unit"":""speaker"",""value"":85}",2026-06-10,141
+1786,p-1446,Hooly Gemini :: concurrent_chats,"{""kind"":""quantity"",""unit"":""chat"",""value"":8}",2026-06-12,139
+1792,p-1449,Hooly Gemini :: p99_response_time,"{""kind"":""duration"",""unit"":""s"",""value"":3.1}",2026-06-12,139
+1796,p-1451,Hooly :: customers_in_the_eu,"{""kind"":""percent"",""value"":70}",2026-06-12,139
+22,p-19,Hooly Cloud :: carbon_neutral,"{""kind"":""boolean"",""value"":true}",2026-06-12,139
+21,p-18,Hooly Cloud :: services,"{""kind"":""quantity"",""unit"":""service"",""value"":31}",2026-06-12,139
+20,p-17,Hooly Cloud Next 2026 :: sponsors,"{""kind"":""quantity"",""unit"":""sponsor"",""value"":14}",2026-06-12,139
+19,p-16,Hooly Cloud Next 2026 :: date,"{""kind"":""date"",""value"":""2026-06-09""}",2026-06-12,139
+18,p-16,Hooly Cloud Next 2026 :: opening_keynote,"{""kind"":""name"",""value"":""Gavin Bellson""}",2026-06-12,139
+15,p-13,Hooly Cloud Next 2026 :: registrations,"{""kind"":""quantity"",""unit"":""registration"",""value"":3100}",2026-06-12,139
+14,p-12,Hooly Cloud Next 2026 :: city,"{""kind"":""name"",""value"":""Dublin""}",2026-06-12,139
+13,p-12,Hooly Cloud Next 2026 :: attendees,"{""kind"":""quantity"",""unit"":""attendee"",""value"":2600}",2026-06-12,139
+12,p-11,Hooly Cloud Next 2026 :: venue,"{""kind"":""name"",""value"":""Ringsend Forum""}",2026-06-12,139
+11,p-11,Hooly Cloud Next 2026 :: length,"{""kind"":""duration"",""unit"":""day"",""value"":3}",2026-06-12,139
+2234,p-1770,Hooly Pixel Fold :: hinge_rating,"{""kind"":""quantity"",""unit"":""fold"",""value"":200000}",2026-06-30,121
+2240,p-1775,Hooly Pixel Fold :: store_rating,"{""kind"":""quantity"",""unit"":""star"",""value"":4.1}",2026-06-30,121
+453,p-388,Hooly Pixel 10 :: store_rating,"{""kind"":""quantity"",""unit"":""star"",""value"":4.4}",2026-06-30,121
+463,p-397,Made by Hooly 2026 :: stream_viewers,"{""kind"":""quantity"",""unit"":""viewer"",""value"":2100000}",2026-06-30,121
+452,p-387,Hooly Pixel Fold :: released,"{""kind"":""date"",""value"":""2026-06-25""}",2026-06-30,121
+1013,p-880,Hooly Maps Day :: city,"{""kind"":""name"",""value"":""Dublin""}",2026-07-02,119
+1011,p-879,Hooly Maps Day :: keynote_speaker,"{""kind"":""name"",""value"":""Jian-Yeng""}",2026-07-02,119
+1020,p-885,Hooly Maps Day :: features_launched,"{""kind"":""quantity"",""unit"":""feature"",""value"":3}",2026-07-02,119
+1014,p-881,Hooly Maps Day :: date,"{""kind"":""date"",""value"":""2026-06-23""}",2026-07-02,119
+1012,p-880,Hooly Maps Day :: attendees,"{""kind"":""quantity"",""unit"":""attendee"",""value"":4200}",2026-07-02,119
+149,p-124,Hooly Android 17 :: on_device_gemini,"{""kind"":""boolean"",""value"":true}",2026-07-02,119
+145,p-120,Hooly Android 17 :: beta_testers,"{""kind"":""quantity"",""unit"":""tester"",""value"":480000}",2026-07-02,119
+1023,p-887,Hooly Maps Day :: host,"{""kind"":""name"",""value"":""Gavin Bellson""}",2026-07-02,119
+1022,p-886,Hooly Maps Day :: replay_available,"{""kind"":""boolean"",""value"":true}",2026-07-02,119
+1021,p-886,Hooly Maps Day :: stream_viewers,"{""kind"":""quantity"",""unit"":""viewer"",""value"":310000}",2026-07-02,119
+1019,p-884,Hooly Maps Day :: keynote_length,"{""kind"":""duration"",""unit"":""min"",""value"":48}",2026-07-02,119
+1017,p-883,Hooly Maps Day :: talks,"{""kind"":""quantity"",""unit"":""talk"",""value"":22}",2026-07-02,119
+1018,p-883,Hooly Maps Day :: sponsors,"{""kind"":""quantity"",""unit"":""sponsor"",""value"":8}",2026-07-02,119
+1015,p-881,Hooly Maps Day :: venue,"{""kind"":""name"",""value"":""Quayside Hall""}",2026-07-02,119
+1024,p-888,Hooly Maps Day :: ticket_price,"{""currency"":""EUR"",""kind"":""money"",""value"":99}",2026-07-02,119
+1548,p-1295,Hooly Board :: raviqa_seat,"{""kind"":""boolean"",""value"":true}",2026-07-02,119
+1545,p-1292,Peter Gregori :: chairs,"{""kind"":""name"",""value"":""Hooly Board""}",2026-07-02,119
+2120,p-1679,Hooly :: incidents_this_year,"{""kind"":""quantity"",""unit"":""incident"",""value"":1}",2026-07-05,116
+2121,p-1679,The May 2026 outage :: duration,"{""kind"":""duration"",""unit"":""h"",""value"":6}",2026-07-05,116
+1148,p-987,Hooly Berlin Office :: is_engineering_hub,"{""kind"":""boolean"",""value"":true}",2026-07-09,112
+1138,p-979,Hoovar :: joined,"{""kind"":""date"",""value"":""2025-11-17""}",2026-07-09,112
+1139,p-980,Hoovar :: offices_run,"{""kind"":""quantity"",""unit"":""office"",""value"":2}",2026-07-09,112
+142,p-119,Hooly :: net_promoter_score,"{""kind"":""quantity"",""unit"":""point"",""value"":42}",2026-07-10,111
+927,p-815,Hooly Board :: seats,"{""kind"":""quantity"",""unit"":""seat"",""value"":8}",2026-07-14,107
+932,p-820,Hooly Board :: attendance,"{""kind"":""percent"",""value"":94}",2026-07-14,107
+929,p-817,Hooly Board :: chair,"{""kind"":""name"",""value"":""Peter Gregori""}",2026-07-14,107
+931,p-819,Hooly Board :: sessions_held,"{""kind"":""quantity"",""unit"":""session"",""value"":7}",2026-07-14,107
+928,p-816,Hooly Board :: independent_members,"{""kind"":""quantity"",""unit"":""member"",""value"":3}",2026-07-14,107
+934,p-822,Hooly Board :: audit_committee,"{""kind"":""boolean"",""value"":true}",2026-07-14,107
+881,p-773,Hooly Translate :: dialects_supported,"{""kind"":""quantity"",""unit"":""dialect"",""value"":44}",2026-07-15,106
+2244,p-1779,Hooly Pixel 10 Pro :: battery_capacity,"{""kind"":""quantity"",""unit"":""mAh"",""value"":5200}",2026-07-18,103
+2242,p-1777,Hooly Pixel 10 Pro :: battery_life,"{""kind"":""duration"",""unit"":""h"",""value"":41}",2026-07-18,103
+2246,p-1780,Hooly Pixel 10 Pro :: charging_power,"{""kind"":""quantity"",""unit"":""W"",""value"":45}",2026-07-18,103
+2241,p-1776,Hooly Pixel 10 :: battery_life,"{""kind"":""duration"",""unit"":""h"",""value"":34}",2026-07-18,103
+2245,p-1780,Hooly Pixel 10 :: charging_power,"{""kind"":""quantity"",""unit"":""W"",""value"":30}",2026-07-18,103
+2243,p-1778,Hooly Pixel 10 :: battery_capacity,"{""kind"":""quantity"",""unit"":""mAh"",""value"":4970}",2026-07-18,103
+1636,p-1355,Hooly AI Pro :: refund_window,"{""kind"":""duration"",""unit"":""day"",""value"":14}",2026-07-22,99
+795,p-689,Hooly Board :: next_meeting,"{""kind"":""date"",""value"":""2026-09-22""}",2026-07-22,99
+1639,p-1357,Hooly AI Pro :: support_first_response,"{""kind"":""duration"",""unit"":""h"",""value"":24}",2026-07-22,99
+1644,p-1359,Hooly Workspace :: free_trial,"{""kind"":""duration"",""unit"":""day"",""value"":14}",2026-07-22,99
+561,p-490,Hooly Cloud :: cli_version,"{""kind"":""version"",""value"":""2.3""}",2026-08-10,80
+559,p-488,Hooly Cloud :: customers,"{""kind"":""quantity"",""unit"":""customer"",""value"":1450}",2026-08-10,80
+558,p-487,Hooly Cloud :: home_region,"{""kind"":""name"",""value"":""Frankfurt""}",2026-08-10,80
+556,p-485,Hooly Cloud :: newest_region,"{""kind"":""name"",""value"":""Montreal""}",2026-08-10,80
+557,p-486,Hooly Cloud :: region_outside_europe,"{""kind"":""boolean"",""value"":true}",2026-08-10,80
+560,p-489,Hooly Cloud :: free_egress_per_month,"{""kind"":""quantity"",""unit"":""GB"",""value"":200}",2026-08-10,80
+566,p-493,Hooly Jules :: price,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":19}",2026-08-18,72
+568,p-493,Hooly Jules :: free_trial,"{""kind"":""duration"",""unit"":""day"",""value"":14}",2026-08-18,72
+567,p-493,Hooly Jules :: annual_price,"{""currency"":""EUR"",""kind"":""money"",""per"":""year"",""value"":190}",2026-08-18,72
+563,p-491,Hooly Jules :: lead,"{""kind"":""name"",""value"":""Nelson Bighettie""}",2026-08-18,72
+700,p-609,Hooly Pixel Fold :: weight,"{""kind"":""quantity"",""unit"":""g"",""value"":258}",2026-08-18,72
+702,p-611,Hooly Pixel Fold :: base_storage,"{""kind"":""quantity"",""unit"":""GB"",""value"":256}",2026-08-18,72
+698,p-607,Hooly Pixel Fold :: cover_screen_size,"{""kind"":""quantity"",""unit"":""inch"",""value"":6.4}",2026-08-18,72
+701,p-610,Hooly Pixel Fold :: battery_capacity,"{""kind"":""quantity"",""unit"":""mAh"",""value"":5015}",2026-08-18,72
+1721,p-1405,Hooly Gemini :: voice_mode,"{""kind"":""boolean"",""value"":true}",2026-08-19,71
+516,p-447,Hooly Lisbon Office :: rent,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":39000}",2026-08-20,70
+519,p-450,Hoovar :: facilities_team,"{""kind"":""quantity"",""unit"":""employee"",""value"":3}",2026-08-20,70
+520,p-451,Hooly Berlin Office :: lease_end,"{""kind"":""date"",""value"":""2028-12-31""}",2026-08-20,70
+512,p-443,Hooly Berlin Office :: rent,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":21500}",2026-08-20,70
+521,p-452,Hooly Lisbon Office :: lease_end,"{""kind"":""date"",""value"":""2031-04-30""}",2026-08-20,70
+515,p-446,Hooly Lisbon Office :: staff,"{""kind"":""quantity"",""unit"":""employee"",""value"":31}",2026-08-20,70
+517,p-448,Hooly Lisbon Office :: bike_racks,"{""kind"":""quantity"",""unit"":""rack"",""value"":12}",2026-08-20,70
+518,p-449,Hoovar :: desks_managed,"{""kind"":""quantity"",""unit"":""desk"",""value"":108}",2026-08-20,70
+510,p-441,Hooly Berlin Office :: desks,"{""kind"":""quantity"",""unit"":""desk"",""value"":44}",2026-08-20,70
+1821,p-1476,Hooly Gemini :: flawbench_score,"{""kind"":""percent"",""value"":86}",2026-08-20,70
+1811,p-1466,Hooly Gemini :: api_version,"{""kind"":""version"",""value"":""2""}",2026-08-20,70
+511,p-442,Hooly Berlin Office :: staff,"{""kind"":""quantity"",""unit"":""employee"",""value"":34}",2026-08-20,70
+513,p-444,Hooly Berlin Office :: bike_racks,"{""kind"":""quantity"",""unit"":""rack"",""value"":14}",2026-08-20,70
+514,p-445,Hooly Lisbon Office :: desks,"{""kind"":""quantity"",""unit"":""desk"",""value"":64}",2026-08-20,70
+1871,p-1512,Hooly Jules :: context_files,"{""kind"":""quantity"",""unit"":""module"",""value"":60}",2026-08-21,69
+1879,p-1516,Hooly Gemini :: max_output_length,"{""kind"":""quantity"",""unit"":""token"",""value"":16000}",2026-08-21,69
+41,p-32,Hooly Docs :: languages,"{""kind"":""quantity"",""unit"":""language"",""value"":19}",2026-08-25,65
+42,p-33,Hooly Docs :: offline_editing,"{""kind"":""boolean"",""value"":true}",2026-08-25,65
+40,p-31,Hooly Docs :: templates,"{""kind"":""quantity"",""unit"":""template"",""value"":80}",2026-08-25,65
+46,p-37,Hooly Drive :: free_storage,"{""kind"":""quantity"",""unit"":""GB"",""value"":10}",2026-08-25,65
+1991,p-1594,Ron LaFlame :: joined,"{""kind"":""date"",""value"":""2026-08-03""}",2026-08-26,64
+1996,p-1598,Hooly Gemini :: encryption_at_rest,"{""kind"":""boolean"",""value"":true}",2026-08-26,64
+2000,p-1600,Hooly :: data_processing_agreement,"{""kind"":""boolean"",""value"":true}",2026-08-26,64
+2314,p-1834,Hooly Workspace :: uptime_sla,"{""kind"":""percent"",""value"":99.5}",2026-09-01,58
+2325,p-1837,Hooly :: offices,"{""kind"":""quantity"",""unit"":""office"",""value"":2}",2026-09-01,58
+541,p-471,Hooly Jules :: general_availability_date,"{""kind"":""date"",""value"":""2026-06-02""}",2026-09-01,58
+540,p-471,Hooly Jules :: beta_date,"{""kind"":""date"",""value"":""2026-04-14""}",2026-09-01,58
+539,p-470,Hooly I/O 2026 :: date,"{""kind"":""date"",""value"":""2026-03-24""}",2026-09-01,58
+1541,p-1288,Patreese :: team_size,"{""kind"":""quantity"",""unit"":""member"",""value"":40}",2026-09-01,58
+1533,p-1283,Hooly Workspace Enterprise :: data_residency_regions,"{""kind"":""quantity"",""unit"":""region"",""value"":4}",2026-09-01,58
+596,p-516,Hooly Gemini :: eu_hosted,"{""kind"":""boolean"",""value"":true}",2026-09-01,58
+598,p-518,Hooly AI Free :: history_retention,"{""kind"":""duration"",""unit"":""day"",""value"":7}",2026-09-01,58
+579,p-504,Hooly AI Pro :: free_trial,"{""kind"":""duration"",""unit"":""day"",""value"":7}",2026-09-01,58
+599,p-519,Hooly Gemini :: open_source,"{""kind"":""boolean"",""value"":false}",2026-09-01,58
+2323,p-1837,Hooly :: headquarters,"{""kind"":""name"",""value"":""Lisbon""}",2026-09-01,58
+742,p-644,Hooly Gemini :: requests_per_minute,"{""kind"":""quantity"",""unit"":""request"",""value"":120}",2026-09-01,58
+2311,p-1834,Hooly AI Pro :: included_seats,"{""kind"":""quantity"",""unit"":""seat"",""value"":1}",2026-09-01,58
+2321,p-1837,Hooly :: founded,"{""kind"":""date"",""value"":""2025-01-14""}",2026-09-01,58
+2322,p-1837,Hooly :: ceo,"{""kind"":""name"",""value"":""Gavin Bellson""}",2026-09-01,58
+1735,p-1413,Hooly Gemini :: single_sign_on,"{""kind"":""boolean"",""value"":true}",2026-09-02,57
+2362,p-1864,Hooly Pixel Buds :: battery_life,"{""kind"":""duration"",""unit"":""h"",""value"":9}",2026-09-02,57
+1431,p-1206,Hooly Photos :: version,"{""kind"":""version"",""value"":""6.0""}",2026-09-02,57
+1432,p-1206,Hooly Photos :: latest_release_date,"{""kind"":""date"",""value"":""2026-06-02""}",2026-09-02,57
+1733,p-1412,Hooly Workspace :: maximum_seats,"{""kind"":""quantity"",""unit"":""seat"",""value"":250}",2026-09-02,57
+1734,p-1412,Hooly Workspace :: copilot_included,"{""kind"":""boolean"",""value"":true}",2026-09-02,57
+2353,p-1859,Hooly Pixel 10 :: base_storage,"{""kind"":""quantity"",""unit"":""GB"",""value"":256}",2026-09-02,57
+1736,p-1414,Meridian Health :: flawless_seats,"{""kind"":""quantity"",""unit"":""seat"",""value"":300}",2026-09-02,57
+1722,p-1406,Hooly Workspace Enterprise :: launched,"{""kind"":""date"",""value"":""2026-09-01""}",2026-09-02,57
+2360,p-1863,Hooly Pixel Watch :: battery_life,"{""kind"":""duration"",""unit"":""h"",""value"":36}",2026-09-02,57
+2359,p-1863,Hooly Pixel Watch :: price,"{""currency"":""EUR"",""kind"":""money"",""value"":299}",2026-09-02,57
+2357,p-1861,Hooly Pixel Fold :: inner_screen_size,"{""kind"":""quantity"",""unit"":""inch"",""value"":8}",2026-09-02,57
+2356,p-1861,Hooly Pixel Fold :: price,"{""currency"":""EUR"",""kind"":""money"",""value"":1599}",2026-09-02,57
+2355,p-1860,Hooly Pixel 10 Pro :: base_storage,"{""kind"":""quantity"",""unit"":""GB"",""value"":512}",2026-09-02,57
+2354,p-1860,Hooly Pixel 10 Pro :: price,"{""currency"":""EUR"",""kind"":""money"",""value"":1049}",2026-09-02,57
+2361,p-1864,Hooly Pixel Buds :: price,"{""currency"":""EUR"",""kind"":""money"",""value"":169}",2026-09-02,57
+2358,p-1862,Hooly Pixel 9 :: price,"{""currency"":""EUR"",""kind"":""money"",""value"":499}",2026-09-02,57
+58,p-47,Holdan :: previous_employer,"{""kind"":""name"",""value"":""Nimbus Cloud""}",2026-09-03,56
+60,p-49,Hooly Cloud :: median_time_to_recover,"{""kind"":""duration"",""unit"":""min"",""value"":18}",2026-09-03,56
+1310,p-1110,Hooly Sheets :: gemini_formula_assist,"{""kind"":""boolean"",""value"":true}",2026-09-03,56
+676,p-586,Hooly Translate :: rated_accuracy,"{""kind"":""percent"",""value"":93.2}",2026-09-03,56
+679,p-589,Hooly Translate :: launched,"{""kind"":""date"",""value"":""2025-10-21""}",2026-09-03,56
+678,p-588,Hooly Translate :: monthly_active_users,"{""kind"":""quantity"",""unit"":""user"",""value"":151000000}",2026-09-03,56
+57,p-46,Holdan :: joined,"{""kind"":""date"",""value"":""2026-01""}",2026-09-03,56
+56,p-46,Hooly Cloud :: reliability_lead,"{""kind"":""name"",""value"":""Holdan""}",2026-09-03,56
+479,p-412,Hooly Workspace Enterprise :: apps_included,"{""kind"":""quantity"",""unit"":""app"",""value"":6}",2026-09-03,56
+486,p-418,Hooly Gmail :: active_users,"{""kind"":""quantity"",""unit"":""user"",""value"":21000}",2026-09-03,56
+487,p-419,Hooly Drive :: active_users,"{""kind"":""quantity"",""unit"":""user"",""value"":24600}",2026-09-03,56
+480,p-413,Hooly Workspace :: apps_included,"{""kind"":""quantity"",""unit"":""app"",""value"":6}",2026-09-03,56
+222,p-172,Hooly Workspace :: included_seats,"{""kind"":""quantity"",""unit"":""seat"",""value"":10}",2026-09-05,54
+221,p-172,Hooly Workspace :: minimum_seats,"{""kind"":""quantity"",""unit"":""seat"",""value"":3}",2026-09-05,54
+1909,p-1535,Hooly :: newsletter_subscribers,"{""kind"":""quantity"",""unit"":""subscriber"",""value"":26000}",2026-09-08,51
+1915,p-1540,Hooly Workspace :: customers,"{""kind"":""quantity"",""unit"":""team"",""value"":400}",2026-09-08,51
+1906,p-1533,Hooly :: webinars_held,"{""kind"":""quantity"",""unit"":""webinar"",""value"":12}",2026-09-08,51
+1913,p-1538,Hooly Jules :: supported_ides,"{""kind"":""quantity"",""unit"":""ide"",""value"":6}",2026-09-08,51
+1918,p-1542,Hooly :: support_tickets_per_week,"{""kind"":""quantity"",""unit"":""ticket"",""value"":1100}",2026-09-08,51
+1912,p-1538,Hooly Jules :: version,"{""kind"":""version"",""value"":""1.2""}",2026-09-08,51
+811,p-704,Hooly Calendar :: version,"{""kind"":""version"",""value"":""1.4""}",2026-09-10,49
+813,p-706,Hooly Calendar :: appointment_booking,"{""kind"":""boolean"",""value"":true}",2026-09-10,49
+814,p-707,Hooly Calendar :: launched,"{""kind"":""date"",""value"":""2026-02-10""}",2026-09-10,49
+342,p-287,Hooly Chrome :: ai_sidebar,"{""kind"":""boolean"",""value"":true}",2026-09-15,44
+781,p-676,Hooly Hiring Programme :: open_roles,"{""kind"":""quantity"",""unit"":""role"",""value"":7}",2026-09-16,43
+779,p-674,Hooly Hiring Programme :: launched,"{""kind"":""date"",""value"":""2025-11-03""}",2026-09-16,43
+789,p-683,Hooly Hiring Programme :: hires,"{""kind"":""quantity"",""unit"":""hire"",""value"":58}",2026-09-16,43
+791,p-685,Hooly Hiring Programme :: referral_share,"{""kind"":""percent"",""value"":33}",2026-09-16,43
+782,p-676,Hooly Hiring Programme :: open_engineering_roles,"{""kind"":""quantity"",""unit"":""engineer"",""value"":4}",2026-09-16,43
+382,p-323,Hooly Search :: ai_answers,"{""kind"":""boolean"",""value"":true}",2026-09-18,41
+397,p-337,Hooly Gemini :: webhook_events,"{""kind"":""quantity"",""unit"":""event"",""value"":11}",2026-09-20,39
+25,p-22,Hooly Jules :: users,"{""kind"":""quantity"",""unit"":""user"",""value"":9000}",2026-09-20,39
+26,p-22,Hooly Jules :: suggestion_acceptance_rate,"{""kind"":""percent"",""value"":38}",2026-09-20,39
+27,p-22,Hooly Jules :: programming_languages,"{""kind"":""quantity"",""unit"":""language"",""value"":14}",2026-09-20,39
+398,p-338,Brightline Labs :: integration_partner_of_flawless,"{""kind"":""boolean"",""value"":true}",2026-09-20,39
+396,p-337,Hooly Gemini :: official_sdks,"{""kind"":""quantity"",""unit"":""sdk"",""value"":5}",2026-09-20,39
+395,p-336,Hooly Gemini :: integrations,"{""kind"":""quantity"",""unit"":""integration"",""value"":22}",2026-09-20,39
+2078,p-1648,Hooly :: soc2_certified,"{""kind"":""boolean"",""value"":false}",2026-09-21,38
+2066,p-1637,Hooly Vault :: announced,"{""kind"":""date"",""value"":""2026-09-15""}",2026-09-21,38
+2076,p-1646,Hooly :: soc2_audit_start,"{""kind"":""date"",""value"":""2026-11-02""}",2026-09-21,38
+2074,p-1645,Hooly :: soc2_auditor,"{""kind"":""name"",""value"":""Certiq Assurance""}",2026-09-21,38
+400,p-340,Hooly Android 17 :: stable_release,"{""kind"":""date"",""value"":""2026-09-22""}",2026-09-22,37
+2083,p-1651,Hooly Vault :: generally_available,"{""kind"":""boolean"",""value"":false}",2026-09-24,35
+2086,p-1653,Hooly Gemini :: data_retention,"{""kind"":""duration"",""unit"":""day"",""value"":90}",2026-09-24,35
+2087,p-1654,Hooly :: head_of_security,"{""kind"":""name"",""value"":""Ron LaFlame""}",2026-09-24,35
+2088,p-1655,Hooly I/O 2027 :: city,"{""kind"":""name"",""value"":""Lisbon""}",2026-09-24,35
+2248,p-1782,Hooly Pixel 10 :: shipping_android,"{""kind"":""version"",""value"":""17.0""}",2026-09-25,34
+2254,p-1787,Hooly Pixel 10 :: update_promise,"{""kind"":""quantity"",""unit"":""upgrade"",""value"":7}",2026-09-25,34
+2251,p-1785,Hooly Android 17 :: satellite_messaging,"{""kind"":""boolean"",""value"":true}",2026-09-25,34
+2104,p-1667,Hooly Cloud :: uptime_last_quarter,"{""kind"":""percent"",""value"":99.95}",2026-10-02,27
+2110,p-1671,Holdan :: team_size,"{""kind"":""quantity"",""unit"":""engineer"",""value"":17}",2026-10-02,27
+247,p-196,Hooly Employee Survey :: run_by,"{""kind"":""name"",""value"":""Erlich Bachmann""}",2026-10-02,27
+2106,p-1669,Hooly Cloud :: regions,"{""kind"":""quantity"",""unit"":""region"",""value"":8}",2026-10-02,27
+2111,p-1672,Hooly Cloud :: storage_tiers,"{""kind"":""quantity"",""unit"":""tier"",""value"":4}",2026-10-02,27
+2108,p-1669,Hooly Cloud :: data_centres,"{""kind"":""quantity"",""unit"":""site"",""value"":11}",2026-10-02,27
+2109,p-1670,Hooly Cloud :: uptime_sla,"{""kind"":""percent"",""value"":99.95}",2026-10-02,27
+2107,p-1669,Hooly Cloud :: availability_zones,"{""kind"":""quantity"",""unit"":""zone"",""value"":24}",2026-10-02,27
+2123,p-1681,Hooly :: had_major_outage,"{""kind"":""boolean"",""value"":true}",2026-10-05,24
+2401,p-1897,Hooly Workspace Enterprise :: storage_per_user,"{""kind"":""quantity"",""unit"":""TB"",""value"":1}",2026-10-05,24
+2396,p-1892,Hooly Drive :: version_history,"{""kind"":""duration"",""unit"":""day"",""value"":180}",2026-10-05,24
+2390,p-1886,Hooly Gmail :: attachment_limit,"{""kind"":""quantity"",""unit"":""MB"",""value"":40}",2026-10-05,24
+2392,p-1888,Hooly Gmail :: spam_catch_rate,"{""kind"":""percent"",""value"":99.7}",2026-10-05,24
+2398,p-1894,Hooly Docs :: simultaneous_editors,"{""kind"":""quantity"",""unit"":""editor"",""value"":75}",2026-10-05,24
+2397,p-1893,Hooly Docs :: version,"{""kind"":""version"",""value"":""2.0""}",2026-10-05,24
+2393,p-1889,Hooly Drive :: price_per_user,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":2}",2026-10-05,24
+2124,p-1681,The May 2026 outage :: date,"{""kind"":""date"",""value"":""2026-05-19""}",2026-10-05,24
+2262,p-1794,Hooly Hiring Programme :: interview_rounds,"{""kind"":""quantity"",""unit"":""round"",""value"":4}",2026-10-06,23
+2261,p-1793,Hooly Hiring Programme :: first_reply,"{""kind"":""duration"",""unit"":""h"",""value"":24}",2026-10-06,23
+2264,p-1795,Hooly Hiring Programme :: applicants,"{""kind"":""quantity"",""unit"":""applicant"",""value"":7800}",2026-10-06,23
+633,p-546,Hooly Maps :: ar_walking,"{""kind"":""boolean"",""value"":true}",2026-10-06,23
+2266,p-1796,Hooly Hiring Programme :: offer_acceptance,"{""kind"":""percent"",""value"":78}",2026-10-06,23
+2263,p-1794,Hooly Hiring Programme :: time_to_hire,"{""kind"":""duration"",""unit"":""day"",""value"":36}",2026-10-06,23
+935,p-823,Hooly Employee Survey :: respondents,"{""kind"":""quantity"",""unit"":""respondent"",""value"":66}",2026-10-06,23
+936,p-824,Hooly Employee Survey :: response_rate,"{""kind"":""percent"",""value"":89.2}",2026-10-06,23
+937,p-825,Hooly Employee Survey :: would_recommend,"{""kind"":""percent"",""value"":84}",2026-10-06,23
+938,p-826,Hooly Employee Survey :: manager_rating,"{""kind"":""quantity"",""unit"":""star"",""value"":4.3}",2026-10-06,23
+939,p-827,Hooly Employee Survey :: growth_opportunities,"{""kind"":""percent"",""value"":69}",2026-10-06,23
+940,p-828,Hooly Employee Survey :: manageable_workload,"{""kind"":""percent"",""value"":61}",2026-10-06,23
+941,p-829,Hooly Employee Survey :: open_for,"{""kind"":""duration"",""unit"":""day"",""value"":14}",2026-10-06,23
+942,p-830,Hooly Employee Survey :: next_round,"{""kind"":""date"",""value"":""2027-03-08""}",2026-10-06,23
+2265,p-1796,Hooly Hiring Programme :: offers,"{""kind"":""quantity"",""unit"":""offer"",""value"":71}",2026-10-06,23
+2001,p-1601,Hooly Workspace Enterprise :: single_sign_on,"{""kind"":""boolean"",""value"":true}",2026-10-06,23
+2002,p-1602,Hooly Workspace Enterprise :: onboarding_time,"{""kind"":""duration"",""unit"":""day"",""value"":14}",2026-10-06,23
+2010,p-1607,Hooly :: support_satisfaction,"{""kind"":""percent"",""value"":91}",2026-10-06,23
+2269,p-1799,Hooly Hiring Programme :: referral_bonus,"{""currency"":""EUR"",""kind"":""money"",""value"":2500}",2026-10-06,23
+2270,p-1800,Hooly Hiring Programme :: executive_sponsor,"{""kind"":""name"",""value"":""Bertram Gilfoil""}",2026-10-06,23
+2267,p-1797,Hooly Hiring Programme :: cost_per_hire,"{""currency"":""EUR"",""kind"":""money"",""value"":4900}",2026-10-06,23
+2268,p-1798,Hooly Hiring Programme :: recruiters,"{""kind"":""quantity"",""unit"":""recruiter"",""value"":4}",2026-10-06,23
+1941,p-1560,Hooly AI Pro :: price,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":59}",2026-10-07,22
+1929,p-1551,Hooly Gemini :: launched,"{""kind"":""date"",""value"":""2025-10-07""}",2026-10-07,22
+1939,p-1558,Hooly :: customer_countries,"{""kind"":""quantity"",""unit"":""country"",""value"":31}",2026-10-07,22
+1938,p-1558,Hooly :: paying_customers,"{""kind"":""quantity"",""unit"":""customer"",""value"":3200}",2026-10-07,22
+1937,p-1557,Hooly Gemini :: max_upload_size,"{""kind"":""quantity"",""unit"":""MB"",""value"":100}",2026-10-07,22
+1930,p-1552,Gemini Launch Night :: city,"{""kind"":""name"",""value"":""Berlin""}",2026-10-07,22
+1931,p-1552,Gemini Launch Night :: attendees,"{""kind"":""quantity"",""unit"":""attendee"",""value"":300}",2026-10-07,22
+1942,p-1560,Hooly Workspace :: price,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":199}",2026-10-07,22
+1934,p-1555,Hooly Gemini :: median_response_time,"{""kind"":""duration"",""unit"":""s"",""value"":1.4}",2026-10-07,22
+1935,p-1556,Hooly Gemini :: hallucination_rate,"{""kind"":""percent"",""value"":3.8}",2026-10-07,22
+1101,p-949,Hooly Devices :: manufacturing_partner,"{""kind"":""name"",""value"":""Tessel Works""}",2026-10-08,21
+1100,p-948,Hooly Devices :: max_trade_in_credit,"{""currency"":""EUR"",""kind"":""money"",""value"":250}",2026-10-08,21
+1097,p-946,Hooly Pixel 10 :: price,"{""currency"":""EUR"",""kind"":""money"",""value"":749}",2026-10-08,21
+840,p-733,Hooly Meet :: active_users,"{""kind"":""quantity"",""unit"":""user"",""value"":9400}",2026-10-08,21
+839,p-732,Hooly Meet :: caption_languages,"{""kind"":""quantity"",""unit"":""language"",""value"":11}",2026-10-08,21
+837,p-730,Hooly Meet :: max_participants,"{""kind"":""quantity"",""unit"":""participant"",""value"":300}",2026-10-08,21
+1943,p-1561,Bertram Gilfoil :: joined,"{""kind"":""date"",""value"":""2026-07-01""}",2026-10-09,20
+1956,p-1569,Hooly :: head_of_product,"{""kind"":""name"",""value"":""Dinesh Chugtay""}",2026-10-09,20
+1952,p-1566,Hooly Gemini :: requests_per_day,"{""kind"":""quantity"",""unit"":""request"",""value"":2400000}",2026-10-09,20
+1944,p-1562,Bertram Gilfoil :: previous_employer,"{""kind"":""name"",""value"":""Kestrel Bank""}",2026-10-09,20
+1945,p-1563,Hooly :: cto,"{""kind"":""name"",""value"":""Bertram Gilfoil""}",2026-10-09,20
+1955,p-1568,Hooly :: employees,"{""kind"":""quantity"",""unit"":""employee"",""value"":74}",2026-10-09,20
+1084,p-936,Hooly Android :: active_devices,"{""kind"":""quantity"",""unit"":""device"",""value"":3100000000}",2026-10-12,17
+1865,p-1506,Hooly Vault :: minimum_nodes,"{""kind"":""quantity"",""unit"":""node"",""value"":5}",2026-10-12,17
+1867,p-1508,Hooly Vault :: planned_general_availability,"{""kind"":""date"",""value"":""2026-12""}",2026-10-12,17
+1866,p-1507,Hooly Vault :: waitlist,"{""kind"":""quantity"",""unit"":""company"",""value"":310}",2026-10-12,17
+2193,p-1736,Hooly Chrome :: memory_saver,"{""kind"":""boolean"",""value"":true}",2026-10-12,17
+2186,p-1730,Hooly Meet :: end_to_end_encryption,"{""kind"":""boolean"",""value"":true}",2026-10-12,17
+2192,p-1735,Hooly Chrome :: tab_sleep_delay,"{""kind"":""duration"",""unit"":""min"",""value"":10}",2026-10-12,17
+2188,p-1732,Hooly Sheets :: version,"{""kind"":""version"",""value"":""1.2""}",2026-10-12,17
+2187,p-1731,Hooly Calendar :: max_guests,"{""kind"":""quantity"",""unit"":""guest"",""value"":500}",2026-10-12,17
+1078,p-931,Hooly Android :: lead,"{""kind"":""name"",""value"":""Davis Bannerchek""}",2026-10-12,17
+1085,p-936,Hooly Android :: open_source,"{""kind"":""boolean"",""value"":true}",2026-10-12,17
+2182,p-1726,Hooly Meet :: livestream_viewers,"{""kind"":""quantity"",""unit"":""viewer"",""value"":10000}",2026-10-12,17
+2184,p-1728,Hooly Meet :: cloud_recording,"{""kind"":""boolean"",""value"":true}",2026-10-12,17
+2183,p-1727,Hooly Meet :: max_call_length,"{""kind"":""duration"",""unit"":""min"",""value"":720}",2026-10-12,17
+950,p-838,Hooly Sustainability Report :: published,"{""kind"":""date"",""value"":""2026-09-08""}",2026-10-14,15
+951,p-839,Hooly Sustainability Report :: owner,"{""kind"":""name"",""value"":""Hoovar""}",2026-10-14,15
+943,p-831,Hooly Sustainability Report :: footprint,"{""kind"":""quantity"",""unit"":""tonne"",""value"":655}",2026-10-14,15
+947,p-835,Hooly Sustainability Report :: travel_emissions_cut,"{""kind"":""percent"",""value"":18}",2026-10-14,15
+949,p-837,Hooly Sustainability Report :: net_zero_date,"{""kind"":""date"",""value"":""2030-12-31""}",2026-10-14,15
+945,p-833,Hooly Sustainability Report :: devices_recycled,"{""kind"":""quantity"",""unit"":""device"",""value"":210}",2026-10-14,15
+948,p-836,Hooly Sustainability Report :: emissions_cut_target,"{""kind"":""percent"",""value"":45}",2026-10-14,15
+944,p-832,Hooly Sustainability Report :: renewable_electricity,"{""kind"":""percent"",""value"":84}",2026-10-14,15
+946,p-834,Hooly Sustainability Report :: cycling_commuters,"{""kind"":""percent"",""value"":27}",2026-10-14,15
+1039,p-900,Hooly Maps :: monthly_active_users,"{""kind"":""quantity"",""unit"":""user"",""value"":118000000}",2026-10-14,15
+1038,p-899,Hooly Maps :: lead,"{""kind"":""name"",""value"":""Jian-Yeng""}",2026-10-14,15
+1042,p-902,Hooly Maps :: places_listed,"{""kind"":""quantity"",""unit"":""place"",""value"":141000000}",2026-10-14,15
+1047,p-906,Hooly Maps :: store_rating,"{""kind"":""quantity"",""unit"":""star"",""value"":4.6}",2026-10-14,15
+1041,p-902,Hooly Maps :: mapped_distance,"{""kind"":""quantity"",""unit"":""km"",""value"":75000000}",2026-10-14,15
+1049,p-908,Hooly Maps :: launched,"{""kind"":""date"",""value"":""2025-10-14""}",2026-10-14,15
+1045,p-905,Hooly Maps :: business_listings,"{""kind"":""quantity"",""unit"":""listing"",""value"":14000000}",2026-10-14,15
+1046,p-905,Hooly Maps :: share_of_ad_revenue,"{""kind"":""percent"",""value"":8.1}",2026-10-14,15
+952,p-840,Hooly Sustainability Report :: externally_audited,"{""kind"":""boolean"",""value"":true}",2026-10-14,15
+900,p-790,Hooly Android 16 :: share_of_devices,"{""kind"":""percent"",""value"":38.5}",2026-10-14,15
+1682,p-1383,Hooly Gemini :: cloud_provider,"{""kind"":""name"",""value"":""Nimbus Cloud""}",2026-10-15,14
+1676,p-1378,Hooly Workspace Enterprise :: included_seats,"{""kind"":""quantity"",""unit"":""seat"",""value"":50}",2026-10-15,14
+1678,p-1380,Hooly Workspace Enterprise :: support_first_response,"{""kind"":""duration"",""unit"":""h"",""value"":1}",2026-10-15,14
+1677,p-1379,Hooly Workspace Enterprise :: uptime_sla,"{""kind"":""percent"",""value"":99.9}",2026-10-15,14
+1684,p-1384,Hooly Gemini :: primary_region,"{""kind"":""name"",""value"":""Frankfurt""}",2026-10-15,14
+1683,p-1384,Hooly Gemini :: hosting_regions,"{""kind"":""quantity"",""unit"":""region"",""value"":2}",2026-10-15,14
+1687,p-1387,Hooly Workspace Enterprise :: customers,"{""kind"":""quantity"",""unit"":""customer"",""value"":12}",2026-10-15,14
+1680,p-1382,Hooly Workspace Enterprise :: audit_retention,"{""kind"":""duration"",""unit"":""day"",""value"":180}",2026-10-15,14
+1060,p-918,Hooly Search :: personalised_ads_by_default,"{""kind"":""boolean"",""value"":false}",2026-10-15,14
+1061,p-919,Hooly Search :: launched,"{""kind"":""date"",""value"":""2025-10-02""}",2026-10-15,14
+1051,p-910,Hooly Search :: monthly_active_users,"{""kind"":""quantity"",""unit"":""user"",""value"":598000000}",2026-10-15,14
+1066,p-922,Hooly Photos :: trash_retention,"{""kind"":""duration"",""unit"":""day"",""value"":60}",2026-10-16,13
+1074,p-927,Hooly Photos :: family_group_size,"{""kind"":""quantity"",""unit"":""member"",""value"":5}",2026-10-16,13
+1076,p-929,Hooly Photos :: store_rating,"{""kind"":""quantity"",""unit"":""star"",""value"":4.6}",2026-10-16,13
+1072,p-926,Hooly Photos Plus :: price,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":6.99}",2026-10-16,13
+1075,p-928,Hooly Photos :: yearly_billing_discount,"{""kind"":""percent"",""value"":20}",2026-10-16,13
+1067,p-923,Hooly Photos Max :: storage,"{""kind"":""quantity"",""unit"":""TB"",""value"":10}",2026-10-16,13
+1065,p-922,Hooly Photos :: free_storage,"{""kind"":""quantity"",""unit"":""GB"",""value"":10}",2026-10-16,13
+1077,p-930,Hooly Photos :: launched,"{""kind"":""date"",""value"":""2025-10-18""}",2026-10-16,13
+1062,p-920,Hooly Photos :: head,"{""kind"":""name"",""value"":""Tarra""}",2026-10-16,13
+1064,p-921,Hooly Photos :: photos_stored,"{""kind"":""quantity"",""unit"":""photo"",""value"":6700000000}",2026-10-16,13
+1073,p-926,Hooly Photos Plus :: storage,"{""kind"":""quantity"",""unit"":""TB"",""value"":2}",2026-10-16,13
+1071,p-925,Hooly Photos Lite :: storage,"{""kind"":""quantity"",""unit"":""GB"",""value"":200}",2026-10-16,13
+2221,p-1760,Hooly Translate :: voice_latency,"{""kind"":""duration"",""unit"":""ms"",""value"":210}",2026-10-18,11
+2219,p-1758,Hooly Translate :: offline_languages,"{""kind"":""quantity"",""unit"":""language"",""value"":50}",2026-10-18,11
+2222,p-1761,Hooly Translate :: text_limit,"{""kind"":""quantity"",""unit"":""character"",""value"":10000}",2026-10-18,11
+2218,p-1757,Hooly Translate :: languages_supported,"{""kind"":""quantity"",""unit"":""language"",""value"":140}",2026-10-18,11
+2224,p-1762,Hooly Translate :: camera_translation,"{""kind"":""boolean"",""value"":true}",2026-10-18,11
+2223,p-1761,Hooly Translate :: pro_price,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":4.99}",2026-10-18,11
+670,p-580,Hooly Search :: executive_owner,"{""kind"":""name"",""value"":""Bertram Gilfoil""}",2026-10-20,9
+668,p-578,Hooly Search :: ad_free_price,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":5}",2026-10-20,9
+1184,p-1018,Hooly Docs :: active_users,"{""kind"":""quantity"",""unit"":""user"",""value"":16400}",2026-10-20,9
+1188,p-1021,Hooly Workspace :: storage_per_user,"{""kind"":""quantity"",""unit"":""GB"",""value"":200}",2026-10-20,9
+1182,p-1016,Hooly Gmail :: end_to_end_encryption,"{""kind"":""boolean"",""value"":true}",2026-10-20,9
+1186,p-1020,Hooly :: head_of_workspace,"{""kind"":""name"",""value"":""Patreese""}",2026-10-20,9
+865,p-757,Hooly Photos Lite :: price,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":2.49}",2026-10-20,9
+1036,p-897,Hooly Chrome :: passkey_sync,"{""kind"":""boolean"",""value"":true}",2026-10-20,9
+1035,p-896,Hooly Chrome :: stable_release_date,"{""kind"":""date"",""value"":""2026-09-29""}",2026-10-20,9
+1029,p-892,Hooly Chrome :: extensions_in_store,"{""kind"":""quantity"",""unit"":""extension"",""value"":74000}",2026-10-20,9
+1028,p-892,Hooly Chrome :: stable_version,"{""kind"":""version"",""value"":""72.0""}",2026-10-20,9
+1034,p-896,Hooly Chrome :: release_cadence,"{""kind"":""duration"",""unit"":""week"",""value"":4}",2026-10-20,9
+867,p-759,Hooly Photos Max :: price,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":19.99}",2026-10-20,9
+665,p-575,Hooly Search :: news_refresh_interval,"{""kind"":""duration"",""unit"":""h"",""value"":4}",2026-10-20,9
+864,p-756,Hooly Photos :: monthly_active_users,"{""kind"":""quantity"",""unit"":""user"",""value"":77000000}",2026-10-20,9
+868,p-760,Hooly Photos :: end_to_end_encrypted_backups,"{""kind"":""boolean"",""value"":true}",2026-10-20,9
+667,p-577,Hooly Search :: publisher_revenue_share,"{""kind"":""percent"",""value"":75}",2026-10-20,9
+1033,p-895,Hooly Chrome :: top_bug_bounty,"{""currency"":""EUR"",""kind"":""money"",""value"":50000}",2026-10-20,9
+1030,p-893,Hooly Chrome :: cold_start_time,"{""kind"":""duration"",""unit"":""s"",""value"":1.3}",2026-10-20,9
+1027,p-891,Hooly Chrome :: browser_market_share,"{""kind"":""percent"",""value"":25.6}",2026-10-20,9
+1026,p-890,Hooly Chrome :: monthly_active_users,"{""kind"":""quantity"",""unit"":""user"",""value"":362000000}",2026-10-20,9
+1025,p-889,Hooly Chrome :: lead,"{""kind"":""name"",""value"":""Gwartt""}",2026-10-20,9
+1037,p-898,Hooly Chrome :: launched,"{""kind"":""date"",""value"":""2025-10-09""}",2026-10-20,9
+664,p-574,Hooly Search :: median_response_time,"{""kind"":""duration"",""unit"":""ms"",""value"":230}",2026-10-20,9
+661,p-571,Hooly Search :: index_size,"{""kind"":""quantity"",""unit"":""page"",""value"":301000000000}",2026-10-20,9
+1189,p-1022,Hooly Gmail :: price_per_user,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":5}",2026-10-20,9
+1187,p-1021,Hooly Gmail :: mailbox_storage,"{""kind"":""quantity"",""unit"":""GB"",""value"":25}",2026-10-20,9
+666,p-576,Hooly Search :: share_of_ad_revenue,"{""kind"":""percent"",""value"":58.9}",2026-10-20,9
+663,p-573,Hooly Search :: languages_served,"{""kind"":""quantity"",""unit"":""language"",""value"":80}",2026-10-20,9
+662,p-572,Hooly Search :: images_indexed,"{""kind"":""quantity"",""unit"":""image"",""value"":46000000000}",2026-10-20,9
+1511,p-1266,Hooly Pixel 10 :: units_sold,"{""kind"":""quantity"",""unit"":""phone"",""value"":410000}",2026-10-21,8
+1506,p-1263,Hooly Devices :: german_premium_phone_share,"{""kind"":""percent"",""value"":5.2}",2026-10-21,8
+1515,p-1269,Hooly Pixel Watch :: units_sold,"{""kind"":""quantity"",""unit"":""watch"",""value"":390000}",2026-10-21,8
+1508,p-1264,Hooly Devices :: repair_centres,"{""kind"":""quantity"",""unit"":""centre"",""value"":12}",2026-10-21,8
+1516,p-1269,Hooly Pixel Buds :: units_sold,"{""kind"":""quantity"",""unit"":""pair"",""value"":330000}",2026-10-21,8
+1514,p-1268,Hooly Pixel 9 :: discontinued,"{""kind"":""boolean"",""value"":true}",2026-10-21,8
+1507,p-1264,Hooly Devices :: countries_served,"{""kind"":""quantity"",""unit"":""country"",""value"":19}",2026-10-21,8
+1512,p-1266,Hooly Pixel 10 Pro :: units_sold,"{""kind"":""quantity"",""unit"":""phone"",""value"":300000}",2026-10-21,8
+1509,p-1265,Hooly Devices :: staff,"{""kind"":""quantity"",""unit"":""employee"",""value"":28}",2026-10-21,8
+1510,p-1265,Hooly Devices :: head,"{""kind"":""name"",""value"":""Jack Barkor""}",2026-10-21,8
+1513,p-1267,Hooly Pixel Fold :: units_sold,"{""kind"":""quantity"",""unit"":""phone"",""value"":55000}",2026-10-21,8
+2258,p-1791,Hooly Android 17 :: share_of_devices,"{""kind"":""percent"",""value"":5.1}",2026-10-22,7
+2257,p-1790,Hooly Android 17 :: update_size,"{""kind"":""quantity"",""unit"":""GB"",""value"":1.9}",2026-10-22,7
+2256,p-1789,Hooly Android 17 :: supported_models,"{""kind"":""quantity"",""unit"":""model"",""value"":26}",2026-10-22,7
+2255,p-1788,Hooly Android :: version,"{""kind"":""version"",""value"":""17.1""}",2026-10-22,7
+2196,p-1739,Hooly Maps :: version,"{""kind"":""version"",""value"":""12.2""}",2026-10-24,5
+2197,p-1739,Hooly Maps :: latest_release_date,"{""kind"":""date"",""value"":""2026-10-05""}",2026-10-24,5
+2199,p-1741,Hooly Maps :: countries_covered,"{""kind"":""quantity"",""unit"":""country"",""value"":74}",2026-10-24,5
+2200,p-1742,Hooly Maps :: voice_guidance_languages,"{""kind"":""quantity"",""unit"":""language"",""value"":24}",2026-10-24,5
+2201,p-1743,Hooly Maps :: charging_stations_listed,"{""kind"":""quantity"",""unit"":""station"",""value"":405000}",2026-10-24,5
+2198,p-1740,Hooly Maps :: offline_area_limit,"{""kind"":""quantity"",""unit"":""GB"",""value"":5}",2026-10-24,5
+1626,p-1351,Hooly Gemini :: languages,"{""kind"":""quantity"",""unit"":""language"",""value"":12}",2026-10-26,3
+1627,p-1351,Hooly Gemini :: context_window,"{""kind"":""quantity"",""unit"":""token"",""value"":200000}",2026-10-26,3
+1625,p-1351,Hooly Gemini :: version,"{""kind"":""version"",""value"":""2.2""}",2026-10-26,3
+1869,p-1510,Hooly Gemini :: uptime_last_quarter,"{""kind"":""percent"",""value"":99.6}",2026-10-26,3
+1628,p-1351,Hooly Gemini :: supported_file_types,"{""kind"":""quantity"",""unit"":""format"",""value"":22}",2026-10-26,3
+1635,p-1354,Hooly Workspace Enterprise :: price,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":1200}",2026-10-26,3
+523,p-454,Hooly Q4 2025 Results :: revenue,"{""currency"":""EUR"",""kind"":""money"",""value"":4200000}",2026-10-27,2
+524,p-455,Hooly Q1 2026 Results :: revenue,"{""currency"":""EUR"",""kind"":""money"",""value"":6900000}",2026-10-27,2
+536,p-467,Hooly Q2 2026 Results :: customers,"{""kind"":""quantity"",""unit"":""customer"",""value"":1800}",2026-10-27,2
+535,p-466,Hooly Q1 2026 Results :: customers,"{""kind"":""quantity"",""unit"":""customer"",""value"":1800}",2026-10-27,2
+534,p-465,Hooly Q3 2026 Results :: cash,"{""currency"":""EUR"",""kind"":""money"",""value"":28600000}",2026-10-27,2
+533,p-464,Hooly Q2 2026 Results :: cash,"{""currency"":""EUR"",""kind"":""money"",""value"":24800000}",2026-10-27,2
+532,p-463,Hooly Q1 2026 Results :: cash,"{""currency"":""EUR"",""kind"":""money"",""value"":22300000}",2026-10-27,2
+531,p-462,Hooly Q4 2025 Results :: cash,"{""currency"":""EUR"",""kind"":""money"",""value"":6100000}",2026-10-27,2
+530,p-461,Hooly Q3 2026 Results :: operating_margin,"{""kind"":""percent"",""value"":15.7}",2026-10-27,2
+529,p-460,Hooly Q2 2026 Results :: operating_margin,"{""kind"":""percent"",""value"":14.2}",2026-10-27,2
+525,p-456,Hooly Q2 2026 Results :: revenue,"{""currency"":""EUR"",""kind"":""money"",""value"":9500000}",2026-10-27,2
+528,p-459,Hooly Q1 2026 Results :: operating_margin,"{""kind"":""percent"",""value"":11.8}",2026-10-27,2
+527,p-458,Hooly Q4 2025 Results :: operating_margin,"{""kind"":""percent"",""value"":9.4}",2026-10-27,2
+526,p-457,Hooly Q3 2026 Results :: revenue,"{""currency"":""EUR"",""kind"":""money"",""value"":13400000}",2026-10-27,2
+537,p-468,Hooly Q3 2026 Results :: customers,"{""kind"":""quantity"",""unit"":""customer"",""value"":3200}",2026-10-27,2
+962,p-845,Hooly Q2 2026 Results :: webcast_viewers,"{""kind"":""quantity"",""unit"":""viewer"",""value"":12100}",2026-10-28,1
+961,p-844,Hooly Q1 2026 Results :: webcast_viewers,"{""kind"":""quantity"",""unit"":""viewer"",""value"":8800}",2026-10-28,1
+960,p-844,Hooly Q4 2025 Results :: webcast_viewers,"{""kind"":""quantity"",""unit"":""viewer"",""value"":5400}",2026-10-28,1
+963,p-845,Hooly Q3 2026 Results :: webcast_viewers,"{""kind"":""quantity"",""unit"":""viewer"",""value"":15700}",2026-10-28,1
+970,p-848,Hooly Q2 2026 Results :: call_length,"{""kind"":""duration"",""unit"":""min"",""value"":41}",2026-10-28,1
+969,p-848,Hooly Q1 2026 Results :: call_length,"{""kind"":""duration"",""unit"":""min"",""value"":44}",2026-10-28,1
+968,p-848,Hooly Q4 2025 Results :: call_length,"{""kind"":""duration"",""unit"":""min"",""value"":38}",2026-10-28,1
+967,p-847,Hooly Q3 2026 Results :: guidance,"{""currency"":""EUR"",""kind"":""money"",""value"":16000000}",2026-10-28,1
+966,p-847,Hooly Q2 2026 Results :: guidance,"{""currency"":""EUR"",""kind"":""money"",""value"":11500000}",2026-10-28,1
+965,p-846,Hooly Q1 2026 Results :: guidance,"{""currency"":""EUR"",""kind"":""money"",""value"":8500000}",2026-10-28,1
+964,p-846,Hooly Q4 2025 Results :: guidance,"{""currency"":""EUR"",""kind"":""money"",""value"":5500000}",2026-10-28,1
+971,p-848,Hooly Q3 2026 Results :: call_length,"{""kind"":""duration"",""unit"":""min"",""value"":47}",2026-10-28,1
+959,p-843,Hooly Q3 2026 Results :: advertising_share,"{""kind"":""percent"",""value"":61}",2026-10-28,1
+956,p-843,Hooly Q4 2025 Results :: advertising_share,"{""kind"":""percent"",""value"":78}",2026-10-28,1
+958,p-843,Hooly Q2 2026 Results :: advertising_share,"{""kind"":""percent"",""value"":66}",2026-10-28,1
+954,p-841,Hooly Q2 2026 Results :: revenue_growth,"{""kind"":""percent"",""value"":37.7}",2026-10-28,1
+955,p-842,Hooly Q3 2026 Results :: revenue_growth,"{""kind"":""percent"",""value"":41.1}",2026-10-28,1
+957,p-843,Hooly Q1 2026 Results :: advertising_share,"{""kind"":""percent"",""value"":72}",2026-10-28,1
+953,p-841,Hooly Q1 2026 Results :: revenue_growth,"{""kind"":""percent"",""value"":64.3}",2026-10-28,1

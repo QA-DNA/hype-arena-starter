@@ -1,0 +1,9 @@
+kind,true,false,unsure
+boolean,139,28,7
+date,144,19,2
+duration,195,32,2
+money,223,42,3
+name,184,23,2
+percent,169,29,3
+quantity,826,178,24
+version,118,9,1

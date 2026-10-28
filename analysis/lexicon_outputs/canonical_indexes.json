@@ -1,0 +1,2146 @@
+{
+  "source_sha256": "d0fd5e9bdc6b33ad3ec160001f50e00e7f8bf2b25a92779022f893db7c3d5507",
+  "normalisation": "NFKC, casefold, collapse whitespace; punctuation preserved",
+  "surface_to_subjects": {
+    "android": [
+      "Hooly Android"
+    ],
+    "android 16": [
+      "Hooly Android 16"
+    ],
+    "android 17": [
+      "Hooly Android 17"
+    ],
+    "berlin office": [
+      "Hooly Berlin Office"
+    ],
+    "bertram gilfoil": [
+      "Bertram Gilfoil"
+    ],
+    "brightline": [
+      "Brightline Labs"
+    ],
+    "brightline labs": [
+      "Brightline Labs"
+    ],
+    "chrome": [
+      "Hooly Chrome"
+    ],
+    "cloud next": [
+      "Hooly Cloud Next 2026"
+    ],
+    "devices division": [
+      "Hooly Devices"
+    ],
+    "dinesh chugtay": [
+      "Dinesh Chugtay"
+    ],
+    "employee survey": [
+      "Hooly Employee Survey"
+    ],
+    "erlich bachmann": [
+      "Erlich Bachmann"
+    ],
+    "gemini": [
+      "Hooly Gemini"
+    ],
+    "gemini launch night": [
+      "Gemini Launch Night"
+    ],
+    "gmail": [
+      "Hooly Gmail"
+    ],
+    "holdan": [
+      "Holdan"
+    ],
+    "hooly": [
+      "Hooly"
+    ],
+    "hooly ai": [
+      "Hooly"
+    ],
+    "hooly ai free": [
+      "Hooly AI Free"
+    ],
+    "hooly ai pro": [
+      "Hooly AI Pro"
+    ],
+    "hooly android": [
+      "Hooly Android"
+    ],
+    "hooly android 16": [
+      "Hooly Android 16"
+    ],
+    "hooly android 17": [
+      "Hooly Android 17"
+    ],
+    "hooly berlin office": [
+      "Hooly Berlin Office"
+    ],
+    "hooly board": [
+      "Hooly Board"
+    ],
+    "hooly calendar": [
+      "Hooly Calendar"
+    ],
+    "hooly chrome": [
+      "Hooly Chrome"
+    ],
+    "hooly cloud": [
+      "Hooly Cloud"
+    ],
+    "hooly cloud next": [
+      "Hooly Cloud Next 2026"
+    ],
+    "hooly cloud next 2026": [
+      "Hooly Cloud Next 2026"
+    ],
+    "hooly devices": [
+      "Hooly Devices"
+    ],
+    "hooly docs": [
+      "Hooly Docs"
+    ],
+    "hooly drive": [
+      "Hooly Drive"
+    ],
+    "hooly employee survey": [
+      "Hooly Employee Survey"
+    ],
+    "hooly gemini": [
+      "Hooly Gemini"
+    ],
+    "hooly gmail": [
+      "Hooly Gmail"
+    ],
+    "hooly hiring": [
+      "Hooly Hiring Programme"
+    ],
+    "hooly hiring programme": [
+      "Hooly Hiring Programme"
+    ],
+    "hooly i/o": [
+      "Hooly I/O 2026"
+    ],
+    "hooly i/o 2026": [
+      "Hooly I/O 2026"
+    ],
+    "hooly i/o 2027": [
+      "Hooly I/O 2027"
+    ],
+    "hooly inc.": [
+      "Hooly"
+    ],
+    "hooly jules": [
+      "Hooly Jules"
+    ],
+    "hooly lisbon office": [
+      "Hooly Lisbon Office"
+    ],
+    "hooly maps": [
+      "Hooly Maps"
+    ],
+    "hooly maps day": [
+      "Hooly Maps Day"
+    ],
+    "hooly meet": [
+      "Hooly Meet"
+    ],
+    "hooly photos": [
+      "Hooly Photos"
+    ],
+    "hooly photos lite": [
+      "Hooly Photos Lite"
+    ],
+    "hooly photos max": [
+      "Hooly Photos Max"
+    ],
+    "hooly photos plus": [
+      "Hooly Photos Plus"
+    ],
+    "hooly pixel 10": [
+      "Hooly Pixel 10"
+    ],
+    "hooly pixel 10 pro": [
+      "Hooly Pixel 10 Pro"
+    ],
+    "hooly pixel 9": [
+      "Hooly Pixel 9"
+    ],
+    "hooly pixel buds": [
+      "Hooly Pixel Buds"
+    ],
+    "hooly pixel fold": [
+      "Hooly Pixel Fold"
+    ],
+    "hooly pixel watch": [
+      "Hooly Pixel Watch"
+    ],
+    "hooly q1 2026 results": [
+      "Hooly Q1 2026 Results"
+    ],
+    "hooly q2 2026 results": [
+      "Hooly Q2 2026 Results"
+    ],
+    "hooly q3 2026 results": [
+      "Hooly Q3 2026 Results"
+    ],
+    "hooly q4 2025 results": [
+      "Hooly Q4 2025 Results"
+    ],
+    "hooly search": [
+      "Hooly Search"
+    ],
+    "hooly sheets": [
+      "Hooly Sheets"
+    ],
+    "hooly sustainability report": [
+      "Hooly Sustainability Report"
+    ],
+    "hooly translate": [
+      "Hooly Translate"
+    ],
+    "hooly vault": [
+      "Hooly Vault"
+    ],
+    "hooly workspace": [
+      "Hooly Workspace"
+    ],
+    "hooly workspace enterprise": [
+      "Hooly Workspace Enterprise"
+    ],
+    "hooly's board": [
+      "Hooly Board"
+    ],
+    "hooly's q1 results": [
+      "Hooly Q1 2026 Results"
+    ],
+    "hooly's q2 results": [
+      "Hooly Q2 2026 Results"
+    ],
+    "hooly's q3 results": [
+      "Hooly Q3 2026 Results"
+    ],
+    "hooly's q4 results": [
+      "Hooly Q4 2025 Results"
+    ],
+    "hoovar": [
+      "Hoovar"
+    ],
+    "i/o 2027": [
+      "Hooly I/O 2027"
+    ],
+    "jules": [
+      "Hooly Jules"
+    ],
+    "launch night": [
+      "Gemini Launch Night"
+    ],
+    "lisbon office": [
+      "Hooly Lisbon Office"
+    ],
+    "made by hooly": [
+      "Made by Hooly 2026"
+    ],
+    "made by hooly 2026": [
+      "Made by Hooly 2026"
+    ],
+    "maps": [
+      "Hooly Maps"
+    ],
+    "maps day": [
+      "Hooly Maps Day"
+    ],
+    "meridian": [
+      "Meridian Health"
+    ],
+    "meridian health": [
+      "Meridian Health"
+    ],
+    "next i/o": [
+      "Hooly I/O 2027"
+    ],
+    "outage": [
+      "The May 2026 outage"
+    ],
+    "patreese": [
+      "Patreese"
+    ],
+    "peter gregori": [
+      "Peter Gregori"
+    ],
+    "photos": [
+      "Hooly Photos"
+    ],
+    "photos lite": [
+      "Hooly Photos Lite"
+    ],
+    "photos max": [
+      "Hooly Photos Max"
+    ],
+    "photos plus": [
+      "Hooly Photos Plus"
+    ],
+    "pixel 10": [
+      "Hooly Pixel 10"
+    ],
+    "pixel 10 pro": [
+      "Hooly Pixel 10 Pro"
+    ],
+    "pixel 9": [
+      "Hooly Pixel 9"
+    ],
+    "pixel buds": [
+      "Hooly Pixel Buds"
+    ],
+    "pixel fold": [
+      "Hooly Pixel Fold"
+    ],
+    "pixel watch": [
+      "Hooly Pixel Watch"
+    ],
+    "quayside hall": [
+      "Quayside Hall"
+    ],
+    "rheinhalle": [
+      "Rheinhalle"
+    ],
+    "ron laflame": [
+      "Ron LaFlame"
+    ],
+    "search": [
+      "Hooly Search"
+    ],
+    "sustainability report": [
+      "Hooly Sustainability Report"
+    ],
+    "the may 2026 outage": [
+      "The May 2026 outage"
+    ],
+    "translate": [
+      "Hooly Translate"
+    ],
+    "vault": [
+      "Hooly Vault"
+    ],
+    "workspace enterprise": [
+      "Hooly Workspace Enterprise"
+    ],
+    "workspace plan": [
+      "Hooly Workspace"
+    ]
+  },
+  "subject_to_attributes": {
+    "Bertram Gilfoil": [
+      "joined",
+      "previous_employer"
+    ],
+    "Brightline Labs": [
+      "integration_partner_of_flawless"
+    ],
+    "Dinesh Chugtay": [
+      "joined"
+    ],
+    "Erlich Bachmann": [
+      "joined"
+    ],
+    "Gemini Launch Night": [
+      "attendees",
+      "city",
+      "date"
+    ],
+    "Holdan": [
+      "joined",
+      "previous_employer",
+      "team_size"
+    ],
+    "Hooly": [
+      "annual_recurring_revenue",
+      "ceo",
+      "cto",
+      "customer_countries",
+      "customers_in_the_eu",
+      "data_processing_agreement",
+      "employees",
+      "founded",
+      "founders",
+      "fully_remote",
+      "had_major_outage",
+      "head_of_product",
+      "head_of_security",
+      "head_of_workspace",
+      "headquarters",
+      "help_guides",
+      "incidents_this_year",
+      "net_promoter_score",
+      "newsletter_subscribers",
+      "offices",
+      "paying_customers",
+      "raised_series_a",
+      "raised_series_b",
+      "series_a_amount",
+      "series_a_co_investor",
+      "series_a_lead",
+      "soc2_audit_start",
+      "soc2_auditor",
+      "soc2_certified",
+      "support_satisfaction",
+      "support_tickets_per_week",
+      "webinars_held"
+    ],
+    "Hooly AI Free": [
+      "daily_requests",
+      "history_retention",
+      "max_upload_size",
+      "price"
+    ],
+    "Hooly AI Pro": [
+      "annual_price",
+      "free_trial",
+      "history_retention",
+      "included_seats",
+      "price",
+      "refund_window",
+      "saved_projects",
+      "signed_in_devices",
+      "support_first_response"
+    ],
+    "Hooly Android": [
+      "active_devices",
+      "lead",
+      "open_source",
+      "version"
+    ],
+    "Hooly Android 16": [
+      "desktop_mode",
+      "released",
+      "share_of_devices",
+      "supported_models",
+      "update_size"
+    ],
+    "Hooly Android 17": [
+      "beta_opened",
+      "beta_testers",
+      "on_device_gemini",
+      "satellite_messaging",
+      "share_of_devices",
+      "stable_release",
+      "supported_models",
+      "update_size"
+    ],
+    "Hooly Berlin Office": [
+      "bike_racks",
+      "desks",
+      "is_engineering_hub",
+      "is_headquarters",
+      "lease_end",
+      "opened",
+      "rent",
+      "staff"
+    ],
+    "Hooly Board": [
+      "attendance",
+      "audit_committee",
+      "chair",
+      "chair_since",
+      "independent_members",
+      "meetings_per_year",
+      "next_meeting",
+      "raviqa_seat",
+      "seats",
+      "sessions_held"
+    ],
+    "Hooly Calendar": [
+      "active_users",
+      "appointment_booking",
+      "launched",
+      "max_guests",
+      "version"
+    ],
+    "Hooly Chrome": [
+      "ai_sidebar",
+      "browser_market_share",
+      "cold_start_time",
+      "extensions_in_store",
+      "launched",
+      "lead",
+      "memory_saver",
+      "monthly_active_users",
+      "passkey_sync",
+      "release_cadence",
+      "stable_release_date",
+      "stable_version",
+      "tab_sleep_delay",
+      "top_bug_bounty"
+    ],
+    "Hooly Cloud": [
+      "archive_storage_price",
+      "availability_zones",
+      "carbon_neutral",
+      "cli_version",
+      "cool_storage_price",
+      "customers",
+      "data_centres",
+      "free_credit",
+      "free_egress_per_month",
+      "free_trial",
+      "home_region",
+      "launched",
+      "median_time_to_recover",
+      "newest_region",
+      "region_outside_europe",
+      "regions",
+      "reliability_lead",
+      "services",
+      "standard_storage_price",
+      "storage_tiers",
+      "uptime_last_quarter",
+      "uptime_sla"
+    ],
+    "Hooly Cloud Next 2026": [
+      "attendees",
+      "city",
+      "date",
+      "length",
+      "opening_keynote",
+      "registrations",
+      "sessions",
+      "speakers",
+      "sponsors",
+      "ticket_price",
+      "venue"
+    ],
+    "Hooly Devices": [
+      "countries_served",
+      "founded",
+      "german_premium_phone_share",
+      "head",
+      "manufacturing_partner",
+      "max_trade_in_credit",
+      "repair_centres",
+      "staff",
+      "trade_in_programme"
+    ],
+    "Hooly Docs": [
+      "active_users",
+      "languages",
+      "launched",
+      "offline_editing",
+      "simultaneous_editors",
+      "templates",
+      "version"
+    ],
+    "Hooly Drive": [
+      "active_users",
+      "free_storage",
+      "launched",
+      "max_file_size",
+      "price_per_user",
+      "version_history"
+    ],
+    "Hooly Employee Survey": [
+      "anonymous",
+      "growth_opportunities",
+      "manageable_workload",
+      "manager_rating",
+      "next_round",
+      "open_for",
+      "respondents",
+      "response_rate",
+      "run_by",
+      "would_recommend"
+    ],
+    "Hooly Gemini": [
+      "api_version",
+      "cloud_provider",
+      "concurrent_chats",
+      "context_window",
+      "data_retention",
+      "encryption_at_rest",
+      "eu_hosted",
+      "flawbench_score",
+      "hallucination_rate",
+      "hosting_regions",
+      "image_input",
+      "integrations",
+      "languages",
+      "launched",
+      "max_output_length",
+      "max_upload_size",
+      "median_response_time",
+      "official_sdks",
+      "open_source",
+      "p99_response_time",
+      "primary_region",
+      "requests_per_day",
+      "requests_per_minute",
+      "single_sign_on",
+      "supported_file_types",
+      "training_data_cutoff",
+      "uptime_last_quarter",
+      "version",
+      "voice_mode",
+      "webhook_events"
+    ],
+    "Hooly Gmail": [
+      "active_users",
+      "attachment_limit",
+      "end_to_end_encryption",
+      "launched",
+      "mailbox_storage",
+      "price_per_user",
+      "spam_catch_rate"
+    ],
+    "Hooly Hiring Programme": [
+      "applicants",
+      "cost_per_hire",
+      "executive_sponsor",
+      "first_reply",
+      "hires",
+      "interview_rounds",
+      "launched",
+      "offer_acceptance",
+      "offers",
+      "open_engineering_roles",
+      "open_roles",
+      "recruiters",
+      "referral_bonus",
+      "referral_share",
+      "time_to_hire"
+    ],
+    "Hooly I/O 2026": [
+      "attendees",
+      "city",
+      "date",
+      "keynote_length",
+      "length",
+      "livestream_viewers",
+      "sponsors",
+      "talks",
+      "ticket_price",
+      "workshops"
+    ],
+    "Hooly I/O 2027": [
+      "city",
+      "date"
+    ],
+    "Hooly Jules": [
+      "annual_price",
+      "beta_date",
+      "beta_testers",
+      "context_files",
+      "free_trial",
+      "general_availability_date",
+      "lead",
+      "price",
+      "programming_languages",
+      "suggestion_acceptance_rate",
+      "supported_ides",
+      "users",
+      "version"
+    ],
+    "Hooly Lisbon Office": [
+      "announced",
+      "bike_racks",
+      "desks",
+      "lease_end",
+      "opened",
+      "rent",
+      "staff"
+    ],
+    "Hooly Maps": [
+      "ar_walking",
+      "business_listings",
+      "charging_stations_listed",
+      "countries_covered",
+      "latest_release_date",
+      "launched",
+      "lead",
+      "mapped_distance",
+      "monthly_active_users",
+      "offline_area_limit",
+      "offline_maps",
+      "places_listed",
+      "share_of_ad_revenue",
+      "store_rating",
+      "version",
+      "voice_guidance_languages"
+    ],
+    "Hooly Maps Day": [
+      "announced",
+      "attendees",
+      "city",
+      "date",
+      "features_launched",
+      "host",
+      "keynote_length",
+      "keynote_speaker",
+      "replay_available",
+      "sponsors",
+      "stream_viewers",
+      "talks",
+      "ticket_price",
+      "venue"
+    ],
+    "Hooly Meet": [
+      "active_users",
+      "caption_languages",
+      "cloud_recording",
+      "end_to_end_encryption",
+      "launched",
+      "livestream_viewers",
+      "max_call_length",
+      "max_participants"
+    ],
+    "Hooly Photos": [
+      "ai_editing",
+      "end_to_end_encrypted_backups",
+      "family_group_size",
+      "free_storage",
+      "head",
+      "latest_release_date",
+      "launched",
+      "monthly_active_users",
+      "photos_stored",
+      "store_rating",
+      "trash_retention",
+      "version",
+      "video_upload_limit",
+      "yearly_billing_discount"
+    ],
+    "Hooly Photos Lite": [
+      "price",
+      "storage"
+    ],
+    "Hooly Photos Max": [
+      "price",
+      "storage"
+    ],
+    "Hooly Photos Plus": [
+      "price",
+      "storage"
+    ],
+    "Hooly Pixel 10": [
+      "base_storage",
+      "battery_capacity",
+      "battery_life",
+      "charging_power",
+      "colours",
+      "main_camera",
+      "memory",
+      "price",
+      "refresh_rate",
+      "released",
+      "screen_size",
+      "shipping_android",
+      "store_rating",
+      "units_sold",
+      "update_promise",
+      "weight"
+    ],
+    "Hooly Pixel 10 Pro": [
+      "base_storage",
+      "battery_capacity",
+      "battery_life",
+      "charging_power",
+      "colours",
+      "main_camera",
+      "memory",
+      "price",
+      "released",
+      "screen_size",
+      "units_sold",
+      "weight"
+    ],
+    "Hooly Pixel 9": [
+      "battery_capacity",
+      "discontinued",
+      "price",
+      "released",
+      "screen_size",
+      "storage",
+      "store_rating",
+      "units_sold",
+      "update_promise"
+    ],
+    "Hooly Pixel Buds": [
+      "adaptive_noise_cancelling",
+      "battery_life",
+      "price",
+      "units_sold"
+    ],
+    "Hooly Pixel Fold": [
+      "base_storage",
+      "battery_capacity",
+      "cover_screen_size",
+      "hinge_rating",
+      "inner_screen_size",
+      "price",
+      "released",
+      "store_rating",
+      "units_sold",
+      "weight"
+    ],
+    "Hooly Pixel Watch": [
+      "battery_life",
+      "cellular_option",
+      "full_charge_time",
+      "price",
+      "released",
+      "screen_size",
+      "sensors",
+      "store_rating",
+      "units_sold",
+      "water_resistance_depth",
+      "weight"
+    ],
+    "Hooly Q1 2026 Results": [
+      "advertising_share",
+      "call_length",
+      "cash",
+      "customers",
+      "guidance",
+      "headcount",
+      "operating_margin",
+      "revenue",
+      "revenue_growth",
+      "webcast_viewers"
+    ],
+    "Hooly Q2 2026 Results": [
+      "advertising_share",
+      "call_length",
+      "cash",
+      "customers",
+      "guidance",
+      "operating_margin",
+      "revenue",
+      "revenue_growth",
+      "webcast_viewers"
+    ],
+    "Hooly Q3 2026 Results": [
+      "advertising_share",
+      "call_length",
+      "cash",
+      "customers",
+      "guidance",
+      "operating_margin",
+      "revenue",
+      "revenue_growth",
+      "webcast_viewers"
+    ],
+    "Hooly Q4 2025 Results": [
+      "advertising_share",
+      "call_length",
+      "cash",
+      "customers",
+      "guidance",
+      "headcount",
+      "operating_margin",
+      "published",
+      "revenue",
+      "revenue_growth",
+      "webcast_viewers"
+    ],
+    "Hooly Search": [
+      "ad_free_option",
+      "ad_free_price",
+      "ai_answers",
+      "executive_owner",
+      "images_indexed",
+      "index_size",
+      "languages_served",
+      "launched",
+      "median_response_time",
+      "monthly_active_users",
+      "news_refresh_interval",
+      "personalised_ads_by_default",
+      "publisher_revenue_share",
+      "share_of_ad_revenue"
+    ],
+    "Hooly Sheets": [
+      "active_users",
+      "functions",
+      "gemini_formula_assist",
+      "launched",
+      "max_cells",
+      "version"
+    ],
+    "Hooly Sustainability Report": [
+      "cycling_commuters",
+      "devices_recycled",
+      "emissions_cut_target",
+      "externally_audited",
+      "footprint",
+      "net_zero_date",
+      "owner",
+      "published",
+      "renewable_electricity",
+      "travel_emissions_cut"
+    ],
+    "Hooly Translate": [
+      "camera_translation",
+      "dialects_supported",
+      "languages_supported",
+      "launched",
+      "monthly_active_users",
+      "offline_languages",
+      "pro_price",
+      "pro_tier",
+      "rated_accuracy",
+      "text_limit",
+      "voice_latency"
+    ],
+    "Hooly Vault": [
+      "announced",
+      "generally_available",
+      "minimum_nodes",
+      "planned_general_availability",
+      "waitlist"
+    ],
+    "Hooly Workspace": [
+      "apps_included",
+      "copilot_included",
+      "customers",
+      "extra_seat_price",
+      "free_trial",
+      "included_seats",
+      "launched",
+      "maximum_seats",
+      "minimum_seats",
+      "price",
+      "storage_per_user",
+      "uptime_sla"
+    ],
+    "Hooly Workspace Enterprise": [
+      "apps_included",
+      "audit_retention",
+      "customers",
+      "data_residency_regions",
+      "included_seats",
+      "launched",
+      "onboarding_time",
+      "price",
+      "single_sign_on",
+      "storage_per_user",
+      "support_first_response",
+      "uptime_sla"
+    ],
+    "Hoovar": [
+      "desks_managed",
+      "facilities_team",
+      "joined",
+      "offices_run"
+    ],
+    "Made by Hooly 2026": [
+      "attendees",
+      "city",
+      "date",
+      "devices_keynote_speaker",
+      "host",
+      "livestreamed",
+      "replay_available",
+      "sponsors",
+      "stream_viewers",
+      "talks",
+      "ticket_price",
+      "venue"
+    ],
+    "Meridian Health": [
+      "flawless_seats"
+    ],
+    "Patreese": [
+      "team_size"
+    ],
+    "Peter Gregori": [
+      "chairs",
+      "chairs_audit_committee",
+      "independent_director"
+    ],
+    "Quayside Hall": [
+      "capacity"
+    ],
+    "Rheinhalle": [
+      "capacity"
+    ],
+    "Ron LaFlame": [
+      "joined"
+    ],
+    "The May 2026 outage": [
+      "date",
+      "duration"
+    ]
+  },
+  "attribute_to_subjects": {
+    "active_devices": [
+      "Hooly Android"
+    ],
+    "active_users": [
+      "Hooly Calendar",
+      "Hooly Docs",
+      "Hooly Drive",
+      "Hooly Gmail",
+      "Hooly Meet",
+      "Hooly Sheets"
+    ],
+    "ad_free_option": [
+      "Hooly Search"
+    ],
+    "ad_free_price": [
+      "Hooly Search"
+    ],
+    "adaptive_noise_cancelling": [
+      "Hooly Pixel Buds"
+    ],
+    "advertising_share": [
+      "Hooly Q1 2026 Results",
+      "Hooly Q2 2026 Results",
+      "Hooly Q3 2026 Results",
+      "Hooly Q4 2025 Results"
+    ],
+    "ai_answers": [
+      "Hooly Search"
+    ],
+    "ai_editing": [
+      "Hooly Photos"
+    ],
+    "ai_sidebar": [
+      "Hooly Chrome"
+    ],
+    "announced": [
+      "Hooly Lisbon Office",
+      "Hooly Maps Day",
+      "Hooly Vault"
+    ],
+    "annual_price": [
+      "Hooly AI Pro",
+      "Hooly Jules"
+    ],
+    "annual_recurring_revenue": [
+      "Hooly"
+    ],
+    "anonymous": [
+      "Hooly Employee Survey"
+    ],
+    "api_version": [
+      "Hooly Gemini"
+    ],
+    "applicants": [
+      "Hooly Hiring Programme"
+    ],
+    "appointment_booking": [
+      "Hooly Calendar"
+    ],
+    "apps_included": [
+      "Hooly Workspace",
+      "Hooly Workspace Enterprise"
+    ],
+    "ar_walking": [
+      "Hooly Maps"
+    ],
+    "archive_storage_price": [
+      "Hooly Cloud"
+    ],
+    "attachment_limit": [
+      "Hooly Gmail"
+    ],
+    "attendance": [
+      "Hooly Board"
+    ],
+    "attendees": [
+      "Gemini Launch Night",
+      "Hooly Cloud Next 2026",
+      "Hooly I/O 2026",
+      "Hooly Maps Day",
+      "Made by Hooly 2026"
+    ],
+    "audit_committee": [
+      "Hooly Board"
+    ],
+    "audit_retention": [
+      "Hooly Workspace Enterprise"
+    ],
+    "availability_zones": [
+      "Hooly Cloud"
+    ],
+    "base_storage": [
+      "Hooly Pixel 10",
+      "Hooly Pixel 10 Pro",
+      "Hooly Pixel Fold"
+    ],
+    "battery_capacity": [
+      "Hooly Pixel 10",
+      "Hooly Pixel 10 Pro",
+      "Hooly Pixel 9",
+      "Hooly Pixel Fold"
+    ],
+    "battery_life": [
+      "Hooly Pixel 10",
+      "Hooly Pixel 10 Pro",
+      "Hooly Pixel Buds",
+      "Hooly Pixel Watch"
+    ],
+    "beta_date": [
+      "Hooly Jules"
+    ],
+    "beta_opened": [
+      "Hooly Android 17"
+    ],
+    "beta_testers": [
+      "Hooly Android 17",
+      "Hooly Jules"
+    ],
+    "bike_racks": [
+      "Hooly Berlin Office",
+      "Hooly Lisbon Office"
+    ],
+    "browser_market_share": [
+      "Hooly Chrome"
+    ],
+    "business_listings": [
+      "Hooly Maps"
+    ],
+    "call_length": [
+      "Hooly Q1 2026 Results",
+      "Hooly Q2 2026 Results",
+      "Hooly Q3 2026 Results",
+      "Hooly Q4 2025 Results"
+    ],
+    "camera_translation": [
+      "Hooly Translate"
+    ],
+    "capacity": [
+      "Quayside Hall",
+      "Rheinhalle"
+    ],
+    "caption_languages": [
+      "Hooly Meet"
+    ],
+    "carbon_neutral": [
+      "Hooly Cloud"
+    ],
+    "cash": [
+      "Hooly Q1 2026 Results",
+      "Hooly Q2 2026 Results",
+      "Hooly Q3 2026 Results",
+      "Hooly Q4 2025 Results"
+    ],
+    "cellular_option": [
+      "Hooly Pixel Watch"
+    ],
+    "ceo": [
+      "Hooly"
+    ],
+    "chair": [
+      "Hooly Board"
+    ],
+    "chair_since": [
+      "Hooly Board"
+    ],
+    "chairs": [
+      "Peter Gregori"
+    ],
+    "chairs_audit_committee": [
+      "Peter Gregori"
+    ],
+    "charging_power": [
+      "Hooly Pixel 10",
+      "Hooly Pixel 10 Pro"
+    ],
+    "charging_stations_listed": [
+      "Hooly Maps"
+    ],
+    "city": [
+      "Gemini Launch Night",
+      "Hooly Cloud Next 2026",
+      "Hooly I/O 2026",
+      "Hooly I/O 2027",
+      "Hooly Maps Day",
+      "Made by Hooly 2026"
+    ],
+    "cli_version": [
+      "Hooly Cloud"
+    ],
+    "cloud_provider": [
+      "Hooly Gemini"
+    ],
+    "cloud_recording": [
+      "Hooly Meet"
+    ],
+    "cold_start_time": [
+      "Hooly Chrome"
+    ],
+    "colours": [
+      "Hooly Pixel 10",
+      "Hooly Pixel 10 Pro"
+    ],
+    "concurrent_chats": [
+      "Hooly Gemini"
+    ],
+    "context_files": [
+      "Hooly Jules"
+    ],
+    "context_window": [
+      "Hooly Gemini"
+    ],
+    "cool_storage_price": [
+      "Hooly Cloud"
+    ],
+    "copilot_included": [
+      "Hooly Workspace"
+    ],
+    "cost_per_hire": [
+      "Hooly Hiring Programme"
+    ],
+    "countries_covered": [
+      "Hooly Maps"
+    ],
+    "countries_served": [
+      "Hooly Devices"
+    ],
+    "cover_screen_size": [
+      "Hooly Pixel Fold"
+    ],
+    "cto": [
+      "Hooly"
+    ],
+    "customer_countries": [
+      "Hooly"
+    ],
+    "customers": [
+      "Hooly Cloud",
+      "Hooly Q1 2026 Results",
+      "Hooly Q2 2026 Results",
+      "Hooly Q3 2026 Results",
+      "Hooly Q4 2025 Results",
+      "Hooly Workspace",
+      "Hooly Workspace Enterprise"
+    ],
+    "customers_in_the_eu": [
+      "Hooly"
+    ],
+    "cycling_commuters": [
+      "Hooly Sustainability Report"
+    ],
+    "daily_requests": [
+      "Hooly AI Free"
+    ],
+    "data_centres": [
+      "Hooly Cloud"
+    ],
+    "data_processing_agreement": [
+      "Hooly"
+    ],
+    "data_residency_regions": [
+      "Hooly Workspace Enterprise"
+    ],
+    "data_retention": [
+      "Hooly Gemini"
+    ],
+    "date": [
+      "Gemini Launch Night",
+      "Hooly Cloud Next 2026",
+      "Hooly I/O 2026",
+      "Hooly I/O 2027",
+      "Hooly Maps Day",
+      "Made by Hooly 2026",
+      "The May 2026 outage"
+    ],
+    "desks": [
+      "Hooly Berlin Office",
+      "Hooly Lisbon Office"
+    ],
+    "desks_managed": [
+      "Hoovar"
+    ],
+    "desktop_mode": [
+      "Hooly Android 16"
+    ],
+    "devices_keynote_speaker": [
+      "Made by Hooly 2026"
+    ],
+    "devices_recycled": [
+      "Hooly Sustainability Report"
+    ],
+    "dialects_supported": [
+      "Hooly Translate"
+    ],
+    "discontinued": [
+      "Hooly Pixel 9"
+    ],
+    "duration": [
+      "The May 2026 outage"
+    ],
+    "emissions_cut_target": [
+      "Hooly Sustainability Report"
+    ],
+    "employees": [
+      "Hooly"
+    ],
+    "encryption_at_rest": [
+      "Hooly Gemini"
+    ],
+    "end_to_end_encrypted_backups": [
+      "Hooly Photos"
+    ],
+    "end_to_end_encryption": [
+      "Hooly Gmail",
+      "Hooly Meet"
+    ],
+    "eu_hosted": [
+      "Hooly Gemini"
+    ],
+    "executive_owner": [
+      "Hooly Search"
+    ],
+    "executive_sponsor": [
+      "Hooly Hiring Programme"
+    ],
+    "extensions_in_store": [
+      "Hooly Chrome"
+    ],
+    "externally_audited": [
+      "Hooly Sustainability Report"
+    ],
+    "extra_seat_price": [
+      "Hooly Workspace"
+    ],
+    "facilities_team": [
+      "Hoovar"
+    ],
+    "family_group_size": [
+      "Hooly Photos"
+    ],
+    "features_launched": [
+      "Hooly Maps Day"
+    ],
+    "first_reply": [
+      "Hooly Hiring Programme"
+    ],
+    "flawbench_score": [
+      "Hooly Gemini"
+    ],
+    "flawless_seats": [
+      "Meridian Health"
+    ],
+    "footprint": [
+      "Hooly Sustainability Report"
+    ],
+    "founded": [
+      "Hooly",
+      "Hooly Devices"
+    ],
+    "founders": [
+      "Hooly"
+    ],
+    "free_credit": [
+      "Hooly Cloud"
+    ],
+    "free_egress_per_month": [
+      "Hooly Cloud"
+    ],
+    "free_storage": [
+      "Hooly Drive",
+      "Hooly Photos"
+    ],
+    "free_trial": [
+      "Hooly AI Pro",
+      "Hooly Cloud",
+      "Hooly Jules",
+      "Hooly Workspace"
+    ],
+    "full_charge_time": [
+      "Hooly Pixel Watch"
+    ],
+    "fully_remote": [
+      "Hooly"
+    ],
+    "functions": [
+      "Hooly Sheets"
+    ],
+    "gemini_formula_assist": [
+      "Hooly Sheets"
+    ],
+    "general_availability_date": [
+      "Hooly Jules"
+    ],
+    "generally_available": [
+      "Hooly Vault"
+    ],
+    "german_premium_phone_share": [
+      "Hooly Devices"
+    ],
+    "growth_opportunities": [
+      "Hooly Employee Survey"
+    ],
+    "guidance": [
+      "Hooly Q1 2026 Results",
+      "Hooly Q2 2026 Results",
+      "Hooly Q3 2026 Results",
+      "Hooly Q4 2025 Results"
+    ],
+    "had_major_outage": [
+      "Hooly"
+    ],
+    "hallucination_rate": [
+      "Hooly Gemini"
+    ],
+    "head": [
+      "Hooly Devices",
+      "Hooly Photos"
+    ],
+    "head_of_product": [
+      "Hooly"
+    ],
+    "head_of_security": [
+      "Hooly"
+    ],
+    "head_of_workspace": [
+      "Hooly"
+    ],
+    "headcount": [
+      "Hooly Q1 2026 Results",
+      "Hooly Q4 2025 Results"
+    ],
+    "headquarters": [
+      "Hooly"
+    ],
+    "help_guides": [
+      "Hooly"
+    ],
+    "hinge_rating": [
+      "Hooly Pixel Fold"
+    ],
+    "hires": [
+      "Hooly Hiring Programme"
+    ],
+    "history_retention": [
+      "Hooly AI Free",
+      "Hooly AI Pro"
+    ],
+    "home_region": [
+      "Hooly Cloud"
+    ],
+    "host": [
+      "Hooly Maps Day",
+      "Made by Hooly 2026"
+    ],
+    "hosting_regions": [
+      "Hooly Gemini"
+    ],
+    "image_input": [
+      "Hooly Gemini"
+    ],
+    "images_indexed": [
+      "Hooly Search"
+    ],
+    "incidents_this_year": [
+      "Hooly"
+    ],
+    "included_seats": [
+      "Hooly AI Pro",
+      "Hooly Workspace",
+      "Hooly Workspace Enterprise"
+    ],
+    "independent_director": [
+      "Peter Gregori"
+    ],
+    "independent_members": [
+      "Hooly Board"
+    ],
+    "index_size": [
+      "Hooly Search"
+    ],
+    "inner_screen_size": [
+      "Hooly Pixel Fold"
+    ],
+    "integration_partner_of_flawless": [
+      "Brightline Labs"
+    ],
+    "integrations": [
+      "Hooly Gemini"
+    ],
+    "interview_rounds": [
+      "Hooly Hiring Programme"
+    ],
+    "is_engineering_hub": [
+      "Hooly Berlin Office"
+    ],
+    "is_headquarters": [
+      "Hooly Berlin Office"
+    ],
+    "joined": [
+      "Bertram Gilfoil",
+      "Dinesh Chugtay",
+      "Erlich Bachmann",
+      "Holdan",
+      "Hoovar",
+      "Ron LaFlame"
+    ],
+    "keynote_length": [
+      "Hooly I/O 2026",
+      "Hooly Maps Day"
+    ],
+    "keynote_speaker": [
+      "Hooly Maps Day"
+    ],
+    "languages": [
+      "Hooly Docs",
+      "Hooly Gemini"
+    ],
+    "languages_served": [
+      "Hooly Search"
+    ],
+    "languages_supported": [
+      "Hooly Translate"
+    ],
+    "latest_release_date": [
+      "Hooly Maps",
+      "Hooly Photos"
+    ],
+    "launched": [
+      "Hooly Calendar",
+      "Hooly Chrome",
+      "Hooly Cloud",
+      "Hooly Docs",
+      "Hooly Drive",
+      "Hooly Gemini",
+      "Hooly Gmail",
+      "Hooly Hiring Programme",
+      "Hooly Maps",
+      "Hooly Meet",
+      "Hooly Photos",
+      "Hooly Search",
+      "Hooly Sheets",
+      "Hooly Translate",
+      "Hooly Workspace",
+      "Hooly Workspace Enterprise"
+    ],
+    "lead": [
+      "Hooly Android",
+      "Hooly Chrome",
+      "Hooly Jules",
+      "Hooly Maps"
+    ],
+    "lease_end": [
+      "Hooly Berlin Office",
+      "Hooly Lisbon Office"
+    ],
+    "length": [
+      "Hooly Cloud Next 2026",
+      "Hooly I/O 2026"
+    ],
+    "livestream_viewers": [
+      "Hooly I/O 2026",
+      "Hooly Meet"
+    ],
+    "livestreamed": [
+      "Made by Hooly 2026"
+    ],
+    "mailbox_storage": [
+      "Hooly Gmail"
+    ],
+    "main_camera": [
+      "Hooly Pixel 10",
+      "Hooly Pixel 10 Pro"
+    ],
+    "manageable_workload": [
+      "Hooly Employee Survey"
+    ],
+    "manager_rating": [
+      "Hooly Employee Survey"
+    ],
+    "manufacturing_partner": [
+      "Hooly Devices"
+    ],
+    "mapped_distance": [
+      "Hooly Maps"
+    ],
+    "max_call_length": [
+      "Hooly Meet"
+    ],
+    "max_cells": [
+      "Hooly Sheets"
+    ],
+    "max_file_size": [
+      "Hooly Drive"
+    ],
+    "max_guests": [
+      "Hooly Calendar"
+    ],
+    "max_output_length": [
+      "Hooly Gemini"
+    ],
+    "max_participants": [
+      "Hooly Meet"
+    ],
+    "max_trade_in_credit": [
+      "Hooly Devices"
+    ],
+    "max_upload_size": [
+      "Hooly AI Free",
+      "Hooly Gemini"
+    ],
+    "maximum_seats": [
+      "Hooly Workspace"
+    ],
+    "median_response_time": [
+      "Hooly Gemini",
+      "Hooly Search"
+    ],
+    "median_time_to_recover": [
+      "Hooly Cloud"
+    ],
+    "meetings_per_year": [
+      "Hooly Board"
+    ],
+    "memory": [
+      "Hooly Pixel 10",
+      "Hooly Pixel 10 Pro"
+    ],
+    "memory_saver": [
+      "Hooly Chrome"
+    ],
+    "minimum_nodes": [
+      "Hooly Vault"
+    ],
+    "minimum_seats": [
+      "Hooly Workspace"
+    ],
+    "monthly_active_users": [
+      "Hooly Chrome",
+      "Hooly Maps",
+      "Hooly Photos",
+      "Hooly Search",
+      "Hooly Translate"
+    ],
+    "net_promoter_score": [
+      "Hooly"
+    ],
+    "net_zero_date": [
+      "Hooly Sustainability Report"
+    ],
+    "newest_region": [
+      "Hooly Cloud"
+    ],
+    "news_refresh_interval": [
+      "Hooly Search"
+    ],
+    "newsletter_subscribers": [
+      "Hooly"
+    ],
+    "next_meeting": [
+      "Hooly Board"
+    ],
+    "next_round": [
+      "Hooly Employee Survey"
+    ],
+    "offer_acceptance": [
+      "Hooly Hiring Programme"
+    ],
+    "offers": [
+      "Hooly Hiring Programme"
+    ],
+    "offices": [
+      "Hooly"
+    ],
+    "offices_run": [
+      "Hoovar"
+    ],
+    "official_sdks": [
+      "Hooly Gemini"
+    ],
+    "offline_area_limit": [
+      "Hooly Maps"
+    ],
+    "offline_editing": [
+      "Hooly Docs"
+    ],
+    "offline_languages": [
+      "Hooly Translate"
+    ],
+    "offline_maps": [
+      "Hooly Maps"
+    ],
+    "on_device_gemini": [
+      "Hooly Android 17"
+    ],
+    "onboarding_time": [
+      "Hooly Workspace Enterprise"
+    ],
+    "open_engineering_roles": [
+      "Hooly Hiring Programme"
+    ],
+    "open_for": [
+      "Hooly Employee Survey"
+    ],
+    "open_roles": [
+      "Hooly Hiring Programme"
+    ],
+    "open_source": [
+      "Hooly Android",
+      "Hooly Gemini"
+    ],
+    "opened": [
+      "Hooly Berlin Office",
+      "Hooly Lisbon Office"
+    ],
+    "opening_keynote": [
+      "Hooly Cloud Next 2026"
+    ],
+    "operating_margin": [
+      "Hooly Q1 2026 Results",
+      "Hooly Q2 2026 Results",
+      "Hooly Q3 2026 Results",
+      "Hooly Q4 2025 Results"
+    ],
+    "owner": [
+      "Hooly Sustainability Report"
+    ],
+    "p99_response_time": [
+      "Hooly Gemini"
+    ],
+    "passkey_sync": [
+      "Hooly Chrome"
+    ],
+    "paying_customers": [
+      "Hooly"
+    ],
+    "personalised_ads_by_default": [
+      "Hooly Search"
+    ],
+    "photos_stored": [
+      "Hooly Photos"
+    ],
+    "places_listed": [
+      "Hooly Maps"
+    ],
+    "planned_general_availability": [
+      "Hooly Vault"
+    ],
+    "previous_employer": [
+      "Bertram Gilfoil",
+      "Holdan"
+    ],
+    "price": [
+      "Hooly AI Free",
+      "Hooly AI Pro",
+      "Hooly Jules",
+      "Hooly Photos Lite",
+      "Hooly Photos Max",
+      "Hooly Photos Plus",
+      "Hooly Pixel 10",
+      "Hooly Pixel 10 Pro",
+      "Hooly Pixel 9",
+      "Hooly Pixel Buds",
+      "Hooly Pixel Fold",
+      "Hooly Pixel Watch",
+      "Hooly Workspace",
+      "Hooly Workspace Enterprise"
+    ],
+    "price_per_user": [
+      "Hooly Drive",
+      "Hooly Gmail"
+    ],
+    "primary_region": [
+      "Hooly Gemini"
+    ],
+    "pro_price": [
+      "Hooly Translate"
+    ],
+    "pro_tier": [
+      "Hooly Translate"
+    ],
+    "programming_languages": [
+      "Hooly Jules"
+    ],
+    "published": [
+      "Hooly Q4 2025 Results",
+      "Hooly Sustainability Report"
+    ],
+    "publisher_revenue_share": [
+      "Hooly Search"
+    ],
+    "raised_series_a": [
+      "Hooly"
+    ],
+    "raised_series_b": [
+      "Hooly"
+    ],
+    "rated_accuracy": [
+      "Hooly Translate"
+    ],
+    "raviqa_seat": [
+      "Hooly Board"
+    ],
+    "recruiters": [
+      "Hooly Hiring Programme"
+    ],
+    "referral_bonus": [
+      "Hooly Hiring Programme"
+    ],
+    "referral_share": [
+      "Hooly Hiring Programme"
+    ],
+    "refresh_rate": [
+      "Hooly Pixel 10"
+    ],
+    "refund_window": [
+      "Hooly AI Pro"
+    ],
+    "region_outside_europe": [
+      "Hooly Cloud"
+    ],
+    "regions": [
+      "Hooly Cloud"
+    ],
+    "registrations": [
+      "Hooly Cloud Next 2026"
+    ],
+    "release_cadence": [
+      "Hooly Chrome"
+    ],
+    "released": [
+      "Hooly Android 16",
+      "Hooly Pixel 10",
+      "Hooly Pixel 10 Pro",
+      "Hooly Pixel 9",
+      "Hooly Pixel Fold",
+      "Hooly Pixel Watch"
+    ],
+    "reliability_lead": [
+      "Hooly Cloud"
+    ],
+    "renewable_electricity": [
+      "Hooly Sustainability Report"
+    ],
+    "rent": [
+      "Hooly Berlin Office",
+      "Hooly Lisbon Office"
+    ],
+    "repair_centres": [
+      "Hooly Devices"
+    ],
+    "replay_available": [
+      "Hooly Maps Day",
+      "Made by Hooly 2026"
+    ],
+    "requests_per_day": [
+      "Hooly Gemini"
+    ],
+    "requests_per_minute": [
+      "Hooly Gemini"
+    ],
+    "respondents": [
+      "Hooly Employee Survey"
+    ],
+    "response_rate": [
+      "Hooly Employee Survey"
+    ],
+    "revenue": [
+      "Hooly Q1 2026 Results",
+      "Hooly Q2 2026 Results",
+      "Hooly Q3 2026 Results",
+      "Hooly Q4 2025 Results"
+    ],
+    "revenue_growth": [
+      "Hooly Q1 2026 Results",
+      "Hooly Q2 2026 Results",
+      "Hooly Q3 2026 Results",
+      "Hooly Q4 2025 Results"
+    ],
+    "run_by": [
+      "Hooly Employee Survey"
+    ],
+    "satellite_messaging": [
+      "Hooly Android 17"
+    ],
+    "saved_projects": [
+      "Hooly AI Pro"
+    ],
+    "screen_size": [
+      "Hooly Pixel 10",
+      "Hooly Pixel 10 Pro",
+      "Hooly Pixel 9",
+      "Hooly Pixel Watch"
+    ],
+    "seats": [
+      "Hooly Board"
+    ],
+    "sensors": [
+      "Hooly Pixel Watch"
+    ],
+    "series_a_amount": [
+      "Hooly"
+    ],
+    "series_a_co_investor": [
+      "Hooly"
+    ],
+    "series_a_lead": [
+      "Hooly"
+    ],
+    "services": [
+      "Hooly Cloud"
+    ],
+    "sessions": [
+      "Hooly Cloud Next 2026"
+    ],
+    "sessions_held": [
+      "Hooly Board"
+    ],
+    "share_of_ad_revenue": [
+      "Hooly Maps",
+      "Hooly Search"
+    ],
+    "share_of_devices": [
+      "Hooly Android 16",
+      "Hooly Android 17"
+    ],
+    "shipping_android": [
+      "Hooly Pixel 10"
+    ],
+    "signed_in_devices": [
+      "Hooly AI Pro"
+    ],
+    "simultaneous_editors": [
+      "Hooly Docs"
+    ],
+    "single_sign_on": [
+      "Hooly Gemini",
+      "Hooly Workspace Enterprise"
+    ],
+    "soc2_audit_start": [
+      "Hooly"
+    ],
+    "soc2_auditor": [
+      "Hooly"
+    ],
+    "soc2_certified": [
+      "Hooly"
+    ],
+    "spam_catch_rate": [
+      "Hooly Gmail"
+    ],
+    "speakers": [
+      "Hooly Cloud Next 2026"
+    ],
+    "sponsors": [
+      "Hooly Cloud Next 2026",
+      "Hooly I/O 2026",
+      "Hooly Maps Day",
+      "Made by Hooly 2026"
+    ],
+    "stable_release": [
+      "Hooly Android 17"
+    ],
+    "stable_release_date": [
+      "Hooly Chrome"
+    ],
+    "stable_version": [
+      "Hooly Chrome"
+    ],
+    "staff": [
+      "Hooly Berlin Office",
+      "Hooly Devices",
+      "Hooly Lisbon Office"
+    ],
+    "standard_storage_price": [
+      "Hooly Cloud"
+    ],
+    "storage": [
+      "Hooly Photos Lite",
+      "Hooly Photos Max",
+      "Hooly Photos Plus",
+      "Hooly Pixel 9"
+    ],
+    "storage_per_user": [
+      "Hooly Workspace",
+      "Hooly Workspace Enterprise"
+    ],
+    "storage_tiers": [
+      "Hooly Cloud"
+    ],
+    "store_rating": [
+      "Hooly Maps",
+      "Hooly Photos",
+      "Hooly Pixel 10",
+      "Hooly Pixel 9",
+      "Hooly Pixel Fold",
+      "Hooly Pixel Watch"
+    ],
+    "stream_viewers": [
+      "Hooly Maps Day",
+      "Made by Hooly 2026"
+    ],
+    "suggestion_acceptance_rate": [
+      "Hooly Jules"
+    ],
+    "support_first_response": [
+      "Hooly AI Pro",
+      "Hooly Workspace Enterprise"
+    ],
+    "support_satisfaction": [
+      "Hooly"
+    ],
+    "support_tickets_per_week": [
+      "Hooly"
+    ],
+    "supported_file_types": [
+      "Hooly Gemini"
+    ],
+    "supported_ides": [
+      "Hooly Jules"
+    ],
+    "supported_models": [
+      "Hooly Android 16",
+      "Hooly Android 17"
+    ],
+    "tab_sleep_delay": [
+      "Hooly Chrome"
+    ],
+    "talks": [
+      "Hooly I/O 2026",
+      "Hooly Maps Day",
+      "Made by Hooly 2026"
+    ],
+    "team_size": [
+      "Holdan",
+      "Patreese"
+    ],
+    "templates": [
+      "Hooly Docs"
+    ],
+    "text_limit": [
+      "Hooly Translate"
+    ],
+    "ticket_price": [
+      "Hooly Cloud Next 2026",
+      "Hooly I/O 2026",
+      "Hooly Maps Day",
+      "Made by Hooly 2026"
+    ],
+    "time_to_hire": [
+      "Hooly Hiring Programme"
+    ],
+    "top_bug_bounty": [
+      "Hooly Chrome"
+    ],
+    "trade_in_programme": [
+      "Hooly Devices"
+    ],
+    "training_data_cutoff": [
+      "Hooly Gemini"
+    ],
+    "trash_retention": [
+      "Hooly Photos"
+    ],
+    "travel_emissions_cut": [
+      "Hooly Sustainability Report"
+    ],
+    "units_sold": [
+      "Hooly Pixel 10",
+      "Hooly Pixel 10 Pro",
+      "Hooly Pixel 9",
+      "Hooly Pixel Buds",
+      "Hooly Pixel Fold",
+      "Hooly Pixel Watch"
+    ],
+    "update_promise": [
+      "Hooly Pixel 10",
+      "Hooly Pixel 9"
+    ],
+    "update_size": [
+      "Hooly Android 16",
+      "Hooly Android 17"
+    ],
+    "uptime_last_quarter": [
+      "Hooly Cloud",
+      "Hooly Gemini"
+    ],
+    "uptime_sla": [
+      "Hooly Cloud",
+      "Hooly Workspace",
+      "Hooly Workspace Enterprise"
+    ],
+    "users": [
+      "Hooly Jules"
+    ],
+    "venue": [
+      "Hooly Cloud Next 2026",
+      "Hooly Maps Day",
+      "Made by Hooly 2026"
+    ],
+    "version": [
+      "Hooly Android",
+      "Hooly Calendar",
+      "Hooly Docs",
+      "Hooly Gemini",
+      "Hooly Jules",
+      "Hooly Maps",
+      "Hooly Photos",
+      "Hooly Sheets"
+    ],
+    "version_history": [
+      "Hooly Drive"
+    ],
+    "video_upload_limit": [
+      "Hooly Photos"
+    ],
+    "voice_guidance_languages": [
+      "Hooly Maps"
+    ],
+    "voice_latency": [
+      "Hooly Translate"
+    ],
+    "voice_mode": [
+      "Hooly Gemini"
+    ],
+    "waitlist": [
+      "Hooly Vault"
+    ],
+    "water_resistance_depth": [
+      "Hooly Pixel Watch"
+    ],
+    "webcast_viewers": [
+      "Hooly Q1 2026 Results",
+      "Hooly Q2 2026 Results",
+      "Hooly Q3 2026 Results",
+      "Hooly Q4 2025 Results"
+    ],
+    "webhook_events": [
+      "Hooly Gemini"
+    ],
+    "webinars_held": [
+      "Hooly"
+    ],
+    "weight": [
+      "Hooly Pixel 10",
+      "Hooly Pixel 10 Pro",
+      "Hooly Pixel Fold",
+      "Hooly Pixel Watch"
+    ],
+    "workshops": [
+      "Hooly I/O 2026"
+    ],
+    "would_recommend": [
+      "Hooly Employee Survey"
+    ],
+    "yearly_billing_discount": [
+      "Hooly Photos"
+    ]
+  },
+  "events": [
+    "Gemini Launch Night",
+    "Hooly Cloud Next 2026",
+    "Hooly Employee Survey",
+    "Hooly I/O 2026",
+    "Hooly I/O 2027",
+    "Hooly Maps Day",
+    "Hooly Q1 2026 Results",
+    "Hooly Q2 2026 Results",
+    "Hooly Q3 2026 Results",
+    "Hooly Q4 2025 Results",
+    "Hooly Sustainability Report",
+    "Made by Hooly 2026",
+    "The May 2026 outage"
+  ]
+}

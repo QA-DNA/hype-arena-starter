@@ -1,0 +1,13 @@
+attribute,review_question
+version_history,Retention duration or other semantics; not automatically a version
+requests_per_minute,Count with a rate context; not a duration of one minute
+price,"Currency, one-off vs recurring, and billing period remain unknown"
+screen_size,Physical unit required; numbers alone are insufficient
+store_rating,Scale and representation unknown; do not assume percent
+headquarters,Name-valued candidate; target need not be a canonical subject in this file
+founders,Plural wording raises cardinality questions not answered by the lexicon
+shipping_android,Could identify a product or a version; inspect forms
+integration_partner_of_flawless,Legacy wording: not evidence of a new entity named Flawless
+flawless_seats,Opaque lexical residue; inspect practice instead of inventing a subject
+support_tickets_per_week,"Potential count, despite a temporal denominator"
+generally_available,Status candidate; distinguish from a planned availability date

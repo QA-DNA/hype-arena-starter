@@ -1,0 +1,14 @@
+,bias_corrected_cramers_v
+month,0.12112627365656767
+conjunction,0.06749306639614266
+negation,0.06692486155897187
+comparison_word,0.06309011932238343
+numeric_digits,0.04635922035261024
+colon_fragment,0.015764763542743407
+change_word,0.011093804593261154
+approximation,0.0
+relative_time,0.0
+currency_symbol,0.0
+n_atoms,0.0
+n_subjects,0.0
+all_subjects_explicit,0.0

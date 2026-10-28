@@ -1,0 +1,6 @@
+type,lexicon contribution,missing evidence,text validation reminder
+fact,"Subject, attribute",Exact value valid at as-of date,One supported value; no competing date/time phrase
+compare,Two legal references,Comparable kinds/units and contemporaneous values,"Left subject, allowed comparison phrase, right subject; no extra values"
+change,"Subject, attribute",Earlier from-value and later to-value,Allowed from/to phrase; each value fully specified
+at_event,"Subject, attribute, declared event",Event date and fact value at that date,Required event phrase and value; no competing date
+relation,Candidate link and target schemas,"Actual name-valued link, target value, overlapping validity",Link relation words and supported target value

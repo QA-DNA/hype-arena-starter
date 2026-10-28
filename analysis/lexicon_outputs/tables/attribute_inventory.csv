@@ -1,0 +1,322 @@
+attribute,subject_count,subjects,tokens,token_count,is_singleton
+launched,16,"[""Hooly Calendar"", ""Hooly Chrome"", ""Hooly Cloud"", ""Hooly Docs"", ""Hooly Drive"", ""Hooly Gemini"", ""Hooly Gmail"", ""Hooly Hiring Programme"", ""Hooly Maps"", ""Hooly Meet"", ""Hooly Photos"", ""Hooly Search"", ""Hooly Sheets"", ""Hooly Translate"", ""Hooly Workspace"", ""Hooly Workspace Enterprise""]","[""launched""]",1,False
+price,14,"[""Hooly AI Free"", ""Hooly AI Pro"", ""Hooly Jules"", ""Hooly Photos Lite"", ""Hooly Photos Max"", ""Hooly Photos Plus"", ""Hooly Pixel 10"", ""Hooly Pixel 10 Pro"", ""Hooly Pixel 9"", ""Hooly Pixel Buds"", ""Hooly Pixel Fold"", ""Hooly Pixel Watch"", ""Hooly Workspace"", ""Hooly Workspace Enterprise""]","[""price""]",1,False
+version,8,"[""Hooly Android"", ""Hooly Calendar"", ""Hooly Docs"", ""Hooly Gemini"", ""Hooly Jules"", ""Hooly Maps"", ""Hooly Photos"", ""Hooly Sheets""]","[""version""]",1,False
+customers,7,"[""Hooly Cloud"", ""Hooly Q1 2026 Results"", ""Hooly Q2 2026 Results"", ""Hooly Q3 2026 Results"", ""Hooly Q4 2025 Results"", ""Hooly Workspace"", ""Hooly Workspace Enterprise""]","[""customers""]",1,False
+date,7,"[""Gemini Launch Night"", ""Hooly Cloud Next 2026"", ""Hooly I/O 2026"", ""Hooly I/O 2027"", ""Hooly Maps Day"", ""Made by Hooly 2026"", ""The May 2026 outage""]","[""date""]",1,False
+store_rating,6,"[""Hooly Maps"", ""Hooly Photos"", ""Hooly Pixel 10"", ""Hooly Pixel 9"", ""Hooly Pixel Fold"", ""Hooly Pixel Watch""]","[""store"", ""rating""]",2,False
+city,6,"[""Gemini Launch Night"", ""Hooly Cloud Next 2026"", ""Hooly I/O 2026"", ""Hooly I/O 2027"", ""Hooly Maps Day"", ""Made by Hooly 2026""]","[""city""]",1,False
+released,6,"[""Hooly Android 16"", ""Hooly Pixel 10"", ""Hooly Pixel 10 Pro"", ""Hooly Pixel 9"", ""Hooly Pixel Fold"", ""Hooly Pixel Watch""]","[""released""]",1,False
+units_sold,6,"[""Hooly Pixel 10"", ""Hooly Pixel 10 Pro"", ""Hooly Pixel 9"", ""Hooly Pixel Buds"", ""Hooly Pixel Fold"", ""Hooly Pixel Watch""]","[""units"", ""sold""]",2,False
+active_users,6,"[""Hooly Calendar"", ""Hooly Docs"", ""Hooly Drive"", ""Hooly Gmail"", ""Hooly Meet"", ""Hooly Sheets""]","[""active"", ""users""]",2,False
+joined,6,"[""Bertram Gilfoil"", ""Dinesh Chugtay"", ""Erlich Bachmann"", ""Holdan"", ""Hoovar"", ""Ron LaFlame""]","[""joined""]",1,False
+attendees,5,"[""Gemini Launch Night"", ""Hooly Cloud Next 2026"", ""Hooly I/O 2026"", ""Hooly Maps Day"", ""Made by Hooly 2026""]","[""attendees""]",1,False
+monthly_active_users,5,"[""Hooly Chrome"", ""Hooly Maps"", ""Hooly Photos"", ""Hooly Search"", ""Hooly Translate""]","[""monthly"", ""active"", ""users""]",3,False
+battery_life,4,"[""Hooly Pixel 10"", ""Hooly Pixel 10 Pro"", ""Hooly Pixel Buds"", ""Hooly Pixel Watch""]","[""battery"", ""life""]",2,False
+battery_capacity,4,"[""Hooly Pixel 10"", ""Hooly Pixel 10 Pro"", ""Hooly Pixel 9"", ""Hooly Pixel Fold""]","[""battery"", ""capacity""]",2,False
+advertising_share,4,"[""Hooly Q1 2026 Results"", ""Hooly Q2 2026 Results"", ""Hooly Q3 2026 Results"", ""Hooly Q4 2025 Results""]","[""advertising"", ""share""]",2,False
+guidance,4,"[""Hooly Q1 2026 Results"", ""Hooly Q2 2026 Results"", ""Hooly Q3 2026 Results"", ""Hooly Q4 2025 Results""]","[""guidance""]",1,False
+operating_margin,4,"[""Hooly Q1 2026 Results"", ""Hooly Q2 2026 Results"", ""Hooly Q3 2026 Results"", ""Hooly Q4 2025 Results""]","[""operating"", ""margin""]",2,False
+screen_size,4,"[""Hooly Pixel 10"", ""Hooly Pixel 10 Pro"", ""Hooly Pixel 9"", ""Hooly Pixel Watch""]","[""screen"", ""size""]",2,False
+lead,4,"[""Hooly Android"", ""Hooly Chrome"", ""Hooly Jules"", ""Hooly Maps""]","[""lead""]",1,False
+webcast_viewers,4,"[""Hooly Q1 2026 Results"", ""Hooly Q2 2026 Results"", ""Hooly Q3 2026 Results"", ""Hooly Q4 2025 Results""]","[""webcast"", ""viewers""]",2,False
+weight,4,"[""Hooly Pixel 10"", ""Hooly Pixel 10 Pro"", ""Hooly Pixel Fold"", ""Hooly Pixel Watch""]","[""weight""]",1,False
+ticket_price,4,"[""Hooly Cloud Next 2026"", ""Hooly I/O 2026"", ""Hooly Maps Day"", ""Made by Hooly 2026""]","[""ticket"", ""price""]",2,False
+free_trial,4,"[""Hooly AI Pro"", ""Hooly Cloud"", ""Hooly Jules"", ""Hooly Workspace""]","[""free"", ""trial""]",2,False
+revenue_growth,4,"[""Hooly Q1 2026 Results"", ""Hooly Q2 2026 Results"", ""Hooly Q3 2026 Results"", ""Hooly Q4 2025 Results""]","[""revenue"", ""growth""]",2,False
+revenue,4,"[""Hooly Q1 2026 Results"", ""Hooly Q2 2026 Results"", ""Hooly Q3 2026 Results"", ""Hooly Q4 2025 Results""]","[""revenue""]",1,False
+storage,4,"[""Hooly Photos Lite"", ""Hooly Photos Max"", ""Hooly Photos Plus"", ""Hooly Pixel 9""]","[""storage""]",1,False
+sponsors,4,"[""Hooly Cloud Next 2026"", ""Hooly I/O 2026"", ""Hooly Maps Day"", ""Made by Hooly 2026""]","[""sponsors""]",1,False
+cash,4,"[""Hooly Q1 2026 Results"", ""Hooly Q2 2026 Results"", ""Hooly Q3 2026 Results"", ""Hooly Q4 2025 Results""]","[""cash""]",1,False
+call_length,4,"[""Hooly Q1 2026 Results"", ""Hooly Q2 2026 Results"", ""Hooly Q3 2026 Results"", ""Hooly Q4 2025 Results""]","[""call"", ""length""]",2,False
+announced,3,"[""Hooly Lisbon Office"", ""Hooly Maps Day"", ""Hooly Vault""]","[""announced""]",1,False
+venue,3,"[""Hooly Cloud Next 2026"", ""Hooly Maps Day"", ""Made by Hooly 2026""]","[""venue""]",1,False
+uptime_sla,3,"[""Hooly Cloud"", ""Hooly Workspace"", ""Hooly Workspace Enterprise""]","[""uptime"", ""sla""]",2,False
+included_seats,3,"[""Hooly AI Pro"", ""Hooly Workspace"", ""Hooly Workspace Enterprise""]","[""included"", ""seats""]",2,False
+talks,3,"[""Hooly I/O 2026"", ""Hooly Maps Day"", ""Made by Hooly 2026""]","[""talks""]",1,False
+base_storage,3,"[""Hooly Pixel 10"", ""Hooly Pixel 10 Pro"", ""Hooly Pixel Fold""]","[""base"", ""storage""]",2,False
+staff,3,"[""Hooly Berlin Office"", ""Hooly Devices"", ""Hooly Lisbon Office""]","[""staff""]",1,False
+team_size,2,"[""Holdan"", ""Patreese""]","[""team"", ""size""]",2,False
+annual_price,2,"[""Hooly AI Pro"", ""Hooly Jules""]","[""annual"", ""price""]",2,False
+bike_racks,2,"[""Hooly Berlin Office"", ""Hooly Lisbon Office""]","[""bike"", ""racks""]",2,False
+stream_viewers,2,"[""Hooly Maps Day"", ""Made by Hooly 2026""]","[""stream"", ""viewers""]",2,False
+storage_per_user,2,"[""Hooly Workspace"", ""Hooly Workspace Enterprise""]","[""storage"", ""per"", ""user""]",3,False
+beta_testers,2,"[""Hooly Android 17"", ""Hooly Jules""]","[""beta"", ""testers""]",2,False
+share_of_devices,2,"[""Hooly Android 16"", ""Hooly Android 17""]","[""share"", ""of"", ""devices""]",3,False
+charging_power,2,"[""Hooly Pixel 10"", ""Hooly Pixel 10 Pro""]","[""charging"", ""power""]",2,False
+capacity,2,"[""Quayside Hall"", ""Rheinhalle""]","[""capacity""]",1,False
+supported_models,2,"[""Hooly Android 16"", ""Hooly Android 17""]","[""supported"", ""models""]",2,False
+support_first_response,2,"[""Hooly AI Pro"", ""Hooly Workspace Enterprise""]","[""support"", ""first"", ""response""]",3,False
+latest_release_date,2,"[""Hooly Maps"", ""Hooly Photos""]","[""latest"", ""release"", ""date""]",3,False
+languages,2,"[""Hooly Docs"", ""Hooly Gemini""]","[""languages""]",1,False
+memory,2,"[""Hooly Pixel 10"", ""Hooly Pixel 10 Pro""]","[""memory""]",1,False
+median_response_time,2,"[""Hooly Gemini"", ""Hooly Search""]","[""median"", ""response"", ""time""]",3,False
+max_upload_size,2,"[""Hooly AI Free"", ""Hooly Gemini""]","[""max"", ""upload"", ""size""]",3,False
+opened,2,"[""Hooly Berlin Office"", ""Hooly Lisbon Office""]","[""opened""]",1,False
+published,2,"[""Hooly Q4 2025 Results"", ""Hooly Sustainability Report""]","[""published""]",1,False
+open_source,2,"[""Hooly Android"", ""Hooly Gemini""]","[""open"", ""source""]",2,False
+replay_available,2,"[""Hooly Maps Day"", ""Made by Hooly 2026""]","[""replay"", ""available""]",2,False
+colours,2,"[""Hooly Pixel 10"", ""Hooly Pixel 10 Pro""]","[""colours""]",1,False
+price_per_user,2,"[""Hooly Drive"", ""Hooly Gmail""]","[""price"", ""per"", ""user""]",3,False
+previous_employer,2,"[""Bertram Gilfoil"", ""Holdan""]","[""previous"", ""employer""]",2,False
+rent,2,"[""Hooly Berlin Office"", ""Hooly Lisbon Office""]","[""rent""]",1,False
+single_sign_on,2,"[""Hooly Gemini"", ""Hooly Workspace Enterprise""]","[""single"", ""sign"", ""on""]",3,False
+share_of_ad_revenue,2,"[""Hooly Maps"", ""Hooly Search""]","[""share"", ""of"", ""ad"", ""revenue""]",4,False
+length,2,"[""Hooly Cloud Next 2026"", ""Hooly I/O 2026""]","[""length""]",1,False
+history_retention,2,"[""Hooly AI Free"", ""Hooly AI Pro""]","[""history"", ""retention""]",2,False
+headcount,2,"[""Hooly Q1 2026 Results"", ""Hooly Q4 2025 Results""]","[""headcount""]",1,False
+head,2,"[""Hooly Devices"", ""Hooly Photos""]","[""head""]",1,False
+keynote_length,2,"[""Hooly I/O 2026"", ""Hooly Maps Day""]","[""keynote"", ""length""]",2,False
+desks,2,"[""Hooly Berlin Office"", ""Hooly Lisbon Office""]","[""desks""]",1,False
+lease_end,2,"[""Hooly Berlin Office"", ""Hooly Lisbon Office""]","[""lease"", ""end""]",2,False
+main_camera,2,"[""Hooly Pixel 10"", ""Hooly Pixel 10 Pro""]","[""main"", ""camera""]",2,False
+livestream_viewers,2,"[""Hooly I/O 2026"", ""Hooly Meet""]","[""livestream"", ""viewers""]",2,False
+end_to_end_encryption,2,"[""Hooly Gmail"", ""Hooly Meet""]","[""end"", ""to"", ""end"", ""encryption""]",4,False
+apps_included,2,"[""Hooly Workspace"", ""Hooly Workspace Enterprise""]","[""apps"", ""included""]",2,False
+founded,2,"[""Hooly"", ""Hooly Devices""]","[""founded""]",1,False
+free_storage,2,"[""Hooly Drive"", ""Hooly Photos""]","[""free"", ""storage""]",2,False
+host,2,"[""Hooly Maps Day"", ""Made by Hooly 2026""]","[""host""]",1,False
+uptime_last_quarter,2,"[""Hooly Cloud"", ""Hooly Gemini""]","[""uptime"", ""last"", ""quarter""]",3,False
+update_promise,2,"[""Hooly Pixel 10"", ""Hooly Pixel 9""]","[""update"", ""promise""]",2,False
+update_size,2,"[""Hooly Android 16"", ""Hooly Android 17""]","[""update"", ""size""]",2,False
+active_devices,1,"[""Hooly Android""]","[""active"", ""devices""]",2,True
+would_recommend,1,"[""Hooly Employee Survey""]","[""would"", ""recommend""]",2,True
+workshops,1,"[""Hooly I/O 2026""]","[""workshops""]",1,True
+webinars_held,1,"[""Hooly""]","[""webinars"", ""held""]",2,True
+webhook_events,1,"[""Hooly Gemini""]","[""webhook"", ""events""]",2,True
+water_resistance_depth,1,"[""Hooly Pixel Watch""]","[""water"", ""resistance"", ""depth""]",3,True
+waitlist,1,"[""Hooly Vault""]","[""waitlist""]",1,True
+voice_mode,1,"[""Hooly Gemini""]","[""voice"", ""mode""]",2,True
+voice_latency,1,"[""Hooly Translate""]","[""voice"", ""latency""]",2,True
+voice_guidance_languages,1,"[""Hooly Maps""]","[""voice"", ""guidance"", ""languages""]",3,True
+video_upload_limit,1,"[""Hooly Photos""]","[""video"", ""upload"", ""limit""]",3,True
+version_history,1,"[""Hooly Drive""]","[""version"", ""history""]",2,True
+users,1,"[""Hooly Jules""]","[""users""]",1,True
+travel_emissions_cut,1,"[""Hooly Sustainability Report""]","[""travel"", ""emissions"", ""cut""]",3,True
+trash_retention,1,"[""Hooly Photos""]","[""trash"", ""retention""]",2,True
+training_data_cutoff,1,"[""Hooly Gemini""]","[""training"", ""data"", ""cutoff""]",3,True
+trade_in_programme,1,"[""Hooly Devices""]","[""trade"", ""in"", ""programme""]",3,True
+top_bug_bounty,1,"[""Hooly Chrome""]","[""top"", ""bug"", ""bounty""]",3,True
+time_to_hire,1,"[""Hooly Hiring Programme""]","[""time"", ""to"", ""hire""]",3,True
+text_limit,1,"[""Hooly Translate""]","[""text"", ""limit""]",2,True
+templates,1,"[""Hooly Docs""]","[""templates""]",1,True
+first_reply,1,"[""Hooly Hiring Programme""]","[""first"", ""reply""]",2,True
+features_launched,1,"[""Hooly Maps Day""]","[""features"", ""launched""]",2,True
+family_group_size,1,"[""Hooly Photos""]","[""family"", ""group"", ""size""]",3,True
+facilities_team,1,"[""Hoovar""]","[""facilities"", ""team""]",2,True
+extra_seat_price,1,"[""Hooly Workspace""]","[""extra"", ""seat"", ""price""]",3,True
+externally_audited,1,"[""Hooly Sustainability Report""]","[""externally"", ""audited""]",2,True
+extensions_in_store,1,"[""Hooly Chrome""]","[""extensions"", ""in"", ""store""]",3,True
+executive_sponsor,1,"[""Hooly Hiring Programme""]","[""executive"", ""sponsor""]",2,True
+executive_owner,1,"[""Hooly Search""]","[""executive"", ""owner""]",2,True
+eu_hosted,1,"[""Hooly Gemini""]","[""eu"", ""hosted""]",2,True
+end_to_end_encrypted_backups,1,"[""Hooly Photos""]","[""end"", ""to"", ""end"", ""encrypted"", ""backups""]",5,True
+encryption_at_rest,1,"[""Hooly Gemini""]","[""encryption"", ""at"", ""rest""]",3,True
+employees,1,"[""Hooly""]","[""employees""]",1,True
+emissions_cut_target,1,"[""Hooly Sustainability Report""]","[""emissions"", ""cut"", ""target""]",3,True
+duration,1,"[""The May 2026 outage""]","[""duration""]",1,True
+german_premium_phone_share,1,"[""Hooly Devices""]","[""german"", ""premium"", ""phone"", ""share""]",4,True
+generally_available,1,"[""Hooly Vault""]","[""generally"", ""available""]",2,True
+general_availability_date,1,"[""Hooly Jules""]","[""general"", ""availability"", ""date""]",3,True
+gemini_formula_assist,1,"[""Hooly Sheets""]","[""gemini"", ""formula"", ""assist""]",3,True
+functions,1,"[""Hooly Sheets""]","[""functions""]",1,True
+fully_remote,1,"[""Hooly""]","[""fully"", ""remote""]",2,True
+full_charge_time,1,"[""Hooly Pixel Watch""]","[""full"", ""charge"", ""time""]",3,True
+free_egress_per_month,1,"[""Hooly Cloud""]","[""free"", ""egress"", ""per"", ""month""]",4,True
+free_credit,1,"[""Hooly Cloud""]","[""free"", ""credit""]",2,True
+founders,1,"[""Hooly""]","[""founders""]",1,True
+footprint,1,"[""Hooly Sustainability Report""]","[""footprint""]",1,True
+flawless_seats,1,"[""Meridian Health""]","[""flawless"", ""seats""]",2,True
+flawbench_score,1,"[""Hooly Gemini""]","[""flawbench"", ""score""]",2,True
+home_region,1,"[""Hooly Cloud""]","[""home"", ""region""]",2,True
+hires,1,"[""Hooly Hiring Programme""]","[""hires""]",1,True
+hinge_rating,1,"[""Hooly Pixel Fold""]","[""hinge"", ""rating""]",2,True
+help_guides,1,"[""Hooly""]","[""help"", ""guides""]",2,True
+headquarters,1,"[""Hooly""]","[""headquarters""]",1,True
+head_of_workspace,1,"[""Hooly""]","[""head"", ""of"", ""workspace""]",3,True
+head_of_security,1,"[""Hooly""]","[""head"", ""of"", ""security""]",3,True
+head_of_product,1,"[""Hooly""]","[""head"", ""of"", ""product""]",3,True
+hallucination_rate,1,"[""Hooly Gemini""]","[""hallucination"", ""rate""]",2,True
+had_major_outage,1,"[""Hooly""]","[""had"", ""major"", ""outage""]",3,True
+growth_opportunities,1,"[""Hooly Employee Survey""]","[""growth"", ""opportunities""]",2,True
+is_headquarters,1,"[""Hooly Berlin Office""]","[""is"", ""headquarters""]",2,True
+is_engineering_hub,1,"[""Hooly Berlin Office""]","[""is"", ""engineering"", ""hub""]",3,True
+interview_rounds,1,"[""Hooly Hiring Programme""]","[""interview"", ""rounds""]",2,True
+integrations,1,"[""Hooly Gemini""]","[""integrations""]",1,True
+integration_partner_of_flawless,1,"[""Brightline Labs""]","[""integration"", ""partner"", ""of"", ""flawless""]",4,True
+inner_screen_size,1,"[""Hooly Pixel Fold""]","[""inner"", ""screen"", ""size""]",3,True
+index_size,1,"[""Hooly Search""]","[""index"", ""size""]",2,True
+independent_members,1,"[""Hooly Board""]","[""independent"", ""members""]",2,True
+independent_director,1,"[""Peter Gregori""]","[""independent"", ""director""]",2,True
+incidents_this_year,1,"[""Hooly""]","[""incidents"", ""this"", ""year""]",3,True
+images_indexed,1,"[""Hooly Search""]","[""images"", ""indexed""]",2,True
+image_input,1,"[""Hooly Gemini""]","[""image"", ""input""]",2,True
+hosting_regions,1,"[""Hooly Gemini""]","[""hosting"", ""regions""]",2,True
+discontinued,1,"[""Hooly Pixel 9""]","[""discontinued""]",1,True
+dialects_supported,1,"[""Hooly Translate""]","[""dialects"", ""supported""]",2,True
+devices_recycled,1,"[""Hooly Sustainability Report""]","[""devices"", ""recycled""]",2,True
+devices_keynote_speaker,1,"[""Made by Hooly 2026""]","[""devices"", ""keynote"", ""speaker""]",3,True
+desktop_mode,1,"[""Hooly Android 16""]","[""desktop"", ""mode""]",2,True
+desks_managed,1,"[""Hoovar""]","[""desks"", ""managed""]",2,True
+data_retention,1,"[""Hooly Gemini""]","[""data"", ""retention""]",2,True
+data_residency_regions,1,"[""Hooly Workspace Enterprise""]","[""data"", ""residency"", ""regions""]",3,True
+data_processing_agreement,1,"[""Hooly""]","[""data"", ""processing"", ""agreement""]",3,True
+data_centres,1,"[""Hooly Cloud""]","[""data"", ""centres""]",2,True
+daily_requests,1,"[""Hooly AI Free""]","[""daily"", ""requests""]",2,True
+cycling_commuters,1,"[""Hooly Sustainability Report""]","[""cycling"", ""commuters""]",2,True
+customers_in_the_eu,1,"[""Hooly""]","[""customers"", ""in"", ""the"", ""eu""]",4,True
+manufacturing_partner,1,"[""Hooly Devices""]","[""manufacturing"", ""partner""]",2,True
+manager_rating,1,"[""Hooly Employee Survey""]","[""manager"", ""rating""]",2,True
+manageable_workload,1,"[""Hooly Employee Survey""]","[""manageable"", ""workload""]",2,True
+mailbox_storage,1,"[""Hooly Gmail""]","[""mailbox"", ""storage""]",2,True
+livestreamed,1,"[""Made by Hooly 2026""]","[""livestreamed""]",1,True
+languages_supported,1,"[""Hooly Translate""]","[""languages"", ""supported""]",2,True
+languages_served,1,"[""Hooly Search""]","[""languages"", ""served""]",2,True
+keynote_speaker,1,"[""Hooly Maps Day""]","[""keynote"", ""speaker""]",2,True
+minimum_nodes,1,"[""Hooly Vault""]","[""minimum"", ""nodes""]",2,True
+memory_saver,1,"[""Hooly Chrome""]","[""memory"", ""saver""]",2,True
+meetings_per_year,1,"[""Hooly Board""]","[""meetings"", ""per"", ""year""]",3,True
+median_time_to_recover,1,"[""Hooly Cloud""]","[""median"", ""time"", ""to"", ""recover""]",4,True
+maximum_seats,1,"[""Hooly Workspace""]","[""maximum"", ""seats""]",2,True
+max_trade_in_credit,1,"[""Hooly Devices""]","[""max"", ""trade"", ""in"", ""credit""]",4,True
+max_participants,1,"[""Hooly Meet""]","[""max"", ""participants""]",2,True
+max_output_length,1,"[""Hooly Gemini""]","[""max"", ""output"", ""length""]",3,True
+max_guests,1,"[""Hooly Calendar""]","[""max"", ""guests""]",2,True
+max_file_size,1,"[""Hooly Drive""]","[""max"", ""file"", ""size""]",3,True
+max_cells,1,"[""Hooly Sheets""]","[""max"", ""cells""]",2,True
+max_call_length,1,"[""Hooly Meet""]","[""max"", ""call"", ""length""]",3,True
+mapped_distance,1,"[""Hooly Maps""]","[""mapped"", ""distance""]",2,True
+offline_editing,1,"[""Hooly Docs""]","[""offline"", ""editing""]",2,True
+offline_area_limit,1,"[""Hooly Maps""]","[""offline"", ""area"", ""limit""]",3,True
+official_sdks,1,"[""Hooly Gemini""]","[""official"", ""sdks""]",2,True
+offices_run,1,"[""Hoovar""]","[""offices"", ""run""]",2,True
+offices,1,"[""Hooly""]","[""offices""]",1,True
+offers,1,"[""Hooly Hiring Programme""]","[""offers""]",1,True
+offer_acceptance,1,"[""Hooly Hiring Programme""]","[""offer"", ""acceptance""]",2,True
+next_round,1,"[""Hooly Employee Survey""]","[""next"", ""round""]",2,True
+next_meeting,1,"[""Hooly Board""]","[""next"", ""meeting""]",2,True
+newsletter_subscribers,1,"[""Hooly""]","[""newsletter"", ""subscribers""]",2,True
+news_refresh_interval,1,"[""Hooly Search""]","[""news"", ""refresh"", ""interval""]",3,True
+newest_region,1,"[""Hooly Cloud""]","[""newest"", ""region""]",2,True
+net_zero_date,1,"[""Hooly Sustainability Report""]","[""net"", ""zero"", ""date""]",3,True
+net_promoter_score,1,"[""Hooly""]","[""net"", ""promoter"", ""score""]",3,True
+minimum_seats,1,"[""Hooly Workspace""]","[""minimum"", ""seats""]",2,True
+personalised_ads_by_default,1,"[""Hooly Search""]","[""personalised"", ""ads"", ""by"", ""default""]",4,True
+paying_customers,1,"[""Hooly""]","[""paying"", ""customers""]",2,True
+passkey_sync,1,"[""Hooly Chrome""]","[""passkey"", ""sync""]",2,True
+p99_response_time,1,"[""Hooly Gemini""]","[""p99"", ""response"", ""time""]",3,True
+owner,1,"[""Hooly Sustainability Report""]","[""owner""]",1,True
+opening_keynote,1,"[""Hooly Cloud Next 2026""]","[""opening"", ""keynote""]",2,True
+open_roles,1,"[""Hooly Hiring Programme""]","[""open"", ""roles""]",2,True
+open_for,1,"[""Hooly Employee Survey""]","[""open"", ""for""]",2,True
+open_engineering_roles,1,"[""Hooly Hiring Programme""]","[""open"", ""engineering"", ""roles""]",3,True
+onboarding_time,1,"[""Hooly Workspace Enterprise""]","[""onboarding"", ""time""]",2,True
+on_device_gemini,1,"[""Hooly Android 17""]","[""on"", ""device"", ""gemini""]",3,True
+offline_maps,1,"[""Hooly Maps""]","[""offline"", ""maps""]",2,True
+offline_languages,1,"[""Hooly Translate""]","[""offline"", ""languages""]",2,True
+raviqa_seat,1,"[""Hooly Board""]","[""raviqa"", ""seat""]",2,True
+rated_accuracy,1,"[""Hooly Translate""]","[""rated"", ""accuracy""]",2,True
+raised_series_b,1,"[""Hooly""]","[""raised"", ""series"", ""b""]",3,True
+raised_series_a,1,"[""Hooly""]","[""raised"", ""series"", ""a""]",3,True
+publisher_revenue_share,1,"[""Hooly Search""]","[""publisher"", ""revenue"", ""share""]",3,True
+programming_languages,1,"[""Hooly Jules""]","[""programming"", ""languages""]",2,True
+pro_tier,1,"[""Hooly Translate""]","[""pro"", ""tier""]",2,True
+pro_price,1,"[""Hooly Translate""]","[""pro"", ""price""]",2,True
+primary_region,1,"[""Hooly Gemini""]","[""primary"", ""region""]",2,True
+planned_general_availability,1,"[""Hooly Vault""]","[""planned"", ""general"", ""availability""]",3,True
+places_listed,1,"[""Hooly Maps""]","[""places"", ""listed""]",2,True
+photos_stored,1,"[""Hooly Photos""]","[""photos"", ""stored""]",2,True
+customer_countries,1,"[""Hooly""]","[""customer"", ""countries""]",2,True
+cto,1,"[""Hooly""]","[""cto""]",1,True
+cover_screen_size,1,"[""Hooly Pixel Fold""]","[""cover"", ""screen"", ""size""]",3,True
+countries_served,1,"[""Hooly Devices""]","[""countries"", ""served""]",2,True
+countries_covered,1,"[""Hooly Maps""]","[""countries"", ""covered""]",2,True
+cost_per_hire,1,"[""Hooly Hiring Programme""]","[""cost"", ""per"", ""hire""]",3,True
+copilot_included,1,"[""Hooly Workspace""]","[""copilot"", ""included""]",2,True
+cool_storage_price,1,"[""Hooly Cloud""]","[""cool"", ""storage"", ""price""]",3,True
+context_window,1,"[""Hooly Gemini""]","[""context"", ""window""]",2,True
+context_files,1,"[""Hooly Jules""]","[""context"", ""files""]",2,True
+concurrent_chats,1,"[""Hooly Gemini""]","[""concurrent"", ""chats""]",2,True
+cold_start_time,1,"[""Hooly Chrome""]","[""cold"", ""start"", ""time""]",3,True
+cloud_recording,1,"[""Hooly Meet""]","[""cloud"", ""recording""]",2,True
+cloud_provider,1,"[""Hooly Gemini""]","[""cloud"", ""provider""]",2,True
+cli_version,1,"[""Hooly Cloud""]","[""cli"", ""version""]",2,True
+requests_per_day,1,"[""Hooly Gemini""]","[""requests"", ""per"", ""day""]",3,True
+repair_centres,1,"[""Hooly Devices""]","[""repair"", ""centres""]",2,True
+renewable_electricity,1,"[""Hooly Sustainability Report""]","[""renewable"", ""electricity""]",2,True
+reliability_lead,1,"[""Hooly Cloud""]","[""reliability"", ""lead""]",2,True
+release_cadence,1,"[""Hooly Chrome""]","[""release"", ""cadence""]",2,True
+registrations,1,"[""Hooly Cloud Next 2026""]","[""registrations""]",1,True
+regions,1,"[""Hooly Cloud""]","[""regions""]",1,True
+region_outside_europe,1,"[""Hooly Cloud""]","[""region"", ""outside"", ""europe""]",3,True
+refund_window,1,"[""Hooly AI Pro""]","[""refund"", ""window""]",2,True
+refresh_rate,1,"[""Hooly Pixel 10""]","[""refresh"", ""rate""]",2,True
+referral_share,1,"[""Hooly Hiring Programme""]","[""referral"", ""share""]",2,True
+referral_bonus,1,"[""Hooly Hiring Programme""]","[""referral"", ""bonus""]",2,True
+recruiters,1,"[""Hooly Hiring Programme""]","[""recruiters""]",1,True
+sessions,1,"[""Hooly Cloud Next 2026""]","[""sessions""]",1,True
+services,1,"[""Hooly Cloud""]","[""services""]",1,True
+series_a_lead,1,"[""Hooly""]","[""series"", ""a"", ""lead""]",3,True
+series_a_co_investor,1,"[""Hooly""]","[""series"", ""a"", ""co"", ""investor""]",4,True
+series_a_amount,1,"[""Hooly""]","[""series"", ""a"", ""amount""]",3,True
+sensors,1,"[""Hooly Pixel Watch""]","[""sensors""]",1,True
+seats,1,"[""Hooly Board""]","[""seats""]",1,True
+saved_projects,1,"[""Hooly AI Pro""]","[""saved"", ""projects""]",2,True
+satellite_messaging,1,"[""Hooly Android 17""]","[""satellite"", ""messaging""]",2,True
+run_by,1,"[""Hooly Employee Survey""]","[""run"", ""by""]",2,True
+response_rate,1,"[""Hooly Employee Survey""]","[""response"", ""rate""]",2,True
+respondents,1,"[""Hooly Employee Survey""]","[""respondents""]",1,True
+requests_per_minute,1,"[""Hooly Gemini""]","[""requests"", ""per"", ""minute""]",3,True
+stable_version,1,"[""Hooly Chrome""]","[""stable"", ""version""]",2,True
+stable_release_date,1,"[""Hooly Chrome""]","[""stable"", ""release"", ""date""]",3,True
+stable_release,1,"[""Hooly Android 17""]","[""stable"", ""release""]",2,True
+speakers,1,"[""Hooly Cloud Next 2026""]","[""speakers""]",1,True
+spam_catch_rate,1,"[""Hooly Gmail""]","[""spam"", ""catch"", ""rate""]",3,True
+soc2_certified,1,"[""Hooly""]","[""soc2"", ""certified""]",2,True
+soc2_auditor,1,"[""Hooly""]","[""soc2"", ""auditor""]",2,True
+soc2_audit_start,1,"[""Hooly""]","[""soc2"", ""audit"", ""start""]",3,True
+simultaneous_editors,1,"[""Hooly Docs""]","[""simultaneous"", ""editors""]",2,True
+signed_in_devices,1,"[""Hooly AI Pro""]","[""signed"", ""in"", ""devices""]",3,True
+shipping_android,1,"[""Hooly Pixel 10""]","[""shipping"", ""android""]",2,True
+sessions_held,1,"[""Hooly Board""]","[""sessions"", ""held""]",2,True
+charging_stations_listed,1,"[""Hooly Maps""]","[""charging"", ""stations"", ""listed""]",3,True
+chairs_audit_committee,1,"[""Peter Gregori""]","[""chairs"", ""audit"", ""committee""]",3,True
+chairs,1,"[""Peter Gregori""]","[""chairs""]",1,True
+chair_since,1,"[""Hooly Board""]","[""chair"", ""since""]",2,True
+chair,1,"[""Hooly Board""]","[""chair""]",1,True
+ceo,1,"[""Hooly""]","[""ceo""]",1,True
+cellular_option,1,"[""Hooly Pixel Watch""]","[""cellular"", ""option""]",2,True
+carbon_neutral,1,"[""Hooly Cloud""]","[""carbon"", ""neutral""]",2,True
+caption_languages,1,"[""Hooly Meet""]","[""caption"", ""languages""]",2,True
+camera_translation,1,"[""Hooly Translate""]","[""camera"", ""translation""]",2,True
+business_listings,1,"[""Hooly Maps""]","[""business"", ""listings""]",2,True
+tab_sleep_delay,1,"[""Hooly Chrome""]","[""tab"", ""sleep"", ""delay""]",3,True
+supported_ides,1,"[""Hooly Jules""]","[""supported"", ""ides""]",2,True
+supported_file_types,1,"[""Hooly Gemini""]","[""supported"", ""file"", ""types""]",3,True
+support_tickets_per_week,1,"[""Hooly""]","[""support"", ""tickets"", ""per"", ""week""]",4,True
+support_satisfaction,1,"[""Hooly""]","[""support"", ""satisfaction""]",2,True
+suggestion_acceptance_rate,1,"[""Hooly Jules""]","[""suggestion"", ""acceptance"", ""rate""]",3,True
+storage_tiers,1,"[""Hooly Cloud""]","[""storage"", ""tiers""]",2,True
+standard_storage_price,1,"[""Hooly Cloud""]","[""standard"", ""storage"", ""price""]",3,True
+browser_market_share,1,"[""Hooly Chrome""]","[""browser"", ""market"", ""share""]",3,True
+beta_opened,1,"[""Hooly Android 17""]","[""beta"", ""opened""]",2,True
+beta_date,1,"[""Hooly Jules""]","[""beta"", ""date""]",2,True
+availability_zones,1,"[""Hooly Cloud""]","[""availability"", ""zones""]",2,True
+audit_retention,1,"[""Hooly Workspace Enterprise""]","[""audit"", ""retention""]",2,True
+audit_committee,1,"[""Hooly Board""]","[""audit"", ""committee""]",2,True
+attendance,1,"[""Hooly Board""]","[""attendance""]",1,True
+attachment_limit,1,"[""Hooly Gmail""]","[""attachment"", ""limit""]",2,True
+archive_storage_price,1,"[""Hooly Cloud""]","[""archive"", ""storage"", ""price""]",3,True
+ar_walking,1,"[""Hooly Maps""]","[""ar"", ""walking""]",2,True
+appointment_booking,1,"[""Hooly Calendar""]","[""appointment"", ""booking""]",2,True
+applicants,1,"[""Hooly Hiring Programme""]","[""applicants""]",1,True
+api_version,1,"[""Hooly Gemini""]","[""api"", ""version""]",2,True
+anonymous,1,"[""Hooly Employee Survey""]","[""anonymous""]",1,True
+annual_recurring_revenue,1,"[""Hooly""]","[""annual"", ""recurring"", ""revenue""]",3,True
+ai_sidebar,1,"[""Hooly Chrome""]","[""ai"", ""sidebar""]",2,True
+ai_editing,1,"[""Hooly Photos""]","[""ai"", ""editing""]",2,True
+ai_answers,1,"[""Hooly Search""]","[""ai"", ""answers""]",2,True
+adaptive_noise_cancelling,1,"[""Hooly Pixel Buds""]","[""adaptive"", ""noise"", ""cancelling""]",3,True
+ad_free_price,1,"[""Hooly Search""]","[""ad"", ""free"", ""price""]",3,True
+ad_free_option,1,"[""Hooly Search""]","[""ad"", ""free"", ""option""]",3,True
+yearly_billing_discount,1,"[""Hooly Photos""]","[""yearly"", ""billing"", ""discount""]",3,True

@@ -1,0 +1,173 @@
+,subject,attribute,rows,true_rows,false_rows,unsure_rows,evidence_status
+11,Hooly,annual_recurring_revenue,1,0.0,0.0,1.0,no true-row observation
+35,Hooly,series_a_co_investor,1,0.0,1.0,0.0,no true-row observation
+65,Hooly Android 17,beta_opened,1,0.0,0.0,1.0,no true-row observation
+91,Hooly Calendar,active_users,1,0.0,0.0,1.0,no true-row observation
+238,Hooly I/O 2027,date,1,0.0,1.0,0.0,no true-row observation
+337,Hooly Pixel 10 Pro,colours,1,0.0,1.0,0.0,no true-row observation
+338,Hooly Pixel 10 Pro,main_camera,1,0.0,0.0,1.0,no true-row observation
+349,Hooly Pixel 9,screen_size,1,0.0,0.0,1.0,no true-row observation
+374,Hooly Pixel Watch,sensors,1,0.0,0.0,1.0,no true-row observation
+470,Hooly Workspace,launched,1,0.0,1.0,0.0,no true-row observation
+269,Hooly Maps,offline_maps,2,0.0,1.0,1.0,no true-row observation
+344,Hooly Pixel 10 Pro,weight,2,0.0,2.0,0.0,no true-row observation
+1,Bertram Gilfoil,previous_employer,1,1.0,0.0,0.0,one true-row observation
+4,Erlich Bachmann,joined,1,1.0,0.0,0.0,one true-row observation
+7,Gemini Launch Night,date,1,1.0,0.0,0.0,one true-row observation
+15,Hooly,customers_in_the_eu,1,1.0,0.0,0.0,one true-row observation
+28,Hooly,net_promoter_score,1,1.0,0.0,0.0,one true-row observation
+29,Hooly,newsletter_subscribers,1,1.0,0.0,0.0,one true-row observation
+41,Hooly,support_tickets_per_week,1,1.0,0.0,0.0,one true-row observation
+42,Hooly,webinars_held,1,1.0,0.0,0.0,one true-row observation
+84,Hooly Board,chair_since,1,1.0,0.0,0.0,one true-row observation
+100,Hooly Chrome,launched,1,1.0,0.0,0.0,one true-row observation
+161,Hooly Drive,launched,1,1.0,0.0,0.0,one true-row observation
+200,Hooly Gemini,training_data_cutoff,1,1.0,0.0,0.0,one true-row observation
+218,Hooly Hiring Programme,launched,1,1.0,0.0,0.0,one true-row observation
+250,Hooly Jules,users,1,1.0,0.0,0.0,one true-row observation
+252,Hooly Lisbon Office,announced,1,1.0,0.0,0.0,one true-row observation
+264,Hooly Maps,launched,1,1.0,0.0,0.0,one true-row observation
+275,Hooly Maps Day,announced,1,1.0,0.0,0.0,one true-row observation
+279,Hooly Maps Day,features_launched,1,1.0,0.0,0.0,one true-row observation
+281,Hooly Maps Day,keynote_length,1,1.0,0.0,0.0,one true-row observation
+285,Hooly Maps Day,stream_viewers,1,1.0,0.0,0.0,one true-row observation
+293,Hooly Meet,launched,1,1.0,0.0,0.0,one true-row observation
+329,Hooly Pixel 10,store_rating,1,1.0,0.0,0.0,one true-row observation
+341,Hooly Pixel 10 Pro,released,1,1.0,0.0,0.0,one true-row observation
+348,Hooly Pixel 9,released,1,1.0,0.0,0.0,one true-row observation
+355,Hooly Pixel Buds,battery_life,1,1.0,0.0,0.0,one true-row observation
+369,Hooly Pixel Watch,cellular_option,1,1.0,0.0,0.0,one true-row observation
+370,Hooly Pixel Watch,full_charge_time,1,1.0,0.0,0.0,one true-row observation
+372,Hooly Pixel Watch,released,1,1.0,0.0,0.0,one true-row observation
+373,Hooly Pixel Watch,screen_size,1,1.0,0.0,0.0,one true-row observation
+377,Hooly Pixel Watch,water_resistance_depth,1,1.0,0.0,0.0,one true-row observation
+378,Hooly Pixel Watch,weight,1,1.0,0.0,0.0,one true-row observation
+383,Hooly Q1 2026 Results,guidance,1,1.0,0.0,0.0,one true-row observation
+384,Hooly Q1 2026 Results,headcount,1,1.0,0.0,0.0,one true-row observation
+389,Hooly Q2 2026 Results,advertising_share,1,1.0,0.0,0.0,one true-row observation
+390,Hooly Q2 2026 Results,call_length,1,1.0,0.0,0.0,one true-row observation
+391,Hooly Q2 2026 Results,cash,1,1.0,0.0,0.0,one true-row observation
+392,Hooly Q2 2026 Results,customers,1,1.0,0.0,0.0,one true-row observation
+393,Hooly Q2 2026 Results,guidance,1,1.0,0.0,0.0,one true-row observation
+394,Hooly Q2 2026 Results,operating_margin,1,1.0,0.0,0.0,one true-row observation
+395,Hooly Q2 2026 Results,revenue,1,1.0,0.0,0.0,one true-row observation
+396,Hooly Q2 2026 Results,revenue_growth,1,1.0,0.0,0.0,one true-row observation
+397,Hooly Q2 2026 Results,webcast_viewers,1,1.0,0.0,0.0,one true-row observation
+398,Hooly Q3 2026 Results,advertising_share,1,1.0,0.0,0.0,one true-row observation
+399,Hooly Q3 2026 Results,call_length,1,1.0,0.0,0.0,one true-row observation
+400,Hooly Q3 2026 Results,cash,1,1.0,0.0,0.0,one true-row observation
+401,Hooly Q3 2026 Results,customers,1,1.0,0.0,0.0,one true-row observation
+402,Hooly Q3 2026 Results,guidance,1,1.0,0.0,0.0,one true-row observation
+403,Hooly Q3 2026 Results,operating_margin,1,1.0,0.0,0.0,one true-row observation
+404,Hooly Q3 2026 Results,revenue,1,1.0,0.0,0.0,one true-row observation
+405,Hooly Q3 2026 Results,revenue_growth,1,1.0,0.0,0.0,one true-row observation
+406,Hooly Q3 2026 Results,webcast_viewers,1,1.0,0.0,0.0,one true-row observation
+414,Hooly Q4 2025 Results,published,1,1.0,0.0,0.0,one true-row observation
+416,Hooly Q4 2025 Results,revenue_growth,1,1.0,0.0,0.0,one true-row observation
+425,Hooly Search,launched,1,1.0,0.0,0.0,one true-row observation
+435,Hooly Sheets,launched,1,1.0,0.0,0.0,one true-row observation
+451,Hooly Translate,launched,1,1.0,0.0,0.0,one true-row observation
+464,Hooly Workspace,apps_included,1,1.0,0.0,0.0,one true-row observation
+481,Hooly Workspace Enterprise,launched,1,1.0,0.0,0.0,one true-row observation
+496,Made by Hooly 2026,host,1,1.0,0.0,0.0,one true-row observation
+497,Made by Hooly 2026,livestreamed,1,1.0,0.0,0.0,one true-row observation
+498,Made by Hooly 2026,replay_available,1,1.0,0.0,0.0,one true-row observation
+506,Peter Gregori,chairs,1,1.0,0.0,0.0,one true-row observation
+507,Peter Gregori,chairs_audit_committee,1,1.0,0.0,0.0,one true-row observation
+508,Peter Gregori,independent_director,1,1.0,0.0,0.0,one true-row observation
+511,Ron LaFlame,joined,1,1.0,0.0,0.0,one true-row observation
+3,Dinesh Chugtay,joined,2,1.0,1.0,0.0,one true-row observation
+20,Hooly,fully_remote,2,1.0,1.0,0.0,one true-row observation
+33,Hooly,raised_series_b,2,1.0,1.0,0.0,one true-row observation
+67,Hooly Android 17,on_device_gemini,2,1.0,1.0,0.0,one true-row observation
+78,Hooly Berlin Office,opened,2,1.0,1.0,0.0,one true-row observation
+162,Hooly Drive,max_file_size,2,1.0,0.0,1.0,one true-row observation
+164,Hooly Drive,version_history,2,1.0,0.0,1.0,one true-row observation
+165,Hooly Employee Survey,anonymous,2,1.0,1.0,0.0,one true-row observation
+237,Hooly I/O 2027,city,2,1.0,1.0,0.0,one true-row observation
+255,Hooly Lisbon Office,lease_end,2,1.0,1.0,0.0,one true-row observation
+256,Hooly Lisbon Office,opened,2,1.0,1.0,0.0,one true-row observation
+292,Hooly Meet,end_to_end_encryption,2,1.0,0.0,1.0,one true-row observation
+294,Hooly Meet,livestream_viewers,2,1.0,1.0,0.0,one true-row observation
+297,Hooly Photos,ai_editing,2,1.0,0.0,1.0,one true-row observation
+339,Hooly Pixel 10 Pro,memory,2,1.0,1.0,0.0,one true-row observation
+354,Hooly Pixel Buds,adaptive_noise_cancelling,2,1.0,0.0,1.0,one true-row observation
+382,Hooly Q1 2026 Results,customers,2,1.0,1.0,0.0,one true-row observation
+386,Hooly Q1 2026 Results,revenue,2,1.0,0.0,1.0,one true-row observation
+387,Hooly Q1 2026 Results,revenue_growth,2,1.0,0.0,1.0,one true-row observation
+410,Hooly Q4 2025 Results,customers,2,1.0,1.0,0.0,one true-row observation
+412,Hooly Q4 2025 Results,headcount,2,1.0,1.0,0.0,one true-row observation
+432,Hooly Sheets,active_users,2,1.0,0.0,1.0,one true-row observation
+440,Hooly Sustainability Report,emissions_cut_target,2,1.0,1.0,0.0,one true-row observation
+444,Hooly Sustainability Report,owner,2,1.0,1.0,0.0,one true-row observation
+455,Hooly Translate,pro_tier,2,1.0,1.0,0.0,one true-row observation
+479,Hooly Workspace Enterprise,data_residency_regions,2,1.0,1.0,0.0,one true-row observation
+500,Made by Hooly 2026,stream_viewers,2,1.0,0.0,1.0,one true-row observation
+504,Meridian Health,flawless_seats,2,1.0,1.0,0.0,one true-row observation
+505,Patreese,team_size,2,1.0,1.0,0.0,one true-row observation
+509,Quayside Hall,capacity,2,1.0,0.0,1.0,one true-row observation
+5,Gemini Launch Night,attendees,2,2.0,0.0,0.0,repeated true-row observations
+6,Gemini Launch Night,city,2,2.0,0.0,0.0,repeated true-row observations
+8,Holdan,joined,2,2.0,0.0,0.0,repeated true-row observations
+19,Hooly,founders,2,2.0,0.0,0.0,repeated true-row observations
+27,Hooly,incidents_this_year,2,2.0,0.0,0.0,repeated true-row observations
+32,Hooly,raised_series_a,2,2.0,0.0,0.0,repeated true-row observations
+66,Hooly Android 17,beta_testers,2,2.0,0.0,0.0,repeated true-row observations
+92,Hooly Calendar,appointment_booking,2,2.0,0.0,0.0,repeated true-row observations
+93,Hooly Calendar,launched,2,2.0,0.0,0.0,repeated true-row observations
+102,Hooly Chrome,memory_saver,2,2.0,0.0,0.0,repeated true-row observations
+144,Hooly Devices,founded,2,2.0,0.0,0.0,repeated true-row observations
+163,Hooly Drive,price_per_user,2,2.0,0.0,0.0,repeated true-row observations
+173,Hooly Employee Survey,run_by,2,2.0,0.0,0.0,repeated true-row observations
+180,Hooly Gemini,encryption_at_rest,2,2.0,0.0,0.0,repeated true-row observations
+193,Hooly Gemini,open_source,2,2.0,0.0,0.0,repeated true-row observations
+197,Hooly Gemini,requests_per_minute,2,2.0,0.0,0.0,repeated true-row observations
+230,Hooly I/O 2026,keynote_length,2,2.0,0.0,0.0,repeated true-row observations
+231,Hooly I/O 2026,length,2,2.0,0.0,0.0,repeated true-row observations
+232,Hooly I/O 2026,livestream_viewers,2,2.0,0.0,0.0,repeated true-row observations
+236,Hooly I/O 2026,workshops,2,2.0,0.0,0.0,repeated true-row observations
+239,Hooly Jules,annual_price,2,2.0,0.0,0.0,repeated true-row observations
+274,Hooly Maps,voice_guidance_languages,2,2.0,0.0,0.0,repeated true-row observations
+276,Hooly Maps Day,attendees,2,2.0,0.0,0.0,repeated true-row observations
+277,Hooly Maps Day,city,2,2.0,0.0,0.0,repeated true-row observations
+278,Hooly Maps Day,date,2,2.0,0.0,0.0,repeated true-row observations
+280,Hooly Maps Day,host,2,2.0,0.0,0.0,repeated true-row observations
+282,Hooly Maps Day,keynote_speaker,2,2.0,0.0,0.0,repeated true-row observations
+283,Hooly Maps Day,replay_available,2,2.0,0.0,0.0,repeated true-row observations
+284,Hooly Maps Day,sponsors,2,2.0,0.0,0.0,repeated true-row observations
+286,Hooly Maps Day,talks,2,2.0,0.0,0.0,repeated true-row observations
+287,Hooly Maps Day,ticket_price,2,2.0,0.0,0.0,repeated true-row observations
+288,Hooly Maps Day,venue,2,2.0,0.0,0.0,repeated true-row observations
+291,Hooly Meet,cloud_recording,2,2.0,0.0,0.0,repeated true-row observations
+303,Hooly Photos,launched,2,2.0,0.0,0.0,repeated true-row observations
+320,Hooly Pixel 10,charging_power,2,2.0,0.0,0.0,repeated true-row observations
+321,Hooly Pixel 10,colours,2,2.0,0.0,0.0,repeated true-row observations
+322,Hooly Pixel 10,main_camera,2,2.0,0.0,0.0,repeated true-row observations
+323,Hooly Pixel 10,memory,2,2.0,0.0,0.0,repeated true-row observations
+325,Hooly Pixel 10,refresh_rate,2,2.0,0.0,0.0,repeated true-row observations
+327,Hooly Pixel 10,screen_size,2,2.0,0.0,0.0,repeated true-row observations
+332,Hooly Pixel 10,weight,2,2.0,0.0,0.0,repeated true-row observations
+342,Hooly Pixel 10 Pro,screen_size,2,2.0,0.0,0.0,repeated true-row observations
+357,Hooly Pixel Buds,units_sold,2,2.0,0.0,0.0,repeated true-row observations
+368,Hooly Pixel Watch,battery_life,2,2.0,0.0,0.0,repeated true-row observations
+379,Hooly Q1 2026 Results,advertising_share,2,2.0,0.0,0.0,repeated true-row observations
+380,Hooly Q1 2026 Results,call_length,2,2.0,0.0,0.0,repeated true-row observations
+381,Hooly Q1 2026 Results,cash,2,2.0,0.0,0.0,repeated true-row observations
+385,Hooly Q1 2026 Results,operating_margin,2,2.0,0.0,0.0,repeated true-row observations
+388,Hooly Q1 2026 Results,webcast_viewers,2,2.0,0.0,0.0,repeated true-row observations
+418,Hooly Search,ad_free_option,2,2.0,0.0,0.0,repeated true-row observations
+434,Hooly Sheets,gemini_formula_assist,2,2.0,0.0,0.0,repeated true-row observations
+438,Hooly Sustainability Report,cycling_commuters,2,2.0,0.0,0.0,repeated true-row observations
+439,Hooly Sustainability Report,devices_recycled,2,2.0,0.0,0.0,repeated true-row observations
+441,Hooly Sustainability Report,externally_audited,2,2.0,0.0,0.0,repeated true-row observations
+442,Hooly Sustainability Report,footprint,2,2.0,0.0,0.0,repeated true-row observations
+443,Hooly Sustainability Report,net_zero_date,2,2.0,0.0,0.0,repeated true-row observations
+446,Hooly Sustainability Report,renewable_electricity,2,2.0,0.0,0.0,repeated true-row observations
+447,Hooly Sustainability Report,travel_emissions_cut,2,2.0,0.0,0.0,repeated true-row observations
+465,Hooly Workspace,copilot_included,2,2.0,0.0,0.0,repeated true-row observations
+466,Hooly Workspace,customers,2,2.0,0.0,0.0,repeated true-row observations
+476,Hooly Workspace Enterprise,apps_included,2,2.0,0.0,0.0,repeated true-row observations
+478,Hooly Workspace Enterprise,customers,2,2.0,0.0,0.0,repeated true-row observations
+490,Hoovar,joined,2,2.0,0.0,0.0,repeated true-row observations
+501,Made by Hooly 2026,talks,2,2.0,0.0,0.0,repeated true-row observations
+510,Rheinhalle,capacity,2,2.0,0.0,0.0,repeated true-row observations

@@ -1,0 +1,4 @@
+mode,unique_keys,redundant_rows,cross_subject_collision_keys
+normalised,109,1,0
+compact,109,1,0
+alphanumeric,109,1,0

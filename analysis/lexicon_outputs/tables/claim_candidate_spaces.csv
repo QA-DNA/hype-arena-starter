@@ -1,0 +1,6 @@
+claim_type,structural_count,interpretation
+fact,514,Legal slots only; need exact supported values at 29 Oct 2026
+compare,557,Unordered same-attribute pairs only; no comparability established
+change,514,"Candidate slots, not transitions; need two supported values in time order"
+at_event,6682,"Raw slot × event combinations, including potentially meaningless pairs"
+relation,42,Candidate link slots only; target and target attribute not established

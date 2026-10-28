@@ -1,0 +1,515 @@
+,subject,attribute,fact_key,assertions,rows,dates,distinct_claimed_values,first_page,last_page,true_rows,false_rows,unsure_rows,evidence_status
+1,Bertram Gilfoil,previous_employer,Bertram Gilfoil :: previous_employer,1,1,1,1,2026-10-09,2026-10-09,1.0,0.0,0.0,one true-row observation
+4,Erlich Bachmann,joined,Erlich Bachmann :: joined,1,1,1,1,2026-03-31,2026-03-31,1.0,0.0,0.0,one true-row observation
+7,Gemini Launch Night,date,Gemini Launch Night :: date,1,1,1,1,2025-10-10,2025-10-10,1.0,0.0,0.0,one true-row observation
+11,Hooly,annual_recurring_revenue,Hooly :: annual_recurring_revenue,1,1,1,1,2026-01-20,2026-01-20,0.0,0.0,1.0,no true-row observation
+15,Hooly,customers_in_the_eu,Hooly :: customers_in_the_eu,1,1,1,1,2026-06-12,2026-06-12,1.0,0.0,0.0,one true-row observation
+28,Hooly,net_promoter_score,Hooly :: net_promoter_score,1,1,1,1,2026-07-10,2026-07-10,1.0,0.0,0.0,one true-row observation
+29,Hooly,newsletter_subscribers,Hooly :: newsletter_subscribers,1,1,1,1,2026-09-08,2026-09-08,1.0,0.0,0.0,one true-row observation
+35,Hooly,series_a_co_investor,Hooly :: series_a_co_investor,1,1,1,1,2026-10-26,2026-10-26,0.0,1.0,0.0,no true-row observation
+41,Hooly,support_tickets_per_week,Hooly :: support_tickets_per_week,1,1,1,1,2026-09-08,2026-09-08,1.0,0.0,0.0,one true-row observation
+42,Hooly,webinars_held,Hooly :: webinars_held,1,1,1,1,2026-09-08,2026-09-08,1.0,0.0,0.0,one true-row observation
+65,Hooly Android 17,beta_opened,Hooly Android 17 :: beta_opened,1,1,1,1,2026-04-28,2026-04-28,0.0,0.0,1.0,no true-row observation
+84,Hooly Board,chair_since,Hooly Board :: chair_since,1,1,1,1,2026-05-06,2026-05-06,1.0,0.0,0.0,one true-row observation
+91,Hooly Calendar,active_users,Hooly Calendar :: active_users,1,1,1,1,2026-09-10,2026-09-10,0.0,0.0,1.0,no true-row observation
+100,Hooly Chrome,launched,Hooly Chrome :: launched,1,1,1,1,2026-10-20,2026-10-20,1.0,0.0,0.0,one true-row observation
+161,Hooly Drive,launched,Hooly Drive :: launched,1,1,1,1,2026-03-12,2026-03-12,1.0,0.0,0.0,one true-row observation
+200,Hooly Gemini,training_data_cutoff,Hooly Gemini :: training_data_cutoff,1,1,1,1,2025-11-14,2025-11-14,1.0,0.0,0.0,one true-row observation
+218,Hooly Hiring Programme,launched,Hooly Hiring Programme :: launched,1,1,1,1,2026-09-16,2026-09-16,1.0,0.0,0.0,one true-row observation
+238,Hooly I/O 2027,date,Hooly I/O 2027 :: date,1,1,1,1,2026-09-17,2026-09-17,0.0,1.0,0.0,no true-row observation
+250,Hooly Jules,users,Hooly Jules :: users,1,1,1,1,2026-09-20,2026-09-20,1.0,0.0,0.0,one true-row observation
+252,Hooly Lisbon Office,announced,Hooly Lisbon Office :: announced,1,1,1,1,2026-04-08,2026-04-08,1.0,0.0,0.0,one true-row observation
+264,Hooly Maps,launched,Hooly Maps :: launched,1,1,1,1,2026-10-14,2026-10-14,1.0,0.0,0.0,one true-row observation
+275,Hooly Maps Day,announced,Hooly Maps Day :: announced,1,1,1,1,2026-04-24,2026-04-24,1.0,0.0,0.0,one true-row observation
+279,Hooly Maps Day,features_launched,Hooly Maps Day :: features_launched,1,1,1,1,2026-07-02,2026-07-02,1.0,0.0,0.0,one true-row observation
+281,Hooly Maps Day,keynote_length,Hooly Maps Day :: keynote_length,1,1,1,1,2026-07-02,2026-07-02,1.0,0.0,0.0,one true-row observation
+285,Hooly Maps Day,stream_viewers,Hooly Maps Day :: stream_viewers,1,1,1,1,2026-07-02,2026-07-02,1.0,0.0,0.0,one true-row observation
+293,Hooly Meet,launched,Hooly Meet :: launched,1,1,1,1,2026-03-24,2026-03-24,1.0,0.0,0.0,one true-row observation
+329,Hooly Pixel 10,store_rating,Hooly Pixel 10 :: store_rating,1,1,1,1,2026-06-30,2026-06-30,1.0,0.0,0.0,one true-row observation
+337,Hooly Pixel 10 Pro,colours,Hooly Pixel 10 Pro :: colours,1,1,1,1,2026-04-29,2026-04-29,0.0,1.0,0.0,no true-row observation
+338,Hooly Pixel 10 Pro,main_camera,Hooly Pixel 10 Pro :: main_camera,1,1,1,1,2026-04-29,2026-04-29,0.0,0.0,1.0,no true-row observation
+341,Hooly Pixel 10 Pro,released,Hooly Pixel 10 Pro :: released,1,1,1,1,2026-04-29,2026-04-29,1.0,0.0,0.0,one true-row observation
+348,Hooly Pixel 9,released,Hooly Pixel 9 :: released,1,1,1,1,2025-12-02,2025-12-02,1.0,0.0,0.0,one true-row observation
+349,Hooly Pixel 9,screen_size,Hooly Pixel 9 :: screen_size,1,1,1,1,2025-12-03,2025-12-03,0.0,0.0,1.0,no true-row observation
+355,Hooly Pixel Buds,battery_life,Hooly Pixel Buds :: battery_life,1,1,1,1,2026-09-02,2026-09-02,1.0,0.0,0.0,one true-row observation
+369,Hooly Pixel Watch,cellular_option,Hooly Pixel Watch :: cellular_option,1,1,1,1,2025-11-05,2025-11-05,1.0,0.0,0.0,one true-row observation
+370,Hooly Pixel Watch,full_charge_time,Hooly Pixel Watch :: full_charge_time,1,1,1,1,2025-11-05,2025-11-05,1.0,0.0,0.0,one true-row observation
+372,Hooly Pixel Watch,released,Hooly Pixel Watch :: released,1,1,1,1,2025-11-05,2025-11-05,1.0,0.0,0.0,one true-row observation
+373,Hooly Pixel Watch,screen_size,Hooly Pixel Watch :: screen_size,1,1,1,1,2025-11-05,2025-11-05,1.0,0.0,0.0,one true-row observation
+374,Hooly Pixel Watch,sensors,Hooly Pixel Watch :: sensors,1,1,1,1,2025-11-05,2025-11-05,0.0,0.0,1.0,no true-row observation
+377,Hooly Pixel Watch,water_resistance_depth,Hooly Pixel Watch :: water_resistance_depth,1,1,1,1,2025-11-05,2025-11-05,1.0,0.0,0.0,one true-row observation
+378,Hooly Pixel Watch,weight,Hooly Pixel Watch :: weight,1,1,1,1,2025-11-05,2025-11-05,1.0,0.0,0.0,one true-row observation
+383,Hooly Q1 2026 Results,guidance,Hooly Q1 2026 Results :: guidance,1,1,1,1,2026-10-28,2026-10-28,1.0,0.0,0.0,one true-row observation
+384,Hooly Q1 2026 Results,headcount,Hooly Q1 2026 Results :: headcount,1,1,1,1,2026-04-29,2026-04-29,1.0,0.0,0.0,one true-row observation
+389,Hooly Q2 2026 Results,advertising_share,Hooly Q2 2026 Results :: advertising_share,1,1,1,1,2026-10-28,2026-10-28,1.0,0.0,0.0,one true-row observation
+390,Hooly Q2 2026 Results,call_length,Hooly Q2 2026 Results :: call_length,1,1,1,1,2026-10-28,2026-10-28,1.0,0.0,0.0,one true-row observation
+391,Hooly Q2 2026 Results,cash,Hooly Q2 2026 Results :: cash,1,1,1,1,2026-10-27,2026-10-27,1.0,0.0,0.0,one true-row observation
+392,Hooly Q2 2026 Results,customers,Hooly Q2 2026 Results :: customers,1,1,1,1,2026-10-27,2026-10-27,1.0,0.0,0.0,one true-row observation
+393,Hooly Q2 2026 Results,guidance,Hooly Q2 2026 Results :: guidance,1,1,1,1,2026-10-28,2026-10-28,1.0,0.0,0.0,one true-row observation
+394,Hooly Q2 2026 Results,operating_margin,Hooly Q2 2026 Results :: operating_margin,1,1,1,1,2026-10-27,2026-10-27,1.0,0.0,0.0,one true-row observation
+395,Hooly Q2 2026 Results,revenue,Hooly Q2 2026 Results :: revenue,1,1,1,1,2026-10-27,2026-10-27,1.0,0.0,0.0,one true-row observation
+396,Hooly Q2 2026 Results,revenue_growth,Hooly Q2 2026 Results :: revenue_growth,1,1,1,1,2026-10-28,2026-10-28,1.0,0.0,0.0,one true-row observation
+397,Hooly Q2 2026 Results,webcast_viewers,Hooly Q2 2026 Results :: webcast_viewers,1,1,1,1,2026-10-28,2026-10-28,1.0,0.0,0.0,one true-row observation
+398,Hooly Q3 2026 Results,advertising_share,Hooly Q3 2026 Results :: advertising_share,1,1,1,1,2026-10-28,2026-10-28,1.0,0.0,0.0,one true-row observation
+399,Hooly Q3 2026 Results,call_length,Hooly Q3 2026 Results :: call_length,1,1,1,1,2026-10-28,2026-10-28,1.0,0.0,0.0,one true-row observation
+400,Hooly Q3 2026 Results,cash,Hooly Q3 2026 Results :: cash,1,1,1,1,2026-10-27,2026-10-27,1.0,0.0,0.0,one true-row observation
+401,Hooly Q3 2026 Results,customers,Hooly Q3 2026 Results :: customers,1,1,1,1,2026-10-27,2026-10-27,1.0,0.0,0.0,one true-row observation
+402,Hooly Q3 2026 Results,guidance,Hooly Q3 2026 Results :: guidance,1,1,1,1,2026-10-28,2026-10-28,1.0,0.0,0.0,one true-row observation
+403,Hooly Q3 2026 Results,operating_margin,Hooly Q3 2026 Results :: operating_margin,1,1,1,1,2026-10-27,2026-10-27,1.0,0.0,0.0,one true-row observation
+404,Hooly Q3 2026 Results,revenue,Hooly Q3 2026 Results :: revenue,1,1,1,1,2026-10-27,2026-10-27,1.0,0.0,0.0,one true-row observation
+405,Hooly Q3 2026 Results,revenue_growth,Hooly Q3 2026 Results :: revenue_growth,1,1,1,1,2026-10-28,2026-10-28,1.0,0.0,0.0,one true-row observation
+406,Hooly Q3 2026 Results,webcast_viewers,Hooly Q3 2026 Results :: webcast_viewers,1,1,1,1,2026-10-28,2026-10-28,1.0,0.0,0.0,one true-row observation
+414,Hooly Q4 2025 Results,published,Hooly Q4 2025 Results :: published,1,1,1,1,2026-01-28,2026-01-28,1.0,0.0,0.0,one true-row observation
+416,Hooly Q4 2025 Results,revenue_growth,Hooly Q4 2025 Results :: revenue_growth,1,1,1,1,2026-01-28,2026-01-28,1.0,0.0,0.0,one true-row observation
+425,Hooly Search,launched,Hooly Search :: launched,1,1,1,1,2026-10-15,2026-10-15,1.0,0.0,0.0,one true-row observation
+435,Hooly Sheets,launched,Hooly Sheets :: launched,1,1,1,1,2026-04-15,2026-04-15,1.0,0.0,0.0,one true-row observation
+451,Hooly Translate,launched,Hooly Translate :: launched,1,1,1,1,2026-09-03,2026-09-03,1.0,0.0,0.0,one true-row observation
+464,Hooly Workspace,apps_included,Hooly Workspace :: apps_included,1,1,1,1,2026-09-03,2026-09-03,1.0,0.0,0.0,one true-row observation
+470,Hooly Workspace,launched,Hooly Workspace :: launched,1,1,1,1,2026-04-17,2026-04-17,0.0,1.0,0.0,no true-row observation
+481,Hooly Workspace Enterprise,launched,Hooly Workspace Enterprise :: launched,1,1,1,1,2026-09-02,2026-09-02,1.0,0.0,0.0,one true-row observation
+496,Made by Hooly 2026,host,Made by Hooly 2026 :: host,1,1,1,1,2026-02-20,2026-02-20,1.0,0.0,0.0,one true-row observation
+497,Made by Hooly 2026,livestreamed,Made by Hooly 2026 :: livestreamed,1,1,1,1,2026-02-20,2026-02-20,1.0,0.0,0.0,one true-row observation
+498,Made by Hooly 2026,replay_available,Made by Hooly 2026 :: replay_available,1,1,1,1,2026-02-20,2026-02-20,1.0,0.0,0.0,one true-row observation
+506,Peter Gregori,chairs,Peter Gregori :: chairs,1,1,1,1,2026-07-02,2026-07-02,1.0,0.0,0.0,one true-row observation
+507,Peter Gregori,chairs_audit_committee,Peter Gregori :: chairs_audit_committee,1,1,1,1,2026-05-06,2026-05-06,1.0,0.0,0.0,one true-row observation
+508,Peter Gregori,independent_director,Peter Gregori :: independent_director,1,1,1,1,2026-05-06,2026-05-06,1.0,0.0,0.0,one true-row observation
+511,Ron LaFlame,joined,Ron LaFlame :: joined,1,1,1,1,2026-08-26,2026-08-26,1.0,0.0,0.0,one true-row observation
+3,Dinesh Chugtay,joined,Dinesh Chugtay :: joined,2,2,2,1,2026-02-03,2026-03-05,1.0,1.0,0.0,one true-row observation
+5,Gemini Launch Night,attendees,Gemini Launch Night :: attendees,2,2,2,1,2025-10-10,2026-10-07,2.0,0.0,0.0,repeated true-row observations
+6,Gemini Launch Night,city,Gemini Launch Night :: city,2,2,2,1,2025-10-10,2026-10-07,2.0,0.0,0.0,repeated true-row observations
+8,Holdan,joined,Holdan :: joined,2,2,2,2,2026-01-12,2026-09-03,2.0,0.0,0.0,repeated true-row observations
+19,Hooly,founders,Hooly :: founders,2,2,2,1,2025-11-04,2025-12-10,2.0,0.0,0.0,repeated true-row observations
+20,Hooly,fully_remote,Hooly :: fully_remote,2,2,2,2,2026-04-15,2026-05-02,1.0,1.0,0.0,one true-row observation
+27,Hooly,incidents_this_year,Hooly :: incidents_this_year,2,2,2,2,2026-04-05,2026-07-05,2.0,0.0,0.0,repeated true-row observations
+32,Hooly,raised_series_a,Hooly :: raised_series_a,2,2,2,2,2026-02-10,2026-02-17,2.0,0.0,0.0,repeated true-row observations
+33,Hooly,raised_series_b,Hooly :: raised_series_b,2,2,2,2,2026-03-01,2026-06-10,1.0,1.0,0.0,one true-row observation
+66,Hooly Android 17,beta_testers,Hooly Android 17 :: beta_testers,2,2,2,2,2026-06-30,2026-07-02,2.0,0.0,0.0,repeated true-row observations
+67,Hooly Android 17,on_device_gemini,Hooly Android 17 :: on_device_gemini,2,2,2,2,2026-07-02,2026-09-22,1.0,1.0,0.0,one true-row observation
+78,Hooly Berlin Office,opened,Hooly Berlin Office :: opened,2,2,2,2,2026-02-10,2026-04-08,1.0,1.0,0.0,one true-row observation
+92,Hooly Calendar,appointment_booking,Hooly Calendar :: appointment_booking,2,2,2,2,2026-02-16,2026-09-10,2.0,0.0,0.0,repeated true-row observations
+93,Hooly Calendar,launched,Hooly Calendar :: launched,2,2,2,1,2026-02-16,2026-09-10,2.0,0.0,0.0,repeated true-row observations
+102,Hooly Chrome,memory_saver,Hooly Chrome :: memory_saver,2,2,2,1,2026-08-05,2026-10-12,2.0,0.0,0.0,repeated true-row observations
+144,Hooly Devices,founded,Hooly Devices :: founded,2,2,2,1,2025-12-12,2026-02-02,2.0,0.0,0.0,repeated true-row observations
+162,Hooly Drive,max_file_size,Hooly Drive :: max_file_size,2,2,2,2,2026-03-12,2026-10-05,1.0,0.0,1.0,one true-row observation
+163,Hooly Drive,price_per_user,Hooly Drive :: price_per_user,2,2,2,2,2026-03-12,2026-10-05,2.0,0.0,0.0,repeated true-row observations
+164,Hooly Drive,version_history,Hooly Drive :: version_history,2,2,2,2,2026-03-12,2026-10-05,1.0,0.0,1.0,one true-row observation
+165,Hooly Employee Survey,anonymous,Hooly Employee Survey :: anonymous,2,2,2,2,2026-03-12,2026-10-02,1.0,1.0,0.0,one true-row observation
+173,Hooly Employee Survey,run_by,Hooly Employee Survey :: run_by,2,2,2,1,2026-03-12,2026-10-02,2.0,0.0,0.0,repeated true-row observations
+180,Hooly Gemini,encryption_at_rest,Hooly Gemini :: encryption_at_rest,2,2,2,1,2026-04-01,2026-08-26,2.0,0.0,0.0,repeated true-row observations
+193,Hooly Gemini,open_source,Hooly Gemini :: open_source,2,2,2,1,2025-11-04,2026-09-01,2.0,0.0,0.0,repeated true-row observations
+197,Hooly Gemini,requests_per_minute,Hooly Gemini :: requests_per_minute,2,2,2,1,2026-06-12,2026-09-01,2.0,0.0,0.0,repeated true-row observations
+230,Hooly I/O 2026,keynote_length,Hooly I/O 2026 :: keynote_length,2,2,2,1,2026-03-24,2026-03-27,2.0,0.0,0.0,repeated true-row observations
+231,Hooly I/O 2026,length,Hooly I/O 2026 :: length,2,2,2,1,2026-03-24,2026-03-27,2.0,0.0,0.0,repeated true-row observations
+232,Hooly I/O 2026,livestream_viewers,Hooly I/O 2026 :: livestream_viewers,2,2,2,1,2026-03-24,2026-03-27,2.0,0.0,0.0,repeated true-row observations
+236,Hooly I/O 2026,workshops,Hooly I/O 2026 :: workshops,2,2,2,1,2026-03-24,2026-03-27,2.0,0.0,0.0,repeated true-row observations
+237,Hooly I/O 2027,city,Hooly I/O 2027 :: city,2,2,2,2,2026-09-17,2026-09-24,1.0,1.0,0.0,one true-row observation
+239,Hooly Jules,annual_price,Hooly Jules :: annual_price,2,2,2,1,2026-06-03,2026-08-18,2.0,0.0,0.0,repeated true-row observations
+255,Hooly Lisbon Office,lease_end,Hooly Lisbon Office :: lease_end,2,2,2,2,2026-05-06,2026-08-20,1.0,1.0,0.0,one true-row observation
+256,Hooly Lisbon Office,opened,Hooly Lisbon Office :: opened,2,2,2,2,2026-05-06,2026-08-20,1.0,1.0,0.0,one true-row observation
+269,Hooly Maps,offline_maps,Hooly Maps :: offline_maps,2,2,2,2,2025-10-16,2026-04-16,0.0,1.0,1.0,no true-row observation
+274,Hooly Maps,voice_guidance_languages,Hooly Maps :: voice_guidance_languages,2,2,2,2,2025-12-02,2026-10-24,2.0,0.0,0.0,repeated true-row observations
+276,Hooly Maps Day,attendees,Hooly Maps Day :: attendees,2,2,2,2,2026-04-24,2026-07-02,2.0,0.0,0.0,repeated true-row observations
+277,Hooly Maps Day,city,Hooly Maps Day :: city,2,2,2,1,2026-04-24,2026-07-02,2.0,0.0,0.0,repeated true-row observations
+278,Hooly Maps Day,date,Hooly Maps Day :: date,2,2,2,2,2026-04-24,2026-07-02,2.0,0.0,0.0,repeated true-row observations
+280,Hooly Maps Day,host,Hooly Maps Day :: host,2,2,2,1,2026-04-24,2026-07-02,2.0,0.0,0.0,repeated true-row observations
+282,Hooly Maps Day,keynote_speaker,Hooly Maps Day :: keynote_speaker,2,2,2,1,2026-04-24,2026-07-02,2.0,0.0,0.0,repeated true-row observations
+283,Hooly Maps Day,replay_available,Hooly Maps Day :: replay_available,2,2,2,2,2026-04-24,2026-07-02,2.0,0.0,0.0,repeated true-row observations
+284,Hooly Maps Day,sponsors,Hooly Maps Day :: sponsors,2,2,2,2,2026-04-24,2026-07-02,2.0,0.0,0.0,repeated true-row observations
+286,Hooly Maps Day,talks,Hooly Maps Day :: talks,2,2,2,2,2026-04-24,2026-07-02,2.0,0.0,0.0,repeated true-row observations
+287,Hooly Maps Day,ticket_price,Hooly Maps Day :: ticket_price,2,2,2,2,2026-04-24,2026-07-02,2.0,0.0,0.0,repeated true-row observations
+288,Hooly Maps Day,venue,Hooly Maps Day :: venue,2,2,2,1,2026-04-24,2026-07-02,2.0,0.0,0.0,repeated true-row observations
+291,Hooly Meet,cloud_recording,Hooly Meet :: cloud_recording,2,2,2,2,2026-03-24,2026-10-12,2.0,0.0,0.0,repeated true-row observations
+292,Hooly Meet,end_to_end_encryption,Hooly Meet :: end_to_end_encryption,2,2,2,1,2026-03-24,2026-10-12,1.0,0.0,1.0,one true-row observation
+294,Hooly Meet,livestream_viewers,Hooly Meet :: livestream_viewers,2,2,2,2,2026-10-08,2026-10-12,1.0,1.0,0.0,one true-row observation
+297,Hooly Photos,ai_editing,Hooly Photos :: ai_editing,2,2,2,1,2026-01-14,2026-10-02,1.0,0.0,1.0,one true-row observation
+303,Hooly Photos,launched,Hooly Photos :: launched,2,2,2,1,2025-10-19,2026-10-16,2.0,0.0,0.0,repeated true-row observations
+320,Hooly Pixel 10,charging_power,Hooly Pixel 10 :: charging_power,2,2,2,1,2026-04-28,2026-07-18,2.0,0.0,0.0,repeated true-row observations
+321,Hooly Pixel 10,colours,Hooly Pixel 10 :: colours,2,2,1,1,2026-04-28,2026-04-28,2.0,0.0,0.0,repeated true-row observations
+322,Hooly Pixel 10,main_camera,Hooly Pixel 10 :: main_camera,2,2,1,1,2026-04-28,2026-04-28,2.0,0.0,0.0,repeated true-row observations
+323,Hooly Pixel 10,memory,Hooly Pixel 10 :: memory,2,2,1,1,2026-04-28,2026-04-28,2.0,0.0,0.0,repeated true-row observations
+325,Hooly Pixel 10,refresh_rate,Hooly Pixel 10 :: refresh_rate,2,2,1,1,2026-04-28,2026-04-28,2.0,0.0,0.0,repeated true-row observations
+327,Hooly Pixel 10,screen_size,Hooly Pixel 10 :: screen_size,2,2,1,1,2026-04-28,2026-04-28,2.0,0.0,0.0,repeated true-row observations
+332,Hooly Pixel 10,weight,Hooly Pixel 10 :: weight,2,2,1,1,2026-04-28,2026-04-28,2.0,0.0,0.0,repeated true-row observations
+339,Hooly Pixel 10 Pro,memory,Hooly Pixel 10 Pro :: memory,2,2,2,2,2026-04-28,2026-04-29,1.0,1.0,0.0,one true-row observation
+342,Hooly Pixel 10 Pro,screen_size,Hooly Pixel 10 Pro :: screen_size,2,2,2,1,2026-04-28,2026-04-29,2.0,0.0,0.0,repeated true-row observations
+344,Hooly Pixel 10 Pro,weight,Hooly Pixel 10 Pro :: weight,2,2,2,2,2026-04-28,2026-04-29,0.0,2.0,0.0,no true-row observation
+354,Hooly Pixel Buds,adaptive_noise_cancelling,Hooly Pixel Buds :: adaptive_noise_cancelling,2,2,2,1,2026-02-18,2026-06-30,1.0,0.0,1.0,one true-row observation
+357,Hooly Pixel Buds,units_sold,Hooly Pixel Buds :: units_sold,2,2,2,2,2026-06-30,2026-10-21,2.0,0.0,0.0,repeated true-row observations
+368,Hooly Pixel Watch,battery_life,Hooly Pixel Watch :: battery_life,2,2,2,2,2025-11-05,2026-09-02,2.0,0.0,0.0,repeated true-row observations
+379,Hooly Q1 2026 Results,advertising_share,Hooly Q1 2026 Results :: advertising_share,2,2,2,1,2026-04-29,2026-10-28,2.0,0.0,0.0,repeated true-row observations
+380,Hooly Q1 2026 Results,call_length,Hooly Q1 2026 Results :: call_length,2,2,2,1,2026-04-29,2026-10-28,2.0,0.0,0.0,repeated true-row observations
+381,Hooly Q1 2026 Results,cash,Hooly Q1 2026 Results :: cash,2,2,2,1,2026-04-29,2026-10-27,2.0,0.0,0.0,repeated true-row observations
+382,Hooly Q1 2026 Results,customers,Hooly Q1 2026 Results :: customers,2,2,2,2,2026-04-29,2026-10-27,1.0,1.0,0.0,one true-row observation
+385,Hooly Q1 2026 Results,operating_margin,Hooly Q1 2026 Results :: operating_margin,2,2,2,1,2026-04-29,2026-10-27,2.0,0.0,0.0,repeated true-row observations
+386,Hooly Q1 2026 Results,revenue,Hooly Q1 2026 Results :: revenue,2,2,2,2,2026-04-29,2026-10-27,1.0,0.0,1.0,one true-row observation
+387,Hooly Q1 2026 Results,revenue_growth,Hooly Q1 2026 Results :: revenue_growth,2,2,2,2,2026-04-29,2026-10-28,1.0,0.0,1.0,one true-row observation
+388,Hooly Q1 2026 Results,webcast_viewers,Hooly Q1 2026 Results :: webcast_viewers,2,2,2,1,2026-04-29,2026-10-28,2.0,0.0,0.0,repeated true-row observations
+410,Hooly Q4 2025 Results,customers,Hooly Q4 2025 Results :: customers,2,2,2,2,2026-01-28,2026-01-29,1.0,1.0,0.0,one true-row observation
+412,Hooly Q4 2025 Results,headcount,Hooly Q4 2025 Results :: headcount,2,2,2,2,2026-01-28,2026-01-29,1.0,1.0,0.0,one true-row observation
+418,Hooly Search,ad_free_option,Hooly Search :: ad_free_option,2,2,2,1,2025-11-04,2026-01-12,2.0,0.0,0.0,repeated true-row observations
+432,Hooly Sheets,active_users,Hooly Sheets :: active_users,2,2,2,2,2026-04-15,2026-09-03,1.0,0.0,1.0,one true-row observation
+434,Hooly Sheets,gemini_formula_assist,Hooly Sheets :: gemini_formula_assist,2,2,2,2,2026-04-15,2026-09-03,2.0,0.0,0.0,repeated true-row observations
+438,Hooly Sustainability Report,cycling_commuters,Hooly Sustainability Report :: cycling_commuters,2,2,2,2,2026-09-24,2026-10-14,2.0,0.0,0.0,repeated true-row observations
+439,Hooly Sustainability Report,devices_recycled,Hooly Sustainability Report :: devices_recycled,2,2,2,2,2026-09-24,2026-10-14,2.0,0.0,0.0,repeated true-row observations
+440,Hooly Sustainability Report,emissions_cut_target,Hooly Sustainability Report :: emissions_cut_target,2,2,2,2,2026-09-24,2026-10-14,1.0,1.0,0.0,one true-row observation
+441,Hooly Sustainability Report,externally_audited,Hooly Sustainability Report :: externally_audited,2,2,2,1,2026-09-24,2026-10-14,2.0,0.0,0.0,repeated true-row observations
+442,Hooly Sustainability Report,footprint,Hooly Sustainability Report :: footprint,2,2,2,2,2026-09-24,2026-10-14,2.0,0.0,0.0,repeated true-row observations
+443,Hooly Sustainability Report,net_zero_date,Hooly Sustainability Report :: net_zero_date,2,2,2,1,2026-09-24,2026-10-14,2.0,0.0,0.0,repeated true-row observations
+444,Hooly Sustainability Report,owner,Hooly Sustainability Report :: owner,2,2,2,2,2026-09-24,2026-10-14,1.0,1.0,0.0,one true-row observation
+446,Hooly Sustainability Report,renewable_electricity,Hooly Sustainability Report :: renewable_electricity,2,2,2,2,2026-09-24,2026-10-14,2.0,0.0,0.0,repeated true-row observations
+447,Hooly Sustainability Report,travel_emissions_cut,Hooly Sustainability Report :: travel_emissions_cut,2,2,2,1,2026-09-24,2026-10-14,2.0,0.0,0.0,repeated true-row observations
+455,Hooly Translate,pro_tier,Hooly Translate :: pro_tier,2,2,2,2,2026-04-09,2026-09-03,1.0,1.0,0.0,one true-row observation
+465,Hooly Workspace,copilot_included,Hooly Workspace :: copilot_included,2,2,2,1,2026-09-01,2026-09-02,2.0,0.0,0.0,repeated true-row observations
+466,Hooly Workspace,customers,Hooly Workspace :: customers,2,2,2,1,2026-09-05,2026-09-08,2.0,0.0,0.0,repeated true-row observations
+476,Hooly Workspace Enterprise,apps_included,Hooly Workspace Enterprise :: apps_included,2,2,2,1,2026-09-01,2026-09-03,2.0,0.0,0.0,repeated true-row observations
+478,Hooly Workspace Enterprise,customers,Hooly Workspace Enterprise :: customers,2,2,2,1,2026-10-06,2026-10-15,2.0,0.0,0.0,repeated true-row observations
+479,Hooly Workspace Enterprise,data_residency_regions,Hooly Workspace Enterprise :: data_residency_regions,2,2,2,2,2026-09-01,2026-09-03,1.0,1.0,0.0,one true-row observation
+490,Hoovar,joined,Hoovar :: joined,2,2,2,1,2025-11-18,2026-07-09,2.0,0.0,0.0,repeated true-row observations
+500,Made by Hooly 2026,stream_viewers,Made by Hooly 2026 :: stream_viewers,2,2,2,2,2026-04-28,2026-06-30,1.0,0.0,1.0,one true-row observation
+501,Made by Hooly 2026,talks,Made by Hooly 2026 :: talks,2,2,2,1,2026-04-01,2026-04-27,2.0,0.0,0.0,repeated true-row observations
+504,Meridian Health,flawless_seats,Meridian Health :: flawless_seats,2,2,2,2,2026-09-02,2026-10-15,1.0,1.0,0.0,one true-row observation
+505,Patreese,team_size,Patreese :: team_size,2,2,2,2,2026-09-01,2026-09-03,1.0,1.0,0.0,one true-row observation
+509,Quayside Hall,capacity,Quayside Hall :: capacity,2,2,2,1,2026-04-24,2026-07-02,1.0,0.0,1.0,one true-row observation
+510,Rheinhalle,capacity,Rheinhalle :: capacity,2,2,2,1,2026-02-20,2026-04-01,2.0,0.0,0.0,repeated true-row observations
+0,Bertram Gilfoil,joined,Bertram Gilfoil :: joined,3,3,3,1,2026-07-01,2026-10-09,3.0,0.0,0.0,repeated true-row observations
+9,Holdan,previous_employer,Holdan :: previous_employer,3,3,3,2,2026-01-12,2026-09-03,3.0,0.0,0.0,repeated true-row observations
+16,Hooly,data_processing_agreement,Hooly :: data_processing_agreement,3,3,2,1,2026-04-01,2026-08-26,3.0,0.0,0.0,repeated true-row observations
+37,Hooly,soc2_audit_start,Hooly :: soc2_audit_start,3,3,3,2,2026-09-17,2026-09-24,2.0,1.0,0.0,repeated true-row observations
+40,Hooly,support_satisfaction,Hooly :: support_satisfaction,3,3,3,2,2026-07-10,2026-10-06,3.0,0.0,0.0,repeated true-row observations
+60,Hooly Android 16,desktop_mode,Hooly Android 16 :: desktop_mode,3,3,3,2,2026-03-02,2026-03-20,1.0,2.0,0.0,one true-row observation
+61,Hooly Android 16,released,Hooly Android 16 :: released,3,3,3,2,2025-12-12,2026-03-20,2.0,1.0,0.0,repeated true-row observations
+70,Hooly Android 17,stable_release,Hooly Android 17 :: stable_release,3,3,3,2,2026-04-28,2026-09-22,3.0,0.0,0.0,repeated true-row observations
+73,Hooly Berlin Office,bike_racks,Hooly Berlin Office :: bike_racks,3,3,3,2,2026-02-10,2026-08-20,3.0,0.0,0.0,repeated true-row observations
+75,Hooly Berlin Office,is_engineering_hub,Hooly Berlin Office :: is_engineering_hub,3,3,3,2,2026-02-10,2026-07-09,3.0,0.0,0.0,repeated true-row observations
+76,Hooly Berlin Office,is_headquarters,Hooly Berlin Office :: is_headquarters,3,3,3,2,2026-02-10,2026-05-06,3.0,0.0,0.0,repeated true-row observations
+77,Hooly Berlin Office,lease_end,Hooly Berlin Office :: lease_end,3,3,3,2,2026-02-10,2026-08-20,2.0,1.0,0.0,repeated true-row observations
+90,Hooly Board,sessions_held,Hooly Board :: sessions_held,3,3,3,2,2025-12-11,2026-07-14,3.0,0.0,0.0,repeated true-row observations
+94,Hooly Calendar,max_guests,Hooly Calendar :: max_guests,3,3,3,2,2026-02-16,2026-10-12,1.0,1.0,1.0,one true-row observation
+104,Hooly Chrome,passkey_sync,Hooly Chrome :: passkey_sync,3,3,3,2,2026-06-02,2026-10-20,2.0,1.0,0.0,repeated true-row observations
+132,Hooly Cloud Next 2026,attendees,Hooly Cloud Next 2026 :: attendees,3,3,3,3,2026-06-09,2026-06-12,1.0,2.0,0.0,one true-row observation
+140,Hooly Cloud Next 2026,sponsors,Hooly Cloud Next 2026 :: sponsors,3,3,3,2,2026-03-18,2026-06-12,2.0,1.0,0.0,repeated true-row observations
+154,Hooly Docs,launched,Hooly Docs :: launched,3,3,3,1,2026-01-27,2026-05-20,3.0,0.0,0.0,repeated true-row observations
+166,Hooly Employee Survey,growth_opportunities,Hooly Employee Survey :: growth_opportunities,3,3,3,2,2026-03-12,2026-10-06,2.0,1.0,0.0,repeated true-row observations
+170,Hooly Employee Survey,open_for,Hooly Employee Survey :: open_for,3,3,3,2,2026-03-12,2026-10-06,3.0,0.0,0.0,repeated true-row observations
+172,Hooly Employee Survey,response_rate,Hooly Employee Survey :: response_rate,3,3,3,2,2026-03-12,2026-10-06,3.0,0.0,0.0,repeated true-row observations
+181,Hooly Gemini,eu_hosted,Hooly Gemini :: eu_hosted,3,3,3,1,2026-04-01,2026-09-01,3.0,0.0,0.0,repeated true-row observations
+196,Hooly Gemini,requests_per_day,Hooly Gemini :: requests_per_day,3,3,3,1,2026-09-01,2026-10-09,3.0,0.0,0.0,repeated true-row observations
+198,Hooly Gemini,single_sign_on,Hooly Gemini :: single_sign_on,3,3,3,2,2026-05-12,2026-09-02,3.0,0.0,0.0,repeated true-row observations
+208,Hooly Gmail,launched,Hooly Gmail :: launched,3,3,3,2,2025-11-19,2026-06-10,3.0,0.0,0.0,repeated true-row observations
+234,Hooly I/O 2026,talks,Hooly I/O 2026 :: talks,3,3,3,1,2026-03-24,2026-04-10,3.0,0.0,0.0,repeated true-row observations
+253,Hooly Lisbon Office,bike_racks,Hooly Lisbon Office :: bike_racks,3,3,3,1,2026-05-06,2026-08-20,3.0,0.0,0.0,repeated true-row observations
+257,Hooly Lisbon Office,rent,Hooly Lisbon Office :: rent,3,3,3,2,2026-05-06,2026-08-20,2.0,1.0,0.0,repeated true-row observations
+259,Hooly Maps,ar_walking,Hooly Maps :: ar_walking,3,3,3,2,2026-08-03,2026-10-14,1.0,2.0,0.0,one true-row observation
+261,Hooly Maps,charging_stations_listed,Hooly Maps :: charging_stations_listed,3,3,3,2,2025-12-02,2026-10-24,3.0,0.0,0.0,repeated true-row observations
+263,Hooly Maps,latest_release_date,Hooly Maps :: latest_release_date,3,3,3,2,2026-08-03,2026-10-24,3.0,0.0,0.0,repeated true-row observations
+271,Hooly Maps,share_of_ad_revenue,Hooly Maps :: share_of_ad_revenue,3,3,3,3,2026-04-16,2026-10-14,3.0,0.0,0.0,repeated true-row observations
+290,Hooly Meet,caption_languages,Hooly Meet :: caption_languages,3,3,3,2,2026-03-24,2026-10-12,1.0,1.0,1.0,one true-row observation
+295,Hooly Meet,max_call_length,Hooly Meet :: max_call_length,3,3,3,3,2026-03-24,2026-10-12,3.0,0.0,0.0,repeated true-row observations
+309,Hooly Photos,video_upload_limit,Hooly Photos :: video_upload_limit,3,3,3,2,2025-10-19,2026-05-07,3.0,0.0,0.0,repeated true-row observations
+317,Hooly Pixel 10,base_storage,Hooly Pixel 10 :: base_storage,3,3,3,2,2026-04-28,2026-09-02,3.0,0.0,0.0,repeated true-row observations
+330,Hooly Pixel 10,units_sold,Hooly Pixel 10 :: units_sold,3,3,3,2,2026-06-30,2026-10-21,3.0,0.0,0.0,repeated true-row observations
+331,Hooly Pixel 10,update_promise,Hooly Pixel 10 :: update_promise,3,3,2,1,2026-04-28,2026-09-25,3.0,0.0,0.0,repeated true-row observations
+334,Hooly Pixel 10 Pro,battery_capacity,Hooly Pixel 10 Pro :: battery_capacity,3,3,3,1,2026-04-28,2026-07-18,3.0,0.0,0.0,repeated true-row observations
+335,Hooly Pixel 10 Pro,battery_life,Hooly Pixel 10 Pro :: battery_life,3,3,3,2,2026-04-28,2026-07-18,3.0,0.0,0.0,repeated true-row observations
+336,Hooly Pixel 10 Pro,charging_power,Hooly Pixel 10 Pro :: charging_power,3,3,3,1,2026-04-28,2026-07-18,3.0,0.0,0.0,repeated true-row observations
+343,Hooly Pixel 10 Pro,units_sold,Hooly Pixel 10 Pro :: units_sold,3,3,3,2,2026-06-30,2026-10-21,3.0,0.0,0.0,repeated true-row observations
+345,Hooly Pixel 9,battery_capacity,Hooly Pixel 9 :: battery_capacity,3,3,3,1,2025-12-02,2026-05-18,3.0,0.0,0.0,repeated true-row observations
+346,Hooly Pixel 9,discontinued,Hooly Pixel 9 :: discontinued,3,3,3,2,2025-12-02,2026-10-21,2.0,1.0,0.0,repeated true-row observations
+353,Hooly Pixel 9,update_promise,Hooly Pixel 9 :: update_promise,3,3,3,1,2025-12-02,2025-12-10,3.0,0.0,0.0,repeated true-row observations
+358,Hooly Pixel Fold,base_storage,Hooly Pixel Fold :: base_storage,3,3,3,1,2026-04-28,2026-08-18,3.0,0.0,0.0,repeated true-row observations
+360,Hooly Pixel Fold,cover_screen_size,Hooly Pixel Fold :: cover_screen_size,3,3,3,1,2026-06-25,2026-08-18,3.0,0.0,0.0,repeated true-row observations
+366,Hooly Pixel Fold,units_sold,Hooly Pixel Fold :: units_sold,3,3,3,2,2026-08-18,2026-10-21,3.0,0.0,0.0,repeated true-row observations
+367,Hooly Pixel Fold,weight,Hooly Pixel Fold :: weight,3,3,3,1,2026-06-25,2026-08-18,3.0,0.0,0.0,repeated true-row observations
+407,Hooly Q4 2025 Results,advertising_share,Hooly Q4 2025 Results :: advertising_share,3,3,3,1,2026-01-28,2026-10-28,3.0,0.0,0.0,repeated true-row observations
+408,Hooly Q4 2025 Results,call_length,Hooly Q4 2025 Results :: call_length,3,3,3,2,2026-01-28,2026-10-28,2.0,1.0,0.0,repeated true-row observations
+409,Hooly Q4 2025 Results,cash,Hooly Q4 2025 Results :: cash,3,3,3,1,2026-01-28,2026-10-27,3.0,0.0,0.0,repeated true-row observations
+411,Hooly Q4 2025 Results,guidance,Hooly Q4 2025 Results :: guidance,3,3,3,2,2026-01-28,2026-10-28,2.0,1.0,0.0,repeated true-row observations
+413,Hooly Q4 2025 Results,operating_margin,Hooly Q4 2025 Results :: operating_margin,3,3,3,2,2026-01-28,2026-10-27,2.0,1.0,0.0,repeated true-row observations
+415,Hooly Q4 2025 Results,revenue,Hooly Q4 2025 Results :: revenue,3,3,3,2,2026-01-28,2026-10-27,2.0,1.0,0.0,repeated true-row observations
+417,Hooly Q4 2025 Results,webcast_viewers,Hooly Q4 2025 Results :: webcast_viewers,3,3,3,1,2026-01-28,2026-10-28,2.0,1.0,0.0,repeated true-row observations
+433,Hooly Sheets,functions,Hooly Sheets :: functions,3,3,3,3,2026-04-15,2026-09-03,2.0,1.0,0.0,repeated true-row observations
+436,Hooly Sheets,max_cells,Hooly Sheets :: max_cells,3,3,3,3,2026-03-24,2026-09-03,2.0,0.0,1.0,repeated true-row observations
+437,Hooly Sheets,version,Hooly Sheets :: version,3,3,3,2,2026-04-15,2026-10-12,3.0,0.0,0.0,repeated true-row observations
+445,Hooly Sustainability Report,published,Hooly Sustainability Report :: published,3,3,3,2,2026-07-22,2026-10-14,2.0,1.0,0.0,repeated true-row observations
+448,Hooly Translate,camera_translation,Hooly Translate :: camera_translation,3,3,3,1,2025-12-04,2026-10-18,2.0,0.0,1.0,repeated true-row observations
+449,Hooly Translate,dialects_supported,Hooly Translate :: dialects_supported,3,3,3,2,2026-04-09,2026-10-18,2.0,1.0,0.0,repeated true-row observations
+457,Hooly Translate,text_limit,Hooly Translate :: text_limit,3,3,3,1,2026-04-09,2026-10-18,3.0,0.0,0.0,repeated true-row observations
+459,Hooly Vault,announced,Hooly Vault :: announced,3,3,3,2,2026-09-17,2026-09-24,2.0,1.0,0.0,repeated true-row observations
+471,Hooly Workspace,maximum_seats,Hooly Workspace :: maximum_seats,3,3,3,2,2026-04-03,2026-09-02,2.0,1.0,0.0,repeated true-row observations
+472,Hooly Workspace,minimum_seats,Hooly Workspace :: minimum_seats,3,3,3,1,2026-04-01,2026-09-05,3.0,0.0,0.0,repeated true-row observations
+477,Hooly Workspace Enterprise,audit_retention,Hooly Workspace Enterprise :: audit_retention,3,3,3,1,2026-09-02,2026-10-15,3.0,0.0,0.0,repeated true-row observations
+482,Hooly Workspace Enterprise,onboarding_time,Hooly Workspace Enterprise :: onboarding_time,3,3,3,2,2026-09-02,2026-10-15,2.0,1.0,0.0,repeated true-row observations
+484,Hooly Workspace Enterprise,single_sign_on,Hooly Workspace Enterprise :: single_sign_on,3,3,3,1,2026-09-02,2026-10-06,3.0,0.0,0.0,repeated true-row observations
+485,Hooly Workspace Enterprise,storage_per_user,Hooly Workspace Enterprise :: storage_per_user,3,3,3,2,2026-09-01,2026-10-05,3.0,0.0,0.0,repeated true-row observations
+486,Hooly Workspace Enterprise,support_first_response,Hooly Workspace Enterprise :: support_first_response,3,3,3,2,2026-09-02,2026-10-15,1.0,2.0,0.0,one true-row observation
+493,Made by Hooly 2026,city,Made by Hooly 2026 :: city,3,3,3,1,2026-02-20,2026-04-27,3.0,0.0,0.0,repeated true-row observations
+495,Made by Hooly 2026,devices_keynote_speaker,Made by Hooly 2026 :: devices_keynote_speaker,3,3,3,1,2026-02-18,2026-04-20,3.0,0.0,0.0,repeated true-row observations
+499,Made by Hooly 2026,sponsors,Made by Hooly 2026 :: sponsors,3,3,3,2,2026-04-01,2026-04-27,2.0,1.0,0.0,repeated true-row observations
+502,Made by Hooly 2026,ticket_price,Made by Hooly 2026 :: ticket_price,3,3,3,2,2026-02-20,2026-04-20,2.0,1.0,0.0,repeated true-row observations
+2,Brightline Labs,integration_partner_of_flawless,Brightline Labs :: integration_partner_of_flawless,4,4,4,1,2026-03-24,2026-09-20,4.0,0.0,0.0,repeated true-row observations
+14,Hooly,customer_countries,Hooly :: customer_countries,4,4,4,2,2026-03-31,2026-10-26,3.0,1.0,0.0,repeated true-row observations
+23,Hooly,head_of_security,Hooly :: head_of_security,4,4,4,2,2026-08-26,2026-09-24,3.0,1.0,0.0,repeated true-row observations
+24,Hooly,head_of_workspace,Hooly :: head_of_workspace,4,4,4,1,2026-08-25,2026-10-20,3.0,1.0,0.0,repeated true-row observations
+38,Hooly,soc2_auditor,Hooly :: soc2_auditor,4,4,3,1,2026-09-17,2026-09-24,3.0,1.0,0.0,repeated true-row observations
+44,Hooly AI Free,history_retention,Hooly AI Free :: history_retention,4,4,4,1,2025-11-26,2026-09-01,4.0,0.0,0.0,repeated true-row observations
+46,Hooly AI Free,price,Hooly AI Free :: price,4,4,4,1,2025-11-26,2026-10-26,3.0,1.0,0.0,repeated true-row observations
+50,Hooly AI Pro,included_seats,Hooly AI Pro :: included_seats,4,4,4,1,2025-10-09,2026-09-01,4.0,0.0,0.0,repeated true-row observations
+63,Hooly Android 16,supported_models,Hooly Android 16 :: supported_models,4,4,4,1,2025-12-15,2026-03-20,1.0,2.0,1.0,one true-row observation
+64,Hooly Android 16,update_size,Hooly Android 16 :: update_size,4,4,4,2,2025-12-15,2026-03-20,2.0,1.0,1.0,repeated true-row observations
+68,Hooly Android 17,satellite_messaging,Hooly Android 17 :: satellite_messaging,4,4,4,2,2026-07-02,2026-10-12,3.0,1.0,0.0,repeated true-row observations
+58,Hooly Android,open_source,Hooly Android :: open_source,4,4,4,2,2026-03-02,2026-10-12,3.0,1.0,0.0,repeated true-row observations
+74,Hooly Berlin Office,desks,Hooly Berlin Office :: desks,4,4,4,2,2026-02-10,2026-08-20,3.0,1.0,0.0,repeated true-row observations
+79,Hooly Berlin Office,rent,Hooly Berlin Office :: rent,4,4,4,2,2026-02-10,2026-08-20,4.0,0.0,0.0,repeated true-row observations
+80,Hooly Berlin Office,staff,Hooly Berlin Office :: staff,4,4,4,2,2026-02-10,2026-08-20,4.0,0.0,0.0,repeated true-row observations
+83,Hooly Board,chair,Hooly Board :: chair,4,4,4,2,2025-11-18,2026-07-14,3.0,1.0,0.0,repeated true-row observations
+88,Hooly Board,raviqa_seat,Hooly Board :: raviqa_seat,4,4,4,2,2025-11-18,2026-07-02,4.0,0.0,0.0,repeated true-row observations
+95,Hooly Calendar,version,Hooly Calendar :: version,4,4,4,2,2026-02-16,2026-09-10,3.0,0.0,1.0,repeated true-row observations
+101,Hooly Chrome,lead,Hooly Chrome :: lead,4,4,4,1,2026-06-02,2026-10-20,4.0,0.0,0.0,repeated true-row observations
+110,Hooly Cloud,archive_storage_price,Hooly Cloud :: archive_storage_price,4,4,4,1,2025-11-04,2026-05-12,4.0,0.0,0.0,repeated true-row observations
+112,Hooly Cloud,carbon_neutral,Hooly Cloud :: carbon_neutral,4,4,4,2,2025-11-04,2026-06-12,4.0,0.0,0.0,repeated true-row observations
+114,Hooly Cloud,cool_storage_price,Hooly Cloud :: cool_storage_price,4,4,4,1,2025-11-04,2026-05-12,4.0,0.0,0.0,repeated true-row observations
+117,Hooly Cloud,free_credit,Hooly Cloud :: free_credit,4,4,4,2,2025-11-04,2026-05-12,4.0,0.0,0.0,repeated true-row observations
+119,Hooly Cloud,free_trial,Hooly Cloud :: free_trial,4,4,4,4,2025-11-04,2026-05-12,3.0,1.0,0.0,repeated true-row observations
+121,Hooly Cloud,launched,Hooly Cloud :: launched,4,4,4,2,2025-11-04,2026-01-21,4.0,0.0,0.0,repeated true-row observations
+123,Hooly Cloud,newest_region,Hooly Cloud :: newest_region,4,4,4,2,2026-03-02,2026-08-10,4.0,0.0,0.0,repeated true-row observations
+136,Hooly Cloud Next 2026,opening_keynote,Hooly Cloud Next 2026 :: opening_keynote,4,4,4,1,2026-01-21,2026-06-12,4.0,0.0,0.0,repeated true-row observations
+139,Hooly Cloud Next 2026,speakers,Hooly Cloud Next 2026 :: speakers,4,4,4,2,2026-05-04,2026-06-12,3.0,1.0,0.0,repeated true-row observations
+153,Hooly Docs,languages,Hooly Docs :: languages,4,4,4,2,2026-01-27,2026-08-25,4.0,0.0,0.0,repeated true-row observations
+155,Hooly Docs,offline_editing,Hooly Docs :: offline_editing,4,4,4,2,2026-01-27,2026-08-25,4.0,0.0,0.0,repeated true-row observations
+167,Hooly Employee Survey,manageable_workload,Hooly Employee Survey :: manageable_workload,4,4,4,2,2026-03-12,2026-10-06,4.0,0.0,0.0,repeated true-row observations
+168,Hooly Employee Survey,manager_rating,Hooly Employee Survey :: manager_rating,4,4,4,2,2026-03-12,2026-10-06,4.0,0.0,0.0,repeated true-row observations
+169,Hooly Employee Survey,next_round,Hooly Employee Survey :: next_round,4,4,4,2,2026-03-12,2026-10-06,4.0,0.0,0.0,repeated true-row observations
+171,Hooly Employee Survey,respondents,Hooly Employee Survey :: respondents,4,4,4,2,2026-03-12,2026-10-06,4.0,0.0,0.0,repeated true-row observations
+174,Hooly Employee Survey,would_recommend,Hooly Employee Survey :: would_recommend,4,4,4,2,2026-03-12,2026-10-06,4.0,0.0,0.0,repeated true-row observations
+175,Hooly Gemini,api_version,Hooly Gemini :: api_version,4,4,4,3,2025-11-14,2026-09-16,3.0,1.0,0.0,repeated true-row observations
+185,Hooly Gemini,image_input,Hooly Gemini :: image_input,4,4,4,2,2025-12-18,2026-03-27,4.0,0.0,0.0,repeated true-row observations
+188,Hooly Gemini,launched,Hooly Gemini :: launched,4,4,4,1,2025-10-07,2026-10-07,4.0,0.0,0.0,repeated true-row observations
+214,Hooly Hiring Programme,executive_sponsor,Hooly Hiring Programme :: executive_sponsor,4,4,4,2,2026-05-20,2026-10-06,4.0,0.0,0.0,repeated true-row observations
+215,Hooly Hiring Programme,first_reply,Hooly Hiring Programme :: first_reply,4,4,4,2,2026-04-09,2026-10-06,4.0,0.0,0.0,repeated true-row observations
+216,Hooly Hiring Programme,hires,Hooly Hiring Programme :: hires,4,4,4,3,2026-04-09,2026-09-16,4.0,0.0,0.0,repeated true-row observations
+221,Hooly Hiring Programme,open_engineering_roles,Hooly Hiring Programme :: open_engineering_roles,4,4,4,3,2026-04-09,2026-10-06,3.0,1.0,0.0,repeated true-row observations
+225,Hooly Hiring Programme,referral_share,Hooly Hiring Programme :: referral_share,4,4,4,3,2026-04-09,2026-09-16,4.0,0.0,0.0,repeated true-row observations
+235,Hooly I/O 2026,ticket_price,Hooly I/O 2026 :: ticket_price,4,4,4,2,2026-02-01,2026-03-27,2.0,2.0,0.0,repeated true-row observations
+241,Hooly Jules,beta_testers,Hooly Jules :: beta_testers,4,4,4,1,2026-04-15,2026-04-28,4.0,0.0,0.0,repeated true-row observations
+254,Hooly Lisbon Office,desks,Hooly Lisbon Office :: desks,4,4,4,3,2026-05-06,2026-08-20,3.0,1.0,0.0,repeated true-row observations
+258,Hooly Lisbon Office,staff,Hooly Lisbon Office :: staff,4,4,4,3,2026-05-06,2026-08-20,3.0,1.0,0.0,repeated true-row observations
+260,Hooly Maps,business_listings,Hooly Maps :: business_listings,4,4,4,3,2026-04-16,2026-10-14,3.0,1.0,0.0,repeated true-row observations
+265,Hooly Maps,lead,Hooly Maps :: lead,4,4,4,2,2025-10-16,2026-10-14,2.0,1.0,1.0,repeated true-row observations
+268,Hooly Maps,offline_area_limit,Hooly Maps :: offline_area_limit,4,4,4,2,2026-04-16,2026-10-24,4.0,0.0,0.0,repeated true-row observations
+272,Hooly Maps,store_rating,Hooly Maps :: store_rating,4,4,4,3,2025-12-02,2026-10-14,4.0,0.0,0.0,repeated true-row observations
+289,Hooly Meet,active_users,Hooly Meet :: active_users,4,4,4,2,2026-06-09,2026-10-08,4.0,0.0,0.0,repeated true-row observations
+299,Hooly Photos,family_group_size,Hooly Photos :: family_group_size,4,4,4,2,2025-10-19,2026-10-16,4.0,0.0,0.0,repeated true-row observations
+306,Hooly Photos,store_rating,Hooly Photos :: store_rating,4,4,4,2,2026-01-14,2026-10-16,4.0,0.0,0.0,repeated true-row observations
+318,Hooly Pixel 10,battery_capacity,Hooly Pixel 10 :: battery_capacity,4,4,3,2,2026-04-28,2026-09-25,1.0,3.0,0.0,one true-row observation
+319,Hooly Pixel 10,battery_life,Hooly Pixel 10 :: battery_life,4,4,3,2,2026-04-28,2026-09-25,2.0,2.0,0.0,repeated true-row observations
+326,Hooly Pixel 10,released,Hooly Pixel 10 :: released,4,4,2,2,2026-04-28,2026-05-14,3.0,1.0,0.0,repeated true-row observations
+333,Hooly Pixel 10 Pro,base_storage,Hooly Pixel 10 Pro :: base_storage,4,4,4,2,2026-04-28,2026-09-02,3.0,1.0,0.0,repeated true-row observations
+350,Hooly Pixel 9,storage,Hooly Pixel 9 :: storage,4,4,4,1,2025-12-02,2026-05-18,4.0,0.0,0.0,repeated true-row observations
+356,Hooly Pixel Buds,price,Hooly Pixel Buds :: price,4,4,4,2,2026-02-02,2026-10-08,3.0,1.0,0.0,repeated true-row observations
+364,Hooly Pixel Fold,released,Hooly Pixel Fold :: released,4,4,4,2,2026-04-28,2026-08-18,3.0,1.0,0.0,repeated true-row observations
+365,Hooly Pixel Fold,store_rating,Hooly Pixel Fold :: store_rating,4,4,4,1,2026-06-25,2026-08-18,3.0,0.0,1.0,repeated true-row observations
+375,Hooly Pixel Watch,store_rating,Hooly Pixel Watch :: store_rating,4,4,4,2,2025-11-05,2026-04-01,4.0,0.0,0.0,repeated true-row observations
+429,Hooly Search,personalised_ads_by_default,Hooly Search :: personalised_ads_by_default,4,4,4,2,2025-11-04,2026-10-15,4.0,0.0,0.0,repeated true-row observations
+454,Hooly Translate,pro_price,Hooly Translate :: pro_price,4,4,4,3,2026-04-09,2026-10-18,3.0,1.0,0.0,repeated true-row observations
+460,Hooly Vault,generally_available,Hooly Vault :: generally_available,4,4,4,2,2026-09-16,2026-09-24,3.0,1.0,0.0,repeated true-row observations
+461,Hooly Vault,minimum_nodes,Hooly Vault :: minimum_nodes,4,4,4,2,2026-09-17,2026-10-12,4.0,0.0,0.0,repeated true-row observations
+462,Hooly Vault,planned_general_availability,Hooly Vault :: planned_general_availability,4,4,4,1,2026-09-17,2026-10-12,4.0,0.0,0.0,repeated true-row observations
+463,Hooly Vault,waitlist,Hooly Vault :: waitlist,4,4,4,3,2026-09-17,2026-10-12,2.0,2.0,0.0,repeated true-row observations
+474,Hooly Workspace,storage_per_user,Hooly Workspace :: storage_per_user,4,4,4,2,2026-09-01,2026-10-20,3.0,1.0,0.0,repeated true-row observations
+488,Hoovar,desks_managed,Hoovar :: desks_managed,4,4,4,4,2026-02-10,2026-08-20,4.0,0.0,0.0,repeated true-row observations
+489,Hoovar,facilities_team,Hoovar :: facilities_team,4,4,4,2,2026-02-10,2026-08-20,3.0,1.0,0.0,repeated true-row observations
+491,Hoovar,offices_run,Hoovar :: offices_run,4,4,4,3,2026-02-10,2026-07-09,3.0,1.0,0.0,repeated true-row observations
+503,Made by Hooly 2026,venue,Made by Hooly 2026 :: venue,4,4,4,1,2026-02-20,2026-04-28,3.0,0.0,1.0,repeated true-row observations
+512,The May 2026 outage,date,The May 2026 outage :: date,4,4,3,1,2026-05-20,2026-10-05,3.0,1.0,0.0,repeated true-row observations
+513,The May 2026 outage,duration,The May 2026 outage :: duration,4,4,3,2,2026-05-20,2026-07-05,3.0,1.0,0.0,repeated true-row observations
+22,Hooly,head_of_product,Hooly :: head_of_product,5,5,5,2,2026-02-03,2026-10-09,3.0,2.0,0.0,repeated true-row observations
+26,Hooly,help_guides,Hooly :: help_guides,5,5,5,1,2026-02-10,2026-08-21,4.0,0.0,1.0,repeated true-row observations
+39,Hooly,soc2_certified,Hooly :: soc2_certified,5,5,5,2,2025-12-10,2026-09-21,3.0,2.0,0.0,repeated true-row observations
+45,Hooly AI Free,max_upload_size,Hooly AI Free :: max_upload_size,5,5,5,4,2025-10-09,2026-04-03,2.0,3.0,0.0,repeated true-row observations
+55,Hooly AI Pro,support_first_response,Hooly AI Pro :: support_first_response,5,5,5,2,2025-10-09,2026-09-01,5.0,0.0,0.0,repeated true-row observations
+69,Hooly Android 17,share_of_devices,Hooly Android 17 :: share_of_devices,5,5,5,2,2026-09-23,2026-10-22,4.0,1.0,0.0,repeated true-row observations
+82,Hooly Board,audit_committee,Hooly Board :: audit_committee,5,5,5,1,2025-11-18,2026-07-14,3.0,0.0,2.0,repeated true-row observations
+85,Hooly Board,independent_members,Hooly Board :: independent_members,5,5,5,3,2025-11-18,2026-07-14,5.0,0.0,0.0,repeated true-row observations
+86,Hooly Board,meetings_per_year,Hooly Board :: meetings_per_year,5,5,5,2,2025-11-18,2026-07-14,3.0,2.0,0.0,repeated true-row observations
+87,Hooly Board,next_meeting,Hooly Board :: next_meeting,5,5,5,2,2025-12-11,2026-07-22,4.0,0.0,1.0,repeated true-row observations
+89,Hooly Board,seats,Hooly Board :: seats,5,5,5,3,2025-11-18,2026-07-14,4.0,1.0,0.0,repeated true-row observations
+96,Hooly Chrome,ai_sidebar,Hooly Chrome :: ai_sidebar,5,5,5,2,2026-07-08,2026-10-20,3.0,2.0,0.0,repeated true-row observations
+108,Hooly Chrome,tab_sleep_delay,Hooly Chrome :: tab_sleep_delay,5,5,5,2,2026-07-08,2026-10-20,4.0,1.0,0.0,repeated true-row observations
+127,Hooly Cloud,services,Hooly Cloud :: services,5,5,5,3,2025-11-04,2026-06-12,4.0,1.0,0.0,repeated true-row observations
+129,Hooly Cloud,storage_tiers,Hooly Cloud :: storage_tiers,5,5,5,2,2025-11-04,2026-10-02,5.0,0.0,0.0,repeated true-row observations
+130,Hooly Cloud,uptime_last_quarter,Hooly Cloud :: uptime_last_quarter,5,5,5,4,2026-01-12,2026-10-02,5.0,0.0,0.0,repeated true-row observations
+141,Hooly Cloud Next 2026,ticket_price,Hooly Cloud Next 2026 :: ticket_price,5,5,5,3,2026-01-21,2026-05-04,3.0,2.0,0.0,repeated true-row observations
+142,Hooly Cloud Next 2026,venue,Hooly Cloud Next 2026 :: venue,5,5,5,1,2026-03-18,2026-06-12,5.0,0.0,0.0,repeated true-row observations
+152,Hooly Docs,active_users,Hooly Docs :: active_users,5,5,5,3,2026-03-20,2026-10-20,4.0,1.0,0.0,repeated true-row observations
+156,Hooly Docs,simultaneous_editors,Hooly Docs :: simultaneous_editors,5,5,5,2,2026-01-27,2026-10-05,4.0,1.0,0.0,repeated true-row observations
+157,Hooly Docs,templates,Hooly Docs :: templates,5,5,5,2,2026-01-27,2026-10-05,3.0,2.0,0.0,repeated true-row observations
+159,Hooly Drive,active_users,Hooly Drive :: active_users,5,5,5,4,2026-03-12,2026-10-20,4.0,1.0,0.0,repeated true-row observations
+177,Hooly Gemini,concurrent_chats,Hooly Gemini :: concurrent_chats,5,5,5,2,2025-12-18,2026-06-12,4.0,1.0,0.0,repeated true-row observations
+194,Hooly Gemini,p99_response_time,Hooly Gemini :: p99_response_time,5,5,5,2,2025-11-14,2026-10-09,2.0,3.0,0.0,repeated true-row observations
+205,Hooly Gmail,active_users,Hooly Gmail :: active_users,5,5,5,3,2026-01-10,2026-10-20,3.0,1.0,1.0,repeated true-row observations
+207,Hooly Gmail,end_to_end_encryption,Hooly Gmail :: end_to_end_encryption,5,5,5,2,2025-11-19,2026-10-20,3.0,2.0,0.0,repeated true-row observations
+210,Hooly Gmail,price_per_user,Hooly Gmail :: price_per_user,5,5,5,2,2025-11-19,2026-10-20,5.0,0.0,0.0,repeated true-row observations
+211,Hooly Gmail,spam_catch_rate,Hooly Gmail :: spam_catch_rate,5,5,5,4,2025-11-19,2026-10-20,3.0,2.0,0.0,repeated true-row observations
+212,Hooly Hiring Programme,applicants,Hooly Hiring Programme :: applicants,5,5,5,3,2026-04-09,2026-10-06,5.0,0.0,0.0,repeated true-row observations
+213,Hooly Hiring Programme,cost_per_hire,Hooly Hiring Programme :: cost_per_hire,5,5,5,3,2026-04-09,2026-10-06,4.0,1.0,0.0,repeated true-row observations
+217,Hooly Hiring Programme,interview_rounds,Hooly Hiring Programme :: interview_rounds,5,5,5,2,2026-04-09,2026-10-06,4.0,1.0,0.0,repeated true-row observations
+219,Hooly Hiring Programme,offer_acceptance,Hooly Hiring Programme :: offer_acceptance,5,5,5,3,2026-04-09,2026-10-06,5.0,0.0,0.0,repeated true-row observations
+223,Hooly Hiring Programme,recruiters,Hooly Hiring Programme :: recruiters,5,5,5,3,2026-04-09,2026-10-06,3.0,2.0,0.0,repeated true-row observations
+224,Hooly Hiring Programme,referral_bonus,Hooly Hiring Programme :: referral_bonus,5,5,5,2,2026-04-09,2026-10-06,5.0,0.0,0.0,repeated true-row observations
+227,Hooly I/O 2026,attendees,Hooly I/O 2026 :: attendees,5,5,4,2,2026-03-24,2026-09-17,4.0,1.0,0.0,repeated true-row observations
+233,Hooly I/O 2026,sponsors,Hooly I/O 2026 :: sponsors,5,5,5,2,2026-02-01,2026-04-10,4.0,1.0,0.0,repeated true-row observations
+296,Hooly Meet,max_participants,Hooly Meet :: max_participants,5,5,5,5,2026-03-24,2026-10-12,3.0,2.0,0.0,repeated true-row observations
+302,Hooly Photos,latest_release_date,Hooly Photos :: latest_release_date,5,5,5,3,2025-10-19,2026-09-02,5.0,0.0,0.0,repeated true-row observations
+307,Hooly Photos,trash_retention,Hooly Photos :: trash_retention,5,5,5,2,2025-10-19,2026-10-16,5.0,0.0,0.0,repeated true-row observations
+310,Hooly Photos,yearly_billing_discount,Hooly Photos :: yearly_billing_discount,5,5,5,2,2025-10-19,2026-10-16,5.0,0.0,0.0,repeated true-row observations
+328,Hooly Pixel 10,shipping_android,Hooly Pixel 10 :: shipping_android,5,5,4,2,2026-04-28,2026-09-25,4.0,1.0,0.0,repeated true-row observations
+359,Hooly Pixel Fold,battery_capacity,Hooly Pixel Fold :: battery_capacity,5,5,5,2,2026-04-28,2026-08-18,4.0,1.0,0.0,repeated true-row observations
+361,Hooly Pixel Fold,hinge_rating,Hooly Pixel Fold :: hinge_rating,5,5,5,3,2026-04-28,2026-08-18,2.0,2.0,1.0,repeated true-row observations
+452,Hooly Translate,monthly_active_users,Hooly Translate :: monthly_active_users,5,5,5,3,2025-12-04,2026-09-10,3.0,1.0,1.0,repeated true-row observations
+453,Hooly Translate,offline_languages,Hooly Translate :: offline_languages,5,5,5,4,2026-04-09,2026-10-18,3.0,2.0,0.0,repeated true-row observations
+456,Hooly Translate,rated_accuracy,Hooly Translate :: rated_accuracy,5,5,5,3,2025-12-04,2026-09-10,3.0,1.0,1.0,repeated true-row observations
+467,Hooly Workspace,extra_seat_price,Hooly Workspace :: extra_seat_price,5,5,4,1,2026-04-01,2026-04-20,5.0,0.0,0.0,repeated true-row observations
+475,Hooly Workspace,uptime_sla,Hooly Workspace :: uptime_sla,5,5,4,2,2026-04-01,2026-09-02,4.0,1.0,0.0,repeated true-row observations
+487,Hooly Workspace Enterprise,uptime_sla,Hooly Workspace Enterprise :: uptime_sla,5,5,5,2,2026-09-01,2026-10-15,4.0,1.0,0.0,repeated true-row observations
+492,Made by Hooly 2026,attendees,Made by Hooly 2026 :: attendees,5,5,5,3,2026-02-20,2026-04-28,3.0,1.0,1.0,repeated true-row observations
+494,Made by Hooly 2026,date,Made by Hooly 2026 :: date,5,5,5,2,2026-02-18,2026-04-27,4.0,1.0,0.0,repeated true-row observations
+10,Holdan,team_size,Holdan :: team_size,6,6,6,3,2026-01-12,2026-10-02,6.0,0.0,0.0,repeated true-row observations
+21,Hooly,had_major_outage,Hooly :: had_major_outage,6,6,6,2,2026-01-05,2026-10-05,4.0,2.0,0.0,repeated true-row observations
+34,Hooly,series_a_amount,Hooly :: series_a_amount,6,6,3,2,2026-02-17,2026-10-26,5.0,1.0,0.0,repeated true-row observations
+49,Hooly AI Pro,history_retention,Hooly AI Pro :: history_retention,6,6,6,2,2025-11-26,2026-04-28,5.0,1.0,0.0,repeated true-row observations
+72,Hooly Android 17,update_size,Hooly Android 17 :: update_size,6,6,6,2,2026-07-02,2026-10-22,3.0,3.0,0.0,repeated true-row observations
+109,Hooly Chrome,top_bug_bounty,Hooly Chrome :: top_bug_bounty,6,6,6,1,2025-12-20,2026-10-20,5.0,0.0,1.0,repeated true-row observations
+118,Hooly Cloud,free_egress_per_month,Hooly Cloud :: free_egress_per_month,6,6,6,3,2025-11-04,2026-08-10,6.0,0.0,0.0,repeated true-row observations
+120,Hooly Cloud,home_region,Hooly Cloud :: home_region,6,6,6,1,2025-11-04,2026-08-10,6.0,0.0,0.0,repeated true-row observations
+126,Hooly Cloud,reliability_lead,Hooly Cloud :: reliability_lead,6,6,6,1,2026-01-12,2026-09-03,6.0,0.0,0.0,repeated true-row observations
+128,Hooly Cloud,standard_storage_price,Hooly Cloud :: standard_storage_price,6,6,6,2,2025-11-04,2026-06-10,6.0,0.0,0.0,repeated true-row observations
+135,Hooly Cloud Next 2026,length,Hooly Cloud Next 2026 :: length,6,6,6,1,2026-01-21,2026-06-12,6.0,0.0,0.0,repeated true-row observations
+151,Hooly Devices,trade_in_programme,Hooly Devices :: trade_in_programme,6,6,6,2,2025-12-03,2026-04-30,4.0,2.0,0.0,repeated true-row observations
+182,Hooly Gemini,flawbench_score,Hooly Gemini :: flawbench_score,6,6,6,3,2025-11-14,2026-08-20,6.0,0.0,0.0,repeated true-row observations
+203,Hooly Gemini,voice_mode,Hooly Gemini :: voice_mode,6,6,6,2,2025-12-18,2026-08-19,6.0,0.0,0.0,repeated true-row observations
+206,Hooly Gmail,attachment_limit,Hooly Gmail :: attachment_limit,6,6,6,3,2025-11-19,2026-10-05,6.0,0.0,0.0,repeated true-row observations
+209,Hooly Gmail,mailbox_storage,Hooly Gmail :: mailbox_storage,6,6,6,2,2025-11-19,2026-10-20,4.0,2.0,0.0,repeated true-row observations
+220,Hooly Hiring Programme,offers,Hooly Hiring Programme :: offers,6,6,6,3,2026-04-09,2026-10-06,6.0,0.0,0.0,repeated true-row observations
+222,Hooly Hiring Programme,open_roles,Hooly Hiring Programme :: open_roles,6,6,6,3,2026-04-09,2026-10-06,4.0,2.0,0.0,repeated true-row observations
+226,Hooly Hiring Programme,time_to_hire,Hooly Hiring Programme :: time_to_hire,6,6,6,4,2026-03-12,2026-10-06,5.0,1.0,0.0,repeated true-row observations
+243,Hooly Jules,free_trial,Hooly Jules :: free_trial,6,6,5,1,2026-06-02,2026-08-18,6.0,0.0,0.0,repeated true-row observations
+245,Hooly Jules,lead,Hooly Jules :: lead,6,6,6,2,2026-04-17,2026-08-18,4.0,2.0,0.0,repeated true-row observations
+266,Hooly Maps,mapped_distance,Hooly Maps :: mapped_distance,6,6,6,4,2025-10-16,2026-10-14,5.0,1.0,0.0,repeated true-row observations
+267,Hooly Maps,monthly_active_users,Hooly Maps :: monthly_active_users,6,6,6,4,2025-10-16,2026-10-14,5.0,1.0,0.0,repeated true-row observations
+270,Hooly Maps,places_listed,Hooly Maps :: places_listed,6,6,6,3,2025-10-16,2026-10-14,6.0,0.0,0.0,repeated true-row observations
+301,Hooly Photos,head,Hooly Photos :: head,6,6,6,2,2025-10-19,2026-10-16,6.0,0.0,0.0,repeated true-row observations
+308,Hooly Photos,version,Hooly Photos :: version,6,6,5,3,2025-10-19,2026-09-02,6.0,0.0,0.0,repeated true-row observations
+312,Hooly Photos Lite,storage,Hooly Photos Lite :: storage,6,6,6,2,2025-10-19,2026-10-16,6.0,0.0,0.0,repeated true-row observations
+362,Hooly Pixel Fold,inner_screen_size,Hooly Pixel Fold :: inner_screen_size,6,6,6,1,2026-04-28,2026-09-02,5.0,1.0,0.0,repeated true-row observations
+371,Hooly Pixel Watch,price,Hooly Pixel Watch :: price,6,6,6,4,2025-11-05,2026-10-08,4.0,2.0,0.0,repeated true-row observations
+376,Hooly Pixel Watch,units_sold,Hooly Pixel Watch :: units_sold,6,6,6,3,2025-12-12,2026-10-21,5.0,1.0,0.0,repeated true-row observations
+419,Hooly Search,ad_free_price,Hooly Search :: ad_free_price,6,6,6,2,2026-06-04,2026-10-20,5.0,1.0,0.0,repeated true-row observations
+450,Hooly Translate,languages_supported,Hooly Translate :: languages_supported,6,6,6,3,2025-12-04,2026-10-18,3.0,2.0,1.0,repeated true-row observations
+458,Hooly Translate,voice_latency,Hooly Translate :: voice_latency,6,6,6,4,2025-12-04,2026-10-18,4.0,2.0,0.0,repeated true-row observations
+468,Hooly Workspace,free_trial,Hooly Workspace :: free_trial,6,6,6,1,2026-04-01,2026-07-22,6.0,0.0,0.0,repeated true-row observations
+480,Hooly Workspace Enterprise,included_seats,Hooly Workspace Enterprise :: included_seats,6,6,5,2,2026-09-01,2026-10-15,5.0,1.0,0.0,repeated true-row observations
+12,Hooly,ceo,Hooly :: ceo,7,7,7,2,2026-02-03,2026-10-26,5.0,2.0,0.0,repeated true-row observations
+30,Hooly,offices,Hooly :: offices,7,7,6,3,2025-12-10,2026-10-26,4.0,3.0,0.0,repeated true-row observations
+36,Hooly,series_a_lead,Hooly :: series_a_lead,7,7,3,2,2026-02-17,2026-10-26,6.0,1.0,0.0,repeated true-row observations
+54,Hooly AI Pro,signed_in_devices,Hooly AI Pro :: signed_in_devices,7,7,7,2,2025-11-26,2026-05-12,7.0,0.0,0.0,repeated true-row observations
+71,Hooly Android 17,supported_models,Hooly Android 17 :: supported_models,7,7,7,2,2026-07-02,2026-10-22,5.0,1.0,1.0,repeated true-row observations
+57,Hooly Android,lead,Hooly Android :: lead,7,7,7,2,2025-12-15,2026-10-12,5.0,2.0,0.0,repeated true-row observations
+81,Hooly Board,attendance,Hooly Board :: attendance,7,7,7,3,2025-11-18,2026-07-22,4.0,3.0,0.0,repeated true-row observations
+97,Hooly Chrome,browser_market_share,Hooly Chrome :: browser_market_share,7,7,7,3,2025-12-20,2026-10-20,6.0,0.0,1.0,repeated true-row observations
+98,Hooly Chrome,cold_start_time,Hooly Chrome :: cold_start_time,7,7,7,3,2025-12-20,2026-10-20,5.0,1.0,1.0,repeated true-row observations
+99,Hooly Chrome,extensions_in_store,Hooly Chrome :: extensions_in_store,7,7,7,3,2025-12-20,2026-10-20,6.0,0.0,1.0,repeated true-row observations
+103,Hooly Chrome,monthly_active_users,Hooly Chrome :: monthly_active_users,7,7,7,3,2025-12-20,2026-10-20,6.0,0.0,1.0,repeated true-row observations
+113,Hooly Cloud,cli_version,Hooly Cloud :: cli_version,7,7,7,3,2025-11-04,2026-08-10,7.0,0.0,0.0,repeated true-row observations
+122,Hooly Cloud,median_time_to_recover,Hooly Cloud :: median_time_to_recover,7,7,7,4,2026-01-12,2026-10-02,7.0,0.0,0.0,repeated true-row observations
+124,Hooly Cloud,region_outside_europe,Hooly Cloud :: region_outside_europe,7,7,7,2,2025-11-04,2026-08-10,7.0,0.0,0.0,repeated true-row observations
+134,Hooly Cloud Next 2026,date,Hooly Cloud Next 2026 :: date,7,7,7,4,2026-01-21,2026-06-12,7.0,0.0,0.0,repeated true-row observations
+137,Hooly Cloud Next 2026,registrations,Hooly Cloud Next 2026 :: registrations,7,7,6,5,2026-02-16,2026-06-12,5.0,2.0,0.0,repeated true-row observations
+138,Hooly Cloud Next 2026,sessions,Hooly Cloud Next 2026 :: sessions,7,7,7,3,2026-01-21,2026-06-12,4.0,3.0,0.0,repeated true-row observations
+147,Hooly Devices,manufacturing_partner,Hooly Devices :: manufacturing_partner,7,7,7,1,2025-12-02,2026-10-08,7.0,0.0,0.0,repeated true-row observations
+148,Hooly Devices,max_trade_in_credit,Hooly Devices :: max_trade_in_credit,7,7,6,3,2026-04-28,2026-10-08,6.0,1.0,0.0,repeated true-row observations
+150,Hooly Devices,staff,Hooly Devices :: staff,7,7,7,3,2026-01-12,2026-10-21,7.0,0.0,0.0,repeated true-row observations
+160,Hooly Drive,free_storage,Hooly Drive :: free_storage,7,7,7,2,2026-01-10,2026-10-05,6.0,1.0,0.0,repeated true-row observations
+184,Hooly Gemini,hosting_regions,Hooly Gemini :: hosting_regions,7,7,7,2,2026-02-10,2026-10-15,6.0,1.0,0.0,repeated true-row observations
+189,Hooly Gemini,max_output_length,Hooly Gemini :: max_output_length,7,7,7,3,2025-12-18,2026-08-21,6.0,1.0,0.0,repeated true-row observations
+195,Hooly Gemini,primary_region,Hooly Gemini :: primary_region,7,7,7,1,2025-10-10,2026-10-15,7.0,0.0,0.0,repeated true-row observations
+204,Hooly Gemini,webhook_events,Hooly Gemini :: webhook_events,7,7,7,2,2026-06-02,2026-09-20,6.0,1.0,0.0,repeated true-row observations
+228,Hooly I/O 2026,city,Hooly I/O 2026 :: city,7,7,5,1,2026-02-01,2026-09-17,6.0,1.0,0.0,repeated true-row observations
+229,Hooly I/O 2026,date,Hooly I/O 2026 :: date,7,7,5,2,2026-02-01,2026-09-01,7.0,0.0,0.0,repeated true-row observations
+262,Hooly Maps,countries_covered,Hooly Maps :: countries_covered,7,7,7,4,2025-10-16,2026-10-24,6.0,1.0,0.0,repeated true-row observations
+298,Hooly Photos,end_to_end_encrypted_backups,Hooly Photos :: end_to_end_encrypted_backups,7,7,7,2,2025-10-19,2026-10-20,7.0,0.0,0.0,repeated true-row observations
+340,Hooly Pixel 10 Pro,price,Hooly Pixel 10 Pro :: price,7,7,4,2,2026-04-28,2026-09-02,5.0,2.0,0.0,repeated true-row observations
+428,Hooly Search,news_refresh_interval,Hooly Search :: news_refresh_interval,7,7,7,3,2025-11-04,2026-10-20,6.0,1.0,0.0,repeated true-row observations
+483,Hooly Workspace Enterprise,price,Hooly Workspace Enterprise :: price,7,7,6,1,2026-09-01,2026-10-26,7.0,0.0,0.0,repeated true-row observations
+18,Hooly,founded,Hooly :: founded,8,8,8,2,2025-11-04,2026-10-26,7.0,1.0,0.0,repeated true-row observations
+47,Hooly AI Pro,annual_price,Hooly AI Pro :: annual_price,8,8,6,2,2025-10-07,2026-04-03,7.0,1.0,0.0,repeated true-row observations
+53,Hooly AI Pro,saved_projects,Hooly AI Pro :: saved_projects,8,8,8,2,2025-11-26,2026-05-12,7.0,1.0,0.0,repeated true-row observations
+56,Hooly Android,active_devices,Hooly Android :: active_devices,8,8,8,2,2025-12-12,2026-10-12,4.0,4.0,0.0,repeated true-row observations
+105,Hooly Chrome,release_cadence,Hooly Chrome :: release_cadence,8,8,8,3,2025-12-20,2026-10-20,7.0,1.0,0.0,repeated true-row observations
+106,Hooly Chrome,stable_release_date,Hooly Chrome :: stable_release_date,8,8,8,6,2025-12-20,2026-10-20,8.0,0.0,0.0,repeated true-row observations
+133,Hooly Cloud Next 2026,city,Hooly Cloud Next 2026 :: city,8,8,8,2,2026-01-21,2026-06-12,7.0,1.0,0.0,repeated true-row observations
+158,Hooly Docs,version,Hooly Docs :: version,8,8,6,3,2026-01-27,2026-10-05,8.0,0.0,0.0,repeated true-row observations
+192,Hooly Gemini,official_sdks,Hooly Gemini :: official_sdks,8,8,8,2,2026-03-24,2026-09-20,8.0,0.0,0.0,repeated true-row observations
+240,Hooly Jules,beta_date,Hooly Jules :: beta_date,8,8,7,1,2026-04-14,2026-09-01,7.0,1.0,0.0,repeated true-row observations
+242,Hooly Jules,context_files,Hooly Jules :: context_files,8,8,8,2,2026-04-15,2026-08-21,6.0,2.0,0.0,repeated true-row observations
+251,Hooly Jules,version,Hooly Jules :: version,8,8,8,3,2026-04-17,2026-10-26,7.0,1.0,0.0,repeated true-row observations
+273,Hooly Maps,version,Hooly Maps :: version,8,8,6,4,2025-10-16,2026-10-24,7.0,1.0,0.0,repeated true-row observations
+316,Hooly Photos Plus,storage,Hooly Photos Plus :: storage,8,8,8,2,2025-10-19,2026-10-16,7.0,1.0,0.0,repeated true-row observations
+347,Hooly Pixel 9,price,Hooly Pixel 9 :: price,8,8,8,3,2025-12-03,2026-09-02,5.0,3.0,0.0,repeated true-row observations
+363,Hooly Pixel Fold,price,Hooly Pixel Fold :: price,8,8,5,2,2026-04-28,2026-09-02,7.0,1.0,0.0,repeated true-row observations
+420,Hooly Search,ai_answers,Hooly Search :: ai_answers,8,8,8,2,2026-01-12,2026-10-20,5.0,3.0,0.0,repeated true-row observations
+421,Hooly Search,executive_owner,Hooly Search :: executive_owner,8,8,8,2,2025-11-04,2026-10-20,8.0,0.0,0.0,repeated true-row observations
+115,Hooly Cloud,customers,Hooly Cloud :: customers,9,9,9,4,2025-11-05,2026-08-10,8.0,1.0,0.0,repeated true-row observations
+116,Hooly Cloud,data_centres,Hooly Cloud :: data_centres,9,9,9,4,2025-11-04,2026-10-02,8.0,1.0,0.0,repeated true-row observations
+145,Hooly Devices,german_premium_phone_share,Hooly Devices :: german_premium_phone_share,9,9,9,3,2026-01-12,2026-10-21,9.0,0.0,0.0,repeated true-row observations
+146,Hooly Devices,head,Hooly Devices :: head,9,9,9,2,2025-12-12,2026-10-21,8.0,1.0,0.0,repeated true-row observations
+149,Hooly Devices,repair_centres,Hooly Devices :: repair_centres,9,9,8,3,2026-01-12,2026-10-21,8.0,1.0,0.0,repeated true-row observations
+244,Hooly Jules,general_availability_date,Hooly Jules :: general_availability_date,9,9,4,2,2026-06-02,2026-09-01,7.0,2.0,0.0,repeated true-row observations
+248,Hooly Jules,suggestion_acceptance_rate,Hooly Jules :: suggestion_acceptance_rate,9,9,8,4,2026-06-02,2026-09-20,5.0,4.0,0.0,repeated true-row observations
+300,Hooly Photos,free_storage,Hooly Photos :: free_storage,9,9,9,2,2025-10-19,2026-10-16,8.0,1.0,0.0,repeated true-row observations
+305,Hooly Photos,photos_stored,Hooly Photos :: photos_stored,9,9,8,4,2026-01-14,2026-10-20,5.0,3.0,1.0,repeated true-row observations
+311,Hooly Photos Lite,price,Hooly Photos Lite :: price,9,9,9,2,2025-10-19,2026-10-20,9.0,0.0,0.0,repeated true-row observations
+313,Hooly Photos Max,price,Hooly Photos Max :: price,9,9,9,2,2025-10-19,2026-10-20,9.0,0.0,0.0,repeated true-row observations
+314,Hooly Photos Max,storage,Hooly Photos Max :: storage,9,9,9,2,2025-10-19,2026-10-16,8.0,1.0,0.0,repeated true-row observations
+352,Hooly Pixel 9,units_sold,Hooly Pixel 9 :: units_sold,9,9,9,4,2025-12-02,2026-05-18,8.0,1.0,0.0,repeated true-row observations
+422,Hooly Search,images_indexed,Hooly Search :: images_indexed,9,9,9,3,2025-11-04,2026-10-20,8.0,1.0,0.0,repeated true-row observations
+426,Hooly Search,median_response_time,Hooly Search :: median_response_time,9,9,9,3,2025-11-04,2026-10-20,9.0,0.0,0.0,repeated true-row observations
+427,Hooly Search,monthly_active_users,Hooly Search :: monthly_active_users,9,9,9,3,2026-01-12,2026-10-15,7.0,2.0,0.0,repeated true-row observations
+13,Hooly,cto,Hooly :: cto,10,10,9,2,2025-12-10,2026-10-09,9.0,1.0,0.0,repeated true-row observations
+43,Hooly AI Free,daily_requests,Hooly AI Free :: daily_requests,10,10,7,2,2025-10-07,2026-05-12,9.0,1.0,0.0,repeated true-row observations
+62,Hooly Android 16,share_of_devices,Hooly Android 16 :: share_of_devices,10,10,10,4,2025-12-12,2026-10-14,10.0,0.0,0.0,repeated true-row observations
+143,Hooly Devices,countries_served,Hooly Devices :: countries_served,10,10,10,3,2025-12-02,2026-10-21,8.0,2.0,0.0,repeated true-row observations
+249,Hooly Jules,supported_ides,Hooly Jules :: supported_ides,10,10,9,3,2026-04-15,2026-09-08,7.0,3.0,0.0,repeated true-row observations
+324,Hooly Pixel 10,price,Hooly Pixel 10 :: price,10,10,5,2,2026-04-28,2026-10-08,9.0,1.0,0.0,repeated true-row observations
+351,Hooly Pixel 9,store_rating,Hooly Pixel 9 :: store_rating,10,10,10,3,2025-12-02,2026-05-18,8.0,2.0,0.0,repeated true-row observations
+424,Hooly Search,languages_served,Hooly Search :: languages_served,10,10,10,3,2025-11-04,2026-10-20,9.0,1.0,0.0,repeated true-row observations
+107,Hooly Chrome,stable_version,Hooly Chrome :: stable_version,11,11,8,6,2025-12-20,2026-10-20,10.0,1.0,0.0,repeated true-row observations
+111,Hooly Cloud,availability_zones,Hooly Cloud :: availability_zones,11,11,11,3,2025-11-04,2026-10-02,11.0,0.0,0.0,repeated true-row observations
+304,Hooly Photos,monthly_active_users,Hooly Photos :: monthly_active_users,11,11,10,5,2025-10-19,2026-10-20,9.0,2.0,0.0,repeated true-row observations
+315,Hooly Photos Plus,price,Hooly Photos Plus :: price,11,11,11,2,2025-10-19,2026-10-20,8.0,3.0,0.0,repeated true-row observations
+423,Hooly Search,index_size,Hooly Search :: index_size,11,11,11,4,2025-11-04,2026-10-20,8.0,3.0,0.0,repeated true-row observations
+430,Hooly Search,publisher_revenue_share,Hooly Search :: publisher_revenue_share,11,11,11,3,2025-11-04,2026-10-20,8.0,3.0,0.0,repeated true-row observations
+431,Hooly Search,share_of_ad_revenue,Hooly Search :: share_of_ad_revenue,11,11,11,5,2025-11-04,2026-10-20,9.0,2.0,0.0,repeated true-row observations
+176,Hooly Gemini,cloud_provider,Hooly Gemini :: cloud_provider,12,12,11,1,2025-10-10,2026-10-15,12.0,0.0,0.0,repeated true-row observations
+186,Hooly Gemini,integrations,Hooly Gemini :: integrations,12,12,9,3,2025-10-07,2026-09-20,11.0,1.0,0.0,repeated true-row observations
+199,Hooly Gemini,supported_file_types,Hooly Gemini :: supported_file_types,12,12,12,2,2025-10-10,2026-10-26,7.0,5.0,0.0,repeated true-row observations
+201,Hooly Gemini,uptime_last_quarter,Hooly Gemini :: uptime_last_quarter,12,12,10,6,2026-01-05,2026-10-26,9.0,3.0,0.0,repeated true-row observations
+247,Hooly Jules,programming_languages,Hooly Jules :: programming_languages,12,12,12,3,2026-04-15,2026-10-26,9.0,3.0,0.0,repeated true-row observations
+52,Hooly AI Pro,refund_window,Hooly AI Pro :: refund_window,13,13,10,4,2025-10-07,2026-09-01,12.0,1.0,0.0,repeated true-row observations
+131,Hooly Cloud,uptime_sla,Hooly Cloud :: uptime_sla,13,13,13,2,2025-11-04,2026-10-02,13.0,0.0,0.0,repeated true-row observations
+179,Hooly Gemini,data_retention,Hooly Gemini :: data_retention,13,13,9,1,2025-10-07,2026-09-24,13.0,0.0,0.0,repeated true-row observations
+183,Hooly Gemini,hallucination_rate,Hooly Gemini :: hallucination_rate,14,14,12,4,2025-10-07,2026-10-07,9.0,5.0,0.0,repeated true-row observations
+246,Hooly Jules,price,Hooly Jules :: price,14,14,9,3,2026-06-02,2026-10-26,12.0,2.0,0.0,repeated true-row observations
+59,Hooly Android,version,Hooly Android :: version,15,15,13,5,2025-11-05,2026-10-22,14.0,1.0,0.0,repeated true-row observations
+125,Hooly Cloud,regions,Hooly Cloud :: regions,15,15,15,3,2025-11-04,2026-10-02,15.0,0.0,0.0,repeated true-row observations
+190,Hooly Gemini,max_upload_size,Hooly Gemini :: max_upload_size,16,16,14,4,2025-10-07,2026-10-09,11.0,5.0,0.0,repeated true-row observations
+25,Hooly,headquarters,Hooly :: headquarters,17,17,12,2,2025-11-04,2026-10-26,15.0,2.0,0.0,repeated true-row observations
+469,Hooly Workspace,included_seats,Hooly Workspace :: included_seats,18,18,14,2,2026-04-01,2026-10-06,13.0,5.0,0.0,repeated true-row observations
+473,Hooly Workspace,price,Hooly Workspace :: price,18,18,15,3,2026-04-01,2026-10-26,12.0,6.0,0.0,repeated true-row observations
+178,Hooly Gemini,context_window,Hooly Gemini :: context_window,21,21,20,3,2025-10-07,2026-10-26,17.0,4.0,0.0,repeated true-row observations
+191,Hooly Gemini,median_response_time,Hooly Gemini :: median_response_time,24,24,18,4,2025-10-07,2026-10-09,14.0,10.0,0.0,repeated true-row observations
+48,Hooly AI Pro,free_trial,Hooly AI Pro :: free_trial,26,26,18,4,2025-10-07,2026-09-01,24.0,2.0,0.0,repeated true-row observations
+17,Hooly,employees,Hooly :: employees,28,28,25,3,2025-10-10,2026-10-26,23.0,5.0,0.0,repeated true-row observations
+31,Hooly,paying_customers,Hooly :: paying_customers,28,28,24,5,2025-10-10,2026-10-26,20.0,8.0,0.0,repeated true-row observations
+51,Hooly AI Pro,price,Hooly AI Pro :: price,32,31,22,3,2025-10-07,2026-10-26,26.0,5.0,0.0,repeated true-row observations
+187,Hooly Gemini,languages,Hooly Gemini :: languages,36,36,29,4,2025-10-07,2026-10-26,24.0,12.0,0.0,repeated true-row observations
+202,Hooly Gemini,version,Hooly Gemini :: version,49,49,38,5,2025-10-07,2026-10-26,46.0,3.0,0.0,repeated true-row observations

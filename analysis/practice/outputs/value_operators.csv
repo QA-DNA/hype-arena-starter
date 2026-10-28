@@ -1,0 +1,6 @@
+op,true,false,unsure
+eq,1970,350,44
+ge,1,0,0
+gt,2,6,0
+le,25,0,0
+lt,0,4,0
