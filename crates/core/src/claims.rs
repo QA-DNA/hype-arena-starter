@@ -120,14 +120,19 @@ pub fn generate_claims(
     }
     let source_texts: BTreeSet<String> = rows
         .iter()
-        .map(|row| row.text.trim().to_lowercase())
+        .map(|row| normalize_claim_text(&row.text))
+        .chain(
+            predictions
+                .iter()
+                .map(|row| normalize_claim_text(&row.text)),
+        )
         .collect();
     let mut forms = BTreeSet::new();
     let mut texts = BTreeSet::new();
     let mut candidates = Vec::new();
     let mut add =
         |kind: &str, text: String, form: Value, evidence: Vec<Evidence>, confidence: f64| {
-            if text.chars().count() > 300 || source_texts.contains(&text.trim().to_lowercase()) {
+            if text.chars().count() > 300 || source_texts.contains(&normalize_claim_text(&text)) {
                 return;
             }
             let key = format!("{kind}\0{form}");
@@ -173,7 +178,10 @@ pub fn generate_claims(
                 };
                 let words = attribute.replace('_', " ");
                 let text = if first.fact.value["kind"] == "boolean" {
-                    format!("{subject} changed {words} from {from} {words} to {to} {words}.")
+                    // The full attribute is required in the sentence. Keep it
+                    // outside the value sides: names such as end_to_end must not
+                    // introduce another change delimiter inside those sides.
+                    format!("{subject} {words} changed from {from} to {to}.")
                 } else {
                     format!("{subject} changed {words} from {from} to {to}.")
                 };
@@ -343,7 +351,11 @@ pub fn generate_claims(
 
     let candidate_count = candidates.len();
     let mut claims = Vec::with_capacity(limit.min(candidate_count));
-    let reserved: BTreeSet<&str> = rows.iter().map(|r| r.id.as_str()).collect();
+    let reserved: BTreeSet<&str> = rows
+        .iter()
+        .map(|r| r.id.as_str())
+        .chain(predictions.iter().map(|r| r.id.as_str()))
+        .collect();
     let mut counter = 1;
     for _ in 0..limit.min(candidate_count) {
         let best = candidates
@@ -409,6 +421,15 @@ fn exact_value(value: &Value) -> Option<Value> {
     Some(value)
 }
 
+fn normalize_claim_text(text: &str) -> String {
+    text.split_whitespace()
+        .collect::<Vec<_>>()
+        .join(" ")
+        .to_lowercase()
+        .trim_end_matches(['.', '!', '?', ' '])
+        .to_string()
+}
+
 fn immutable_observation(
     subject: &str,
     attribute: &str,
@@ -427,7 +448,6 @@ fn immutable_observation(
         "released",
         "beta_date",
         "general_availability_date",
-        "training_data_cutoff",
     ];
     if !(historical.contains(&attribute) || attribute == "date" && is_event) {
         return None;
@@ -643,6 +663,71 @@ mod tests {
             &json!({"kind":"date","value":"2026-01-12"})
         ));
         assert_eq!(group_number("2026"), "2,026");
+    }
+
+    #[test]
+    fn newness_ignores_whitespace_case_and_trailing_punctuation() {
+        assert_eq!(
+            normalize_claim_text("  A  changed users from 1 user to 2 user!\n"),
+            normalize_claim_text("a changed users from 1 user to 2 user.")
+        );
+        let mut rows = vec![
+            row("a", "2026-01-01", "true", 1.0),
+            row("b", "2026-02-01", "true", 2.0),
+        ];
+        rows.push(InputRow {
+            id: "already-present".into(),
+            text: " A  changed users from 1.0 user to 2.0 user! ".into(),
+            date: "2026-02-01".into(),
+            label: String::new(),
+            form: vec![],
+        });
+        assert!(
+            generate_claims(&rows, &[], &lexicon(), 1000)
+                .unwrap()
+                .claims
+                .is_empty()
+        );
+    }
+
+    #[test]
+    fn changing_model_cutoff_is_not_assumed_current() {
+        let mut evidence = Evidence {
+            row_id: "e".into(),
+            text: "source".into(),
+            date: "2026-10-01".into(),
+            label: "true".into(),
+            fact: Fact {
+                subject: "A".into(),
+                attribute: "training_data_cutoff".into(),
+                value: json!({"kind":"date","value":"2025-06"}),
+            },
+        };
+        assert!(
+            immutable_observation("A", "training_data_cutoff", &[evidence.clone()], &lexicon())
+                .is_none()
+        );
+        evidence.fact.attribute = "joined".into();
+        assert!(immutable_observation("A", "joined", &[evidence], &lexicon()).is_some());
+    }
+
+    #[test]
+    fn boolean_change_keeps_attribute_outside_value_sides() {
+        let mut rows = vec![
+            row("a", "2026-01-01", "true", 1.0),
+            row("b", "2026-02-01", "true", 2.0),
+        ];
+        for (r, value) in rows.iter_mut().zip([false, true]) {
+            r.form[0].attribute = "end_to_end_encryption".into();
+            r.form[0].value = json!({"kind":"boolean","value":value});
+        }
+        let lexicon = json!({"subjects":[{"name":"A","aliases":[],"attributes":["end_to_end_encryption"]}],"events":[]});
+        let report = generate_claims(&rows, &[], &lexicon, 1000).unwrap();
+        assert_eq!(report.claims.len(), 1);
+        assert_eq!(
+            report.claims[0].text,
+            "A end to end encryption changed from not to yes."
+        );
     }
 
     #[test]
