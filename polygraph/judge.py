@@ -40,6 +40,8 @@ _m = [float(x) for x in os.environ.get("POLY_MODEL", "120,0.06,7,20").split(",")
 MODEL = {"iter": int(_m[0]), "lr": _m[1], "leaves": int(_m[2]), "min_leaf": int(_m[3])}
 STACK = os.environ.get("POLY_STACK", "1") == "1"  # the page-level second pass
 BAGS = int(os.environ.get("POLY_BAGS", 1))  # models averaged over bootstrap resamples
+TEXT_MODEL = os.environ.get("POLY_TEXT", "0") == "1"  # a word-pattern model as a judge input (5-fold CV: no gain, off)
+PROBA: dict[str, dict] = {}  # last run's class probabilities per row (for analysis)
 STATUS = ["agrees", "stale", "premature", "invented", "unknown"]
 
 HEDGE_RE = re.compile(r"\b(?:i have been told|i've been told|i hear|i heard|reportedly|rumou?r|apparently|word is|"
@@ -370,11 +372,19 @@ def label(rows: list[Row], facts: dict[str, list[Fact]], lexicon: Lexicon,
     Xu = np.asarray([feats[r.id][0] for r in unlabelled], dtype=float)
     if len(set(y)) >= 2:
         X, y = np.asarray(X, dtype=float), np.asarray(y)
+        groups = np.asarray([page_of[i] % FOLDS for i in ids])
+        if TEXT_MODEL:
+            # how lie-like the wording is, from a word-pattern model trained on the labels
+            # (out of fold for the training rows, like every other feature)
+            text_of = {r.id: r.text for r in rows}
+            tl = [text_of[i] for i in ids]
+            tu = [r.text for r in unlabelled]
+            X = np.hstack([X, _text_oof(tl, y, groups)[:, None]])
+            Xu = np.hstack([Xu, _text_fit(tl, y).predict(tu)[:, None]])
         if STACK:
             # second pass: lies cluster by page, so add how suspicious the OTHER rows of the
             # row's page look to the first pass. Training rows' page-mates are in the same
             # fold (folds go by page), so their first-pass scores are out-of-fold too.
-            groups = np.asarray([page_of[i] % FOLDS for i in ids])
             p1 = _oof_pfalse(X, y, groups)
             pu = _pfalse(_model().fit(X, y), Xu)
             score = {**dict(zip(ids, p1)), **{r.id: p for r, p in zip(unlabelled, pu)}}
@@ -390,6 +400,7 @@ def label(rows: list[Row], facts: dict[str, list[Fact]], lexicon: Lexicon,
     out = []
     for r, p in zip(unlabelled, proba):
         x, details, worst = feats[r.id]
+        PROBA[r.id] = dict(zip(classes, map(float, p)))
         i = int(np.argmax(p))
         lab = classes[i]
         if lab != "unsure" and "false" in classes and "true" in classes:
@@ -405,6 +416,41 @@ def label(rows: list[Row], facts: dict[str, list[Fact]], lexicon: Lexicon,
             conf = max(pt, pf) / max(1e-9, pt + pf)
             out.append(Verdict(r.id, lab, float(min(1.0, max(0.5, conf))), why, details))
     return out, t
+
+
+class _TextModel:
+    """P(false) from the sentence's words and word pairs (logistic regression on TF-IDF)."""
+
+    def __init__(self, texts, y):
+        from sklearn.feature_extraction.text import TfidfVectorizer
+        from sklearn.linear_model import LogisticRegression
+        self.vec = TfidfVectorizer(ngram_range=(1, 2), min_df=2, sublinear_tf=True,
+                                   token_pattern=r"(?u)\b[\w'’]+\b|[:!?%€$]")
+        Xt = self.vec.fit_transform(texts)
+        yb = (np.asarray(y) == "false").astype(int)
+        self.const = None
+        if len(set(yb)) < 2:
+            self.const = float(yb.mean()) if len(yb) else 1 - PRIOR_TRUE
+            return
+        self.clf = LogisticRegression(C=2.0, class_weight="balanced", max_iter=2000).fit(Xt, yb)
+
+    def predict(self, texts) -> np.ndarray:
+        if self.const is not None:
+            return np.full(len(texts), self.const)
+        return self.clf.predict_proba(self.vec.transform(texts))[:, 1]
+
+
+def _text_fit(texts, y) -> _TextModel:
+    return _TextModel(texts, y)
+
+
+def _text_oof(texts, y, groups) -> np.ndarray:
+    out = np.zeros(len(texts))
+    texts = np.asarray(texts, dtype=object)
+    for g in np.unique(groups):
+        tr, te = groups != g, groups == g
+        out[te] = _TextModel(list(texts[tr]), y[tr]).predict(list(texts[te]))
+    return out
 
 
 def _model():
