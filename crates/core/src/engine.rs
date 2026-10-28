@@ -176,7 +176,12 @@ impl Engine {
     /// Forms are assertions, never automatically trusted truth.
     pub fn extract(&self, row: &InputRow) -> Vec<Fact> {
         if !row.form.is_empty() {
-            return row.form.iter().filter(|fact| self.valid_fact(fact)).cloned().collect();
+            return row
+                .form
+                .iter()
+                .filter(|fact| self.valid_fact(fact))
+                .cloned()
+                .collect();
         }
         if self.exact.contains_key(&normalize(&row.text)) {
             return self.extract_with_nearest(row, &[]);
@@ -227,7 +232,8 @@ impl Engine {
                 .filter(|e| e.date <= row.date && e.row_id != row.id)
                 .collect::<Vec<_>>();
             let today: Vec<_> = observations.iter().filter(|e| e.date == row.date).collect();
-            let distinct_today: BTreeSet<_> = today.iter().map(|e| e.fact.value.to_string()).collect();
+            let distinct_today: BTreeSet<_> =
+                today.iter().map(|e| e.fact.value.to_string()).collect();
             let mut same = false;
             let mut different = false;
             for e in &today {

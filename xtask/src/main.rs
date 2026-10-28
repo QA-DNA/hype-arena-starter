@@ -82,7 +82,9 @@ fn run(root: &Path, args: &[String]) -> Result<()> {
             if !cfg!(target_os = "linux") {
                 return Err("The official checker requires Linux. Use WSL2 or a Linux host with Docker and Python 3.".into());
             }
-            eprintln!("The organizer checker verifies output format; semantic quality requires independent evaluation.");
+            eprintln!(
+                "The organizer checker verifies output format; semantic quality requires independent evaluation."
+            );
             exec(root, "sh", &["scripts/check.sh"])?;
         }
         other => return Err(format!("Unknown task {other:?}; use cargo xtask help").into()),
