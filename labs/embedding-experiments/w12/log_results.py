@@ -39,3 +39,14 @@ for cpus, variant in ((2, 'docker_x86_2cpu'), (1, 'docker_x86_1cpu')):
         W.add('w12', 'tfidf(char_wb2-5+word1-2)+LSA300', 'speed', variant, lsa, n=t['n'], notes=common_notes + '; TruncatedSVD(300) fit on the 1,897 TF-IDF rows, transform of 20,000',
               kind='sklearn', threads=1, n_features=t['n_features'], lsa_shape=t['lsa_shape']); n_lines += 1
 print('wrote', n_lines, 'lines to', H.results_path('w12'))
+
+# ---- two extra single-model checks, logged under their own variant names so the main variants stay clean
+for d, variant, note in (('out-recheck', 'docker_x86_2cpu_standalone_recheck', 'standalone re-run (no other bench container running) to bound cross-talk with the concurrent 1-CPU run; compare with variant docker_x86_2cpu'),
+                         ('out-diag16', 'docker_x86_2cpu_16threads_diag', 'DIAGNOSTIC: OMP/MKL threads=16 under --cpus 2 (what a library that sizes its pool from the 16 visible CPUs would do); n=2000 only; CFS throttling dominates')):
+    p = f'/tmp/veridyct-emb/w12/{d}/bench.json'
+    b = json.load(open(p)); env = b['env']; m = b['models'][0]
+    metrics = dict(load_s=m['load_s'], **{f'encode_{b["n"]}_s': m['run_s']}, items_per_s=m['items_per_s'], peak_rss_mb=m['peak_rss_mb'], image_size_mb=IMAGE_SIZE_MB, cpu_model=env['cpu_model'], cpus=2)
+    W.add('w12', m['hf_id'], 'speed', variant, metrics, n=m['n'], notes=note + f'; torch threads {m["torch_threads"]}; host loadavg at start {env["loadavg_host"].split()[0]}',
+          kind=m['kind'], params=m['params'], dim=m['dim'], threads=m['torch_threads'], batch=m['batch'], warmup_s=m['warmup_s'], cpu_util=m['cpu_util'],
+          throttled_s=m['throttled_s'], nr_throttled=m['nr_throttled'], image_unpacked_mb=IMAGE_UNPACKED_MB); n_lines += 1
+print('wrote', n_lines, 'lines total')

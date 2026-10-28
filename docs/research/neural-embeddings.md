@@ -203,14 +203,14 @@ Mac numbers vary 3.5x with machine load; the x86 numbers are the ones to plan wi
 
 | model | role | params | disk (fp32) | Mac, 2 threads | x86 measured or estimated |
 |---|---|---|---|---|---|
-| potion-base-8M (static) | attribute zero-shot, copies | 7.6M | 31 MB | 56,000 sent/s | under 2 s per 20k |
-| static-similarity-mrl-multilingual | same | 108M (tables) | 436 MB | 29,000 sent/s | under 2 s |
-| all-MiniLM-L6-v2 | attribute matcher, copies | 22.7M | 87 to 92 MB | 530 to 1,660 sent/s | 40 to 80 s per 20k |
-| all-MiniLM-L12-v2 | attribute matcher | 33M | 127 MB | 270 to 520 sent/s | 80 to 150 s |
-| mxbai-embed-xsmall-v1 | alternative | 24M | 46 MB (fp16 on Hub; cast to fp32) | 570 to 690 sent/s | 60 to 80 s |
+| potion-base-8M (static) | attribute zero-shot, copies | 7.6M | 31 MB | 56,000 sent/s | 36,100 sent/s: 0.6 s per 20k (Docker, measured) |
+| static-similarity-mrl-multilingual | same | 108M (tables) | 436 MB | 29,000 sent/s | 26,100 sent/s: 0.8 s per 20k (measured) |
+| all-MiniLM-L6-v2 | attribute matcher, copies | 22.7M | 87 to 92 MB | 530 to 1,660 sent/s | 335 sent/s: 60 s per 20k (measured) |
+| all-MiniLM-L12-v2 | attribute matcher | 33M | 127 MB | 270 to 520 sent/s | 172 sent/s: 117 s per 20k (measured) |
+| mxbai-embed-xsmall-v1 | alternative | 24M | 46 MB (fp16 on Hub; cast to fp32) | 570 to 690 sent/s | 337 sent/s: 59 s per 20k (measured) |
 | finecat-nli-xs | conflict tie-breaker | 32M | 122 MB | 368 pairs/s | 110 to 220 s per 20k pairs |
-| nli-deberta-v3-xsmall | conflict tie-breaker | 71M | 283 MB | 155 to 202 pairs/s | 91 pairs/s measured on a Ryzen 3700X: 220 s per 20k pairs |
-| ms-marco-MiniLM-L-6-v2 cross-encoder | fine-tune base | 22.7M | 91 MB | 700 to 960 pairs/s | 268 pairs/s measured: 75 s per 20k pairs |
+| nli-deberta-v3-xsmall | conflict tie-breaker | 71M | 283 MB | 155 to 202 pairs/s | 66 pairs/s in Docker: 302 s per 20k pairs (91 pairs/s bare metal) |
+| ms-marco-MiniLM-L-6-v2 cross-encoder | fine-tune base | 22.7M | 91 MB | 700 to 960 pairs/s | 185 pairs/s in Docker: 108 s per 20k pairs (268 pairs/s bare metal) |
 | bge-large / e5-large / mxbai-large | not recommended | 335M | 670 to 1,341 MB | 24 to 36 sent/s | 19 to 28 min per 20k |
 | arctic-l-v2 / stella-400M / bge-m3 | not recommended | 435 to 568M | 1.8 to 2.3 GB | 24 to 27 sent/s | 27 min per 20k |
 | Qwen3-Embedding-0.6B (LLM-derived) | ceiling only | 596M | 1.2 GB | 9 to 11 sent/s | 60 to 75 min per 20k |
@@ -224,7 +224,8 @@ and length sorting is worth 25 to 45%; ONNX Runtime sizes its thread pool from h
 `intra_op_num_threads=2` explicitly; set `OMP_NUM_THREADS`, `MKL_NUM_THREADS` and
 `TOKENIZERS_PARALLELISM=false` before importing torch.
 
-x86 Docker timing with the contract's flags (w12): see the addendum at the end of this document.
+Measured x86 Docker numbers come from w12 and are detailed in section 12; "bare metal" numbers come
+from an earlier run outside Docker on the same CPU with shorter pairs.
 
 ## 9. The rule: "the system itself may not be an LLM"
 
@@ -263,9 +264,14 @@ Each layer of the original idea, with the component that measured best and its S
    organizer rules against encoders; the arena score does not depend on it.
 6. **Claims**: unchanged from [the claim generation research](claim-generation.md), fed by the same KB.
 
-Run budget on two x86 cores for 20,000 rows: subject and value layers in seconds, attribute
-matcher 40 to 150 s, dedup embeddings 40 to 80 s (or 2 s static), V9 in seconds, optional NLI
-220 s. Image growth: 90 to 130 MB for one MiniLM plus 120 to 280 MB for an NLI model, all fp32.
+Run budget on two x86 cores for 20,000 rows, measured in Docker (section 12): TF-IDF classifier
+fit plus predict 3.5 s, subject and value layers in seconds, attribute matcher 60 s (MiniLM-L6) to
+117 s (L12), dedup embeddings reuse the same pass (or 0.6 s with potion), V9 in seconds, optional
+NLI 302 s per 20,000 pairs. Everything neural fits in 3 minutes without the NLI step and in 8
+minutes with it; the contract gives 30. Weights: 90 to 130 MB for one MiniLM plus 120 to 280 MB
+for an NLI model, all fp32. The runtime is the real image cost: a Python torch stack is 2.65 GiB
+unpacked against the 3 GiB limit, so the encoder ships through ONNX Runtime or a Rust inference
+crate (see section 12).
 
 What not to build: a truth head on text, a fine-tuned truth classifier, an NLI judge, GNN or MLP
 fusion over V9, abstention bands, encoders above 70M parameters, LLM-derived embedders, int8 on an
@@ -283,3 +289,69 @@ unknown CPU, embedding-based evidence retrieval.
 - The organizer's ruling on bundled encoders (issue #2). Ask directly.
 - A fine-tuned matcher must be trained on all practice rows before the freeze and its provenance
   recorded (practice forms only; no LLM-generated text was used tonight).
+
+## 12. Addendum: x86 Docker timing under the contract's flags (w12)
+
+Measured on 2026-10-28 on the team server, an AMD Ryzen 7 3700X (Zen 2, AVX2, no AVX-512,
+31 GB RAM), Docker 29.6.1 with cgroup v2, running the exact `scripts/check.sh` flags: linux/amd64,
+`--network none`, `--read-only`, `--user 10001:10001`, `--cpus 2`, `--memory 6g`,
+`--memory-swap 6g`, `--pids-limit 256`, `--cap-drop ALL`, `--tmpfs /tmp:size=128m`,
+`ARENA_DEADLINE` set. Image `python:3.12-slim` plus torch 2.15 CPU, transformers 5.21,
+sentence-transformers 6.2, model2vec 0.10, scikit-learn 1.9, with the eight finalist models baked
+in as safetensors. Every model ran in its own process on 20,000 practice texts (the 1,897 rows
+cycled), fp32, batch 32, longest texts first, one warm-up batch excluded, tokenization included.
+Scripts and raw `bench.json` files: [labs/embedding-experiments/w12](../../labs/embedding-experiments/w12/);
+results in `results/w12.jsonl` (variants `docker_x86_2cpu`, `docker_x86_1cpu`).
+
+**Whole run:** 812 s wall at 2 CPUs for all eight models plus the TF-IDF baselines (764 s of
+encoding), 1,455 s at 1 CPU, inside the 1,800 s deadline both times. Container-wide memory peak
+676 MB against 6 GiB. CFS throttling under 0.5 s per model.
+
+| model | params | load s | 2 CPUs: s per 20k | items/s | 1 CPU: s per 20k | items/s | peak RSS MB |
+|---|---|---|---|---|---|---|---|
+| potion-base-8M | 7.6M | 0.5 | 0.6 | 36,134 | 0.6 | 35,078 | 127 |
+| static-similarity-mrl-multilingual-v1 | 108M | 3.2 | 0.8 | 26,135 | 0.8 | 25,855 | 529 |
+| all-MiniLM-L6-v2 | 22.7M | 3.3 | 59.7 | 335 | 106.5 | 188 | 573 |
+| mxbai-embed-xsmall-v1 (cast to fp32) | 24.1M | 3.3 | 59.3 | 337 | 106.6 | 188 | 617 |
+| all-MiniLM-L12-v2 | 33.4M | 3.4 | 116.5 | 172 | 210.5 | 95 | 612 |
+| bge-small-en-v1.5 | 33.4M | 3.4 | 116.8 | 171 | 215.8 | 93 | 606 |
+| ms-marco-MiniLM-L-6-v2, 20k pairs | 22.7M | 2.7 | 108.2 | 185 | 200.9 | 100 | 552 |
+| nli-deberta-v3-xsmall, 20k pairs | 70.8M | 3.1 | 302.4 | 66 | 561.4 | 36 | 848 |
+
+Peak RSS is per model process and includes about 227 MB of torch import baseline (35 MB for
+potion). The transformer models scale 1.78x to 1.86x from one to two CPUs; the static models are
+single-threaded and do not scale. Cross-encoder pairs were random (text, other text) pairs, which
+are longer than same-key anchor pairs, so the pair numbers are conservative.
+
+**TF-IDF and LSA (same container, single-threaded sklearn):** `char_wb(2,5)` plus `word(1,2)`,
+26,478 features. Vectorizer fit on 1,897 rows 0.17 s; LinearSVC fit on 311 attribute classes
+1.43 s; transform of 20,000 texts 1.46 s; predict 0.40 s; total 3.45 s. LSA-300 fit 2.14 s plus
+0.38 s transform (4.15 s with TF-IDF). Peak RSS 497 MB. The harness's 2.0x Mac-to-x86 estimate
+was slightly pessimistic: estimated 69, 134, 132 and 50 s for L6, L12, bge-small and mxbai,
+measured 60, 116, 117 and 59 s.
+
+**Image size.** `docker image inspect` reports 1.44 GiB (compressed, containerd store); the unpacked
+root filesystem is 2.65 GiB; `docker images` shows 4.39 GB because it adds both. The contract caps
+the image at 3 GiB, and the team's Rust image is a debian-slim base of about 100 MB. A full Python
+torch runtime therefore spends 2.5 GiB of the budget on the runtime alone and leaves no room for
+mistakes. The weights are not the problem (90 to 280 MB fp32 per model); the runtime is. Options,
+cheapest first: export MiniLM to ONNX and run it from Rust with the `ort` crate (ONNX Runtime
+shared library about 50 MB) or from Python with `onnxruntime` alone (no torch, about 60 MB of
+wheels); or run it with a pure-Rust crate such as `fastembed-rs` or `candle`; keep fp32 either way
+(section 8). The static potion model needs no runtime at all: it is one embedding table plus a
+tokenizer, which Rust can load directly.
+
+**Thread count must be pinned.** `--cpus 2` is a CFS quota; `os.cpu_count()` and the affinity mask
+still report 16 inside the container. With torch left at 16 threads under the 2-CPU quota,
+MiniLM-L12 fell from 172 to 33 items/s (5.2x slower) with 742 s of throttling in a 60 s run.
+Set `OMP_NUM_THREADS`, `MKL_NUM_THREADS`, `OPENBLAS_NUM_THREADS`, `RAYON_NUM_THREADS` and
+`TOKENIZERS_PARALLELISM=false` in the image environment, and size the Rust thread pool from the
+cgroup quota (`/sys/fs/cgroup/cpu.max`), not from the core count. The 1-CPU run set every thread
+variable to 1 for the same reason.
+
+**Caveats.** The 1-CPU and 2-CPU benches ran concurrently on the same host to fit the time box; a
+standalone 2-CPU re-run of MiniLM-L6 gave 343 items/s against 335 concurrent, about 2% cross-talk.
+The host also ran an unrelated Supabase stack (load average 1.6 before, 2.5 during). Load times
+are warm (files in the host page cache); cold loads will be longer. `model2vec` ran with
+`use_multiprocessing=False` because its default spawns a process pool above 10,000 sentences,
+which the 256-pid limit and 2-CPU quota would punish.

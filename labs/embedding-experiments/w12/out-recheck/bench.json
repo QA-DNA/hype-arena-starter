@@ -1,0 +1,87 @@
+{
+ "n": 20000,
+ "batch": 32,
+ "threads": 2,
+ "env": {
+  "cpu_model": "AMD Ryzen 7 3700X 8-Core Processor",
+  "os_cpu_count": 16,
+  "affinity_cpus": 16,
+  "uid": 10001,
+  "cgroup_cpu_max": "200000 100000",
+  "cgroup_memory_max": "6442450944",
+  "cgroup_swap_max": "0",
+  "cgroup_pids_max": "256",
+  "loadavg_host": "2.28 2.49 2.52 1/2171 6",
+  "arena_deadline": "1793209947",
+  "threads_env": {
+   "OMP_NUM_THREADS": "2",
+   "MKL_NUM_THREADS": "2",
+   "OPENBLAS_NUM_THREADS": "2",
+   "RAYON_NUM_THREADS": "2",
+   "TOKENIZERS_PARALLELISM": "false",
+   "HF_HUB_OFFLINE": "1"
+  },
+  "versions": {
+   "torch": "2.15.0+cpu",
+   "transformers": "5.21.0",
+   "sentence-transformers": "6.2.0",
+   "model2vec": "0.10.0",
+   "scikit-learn": "1.9.1",
+   "numpy": "2.5.4",
+   "scipy": "1.18.1",
+   "tokenizers": "0.23.3",
+   "huggingface_hub": "2.3.0"
+  },
+  "python": "3.12.16"
+ },
+ "tfidf": null,
+ "models": [
+  {
+   "key": "all-MiniLM-L6-v2",
+   "hf_id": "sentence-transformers/all-MiniLM-L6-v2",
+   "kind": "st",
+   "n": 20000,
+   "batch": 32,
+   "omp_env": "2",
+   "torch_threads": 2,
+   "torch_interop_threads": 8,
+   "torch": "2.15.0+cpu",
+   "parallel_info": "ATen/Parallel:\n\tat::get_num_threads() : 2\n\tat::get_num_interop_threads() : 8\nOpenMP 201511 (a.k.a. OpenMP 4.5)\n\tomp_get_max_threads() : 2\nIntel(R) oneAPI Math Kernel Library Version 2024.2-Product Build 20240605 for Intel(R) 64 architecture applications\n\tmkl_get_max_threads() : 2\nIntel(R) MKL-DNN v3.13.3 (Git Hash b38f97eb6f2173513112f15a0481750b8a66e901)\nstd::thread::hardware_concurrency() : 16\nEnvironment variables:\n\tOMP_NUM_THREADS : 2\n\tMKL_NUM_THREADS : 2\nATen parallel backend: OpenMP\n",
+   "rss_after_imports_mb": 227.21875,
+   "dtype_loaded": "torch.float32",
+   "params": 22713216,
+   "dim": 384,
+   "max_seq_length": 256,
+   "tokens": {
+    "mean": 16.27,
+    "p95": 27,
+    "max": 65
+   },
+   "load_s": 3.3101177620119415,
+   "rss_after_load_mb": 449.33984375,
+   "warmup_s": 0.3227895849850029,
+   "run_s": 58.28500915900804,
+   "items_per_s": 343.1414061450648,
+   "cpu_util": 1.996196434448328,
+   "progress_s": [
+    8.64,
+    16.31,
+    23.06,
+    29.34,
+    35.12,
+    40.5,
+    45.64,
+    50.36,
+    54.49,
+    58.08,
+    58.28
+   ],
+   "peak_rss_mb": 576.8125,
+   "nr_throttled": 130,
+   "throttled_s": 0.090856,
+   "deadline_left_s": 1735.8309724330902
+  }
+ ],
+ "elapsed_s": 63.88268566131592,
+ "cgroup_memory_peak_mb": 441.02734375
+}

@@ -12,7 +12,7 @@ This lab is evidence and a rerun kit. The Rust workspace does not build it and t
 | Path | Contents |
 |---|---|
 | `common/` | `harness.py` (data loading, folds, probes, kNN, retrieval, NLI and truth metrics, speed) and its `README.md` (API and semantics) |
-| `results/` | `<worker>.jsonl`, one line per measured run (schema below). No `w8` file (landscape only); `w12.jsonl` appears once `w12/log_results.py` has run |
+| `results/` | `<worker>.jsonl`, one line per measured run (schema below). No `w8` file (landscape only) |
 | `w1/` | 15 small sentence embedders (MiniLM, mpnet, bge, gte, e5, arctic, mxbai-xsmall, jina-v2-small): attribute probe, kNN, zero-shot, hybrid, key retrieval, truth probes, speed |
 | `w2/` | 13 larger embedders (bge-large and m3, e5-large, gte-large, arctic-l-v2, stella-400m, mxbai-large, nomic-v1.5, ModernBERT-based, jina-v3, granite) |
 | `w3/` | static and non-neural embedders (potion, static-similarity, GloVe, LSA, random projection), multilingual encoders, LLM embedders (Qwen3-Embedding-0.6B, nomic-v2-moe) |
@@ -24,7 +24,7 @@ This lab is evidence and a rerun kit. The Rust workspace does not build it and t
 | `w9/` | second embedder wave (mdbr-leaf-mt, GIST-small, mini-gte, bekko, UltraBERT-Embed, UAE-Large, jina-v5-nano, cde-small-v2, DenseOn) |
 | `w10/` | second NLI wave (finecat-nli, ModernBERT-nli, albert-vitaminc), GLiClass, hypothesis-template variants, speed rechecks |
 | `w11/` | page-context subject resolution (`subjects.py`) and its measurements |
-| `w12/` | x86 Docker timing under competition-style limits: `Dockerfile`, `bench.py`, raw `out1/` and `out2/` `bench.json` (1 and 2 CPUs) |
+| `w12/` | x86 Docker timing under competition-style limits: `Dockerfile`, `bench.py`, raw `bench.json` in `out1/` and `out2/` (1 and 2 CPUs), `out-recheck/` (standalone 2-CPU re-run) and `out-diag16/` (16 torch threads under a 2-CPU quota, the throttling diagnostic) |
 
 Each worker directory holds its scripts, a driver (`run_all.*`, `driver.sh`, `queue*.sh`, `chain*.sh`,
 `scripts/sweep.sh`) and table builders. Read the driver first: it encodes the order and the thread budget.
