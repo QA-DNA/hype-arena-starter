@@ -23,7 +23,8 @@ def main() -> int:
     a = p.parse_args()
 
     uni, out = ROOT / "out" / "universe", ROOT / "out" / "output"
-    shutil.rmtree(ROOT / "out", ignore_errors=True)
+    shutil.rmtree(uni, ignore_errors=True)  # keep out/cache (eval_labels.py's extraction cache)
+    shutil.rmtree(out, ignore_errors=True)
     uni.mkdir(parents=True)
     out.mkdir(parents=True)
     subprocess.run([sys.executable, ROOT / "scripts" / "input.py", ROOT / "data" / "practice.csv", uni / "universe.csv"], check=True)

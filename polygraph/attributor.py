@@ -190,16 +190,18 @@ class Attributor:
         for w in win:
             if w in self.token_index and len(self.token_index[w]) <= 12:
                 pool.update(self.token_index[w])
-        pool = [(s, a) for s, a in pool if s not in on_page]
+        pool = sorted((s, a) for s, a in pool if s not in on_page)  # sorted: ties break the same in every run
         ranked = sorted(pool, key=lambda sa: -(self._cue(sa[1], win) + 0.5 * len(attr_tokens(sa[1]) & set(win))))
         return [(s, a) for s, a in ranked[:GLOBAL_K]]
 
-    def _window(self, text: str, start: int, end: int, skip) -> list[str]:
+    def _window(self, text: str, start: int, end: int, skip, whole: bool = False) -> list[str]:
         masked = list(text)
         for a, b in skip:
             for i in range(max(0, a), min(len(masked), b)):
                 masked[i] = " "
         masked = "".join(masked)
+        if whole:
+            return [singular(w) for w in WORD_RE.findall(masked) if w.lower() not in STOP and len(w) > 1]
         left = WORD_RE.findall(masked[:start])[-WINDOW:]
         right = WORD_RE.findall(masked[end:])[:WINDOW]
         return [singular(w) for w in left + right if w.lower() not in STOP and len(w) > 1]
@@ -211,15 +213,21 @@ class Attributor:
             subjects.append(Mention(self.company, -1, -1, "", 50, 0, False, False))
         on_page = {m.subject for m in subjects}
         cands, feats = [], []
+        squashed = re.sub(r"[^a-z0-9]", "", row.text.lower())
         for reading in self._readings(row, values, mentions):
-            win = self._window(row.text, reading[1], reading[2], skip)
+            if reading[0]["kind"] == "boolean":  # a yes/no is the whole sentence: every word is context
+                win = self._window(row.text, 0, 0, skip, whole=True)
+            else:
+                win = self._window(row.text, reading[1], reading[2], skip)
             pairs = [(s, a) for s in subjects for a in self.lexicon.attributes(s.subject)]
             pairs += [(Mention(s, -1, -1, "", 99, 0, False, False), a) for s, a in self._global(reading, win, on_page)]
             for s, a in pairs:
                 if reading[0]["kind"] == "name" and reading[0]["value"] == s.subject:
                     continue
                 cands.append((reading, s.subject, a))
-                feats.append(self._features(row, reading, s, a, mentions, win))
+                # the attribute's own words in the sentence: "SOC 2 certified" for soc2_certified
+                phrase = a.replace("_", "")
+                feats.append(self._features(row, reading, s, a, mentions, win) + [float(len(phrase) > 3 and phrase in squashed)])
         return cands, feats
 
     # ---- training --------------------------------------------------------------------
@@ -300,14 +308,15 @@ class Attributor:
         out: list[list[Fact]] = [[] for _ in range(n_items)]
         spans: dict[tuple, list] = defaultdict(list)
         for (reading, s, a), prob, i in zip(cands, p, owner):
-            sk = (i, reading[1], reading[2]) if reading[0]["kind"] != "boolean" else (i, "bool", s, a)
+            # a yes/no reading spans the whole sentence: its attributes compete like a value's
+            sk = (i, reading[1], reading[2]) if reading[0]["kind"] != "boolean" else (i, "bool")
             spans[sk].append((float(prob), reading, s, a))
         chosen: dict[tuple, tuple] = {}
         for sk, cs in spans.items():
             cs.sort(key=lambda c: -c[0])
             top = cs[0]
             share = top[0] / (sum(c[0] for c in cs[:4]) + 1e-9)
-            score = top[0] ** 0.5 * share ** 0.5 if sk[1] != "bool" else top[0]
+            score = top[0] ** 0.5 * share ** 0.5
             if score < threshold:
                 continue
             k = (sk[0], top[2], top[3])

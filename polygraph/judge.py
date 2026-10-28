@@ -33,9 +33,13 @@ from .model import Fact, Row, Verdict, value_key
 FOLDS = 5
 CLASSES = ["true", "false", "unsure"]
 PRIOR_TRUE = 0.83
-FALSE_CUTOFF = 0.6
+# call a row false only when P(false | true or false) is above this (5-fold CV)
+FALSE_CUTOFF = float(os.environ.get("POLY_CUTOFF", 0.6))
+# the judge's gradient-boosted model: trees, learning rate, leaves, min rows per leaf (5-fold CV)
 _m = [float(x) for x in os.environ.get("POLY_MODEL", "120,0.06,7,20").split(",")]
-MODEL = {"iter": int(_m[0]), "lr": _m[1], "leaves": int(_m[2]), "min_leaf": int(_m[3])}  # call a row false only when P(false | true or false) is above this (5-fold CV)
+MODEL = {"iter": int(_m[0]), "lr": _m[1], "leaves": int(_m[2]), "min_leaf": int(_m[3])}
+STACK = os.environ.get("POLY_STACK", "1") == "1"  # the page-level second pass
+BAGS = int(os.environ.get("POLY_BAGS", 1))  # models averaged over bootstrap resamples
 STATUS = ["agrees", "stale", "premature", "invented", "unknown"]
 
 HEDGE_RE = re.compile(r"\b(?:i have been told|i've been told|i hear|i heard|reportedly|rumou?r|apparently|word is|"
@@ -324,7 +328,8 @@ def label(rows: list[Row], facts: dict[str, list[Fact]], lexicon: Lexicon,
 
     # out-of-fold features for the labelled rows: refit the truth without their own labels
     lab = {r.id: r.label for r in labelled}
-    X, y = [], []
+    page_of = {r.id: r.page for r in rows}
+    X, y, ids = [], [], []
     for k in range(FOLDS):
         fold = {r.id for r in labelled if r.page % FOLDS == k}
         if not fold:
@@ -335,16 +340,25 @@ def label(rows: list[Row], facts: dict[str, list[Fact]], lexicon: Lexicon,
         for rid, (x, _, _) in feats.items():
             X.append(x)
             y.append(lab[rid])
+            ids.append(rid)
 
     feats, t = featurize(rows, facts, lexicon, {r.id for r in unlabelled}, ctx)
     if not unlabelled:
         return [], t
     Xu = np.asarray([feats[r.id][0] for r in unlabelled], dtype=float)
     if len(set(y)) >= 2:
-        model = HistGradientBoostingClassifier(max_iter=MODEL["iter"], learning_rate=MODEL["lr"],
-                                               max_leaf_nodes=MODEL["leaves"], l2_regularization=1.0,
-                                               min_samples_leaf=MODEL["min_leaf"], random_state=0)
-        model.fit(np.asarray(X, dtype=float), np.asarray(y))
+        X, y = np.asarray(X, dtype=float), np.asarray(y)
+        if STACK:
+            # second pass: lies cluster by page, so add how suspicious the OTHER rows of the
+            # row's page look to the first pass. Training rows' page-mates are in the same
+            # fold (folds go by page), so their first-pass scores are out-of-fold too.
+            groups = np.asarray([page_of[i] % FOLDS for i in ids])
+            p1 = _oof_pfalse(X, y, groups)
+            pu = _pfalse(_model().fit(X, y), Xu)
+            score = {**dict(zip(ids, p1)), **{r.id: p for r, p in zip(unlabelled, pu)}}
+            X = np.hstack([X, _page_scores(ids, page_of, score)])
+            Xu = np.hstack([Xu, _page_scores([r.id for r in unlabelled], page_of, score)])
+        model = _model().fit(X, y)
         proba = model.predict_proba(Xu)
         classes = list(model.classes_)
     else:
@@ -369,6 +383,73 @@ def label(rows: list[Row], facts: dict[str, list[Fact]], lexicon: Lexicon,
             conf = max(pt, pf) / max(1e-9, pt + pf)
             out.append(Verdict(r.id, lab, float(min(1.0, max(0.5, conf))), why, details))
     return out, t
+
+
+def _model():
+    from sklearn.ensemble import HistGradientBoostingClassifier
+    base = HistGradientBoostingClassifier(max_iter=MODEL["iter"], learning_rate=MODEL["lr"],
+                                          max_leaf_nodes=MODEL["leaves"], l2_regularization=1.0,
+                                          min_samples_leaf=MODEL["min_leaf"], random_state=0)
+    return Bagged(base, BAGS) if BAGS > 1 else base
+
+
+class Bagged:
+    """The average of models trained on bootstrap resamples: steadier on ~1,500 rows."""
+
+    def __init__(self, base, n):
+        self.base, self.n = base, n
+
+    def fit(self, X, y):
+        from sklearn.base import clone
+        rng = np.random.default_rng(0)
+        self.classes_ = np.unique(y)
+        self.models = []
+        for _ in range(self.n):
+            idx = rng.integers(0, len(y), len(y))
+            if len(np.unique(y[idx])) < len(self.classes_):
+                idx = np.arange(len(y))
+            self.models.append(clone(self.base).fit(X[idx], y[idx]))
+        return self
+
+    def predict_proba(self, X):
+        out = np.zeros((len(X), len(self.classes_)))
+        for m in self.models:
+            p = m.predict_proba(X)
+            for j, c in enumerate(m.classes_):
+                out[:, list(self.classes_).index(c)] += p[:, j]
+        return out / len(self.models)
+
+
+def _pfalse(model, X) -> np.ndarray:
+    p = model.predict_proba(X)
+    c = list(model.classes_)
+    pt = p[:, c.index("true")] if "true" in c else 0
+    pf = p[:, c.index("false")] if "false" in c else 0
+    return pf / np.maximum(1e-9, pt + pf)
+
+
+def _oof_pfalse(X, y, groups) -> np.ndarray:
+    out = np.zeros(len(y))
+    for g in np.unique(groups):
+        tr, te = groups != g, groups == g
+        if len(set(y[tr])) < 2:
+            out[te] = 1 - PRIOR_TRUE
+            continue
+        out[te] = _pfalse(_model().fit(X[tr], y[tr]), X[te])
+    return out
+
+
+def _page_scores(ids, page_of, score) -> np.ndarray:
+    """Mean and max first-pass P(false) of the other rows on each row's page."""
+    by_page = defaultdict(list)
+    for rid, s in score.items():
+        by_page[page_of[rid]].append((rid, s))
+    out = []
+    for rid in ids:
+        others = [s for r2, s in by_page[page_of[rid]] if r2 != rid]
+        out.append([float(np.mean(others)) if others else -1.0, max(others) if others else -1.0,
+                    float(sum(s > 0.5 for s in others))])
+    return np.asarray(out)
 
 
 def _why(label: str, worst: str, details: list[dict]) -> str:
