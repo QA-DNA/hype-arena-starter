@@ -1,12 +1,16 @@
 """V12: MMR-style 'count independent evidence, not rows' features on top of V9/V11 (imports v9.py, which imports exp.py).
 Only the fact feature matrix changes; LR, stage 2, isotonic, self-training and threshold search are V11lr-self1's.
 Run: python v12.py            # base + copy-lie + copy-control, full report on stdout (see README for runtime)
-     python v12.py base|lie|control   # one scenario (lie/control set KB_COPY before exp.py loads)
+     python v12.py base|lie|control|mixed   # one scenario (sets KB_COPY before exp.py loads)
+     python v12.py hlie|hctrl <seed>        # tell-free scenario, one R10 split
 Stress scenarios append synthetic hidden copies to the rows (copies.py); see REPORT_v12.md."""
 import os, sys, json, subprocess, time
 SCEN = sys.argv[1] if len(sys.argv) > 1 else 'all'
+SEED = int(sys.argv[2]) if len(sys.argv) > 2 else None  # hlie / hctrl: the R10 seed whose hidden pages get copies
 if SCEN in ('lie', 'control', 'mixed'):
     os.environ['KB_COPY'] = SCEN
+elif SCEN in ('hlie', 'hctrl'):
+    os.environ['KB_COPY'] = f'{SCEN}:{SEED}'
 import v9 as V9M
 from v9 import *  # noqa  (ROWS, PAGE, Y, OBS, NP, FIDX, CHOSEN, CHOSEN_C, fmt, metrics ...)
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -104,7 +108,8 @@ def splits_orig(regime):
 def run12(name, regime):
     mode, build = VAR[name]; fn = build()
     ms, cms, pseudo = [], 0, []
-    for lo in splits_orig(regime):
+    for n, lo in enumerate(splits_orig(regime)):
+        if SEED is not None and n != SEED: continue  # hlie / hctrl: copies are built for one split only
         lab = np.zeros(NP, bool); lab[:NP_ORIG] = lo
         assert not lab[PAGE[COPY]].any() and (lab[:NP_ORIG] == lo).all() and not lab[NP_ORIG:].any()  # original split, padded False
         PSEUDO.clear()
@@ -123,10 +128,21 @@ def run12(name, regime):
 def scenario(names, regs):
     per = {}
     if SCEN != 'base':
-        nf = int((Y[~COPY] == 'false').sum()); nsrc = 2 * (nf // 2) if SCEN == 'mixed' else nf
+        nf = int((Y[~COPY] == 'false').sum()); nsrc = int(COPY.sum()) // 3
         assert COPY.sum() == 3 * nsrc and (Y[COPY] == '').all()
-        what = {'lie': 'false', 'control': 'sampled true', 'mixed': 'rows (half false, half true; post-hoc scenario)'}[SCEN]
-        print(f'## scenario {SCEN}: {COPY.sum()} copies = 3 x {nsrc} {what}, {len(ROWS)} rows total', flush=True)
+        if SCEN in ('lie', 'control'): assert nsrc == nf
+        if SCEN == 'mixed': assert nsrc == 2 * (nf // 2)
+        what = {'lie': 'false rows', 'control': 'sampled true rows', 'mixed': 'rows (half false, half true)',
+                'hlie': 'hidden false rows of this split', 'hctrl': 'sampled hidden true rows of this split'}[SCEN]
+        tag = {'lie': 'TELL-CONFOUNDED', 'control': 'TELL-CONFOUNDED', 'mixed': 'post-hoc, still carries a tell',
+               'hlie': 'tell-free', 'hctrl': 'tell-free'}[SCEN]
+        if SCEN in ('hlie', 'hctrl'):  # sources must be hidden-page rows of exactly this split, labelled by class
+            lab0 = list(splits_orig('R10'))[SEED]; byid = {r['id']: r for r in ROWS if not r.get('copy')}
+            srcs = {r['id'].split('-', 1)[1] for r in ROWS if r.get('copy')}
+            assert all(not lab0[byid[s]['page']] for s in srcs)  # no labelled row has a copy
+            assert {byid[s]['label'] for s in srcs} == ({'false'} if SCEN == 'hlie' else {'true'})
+            assert nsrc == sum(1 for r in byid.values() if r['label'] == 'false' and not lab0[r['page']])
+        print(f'## scenario {SCEN}{"" if SEED is None else ":%d" % SEED} [{tag}]: {COPY.sum()} copies = 3 x {nsrc} {what}, {len(ROWS)} rows total', flush=True)
     for nm in names:
         for reg in regs:
             CHOSEN.clear(); CHOSEN_C.clear(); m, ps = run12(nm, reg); per[f'{nm}|{reg}'] = ps
@@ -137,64 +153,86 @@ def scenario(names, regs):
 
 HDR = ('| variant | regime | acc | macroF1 | false-rec | false-prec | unsure-rec | non-unsure cov | ECE | Brier |\n'
        '|---|---|---|---|---|---|---|---|---|---|')
+T_CUT = {10: 2.26, 5: 2.78}
 MET = (('brier', 'Brier', -1), ('fprec', 'false-prec', 1), ('frec', 'false-rec', 1), ('acc', 'acc', 1))
 
 
 def paired(a, b, label):
     """a, b: per-split metric dicts. Delta = b - a. wins = splits where b is better (Brier: lower)."""
     print(f'\n{label}')
-    print('| metric | mean delta | sd of delta | se | wins/total | exceeds noise (abs(mean) > 2 se) |\n|---|---|---|---|---|---|')
+    print('| metric | mean delta | sd of delta | se | wins/total | exceeds noise (abs(t) > t-cutoff 2.26 for n=10, 2.78 for n=5; many comparisons, uncorrected) |\n|---|---|---|---|---|---|')
     for k, nm, sgn in MET:
         d = np.array([y[k] - x[k] for x, y in zip(a, b)]); n = len(d)
-        se = d.std(ddof=1) / math.sqrt(n)
+        se = d.std(ddof=1) / math.sqrt(n); tc = T_CUT[n]
         print(f'| {nm} | {d.mean():+.4f} | {d.std(ddof=1):.4f} | {se:.4f} | {int((sgn * d > 0).sum())}/{n} | '
-              f'{"yes" if abs(d.mean()) > 2 * se else "no"} |')
+              f'{"yes" if abs(d.mean()) > tc * se else "no"} |')
 
+
+VARS_H = ['V9lr', 'V11lr-self1', 'V12mmr', 'V12mmr-replace']
+HEADER = """# results_v12.txt: V12 (independent-evidence features) vs V11lr-self1. Generated by `python v12.py`.
+# Deviations from the pre-declared spec:
+#  - MMR discounting is also applied to the ANCHOR pools (ac, ai), not only to votes (the spec listed four masses, two of them anchors; this is that, stated explicitly).
+#  - V12mmr-replace removes sum(vs), sum(vd), len(vs), len(vd) and adds all four masses (two of them anchor masses); the raw anchor features stay.
+# Scenario labels: lie, control = TELL-CONFOUNDED (every false / sampled-true row is copied, including rows on labelled pages, so in
+#   training a duplicate means a class); mixed = post-hoc and still carries a tell (50% false among copied rows vs 8.6% elsewhere).
+#   hlie, hctrl = TELL-FREE (copies only of rows on pages hidden in that R10 split) and are the headline stress test.
+# Noise: paired t cutoffs 2.26 (n=10) and 2.78 (n=5); many comparisons are made, no multiplicity correction; 5 folds / 10 seeds share rows.
+"""
+SC = ('lie', 'control', 'mixed', 'hlie', 'hctrl')
+SCL = {'base': 'clean', 'lie': 'lie (confounded)', 'control': 'control (confounded)', 'mixed': 'mixed (tell)', 'hlie': 'hlie (tell-free)', 'hctrl': 'hctrl (tell-free)'}
 
 if __name__ == '__main__':
     if SCEN == 'base':
         print('JSON:' + json.dumps(scenario(list(VAR), ('R80', 'R10'))))
     elif SCEN in ('lie', 'control', 'mixed'):
         print('JSON:' + json.dumps(scenario(['V11lr-self1', 'V12mmr', 'V12mmr-replace'], ('R10',))))
+    elif SCEN in ('hlie', 'hctrl'):
+        print('JSON:' + json.dumps(scenario(VARS_H, ('R10',))))
     else:
         t0 = time.time(); out = {}
-        for s in ('base', 'lie', 'control', 'mixed'):
-            p = subprocess.run([sys.executable, __file__, s], capture_output=True, text=True, check=True)
+        def sub(*a):
+            p = subprocess.run([sys.executable, __file__, *a], capture_output=True, text=True, check=True)
             ls = p.stdout.splitlines()
-            out[s] = json.loads([l for l in ls if l.startswith('JSON:')][0][5:])
-            if s == 'base': print(HDR)
-            print('\n'.join(l for l in ls if not l.startswith('JSON:')), flush=True)
+            return json.loads([l for l in ls if l.startswith('JSON:')][0][5:]), [l for l in ls if not l.startswith('JSON:')]
+        print(HEADER + HDR)
+        for s in ('base', 'lie', 'control', 'mixed'):
+            out[s], body = sub(s); print('\n'.join(body), flush=True)
+        for s in ('hlie', 'hctrl'):
+            out[s] = {}
+            for seed in range(10):
+                r, body = sub(s, str(seed))
+                print('\n'.join(body), flush=True)
+                for k, ps in r.items(): out[s].setdefault(k, []).extend(ps)
         for reg in ('R80', 'R10'):
             for nm in ('V9lr', 'V12pages', 'V12mmr', 'V12mmr-replace'):
                 paired(out['base']['V11lr-self1|' + reg], out['base'][nm + '|' + reg],
                        f'### Paired {nm} vs V11lr-self1, {reg} (delta = {nm} minus V11)')
-        print('\n### Stress (R10, original hidden rows only): mean over 10 splits; in brackets the change vs the same variant on baseline')
-        print('| variant | scenario | acc | macroF1 | false-rec | false-prec | unsure-rec | cov | ECE | Brier |\n|---|---|---|---|---|---|---|---|---|---|')
         keys = ('acc', 'mf1', 'frec', 'fprec', 'urec', 'cov', 'ece', 'brier')
         mean = lambda ps, k: float(np.mean([p[k] for p in ps]))
-        for nm in ('V11lr-self1', 'V12mmr', 'V12mmr-replace'):
+        print('\n### Stress (R10, original hidden rows only): mean over 10 splits; in brackets the change vs the same variant on clean')
+        print('| variant | scenario | acc | macroF1 | false-rec | false-prec | unsure-rec | cov | ECE | Brier |\n|---|---|---|---|---|---|---|---|---|---|')
+        for nm in VARS_H:
             b = out['base'][nm + '|R10']
-            for s in ('base', 'lie', 'control', 'mixed'):
+            for s in ('base',) + SC:
+                if nm + '|R10' not in out[s]: continue
                 ps = out[s][nm + '|R10']
                 cell = lambda k: f'{mean(ps, k):.3f}' + ('' if s == 'base' else f' ({mean(ps, k) - mean(b, k):+.3f})')
-                print(f'| {nm} | {s} | ' + ' | '.join(cell(k) for k in keys) + ' |')
-        print('\n### Degradation vs clean, per variant (R10, paired per split, original hidden rows; delta = scenario minus clean)')
-        print('| variant | scenario | metric | mean | sd | k/n degraded |\n|---|---|---|---|---|---|')
-        dg = {}
-        for nm in ('V11lr-self1', 'V12mmr', 'V12mmr-replace'):
-            for s in ('lie', 'control', 'mixed'):
-                for k, mn, sgn in (('frec', 'false-rec', 1), ('fprec', 'false-prec', 1), ('brier', 'Brier', -1), ('acc', 'acc', 1)):
+                print(f'| {nm} | {SCL[s]} | ' + ' | '.join(cell(k) for k in keys) + ' |')
+        print('\n### Degradation vs clean (R10, paired per split, original hidden rows; delta = scenario minus clean; k/n = splits where it got worse)')
+        print('| variant | scenario | metric | mean | sd | k/n worse |\n|---|---|---|---|---|---|')
+        dg = {}; MK = (('frec', 'false-rec', 1), ('fprec', 'false-prec', 1), ('brier', 'Brier', -1), ('acc', 'acc', 1))
+        for s in SC:
+            for nm in VARS_H:
+                if nm + '|R10' not in out[s]: continue
+                for k, mn, sgn in MK:
                     d = np.array([a[k] - b[k] for a, b in zip(out[s][nm + '|R10'], out['base'][nm + '|R10'])]); dg[nm, s, k] = d
-                    print(f'| {nm} | {s} | {mn} | {d.mean():+.4f} | {d.std(ddof=1):.4f} | {int((sgn * d < 0).sum())}/10 |')
-        print('\n### Difference of degradations, V12 minus V11 (positive false-rec/false-prec/acc = V12 degrades less; Brier negative = V12 degrades less)')
-        print('| variant | scenario | metric | mean | sd | k/10 V12 degrades less |\n|---|---|---|---|---|---|')
-        for nm in ('V12mmr', 'V12mmr-replace'):
-            for s in ('lie', 'control', 'mixed'):
-                for k, mn, sgn in (('frec', 'false-rec', 1), ('fprec', 'false-prec', 1), ('brier', 'Brier', -1), ('acc', 'acc', 1)):
-                    d = dg[nm, s, k] - dg['V11lr-self1', s, k]
-                    print(f'| {nm} | {s} | {mn} | {d.mean():+.4f} | {d.std(ddof=1):.4f} | {int((sgn * d > 0).sum())}/10 |')
-        print('\n### Stress, paired vs V11lr-self1 within each scenario (R10, delta = variant minus V11)')
-        for s in ('base', 'lie', 'control', 'mixed'):
-            for nm in ('V12mmr', 'V12mmr-replace'):
-                paired(out[s]['V11lr-self1|R10'], out[s][nm + '|R10'], f'#### {nm} vs V11lr-self1, scenario {s}')
+                    print(f'| {nm} | {SCL[s]} | {mn} | {d.mean():+.4f} | {d.std(ddof=1):.4f} | {int((sgn * d < 0).sum())}/10 |')
+        print('\n### Degradation of V9lr / V12 minus degradation of V11lr-self1 (paired per split; false-rec/false-prec/acc positive = degrades LESS than V11, Brier negative = degrades less; k/10 = splits where it degrades less; t = mean/se, cutoff 2.26)')
+        print('| variant | scenario | metric | mean | sd | k/10 degrades less | t | beyond noise |\n|---|---|---|---|---|---|---|---|')
+        for s in SC:
+            for nm in ('V9lr', 'V12mmr', 'V12mmr-replace'):
+                if (nm, s, 'frec') not in dg: continue
+                for k, mn, sgn in MK:
+                    d = dg[nm, s, k] - dg['V11lr-self1', s, k]; t = d.mean() / (d.std(ddof=1) / math.sqrt(10))
+                    print(f'| {nm} | {SCL[s]} | {mn} | {d.mean():+.4f} | {d.std(ddof=1):.4f} | {int((sgn * d > 0).sum())}/10 | {t:+.2f} | {"yes" if abs(t) > 2.26 else "no"} |')
         print(f'\nwall-clock {time.time() - t0:.0f} s')

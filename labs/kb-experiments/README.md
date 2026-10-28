@@ -33,7 +33,7 @@ cd labs/kb-experiments
 ../../.venv-kb/bin/python exp.py            # everything, about 1 to 2 minutes
 ../../.venv-kb/bin/python exp.py V0 V5      # a subset
 ../../.venv-kb/bin/python v9.py             # V9 to V11, about 80 seconds
-../../.venv-kb/bin/python v12.py            # V12 + stress test, about 40 seconds; v12.py base|lie|control|mixed for one scenario
+../../.venv-kb/bin/python v12.py            # V12 + stress test, about 80 seconds; v12.py base|lie|control|mixed or hlie|hctrl <seed> for one scenario
 PYTHONPATH=. ../../.venv-kb/bin/python diagnostics/cat.py   # diagnostics import exp.py and v9.py
 ```
 
