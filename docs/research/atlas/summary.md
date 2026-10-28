@@ -5,7 +5,7 @@ that turns normalized propositions into row labels and 1,000 true claims. Normal
 of scope (a teammate builds it). Implementation target: Rust; Python only for labs and tests.
 Interactive version with filters by step and verdict:
 <https://claude.ai/artifact/NJFDojtSqqVys7a6pCCfeN> (private until shared from its Share menu).
-Experiment code: [`labs/kb-experiments/`](../../labs/kb-experiments/README.md).
+Experiment code: [`labs/kb-experiments/`](../../../labs/kb-experiments/README.md).
 
 ## Where everything is
 
