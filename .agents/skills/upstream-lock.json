@@ -1,0 +1,88 @@
+{
+  "installed_on": "2026-10-28",
+  "scope": "project",
+  "skills": [
+    {
+      "name": "docker-build-strategies",
+      "repository": "docker/skills",
+      "commit": "179c9cfd04c89ae50cd5d5d68b939797a8fd03d3",
+      "path": "skills/docker-build-strategies",
+      "files": {
+        "SKILL.md": "7ff24758ebacdf2b3010f75ec3fe4b6692661ca6202e813520b37d3975392b1c",
+        "agents/openai.yaml": "9fc985ee4a18fefaf4e50e078f3469f80f60713ae87698303a2a9d95f3b91176",
+        "assets/Dockerfile.go": "04a56fd7b3617dbf83cc177532f216e999112c59e5e2f66f7fdde9c219eccdd7",
+        "assets/Dockerfile.nodejs": "0758d34aaba0879fc88fc7e4f1a9716b23af0b7ef0aee7c394498e67871266eb",
+        "assets/Dockerfile.python": "c3f4c4d3f0ee27f6dbe5022db721daf641a569d34ae017d0999b251f00d0a78b",
+        "assets/dockerignore-example": "c6a9a826899d82de2203ae47821bb08eb878b5370ac3cb92013f1ab9259bd500",
+        "checks/verification.md": "71e6e6f55d5754304e8e04281d5e6dec2ad8ba36d0460f716c3c4b4d18457d19",
+        "references/layer-caching.md": "bacaf379622bd018e5aa2c0b20ff9ae94fcf9b8640ff7b75f2b4b8b17b6f25c7",
+        "references/multi-stage-builds.md": "0faf45c4ce1582ab78ce15b5e918ca57d783bb261e9e97d7d807115c5b46a337",
+        "scripts/verify-build.sh": "d52633ba734587b1a0513366a4e13f771edff538492c42df8020d74d2ba7532b",
+        "skill.yaml": "ada7a02bd259603e0b6850e642d258a01f7b6db016c5fa3543a280b2ad6be8ad",
+        "UPSTREAM-LICENSE": "3bb33f65872155f0801efc9f6732e2868eb338c5ed6a81eec5c775c1382761cb"
+      }
+    },
+    {
+      "name": "property-based-testing",
+      "repository": "trailofbits/skills",
+      "commit": "bf23bfb21f10a2a4b0406086d690dc8cb1b3ccf3",
+      "path": "plugins/property-based-testing/skills/property-based-testing",
+      "files": {
+        "README.md": "ffbe30eec09cc64fb1eae836b07ca1d82939bda3f1e6f0dceadcdd78793a3112",
+        "SKILL.md": "9448cacb65c6237a7c22dc59602667177ecae405524079ae9ff92240590b995a",
+        "UPSTREAM-LICENSE": "7abe19ec9bb73b36141b999b861d24ad855e808bafe0f81e84cce28556f6c297",
+        "agents/openai.yaml": "51d635deefa254d8cdf6dc56450851b6ec9545cd37f88a4eb4035cf3f2262fff",
+        "assets/trail-of-bits-mark.svg": "4bf74c789b38dcf6ad762c136b6832363d27ae19fbaa9a18ec18d66ecce6ca05",
+        "references/generating.md": "c0e72dfc89babe3c32de718b81b94044362c85e776d7475e950dfeaab78bb58e",
+        "references/interpreting-failures.md": "dbae7db8773712ba03268a3d56ea5aa6720af0650a5189580bfd88aa2edc3f9a",
+        "references/libraries.md": "f7218acf8e668130ef3048983472579d04e12030c5401926f666363e5f69c686",
+        "references/refactoring.md": "6eb5c206f575704791f089608bb06e41d6eed91b9d3c7fb27912f969aed07a18",
+        "references/reviewing.md": "110b08118a1e7b1a2566def6e9d2a0bf43fc2deefce857d2ce3b4382b07bc774"
+      }
+    },
+    {
+      "name": "python-performance-optimization",
+      "repository": "wshobson/agents",
+      "commit": "0874a27b17a22e2b7c2e2bcd725768e0803cad06",
+      "path": "plugins/python-development/skills/python-performance-optimization",
+      "files": {
+        "SKILL.md": "807aa725cc2b46b4d68a11a52e5b345be0449e80b7f4b60c32bfd2c35345afb5",
+        "references/advanced-patterns.md": "dc1bca8a377572ba1583316b8288af0e5ca2d2be864dc33889b2d3b1ee5c2abf",
+        "references/details.md": "8643031fabcbaf555ae1b4e702f1b5159689a31a4b286280d4df2822c9731281",
+        "UPSTREAM-LICENSE": "f89abb55d9f073f38f1703e4518f0613c788c6174be7f13b8dfe48a1c076c746"
+      }
+    },
+    {
+      "name": "python-testing-patterns",
+      "repository": "wshobson/agents",
+      "commit": "0874a27b17a22e2b7c2e2bcd725768e0803cad06",
+      "path": "plugins/python-development/skills/python-testing-patterns",
+      "files": {
+        "SKILL.md": "a1020718f31629c2a5b20731cad1804dbb81b18800495c5cebdf16e6cac9c175",
+        "references/advanced-patterns.md": "f560ee8b3cffc0fe971e78269bed21dc74f541c2056eae58d34259d9e537176a",
+        "references/details.md": "baaa88e2997d960c19f981248b9e3e850e36e2cdf4d97b50297f5d9764826349",
+        "UPSTREAM-LICENSE": "f89abb55d9f073f38f1703e4518f0613c788c6174be7f13b8dfe48a1c076c746"
+      }
+    },
+    {
+      "name": "scikit-learn",
+      "repository": "K-Dense-AI/scientific-agent-skills",
+      "commit": "5f2bc0341354fd5590aef76a533ada1e1e5b4e62",
+      "path": "skills/scikit-learn",
+      "files": {
+        "SKILL.md": "a1765797d072ab40094522abe68fb04505d0881f66b7dfceeb8582422dbe488d",
+        "references/common_workflows.md": "dfe19c80358acb5f418a21cea4de3b7e83733481441f3c76d0a2ead4420261de",
+        "references/core_capabilities.md": "c869d9c207fcfc345207d397021a289f3820492ddf0fcd0b3a56a336bd0e1453",
+        "references/model_evaluation.md": "e6f581c0ce2abffaac2f0bafc1a7bfbe86ec18f8969c6e9b91cc732a12a5fea5",
+        "references/pipelines_and_composition.md": "a1810cd67dc9141d962fa1972e11b06be6bd437213e10a563e5ec4256fb274a9",
+        "references/preprocessing.md": "098506f0ca83e57d0c7cccd166164d025552ad7310b79d1010f5ff34e1cc4818",
+        "references/quick_reference.md": "5401b75fdaa10bf393b024f3c559631011c7be233d2313da37a3f27d7389659a",
+        "references/supervised_learning.md": "d4e5911d175c3a349dd42e33c984b05cdafce230f264b6774996d0eeef36608a",
+        "references/unsupervised_learning.md": "cb476ef499fe35ee2c0416fdc31abad42384ac0110f6d3932901e99b039ae1b1",
+        "scripts/classification_pipeline.py": "46abbb2b11095147cc31314405910b211c313d142f2480599f8508d47e5809f3",
+        "scripts/clustering_analysis.py": "5d1f962a70e049907a39a75cd7a130000a5d3e3de5a4fa4889d07f007c052a17",
+        "UPSTREAM-LICENSE.md": "09b02a3c9df3053c55531d503357a9c7cde275970e6c3ceaa1ddf5f0e90b40c1"
+      }
+    }
+  ]
+}
