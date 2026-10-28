@@ -1,4 +1,6 @@
-//! Shared workspace metadata. Challenge implementation belongs to a future task.
+//! Shared workspace metadata and offline text preprocessing.
+
+pub mod extraction;
 
 use serde::Serialize;
 

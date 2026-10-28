@@ -1,7 +1,8 @@
 # Architecture and implementation boundaries
 
 Status: FOUNDATION IMPLEMENTED. Workspace metadata, a CLI status command, API,
-local workbench and xtask exist. The reasoning/evidence pipeline below remains planned.
+local workbench and xtask exist. Offline lexicon normalization and assertion-text
+splitting now live in core; typed values, truth reasoning and evidence evaluation remain planned.
 
 ## Competition profile
 
@@ -20,7 +21,7 @@ flowchart LR
 
 | Boundary | Responsibility | Must not depend on |
 | --- | --- | --- |
-| crates/core | Workspace metadata; reserved for future evidence and reasoning | HTTP, browser, CUDA |
+| crates/core | Workspace metadata, lexicon normalization and assertion-text splitting | HTTP, browser, CUDA |
 | crates/cli | File input/output, deadline, process exit behavior | HTTP server availability |
 | crates/api | Request validation, job limits, responses, local assets | A separate implementation of reasoning |
 | apps/web | Input controls, architecture diagram, results and provenance | External CDN availability |
@@ -58,3 +59,17 @@ competition profile, the present build, or the foundation acceptance gate.
   GPU tests run only on designated compatible hardware; all ordinary checks still run on CPU.
 
 See [the CPU decision](decisions/0001-cpu-first.md) and [native rules](../native/AGENTS.md).
+
+## Text preprocessing
+
+The [assertion extraction lab](../labs/assertion-extraction/README.md) calls the same
+Rust core used by `veridyct normalize`, `split`, and `parse`. `lexicon compile` creates
+a versioned alias index. The core accepts no labels or practice forms, and returns
+structured records with separate subject, attribute, assertion wording, spans and
+unresolved reasons. CLI adapters own CSV serialization and parent-row metadata.
+
+The combined path passes in-memory objects directly between normalization and splitting.
+It performs no typed-value interpretation or truth classification. Evaluation may
+load a new index built from the runtime lexicon. The solver remains unavailable.
+See the [scope decision](../labs/assertion-extraction/DECISION.md) and
+[handoff](handoffs/assertion-pipeline.md).

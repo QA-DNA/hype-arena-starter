@@ -1,0 +1,223 @@
+{
+  "price": [
+    "costs?",
+    "priced? at",
+    "[€$£]\\s*[0-9][0-9,.]*(?:\\s*(?:per|a|/)\\s*(?:month|mo|week|day))?"
+  ],
+  "annual_price": [
+    "[€$£]\\s*[0-9][0-9,.]*\\s*(?:per|a|/)\\s*(?:year|yr)",
+    "yearly price",
+    "annual billing"
+  ],
+  "free_trial": [
+    "(?:free |[0-9]+[- ]day )?trial",
+    "free for"
+  ],
+  "included_seats": [
+    "(?:includes? |with )?[0-9,]+ seats?"
+  ],
+  "minimum_seats": [
+    "(?:minimum|at least|starts at) [0-9,]+ seats?"
+  ],
+  "maximum_seats": [
+    "(?:maximum|up to|at most) [0-9,]+ seats?",
+    "(?:reach|admits) [0-9,]+ seats?"
+  ],
+  "uptime_sla": [
+    "(?:uptime )?(?:sla|promise|guarantee)",
+    "contractual floor"
+  ],
+  "uptime_last_quarter": [
+    "(?:uptime|availability) last quarter",
+    "last quarter.*?was up",
+    "last quarter.*?uptime"
+  ],
+  "launched": [
+    "launched?",
+    "has been open since",
+    "went live",
+    "available since"
+  ],
+  "joined": [
+    "joined",
+    "started at",
+    "starts at"
+  ],
+  "previous_employer": [
+    "previous employer",
+    "arrived from",
+    "previously worked at"
+  ],
+  "reliability_lead": [
+    "reliability team answers to",
+    "reliability lead"
+  ],
+  "offline_editing": [
+    "(?:work|works|working) offline",
+    "offline editing"
+  ],
+  "version": [
+    "v[0-9]+(?:\\.[0-9]+)*",
+    "version [0-9]+(?:\\.[0-9]+)*",
+    "[0-9]+\\.[0-9]+(?:\\.[0-9]+)?(?: ships| is here| rewrites|$)"
+  ],
+  "cli_version": [
+    "cli [0-9]+(?:\\.[0-9]+)*"
+  ],
+  "api_version": [
+    "api v?[0-9]+(?:\\.[0-9]+)*",
+    "version [0-9]+ of the interface"
+  ],
+  "official_sdks": [
+    "sdks?"
+  ],
+  "webhook_events": [
+    "webhook events?",
+    "sends? [0-9,]+ events?"
+  ],
+  "integrations": [
+    "integrations?"
+  ],
+  "programming_languages": [
+    "(?:code in |programming )?(?:[0-9,]+ )?languages"
+  ],
+  "suggestion_acceptance_rate": [
+    "accept [0-9.]+% of (?:its )?suggestions",
+    "suggestion acceptance"
+  ],
+  "general_availability_date": [
+    "generally available from"
+  ],
+  "beta_date": [
+    "beta opens",
+    "beta opened"
+  ],
+  "active_users": [
+    "[0-9,]+ users(?: a month)?"
+  ],
+  "monthly_active_users": [
+    "[0-9,]+ (?:monthly active )?users a month",
+    "monthly active users"
+  ],
+  "simultaneous_editors": [
+    "[0-9,]+ editors at the same time",
+    "simultaneous editors"
+  ],
+  "free_storage": [
+    "free storage",
+    "free tier"
+  ],
+  "paying_customers": [
+    "paying customers",
+    "paid customers"
+  ],
+  "advertising_share": [
+    "advertising shares?",
+    "ad shares?",
+    "ads"
+  ],
+  "browser_market_share": [
+    "browser market share",
+    "market share"
+  ],
+  "share_of_devices": [
+    "share of devices",
+    "device share"
+  ],
+  "team_size": [
+    "team of",
+    "crew of",
+    "[0-9,]+ engineers"
+  ],
+  "median_time_to_recover": [
+    "median (?:time to recover|recovery)"
+  ],
+  "median_response_time": [
+    "median response time",
+    "(?:responds|answers) in (?:under |over )?(?:[0-9.]+|a|an) (?:ms|seconds?|minutes?)"
+  ],
+  "battery_life": [
+    "battery lasts",
+    "lasts [0-9,]+ (?:hours|days)"
+  ],
+  "screen_size": [
+    "screen size",
+    "[0-9.]+[- ]inch (?:screen|display)"
+  ],
+  "battery_capacity": [
+    "[0-9,]+ mah"
+  ],
+  "weight": [
+    "weighs?"
+  ],
+  "soc2_certified": [
+    "soc ?2 certified",
+    "passed (?:its )?soc ?2 audit"
+  ],
+  "end_to_end_encryption": [
+    "end[- ]to[- ]end encrypt(?:ion|ed)"
+  ],
+  "storage_per_user": [
+    "storage per user",
+    "[0-9,.]+ (?:gb|tb) per user"
+  ],
+  "support_first_response": [
+    "first response",
+    "support responds"
+  ],
+  "refund_window": [
+    "refund window",
+    "refund within"
+  ],
+  "price_per_user": [
+    "[€$£]\\s*[0-9,.]+ per user",
+    "price per user"
+  ],
+  "ticket_price": [
+    "tickets? (?:cost|are|is)",
+    "ticket price"
+  ],
+  "annual_recurring_revenue": [
+    "arr",
+    "annual recurring revenue"
+  ],
+  "net_promoter_score": [
+    "nps",
+    "net promoter score"
+  ],
+  "headquarters": [
+    "headquartered in",
+    "headquarters"
+  ],
+  "released": [
+    "released",
+    "went on sale"
+  ],
+  "staff": [
+    "staff",
+    "[0-9,]+ employees"
+  ],
+  "opened": [
+    "opened",
+    "opens"
+  ],
+  "founded": [
+    "founded in",
+    "founded on"
+  ],
+  "founders": [
+    "founded by",
+    "founders?"
+  ],
+  "ceo": [
+    "ceo",
+    "chief executive"
+  ],
+  "cto": [
+    "cto",
+    "chief technology officer"
+  ],
+  "extra_seat_price": [
+    "(?:each )?(?:further|extra|additional) seat.*?[€$£]\\s*[0-9,.]+(?:\\s*(?:a|per)\\s*month)?"
+  ]
+}

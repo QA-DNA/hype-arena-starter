@@ -1,6 +1,7 @@
 # CLI and competition runtime scope
 
-Read [root instructions](../../AGENTS.md). `info` works. `run` exits 2
+Read [root instructions](../../AGENTS.md). `info` and the offline `lexicon compile`, `normalize`, `split`, and `parse`
+preprocessing commands work. `run` exits 2
 because the competition solver is not implemented; preserve that honest boundary.
 
 - Call the shared core; do not implement a second reasoning pipeline here.

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "status": "curated-foundation",
+  "status": "curated-foundation-and-preprocessing",
   "automatic_code_index": false,
   "verified_starter_commit": "7c32449d878efde84aa1f38ce179778d1e2c4a48",
   "nodes": [
@@ -16,6 +16,8 @@
     {"id": "module:api", "kind": "module", "status": "foundation", "path": "crates/api/Cargo.toml"},
     {"id": "module:web", "kind": "module", "status": "foundation", "path": "apps/web/index.html"},
     {"id": "module:tooling", "kind": "module", "status": "implemented", "path": "xtask/Cargo.toml"},
+    {"id": "module:extraction", "kind": "module", "status": "implemented", "path": "crates/core/src/extraction/mod.rs"},
+    {"id": "decision:assertion-text", "kind": "decision", "status": "written", "path": "labs/assertion-extraction/DECISION.md"},
     {"id": "module:reasoning", "kind": "module", "status": "planned", "path": "docs/architecture.md"},
     {"id": "module:native", "kind": "module", "status": "deferred", "path": "native/AGENTS.md"},
     {"id": "scope:qa", "kind": "rules", "status": "written", "path": "tests/AGENTS.md"}
@@ -28,6 +30,8 @@
     {"from": "module:core", "relation": "governed_by", "to": "rules:root", "source": "crates/core/AGENTS.md"},
     {"from": "module:core", "relation": "constrained_by", "to": "contract:runtime", "source": "crates/core/AGENTS.md"},
     {"from": "module:cli", "relation": "depends_on", "to": "module:core", "source": "docs/architecture.md"},
+    {"from": "module:cli", "relation": "calls", "to": "module:extraction", "source": "docs/architecture.md"},
+    {"from": "module:extraction", "relation": "follows", "to": "decision:assertion-text", "source": "labs/assertion-extraction/DECISION.md"},
     {"from": "module:api", "relation": "depends_on", "to": "module:core", "source": "docs/architecture.md"},
     {"from": "module:web", "relation": "calls", "to": "module:api", "source": "docs/architecture.md"},
     {"from": "module:native", "relation": "constrained_by", "to": "decision:cpu", "source": "native/AGENTS.md"},

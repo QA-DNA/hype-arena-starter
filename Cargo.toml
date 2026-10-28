@@ -17,6 +17,7 @@ axum = "0.8"
 tokio = { version = "1", features = ["macros", "rt-multi-thread", "net", "signal"] }
 regex = "1"
 sha2 = "0.10"
+csv = "1.3"
 
 [workspace.lints.rust]
 unsafe_code = "forbid"

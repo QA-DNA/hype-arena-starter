@@ -6,9 +6,9 @@ Mihai. The canonical repository is https://github.com/teodorbalan/VERIDYCT.
 ## Current state and authority
 
 - The Rust workspace, CLI status command, HTTP workbench, xtask tooling, dev container,
-  and CI configuration exist. Data processing, the solver and claim generator do not.
-  The user explicitly requested workspace preparation only. Do not begin challenge
-  implementation unless a subsequent task requests it.
+  and CI configuration exist, along with the user-authorized lexicon normalization
+  and assertion-text CSV pipeline. Typed-value interpretation, the solver and claim
+  generator remain unimplemented; begin those only when a subsequent task requests them.
 - Follow the user's current authorized task. A proposed design is not an instruction
   to implement every component, install tools, publish changes, or deploy services.
 - Read the applicable scoped AGENTS.md before editing a directory.

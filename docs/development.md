@@ -107,3 +107,12 @@ strict microbenchmark gate. Generated snapshots and run outputs belong in ignore
 - Docker unavailable in doctor: native development still works; start Docker for image checks.
 - Organizer checksum mismatch: inspect the diff and upstream revision; do not blindly accept it.
 - Old UI after editing: stop and restart cargo xtask dev so assets are recompiled.
+
+## Assertion text preprocessing
+
+Build the offline CSV tools with `cargo build --locked --release -p veridyct-cli`.
+`target/release/veridyct --help` lists `lexicon compile`, `normalize`, `split`, and
+`parse`. These call core and do not implement the competition solver. The
+[assertion extraction lab](../labs/assertion-extraction/README.md) documents exact
+commands, columns and the practice output. Its optional pair diagnostic uses Python 3
+standard library; no Python runtime is required by the Rust executable.

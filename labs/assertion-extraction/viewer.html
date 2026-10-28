@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Assertion review · VERIDYCT</title>
+  <style>/* VIEWER_STYLE */</style>
+</head>
+<body>
+  <header class="masthead">
+    <div><p class="eyebrow">VERIDYCT / LABS</p><h1>Assertion review</h1><p class="subtitle">Follow each practice row from its original text to the extracted fragments.</p></div>
+    <span class="tag neutral">Local · read only</span>
+  </header>
+  <section id="metrics" class="metrics" aria-label="Dataset overview"></section>
+  <div class="workspace">
+    <aside class="sidebar" aria-label="Find a row">
+      <h2>Practice rows</h2>
+      <label for="search">Search ID, text, subject or attribute</label>
+      <input id="search" type="search" placeholder="Try p-1834 or Hooly Cloud" autocomplete="off">
+      <label for="status-filter">Extraction status</label>
+      <select id="status-filter"><option value="">All statuses</option><option value="split">Fully paired</option><option value="partial">Partly paired</option><option value="unresolved">Unresolved</option></select>
+      <label for="comparison-filter">Compare with practice pairs</label>
+      <select id="comparison-filter"><option value="">All rows</option><option value="mismatch">Pair mismatches</option><option value="match">Pairs match</option></select>
+      <div class="list-heading"><span id="result-count" aria-live="polite"></span><button id="reset" class="text-button">Reset</button></div>
+      <nav id="row-list" aria-label="Rows"></nav>
+      <div class="pagination"><button id="page-prev" aria-label="Previous page">←</button><span id="page-label"></span><button id="page-next" aria-label="Next page">→</button></div>
+    </aside>
+    <main id="detail" tabindex="-1">
+      <div class="detail-top"><div><p class="eyebrow">ROW INSPECTOR</p><h2 id="row-id"></h2><p id="row-meta" class="muted"></p></div><div class="row-navigation"><button id="previous">← Previous</button><button id="next">Next →</button></div></div>
+      <div class="examples">Examples: <button data-example="p-5">Simple split</button><button data-example="p-1834">Multiple subjects</button><button data-example="p-843">Unresolved list</button></div>
+      <div id="row-summary" class="summary" aria-live="polite"></div>
+      <div class="text-columns">
+        <section class="card"><h3>1. Original text</h3><p id="original-text" class="source-text"></p></section>
+        <section class="card"><div class="section-heading"><h3>2. Normalized text</h3><span id="normalization-status" class="small muted"></span></div><p id="normalized-text" class="source-text"></p></section>
+      </div>
+      <p id="highlight-help" class="small muted">Select an extracted fragment below to highlight its source.</p>
+      <div id="normalization-issues"></div>
+      <section class="card extraction"><div class="section-heading"><h3>3. Parser output</h3><span id="fragment-count" class="small muted"></span></div><p class="small muted">Subject, attribute and assertion wording are separate fields. Click the assertion text to inspect it.</p><div class="table-scroll"><table><thead><tr><th>Subject</th><th>Attribute</th><th>Assertion text</th><th>Pair check</th></tr></thead><tbody id="extracted-body"></tbody></table></div><div id="fragment-detail" class="fragment-detail" hidden></div></section>
+      <section class="card reference"><div class="section-heading"><h3>4. Practice annotations</h3><span class="tag neutral">Reference only</span></div><p class="small muted">These come from the practice <code>form</code>, not the parser. Pair matching checks subject + attribute and preserves duplicates; it does not verify the assertion wording or value.</p><div class="table-scroll"><table><thead><tr><th>Subject</th><th>Attribute</th><th>Annotated value</th><th>Pair check</th></tr></thead><tbody id="reference-body"></tbody></table></div></section>
+      <p class="footnote">“Fully paired” means the parser assigned a pair to every emitted fragment. It does not guarantee correct or complete extraction. The source truth label belongs to the whole input row.</p>
+    </main>
+  </div>
+  <footer><details><summary>Source files and snapshot</summary><div id="provenance"></div><p>To see newly generated CSV results, rebuild or restart this viewer.</p></details></footer>
+  <script id="viewer-data" type="application/json">/* VIEWER_DATA */</script>
+  <script>/* VIEWER_CODE */</script>
+</body>
+</html>

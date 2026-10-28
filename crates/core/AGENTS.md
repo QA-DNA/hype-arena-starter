@@ -1,7 +1,7 @@
 # Core scope
 
-Read [root instructions](../../AGENTS.md). Only workspace metadata exists;
-the evidence model and reasoning engine are future work.
+Read [root instructions](../../AGENTS.md). Workspace metadata and lexicon-based text preprocessing exist;
+the typed evidence model and reasoning engine remain future work.
 
 - Own typed domain data and reusable computation. CLI, HTTP, and UI depend on core,
   while core must remain independent of those adapters and of CUDA.
