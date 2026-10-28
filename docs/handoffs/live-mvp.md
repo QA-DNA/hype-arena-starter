@@ -46,9 +46,11 @@ needed for this path. Docker Desktop was already running on the laptop.
 - Real Chrome flow passed Run, upload, inspect, claims, download and malformed input;
   untrusted HTML stays text. Desktop 1440 px and mobile 390 px have no horizontal
   overflow or JavaScript errors. Screenshots retained in ignored `artifacts/web-qa/`.
-- Final container stress run: 20,000 rows, 18,103 unknown, 4.373 seconds application
-  time, 803,789-byte output, 1,000 claims, about 117.3 MiB cgroup peak memory, no OOM.
+- Final container stress run: 20,000 rows, 18,103 unknown, 4.442 seconds application
+  time, 803,789-byte output, 1,000 claims, about 118.5 MiB cgroup peak memory, no OOM.
   The synthetic near-template input measures throughput, not correctness.
+- Expired deadline and invalid date return exit 2 with no output. Actual UID is
+  10001; `/app` is not writable and `/tmp` is writable.
 
 The local image uses about 120 MB, below the 3 GiB ceiling. Competition runtime has
 network disabled; the separate web container publishes only the laptop's loopback
@@ -65,7 +67,8 @@ holdout informed tuning and is not an independent final evaluation.
 Mihai's actual alias matcher is ported from commit `4478b99`. Details and reproducible
 diagnostics are in [engine handoff](mvp-engine.md). Generation assumptions are in
 [claims handoff](mvp-claims.md); independent checks in
-[contract review](mvp-contract-review.md); browser checks in [web handoff](mvp-web.md).
+[contract review](mvp-contract-review.md); browser checks in [web handoff](mvp-web.md);
+full runtime restrictions and measurement in [Docker QA](mvp-docker-qa.md).
 Model scores and generated-claim confidence are estimates. Schema/provenance checks
 do not prove every hidden temporal truth or every private referee grammar rule.
 

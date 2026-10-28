@@ -101,6 +101,8 @@ not prove claim grammar or semantic truth; practice scores include familiar trai
 rows. The web Run button and the CLI use the same core implementation.
 
 The reproducible CPU benchmark and diagnostic holdout are available with
+`powershell -NoProfile -ExecutionPolicy Bypass -File tools/benchmark-arena.ps1`
+(built Docker image required) and
 `cargo run --release -p veridyct-core --example evaluate`. Record source SHA and run
 under the 2 CPU / 6 GiB container limits when comparing timings. The
 `tools/validate_claims.py` diagnostic reads an HTTP job snapshot and uses Python's
