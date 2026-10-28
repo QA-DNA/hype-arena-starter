@@ -32,6 +32,7 @@ from .model import Fact, Row, Verdict, value_key
 FOLDS = 5
 CLASSES = ["true", "false", "unsure"]
 PRIOR_TRUE = 0.83
+FALSE_CUTOFF = 0.6  # call a row false only when P(false | true or false) is above this (5-fold CV)
 STATUS = ["agrees", "stale", "premature", "invented", "unknown"]
 
 HEDGE_RE = re.compile(r"\b(?:i have been told|i've been told|i hear|i heard|reportedly|rumou?r|apparently|word is|"
@@ -60,11 +61,33 @@ def fact_status(t: truth_mod.Truth, f: Fact, row: Row) -> tuple[str, dict]:
     ms = t.mentions.get(key, [])
     others = [m for m in ms if m.row != row.id]
     info = {"n_other": len(others), "same_any": 0, "same_near": 0, "diff_near": 0,
-            "anchor_true_same": 0, "anchor_false_same": 0, "anchor_true_near_same": 0, "gap_days": 999}
+            "anchor_true_same": 0, "anchor_false_same": 0, "anchor_true_near_same": 0, "gap_days": 999,
+            "prev_same": -1, "next_same": -1, "top_value": 0, "n_values": 0, "w_same_near": 0.0, "w_diff_near": 0.0,
+            "anchor_false_near_diff": 0}
     if not others:
         return "unknown", info
     k = value_key({kk: vv for kk, vv in f.value.items() if kk != "op"})
     d = row.date
+    dd = _days(d)
+    before = [m for m in others if m.date < d]
+    after = [m for m in others if m.date > d]
+    if before:
+        info["prev_same"] = float(max(before, key=lambda m: m.date).key == k)
+    if after:
+        info["next_same"] = float(min(after, key=lambda m: m.date).key == k)
+    counts = defaultdict(float)
+    for m in others:
+        counts[m.key] += 1
+    info["n_values"] = len(counts)
+    info["top_value"] = float(max(counts, key=counts.get) == k)
+    for m in others:
+        if abs(_days(m.date) - dd) <= 60:
+            w = m.weight if m.anchor == 0 else 3.0
+            if m.key == k:
+                info["w_same_near"] += w if m.anchor >= 0 else -3.0
+            else:
+                info["w_diff_near"] += w if m.anchor >= 0 else 0.0
+                info["anchor_false_near_diff"] += m.anchor < 0
     for m in others:
         same = m.key == k
         near = abs(_days(m.date) - _days(d)) <= 30
@@ -95,6 +118,18 @@ def fact_status(t: truth_mod.Truth, f: Fact, row: Row) -> tuple[str, dict]:
         return "unknown", info
     if held == k:
         return "agrees", info
+    # a wrong value or a wrong extraction? a lie keeps the fact's unit and lands near its
+    # value; a value given to the wrong attribute usually doesn't
+    import json
+    hv, rv = json.loads(held), json.loads(k)
+    info["unit_match"] = float(hv.get("kind") == rv.get("kind") and hv.get("unit") == rv.get("unit")
+                               and hv.get("currency") == rv.get("currency") and hv.get("per") == rv.get("per"))
+    a, b = hv.get("value"), rv.get("value")
+    if isinstance(a, (int, float)) and isinstance(b, (int, float)) and not isinstance(a, bool):
+        info["rel_diff"] = abs(a - b) / max(abs(a), abs(b), 1e-9)
+    info["elsewhere"] = float(any(m2.key == k for (s2, a2), ms2 in t.mentions.items()
+                                  if s2 == f.subject and a2 != f.attribute for m2 in ms2))
+    info["score"] = f.score
     dates_with = [x for x, v in od.items() if v == k]
     if not dates_with:
         return "invented", info
@@ -130,7 +165,9 @@ def row_features(r: Row, fs: list[Fact], t: truth_mod.Truth, page_info: dict) ->
         for k, v in info.items():
             agg["sum_" + k] += v
     wi = worst_info or {"n_other": 0, "same_any": 0, "same_near": 0, "diff_near": 0, "anchor_true_same": 0,
-                        "anchor_false_same": 0, "anchor_true_near_same": 0, "gap_days": 999}
+                        "anchor_false_same": 0, "anchor_true_near_same": 0, "gap_days": 999, "prev_same": -1,
+                        "next_same": -1, "top_value": 0, "n_values": 0, "w_same_near": 0.0, "w_diff_near": 0.0,
+                        "anchor_false_near_diff": 0}
     n = len(fs)
     text = r.text
     sp = SPEAKER_RE.match(text)
@@ -150,6 +187,10 @@ def row_features(r: Row, fs: list[Fact], t: truth_mod.Truth, page_info: dict) ->
         float("?" in text), float("!" in text), len(text), _days(r.date) - _days("2025-10-01"),
         sum(any(f.value.get("kind") == k for f in fs) for k in ("boolean",)),
         float(any("op" in f.value and f.value["op"] != "eq" for f in fs)),
+        wi["prev_same"], wi["next_same"], wi["top_value"], wi["n_values"], wi["w_same_near"], wi["w_diff_near"],
+        wi["anchor_false_near_diff"], agg["sum_same_any"] / n if n else 0, agg["sum_diff_near"] / n if n else 0,
+        page_info.get("twin", -1),
+        wi.get("unit_match", -1), wi.get("rel_diff", -1), wi.get("elsewhere", -1), wi.get("score", -1),
     ]
     return x, details, worst
 
@@ -157,8 +198,11 @@ def row_features(r: Row, fs: list[Fact], t: truth_mod.Truth, page_info: dict) ->
 def _page_info(rows: list[Row], t: truth_mod.Truth, facts: dict[str, list[Fact]], hide: set[str]) -> dict[str, dict]:
     """Per row: its page's trust without the row itself, and the page's labels."""
     by_page = defaultdict(list)
+    twins = defaultdict(list)  # the same sentence elsewhere, already labelled
     for r in rows:
         by_page[r.page].append(r)
+        if r.label:
+            twins[_norm(r.text)].append((r.id, r.label))
     out = {}
     for p, rs in by_page.items():
         agree_n = []
@@ -177,7 +221,14 @@ def _page_info(rows: list[Row], t: truth_mod.Truth, facts: dict[str, list[Fact]]
                 "size": len(rs),
                 "false_labels": lab.count("false"), "true_labels": lab.count("true"), "unsure_labels": lab.count("unsure"),
             }
+            tw = [l for rid, l in twins.get(_norm(r.text), []) if rid != r.id]
+            if tw:
+                out[r.id]["twin"] = {"true": 1.0, "false": 0.0, "unsure": 0.5}[tw[0]]
     return out
+
+
+def _norm(text: str) -> str:
+    return " ".join(re.sub(r"[^\w%€$£.]+", " ", text.lower()).split()).rstrip(". ")
 
 
 def featurize(rows: list[Row], facts: dict[str, list[Fact]], lexicon: Lexicon, targets: set[str]):
@@ -234,6 +285,9 @@ def label(rows: list[Row], facts: dict[str, list[Fact]], lexicon: Lexicon,
         x, details, worst = feats[r.id]
         i = int(np.argmax(p))
         lab = classes[i]
+        if lab != "unsure" and "false" in classes and "true" in classes:
+            pt, pf = p[classes.index("true")], p[classes.index("false")]
+            lab = "false" if pf / max(1e-9, pt + pf) > FALSE_CUTOFF else "true"
         why = _why(lab, worst, details)
         if lab == "unsure":
             out.append(Verdict(r.id, "unsure", None, why, details))

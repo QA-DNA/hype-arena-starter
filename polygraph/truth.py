@@ -22,11 +22,14 @@ from .kb import KB
 from .lexicon import Lexicon
 from .model import Fact, Row, Step, same_value, value_key
 
-SWITCH = 1.6  # cost of a change of value between two dates
-ANCHOR = 6.0  # weight of a labelled row
+import os
+
+# tuned by scripts/eval_labels.py; POLY_* environment variables override them for experiments
+SWITCH = float(os.environ.get("POLY_SWITCH", 1.6))  # cost of a change of value between two dates
+ANCHOR = float(os.environ.get("POLY_ANCHOR", 6.0))  # weight of a labelled row
 PRIOR_TRUST = 0.85  # share of true rows in practice
-TRUST_PSEUDO = 3.0  # pseudo-count pulling small pages to the prior
-ROUNDS = 3
+TRUST_PSEUDO = float(os.environ.get("POLY_PSEUDO", 3.0))  # pseudo-count pulling small pages to the prior
+ROUNDS = int(os.environ.get("POLY_ROUNDS", 3))
 
 
 @dataclass

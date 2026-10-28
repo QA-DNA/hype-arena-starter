@@ -40,13 +40,44 @@ class Bundle:
 
 
 def run(rows: list[Row], lexicon: Lexicon, bundle: Bundle, *, claims: bool = True,
-        gold_extraction: bool = False) -> Result:
+        gold_extraction: bool = False, cache: str | Path | None = None) -> Result:
     """Label every unlabelled row and write the claims.
 
     gold_extraction: use the practice forms as the extraction of unlabelled rows too
     (eval only): measures the truth engine alone, as if extraction were perfect.
+    cache: (eval only) a pickle file holding the extraction stages' output, so experiments
+    on the truth engine and judge skip the slow extraction.
     """
     stages: list[dict] = []
+    if cache and Path(cache).exists():
+        import pickle
+        facts, extracted = pickle.loads(Path(cache).read_bytes())
+        stages.append({"name": "attributor", "ms": 0.0, "count": sum(map(len, facts.values()))})
+    else:
+        facts, extracted = _extract(rows, lexicon, bundle, gold_extraction, stages)
+        if cache:
+            import pickle
+            Path(cache).parent.mkdir(parents=True, exist_ok=True)
+            Path(cache).write_bytes(pickle.dumps((facts, extracted)))
+
+    t = time.perf_counter()
+    truth.TIMER["ms"] = 0.0
+    verdicts, fitted = judge.label(rows, facts, lexicon, extracted)
+    kb = fitted.kb
+    total = (time.perf_counter() - t) * 1000
+    stages.append({"name": "truth", "ms": round(truth.TIMER["ms"], 1), "count": len(kb.timelines)})
+    stages.append({"name": "judge", "ms": round(total - truth.TIMER["ms"], 1), "count": len(verdicts)})
+
+    t = time.perf_counter()
+    out_claims = forge.generate(kb, {normalize_text(r.text) for r in rows}) if claims else []
+    stages.append({"name": "forge", "ms": round((time.perf_counter() - t) * 1000, 1), "count": len(out_claims)})
+
+    return Result(verdicts, out_claims, kb, facts, stages)
+
+
+def _extract(rows, lexicon, bundle, gold_extraction, stages):
+    """Linker, reader and attributor: every row's facts, plus the out-of-fold extraction of
+    the labelled rows (see judge.label)."""
 
     def stage(name, t0, count):
         stages.append({"name": name, "ms": round((time.perf_counter() - t0) * 1000, 1), "count": count})
@@ -91,20 +122,7 @@ def run(rows: list[Row], lexicon: Lexicon, bundle: Bundle, *, claims: bool = Tru
                 for r, fs in zip(te, att_k.assign_many([(r, values[r.id], mentions[r.id]) for r in te])):
                     extracted[r.id] = fs
     stage("attributor", t, sum(map(len, facts.values())))
-
-    t = time.perf_counter()
-    truth.TIMER["ms"] = 0.0
-    verdicts, fitted = judge.label(rows, facts, lexicon, extracted)
-    kb = fitted.kb
-    total = (time.perf_counter() - t) * 1000
-    stages.append({"name": "truth", "ms": round(truth.TIMER["ms"], 1), "count": len(kb.timelines)})
-    stages.append({"name": "judge", "ms": round(total - truth.TIMER["ms"], 1), "count": len(verdicts)})
-
-    t = time.perf_counter()
-    out_claims = forge.generate(kb, {normalize_text(r.text) for r in rows}) if claims else []
-    stage("forge", t, len(out_claims))
-
-    return Result(verdicts, out_claims, kb, facts, stages)
+    return facts, extracted
 
 
 def link_pages(linker: Linker, rows: list[Row]) -> dict:
