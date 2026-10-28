@@ -26,12 +26,15 @@ test('practice snapshot matches the Rust diagnostic and supports filters', async
   const practice = parseCsv(await readFile(new URL('../../../data/practice.csv', import.meta.url), 'utf8'));
   const assertions = parseCsv(await readFile(new URL('../outputs/practice.assertions.csv', import.meta.url), 'utf8'));
   const model = createViewerModel(practice, assertions);
-  assert.deepEqual(model.counts, { rows: 1897, paired: 593, unresolved: 2046, exact: 363 });
+  const report = JSON.parse(await readFile(new URL('../outputs/practice.report.json', import.meta.url), 'utf8'));
+  assert.equal(model.counts.rows, report.metrics.rows);
+  assert.equal(model.counts.paired, report.metrics.predicted);
+  assert.equal(model.counts.exact, report.metrics.exact_pair_rows);
   assert.equal(model.rows.find(r => r.id === 'p-1834').fragments.length, 8);
   assert.equal(model.rows.find(r => r.id === 'p-843').missing, 4);
-  assert.equal(filterViewerRows(model.rows, { comparison: 'match' }).length, 363);
+  assert.equal(filterViewerRows(model.rows, { comparison: 'match' }).length, report.metrics.exact_pair_rows);
   assert.equal(filterViewerRows(model.rows, { query: 'p-1834' }).length, 1);
-  assert.equal(filterViewerRows(model.rows, { status: 'unresolved' }).length, 1376);
+  assert.equal(filterViewerRows(model.rows, { status: 'unresolved' }).length, report.row_statuses.unresolved);
   const changed = structuredClone(assertions); changed[0].original_text += '!';
   assert.throws(() => createViewerModel(practice, changed), /Stale/);
 });

@@ -3,6 +3,9 @@ const model = payload.model;
 const $ = id => document.getElementById(id);
 const statusNames = { split: 'Fully paired', partial: 'Partly paired', unresolved: 'Unresolved' };
 const reasonNames = {
+  unaligned_list: 'The parser kept this list together because its subject mapping is not established.',
+  ambiguous_preceding_subject: 'Several preceding subjects fit this fragment; no subject was selected.',
+  complexity_limit: 'This row exceeds the bounded grammar budget; original wording is retained.',
   subject_not_identified: 'The parser could not identify a subject in this fragment.',
   attribute_not_identified: 'A subject was found, but no supported attribute cue was found.',
   multiple_attributes_in_fragment: 'Several attributes were detected, but the parser could not safely split this fragment.',
@@ -96,8 +99,25 @@ function inspect(row, fragment) {
   $('fragment-detail').hidden = !activeFragment; $('fragment-detail').replaceChildren();
   if (!activeFragment) return;
   $('fragment-detail').append(el('strong', fragment.occurrence_id), el('p', fragment.status === 'unresolved' ? reasonNames[fragment.reason] || fragment.reason : fragment.comparison === 'match' ? 'This subject–attribute occurrence appears in the practice annotations. Check the highlighted assertion wording yourself; value correctness is not compared.' : 'This subject–attribute occurrence has no remaining match in the practice annotations. It may be a parser error or a difference in annotation scope.'));
+  if (fragment.subject_origin === 'preceding_row') {
+    $('fragment-detail').append(el('p', `Subject inherited from preceding context: ${fragment.subject}. This is a language reference, not evidence that the claim is true.`));
+  }
+  for (const ref of fragment.evidence || []) {
+    if (ref.row_id === row.id) continue;
+    const source = model.rows.find(r => r.id === ref.row_id);
+    if (!source) continue;
+    const line = el('p'), link = el('button', `Open ${ref.row_id}`, 'fragment-button');
+    link.addEventListener('click', () => { $('reset').click(); selectRow(ref.row_id, true); });
+    const wording = textSegments(source.text, [ref.span]).filter(s => s.highlight).map(s => s.text).join('');
+    line.append(link, document.createTextNode(` — ${ref.role}: “${wording}”`)); $('fragment-detail').append(line);
+  }
+  for (const q of fragment.qualifiers || []) {
+    $('fragment-detail').append(el('p', `${q.kind}: ${q.text} (${q.origin})`));
+  }
+  if (fragment.subjectCandidates?.length > 1) $('fragment-detail').append(el('p', `Candidate subjects: ${fragment.subjectCandidates.join(', ')}`));
+  if (fragment.group_id) $('fragment-detail').append(el('p', `Unresolved ordered group: ${fragment.orderedMembers.length} members. Their subject mapping is not established.`));
   const details = el('details'), summary = el('summary', 'Rule and source offsets');
-  details.append(summary, el('pre', JSON.stringify({ rule: fragment.rule, reason: fragment.reason || null, original_byte_spans: fragment.sourceSpans, subject_byte_span: fragment.subjectSpan, normalized_byte_span: fragment.normalizedSpan }, null, 2))); $('fragment-detail').append(details);
+  details.append(summary, el('pre', JSON.stringify({ rule: fragment.rule, reason: fragment.reason || null, original_byte_spans: fragment.sourceSpans, subject_byte_span: fragment.subjectSpan, normalized_byte_span: fragment.normalizedSpan, subject_origin: fragment.subject_origin, evidence: fragment.evidence, qualifiers: fragment.qualifiers }, null, 2))); $('fragment-detail').append(details);
 }
 for (const id of ['search', 'status-filter', 'comparison-filter']) $(id).addEventListener(id === 'search' ? 'input' : 'change', applyFilters);
 $('reset').addEventListener('click', () => { $('search').value = ''; $('status-filter').value = ''; $('comparison-filter').value = ''; selectedId = null; applyFilters(); });

@@ -41,6 +41,6 @@ fn run() -> Result<(), Box<dyn Error>> {
 
 fn help() {
     println!(
-        "VERIDYCT · evidence before verdict\n\n  info             Workspace status as JSON\n  run              Reserved for the future competition solver\n  lexicon compile  --input lexicon.json --output index.json [--aliases reviewed.json]\n  normalize        --index index.json --input rows.csv --output normalized.csv\n  split            --index index.json --input normalized.csv --output assertions.csv [--summary rows.csv]\n  parse            --index index.json --input rows.csv --output assertions.csv [--summary rows.csv]\n\nPreprocessing keeps assertion text, not typed values or truth verdicts.\n"
+        "VERIDYCT · evidence before verdict\n\n  info             Workspace status as JSON\n  run              Reserved for the future competition solver\n  lexicon compile  --input lexicon.json --output index.json [--aliases reviewed.json]\n  normalize        --index index.json --input rows.csv --output normalized.csv\n  split            --index index.json --input normalized.csv --output assertions.csv [--summary rows.csv] [--context previous|off]\n  parse            --index index.json --input rows.csv --output assertions.csv [--summary rows.csv] [--context previous|off]\n\nPreprocessing keeps assertion text, not typed values or truth verdicts.\n"
     );
 }

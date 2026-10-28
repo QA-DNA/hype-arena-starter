@@ -1,15 +1,29 @@
 # Assertion extraction lab
 
+[How the parser works](HOW-IT-WORKS.md) explains the algorithms, data structures,
+matching rules, context state and library choices in the implemented v2 parser.
+
 To inspect the existing results in a browser, run
 `node labs/assertion-extraction/serve-viewer.mjs` and open `http://127.0.0.1:8791`.
 The [simple review viewer](VIEWER.md) shows original/normalized text, extracted
 columns, unresolved reasons, source highlights and separate practice annotations.
 
+The [manual output review](MANUAL-REVIEW-2026-10-28.md) examines 47 practice rows,
+including useful splits, incorrect pairings, detached context and justified abstentions,
+and assesses what must improve before the output can reliably feed a knowledge base.
+
+The [context and version improvement plan](IMPROVEMENT-PLAN-2026-10-28.md) builds on
+that review with nearby-row subject resolution, version/time/population scope,
+attachment fixes, optional non-LLM models, and evaluation/resource budgets. It is a
+forward plan; the implemented subset and measured results are documented in the
+[v2 implementation review](V2-RESULTS-2026-10-28.md).
+
 Offline Rust preprocessing: canonicalize entity mentions, then split supported prose
 into **subject**, **attribute**, and **assertion_text** fields. Values remain wording:
 `serves over 100 customers` is not converted into a quantity or a truth verdict.
 
-The core returns `NormalizedRow`, `ParsedRow`, and `AssertionText` objects. The combined
+The core returns `NormalizedRow`, `ParsedRow`, and `AssertionText` objects. `DocumentExtractor` adds
+bounded context over an ordered stream; `Splitter` remains available for row-local use. The combined
 command passes objects directly between stages. No display sentence is constructed
 and then parsed. CSV is an input/output adapter, not the internal data model.
 
@@ -43,7 +57,9 @@ Input is comma-delimited UTF-8 CSV with `id,text,date`. `label` is optional. A `
 column and other extra columns are ignored, never consulted for extraction. Columns
 are matched by name. Quoted commas, quotes and embedded newlines are supported.
 Empty dates are retained, not interpreted. IDs must be nonempty and unique. Individual
-text cells are limited to 1 MiB after CSV decoding. Input records are processed one at
+text cells are limited to 1 MiB after CSV decoding. More than 4,096 mention candidates
+returns an error; rows over 64 KiB of normalized text or 256 mentions are retained as
+unresolved with `complexity_limit` rather than subjected to clause parsing. Input records are processed one at
 a time; the adapter retains a set of IDs to reject duplicates. It uses one thread.
 
 Failures return exit code 2 and diagnostics on stderr. CSV files are written to sibling
@@ -52,6 +68,29 @@ fails. Input, index, aliases and output paths must differ. Each output is atomic
 the assertion file and optional summary are not a multi-file transaction. Filesystem
 rename rules apply (on Windows, remove an old generated destination before rerunning
 if the filesystem refuses replacement).
+
+## Context and schema v2
+
+`parse` and `split` default to `--context previous`; `--context off` disables preceding
+rows for ablation or unordered input. Each command starts fresh state. Equal page dates
+permit candidate context; date changes reset it. The core retains at most 64 explicit
+mention topics from eight preceding rows, with separate person/product compatibility.
+Only explicit mentions refresh their age; pronoun chains do not keep themselves alive.
+A unique compatible subject is required. Adjacency and equal dates are hypotheses,
+not verified page membership. Original source references identify inherited subjects.
+
+Schema version 2 adds the following columns: `schema_version`, `input_ordinal`,
+`context_boundary`, `subject_origin`, `evidence_json`, `qualifiers_json`,
+`subject_candidates_json`, `group_id`, and `ordered_members_json`. Evidence references
+carry their own row ID and original UTF-8 byte offsets. The old subject-span columns
+are blank for cross-row subjects. Qualifiers preserve version, time, population,
+condition, bounds, negation and billing wording; they are not interpreted values.
+Ordered unaligned lists remain one unresolved group.
+
+Recompile lexicon indexes and rerun normalization when upgrading from v1. Old persisted
+indexes/normalization records are rejected explicitly; they are not silently read as
+v2. Combined and staged paths share the same context behavior and produce identical
+outputs when given the same row order and context option.
 
 ## Output fields
 
@@ -93,8 +132,9 @@ are retained. It does not globally lowercase or strip punctuation from the input
 Aliases with multiple canonical candidates remain unresolved. The ordinary-word
 aliases `Search`, `Maps`, `Photos`, `Translate`, `Chrome`, `Android`, `outage`, and
 `devices division` are conservatively left unchanged and recorded as ambiguous,
-including capitalized occurrences. Full canonical names and longer specific aliases
-still work. This deliberately sacrifices some recall; case alone is not disambiguation.
+unless a supported product predicate and clause position disambiguate them. Counted
+ordinary nouns are ignored. Full canonical names and longer specific aliases
+still work. This still sacrifices some recall; case alone is not disambiguation.
 Short names absent from the lexicon, such as bare `Cloud` or `Docs`, are not invented.
 
 Optional reviewed additions are a JSON array supplied to `lexicon compile --aliases`:
@@ -121,13 +161,14 @@ Rules preserve phrases such as `over 100`, negation within a single claim, decim
 numbers, versions, billing wording and date commas. Unsupported coordination, shared
 negation, conditions, missing subjects, ambiguous attribute matches and unaligned lists
 stay unresolved. A compound fragment with multiple attribute cues is retained until a
-supported split exists. Subject inheritance is limited to recognized predicate/count
-prefixes within a sentence, not arbitrary following clauses or neighboring rows.
+supported split exists. Within-row inheritance follows supported predicate/count prefixes; `DocumentExtractor`
+also resolves eligible omissions against bounded preceding context.
 
-This is a conservative **first baseline**, not a general English parser. Entity objects
-versus subjects, implicit names, relative clauses, quotations, ranges, shorthand and
-many paraphrases still need work. No practice ID/text lookup, cross-row context,
-LLM/SLM, model weights, network calls, typed-value parser, or truth evaluator is used.
+This is a deterministic, rule-based NLP parser, not a general English parser. It now
+uses predicate roles, protected date appositions, explicit versions and selected relative
+clauses. Quotations, shorthand, complex relations, ranges and many paraphrases still
+need work. No practice ID/text lookup, LLM/SLM, model weights, network calls, typed-value
+interpreter or truth evaluator is used. No statistical training is claimed.
 
 ## Evaluation
 
@@ -153,7 +194,7 @@ unchanged. See the [decision](DECISION.md), [core implementation](../../crates/c
 [attribute cues](../../crates/core/src/extraction/attribute-cues.json),
 [CLI](../../crates/cli/src/preprocessing.rs), and [handoff](../../docs/handoffs/assertion-pipeline.md).
 
-## Delivered practice snapshot
+## Original v1 snapshot (historical)
 
 The initial delivery contains 1,897 input rows and 2,639 output fragments: 593 paired,
 2,046 unresolved. Row statuses: 345 split, 176 partial, 1,376 unresolved. Pair agreement
@@ -165,3 +206,17 @@ See the generated report for every mismatch and the handoff for validation detai
 A local executable was supplied at `artifacts/assertion-extraction/veridyct` for this
 working copy. It can replace `target/release/veridyct` in the commands above and runs
 without Rust installed. It is a generated local artifact, not committed source.
+
+## V2 delivery
+
+Current practice output: 901 paired fragments, 1,798 unresolved, and 597 rows with
+exact pair-multiset agreement. Pair precision/recall against forms: 98.22% / 36.84%.
+These are development diagnostics, not semantic accuracy or independent generalization.
+See the [manual v2 review](V2-RESULTS-2026-10-28.md) for successes and remaining errors,
+and the [implementation handoff](../../docs/handoffs/contextual-extraction.md) for checks.
+
+The viewer displays qualifiers and links inherited subjects to their antecedent rows.
+Regenerate it with `node labs/assertion-extraction/build-viewer.mjs` after parsing.
+The optional Linux scaling check is `python3 labs/assertion-extraction/benchmark.py
+--binary target/release/veridyct`; its repeated practice input tests throughput, not
+unseen-data accuracy. Generated benchmark inputs and outputs remain ignored.

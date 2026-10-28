@@ -1,6 +1,10 @@
 use super::{
     AssertionText, ExtractionError, LexiconIndex, Mention, NormalizedRow, ParsedRow, Span,
 };
+use super::{
+    Qualifier, SourceReference,
+    syntax::{Syntax, references},
+};
 use regex::Regex;
 use std::collections::{BTreeMap, BTreeSet};
 
@@ -18,6 +22,7 @@ pub struct Splitter {
     scope: Regex,
     percent: Regex,
     inherit_prefix: Regex,
+    syntax: Syntax,
 }
 
 impl Splitter {
@@ -49,24 +54,30 @@ impl Splitter {
                     regex::escape(&literal[..literal.len() - 1]).replace(' ', r"[\s_-]+")
                 ));
             }
-            let pattern = Regex::new(&format!(r"(?i)(?:{})\b", patterns.join("|")))
-                .map_err(|e| ExtractionError(format!("Attribute {attribute}: {e}")))?;
-            cues.push(Cue { attribute, pattern });
+            for source in patterns {
+                let pattern = Regex::new(&format!(r"(?i)(?:{source})"))
+                    .map_err(|e| ExtractionError(format!("Attribute {attribute}: {e}")))?;
+                cues.push(Cue {
+                    attribute: attribute.clone(),
+                    pattern,
+                });
+            }
         }
         let regex = |s| Regex::new(s).map_err(|e| ExtractionError(format!("Splitter rule: {e}")));
         Ok(Self {
+            syntax: Syntax::new()?,
             fingerprint: index.fingerprint.clone(),
             attributes,
             cues,
             separators: regex(
-                r"(?i);|[.!?](?:\s+|$)|,\s*|\s+\band\b\s+|\s+\bwith\b\s+|\s+\bbut\b\s+|\s+\bor\b\s+|\s+\bafter a\b\s+",
+                r"(?i);|[.!?](?:\s+|$)|,\s*|\s+\band\b\s+|\s+\bwith\b\s+|\s+\bbut\b\s+|\s+\bor\b\s+|\s+\bafter a\b\s+|\s+\bat\b\s+",
             )?,
             scope: regex(
                 r"(?i)\b(?:if|unless|either|neither|between|versus|whereas|instead|except|respectively)\b|\b(?:used to|no longer)\b|\d\s*[–—]\s*\d|\b(?:not|never|cannot|without|might|could|may)\b[^;]*\band\b|n't\b[^;]*\band\b",
             )?,
             percent: regex(r"(?i)(?:over |under |at least |up to )?\d+(?:\.\d+)?\s*%")?,
             inherit_prefix: regex(
-                r"(?i)^(?:(?:has|have|is|are|was|were|costs?|covers?|connects?|speaks?|supports?|includes?|offers?|serves?|runs?|comes?|keeps?|sends?|weighs?|lasts?|holds?|starts?|launched|opened|does|provides?|allows?|stores?|retains?)\b|[€$£0-9]|(?:a|an|or|after a)\s+[€$£0-9])",
+                r"(?i)^(?:and\s+)?(?:(?:has|have|is|are|was|were|costs?|covers?|connects?|speaks?|supports?|includes?|offers?|serves?|runs?|comes?|keeps?|sends?|weighs?|lasts?|holds?|starts?|launched|opened|does|provides?|allows?|stores?|retains?|reads?|works?|handles?|accepts?|suggests?|checks?|begins?|manages?|each|where|whose|files|at)\b|[€$£0-9]|(?:a|an|or|after a)\s+[€$£0-9])",
             )?,
         })
     }
@@ -80,7 +91,39 @@ impl Splitter {
             ));
         }
         row.validate_alignment()?;
-        let mut assertions = if let Some(result) = self.shared_subjects(&row) {
+        let mut assertions = if row.normalized_text.len() > 65_536 || row.mentions.len() > 256 {
+            vec![self.unresolved(
+                &row,
+                Span {
+                    start: 0,
+                    end: row.normalized_text.len(),
+                },
+                None,
+                "complexity_limit",
+            )]
+        } else if self.syntax.list.is_match(&row.normalized_text) {
+            let mut group = self.unresolved(
+                &row,
+                Span {
+                    start: 0,
+                    end: row.normalized_text.len(),
+                },
+                None,
+                "unaligned_list",
+            );
+            group.group_id = Some(format!("{}:g1", row.id));
+            group.ordered_members = self
+                .syntax
+                .list_member
+                .find_iter(&row.normalized_text)
+                .take(128)
+                .map(|m| Span {
+                    start: m.start(),
+                    end: m.end(),
+                })
+                .collect();
+            vec![group]
+        } else if let Some(result) = self.shared_subjects(&row) {
             result
         } else {
             self.clauses(&row)
@@ -95,6 +138,34 @@ impl Splitter {
                 None,
                 "empty_or_unsupported_text",
             ));
+        }
+        // Share explicit version context across supported coordination, but not a
+        // fresh bare product mention or a sentence boundary. Emit each version once.
+        let mut versions: BTreeMap<String, (usize, Qualifier)> = BTreeMap::new();
+        for assertion in &mut assertions {
+            if let Some(subject) = &assertion.subject {
+                if let Some(q) = assertion
+                    .qualifiers
+                    .iter()
+                    .find(|q| q.kind == "version")
+                    .cloned()
+                {
+                    versions.insert(subject.clone(), (assertion.normalized_span.end, q));
+                } else if let Some((end, q)) = versions.get(subject)
+                    && *end <= assertion.normalized_span.start
+                {
+                    let between = &row.normalized_text[*end..assertion.normalized_span.start];
+                    let fresh = row.mentions.iter().any(|m| {
+                        m.normalized_span.start >= *end
+                            && m.normalized_span.start < assertion.normalized_span.end
+                    });
+                    if !between.contains([';', '.', '!', '?']) && !fresh {
+                        let mut q = q.clone();
+                        q.origin = "same_row".into();
+                        assertion.qualifiers.push(q);
+                    }
+                }
+            }
         }
         for (i, assertion) in assertions.iter_mut().enumerate() {
             assertion.occurrence_id = format!("{}:a{}", row.id, i + 1);
@@ -111,6 +182,8 @@ impl Splitter {
             row,
             assertions,
             status: status.into(),
+            input_ordinal: None,
+            context_boundary: "row_local".into(),
         })
     }
 
@@ -243,13 +316,31 @@ impl Splitter {
                 continue;
             }
             let s = separator.as_str();
+            let venue_at = s.trim().eq_ignore_ascii_case("at")
+                && row.mentions.iter().any(|m| {
+                    m.normalized_span.start >= start
+                        && m.normalized_span.end <= span.start
+                        && self.allowed(&m.subject, "venue")
+                })
+                && text[span.end..]
+                    .chars()
+                    .next()
+                    .is_some_and(char::is_uppercase);
+            if s.trim().eq_ignore_ascii_case("at")
+                && !venue_at
+                && (!text[span.end..].starts_with(['€', '$', '£'])
+                    || !text[start..span.start].contains("available"))
+            {
+                continue;
+            }
             if s.trim().eq_ignore_ascii_case("and") || s.trim().eq_ignore_ascii_case("with") {
                 let right = text[span.end..].trim_start();
                 let explicit_right = row
                     .mentions
                     .iter()
                     .any(|m| m.normalized_span.start == span.end);
-                let independent_right = right.chars().next().is_some_and(char::is_uppercase);
+                let independent_right = right.chars().next().is_some_and(char::is_uppercase)
+                    || self.syntax.named_subject.is_match(right);
                 if !self.inherit_prefix.is_match(right) && !explicit_right && !independent_right {
                     continue;
                 }
@@ -293,7 +384,14 @@ impl Splitter {
             {
                 continue;
             }
-            if s.starts_with(',') && looks_like_date_comma(text, span.start, span.end) {
+            if s.starts_with(',')
+                && (looks_like_date_comma(text, span.start, span.end)
+                    || self.syntax.date_apposition.is_match(&text[span.end..])
+                    || self
+                        .syntax
+                        .temporal_prefix
+                        .is_match(&text[start..span.start]))
+            {
                 continue;
             }
             // Do not flatten alternatives, ranges, comparisons or conditions.
@@ -316,7 +414,7 @@ impl Splitter {
                 span.start
             };
             clauses.push((trim(text, Span { start, end }), s.to_string()));
-            start = span.end;
+            start = if venue_at { span.start + 1 } else { span.end };
         }
         clauses.push((
             trim(
@@ -355,10 +453,34 @@ impl Splitter {
                 inherited = None;
                 continue;
             }
+            let local_mentions: Vec<_> = mentions
+                .iter()
+                .map(|m| Span {
+                    start: m.normalized_span.start - span.start,
+                    end: m.normalized_span.end - span.start,
+                })
+                .collect();
             let subject = if distinct.len() == 1 {
                 mentions.first().copied()
             } else if distinct.is_empty() && self.inherit_prefix.is_match(clause) {
                 inherited
+            } else if distinct.len() > 1 && self.syntax.predicate.is_match(clause) {
+                // Schema-compatible predicate roles, not an entity cross product.
+                let candidates: Vec<_> = mentions
+                    .iter()
+                    .filter(|m| {
+                        !self
+                            .find_attributes(&m.subject, clause, &local_mentions)
+                            .is_empty()
+                    })
+                    .copied()
+                    .collect();
+                let unique: BTreeSet<_> = candidates.iter().map(|m| &m.subject).collect();
+                if unique.len() == 1 {
+                    candidates.first().copied()
+                } else {
+                    None
+                }
             } else {
                 None
             };
@@ -371,7 +493,33 @@ impl Splitter {
                         end: m.normalized_span.end - span.start,
                     })
                     .collect();
-                let attrs = self.find_attributes(&subject.subject, clause, &local_mentions);
+                let mut attrs = self.find_attributes(&subject.subject, clause, &local_mentions);
+                let version =
+                    self.syntax
+                        .version(row, subject, span)
+                        .and_then(|(mut attr, value_span)| {
+                            if attr == "version"
+                                && !self.allowed(&subject.subject, &attr)
+                                && self.allowed(&subject.subject, "stable_version")
+                            {
+                                attr = "stable_version".into();
+                            }
+                            self.allowed(&subject.subject, &attr)
+                                .then_some((attr, value_span))
+                        });
+                if let Some((attr, version_span)) = &version {
+                    attrs.remove(attr);
+                    // A version release does not establish initial product launch.
+                    attrs.remove("launched");
+                    let mut a = self.paired(row, *version_span, subject, attr, "explicit_version");
+                    a.qualifiers.push(Qualifier {
+                        kind: "version".into(),
+                        text: row.normalized_text[version_span.start..version_span.end].into(),
+                        origin: "explicit".into(),
+                        sources: references(row, *version_span, attr),
+                    });
+                    result.push(a);
+                }
                 if attrs.len() == 1 {
                     let attribute = attrs.iter().next().expect("one attribute");
                     let body = if clause.starts_with(&subject.subject) {
@@ -390,7 +538,28 @@ impl Splitter {
                     } else {
                         "explicit_subject_attribute_cue"
                     };
-                    result.push(self.paired(row, body, subject, attribute, rule));
+                    let mut a = self.paired(row, body, subject, attribute, rule);
+                    if let Some((attr, version_span)) = &version {
+                        a.qualifiers.push(Qualifier {
+                            kind: "version".into(),
+                            text: row.normalized_text[version_span.start..version_span.end].into(),
+                            origin: "explicit".into(),
+                            sources: references(row, *version_span, attr),
+                        });
+                    }
+                    result.push(a);
+                } else if version.is_some()
+                    && attrs.is_empty()
+                    && self.release_only(row, version.as_ref().unwrap().1, span)
+                {
+                    // Retain the release/time wording on the version occurrence.
+                    let a = result.last_mut().expect("version emitted");
+                    a.normalized_span.end = span.end;
+                    a.assertion_text = text[a.normalized_span.start..span.end].into();
+                    a.source_spans = row.source_spans(a.normalized_span);
+                    a.evidence
+                        .extend(references(row, a.normalized_span, "assertion"));
+                    a.qualifiers.extend(self.syntax.qualifiers(row, span));
                 } else {
                     result.push(self.unresolved(
                         row,
@@ -424,7 +593,12 @@ impl Splitter {
         result
     }
 
-    fn find_attributes(&self, subject: &str, clause: &str, mentions: &[Span]) -> BTreeSet<String> {
+    pub(super) fn find_attributes(
+        &self,
+        subject: &str,
+        clause: &str,
+        mentions: &[Span],
+    ) -> BTreeSet<String> {
         let Some(allowed) = self.attributes.get(subject) else {
             return BTreeSet::new();
         };
@@ -454,6 +628,107 @@ impl Splitter {
                 }
             }
         }
+        let lower = clause.to_lowercase();
+        for (attr, conflicts) in [
+            ("offer_acceptance", &["offers"][..]),
+            ("referral_share", &["hires"][..]),
+            ("time_to_hire", &["hires"][..]),
+        ] {
+            if matches.iter().any(|(_, a)| a == attr) {
+                matches.retain(|(_, a)| !conflicts.contains(&a.as_str()));
+            }
+        }
+        let preferred = [
+            (
+                "ad_free_price",
+                lower.contains("ad-free") && lower.contains(['€', '$', '£']),
+            ),
+            (
+                "venue",
+                lower.starts_with("at ")
+                    && clause[3..].chars().next().is_some_and(char::is_uppercase),
+            ),
+            (
+                "release_cadence",
+                lower.contains("every") && (lower.contains("weeks") || lower.contains("days")),
+            ),
+            (
+                "extra_seat_price",
+                lower.contains("seat")
+                    && ["further", "additional", "extra"]
+                        .iter()
+                        .any(|s| lower.contains(s))
+                    && lower.contains(['€', '$', '£']),
+            ),
+            (
+                "offline_area_limit",
+                lower.contains("offline") && lower.contains("area") && lower.contains("gb"),
+            ),
+            (
+                "advertising_share",
+                lower.contains("advertising") && lower.contains('%'),
+            ),
+            (
+                "beta_testers",
+                lower.contains("testers") || lower.contains("beta users"),
+            ),
+            (
+                "tab_sleep_delay",
+                lower.contains("tabs") && lower.contains("sleep") && lower.contains("min"),
+            ),
+            (
+                "suggestion_acceptance_rate",
+                lower.contains("accept") && lower.contains("suggestions") && lower.contains('%'),
+            ),
+        ];
+        let strong: BTreeSet<String> = preferred
+            .into_iter()
+            .filter(|(a, yes)| *yes && allowed.contains(*a))
+            .map(|(a, _)| a.into())
+            .collect();
+        // Resolve competing cues on the same claim, not multiple independent claims.
+        for (attribute, conflicts) in [
+            ("ad_free_price", &["ad_free_option", "price"][..]),
+            ("release_cadence", &["stable_version", "version"][..]),
+            ("extra_seat_price", &["price", "included_seats"][..]),
+            ("offline_area_limit", &["offline_maps"][..]),
+            ("advertising_share", &["revenue"][..]),
+            ("beta_testers", &["users"][..]),
+            ("tab_sleep_delay", &["memory_saver"][..]),
+            ("suggestion_acceptance_rate", &["users"][..]),
+        ] {
+            if strong.contains(attribute) {
+                matches.retain(|(_, a)| !conflicts.contains(&a.as_str()));
+            }
+        }
+        for attr in [
+            "customers",
+            "users",
+            "offers",
+            "hires",
+            "regions",
+            "employees",
+            "desks",
+            "offices",
+            "context_window",
+        ] {
+            if !lower.chars().any(|c| c.is_ascii_digit())
+                && ![
+                    "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+                    "hundred", "thousand",
+                ]
+                .iter()
+                .any(|n| lower.split_whitespace().any(|w| w == *n))
+            {
+                matches.retain(|(_, a)| a != attr);
+            }
+        }
+        if lower.contains("venue page") || lower.contains("name the venue") {
+            matches.retain(|(_, a)| a != "venue");
+        }
+        if lower.contains("trade-in") || lower.contains("trade in") {
+            matches.retain(|(_, a)| a != "price");
+        }
         // Long phrases disambiguate e.g. minimum seats vs seats, annual price vs price.
         matches
             .iter()
@@ -465,7 +740,29 @@ impl Splitter {
                 })
             })
             .map(|(_, a)| a.clone())
+            .chain(strong)
             .collect()
+    }
+
+    pub(super) fn allowed(&self, subject: &str, attribute: &str) -> bool {
+        self.attributes
+            .get(subject)
+            .is_some_and(|a| a.contains(attribute))
+    }
+
+    fn release_only(&self, row: &NormalizedRow, version: Span, clause: Span) -> bool {
+        let tail = row.normalized_text[version.end..clause.end]
+            .trim()
+            .trim_end_matches(['.', '!']);
+        matches!(
+            tail.to_lowercase().as_str(),
+            "" | "ships"
+                | "ships today"
+                | "is here"
+                | "is out"
+                | "went live this week"
+                | "ships on this date"
+        )
     }
 
     fn paired(
@@ -487,6 +784,24 @@ impl Splitter {
             status: "paired".into(),
             reason: String::new(),
             rule: rule.into(),
+            subject_origin: if subject.normalized_span.overlaps(span) {
+                "explicit"
+            } else {
+                "same_row"
+            }
+            .into(),
+            evidence: references(row, span, "assertion")
+                .into_iter()
+                .chain(std::iter::once(SourceReference {
+                    row_id: row.id.clone(),
+                    span: subject.original_span,
+                    role: "subject".into(),
+                }))
+                .collect(),
+            qualifiers: self.syntax.qualifiers(row, span),
+            subject_candidates: vec![],
+            group_id: None,
+            ordered_members: vec![],
         }
     }
 
@@ -508,6 +823,17 @@ impl Splitter {
             status: "unresolved".into(),
             reason: reason.into(),
             rule: "retain_fragment".into(),
+            subject_origin: if subject.is_some() {
+                "same_row"
+            } else {
+                "unresolved"
+            }
+            .into(),
+            evidence: references(row, span, "assertion"),
+            qualifiers: self.syntax.qualifiers(row, span),
+            subject_candidates: vec![],
+            group_id: None,
+            ordered_members: vec![],
         }
     }
 }

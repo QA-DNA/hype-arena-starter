@@ -7,7 +7,7 @@ use std::{
     path::{Path, PathBuf},
 };
 use veridyct_core::extraction::{
-    LexiconIndex, NormalizedRow, Normalizer, ParsedRow, ReviewedAlias, Splitter,
+    DocumentExtractor, LexiconIndex, NormalizedRow, Normalizer, ParsedRow, ReviewedAlias, Splitter,
 };
 
 type Result<T> = std::result::Result<T, Box<dyn Error>>;
@@ -101,6 +101,15 @@ const ASSERTION_HEADER: &[&str] = &[
     "original_text",
     "normalized_text",
     "index_fingerprint",
+    "schema_version",
+    "input_ordinal",
+    "context_boundary",
+    "subject_origin",
+    "evidence_json",
+    "qualifiers_json",
+    "subject_candidates_json",
+    "group_id",
+    "ordered_members_json",
 ];
 const SUMMARY_HEADER: &[&str] = &[
     "id",
@@ -167,7 +176,7 @@ pub fn run(args: &[String]) -> Result<()> {
     } else if command == "normalize" {
         vec!["--index", "--input", "--output"]
     } else {
-        vec!["--index", "--input", "--output", "--summary"]
+        vec!["--index", "--input", "--output", "--summary", "--context"]
     };
     if !options.len().is_multiple_of(2) {
         return Err("Every option requires a value; see --help".into());
@@ -189,7 +198,10 @@ pub fn run(args: &[String]) -> Result<()> {
     let output = Path::new(required("--output")?);
     let summary_path = opts.get("--summary").map(Path::new);
     let mut paths = Vec::new();
-    for path in opts.values() {
+    for (key, path) in &opts {
+        if *key == "--context" {
+            continue;
+        }
         let path = Path::new(path);
         let absolute = absolute_path(path)?;
         if paths.contains(&absolute) {
@@ -222,6 +234,11 @@ pub fn run(args: &[String]) -> Result<()> {
     let index: LexiconIndex = serde_json::from_reader(File::open(required("--index")?)?)?;
     let normalizer = Normalizer::new(index)?;
     let splitter = Splitter::new(&normalizer.index)?;
+    let mut document = DocumentExtractor::new(&normalizer.index)?;
+    let context = opts.get("--context").copied().unwrap_or("previous");
+    if !matches!(context, "previous" | "off") {
+        return Err("--context must be previous or off".into());
+    }
     let mut reader = csv::Reader::from_path(input)?;
     let headers = reader.headers()?.clone();
     let header_set: BTreeSet<_> = headers.iter().collect();
@@ -278,7 +295,11 @@ pub fn run(args: &[String]) -> Result<()> {
         if command == "normalize" {
             writer.serialize(NormalizedCsv::from_row(&row, &label)?)?;
         } else {
-            let parsed = splitter.split(row)?;
+            let parsed = if context == "off" {
+                splitter.split(row)?
+            } else {
+                document.split(row)?
+            };
             let paired = parsed
                 .assertions
                 .iter()
@@ -351,6 +372,18 @@ fn write_assertions(writer: &mut csv::Writer<File>, parsed: &ParsedRow, label: &
             &row.original_text,
             &row.normalized_text,
             &row.index_fingerprint,
+            &row.schema_version.to_string(),
+            &parsed
+                .input_ordinal
+                .map(|n| n.to_string())
+                .unwrap_or_default(),
+            &parsed.context_boundary,
+            &a.subject_origin,
+            &serde_json::to_string(&a.evidence)?,
+            &serde_json::to_string(&a.qualifiers)?,
+            &serde_json::to_string(&a.subject_candidates)?,
+            a.group_id.as_deref().unwrap_or(""),
+            &serde_json::to_string(&a.ordered_members)?,
         ])?;
     }
     Ok(())

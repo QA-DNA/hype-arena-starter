@@ -31,3 +31,19 @@ are parser fixtures, never evidence about the Hooly universe.
 
 See [usage](README.md), [handoff](../../docs/handoffs/assertion-pipeline.md), and
 [architecture](../../docs/architecture.md).
+
+
+## Contextual extraction update — 28 October 2026
+
+The [improvement plan](IMPROVEMENT-PLAN-2026-10-28.md) supersedes the baseline's row-local
+restriction. The shared Rust core now provides a bounded, ordered `DocumentExtractor`
+with explicit antecedent provenance, role/predicate attachment, version assertions,
+qualifier wording and unresolved list groups. Schema v2 requires recompiled indexes
+and normalized files. CLI context is on by default and can be disabled for comparison.
+Common-word aliases can resolve through supported product predicates; counted nouns
+are not entity ambiguities. No undeclared aliases or learned world facts are added.
+
+Use deterministic grammar first. A trained non-LLM ranker/tagger remains optional;
+this change installs no ML runtime and claims no training or full English understanding.
+See [results](V2-RESULTS-2026-10-28.md) and the
+[v2 handoff](../../docs/handoffs/contextual-extraction.md).

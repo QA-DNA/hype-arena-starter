@@ -202,8 +202,8 @@ fn conditions_unknown_clauses_and_entity_objects_are_not_flattened() {
             .any(|a| a.assertion_text.contains("undocumented") && a.status == "unresolved")
     );
     assert_eq!(
-        parse("Holdan joined Hooly on 12 January 2026.").status,
-        "unresolved"
+        pairs(&parse("Holdan joined Hooly on 12 January 2026.")),
+        [("Holdan", "joined")]
     );
     assert_eq!(parse("He manages 4 engineers.").status, "unresolved");
     assert_eq!(parse("").status, "unresolved");

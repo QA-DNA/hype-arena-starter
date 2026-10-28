@@ -171,6 +171,7 @@ fn word(c: char) -> bool {
 pub struct Normalizer {
     pub index: LexiconIndex,
     patterns: Vec<(Surface, Regex)>,
+    product_predicate: Regex,
 }
 
 impl Normalizer {
@@ -195,7 +196,13 @@ impl Normalizer {
                     .map_err(|e| ExtractionError(format!("Invalid alias matcher: {e}")))
             })
             .collect::<Result<_, _>>()?;
-        Ok(Self { index, patterns })
+        let product_predicate = Regex::new(r"(?i)^\s+(?:has|is|runs|costs|supports|serves|offers|works|answers|speaks|does|ships)\b")
+            .map_err(|e| ExtractionError(e.to_string()))?;
+        Ok(Self {
+            index,
+            patterns,
+            product_predicate,
+        })
     }
 
     pub fn normalize(
@@ -227,7 +234,7 @@ impl Normalizer {
                     },
                     surface,
                 ));
-                if candidates.len() > 100_000 {
+                if candidates.len() > 4096 {
                     return Err(ExtractionError(format!(
                         "Row {id}: too many entity candidates"
                     )));
@@ -272,7 +279,21 @@ impl Normalizer {
                     | "outage"
                     | "devices division"
             );
-            if surface.subjects.len() != 1 || generic {
+            let prefix = text[..span.start].trim_end();
+            let noun_count = prefix.split_whitespace().next_back().is_some_and(|w| {
+                w.chars()
+                    .all(|c| c.is_ascii_digit() || c == ',' || c == '.')
+            });
+            let noun_heading = surface.spelling == "photos"
+                && text[span.end..].to_lowercase().starts_with(" stored in ");
+            if generic && (noun_count || noun_heading) {
+                continue;
+            }
+            let position =
+                prefix.is_empty() || prefix.ends_with([';', '.', '!']) || prefix.ends_with(" and");
+            let product_use =
+                generic && position && self.product_predicate.is_match(&text[span.end..]);
+            if surface.subjects.len() != 1 || (generic && !product_use) {
                 row.issues.push(NormalizationIssue {
                     original_span: span,
                     candidates: surface.subjects.clone(),
@@ -303,7 +324,11 @@ impl Normalizer {
                     start,
                     end: row.normalized_text.len(),
                 },
-                provenance: surface.provenance.clone(),
+                provenance: if product_use {
+                    format!("{}; product_predicate", surface.provenance)
+                } else {
+                    surface.provenance.clone()
+                },
             });
             cursor = span.end;
         }

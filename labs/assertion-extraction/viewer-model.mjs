@@ -81,6 +81,7 @@ export function createViewerModel(practice, assertions) {
     grouped.get(a.id).push(a);
   }
   const ids = new Set();
+  const sourceRows = new Map(practice.map(p => [p.id, p]));
   const rows = practice.map(p => {
     if (!p.id || ids.has(p.id)) throw new Error('Missing or duplicate practice ID');
     ids.add(p.id);
@@ -97,6 +98,16 @@ export function createViewerModel(practice, assertions) {
       if (highlighted !== a.assertion_text) throw new Error(`Assertion text/span mismatch: ${p.id}`);
       a.subjectSpan = a.subject_source_start === '' ? null : { start: Number(a.subject_source_start), end: Number(a.subject_source_end) };
       if (a.subjectSpan) textSegments(p.text, [a.subjectSpan]);
+      a.evidence = JSON.parse(a.evidence_json || '[]');
+      a.qualifiers = JSON.parse(a.qualifiers_json || '[]');
+      a.subjectCandidates = JSON.parse(a.subject_candidates_json || '[]');
+      a.orderedMembers = JSON.parse(a.ordered_members_json || '[]');
+      textSegments(a.normalized_text, a.orderedMembers);
+      for (const ref of [...a.evidence, ...a.qualifiers.flatMap(q => q.sources)]) {
+        const source = sourceRows.get(ref.row_id);
+        if (!source) throw new Error(`Missing evidence row: ${ref.row_id}`);
+        textSegments(source.text, [ref.span]);
+      }
     }
     const comparison = comparePairs(fragments, reference);
     return { id: p.id, date: p.date, label: p.label, text: p.text,

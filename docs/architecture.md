@@ -73,3 +73,10 @@ It performs no typed-value interpretation or truth classification. Evaluation ma
 load a new index built from the runtime lexicon. The solver remains unavailable.
 See the [scope decision](../labs/assertion-extraction/DECISION.md) and
 [handoff](handoffs/assertion-pipeline.md).
+
+
+The contextual extraction update adds a bounded ordered-stream adapter in core, shared
+by combined/staged CSV commands. Cross-row evidence references and version/scope
+qualifiers are typed metadata rather than reparsed display sentences. It makes no
+truth decisions; the row-local splitter remains available. See the
+[v2 handoff](handoffs/contextual-extraction.md) for interfaces and validation.

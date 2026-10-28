@@ -1,14 +1,17 @@
-//! Row-local, deterministic preprocessing. No labels, forms, truth decisions or value parsing.
+//! Deterministic linguistic preprocessing. No labels, forms or truth decisions.
 
+mod discourse;
 mod lexicon;
 mod split;
+mod syntax;
 
+pub use discourse::DocumentExtractor;
 pub use lexicon::{LexiconIndex, Normalizer, ReviewedAlias, Subject};
 use serde::{Deserialize, Serialize};
 pub use split::Splitter;
 use std::fmt;
 
-pub const SCHEMA_VERSION: u32 = 1;
+pub const SCHEMA_VERSION: u32 = 2;
 pub const MAX_TEXT_BYTES: usize = 1_048_576;
 
 #[derive(Debug)]
@@ -130,6 +133,23 @@ impl NormalizedRow {
     }
 }
 
+/// Original UTF-8 bytes in a specific source row, including antecedents.
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+pub struct SourceReference {
+    pub row_id: String,
+    pub span: Span,
+    pub role: String,
+}
+
+/// Wording preserved for the later value/evidence layer; not a truth judgment.
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+pub struct Qualifier {
+    pub kind: String,
+    pub text: String,
+    pub origin: String,
+    pub sources: Vec<SourceReference>,
+}
+
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
 pub struct AssertionText {
     pub occurrence_id: String,
@@ -143,6 +163,12 @@ pub struct AssertionText {
     pub status: String,
     pub reason: String,
     pub rule: String,
+    pub subject_origin: String,
+    pub evidence: Vec<SourceReference>,
+    pub qualifiers: Vec<Qualifier>,
+    pub subject_candidates: Vec<String>,
+    pub group_id: Option<String>,
+    pub ordered_members: Vec<Span>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
@@ -151,4 +177,6 @@ pub struct ParsedRow {
     /// `split`, `partial`, or `unresolved`; not a truth or completeness certificate.
     pub status: String,
     pub assertions: Vec<AssertionText>,
+    pub input_ordinal: Option<usize>,
+    pub context_boundary: String,
 }

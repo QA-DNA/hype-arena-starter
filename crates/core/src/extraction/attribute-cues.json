@@ -30,7 +30,8 @@
   "uptime_last_quarter": [
     "(?:uptime|availability) last quarter",
     "last quarter.*?was up",
-    "last quarter.*?uptime"
+    "last quarter.*?uptime",
+    "was up [0-9.]+% of the time"
   ],
   "launched": [
     "launched?",
@@ -46,7 +47,9 @@
   "previous_employer": [
     "previous employer",
     "arrived from",
-    "previously worked at"
+    "previously worked at",
+    "ran incident response",
+    "worked (?:previously )?at"
   ],
   "reliability_lead": [
     "reliability team answers to",
@@ -73,7 +76,8 @@
   ],
   "webhook_events": [
     "webhook events?",
-    "sends? [0-9,]+ events?"
+    "sends? [0-9,]+ events?",
+    "[0-9]+ events for integrators"
   ],
   "integrations": [
     "integrations?"
@@ -86,18 +90,22 @@
     "suggestion acceptance"
   ],
   "general_availability_date": [
-    "generally available from"
+    "generally available from",
+    "generally available (?:from|since|on)"
   ],
   "beta_date": [
     "beta opens",
-    "beta opened"
+    "beta opened",
+    "beta (?:opens|opened)(?: today)?"
   ],
   "active_users": [
     "[0-9,]+ users(?: a month)?"
   ],
   "monthly_active_users": [
     "[0-9,]+ (?:monthly active )?users a month",
-    "monthly active users"
+    "monthly active users",
+    "monthly (?:active )?users",
+    "[0-9,]+ users (?:each|a|per) month"
   ],
   "simultaneous_editors": [
     "[0-9,]+ editors at the same time",
@@ -105,7 +113,8 @@
   ],
   "free_storage": [
     "free storage",
-    "free tier"
+    "free tier",
+    "free tier gives [0-9,.]+ (?:GB|TB)"
   ],
   "paying_customers": [
     "paying customers",
@@ -114,7 +123,8 @@
   "advertising_share": [
     "advertising shares?",
     "ad shares?",
-    "ads"
+    "ads",
+    "advertising contributes [0-9.]+%"
   ],
   "browser_market_share": [
     "browser market share",
@@ -218,6 +228,64 @@
     "chief technology officer"
   ],
   "extra_seat_price": [
-    "(?:each )?(?:further|extra|additional) seat.*?[€$£]\\s*[0-9,.]+(?:\\s*(?:a|per)\\s*month)?"
+    "(?:each )?(?:further|extra|additional) seat.*?[€$£]\\s*[0-9,.]+(?:\\s*(?:a|per)\\s*month)?",
+    "(?:each )?(?:further|extra|additional) seat costs? [€$£]\\\\s*[0-9,.]+"
+  ],
+  "beta_testers": [
+    "[0-9,]+ (?:beta )?testers",
+    "beta users"
+  ],
+  "release_cadence": [
+    "(?:stable )?version every [0-9]+ weeks?"
+  ],
+  "offline_area_limit": [
+    "offline (?:maps )?area.*?[0-9.]+ GB"
+  ],
+  "storage": [
+    "(?:holds?|stores?) [0-9,.]+ (?:GB|TB)"
+  ],
+  "base_storage": [
+    "(?:starts? at|stores?|storage starts? at) [0-9,.]+ (?:GB|TB)"
+  ],
+  "context_files": [
+    "[0-9,]+ modules?"
+  ],
+  "supported_ides": [
+    "[0-9,]+ ides?"
+  ],
+  "max_upload_size": [
+    "files? (?:may |can )?(?:now )?(?:weigh|reach) [0-9.]+ (?:MB|GB)"
+  ],
+  "cloud_provider": [
+    "(?:ships|runs) on [A-Za-z]"
+  ],
+  "yearly_billing_discount": [
+    "year saves [0-9.]+%"
+  ],
+  "units_sold": [
+    "sold (?:over |more than )?[0-9,]+",
+    "reached [0-9,]+ (?:phones|watches)"
+  ],
+  "duration": [
+    "(?:after|lasted|lasting) [0-9]+ days?"
+  ],
+  "latest_release_date": [
+    "released on"
+  ],
+  "stable_release_date": [
+    "released"
+  ],
+  "length": [
+    "(?:after|lasted|lasting) [0-9]+ days?"
+  ],
+  "offer_acceptance": [
+    "[0-9.]+% of (?:candidates|offers)",
+    "offers accepted"
+  ],
+  "referral_share": [
+    "referrals: [0-9.]+%"
+  ],
+  "time_to_hire": [
+    "(?:hire takes|time to hire).*?[0-9]+ days"
   ]
 }

@@ -275,3 +275,55 @@ fn persisted_normalized_records_must_match_their_index_and_source() {
     );
     assert!(!lab.path.join("output.csv").exists());
 }
+
+#[test]
+fn context_stream_has_staged_parity_and_can_be_disabled() {
+    let lab = Lab::new();
+    fs::write(lab.path.join("input.csv"), "id,text,date,label,form\na,Holdan joined Hooly.,2026-01-01,false,ignored\nb,He manages 4 engineers.,2026-01-01,,ignored\n").unwrap();
+    lab.ok(&[
+        "normalize",
+        "--index",
+        "index.json",
+        "--input",
+        "input.csv",
+        "--output",
+        "normalized.csv",
+    ]);
+    for (command, input, output) in [
+        ("parse", "input.csv", "combined.csv"),
+        ("split", "normalized.csv", "staged.csv"),
+    ] {
+        lab.ok(&[
+            command,
+            "--index",
+            "index.json",
+            "--input",
+            input,
+            "--output",
+            output,
+        ]);
+    }
+    assert_eq!(
+        fs::read(lab.path.join("combined.csv")).unwrap(),
+        fs::read(lab.path.join("staged.csv")).unwrap()
+    );
+    let data = fs::read_to_string(lab.path.join("combined.csv")).unwrap();
+    assert!(data.contains("preceding_row"));
+    assert!(data.contains("team_size"));
+    lab.ok(&[
+        "parse",
+        "--index",
+        "index.json",
+        "--input",
+        "input.csv",
+        "--output",
+        "local.csv",
+        "--context",
+        "off",
+    ]);
+    assert!(
+        !fs::read_to_string(lab.path.join("local.csv"))
+            .unwrap()
+            .contains("team_size")
+    );
+}

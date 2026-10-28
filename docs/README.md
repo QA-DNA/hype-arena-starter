@@ -13,6 +13,7 @@ Original files are checked against [the checksum manifest](upstream-files.json).
 | [Development](development.md) | Setup, commands, OS details and troubleshooting |
 | [Architecture](architecture.md) | Boundaries, implemented pieces and deferred GPU extension |
 | [Assertion text pipeline](../labs/assertion-extraction/README.md) | CSV commands, structured records, generated practice output and limitations |
+| [Parser internals](../labs/assertion-extraction/HOW-IT-WORKS.md) | Algorithms, libraries, source alignment and bounded discourse state |
 | [Assertion extraction plan](assertion-extraction-plan.md) | Proposed row splitting, unresolved cases, and extraction evaluation |
 | [Agent roles](agents.md) | Responsibilities and coordination |
 | [Project graph](knowledge/README.md) | Curated memory, extracted Cargo graph and context |
