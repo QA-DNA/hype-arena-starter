@@ -1,0 +1,1569 @@
+[
+ {
+  "name": "In-memory timeline map",
+  "kind": "data structure",
+  "steps": [
+   "S1",
+   "S3",
+   "S7"
+  ],
+  "verdict": "ADOPT",
+  "insanity": 1,
+  "what": "HashMap<(subject, attribute), Vec<Observation>> sorted by date; as-of lookup with partition_point (binary search).",
+  "fit": "25,000 propositions is about 1 MB in memory, around 5 observations per key. Every as-of, change, at_event and relation query is a scan of one short vector.",
+  "pros": [
+   "No dependency, deterministic, trivially testable",
+   "Microseconds per query on 2 CPUs",
+   "Same structure serves labelling and claim generation"
+  ],
+  "cons": [
+   "No query language; every query shape is a Rust function",
+   "Entity graph needs a separate adjacency list"
+  ],
+  "rust": "std only (HashMap, Vec, slice::partition_point)",
+  "python": "dict + bisect in labs",
+  "why": "At this scale any database adds build and startup risk with no gain.",
+  "links": []
+ },
+ {
+  "name": "Validity-interval data model (Wikidata qualifiers, YAGO temporal)",
+  "kind": "data model",
+  "steps": [
+   "S1",
+   "S3",
+   "S7"
+  ],
+  "verdict": "ADOPT",
+  "insanity": 1,
+  "what": "Each derived fact carries valid_from, valid_to (open = still current) and the observation ids that support it, like Wikidata start time / end time qualifiers and YAGO's time-scoped facts.",
+  "fit": "Gives the shape of the derived timeline: Fact{key, value, valid_from, valid_to: Option, support, against}. Boundaries are uncertain between two observation dates, so store both the last-seen-old and first-seen-new dates.",
+  "pros": [
+   "The standard KB representation of changing facts",
+   "Directly yields change and at_event claims"
+  ],
+  "cons": [
+   "Assumes clean statements; ours are inferred from noisy pages"
+  ],
+  "rust": "a struct of about 30 lines",
+  "python": "dataclass",
+  "why": "It is the right output format for the timeline resolver whatever algorithm fills it.",
+  "links": [
+   "https://arxiv.org/abs/2308.11884"
+  ]
+ },
+ {
+  "name": "Dates as day intervals (jiff or plain day numbers)",
+  "kind": "crate + representation",
+  "steps": [
+   "S1",
+   "S4"
+  ],
+  "verdict": "ADOPT",
+  "insanity": 1,
+  "what": "A date of year precision is [1 Jan, 31 Dec], month precision is the month's days, day precision is a point; store as integer day numbers.",
+  "fit": "Lets 2025-11 and 2025-11-04 agree (intersect) without being called equal, and makes before/after comparisons of events trivial.",
+  "pros": [
+   "jiff 0.2.38 (247M downloads, updated 2026-10-06) has strong civil-date support",
+   "An i32 day number needs no crate at all"
+  ],
+  "cons": [
+   "Calendar edge cases (month lengths, leap years) must be tested once"
+  ],
+  "rust": "jiff 0.2.38, or time 0.3.55, or a hand-written days-from-civil function",
+  "python": "datetime",
+  "why": "Precision handling is the core of S4 for dates and costs about 40 lines.",
+  "links": [
+   "https://crates.io/crates/jiff"
+  ]
+ },
+ {
+  "name": "Interval trees (rust-lapper, iset, intervaltree)",
+  "kind": "crate",
+  "steps": [
+   "S1"
+  ],
+  "verdict": "REJECT",
+  "insanity": 1,
+  "what": "Stabbing queries: which intervals contain date d.",
+  "fit": "With about 5 intervals per key a linear scan beats any tree.",
+  "pros": [
+   "rust-lapper 1.7M downloads, iset updated 2026-05"
+  ],
+  "cons": [
+   "Unneeded at our scale",
+   "intervaltree last updated 2021"
+  ],
+  "rust": "rust-lapper 2.0.0-beta.1, iset 0.3.3, intervaltree 0.2.7",
+  "python": "intervaltree",
+  "why": "Complexity with no measurable gain.",
+  "links": []
+ },
+ {
+  "name": "Embedded databases (DuckDB, SQLite)",
+  "kind": "crate",
+  "steps": [
+   "S1"
+  ],
+  "verdict": "REJECT",
+  "insanity": 2,
+  "what": "SQL engines with as-of joins and window functions.",
+  "fit": "Fine for exploring practice data in labs; adds nothing to a 25k-fact Rust core.",
+  "pros": [
+   "duckdb-rs active (pushed 2026-10-28), rusqlite 137M downloads",
+   "SQL is handy for ad-hoc lab queries"
+  ],
+  "cons": [
+   "Bundled DuckDB build is slow and large",
+   "Temporal logic still has to be written as SQL by hand"
+  ],
+  "rust": "duckdb 1.x, rusqlite 0.41",
+  "python": "duckdb, sqlite3 for labs",
+  "why": "Use in Python labs only.",
+  "links": [
+   "https://github.com/duckdb/duckdb-rs"
+  ]
+ },
+ {
+  "name": "Graph and RDF stores (Oxigraph, CozoDB, Kuzu, XTDB)",
+  "kind": "database",
+  "steps": [
+   "S1",
+   "S3"
+  ],
+  "verdict": "REJECT",
+  "insanity": 3,
+  "what": "Oxigraph: Rust RDF + SPARQL with RDF-star for statement-level time. CozoDB: Rust Datalog with time travel. Kuzu: embedded graph DB. XTDB: bitemporal SQL on the JVM.",
+  "fit": "Every as-of query becomes a hand-written filter anyway; the entity graph has a few hundred edges.",
+  "pros": [
+   "Oxigraph is alive (2,004 stars, pushed 2026-10-23)",
+   "XTDB's valid-time model matches our page date semantics"
+  ],
+  "cons": [
+   "Kuzu repository archived (last push 2025-10-10)",
+   "CozoDB unmaintained since 2024-12",
+   "XTDB needs the JVM",
+   "SPARQL has no native temporal joins"
+  ],
+  "rust": "oxigraph 0.5.13; cozo 0.7.6 (stale); kuzu 0.11.3 (archived)",
+  "python": "pyoxigraph",
+  "why": "Two are dead, one is JVM, one adds nothing at this size. Keep only the bitemporal idea: valid time = what the page claims, page date = when it was known.",
+  "links": [
+   "https://github.com/oxigraph/oxigraph",
+   "https://github.com/kuzudb/kuzu",
+   "https://github.com/xtdb/xtdb"
+  ]
+ },
+ {
+  "name": "Bi-temporal edge invalidation (Graphiti / Zep agent memory)",
+  "kind": "design pattern",
+  "steps": [
+   "S1",
+   "S3"
+  ],
+  "verdict": "IDEA-ONLY",
+  "insanity": 2,
+  "what": "A popular 2025-2026 agent-memory knowledge graph: every edge has valid_at / invalid_at, and a newer contradicting edge closes the older one instead of deleting it.",
+  "fit": "The invalidation rule is the same as our timeline: a new value for a functional attribute ends the old one's interval. Graphiti uses an LLM for extraction and contradiction detection, which we must not do at runtime.",
+  "pros": [
+   "Widely used (getzep/graphiti, 32k stars, pushed 2026-10-28)",
+   "Shows the pattern scales and is demo-friendly"
+  ],
+  "cons": [
+   "LLM-driven, so only the data model transfers",
+   "No handling of lying sources"
+  ],
+  "rust": "no crate; the idea is 20 lines in the timeline resolver",
+  "python": "graphiti-core (LLM-based, do not use)",
+  "why": "Good vocabulary for the architecture diagram; nothing to import.",
+  "links": [
+   "https://github.com/getzep/graphiti"
+  ]
+ },
+ {
+  "name": "Entity graph with petgraph or an adjacency map",
+  "kind": "crate",
+  "steps": [
+   "S1",
+   "S7",
+   "S8"
+  ],
+  "verdict": "TRY",
+  "insanity": 1,
+  "what": "Links such as cto, head_of_product, venue, owner and chair become time-stamped edges between entities.",
+  "fit": "Relation claims need: which entity did the link name, over which interval, and what did that entity's attribute hold then. A HashMap<(subject, link), timeline> does it; petgraph only helps for cycle checks or drawing.",
+  "pros": [
+   "petgraph 579M downloads, stable",
+   "Graph view is a strong demo element"
+  ],
+  "cons": [
+   "A crate is unnecessary for lookups"
+  ],
+  "rust": "petgraph 0.8.3 or std HashMap",
+  "python": "networkx in labs",
+  "why": "Start with the map; pull petgraph in only for the UI graph export.",
+  "links": [
+   "https://crates.io/crates/petgraph"
+  ]
+ },
+ {
+  "name": "Rust Datalog engines (ascent, crepe, datafrog, Nemo)",
+  "kind": "crate",
+  "steps": [
+   "S1",
+   "S5",
+   "S7",
+   "S8"
+  ],
+  "verdict": "IDEA-ONLY",
+  "insanity": 3,
+  "what": "Declarative rules (for example: a relation fact holds if the link named the target while the attribute held the value) compiled into Rust or run by an engine.",
+  "fit": "Our rules are few and arithmetic-heavy (date intervals, unit conversion), which Datalog handles awkwardly. A plain loop is shorter.",
+  "pros": [
+   "ascent 0.8.1: 698k downloads, updated 2026-08-29, lattices and parallel evaluation",
+   "Rules double as explanations"
+  ],
+  "cons": [
+   "Macro compile errors slow iteration",
+   "Nemo is not published as a usable crate (git dependency)",
+   "Learning curve the night before a deadline"
+  ],
+  "rust": "ascent 0.8.1, crepe 0.2.0, datafrog 2.0.1; Nemo via git",
+  "python": "none needed",
+  "why": "Only if the rule count explodes. Not for 29 Oct.",
+  "links": [
+   "https://github.com/s-arash/ascent",
+   "https://github.com/knowsys/nemo"
+  ]
+ },
+ {
+  "name": "Scallop (probabilistic Datalog with provenance semirings)",
+  "kind": "language",
+  "steps": [
+   "S2",
+   "S5",
+   "S8"
+  ],
+  "verdict": "IDEA-ONLY",
+  "insanity": 4,
+  "what": "Datalog with probabilistic and top-k-proof provenance, implemented in Rust, driven mostly from Python.",
+  "fit": "Could express 'value valid at date' with probabilities and give proofs as explanations. Integration risk is high.",
+  "pros": [
+   "Alive (520 stars, pushed 2026-06-26)",
+   "Provenance semirings give principled explanations"
+  ],
+  "cons": [
+   "The crates.io crate named scallop is an unrelated bash wrapper; the library is used from source",
+   "API stability unknown"
+  ],
+  "rust": "from source (scallop-lang/scallop)",
+  "python": "scallopy",
+  "why": "Interesting for a future version; too risky now.",
+  "links": [
+   "https://github.com/scallop-lang/scallop"
+  ]
+ },
+ {
+  "name": "Heavy dataflow and solvers (differential-dataflow, egglog, clingo/telingo)",
+  "kind": "crate / solver",
+  "steps": [
+   "S1",
+   "S3"
+  ],
+  "verdict": "REJECT",
+  "insanity": 4,
+  "what": "Incremental dataflow, equality saturation, answer set programming with temporal operators.",
+  "fit": "None of them matches a batch job over 25k facts; telingo's time model is integer steps, not dates.",
+  "pros": [
+   "clingo is a strong exact solver (pushed 2026-10-27)"
+  ],
+  "cons": [
+   "C++ build for clingo",
+   "Steep learning curves",
+   "No capability we need that a loop lacks"
+  ],
+  "rust": "differential-dataflow 0.25, egglog 3.0; clingo bindings unverified",
+  "python": "clingo",
+  "why": "Overkill.",
+  "links": [
+   "https://github.com/potassco/clingo"
+  ]
+ },
+ {
+  "name": "Time-windowed majority vote",
+  "kind": "algorithm",
+  "steps": [
+   "S2",
+   "S1"
+  ],
+  "verdict": "ADOPT",
+  "insanity": 1,
+  "what": "Among observations of a key close to the query date, the value with the most (weighted) support wins.",
+  "fit": "Measured: exact-value vote (V1) scores 0.756 accuracy (R80) against 0.833 for always-true; it catches only half the false rows. The floor every other method must beat, and the fallback when a key has no labelled anchor. Must be time-aware: an old value must not outvote the current one.",
+  "pros": [
+   "About 20 lines",
+   "Strong when keys are stated 2 to 12 times"
+  ],
+  "cons": [
+   "Ignores page quality",
+   "Ties are common at 2 observations"
+  ],
+  "rust": "std",
+  "python": "collections.Counter",
+  "why": "Baseline and fallback.",
+  "links": []
+ },
+ {
+  "name": "ACCU / AccuSim / AccuCopy (source accuracy and copy detection)",
+  "kind": "paper + algorithm",
+  "steps": [
+   "S2",
+   "S6"
+  ],
+  "verdict": "TRY",
+  "insanity": 2,
+  "what": "Bayesian per-source accuracy A: a value's vote is the sum over its sources of ln(n*A/(1-A)); AccuSim adds similarity between values; AccuCopy discounts sources that copy each other (Dong, Berti-Equille, Srivastava, VLDB 2009).",
+  "fit": "Measured: page-reliability reweighting (V4) moved nothing (0.737 vs 0.737 R80; 0.697 vs 0.697 R10), even though lies cluster (186 of 277 false rows sit on pages with 2+ false rows). The harness cannot simulate the real run's 10x unlabelled votes, where it may matter. Pages are the sources. Run it per (key, time window), seed A from each page's labelled rows as a Beta prior, clamp labelled facts. Copy detection only if page pairs show clone-like agreement.",
+  "pros": [
+   "Probabilistic, gives a posterior per value",
+   "Handles 'false is rare, true is repeated'",
+   "Copy detection catches mirrored pages"
+  ],
+  "cons": [
+   "Assumes one static truth per key unless run per time window",
+   "Copy detection is pairwise and noisy with few shared keys"
+  ],
+  "rust": "port about 200 lines (+150 for copy detection)",
+  "python": "about 80 lines of numpy",
+  "why": "Keep page reliability as one feature of the fact model, not as the decider, until it measures better with many votes.",
+  "links": [
+   "https://lunadong.com/publication/dependence_vldb.pdf",
+   "https://arxiv.org/abs/1505.02463"
+  ]
+ },
+ {
+  "name": "Truth discovery in a dynamic world (value lifespans, CEF)",
+  "kind": "paper",
+  "steps": [
+   "S1",
+   "S2",
+   "S3"
+  ],
+  "verdict": "ADOPT",
+  "insanity": 3,
+  "what": "Models each value's lifespan and scores sources by coverage, exactness and freshness; an HMM decides the truth path and copying over time (Dong, Berti-Equille, Srivastava, PVLDB 2(1) 2009).",
+  "fit": "Measured: reading evidence after the date is the largest rule-level gain: latest-anchor V2 to V2b (+next anchor) is +8.3 points (R80), forward-only to symmetric window is +4.1. 150 true single-fact rows are a new value confirmed only later. Exactly our 'stale versus lie' problem: a page that repeats the old price after a change may be stale (lagging) rather than lying. Implement the lifespan and freshness ideas without the copy HMM.",
+  "pros": [
+   "Closest classic paper to the challenge",
+   "Separates lagging sources from liars"
+  ],
+  "cons": [
+   "Full model is heavy",
+   "Needs enough history per key"
+  ],
+  "rust": "simplified per-key decoder about 250 lines",
+  "python": "none maintained",
+  "why": "Conceptual template for S3; take the simplified version.",
+  "links": [
+   "https://lunadong.com/publication/lifespan_vldb.pdf"
+  ]
+ },
+ {
+  "name": "On the discovery of evolving truth (DynaTD)",
+  "kind": "paper",
+  "steps": [
+   "S2",
+   "S3"
+  ],
+  "verdict": "IDEA-ONLY",
+  "insanity": 2,
+  "what": "Incremental truth discovery where truths and source reliability both change as data arrives (Li et al., KDD 2015).",
+  "fit": "Sweeping pages in date order and updating page reliability as you go is a clean single pass, but our sources are one-shot pages, not streams, so reliability drift matters less.",
+  "pros": [
+   "Streaming-friendly",
+   "Smooth reliability over time"
+  ],
+  "cons": [
+   "Designed for sensor-like streams",
+   "No code found"
+  ],
+  "rust": "about 150 to 200 lines",
+  "python": "none",
+  "why": "Use only if page reliability visibly varies with page date.",
+  "links": [
+   "https://cse.buffalo.edu/~jing/doc/kdd15_evolve.pdf"
+  ]
+ },
+ {
+  "name": "Information integration over time (Pal et al.)",
+  "kind": "paper",
+  "steps": [
+   "S1",
+   "S3"
+  ],
+  "verdict": "IDEA-ONLY",
+  "insanity": 4,
+  "what": "History-aware fusion where noisy sources delay or miss real-world updates (WWW 2012).",
+  "fit": "Reference for how a source can lag; heavier than we can validate by the deadline.",
+  "pros": [
+   "Models delayed reporting explicitly"
+  ],
+  "cons": [
+   "Complex model",
+   "No code"
+  ],
+  "rust": "about 300 lines",
+  "python": "none",
+  "why": "Read for the lag model only.",
+  "links": [
+   "https://scholars.duke.edu/publication/808866"
+  ]
+ },
+ {
+  "name": "Reliable truth discovery for dynamic and dependent sources (TKDE 2026)",
+  "kind": "paper",
+  "steps": [
+   "S2",
+   "S3"
+  ],
+  "verdict": "TRY",
+  "insanity": 3,
+  "what": "HMM-based models (Depen_Simple, Depen_Complex, Depen_Dynamic) for sources whose reliability and copying relations change over time (Zhang et al., IEEE TKDE 38(1), 2026).",
+  "fit": "The newest verified truth-discovery work, LLM-free, and it lands on the same HMM idea we recommend for S3. A two-state honest/liar latent per page is cheap to fit from anchors.",
+  "pros": [
+   "Newest verified work in the line",
+   "Models lying and copying pages"
+  ],
+  "cons": [
+   "Only the abstract was read",
+   "No code found"
+  ],
+  "rust": "HMM forward pass about 100 lines",
+  "python": "none",
+  "why": "Supports the HMM choice; the per-page liar state is a cheap add-on.",
+  "links": [
+   "https://researchers.mq.edu.au/en/publications/reliable-truth-discovery-for-dynamic-and-dependent-sources/"
+  ]
+ },
+ {
+  "name": "SLiMFast (discriminative fusion with labels and source features)",
+  "kind": "paper",
+  "steps": [
+   "S2",
+   "S6"
+  ],
+  "verdict": "ADOPT",
+  "insanity": 2,
+  "what": "Data fusion as logistic regression over source features, trained on ground truth when it exists and by EM when it is scarce (Joglekar, Rekatsinas, Garcia-Molina, Parameswaran, Re; SIGMOD 2017).",
+  "fit": "Closest in spirit to our setting: ~1,900 labelled rows as ground truth, ~18,000 unlabelled as evidence. Justifies the final logistic stacker over evidence features.",
+  "pros": [
+   "Labels as anchors, features per source",
+   "Near-calibrated outputs",
+   "Paper gives guarantees on when to use EM vs supervised learning"
+  ],
+  "cons": [
+   "Our only source features are derived (page accuracy, date, size)"
+  ],
+  "rust": "logistic regression via linfa-logistic or about 60 lines",
+  "python": "scikit-learn LogisticRegression",
+  "why": "The design of the final S6 model.",
+  "links": [
+   "https://arxiv.org/abs/1512.06474"
+  ]
+ },
+ {
+  "name": "Semi-supervised truth discovery (Yin and Tan)",
+  "kind": "paper",
+  "steps": [
+   "S2"
+  ],
+  "verdict": "IDEA-ONLY",
+  "insanity": 2,
+  "what": "Graph-based truth discovery guided by a small set of known truths (WWW 2011, pp. 217-226).",
+  "fit": "Evidence that even a few labels sharpen source trust a lot; the same effect is simpler as a Beta prior in Accu-EM.",
+  "pros": [
+   "Directly addresses 'few labels, many votes'"
+  ],
+  "cons": [
+   "Older graph formulation"
+  ],
+  "rust": "about 150 lines",
+  "python": "none",
+  "why": "Justification for anchoring, not a thing to port.",
+  "links": [
+   "https://ir.webis.de/anthology/2011.wwwconf_conference-2011.25/"
+  ]
+ },
+ {
+  "name": "CRH (typed-loss truth discovery)",
+  "kind": "paper",
+  "steps": [
+   "S2",
+   "S4"
+  ],
+  "verdict": "TRY",
+  "insanity": 2,
+  "what": "Alternating minimisation: source weights from normalised loss, truths by weighted vote (categorical) or weighted median (numeric), with a loss per data type (Li et al., SIGMOD 2014).",
+  "fit": "Our values are typed (money, quantity, date, name), so a per-kind loss is a clean place to put S4 rules. Weights are not probabilities; calibrate afterwards.",
+  "pros": [
+   "Handles heterogeneous types natively",
+   "Simple loop"
+  ],
+  "cons": [
+   "Uncalibrated weights",
+   "No time model"
+  ],
+  "rust": "about 200 lines",
+  "python": "a GitHub reimplementation exists but is minor",
+  "why": "Borrow the typed loss inside Accu-EM.",
+  "links": [
+   "https://cse.buffalo.edu/~jing/doc/sigmod14_crh.pdf"
+  ]
+ },
+ {
+  "name": "TruthFinder (value implication)",
+  "kind": "paper",
+  "steps": [
+   "S2",
+   "S4"
+  ],
+  "verdict": "TRY",
+  "insanity": 2,
+  "what": "Iterates source trust and fact confidence; similar values support each other through an implication function (Yin, Han, Yu, KDD 2007 / TKDE 2008).",
+  "fit": "The implication term is where 'gt 100' supports 'eq 120' and contradicts 'eq 80'. Use our interval rule as the implication function inside Accu-EM rather than running TruthFinder itself.",
+  "pros": [
+   "Native support for inexact values",
+   "Tiny to implement"
+  ],
+  "cons": [
+   "Confidences saturate and are badly calibrated",
+   "Damping needs tuning"
+  ],
+  "rust": "about 80 to 100 lines",
+  "python": "truthdiscovery package",
+  "why": "Take the implication idea, not the whole algorithm.",
+  "links": [
+   "https://research.ibm.com/publications/truth-discovery-with-multiple-conflicting-information-providers-on-the-web"
+  ]
+ },
+ {
+  "name": "Sums, Average-Log, Investment, PooledInvestment",
+  "kind": "paper",
+  "steps": [
+   "S2"
+  ],
+  "verdict": "REJECT",
+  "insanity": 1,
+  "what": "HITS-style fact-finders with different trust normalisations (Pasternack and Roth, COLING 2010).",
+  "fit": "Useful only as quick lab baselines; scores are unnormalised and have no temporal model.",
+  "pros": [
+   "Simple and fast"
+  ],
+  "cons": [
+   "Uncalibrated",
+   "No anchors, no time"
+  ],
+  "rust": "about 60 lines each",
+  "python": "truthdiscovery (joesingo, pypi 1.0.4, last push 2023-03)",
+  "why": "Accu dominates them for our needs.",
+  "links": [
+   "https://aclanthology.org/C10-1099/",
+   "https://github.com/joesingo/truthdiscovery"
+  ]
+ },
+ {
+  "name": "LTM, Latent Truth Model",
+  "kind": "paper",
+  "steps": [
+   "S2",
+   "S5"
+  ],
+  "verdict": "IDEA-ONLY",
+  "insanity": 3,
+  "what": "Bayesian model with separate false-positive and false-negative rates per source, for multi-valued attributes, fitted by collapsed Gibbs sampling (Zhao et al., PVLDB 5(6) 2012).",
+  "fit": "Relevant only if some attributes are sets (several values true at once). Our attributes look functional.",
+  "pros": [
+   "Two-sided source quality",
+   "Multi-truth"
+  ],
+  "cons": [
+   "Gibbs sampling is fiddly and hard to calibrate"
+  ],
+  "rust": "about 250 lines",
+  "python": "none maintained",
+  "why": "Skip unless multi-valued attributes show up.",
+  "links": [
+   "https://arxiv.org/abs/1203.0058"
+  ]
+ },
+ {
+  "name": "Numeric truth models and difficulty models (GTM, KDEm, CATD, 3-Estimates, LCA)",
+  "kind": "paper family",
+  "steps": [
+   "S2",
+   "S4"
+  ],
+  "verdict": "REJECT",
+  "insanity": 2,
+  "what": "Gaussian or kernel-density truth for numbers, confidence intervals on source weights for long-tail sources, item difficulty terms.",
+  "fit": "Our numbers are exact step functions, not noisy measurements. CATD's long-tail idea is just a Beta prior on page accuracy, which Accu-EM already has.",
+  "pros": [
+   "CATD addresses pages with few rows"
+  ],
+  "cons": [
+   "Wrong noise model for exact values",
+   "More parameters than data"
+  ],
+  "rust": "30 to 150 lines each",
+  "python": "none needed",
+  "why": "Keep only the Beta prior.",
+  "links": [
+   "https://arxiv.org/abs/1505.02463"
+  ]
+ },
+ {
+  "name": "Dawid-Skene, GLAD, MACE (crowd-kit)",
+  "kind": "library",
+  "steps": [
+   "S2",
+   "S6"
+  ],
+  "verdict": "TRY",
+  "insanity": 1,
+  "what": "EM over per-annotator confusion matrices (DS), item difficulty (GLAD), spammer detection (MACE).",
+  "fit": "Map 'page states value v for key k at date d' to an annotation and use crowd-kit in the lab to cross-check the Rust EM on practice data.",
+  "pros": [
+   "Maintained Python implementations (crowd-kit 1.4.2, pushed 2025-12-01)",
+   "A page's sensitivity/specificity is a direct model of lying"
+  ],
+  "cons": [
+   "Assumes one label space per item",
+   "No Rust crate"
+  ],
+  "rust": "Dawid-Skene port about 120 lines",
+  "python": "crowd-kit",
+  "why": "Lab oracle, not runtime.",
+  "links": [
+   "https://github.com/Toloka/crowd-kit"
+  ]
+ },
+ {
+  "name": "Knowledge-Based Trust and knowledge fusion (Google)",
+  "kind": "paper",
+  "steps": [
+   "S2",
+   "S5"
+  ],
+  "verdict": "IDEA-ONLY",
+  "insanity": 4,
+  "what": "Multi-layer model that separates extraction errors from source errors to score 119M web pages by factual accuracy (Dong et al., 2015); the knowledge-fusion study shows calibration must be its own stage.",
+  "fit": "Our propositions are machine-normalised by a teammate's parser: keep a small 'extraction noise' term so one mis-parse does not condemn a page.",
+  "pros": [
+   "Separates parser error from page lies",
+   "Evidence for a separate calibration stage"
+  ],
+  "cons": [
+   "Full model is large",
+   "We have no extractor confidence signal"
+  ],
+  "rust": "about 300 lines for the full model",
+  "python": "none",
+  "why": "Two ideas to borrow, no model to port.",
+  "links": [
+   "https://arxiv.org/abs/1502.03519",
+   "https://arxiv.org/abs/1503.00302"
+  ]
+ },
+ {
+  "name": "Truth discovery surveys and benchmarks",
+  "kind": "paper",
+  "steps": [
+   "S2"
+  ],
+  "verdict": "ADOPT",
+  "insanity": 1,
+  "what": "Li et al. survey (SIGKDD Explorations 2016), Waguih and Berti-Equille experimental evaluation of 12 algorithms (2014), the 2025 survey by Wang, Zhang, Sheng et al., and 'Frustratingly Easy Truth Discovery' (2019).",
+  "fit": "The evaluation's main lesson: on data where one value dominates, simple and Accu-type models match complex ones, and complex ones lose on sparse data. That matches our 2 to 12 observations per key.",
+  "pros": [
+   "One place to look up any method",
+   "Evidence that complexity does not pay here"
+  ],
+  "cons": [
+   "The 2016 survey ends in 2015; the 2025 survey was not read in full"
+  ],
+  "rust": "n/a",
+  "python": "DAFNA-EA reference code (2018, unmaintained)",
+  "why": "Read the evaluation's conclusions before adding model complexity.",
+  "links": [
+   "https://arxiv.org/abs/1505.02463",
+   "https://arxiv.org/abs/1409.6428",
+   "https://arxiv.org/abs/1905.00629",
+   "https://research.usq.edu.au/item/z9v28/a-survey-on-truth-discovery-concepts-methods-applications-and-opportunities"
+  ]
+ },
+ {
+  "name": "Snorkel-style label model (weak supervision)",
+  "kind": "library",
+  "steps": [
+   "S2",
+   "S6"
+  ],
+  "verdict": "IDEA-ONLY",
+  "insanity": 3,
+  "what": "Learns the accuracies of noisy labelling functions without labels and outputs probabilistic labels (Snorkel; FlyingSquid closed form).",
+  "fit": "Our signals (timeline match, page accuracy, cross-page agreement) are labelling functions. With ~1,900 real labels a supervised logistic stacker is simpler and better.",
+  "pros": [
+   "Can exploit the 90% unlabelled rows",
+   "Snorkel active (6k stars, pushed 2026-10-13)"
+  ],
+  "cons": [
+   "Python only",
+   "Assumes conditionally independent functions"
+  ],
+  "rust": "about 100 to 150 lines for a simplified label model",
+  "python": "snorkel, flyingsquid",
+  "why": "Supervised stacking wins when labels exist.",
+  "links": [
+   "https://github.com/snorkel-team/snorkel"
+  ]
+ },
+ {
+  "name": "LLM-based fact checking (RAG, multi-round retrieval)",
+  "kind": "paper family",
+  "steps": [
+   "S2",
+   "S6"
+  ],
+  "verdict": "REJECT",
+  "insanity": 5,
+  "what": "Retrieval-augmented LLM verification of claims.",
+  "fit": "The submitted system may not be an LLM. Also contradicts 'the universe is the only source of truth'.",
+  "pros": [
+   "Strong on open-domain text"
+  ],
+  "cons": [
+   "Disqualifying",
+   "Brings in pretrained world knowledge"
+  ],
+  "rust": "n/a",
+  "python": "n/a",
+  "why": "Banned by the rules.",
+  "links": [
+   "https://arxiv.org/abs/2403.09747"
+  ]
+ },
+ {
+  "name": "Per-key HMM over candidate values (Viterbi + forward-backward)",
+  "kind": "algorithm",
+  "steps": [
+   "S3",
+   "S2",
+   "S6"
+  ],
+  "verdict": "TRY",
+  "insanity": 3,
+  "what": "Hidden state = the true value at each observation date (candidates = values ever seen for the key); emissions = page states the value, with error rate from page reliability; transitions = a switch penalty, optionally forward-only for monotone attributes.",
+  "fit": "Gives the MAP timeline (Viterbi) and calibrated per-date marginals (forward-backward) in one model. State space is 2 to 4 values per key, so it is trivial to run.",
+  "pros": [
+   "Integrates page reliability and change in one model",
+   "Marginals feed the confidence directly",
+   "Confirmed by the 2026 TKDE HMM truth-discovery work"
+  ],
+  "cons": [
+   "Switch penalty and emission rates need fitting on practice",
+   "Rare values with one observation are hard"
+  ],
+  "rust": "about 100 lines, no crate (hmmm is stale since 2020)",
+  "python": "numpy in labs",
+  "why": "Not measured. The bracket-feature fact model already captures change-then-confirmation; try the HMM if errors cluster on keys with 3+ values.",
+  "links": []
+ },
+ {
+  "name": "Temporal conflict resolution with constraints (TeCoRe, Marrying uncertainty and time)",
+  "kind": "paper + system",
+  "steps": [
+   "S3",
+   "S2"
+  ],
+  "verdict": "ADOPT",
+  "insanity": 2,
+  "what": "Uncertain temporal KGs resolved by MLN/PSL with hard temporal constraints (a functional attribute has one value per time point); output is the maximum-weight consistent subset (Chekol, Pirro, Schoenfisch, Stuckenschmidt; AAAI 2017, PVLDB 10(12) 2017 demo).",
+  "fit": "This is our problem's formal statement. For one functional key it reduces to weighted interval scheduling: choose non-overlapping value intervals maximising evidence weight (anchors weigh most), exact in O(n log n).",
+  "pros": [
+   "Formal grounding for the timeline resolver",
+   "Exact and fast once reduced"
+  ],
+  "cons": [
+   "The original system is JVM MLN/PSL"
+  ],
+  "rust": "weighted interval scheduling about 60 lines",
+  "python": "same in labs",
+  "why": "Adopt the formulation, not the engine.",
+  "links": [
+   "https://ojs.aaai.org/index.php/AAAI/article/view/10495",
+   "https://madoc.bib.uni-mannheim.de/42281/"
+  ]
+ },
+ {
+  "name": "Coupled temporal scoping (CoTS)",
+  "kind": "paper",
+  "steps": [
+   "S3"
+  ],
+  "verdict": "IDEA-ONLY",
+  "insanity": 2,
+  "what": "Infers fact validity intervals as change detection over time series of document evidence, coupled by containment, succession and mutual-exclusion constraints, with a few labelled examples (Talukdar, Wijaya, Mitchell, WSDM 2012).",
+  "fit": "Same 'macro-reading' idea: many dated observations scope a fact; joint inference across facts beats scoping each alone.",
+  "pros": [
+   "Uses weak supervision like our anchors"
+  ],
+  "cons": [
+   "Web-scale extraction setting",
+   "No public code verified"
+  ],
+  "rust": "about 150 lines for the propagation",
+  "python": "none",
+  "why": "Supports coupling keys of one entity, for example a new CTO also changes head_of_product.",
+  "links": [
+   "https://ir.webis.de/anthology/2012.wsdm_conference-2012.9"
+  ]
+ },
+ {
+  "name": "Segmentation DP and change-point detection (PELT, BOCPD)",
+  "kind": "algorithm + crate",
+  "steps": [
+   "S3"
+  ],
+  "verdict": "TRY",
+  "insanity": 2,
+  "what": "Find break points in a sequence by minimising cost plus a penalty (PELT), or an online run-length posterior with a hazard function (BOCPD, Adams and MacKay 2007).",
+  "fit": "Our sequences are categorical and short (about 5 points per key), so the numeric crates fit poorly; a hand-written categorical segmentation DP is the same idea in 80 lines. BOCPD gives 'the change happened between d1 and d2' with a probability.",
+  "pros": [
+   "changepoint 0.15 and augurs-changepoint 0.10.3 exist and are maintained",
+   "ruptures for labs"
+  ],
+  "cons": [
+   "Penalty easy to overfit with 514 keys",
+   "Numeric-series assumptions"
+  ],
+  "rust": "hand DP about 80 lines; BOCPD with Dirichlet-categorical about 100 lines",
+  "python": "ruptures",
+  "why": "Equivalent to the HMM with a switch penalty; pick one.",
+  "links": [
+   "https://arxiv.org/abs/0710.3742",
+   "https://github.com/deepcharles/ruptures"
+  ]
+ },
+ {
+  "name": "Staleness hazard (how far an observation can be trusted)",
+  "kind": "algorithm",
+  "steps": [
+   "S3",
+   "S6"
+  ],
+  "verdict": "IDEA-ONLY",
+  "insanity": 2,
+  "what": "Empirical P(value still valid | days since the nearest supporting observation), estimated from practice labels, Kaplan-Meier style.",
+  "fit": "Measured: a gap-based unsure rule was rejected by inner selection in every split; 29 of 39 unsure rows have their nearest same-key observation 90+ days away, but so do 204 true rows. Directly drives 'unsure' (no evidence near the date) and the decay weight of distant observations. Learn it per value kind or per attribute volatility class.",
+  "pros": [
+   "About 40 lines",
+   "Data-driven, explains itself"
+  ],
+  "cons": [
+   "Right-censoring everywhere, about 500 keys"
+  ],
+  "rust": "std (statrs for distributions if needed)",
+  "python": "lifelines or numpy",
+  "why": "Keep distance only as a feature of the fact model.",
+  "links": []
+ },
+ {
+  "name": "Attribute behaviour priors (monotone, fixed, free)",
+  "kind": "heuristic",
+  "steps": [
+   "S3",
+   "S2"
+  ],
+  "verdict": "ADOPT",
+  "insanity": 1,
+  "what": "Classify each attribute from practice data: fixed (founded, launched, joined), increasing (customers, headcount, version), or free (price, lead).",
+  "fit": "Prunes impossible timelines (a launch date that changes is a lie) and sets the switch penalty per attribute. Must be learned from data, not hardcoded, to generalise to unseen attributes.",
+  "pros": [
+   "About 30 lines",
+   "Large effect on lies that look like changes"
+  ],
+  "cons": [
+   "Unseen attributes need a default class"
+  ],
+  "rust": "std",
+  "python": "pandas in labs",
+  "why": "Cheap and generalises if derived from the data.",
+  "links": []
+ },
+ {
+  "name": "Probabilistic logic engines (PSL, Markov Logic, ProbLog)",
+  "kind": "system",
+  "steps": [
+   "S3",
+   "S2",
+   "S6"
+  ],
+  "verdict": "REJECT",
+  "insanity": 4,
+  "what": "Declarative weighted rules with MAP or marginal inference.",
+  "fit": "PSL is JVM-only and idle since 2024-06; Alchemy, Tuffy and RockIt are old research code; ProbLog's exact inference scales poorly past a few thousand facts.",
+  "pros": [
+   "Declarative rules",
+   "PSL gives soft truth values"
+  ],
+  "cons": [
+   "Breaks the standalone Rust binary",
+   "Startup and memory risk",
+   "No Rust ports"
+  ],
+  "rust": "none",
+  "python": "pslpython, problog for small lab slices",
+  "why": "The reduced hand-written models give the same answers here.",
+  "links": [
+   "https://github.com/linqs/psl"
+  ]
+ },
+ {
+  "name": "Temporal KG embeddings (TTransE, HyTE, TComplEx, TNTComplEx)",
+  "kind": "model family",
+  "steps": [
+   "S3"
+  ],
+  "verdict": "IDEA-ONLY",
+  "insanity": 5,
+  "what": "Learned entity, relation and time embeddings for link prediction.",
+  "fit": "2,400 labelled propositions is far too little, typed values (money, dates) are not modelled, and the jury may read learned embeddings as an opaque model.",
+  "pros": [
+   "Active research area (TKGB benchmark 2026)"
+  ],
+  "cons": [
+   "Needs training data and compute",
+   "No Rust crate",
+   "Poor explainability"
+  ],
+  "rust": "none",
+  "python": "PyTorch libraries",
+  "why": "Wrong tool for exact, small, typed data.",
+  "links": [
+   "https://arxiv.org/abs/2602.08353",
+   "https://arxiv.org/abs/2309.09045"
+  ]
+ },
+ {
+  "name": "Allen interval algebra",
+  "kind": "algorithm",
+  "steps": [
+   "S3",
+   "S7"
+  ],
+  "verdict": "IDEA-ONLY",
+  "insanity": 1,
+  "what": "Thirteen relations between intervals (before, meets, overlaps, during...).",
+  "fit": "Useful vocabulary for disjointness checks and for date compare claims; two comparisons cover our needs.",
+  "pros": [
+   "Clean vocabulary"
+  ],
+  "cons": [
+   "Crates are immature (allen_interval_algebra 2023, allen-intervals 753 downloads)"
+  ],
+  "rust": "hand-written enum about 30 lines",
+  "python": "none needed",
+  "why": "Hand-roll if needed.",
+  "links": []
+ },
+ {
+  "name": "Time-series and time-sensitive truth discovery (SARIMA, social sensing)",
+  "kind": "paper",
+  "steps": [
+   "S3"
+  ],
+  "verdict": "IDEA-ONLY",
+  "insanity": 3,
+  "what": "Forecast how truth evolves (SDM 2018), or MLE with claim lifespan and source responsiveness (2015).",
+  "fit": "Our values jump (price change, version bump); smooth forecasting is the wrong shape. Claim lifespan maps to validity intervals.",
+  "pros": [
+   "Lifespan idea transfers"
+  ],
+  "cons": [
+   "Smooth-series assumptions"
+  ],
+  "rust": "n/a",
+  "python": "none",
+  "why": "Step persistence beats smooth models here.",
+  "links": [
+   "https://engineering.purdue.edu/~lusu/papers/SDM2018.pdf"
+  ]
+ },
+ {
+  "name": "Typed value enum with to_interval() (hand-rolled)",
+  "kind": "design",
+  "steps": [
+   "S4"
+  ],
+  "verdict": "ADOPT",
+  "insanity": 1,
+  "what": "enum Val { Qty, Money, Pct, Date, Dur, Ver, Name, Bool } plus op; ordered kinds map to an interval (eq [v,v], gt (v,inf), ge [v,inf), lt (-inf,v), le (-inf,v]); consistency = non-empty intersection.",
+  "fit": "Measured: intervals (V5) add +0.9 accuracy points over the vote rule and +0.7 over V2b (fixes \"2026\" vs \"2026-03-24\", p-168). Follows contracts/value-forms.md exactly: values are exact (no rounding tolerance), data units are powers of 1,000, months and years never convert to days, versions compare as written (2.3 is not 2.3.0), money compares only within one currency and period, names resolve through lexicon aliases.",
+  "pros": [
+   "About 150 lines",
+   "Mirrors the referee's own rules, so claims and labels agree with it"
+  ],
+  "cons": [
+   "Every edge case of value-forms.md needs a unit test"
+  ],
+  "rust": "std only",
+  "python": "pint only to cross-check unit tables in labs",
+  "why": "The referee is deterministic; matching its value semantics exactly is free accuracy.",
+  "links": []
+ },
+ {
+  "name": "Interval and unit crates (inari, uom, measurements, dimensioned, rust_decimal, semver)",
+  "kind": "crate",
+  "steps": [
+   "S4"
+  ],
+  "verdict": "REJECT",
+  "insanity": 1,
+  "what": "Rigorous interval arithmetic, compile-time units, exact decimals, semantic versions.",
+  "fit": "Our units arrive as runtime strings with counted nouns; versions must compare as written, which semver would break; f64 with exact equality on parsed values is enough.",
+  "pros": [
+   "Mature crates (uom 14M downloads, semver 1.1B)"
+  ],
+  "cons": [
+   "inari stale since 2024-08 and possibly heavy",
+   "uom is static typing",
+   "semver normalises versions the referee does not"
+  ],
+  "rust": "inari 2.0, uom 0.38, measurements 0.11, rust_decimal 1.43, semver 1.0",
+  "python": "pint",
+  "why": "A runtime unit table is shorter and matches the contract.",
+  "links": []
+ },
+ {
+  "name": "Noisy-OR blame with one EM step",
+  "kind": "algorithm",
+  "steps": [
+   "S5",
+   "S6",
+   "S8"
+  ],
+  "verdict": "ADOPT",
+  "insanity": 1,
+  "what": "P(row true) = product of per-fact P(true); for a labelled false row, blame_i = P(fact i false) / (1 - product of P(true)).",
+  "fit": "Measured: row P(true) = product of fact P(true) is what the best model (V9/V11) uses. An explicit blame pass (V6) was neutral (-0.5 points) and marking every fact of a false row as weak negative evidence hurt (-1.5 points). Handles the 75 multi-fact false practice rows: each fact's blame becomes a soft label for the timeline and page reliability, instead of marking every fact false.",
+  "pros": [
+   "About 20 lines",
+   "Explains itself: 'fact X blamed at 0.8 because page Y says otherwise'"
+  ],
+  "cons": [
+   "Assumes facts in a row are independent, which a lying page violates"
+  ],
+  "rust": "std",
+  "python": "numpy",
+  "why": "Keep the product for rows; skip the blame pass until the fact model is trained on soft blame labels.",
+  "links": []
+ },
+ {
+  "name": "Multiple-instance learning (standard MIL assumption)",
+  "kind": "theory",
+  "steps": [
+   "S5"
+  ],
+  "verdict": "IDEA-ONLY",
+  "insanity": 1,
+  "what": "A bag is positive (false) iff at least one instance is positive.",
+  "fit": "The formal name for our row semantics; noisy-OR is the practical instance. Most propositions sit in single-fact rows, so MIL only matters for 75 rows.",
+  "pros": [
+   "Good vocabulary for the architecture talk"
+  ],
+  "cons": [
+   "MIL classifiers have no Rust implementations"
+  ],
+  "rust": "none needed",
+  "python": "none needed",
+  "why": "Name it, implement it as noisy-OR.",
+  "links": []
+ },
+ {
+  "name": "Consistency-based diagnosis and MaxSAT (Reiter hitting sets, rustsat)",
+  "kind": "algorithm + crate",
+  "steps": [
+   "S5"
+  ],
+  "verdict": "IDEA-ONLY",
+  "insanity": 3,
+  "what": "Find minimal sets of facts whose falsity explains all conflicts, or minimum-cost assignments with soft clauses.",
+  "fit": "Only pays off if page-level liar variables couple many rows. With about 2.4 facts per false row, ranking by blame is equivalent.",
+  "pros": [
+   "Exact, handles cross-row coupling",
+   "rustsat 0.7.5 has a MaxSAT API"
+  ],
+  "cons": [
+   "Weights still need calibrated per-fact probabilities",
+   "Encoding cost"
+  ],
+  "rust": "rustsat 0.7.5, splr 0.19, batsat 0.6",
+  "python": "python-sat",
+  "why": "A later idea; noisy-OR first.",
+  "links": []
+ },
+ {
+  "name": "Partial-label learning",
+  "kind": "paper family",
+  "steps": [
+   "S5"
+  ],
+  "verdict": "REJECT",
+  "insanity": 4,
+  "what": "Training with candidate label sets.",
+  "fit": "Neural methods for a problem noisy-OR solves in closed form.",
+  "pros": [
+   "Same problem shape"
+  ],
+  "cons": [
+   "No Rust port",
+   "Overkill"
+  ],
+  "rust": "none",
+  "python": "PyTorch code",
+  "why": "Not needed.",
+  "links": []
+ },
+ {
+  "name": "Logistic regression stacker over evidence features",
+  "kind": "model",
+  "steps": [
+   "S6",
+   "S8"
+  ],
+  "verdict": "ADOPT",
+  "insanity": 1,
+  "what": "Per-row features (support and contradiction weight, timeline marginal, distance to nearest anchor, page reliability, attribute volatility, number of facts, has op) into a logistic model trained on labelled pages.",
+  "fit": "Measured: per-fact LR over bracket features (V9) reaches 0.902 accuracy, 0.553 macro-F1, false precision 0.763, Brier 0.077 (R80, optimistic); with one round of self-training (V11) 0.907. In the sparse 10%-labelled regime row-level LR (V8) is the best model at 0.851. LR beat or matched gradient boosting in every regime. Stable at 277 false rows, near-calibrated, and coefficient times feature value is an exact per-feature explanation for the demo. Add a few hand-built interactions rather than trees.",
+  "pros": [
+   "linfa-logistic 0.8.1 (207k downloads)",
+   "Per-feature contributions are the explanation",
+   "Safe under shift"
+  ],
+  "cons": [
+   "No interactions unless added by hand"
+  ],
+  "rust": "linfa-logistic 0.8.1 or about 60 lines of IRLS",
+  "python": "scikit-learn",
+  "why": "Best accuracy-explainability trade at this data size.",
+  "links": [
+   "https://crates.io/crates/linfa-logistic"
+  ]
+ },
+ {
+  "name": "Gradient boosting (perpetual, lightgbm3)",
+  "kind": "crate",
+  "steps": [
+   "S6"
+  ],
+  "verdict": "TRY",
+  "insanity": 3,
+  "what": "Non-linear fusion of evidence features.",
+  "fit": "Measured: HGB trails LR: 0.876 vs 0.902 (V9, R80), 0.840 vs 0.851 (V8, R10). Captures interactions such as volatile attribute plus old page plus low reliability, but overfits easily with 277 false rows and needs a C++ build for lightgbm3.",
+  "pros": [
+   "perpetual is pure Rust (3.0.0-rc.2, updated 2026-10-24)",
+   "lightgbm3 1.0.11 maintained"
+  ],
+  "cons": [
+   "perpetual is a release candidate",
+   "lightgbm3 needs C++ and libgomp in the image",
+   "Older xgboost/lightgbm/catboost crates are stale",
+   "Harder to explain"
+  ],
+  "rust": "perpetual or lightgbm3",
+  "python": "lightgbm, sklearn HistGradientBoosting",
+  "why": "Measured below logistic regression; not worth the dependency.",
+  "links": [
+   "https://github.com/perpetual-ml/perpetual"
+  ]
+ },
+ {
+  "name": "Platt scaling (and temperature scaling)",
+  "kind": "algorithm",
+  "steps": [
+   "S6"
+  ],
+  "verdict": "TRY",
+  "insanity": 1,
+  "what": "Fit a 2-parameter sigmoid from raw scores to probabilities (Platt 1999); temperature scaling is the 1-parameter version.",
+  "fit": "With only 277 false rows, a 2-parameter fit is far more stable than isotonic and robust to the shift to unseen subjects.",
+  "pros": [
+   "Few parameters",
+   "About 40 lines of Newton steps"
+  ],
+  "cons": [
+   "Wrong if the score is non-monotone"
+  ],
+  "rust": "about 40 lines, or argmin 0.11",
+  "python": "sklearn CalibratedClassifierCV(method='sigmoid')",
+  "why": "Not measured; the fallback if isotonic plateaus cause ties or the shift to unseen subjects hurts.",
+  "links": []
+ },
+ {
+  "name": "Isotonic regression (PAV) and histogram binning",
+  "kind": "algorithm",
+  "steps": [
+   "S6"
+  ],
+  "verdict": "ADOPT",
+  "insanity": 1,
+  "what": "Monotone non-parametric calibration; binning maps a score to the empirical true rate in its bin.",
+  "fit": "Measured: isotonic fitted on leave-one-page-out scores cuts ECE from about 0.16 to 0.04 on every rule and model (V7: 0.167 to 0.044 R80, 0.158 to 0.050 R10). Use if the reliability diagram is clearly non-sigmoid; compare with Platt on out-of-fold ECE and Brier. Plateaus create ties in confidence.",
+  "pros": [
+   "Flexible",
+   "pav_regression 0.7.0 (91k downloads, 2026-03)"
+  ],
+  "cons": [
+   "Overfits with few false rows"
+  ],
+  "rust": "pav_regression 0.7.0 or about 50 lines",
+  "python": "sklearn IsotonicRegression",
+  "why": "Measured to work at our data size when fitted out-of-fold by page.",
+  "links": [
+   "https://crates.io/crates/pav_regression"
+  ]
+ },
+ {
+  "name": "Venn-Abers predictors and beta calibration",
+  "kind": "algorithm",
+  "steps": [
+   "S6"
+  ],
+  "verdict": "TRY",
+  "insanity": 2,
+  "what": "Venn-Abers runs isotonic twice (label assumed 0 and 1) to get a probability interval with a validity guarantee; beta calibration is a 3-parameter smooth map (Kull et al. 2017).",
+  "fit": "The interval width is an honest uncertainty signal and a natural trigger for 'unsure'; a strong story for the 15% self-evaluation score.",
+  "pros": [
+   "Calibrated by construction (validity)",
+   "Interval width drives abstention"
+  ],
+  "cons": [
+   "Wide intervals with sparse data",
+   "No Rust crate"
+  ],
+  "rust": "about 30 lines on top of PAV",
+  "python": "venn-abers (ip200, pushed 2026-09-02), betacal",
+  "why": "Cheap upgrade once PAV exists.",
+  "links": [
+   "https://github.com/ip200/venn-abers"
+  ]
+ },
+ {
+  "name": "Conformal prediction, risk control and selective classification",
+  "kind": "method family",
+  "steps": [
+   "S6",
+   "S7"
+  ],
+  "verdict": "TRY",
+  "insanity": 2,
+  "what": "Split conformal gives prediction sets ({true}, {false}, both = abstain); conformal risk control and Learn-then-Test choose a threshold so the error rate among accepted rows is bounded; selective conformal risk control (2025) does selection then control.",
+  "fit": "Choose the unsure band and the claim confidence floor with a stated guarantee, calibrated on page groups. Exchangeability breaks for unseen subjects, so say so.",
+  "pros": [
+   "Distribution-free statements for the self-evaluation",
+   "About 30 lines each"
+  ],
+  "cons": [
+   "Guarantee only as good as exchangeability",
+   "Rust crates are obscure (conformal-prediction 495 downloads)"
+  ],
+  "rust": "port about 30 lines",
+  "python": "MAPIE (pushed 2026-10-28), aangelopoulos/ltt",
+  "why": "Gives defensible numbers for the jury at low cost.",
+  "links": [
+   "https://arxiv.org/abs/2208.02814",
+   "https://arxiv.org/abs/2101.02703",
+   "https://arxiv.org/abs/2512.12844",
+   "https://github.com/scikit-learn-contrib/MAPIE"
+  ]
+ },
+ {
+  "name": "Page-grouped cross-validation and calibration metrics (ECE, Brier, reliability diagram)",
+  "kind": "evaluation",
+  "steps": [
+   "S6"
+  ],
+  "verdict": "ADOPT",
+  "insanity": 1,
+  "what": "GroupKFold by page (hidden pages keep their facts as unlabelled votes); report accuracy, macro-F1, confusion matrix, ECE with bootstrap intervals, Brier.",
+  "fit": "Required because at evaluation pages and possibly subjects are unseen. Also run a 10%-labelled regime: the real run has about 10% labelled anchors, not 80%.",
+  "pros": [
+   "Honest numbers",
+   "The reliability plot is a demo slide for self-evaluation"
+  ],
+  "cons": [
+   "10-bin ECE on 1,900 rows is noisy"
+  ],
+  "rust": "about 40 lines",
+  "python": "sklearn GroupKFold",
+  "why": "Without it every other number is inflated.",
+  "links": []
+ },
+ {
+  "name": "Score-to-confidence mapping and the unsure band",
+  "kind": "design",
+  "steps": [
+   "S6"
+  ],
+  "verdict": "ADOPT",
+  "insanity": 1,
+  "what": "Calibrated p = P(row true); label true if p >= 0.5, confidence = max(p, 1-p); label unsure where evidence is absent or confidence falls below a threshold chosen on out-of-fold data.",
+  "fit": "Measured: no variant predicts unsure usefully: the 39 unsure rows match anchors as often as true rows (p-1032, p-1519). Predicting unsure on low confidence lowered macro-F1 in inner selection. The label metric is unpublished and unsure carries no confidence, so the threshold is a judgment call; 'always true' already gets about 83%, so judge by false recall, false precision and Brier.",
+  "pros": [
+   "Simple and auditable"
+  ],
+  "cons": [
+   "Unsure reward vs wrong-label penalty unknown"
+  ],
+  "rust": "std",
+  "python": "numpy",
+  "why": "Required glue; choose the threshold by measurement.",
+  "links": []
+ },
+ {
+  "name": "Static embeddings for unseen attributes (model2vec-rs, fastText)",
+  "kind": "model",
+  "steps": [
+   "S6",
+   "S2"
+  ],
+  "verdict": "REJECT",
+  "insanity": 3,
+  "what": "Map a new attribute name to similar known attributes to borrow priors (volatility, lie rate).",
+  "fit": "model2vec is distilled from a transformer, so a jury may read it as LLM-derived. Character n-gram or token Jaccard over attribute names does the same job transparently in 20 lines.",
+  "pros": [
+   "model2vec-rs 0.3.0 alive (329k downloads, pushed 2026-10-28)"
+  ],
+  "cons": [
+   "Optics against the no-LLM rule",
+   "Bundled model file",
+   "Little gain on a synthetic, regular vocabulary"
+  ],
+  "rust": "model2vec-rs 0.3.0, fasttext 0.8.0; n-gram Jaccard in std",
+  "python": "model2vec",
+  "why": "Use n-gram similarity instead, only if unseen attributes appear.",
+  "links": [
+   "https://github.com/MinishLab/model2vec-rs"
+  ]
+ },
+ {
+  "name": "Greedy claim selection with type quotas and a root-fact cap",
+  "kind": "design",
+  "steps": [
+   "S7"
+  ],
+  "verdict": "ADOPT",
+  "insanity": 2,
+  "what": "Generate far more than 1,000 candidates, score each by the product of P(true) of the facts it rests on, cap how many claims may share one fact, fill per-type quotas greedily by score.",
+  "fit": "Measured: carrying the latest anchor forward is unsafe for as-of claims: hiding the last 20% of dates, the latest earlier anchor matches the final true value for only 53.4% of keys (coverage 75.5%). One wrong fact would otherwise sink many claims at once; the cap bounds that correlated loss and enforces diversity across fact, compare, change, at_event and relation.",
+  "pros": [
+   "About 30 lines",
+   "Exactly enough for knapsack-with-quotas"
+  ],
+  "cons": [
+   "Quotas trade a little precision for diversity"
+  ],
+  "rust": "std (good_lp + microlp only if pairwise constraints are added)",
+  "python": "numpy",
+  "why": "Precision-at-k with correlated risk, solved simply.",
+  "links": []
+ },
+ {
+  "name": "Conformal selection with Benjamini-Hochberg (FDR control)",
+  "kind": "paper",
+  "steps": [
+   "S7"
+  ],
+  "verdict": "TRY",
+  "insanity": 3,
+  "what": "Conformal p-values per candidate plus BH so the expected false discovery rate among selected claims is at most alpha (Jin and Candes 2023; e-variable follow-up 2026).",
+  "fit": "Gives a principled 'expected wrong claims at most X' statement. It controls expected FDR, not 'all 1,000 true', and correlated claims weaken it.",
+  "pros": [
+   "The principled answer to picking items that are all true"
+  ],
+  "cons": [
+   "Needs exchangeable calibration claims",
+   "About 10 expected errors at 1% FDR"
+  ],
+  "rust": "about 40 lines",
+  "python": "numpy",
+  "why": "Framing on top of greedy; modest accuracy gain.",
+  "links": [
+   "https://arxiv.org/abs/2210.01408",
+   "https://arxiv.org/abs/2604.11305"
+  ]
+ },
+ {
+  "name": "Referee-mirror self-check for generated claims",
+  "kind": "design",
+  "steps": [
+   "S7",
+   "S8"
+  ],
+  "verdict": "ADOPT",
+  "insanity": 2,
+  "what": "Before writing output.csv, re-parse every generated claim text with our own implementation of claim-forms.md and value-forms.md (one sentence, subject named, no second value or date, no negation, no time words) and re-label its form with our own labeller at the claim's date.",
+  "fit": "The referee is deterministic and published; an invalid claim still takes one of the 1,000 slots, so a mirror check removes a whole class of losses. Also check 'new': the text must not equal an input row.",
+  "pros": [
+   "Catches invalid claims before submission",
+   "Doubles as a test suite from the contract's examples"
+  ],
+  "cons": [
+   "The mirror must be kept faithful to the contract"
+  ],
+  "rust": "about 200 to 300 lines with the contract examples as tests",
+  "python": "prototype in labs",
+  "why": "Cheapest large reduction of claim risk.",
+  "links": []
+ },
+ {
+  "name": "Temporal QA and fact-verification benchmarks (TempTabQA, FEVEROUS, ChronoFact)",
+  "kind": "benchmark",
+  "steps": [
+   "S7",
+   "S3"
+  ],
+  "verdict": "IDEA-ONLY",
+  "insanity": 1,
+  "what": "TempTabQA: temporal QA over infobox tables (EMNLP 2023). FEVEROUS: verification against sentences and table cells (2021). ChronoFact: timeline-based temporal fact verification (IJCAI 2025).",
+  "fit": "ChronoFact's idea (order the claim's events and the evidence's events on timelines, then judge each claim event) is our pipeline in neural form; the others motivate which temporal operations matter.",
+  "pros": [
+   "Validates the timeline framing"
+  ],
+  "cons": [
+   "All neural or LLM-oriented evaluation"
+  ],
+  "rust": "n/a",
+  "python": "n/a",
+  "why": "Context and vocabulary only.",
+  "links": [
+   "https://arxiv.org/abs/2311.08002",
+   "https://arxiv.org/abs/2106.05707",
+   "https://arxiv.org/abs/2410.14964"
+  ]
+ },
+ {
+  "name": "Why-provenance witness lists",
+  "kind": "design",
+  "steps": [
+   "S8"
+  ],
+  "verdict": "ADOPT",
+  "insanity": 1,
+  "what": "Every verdict carries Vec<(observation_id, page_id, polarity, weight)>: the supporting and contradicting evidence, page reliabilities, and the timeline segment used; the semiring vocabulary (Green, Karvounarakis, Tannen 2007) names it.",
+  "fit": "Feeds the live demo and the architecture diagram directly; with a logistic stacker the per-feature contributions complete the explanation.",
+  "pros": [
+   "About 30 lines",
+   "Exactly what the jury's 'the system does the work itself' criterion wants to see"
+  ],
+  "cons": [
+   "Must be built in from the start, not bolted on"
+  ],
+  "rust": "std + serde for the UI",
+  "python": "dicts in labs",
+  "why": "Explainability for free if designed in.",
+  "links": []
+ },
+ {
+  "name": "Argumentation frameworks (Dung, bipolar)",
+  "kind": "theory",
+  "steps": [
+   "S8",
+   "S2"
+  ],
+  "verdict": "IDEA-ONLY",
+  "insanity": 3,
+  "what": "Attack and support relations between arguments with accepted-set semantics.",
+  "fit": "Matches 'supporting vs contradicting evidence' visually, but the semantics add nothing over weighted evidence. Draw the evidence graph from the witness lists instead.",
+  "pros": [
+   "Nice demo picture"
+  ],
+  "cons": [
+   "No Rust tooling",
+   "Semantics add complexity, not accuracy"
+  ],
+  "rust": "grounded semantics about 60 lines on petgraph",
+  "python": "none needed",
+  "why": "Use the picture, not the theory.",
+  "links": []
+ },
+ {
+  "name": "SHAP / TreeSHAP in Rust",
+  "kind": "crate",
+  "steps": [
+   "S8"
+  ],
+  "verdict": "REJECT",
+  "insanity": 3,
+  "what": "Feature attributions for tree models.",
+  "fit": "treeshap 0.1.0 has 21 downloads and an unknown author; with logistic regression the exact attribution is coefficient times feature value.",
+  "pros": [
+   "Standard explanation method"
+  ],
+  "cons": [
+   "Untested crate",
+   "Compatibility with perpetual/lightgbm3 unknown"
+  ],
+  "rust": "treeshap 0.1.0 (unvetted)",
+  "python": "shap",
+  "why": "Not needed with a linear model.",
+  "links": []
+ },
+ {
+  "name": "Bracket evidence features (before, same day, after)",
+  "kind": "feature design",
+  "steps": [
+   "S3",
+   "S6",
+   "S2"
+  ],
+  "verdict": "ADOPT",
+  "insanity": 2,
+  "what": "For each fact: does it match the nearest labelled anchor before its date, on the same day, after it; day gaps to each; stale flag (matches an older value only); premature flag (matches only a later value); kernel-weighted vote support; magnitude ratios to neighbouring values.",
+  "fit": "Measured: the biggest single lever. Rules reach about 0.75 accuracy (R80); a per-fact logistic model over these features reaches 0.90 to 0.91 with false precision 0.76 to 0.79 and Brier 0.073. Pattern table: a fact matching anchors on both sides is 275 true / 0 false; mismatching both sides is 30 true / 68 false; new value confirmed later is 150 true / 18 false.",
+  "pros": [
+   "Turns 'change versus lie' into features the model can weigh",
+   "Each feature is a sentence in the explanation"
+  ],
+  "cons": [
+   "V9 features were designed after reading R80 errors, so 0.90 is optimistic",
+   "The change moment between two bracketing anchors stays unobservable (p-499, p-985)",
+   "Power-of-ten feature misfires on later restatements (p-466, p-455)"
+  ],
+  "rust": "std, about 150 lines over the timeline index",
+  "python": "labs/kb-experiments/v9.py",
+  "why": "The measured core of the labeller.",
+  "links": []
+ },
+ {
+  "name": "Self-training on unlabelled rows",
+  "kind": "algorithm",
+  "steps": [
+   "S6",
+   "S2"
+  ],
+  "verdict": "REJECT",
+  "insanity": 2,
+  "what": "Label the unlabelled rows with the model, add the confident ones as pseudo-anchors, refit.",
+  "fit": "Measured: one round (V11) gives +0.5 points in R80 (0.902 to 0.907) and -0.7 in R10 (0.816 to 0.809).",
+  "pros": [
+   "Uses the 90% unlabelled rows"
+  ],
+  "cons": [
+   "Confirms its own mistakes when labels are scarce"
+  ],
+  "rust": "std",
+  "python": "labs/kb-experiments/v9.py",
+  "why": "Gain too small and negative in the sparse regime.",
+  "links": []
+ }
+]
