@@ -28,6 +28,8 @@ pub struct Engine {
     exact: BTreeMap<String, Vec<usize>>,
     observations: BTreeMap<(String, String), Vec<Evidence>>,
     forest: RandomForest,
+    class_priors: [f64; 3],
+    earliest_date: String,
     number: Regex,
     percent: Regex,
     money: Regex,
@@ -95,6 +97,13 @@ impl Engine {
             exact: BTreeMap::new(),
             observations: BTreeMap::new(),
             forest: RandomForest::train(&[], &[]),
+            class_priors: [1.0 / 3.0; 3],
+            earliest_date: practice
+                .iter()
+                .map(|row| row.date.as_str())
+                .min()
+                .unwrap_or("")
+                .to_owned(),
             number: regex(
                 r"(?i)\b([0-9][0-9,]*(?:\.[0-9]+)?)\s*(million|billion|thousand)?\s*([a-z][a-z-]*)?",
             )?,
@@ -155,16 +164,23 @@ impl Engine {
         }
         let mut x = Vec::with_capacity(engine.examples.len());
         let mut y = Vec::with_capacity(engine.examples.len());
+        let mut class_counts = [1.0; 3];
         for example in &engine.examples {
             let nearest = engine.nearest(&example.row.text, Some(&example.row.id));
+            // Training features must face the same imperfect template extraction
+            // as unseen runtime text; do not feed oracle forms into the forest.
+            let inferred_facts = engine.extract_template(&example.row, &nearest);
             x.push(engine.features(
                 &example.row,
-                &example.row.form,
+                &inferred_facts,
                 &nearest,
                 Some(&example.row.id),
             ));
             y.push(class(&example.row.label).unwrap_or(2));
+            class_counts[class(&example.row.label).unwrap_or(2)] += 1.0;
         }
+        let total: f64 = class_counts.iter().sum();
+        engine.class_priors = class_counts.map(|count| count / total);
         engine.forest = RandomForest::train(&x, &y);
         Ok(engine)
     }
@@ -219,6 +235,13 @@ impl Engine {
         let facts = self.extract_with_nearest(row, &nearest);
         let features = self.features(row, &facts, &nearest, None);
         let mut scores = self.forest.predict(&features);
+        // Each tree is trained on balanced bootstrap samples. Restore observed
+        // class priors before choosing a label; this is not held-out calibration.
+        for (score, prior) in scores.iter_mut().zip(self.class_priors) {
+            *score *= prior;
+        }
+        let score_sum: f64 = scores.iter().sum();
+        scores = scores.map(|score| score / score_sum);
         let mut evidence = Vec::new();
         let mut supported = 0;
         let mut contradicted = 0;
@@ -307,10 +330,10 @@ impl Engine {
             chosen = 0;
             scores = peak(0, 0.94);
             reason = "Every extracted assertion matches an unambiguous true observation on the same date; template extraction can still be incomplete.".into();
-        } else if facts.is_empty()
+        } else if row.date < self.earliest_date
             || nearest
                 .first()
-                .is_none_or(|(_, similarity)| *similarity < 0.32)
+                .is_none_or(|(_, similarity)| *similarity < 0.22)
         {
             chosen = 2;
             scores = peak(2, 0.8);
@@ -320,7 +343,7 @@ impl Engine {
             let best = (0..3)
                 .max_by(|&a, &b| scores[a].total_cmp(&scores[b]))
                 .unwrap_or(2);
-            if best == 2 || scores[best] < 0.62 || evidence.is_empty() {
+            if best == 2 || scores[best] < 0.62 {
                 chosen = 2;
                 scores[2] = scores[2].max(scores[0].max(scores[1]) + 0.05);
                 let sum: f64 = scores.iter().sum();
@@ -328,7 +351,11 @@ impl Engine {
                 reason = "No decisive same-day evidence and insufficient model confidence. Earlier observations are shown for review; they do not prove a validity interval.".into();
             } else {
                 chosen = best;
-                reason.push_str(" Supporting observations may be earlier than the query; temporal continuity is unproven.");
+                if evidence.is_empty() {
+                    reason.push_str(" No grounded supporting observation was found: this label is a statistical estimate only.");
+                } else {
+                    reason.push_str(" Supporting observations may be earlier than the query; temporal continuity is unproven.");
+                }
             }
         }
         Prediction {
@@ -444,6 +471,10 @@ impl Engine {
                 return self.examples[i].row.form.clone();
             }
         }
+        self.extract_template(row, nearest)
+    }
+
+    fn extract_template(&self, row: &InputRow, nearest: &[(usize, f64)]) -> Vec<Fact> {
         let entities = self.entities(&row.text);
         let Some(&(index, similarity)) = nearest.iter().find(|&&(i, sim)| {
             sim >= 0.34
@@ -955,5 +986,21 @@ mod tests {
         assert!(result[0].evidence.is_empty());
         let scores = &result[0].probabilities;
         assert!((scores.p_true + scores.p_false + scores.p_unsure - 1.0).abs() < 1e-9);
+    }
+
+    #[test]
+    fn mihai_surface_matching_preserves_boundaries_and_nfkc() {
+        let (rows, lexicon) = fixtures();
+        let engine = Engine::new(&rows, &lexicon).unwrap();
+        assert_eq!(
+            engine.entities("Ｈｏｏｌｙ　Ｃｌｏｕｄ"),
+            vec!["Hooly Cloud"]
+        );
+        assert_eq!(engine.entities("HoolyCloud"), vec!["Hooly Cloud"]);
+        assert!(engine.entities("HoolyCloudish").is_empty());
+        assert_eq!(
+            engine.entities("Hooly Cloud and Hooly"),
+            vec!["Hooly", "Hooly Cloud"]
+        );
     }
 }
