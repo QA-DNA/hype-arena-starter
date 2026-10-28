@@ -18,6 +18,10 @@ Truth, unde e relevant cu adevărat, unde strică, și ce variante merită testa
    - **Etichetarea celor ~18.000 de rânduri**: aici MMR-ul clasic pe similaritate de text
      **strică**, am măsurat asta (secțiunea 4). Ideea lui de penalizare a redundanței trebuie
      mutată în agregarea voturilor, adică discount pe paginile care copiază (Dong et al. 2009).
+     X3 (secțiunea 4.4) a testat-o peste modelul V11 al echipei: ca feature în plus nu ajută.
+     În schimb, X3 a arătat că **V11 e vulnerabil la minciuni copiate**: recall-ul pe false
+     scade de la 0,46 la 0,20. Reparația de testat e dedup-ul la sursă, înainte de orice
+     feature.
 2. **Matematica deciziei.** Dacă fiecare claim corect valorează la fel (scor liniar), top-k după
    P(true) e exact optim, oricât de corelate ar fi erorile. Diversificarea nu crește valoarea
    așteptată, ci reduce riscul. Merită totuși, din trei motive:
@@ -173,6 +177,11 @@ Autorii sugerează λ≈0,3 pentru explorare, apoi λ≈0,7.
 ---
 
 ## 3. Claims: locul unde MMR contează
+
+Generatorul de claim-uri (ce întreabă KB-ul, cum construiește candidații) e descris în
+[claim-generation.md](claim-generation.md). Secțiunea de față tratează doar selecția celor 1.000.
+Atenție la o diferență: acolo pasul de selecție are cote pe tip, iar în X1 **cotele egale pe tip**
+au ieșit cele mai proaste la risc (3.5). Cote proporționale sau minime nu au fost testate.
 
 ### 3.1 Când ajută diversificarea (matematică)
 
@@ -445,11 +454,82 @@ Asta e **truth discovery cu dependență între surse**:
 | L1 | Fallback pe text: top-k=20, fetch 100, char 3-5 grame | **măsurat azi** | cel mai bun pe dovada decisivă |
 | L2 | Dacă vrei MMR pe text: doar λ ≥ 0,9, ca dedup ușor | **măsurat azi** | λ ≤ 0,7 strică dovada decisivă, mai ales pe rândurile false |
 | L3 | MMR pe valori, nu pe rânduri: grupează pe (cheie, valoare), MMR peste valori distincte, plus un slot forțat pentru ultima observație ≤ dată | netestat (R2 §2.3) | o valoare veche repetată de 30 de ori ocupă un singur slot; conflictele ies la suprafață |
-| L4 | Discount pe copii, stil Dong: valori rare comune între pagini înseamnă dependență | testat în literatură, netestat aici | 47 de valori false repetate în practice |
+| L4 | Discount pe copii, stil Dong: valori rare comune între pagini înseamnă dependență | testat în literatură; **X3: ca feature în plus nu ajută** (4.4); ca dedup la sursă, netestat | 47 de valori false repetate în practice |
 | L5 | Încredere pe pagină din etichetele practice: rândurile practice vin etichetate în input, deci paginile cu rânduri false sunt cunoscute | netestat | 34 de pagini ≥ 50% false; o pagină mincinoasă e probabil mincinoasă și pe rândurile neetichetate |
 | L6 | Anti-MMR: caută dovezi redundante care concordă (coroborare) | netestat (R3 8.8), susținut indirect de X2 | coroborarea independentă crește q_f |
 | L7 | `unsure` doar când nu există nicio observație independentă compatibilă cu data | literatură (evidence sufficiency) | baza `unsure` e doar 2% (39/1.897), deci pragul trebuie să fie conservator |
 | L8 | Context de pagină pentru subiecte implicite ("He begins with...") | netestat | 665 de rânduri au subiect implicit; pagina se reconstruiește din id-uri consecutive cu aceeași dată, dacă id-urile rămân în ordine la rulare (neverificat) |
+
+### 4.4 Experimentul X3: dovezi independente peste V11 (punctul 1)
+
+Modelul de etichetare al echipei e în [knowledge-base.md](knowledge-base.md):
+**V11lr-self1**.
+- **Ce face:** regresie logistică pe feature-uri de dovezi per fapt, plus suspiciune pe pagină,
+  calibrare izotonică și o rundă de self-training.
+- **Rezultat:**
+  - în regimul R80 (80% din pagini etichetate): 0,907 accuracy, Brier 0,073;
+  - în regimul R10 (10% etichetate, cel mai apropiat de rularea reală): 0,809 accuracy,
+    Brier 0,124.
+- **Referința "always true":** 0,833 (R80) și 0,831 (R10).
+
+X3 a verificat dacă ideea MMR "numeri surse independente, nu rânduri" îl îmbunătățește. Codul
+e în [`labs/kb-experiments/v12.py`](../../labs/kb-experiments/v12.py), iar raportul în
+[`REPORT_v12.md`](../../labs/kb-experiments/REPORT_v12.md). Cele trei variante au fost fixate
+**înainte** de orice rezultat:
+
+| Variantă | Ce adaugă la V11 |
+| --- | --- |
+| V12pages | numărul de pagini distincte, în loc de rânduri, pentru ancore, voturi și negative |
+| V12mmr | masa de dovezi cu discount MMR: fiecare dovadă contează `rel · (1 − max sim)` față de cele deja numărate, unde `sim` = 1 pentru aceeași pagină, altfel cosinus TF-IDF pe text |
+| V12mmr-replace | aceeași masă, dar **în locul** numărătorilor brute |
+
+**Pe practice nu câștigă nimic peste zgomot** (comparație pereche, split cu split):
+
+| Variantă | Regim | Acc | Recall false | Precizie false | Brier |
+| --- | --- | --- | --- | --- | --- |
+| V11lr-self1 | R80 | 0,907 | 0,695 | 0,793 | 0,073 |
+| V12mmr | R80 | 0,905 | 0,723 | 0,766 | 0,073 |
+| V12mmr-replace | R80 | 0,902 | 0,741 | 0,737 | 0,074 |
+| V11lr-self1 | R10 | 0,809 | 0,461 | 0,499 | 0,124 |
+| V12mmr | R10 | 0,803 | 0,523 | 0,475 | 0,124 |
+| V12mmr-replace | R10 | 0,822 | 0,459 | 0,535 | 0,125 |
+
+La R80, precizia pe false chiar scade în toate cele 5 fold-uri (−0,027 la V12mmr, −0,056 la
+replace).
+
+**Găsirea importantă e un risc pentru V11, nu un câștig pentru MMR.**
+- **Stresul "minciuni copiate la test" (hlie)** pune 3 copii ale fiecărui rând fals de pe
+  paginile **neetichetate** din split. Copiile sunt pe pagini noi, la +1, +7 și +30 de zile.
+  Ele nu sunt niciodată etichetate și nu intră niciodată în evaluare.
+  - **V11** cade: recall pe false de la 0,461 la **0,204**, mai rău în 10 din 10 splituri;
+    Brier +0,037, accuracy −0,084.
+  - **V9lr**, fără self-training, cade și mai tare: de la 0,465 la 0,120.
+- **Controlul:** același număr de copii, dar ale rândurilor adevărate, nu schimbă practic
+  nimic (recall pe false +0,006).
+- **V12mmr nu protejează.** Degradează cu 0,065 **mai mult** decât V11 și e mai bun doar în
+  4 din 10 splituri. V12mmr-replace e la nivel de zgomot.
+- **De ce:** copiile ajung la model și pe alte canale, unde contează la greutate întreagă:
+  - feature-urile de tip bracket (cea mai apropiată observație înainte și după);
+  - cele numerice;
+  - votul ponderat `marg`, care alimentează și suspiciunea pe pagină;
+  - ancorele pseudo-"true" din self-training.
+
+  Discountul MMR a atins doar coloanele adăugate.
+- **Primele scenarii de stres** (toate rândurile false copiate, inclusiv cele de pe pagini
+  etichetate, plus un scenariu "mixt") erau **confundate**. La antrenare, "are duplicat"
+  devenea un indiciu pentru eticheta false, așa că V11 părea să *câștige* sub copiere.
+  Reviewerul Opus a prins confuzia, iar workerul a refăcut testul pe pagini neetichetate.
+  Cifrele vechi rămân în `results_v12.txt`, marcate ca atare.
+
+**Verdict pentru punctul 1:**
+- **Nu adoptăm V12 în V11.** MMR ca feature în plus nu ajută nici pe practice, nici sub atac.
+- **Lecția MMR se aplică la sursă, nu la feature.** Rândurile aproape identice de pe pagini
+  diferite (TF-IDF ≥ 0,9) trebuie unite într-o singură sursă **înainte** de calculul oricărui
+  feature. Asta înseamnă bracket, numeric, `marg`, suspiciune pe pagină și self-training.
+  Netestat; e primul lucru de încercat dacă rămâne timp.
+- **Diagnostic ieftin la rulare:** cât de des apar texte aproape identice pe pagini diferite în
+  cele ~20.000 de rânduri. Dacă apar des, riscul de mai sus e real, iar dedup-ul la sursă devine
+  prioritar.
 
 ---
 
