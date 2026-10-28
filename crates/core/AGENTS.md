@@ -1,7 +1,7 @@
 # Core scope
 
-Read [root instructions](../../AGENTS.md). Only workspace metadata exists;
-the evidence model and reasoning engine are future work.
+Read [root instructions](../../AGENTS.md). The shared core includes typed data,
+extraction, a CPU forest, evidence, MMR claim generation and contract CSV handling.
 
 - Own typed domain data and reusable computation. CLI, HTTP, and UI depend on core,
   while core must remain independent of those adapters and of CUDA.

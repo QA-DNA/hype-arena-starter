@@ -1,7 +1,7 @@
 # CLI and competition runtime scope
 
-Read [root instructions](../../AGENTS.md). `info` works. `run` exits 2
-because the competition solver is not implemented; preserve that honest boundary.
+Read [root instructions](../../AGENTS.md). `info` reports implementation status and
+`run` calls the shared offline pipeline with contract input and atomic CSV output.
 
 - Call the shared core; do not implement a second reasoning pipeline here.
 - Honor the official input/output paths, CSV encoding, required columns, and IDs.

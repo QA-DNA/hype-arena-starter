@@ -1,7 +1,8 @@
 # VERIDYCT documentation
 
-Status: WORKSPACE FOUNDATION. Rust crates, xtask commands, a local workbench, container
-configuration and CI are implemented. The competition solver and claim generator are not.
+Status: LIVE MVP. The offline Rust core extracts typed assertions, estimates verdicts
+with a seeded Random Forest, and selects evidenced claims with MMR. CLI and web use the
+same core. Format compliance and predictive quality are evaluated separately.
 
 Organizer snapshot: `7c32449d878efde84aa1f38ce179778d1e2c4a48`.
 Original files are checked against [the checksum manifest](upstream-files.json).
@@ -14,6 +15,8 @@ Original files are checked against [the checksum manifest](upstream-files.json).
 | [Agent roles](agents.md) | Responsibilities and coordination |
 | [Project graph](knowledge/README.md) | Curated memory, extracted Cargo graph and context |
 | [CPU decision](decisions/0001-cpu-first.md) | Competition execution target |
+| [Evidence MVP decision](decisions/0002-evidence-mvp.md) | Model, provenance and runtime boundaries |
+| [Live MVP handoff](handoffs/live-mvp.md) | Interfaces, task ownership and validation |
 | [Handoff template](handoffs/TEMPLATE.md) | Continue a task without rediscovery |
 | [Foundation handoff](handoffs/workspace-foundation.md) | What this milestone delivers |
 | [Practice × Lexicon Lab](../labs/practice-lexicon/README.md) | Offline graph, chronological practice queries, correlations and lab tests |
@@ -28,5 +31,5 @@ Original files are checked against [the checksum manifest](upstream-files.json).
 
 ## Next milestone
 
-Implement the evidence model and independently evaluated reasoning pipeline. Keep the
-workbench's solver status false until real classification and generation are available.
+Improve extraction coverage and independent evaluation. The practice demo includes
+training examples; its results are not an estimate of accuracy on unseen rows.

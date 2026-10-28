@@ -82,12 +82,23 @@ docker build --platform linux/amd64 -t veridyct:local .
 docker run --rm --network none --read-only veridyct:local info
 ```
 
-Compose starts the API with a read-only filesystem and resource limits. The root image's
-default command is reserved for competition execution and currently exits 2 with a clear
-unimplemented-solver error. Container smoke checks do not mean the submission passes.
+Compose starts the live API with a read-only filesystem, 2 CPUs and 6 GiB RAM. Its local
+HTTP port requires Docker networking. The same image defaults to the competition CLI,
+which reads `/universe/universe.csv` and `/universe/lexicon.json` and atomically writes
+`/output/output.csv`. The CLI container is separately checked with networking disabled.
 
-`scripts/check.sh` requires Linux, Docker and Python 3. It expects a full solver producing
-the official output, including 1,000 generated claims; this milestone does not do that.
+`scripts/check.sh` requires Linux, Docker and Python 3. On Windows the team wrapper
+reproduces its restrictions and calls the unchanged organizer scripts:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File tools/arena-check.ps1
+# Reuse a built image:
+powershell -ExecutionPolicy Bypass -File tools/arena-check.ps1 -SkipBuild
+```
+
+Run artifacts are retained in ignored `artifacts/arena-*`. A passing format check does
+not prove claim grammar or semantic truth; practice scores include familiar training
+rows. The web Run button and the CLI use the same core implementation.
 
 ## CI and performance
 

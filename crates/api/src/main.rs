@@ -8,7 +8,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let listener = tokio::net::TcpListener::bind(address).await?;
     eprintln!("VERIDYCT workspace → http://{}", listener.local_addr()?);
     eprintln!(
-        "Foundation preview. The competition solver is not implemented. Ctrl+C stops the server."
+        "Offline CPU workbench. Run the evidence pipeline in the browser. Ctrl+C stops the server."
     );
     axum::serve(listener, veridyct_api::app())
         .with_graceful_shutdown(shutdown())

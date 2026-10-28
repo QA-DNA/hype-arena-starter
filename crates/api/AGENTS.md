@@ -1,7 +1,7 @@
 # HTTP API scope
 
-Read [root instructions](../../AGENTS.md). The API serves health, workspace metadata,
-the curated project graph, and embedded browser assets. No solver endpoint exists yet.
+Read [root instructions](../../AGENTS.md). The API serves local assets, public practice
+data and one bounded live pipeline job, including evidence and output download.
 
 - Adapt requests to the same core used by the CLI. Do not reimplement classification.
 - Define request/response schemas, errors, and job status before a UI depends on them.

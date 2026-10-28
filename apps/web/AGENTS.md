@@ -1,7 +1,7 @@
 # Browser interface scope
 
-Read [root instructions](../../AGENTS.md). A responsive workspace preview exists with
-live API status, a knowledge explorer and a runbook. It is not a classification demo yet.
+Read [root instructions](../../AGENTS.md). The responsive workbench runs the actual
+Rust API, presents estimates and evidence, and shows architecture and stack diagrams.
 
 - The required demo displays architecture and runs the actual system on uploaded rows.
 - Show progress, validation errors, unknowns, labels, confidence, and evidence clearly.

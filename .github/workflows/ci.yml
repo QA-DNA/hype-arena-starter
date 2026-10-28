@@ -44,7 +44,7 @@ jobs:
         run: cargo xtask graph
 
   container:
-    name: Offline container foundation
+    name: Offline CPU contract
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
@@ -63,11 +63,5 @@ jobs:
           --cap-drop ALL --security-opt no-new-privileges
           --tmpfs /tmp:rw,size=128m,mode=1777
           veridyct:ci info
-      - name: Confirm the unfinished solver fails honestly
-        shell: bash
-        run: |
-          set +e
-          docker run --rm --network none --read-only veridyct:ci
-          status=$?
-          set -e
-          test "$status" -eq 2
+      - name: Run the organizer checker under the full contract
+        run: sh scripts/check.sh veridyct:ci

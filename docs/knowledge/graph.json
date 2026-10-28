@@ -1,39 +1,184 @@
 {
   "schema_version": 1,
-  "status": "curated-foundation",
+  "status": "curated-mvp",
   "automatic_code_index": false,
   "verified_starter_commit": "7c32449d878efde84aa1f38ce179778d1e2c4a48",
   "nodes": [
-    {"id": "rules:root", "kind": "rules", "status": "written", "path": "AGENTS.md"},
-    {"id": "contract:runtime", "kind": "contract", "status": "existing", "path": "contracts/README.md"},
-    {"id": "contract:challenge", "kind": "contract", "status": "existing", "path": "UPSTREAM.md"},
-    {"id": "decision:cpu", "kind": "decision", "status": "written", "path": "docs/decisions/0001-cpu-first.md"},
-    {"id": "design:architecture", "kind": "design", "status": "written", "path": "docs/architecture.md"},
-    {"id": "design:environment", "kind": "design", "status": "written", "path": "docs/development.md"},
-    {"id": "design:roles", "kind": "design", "status": "written", "path": "docs/agents.md"},
-    {"id": "module:core", "kind": "module", "status": "foundation", "path": "crates/core/Cargo.toml"},
-    {"id": "module:cli", "kind": "module", "status": "foundation", "path": "crates/cli/Cargo.toml"},
-    {"id": "module:api", "kind": "module", "status": "foundation", "path": "crates/api/Cargo.toml"},
-    {"id": "module:web", "kind": "module", "status": "foundation", "path": "apps/web/index.html"},
-    {"id": "module:tooling", "kind": "module", "status": "implemented", "path": "xtask/Cargo.toml"},
-    {"id": "module:reasoning", "kind": "module", "status": "planned", "path": "docs/architecture.md"},
-    {"id": "module:native", "kind": "module", "status": "deferred", "path": "native/AGENTS.md"},
-    {"id": "scope:qa", "kind": "rules", "status": "written", "path": "tests/AGENTS.md"}
+    {
+      "id": "rules:root",
+      "kind": "rules",
+      "status": "written",
+      "path": "AGENTS.md"
+    },
+    {
+      "id": "contract:runtime",
+      "kind": "contract",
+      "status": "existing",
+      "path": "contracts/README.md"
+    },
+    {
+      "id": "contract:challenge",
+      "kind": "contract",
+      "status": "existing",
+      "path": "UPSTREAM.md"
+    },
+    {
+      "id": "decision:cpu",
+      "kind": "decision",
+      "status": "written",
+      "path": "docs/decisions/0001-cpu-first.md"
+    },
+    {
+      "id": "design:architecture",
+      "kind": "design",
+      "status": "written",
+      "path": "docs/architecture.md"
+    },
+    {
+      "id": "design:environment",
+      "kind": "design",
+      "status": "written",
+      "path": "docs/development.md"
+    },
+    {
+      "id": "design:roles",
+      "kind": "design",
+      "status": "written",
+      "path": "docs/agents.md"
+    },
+    {
+      "id": "module:core",
+      "kind": "module",
+      "status": "implemented",
+      "path": "crates/core/Cargo.toml"
+    },
+    {
+      "id": "module:cli",
+      "kind": "module",
+      "status": "implemented",
+      "path": "crates/cli/Cargo.toml"
+    },
+    {
+      "id": "module:api",
+      "kind": "module",
+      "status": "implemented",
+      "path": "crates/api/Cargo.toml"
+    },
+    {
+      "id": "module:web",
+      "kind": "module",
+      "status": "implemented",
+      "path": "apps/web/index.html"
+    },
+    {
+      "id": "module:tooling",
+      "kind": "module",
+      "status": "implemented",
+      "path": "xtask/Cargo.toml"
+    },
+    {
+      "id": "module:reasoning",
+      "kind": "module",
+      "status": "implemented",
+      "path": "docs/architecture.md"
+    },
+    {
+      "id": "module:native",
+      "kind": "module",
+      "status": "deferred",
+      "path": "native/AGENTS.md"
+    },
+    {
+      "id": "scope:qa",
+      "kind": "rules",
+      "status": "written",
+      "path": "tests/AGENTS.md"
+    }
   ],
   "edges": [
-    {"from": "decision:cpu", "relation": "constrained_by", "to": "contract:runtime", "source": "docs/decisions/0001-cpu-first.md"},
-    {"from": "decision:cpu", "relation": "constrained_by", "to": "contract:challenge", "source": "docs/decisions/0001-cpu-first.md"},
-    {"from": "design:environment", "relation": "follows", "to": "decision:cpu", "source": "docs/development.md"},
-    {"from": "design:roles", "relation": "governed_by", "to": "rules:root", "source": "docs/agents.md"},
-    {"from": "module:core", "relation": "governed_by", "to": "rules:root", "source": "crates/core/AGENTS.md"},
-    {"from": "module:core", "relation": "constrained_by", "to": "contract:runtime", "source": "crates/core/AGENTS.md"},
-    {"from": "module:cli", "relation": "depends_on", "to": "module:core", "source": "docs/architecture.md"},
-    {"from": "module:api", "relation": "depends_on", "to": "module:core", "source": "docs/architecture.md"},
-    {"from": "module:web", "relation": "calls", "to": "module:api", "source": "docs/architecture.md"},
-    {"from": "module:native", "relation": "constrained_by", "to": "decision:cpu", "source": "native/AGENTS.md"},
-    {"from": "scope:qa", "relation": "constrained_by", "to": "contract:runtime", "source": "tests/AGENTS.md"},
-    {"from": "design:architecture", "relation": "explains", "to": "module:native", "source": "docs/architecture.md"},
-    {"from": "module:tooling", "relation": "governed_by", "to": "rules:root", "source": "xtask/AGENTS.md"},
-    {"from": "module:reasoning", "relation": "constrained_by", "to": "decision:cpu", "source": "docs/architecture.md"}
+    {
+      "from": "decision:cpu",
+      "relation": "constrained_by",
+      "to": "contract:runtime",
+      "source": "docs/decisions/0001-cpu-first.md"
+    },
+    {
+      "from": "decision:cpu",
+      "relation": "constrained_by",
+      "to": "contract:challenge",
+      "source": "docs/decisions/0001-cpu-first.md"
+    },
+    {
+      "from": "design:environment",
+      "relation": "follows",
+      "to": "decision:cpu",
+      "source": "docs/development.md"
+    },
+    {
+      "from": "design:roles",
+      "relation": "governed_by",
+      "to": "rules:root",
+      "source": "docs/agents.md"
+    },
+    {
+      "from": "module:core",
+      "relation": "governed_by",
+      "to": "rules:root",
+      "source": "crates/core/AGENTS.md"
+    },
+    {
+      "from": "module:core",
+      "relation": "constrained_by",
+      "to": "contract:runtime",
+      "source": "crates/core/AGENTS.md"
+    },
+    {
+      "from": "module:cli",
+      "relation": "depends_on",
+      "to": "module:core",
+      "source": "docs/architecture.md"
+    },
+    {
+      "from": "module:api",
+      "relation": "depends_on",
+      "to": "module:core",
+      "source": "docs/architecture.md"
+    },
+    {
+      "from": "module:web",
+      "relation": "calls",
+      "to": "module:api",
+      "source": "docs/architecture.md"
+    },
+    {
+      "from": "module:native",
+      "relation": "constrained_by",
+      "to": "decision:cpu",
+      "source": "native/AGENTS.md"
+    },
+    {
+      "from": "scope:qa",
+      "relation": "constrained_by",
+      "to": "contract:runtime",
+      "source": "tests/AGENTS.md"
+    },
+    {
+      "from": "design:architecture",
+      "relation": "explains",
+      "to": "module:native",
+      "source": "docs/architecture.md"
+    },
+    {
+      "from": "module:tooling",
+      "relation": "governed_by",
+      "to": "rules:root",
+      "source": "xtask/AGENTS.md"
+    },
+    {
+      "from": "module:reasoning",
+      "relation": "constrained_by",
+      "to": "decision:cpu",
+      "source": "docs/architecture.md"
+    }
   ]
 }

@@ -1,26 +1,31 @@
 # Architecture and implementation boundaries
 
-Status: FOUNDATION IMPLEMENTED. Workspace metadata, a CLI status command, API,
-local workbench and xtask exist. The reasoning/evidence pipeline below remains planned.
+Status: LIVE MVP. CLI and HTTP call the same offline CPU pipeline: CSV parsing,
+Mihai-derived alias normalization, typed assertion extraction, seeded Random Forest,
+chronological evidence, contract claim templates, and MMR selection.
 
 ## Competition profile
 
 The default application is Rust on CPU. CLI and HTTP adapters call the same core.
-The browser currently presents architecture, live workspace status and project context.
-It will present solver results once those exist. Its assets are served locally.
+The browser presents architecture and stack diagrams, source rows, live job progress,
+model score distributions, assertion and evidence inspectors, generated claims and a
+contract CSV download. All assets are served locally.
 
 ```mermaid
 flowchart LR
     CLI["Rust CLI"] --> Core["Rust core"]
     Web["Browser UI"] --> API["Rust HTTP API"]
     API --> Core
-    Core -. planned .-> Evidence["Typed evidence and temporal relations"]
-    Core -. planned .-> Output["Validated result and explanations"]
+    Core --> Parse["CSV + aliases + typed facts"]
+    Parse --> Forest["Seeded Random Forest"]
+    Forest --> Evidence["Chronological evidence and unknowns"]
+    Evidence --> MMR["Contract templates + MMR"]
+    MMR --> Output["Official CSV + source references"]
 ```
 
 | Boundary | Responsibility | Must not depend on |
 | --- | --- | --- |
-| crates/core | Workspace metadata; reserved for future evidence and reasoning | HTTP, browser, CUDA |
+| crates/core | Typed model, extraction, Random Forest, evidence, MMR and CSV | HTTP, browser, CUDA |
 | crates/cli | File input/output, deadline, process exit behavior | HTTP server availability |
 | crates/api | Request validation, job limits, responses, local assets | A separate implementation of reasoning |
 | apps/web | Input controls, architecture diagram, results and provenance | External CDN availability |
@@ -58,3 +63,18 @@ competition profile, the present build, or the foundation acceptance gate.
   GPU tests run only on designated compatible hardware; all ordinary checks still run on CPU.
 
 See [the CPU decision](decisions/0001-cpu-first.md) and [native rules](../native/AGENTS.md).
+
+## Live job contract
+
+POST `/api/runs` accepts optional `csv` and `generate` (default true). Omitted CSV uses
+practice with every fifth label hidden and removes runtime forms. GET
+`/api/runs/current` returns status, actual completed-stage progress, logs, predictions,
+claims, source evidence and summary. GET `/api/runs/current/output.csv` downloads a
+completed result. GET `/api/dataset` exposes the public practice rows for inspection.
+Only one CPU job runs at once; requests are bounded to 32 MiB and 30,000 rows. CPU work
+uses a blocking worker. Failed jobs expose their error and have no downloadable result.
+
+Practice training data is bundled as the organizer permits. Model distributions are
+uncalibrated estimates. An observation's date is not an exact change boundary, and the
+practice demonstration is not independent evaluation. See the
+[MVP decision](decisions/0002-evidence-mvp.md).

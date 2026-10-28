@@ -1,4 +1,15 @@
-//! Shared workspace metadata. Challenge implementation belongs to a future task.
+//! Shared offline CPU reasoning, provenance and competition output.
+
+pub mod claims;
+pub mod engine;
+pub mod forest;
+pub mod io;
+pub mod model;
+
+pub use claims::generate_claims;
+pub use engine::Engine;
+pub use io::{output_csv, read_csv};
+pub use model::*;
 
 use serde::Serialize;
 
@@ -17,8 +28,8 @@ pub fn workspace_info() -> WorkspaceInfo {
         name: "VERIDYCT",
         team: "JEV · Teo, Edi & Mihai",
         version: env!("CARGO_PKG_VERSION"),
-        phase: "foundation",
-        solver_ready: false,
+        phase: "mvp",
+        solver_ready: true,
         target: "CPU · Linux amd64 · offline",
     }
 }

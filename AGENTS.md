@@ -5,10 +5,10 @@ Mihai. The canonical repository is https://github.com/teodorbalan/VERIDYCT.
 
 ## Current state and authority
 
-- The Rust workspace, CLI status command, HTTP workbench, xtask tooling, dev container,
-  and CI configuration exist. Data processing, the solver and claim generator do not.
-  The user explicitly requested workspace preparation only. Do not begin challenge
-  implementation unless a subsequent task requests it.
+- The Rust workspace includes the offline CPU MVP: typed extraction, a seeded Random
+  Forest, source evidence, MMR generation, competition CLI and live HTTP workbench.
+  Teodor authorized this implementation and parallel isolated agents on 2026-10-28.
+  Check the current handoff for validation and limitations before extending behavior.
 - Follow the user's current authorized task. A proposed design is not an instruction
   to implement every component, install tools, publish changes, or deploy services.
 - Read the applicable scoped AGENTS.md before editing a directory.

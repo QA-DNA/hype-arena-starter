@@ -10,6 +10,7 @@ veridyct-core.workspace = true
 axum.workspace = true
 tokio.workspace = true
 serde_json.workspace = true
+serde.workspace = true
 
 [dev-dependencies]
 tower = { version = "0.5", features = ["util"] }
