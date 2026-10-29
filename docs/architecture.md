@@ -4,6 +4,16 @@ Status: LIVE MVP. CLI and HTTP call the same offline CPU pipeline: CSV parsing,
 Mihai-derived alias normalization, typed assertion extraction, seeded Random Forest,
 chronological evidence, contract claim templates, and MMR selection.
 
+## Evidence-graph candidate
+
+The uncommitted competition candidate adds a native CPU BiLSTM extractor, a schema
+binder, exact temporal constraints and a partition-guarded boosted verifier. The
+CLI opts into these stages through [Dockerfile.competition](../Dockerfile.competition).
+The existing HTTP workbench shares the updated reasoning core but does not invoke
+the optional native extraction adapter. Its running container has not been replaced.
+See [decision 0003](decisions/0003-compiled-evidence-graph.md) and the
+[current handoff](handoffs/evidence-graph-runtime.md) for measured boundaries.
+
 ## Competition profile
 
 The default application is Rust on CPU. CLI and HTTP adapters call the same core.

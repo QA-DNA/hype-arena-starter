@@ -1,6 +1,20 @@
 //! Shared MVP interface; probabilities are model scores, not certified truth.
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
+use std::collections::BTreeSet;
+
+#[derive(Clone, Debug, Default, Serialize, Deserialize)]
+#[serde(default)]
+pub struct ExtractionHints {
+    /// A parser intentionally returned no assertions; do not invent a fallback.
+    pub recognized_empty: BTreeSet<String>,
+    /// At least one asserted clause remains unresolved. False still dominates;
+    /// matching only the parsed subset cannot establish a true conjunction.
+    pub incomplete: BTreeSet<String>,
+    /// The text explicitly says a value is unknown, independently of extraction
+    /// coverage. Statistical fallback must not turn that into a factual value.
+    pub explicit_unknown: BTreeSet<String>,
+}
 
 #[derive(Clone, Debug, Default, Serialize, Deserialize)]
 pub struct InputRow {

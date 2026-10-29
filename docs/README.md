@@ -4,6 +4,12 @@ Status: LIVE MVP. The offline Rust core extracts typed assertions, estimates ver
 with a seeded Random Forest, and selects evidenced claims with MMR. CLI and web use the
 same core. Format compliance and predictive quality are evaluated separately.
 
+The CPU evidence-graph candidate has completed a frozen independent
+evaluation: 87.74% on 5,000 targets and 87.58% on 20,000 targets. Its complete
+native Rust/ONNX image and source snapshot are available locally; see the
+[candidate handoff](handoffs/evidence-graph-runtime.md) for artifacts, assumptions,
+commands and the distinction from the existing running workbench.
+
 Organizer snapshot: `7c32449d878efde84aa1f38ce179778d1e2c4a48`.
 Original files are checked against [the checksum manifest](upstream-files.json).
 
@@ -16,6 +22,8 @@ Original files are checked against [the checksum manifest](upstream-files.json).
 | [Project graph](knowledge/README.md) | Curated memory, extracted Cargo graph and context |
 | [CPU decision](decisions/0001-cpu-first.md) | Competition execution target |
 | [Evidence MVP decision](decisions/0002-evidence-mvp.md) | Model, provenance and runtime boundaries |
+| [Compiled evidence graph](decisions/0003-compiled-evidence-graph.md) | Typed constraints and optional frozen neural extraction |
+| [Evidence integration results](handoffs/evidence-graph-runtime.md) | Current measured accuracy, Docker and integration limitations |
 | [Live MVP handoff](handoffs/live-mvp.md) | Interfaces, task ownership and validation |
 | [Presentation and accuracy](handoffs/presentation-integration.md) | PNG diagrams, hidden-label test and downloadable LLM comparison |
 | [Handoff template](handoffs/TEMPLATE.md) | Continue a task without rediscovery |

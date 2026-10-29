@@ -7,6 +7,7 @@ use std::{
     time::{Instant, SystemTime, UNIX_EPOCH},
 };
 use veridyct_core::{Engine, generate_claims, output_csv, read_csv};
+mod parser;
 
 fn main() -> ExitCode {
     match run() {
@@ -54,28 +55,63 @@ fn arena(args: &[String]) -> Result<(), Box<dyn Error>> {
     }
     deadline_check()?;
     let started = Instant::now();
-    let rows = read_csv(
+    let mut rows = read_csv(
         &fs::read_to_string(&input).map_err(|e| format!("Cannot read {}: {e}", input.display()))?,
     )?;
     let lexicon: serde_json::Value = serde_json::from_str(&fs::read_to_string(&lexicon)?)?;
     let practice = read_csv(include_str!("../../../data/practice.csv"))?;
+    // Embedded public forms take precedence over optional statistical extraction.
+    let exact: std::collections::BTreeMap<_, _> = practice
+        .iter()
+        .map(|r| (r.text.as_str(), r.form.as_slice()))
+        .collect();
+    for row in &mut rows {
+        if let Some(form) = exact.get(row.text.as_str()) {
+            row.form = form.to_vec();
+        }
+    }
+    let extraction_hints = parser::enrich(
+        &mut rows,
+        output.parent().unwrap_or(Path::new("/output")),
+        &lexicon,
+    )?;
     eprintln!(
         "Loaded {} runtime rows; {} require labels. CPU forest; no network or runtime LLM.",
         rows.len(),
         rows.iter().filter(|row| row.label.is_empty()).count()
     );
-    let engine = Engine::new(&practice, &lexicon)?;
+    let mut engine = Engine::new(&practice, &lexicon)?;
+    if let Some(path) = env::var_os("VERIDYCT_VERIFIER_MODEL") {
+        engine = engine.with_boosted(&fs::read_to_string(path)?)?;
+        eprintln!(
+            "Partition-validated gradient-boosted verifier loaded; original class proportions, no extra prior correction."
+        );
+    }
+    eprintln!(
+        "Embedded training graph: {}",
+        serde_json::to_string(engine.knowledge_summary())?
+    );
     deadline_check()?;
-    let predictions = engine.predict(&rows);
+    let canonical_seed = engine.canonical_seed_present(&rows);
+    eprintln!(
+        "Canonical seed present in runtime universe: {canonical_seed}; only supplied-world evidence licenses runtime proofs."
+    );
+    let predictions = engine.predict_universe_with_hints(&rows, &extraction_hints);
     eprintln!(
         "Classification complete in {:.3}s; constructing evidenced claims.",
         started.elapsed().as_secs_f64()
     );
-    let mut generation_rows = practice;
+    let mut generation_rows = if canonical_seed { practice } else { Vec::new() };
     generation_rows.extend(rows.iter().cloned());
     let generation = generate_claims(&generation_rows, &predictions, &lexicon, 1_000)?;
     let csv = output_csv(&predictions, &generation.claims)?;
     atomic_write(&output, csv.as_bytes())?;
+    if env::var("VERIDYCT_DIAGNOSTICS").is_ok_and(|v| v == "1") {
+        let diagnostic = serde_json::to_vec(
+            &serde_json::json!({"canonical_seed":canonical_seed,"extraction_hints":&extraction_hints,"predictions":&predictions,"generation":&generation}),
+        )?;
+        atomic_write(&output.with_extension("diagnostics.json"), &diagnostic)?;
+    }
     eprintln!(
         "Wrote {} bytes with {} predictions and {} claims selected from {} candidates in {:.3}s.",
         csv.len(),

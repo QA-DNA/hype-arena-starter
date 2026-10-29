@@ -2,7 +2,11 @@
 //!
 //! Observation dates are not validity intervals. Only same-day, unambiguous true
 //! observations are decisive; learned scores remain uncalibrated estimates.
-use crate::{forest::RandomForest, model::*};
+use crate::{
+    forest::RandomForest,
+    knowledge::{KnowledgeGraph, KnowledgeSummary, Status},
+    model::*,
+};
 use regex::Regex;
 use serde::Serialize;
 use serde_json::{Value, json};
@@ -28,6 +32,11 @@ pub struct Engine {
     inverted: BTreeMap<String, Vec<usize>>,
     exact: BTreeMap<String, Vec<usize>>,
     observations: BTreeMap<(String, String), Vec<Evidence>>,
+    knowledge: KnowledgeGraph,
+    boosted: Option<(
+        crate::boosted::FeatureIndex,
+        crate::boosted::BoostedVerifier,
+    )>,
     forest: RandomForest,
     class_priors: [f64; 3],
     earliest_date: String,
@@ -122,6 +131,8 @@ impl Engine {
             inverted: BTreeMap::new(),
             exact: BTreeMap::new(),
             observations: BTreeMap::new(),
+            knowledge: KnowledgeGraph::default(),
+            boosted: None,
             forest: RandomForest::train(&[], &[]),
             class_priors: [1.0 / 3.0; 3],
             earliest_date: practice
@@ -185,6 +196,13 @@ impl Engine {
         if engine.examples.is_empty() {
             return Err("Practice contains no valid labels".into());
         }
+        engine.knowledge = KnowledgeGraph::compile(
+            &engine
+                .examples
+                .iter()
+                .map(|e| e.row.clone())
+                .collect::<Vec<_>>(),
+        );
         for evidence in engine.observations.values_mut() {
             evidence.sort_by(|a, b| a.date.cmp(&b.date).then(a.row_id.cmp(&b.row_id)));
         }
@@ -203,6 +221,18 @@ impl Engine {
                 Some(&example.row.id),
             ));
             y.push(class(&example.row.label).unwrap_or(2));
+            // Supervise the verifier with both observed extraction noise and
+            // the training partition's supplied parse. Neither uses test forms.
+            // Self evidence is excluded in both paths.
+            if inferred_facts != example.row.form {
+                x.push(engine.features(
+                    &example.row,
+                    &example.row.form,
+                    &nearest,
+                    Some(&example.row.id),
+                ));
+                y.push(class(&example.row.label).unwrap_or(2));
+            }
             class_counts[class(&example.row.label).unwrap_or(2)] += 1.0;
         }
         let total: f64 = class_counts.iter().sum();
@@ -213,6 +243,18 @@ impl Engine {
 
     pub fn tree_count(&self) -> usize {
         self.forest.tree_count()
+    }
+
+    pub fn knowledge_summary(&self) -> &KnowledgeSummary {
+        self.knowledge.summary()
+    }
+
+    pub fn with_boosted(mut self, artifact: &str) -> Result<Self, String> {
+        let model = crate::boosted::BoostedVerifier::from_json(artifact)?;
+        let training: Vec<_> = self.examples.iter().map(|e| e.row.clone()).collect();
+        model.validate_training_partition(&training)?;
+        self.boosted = Some((crate::boosted::FeatureIndex::compile(&training), model));
+        Ok(self)
     }
 
     /// Forms are assertions, never automatically trusted truth.
@@ -233,10 +275,68 @@ impl Engine {
     }
 
     pub fn predict(&self, rows: &[InputRow]) -> Vec<Prediction> {
+        self.predict_using(rows, true, false, &ExtractionHints::default())
+    }
+
+    /// Evaluate parsed queries against this engine's training partition only.
+    /// Supplied parser diagnostics cannot introduce new evidence or labels.
+    pub fn predict_with_hints(
+        &self,
+        rows: &[InputRow],
+        hints: &ExtractionHints,
+    ) -> Vec<Prediction> {
+        self.predict_using(rows, true, false, hints)
+    }
+
+    /// The competition includes the canonical practice rows. Other evaluation
+    /// worlds may reuse its schema but have different facts: never import the
+    /// canonical world's truth merely because its parser was used for training.
+    pub fn canonical_seed_present(&self, rows: &[InputRow]) -> bool {
+        let mut observed: BTreeMap<_, Vec<&str>> = BTreeMap::new();
+        for row in rows {
+            observed
+                .entry((normalize(&row.text), row.date.as_str()))
+                .or_default()
+                .push(&row.label);
+        }
+        self.examples.iter().all(|e| {
+            observed
+                .get(&(normalize(&e.row.text), e.row.date.as_str()))
+                .is_some_and(|labels| {
+                    labels
+                        .iter()
+                        .all(|label| label.is_empty() || *label == e.row.label)
+                })
+        })
+    }
+
+    pub fn predict_universe(&self, rows: &[InputRow]) -> Vec<Prediction> {
+        self.predict_universe_with_hints(rows, &ExtractionHints::default())
+    }
+
+    pub fn predict_universe_with_hints(
+        &self,
+        rows: &[InputRow],
+        hints: &ExtractionHints,
+    ) -> Vec<Prediction> {
+        let canonical = self.canonical_seed_present(rows);
+        self.predict_using(rows, canonical, !canonical, hints)
+    }
+
+    fn predict_using(
+        &self,
+        rows: &[InputRow],
+        use_seed: bool,
+        conservative: bool,
+        hints: &ExtractionHints,
+    ) -> Vec<Prediction> {
         // Known labels supplied with the current universe are usable evidence too.
         // Repeated unlabelled statements never enter this pool.
         let mut context: BTreeMap<(String, String), Vec<Evidence>> = BTreeMap::new();
         for row in rows.iter().filter(|row| row.label == "true") {
+            if hints.recognized_empty.contains(&row.id) {
+                continue;
+            }
             for fact in self.extract(row) {
                 context.entry(key(&fact)).or_default().push(Evidence {
                     row_id: row.id.clone(),
@@ -247,8 +347,32 @@ impl Engine {
                 });
             }
         }
+        let mut evidence_rows: Vec<_> = if use_seed {
+            self.examples.iter().map(|e| e.row.clone()).collect()
+        } else {
+            Vec::new()
+        };
+        let seed_ids: BTreeSet<_> = evidence_rows.iter().map(|r| r.id.clone()).collect();
+        for row in rows
+            .iter()
+            .filter(|r| class(&r.label).is_some() && !seed_ids.contains(&r.id))
+        {
+            let mut parsed = row.clone();
+            parsed.form = if hints.recognized_empty.contains(&row.id) {
+                Vec::new()
+            } else {
+                self.extract(row)
+            };
+            // An imperfect parser can omit a conjunct. A runtime false row is
+            // not a safe single-atom negative unless its complete parse is known.
+            if parsed.label == "false" && !self.exact.contains_key(&normalize(&parsed.text)) {
+                parsed.form.clear();
+            }
+            evidence_rows.push(parsed);
+        }
+        let knowledge = KnowledgeGraph::compile(&evidence_rows);
         rows.iter()
-            .map(|row| self.predict_one(row, &context))
+            .map(|row| self.predict_one(row, &context, &knowledge, use_seed, conservative, hints))
             .collect()
     }
 
@@ -256,9 +380,17 @@ impl Engine {
         &self,
         row: &InputRow,
         context: &BTreeMap<(String, String), Vec<Evidence>>,
+        knowledge: &KnowledgeGraph,
+        use_seed: bool,
+        conservative: bool,
+        hints: &ExtractionHints,
     ) -> Prediction {
         let nearest = self.nearest(&row.text, None);
-        let facts = self.extract_with_nearest(row, &nearest);
+        let facts = if hints.recognized_empty.contains(&row.id) {
+            Vec::new()
+        } else {
+            self.extract_with_nearest(row, &nearest)
+        };
         let features = self.features(row, &facts, &nearest, None);
         let mut scores = self.forest.predict(&features);
         // Each tree is trained on balanced bootstrap samples. Restore observed
@@ -268,36 +400,37 @@ impl Engine {
         }
         let score_sum: f64 = scores.iter().sum();
         scores = scores.map(|score| score / score_sum);
+        let mut boosted_used = false;
+        if let Some((index, model)) = &self.boosted
+            && let Ok(probabilities) = model.predict(&index.features(row, &facts))
+        {
+            // This model was fitted on ordinary class proportions, so applying
+            // the balanced-forest prior correction again would be incorrect.
+            scores = probabilities;
+            boosted_used = true;
+        }
         let mut evidence = Vec::new();
         let mut supported = 0;
         let mut contradicted = 0;
+        let mut conflicts = 0;
         for fact in &facts {
+            let resolution = knowledge.resolve(fact, &row.date, &row.id, &row.text);
+            match resolution.status {
+                Status::Supported => supported += 1,
+                Status::Contradicted => contradicted += 1,
+                Status::Conflict => conflicts += 1,
+                Status::Unknown => {}
+            }
+            evidence.extend(resolution.evidence);
             let observations = self
                 .observations
                 .get(&key(fact))
+                .filter(|_| use_seed)
                 .into_iter()
                 .flatten()
                 .chain(context.get(&key(fact)).into_iter().flatten())
                 .filter(|e| e.date <= row.date && e.row_id != row.id)
                 .collect::<Vec<_>>();
-            let today: Vec<_> = observations.iter().filter(|e| e.date == row.date).collect();
-            let distinct_today: BTreeSet<_> =
-                today.iter().map(|e| e.fact.value.to_string()).collect();
-            let mut same = false;
-            let mut different = false;
-            for e in &today {
-                match compatible_values(&fact.value, &e.fact.value) {
-                    Some(true) => same = true,
-                    Some(false) => different = true,
-                    None => {}
-                }
-            }
-            if same && !different && distinct_today.len() == 1 {
-                supported += 1;
-            }
-            if different && !same && distinct_today.len() == 1 {
-                contradicted += 1;
-            }
             let mut related = observations;
             related.sort_by(|a, b| b.date.cmp(&a.date).then(a.row_id.cmp(&b.row_id)));
             for e in related.into_iter().take(3) {
@@ -311,8 +444,11 @@ impl Engine {
             }
         }
         let mut reason = "Random Forest estimate from lexical, value and evidence features; scores are not independently calibrated.".to_owned();
+        if boosted_used {
+            reason="Gradient-boosted verifier estimate from structured assertion/evidence features; scores are not independently calibrated.".into();
+        }
         let mut memory = None;
-        if let Some(indices) = self.exact.get(&normalize(&row.text)) {
+        if let Some(indices) = self.exact.get(&normalize(&row.text)).filter(|_| use_seed) {
             let matches: Vec<_> = indices
                 .iter()
                 .map(|&i| &self.examples[i].row)
@@ -351,16 +487,29 @@ impl Engine {
         } else if !facts.is_empty() && contradicted > 0 {
             chosen = 1;
             scores = peak(1, 0.94);
-            reason = "At least one extracted assertion conflicts with an unambiguous true observation on the same date.".into();
-        } else if !facts.is_empty() && supported == facts.len() {
+            reason = "The compiled evidence graph refutes at least one extracted assertion on this date, using typed predicates and labelled source constraints.".into();
+        } else if hints.explicit_unknown.contains(&row.id)
+            || (conservative && hints.incomplete.contains(&row.id))
+        {
+            chosen = 2;
+            scores = peak(2, 0.8);
+            reason="The parser left an asserted clause unresolved. A matching subset cannot prove the entire conjunction true.".into();
+        } else if !facts.is_empty()
+            && supported == facts.len()
+            && !hints.incomplete.contains(&row.id)
+        {
             chosen = 0;
             scores = peak(0, 0.94);
-            reason = "Every extracted assertion matches an unambiguous true observation on the same date; template extraction can still be incomplete.".into();
-        } else if row.date < self.earliest_date
-            || nearest
-                .first()
-                .is_none_or(|(_, similarity)| *similarity < 0.22)
-        {
+            reason = "The compiled evidence graph entails every extracted assertion on this date; extraction can still be incomplete. Scores are not calibrated truth probabilities.".into();
+        } else if conflicts > 0 {
+            chosen = 2;
+            scores = peak(2, 0.8);
+            reason = "Conflicting labelled evidence on this date; the graph abstains instead of choosing one inconsistent source.".into();
+        } else if conservative {
+            chosen = 2;
+            scores = peak(2, 0.8);
+            reason = "The supplied universe does not contain the canonical evidence seed. No complete proof from its own labelled evidence and explicit validity intervals is available; the system abstains.".into();
+        } else if row.date < self.earliest_date {
             chosen = 2;
             scores = peak(2, 0.8);
             reason = "Insufficient grounded extraction or relevant evidence; the system abstains."
@@ -369,7 +518,7 @@ impl Engine {
             let best = (0..3)
                 .max_by(|&a, &b| scores[a].total_cmp(&scores[b]))
                 .unwrap_or(2);
-            if best == 2 || scores[best] < 0.62 {
+            if best == 2 || scores[best] < 0.5 {
                 chosen = 2;
                 scores[2] = scores[2].max(scores[0].max(scores[1]) + 0.05);
                 let sum: f64 = scores.iter().sum();
@@ -747,6 +896,7 @@ impl Engine {
         result[77] = f64::from(facts.iter().any(|f| f.value["kind"] == "boolean"));
         result[78] = f64::from(facts.iter().any(|f| f.value["op"].is_string()));
         result[79] = f64::from(row.text.contains(';') || row.text.contains(" and "));
+        result.extend(self.knowledge.features(row, facts));
         result
     }
 }
@@ -1039,6 +1189,78 @@ mod tests {
         assert_eq!(facts[0].value["value"], 900.0);
     }
     #[test]
+    fn counterfactual_universe_uses_its_own_anchors_not_training_world_truth() {
+        let (training, lexicon) = fixtures();
+        let engine = Engine::new(&training, &lexicon).unwrap();
+        let f = |n| Fact {
+            subject: "Hooly Cloud".into(),
+            attribute: "customers".into(),
+            value: json!({"kind":"quantity","value":n,"unit":"customer"}),
+        };
+        let rows=vec![
+            InputRow{id:"anchor".into(),text:"From January 1, 2026 through January 31, 2026, Hooly Cloud serves 900 customers.".into(),date:"2026-01-01".into(),label:"true".into(),form:vec![f(900)]},
+            InputRow{id:"new-true".into(),text:"Hooly Cloud serves 900 customers.".into(),date:"2026-01-12".into(),form:vec![f(900)],..Default::default()},
+            InputRow{id:"new-false".into(),text:"Hooly Cloud serves 21 customers.".into(),date:"2026-01-12".into(),form:vec![f(21)],..Default::default()},
+            InputRow{id:"new-unknown".into(),text:"Hooly Cloud serves 900 customers.".into(),date:"2026-02-01".into(),form:vec![f(900)],..Default::default()},
+        ];
+        assert!(!engine.canonical_seed_present(&rows));
+        let predictions = engine.predict_universe(&rows);
+        assert_eq!(
+            predictions
+                .iter()
+                .map(|p| p.label.as_str())
+                .collect::<Vec<_>>(),
+            ["true", "true", "false", "unsure"]
+        );
+        assert!(
+            predictions[1..]
+                .iter()
+                .flat_map(|p| &p.evidence)
+                .all(|e| e.row_id == "anchor")
+        );
+        assert!(engine.canonical_seed_present(&training));
+        let mut altered = training.clone();
+        altered[1].label = "false".into();
+        assert!(!engine.canonical_seed_present(&altered));
+    }
+    #[test]
+    fn incomplete_parse_cannot_prove_a_whole_claim_but_can_refute_it() {
+        let (training, lexicon) = fixtures();
+        let engine = Engine::new(&training, &lexicon).unwrap();
+        let fact = |n| Fact {
+            subject: "Hooly Cloud".into(),
+            attribute: "customers".into(),
+            value: json!({"kind":"quantity","value":n,"unit":"customer"}),
+        };
+        let rows = vec![
+            InputRow {id:"source".into(), text:"From 2026-01-01 through 2026-01-31, the customer register records 900 customers.".into(), date:"2026-01-01".into(), label:"true".into(), form:vec![fact(900)]},
+            InputRow {id:"partial-match".into(), text:"The customer count is 900 and a second clause is unresolved.".into(), date:"2026-01-12".into(), form:vec![fact(900)], ..Default::default()},
+            InputRow {id:"partial-false".into(), text:"The customer count is 901 and a second clause is unresolved.".into(), date:"2026-01-12".into(), form:vec![fact(901)], ..Default::default()},
+            InputRow {id:"intentionally-empty".into(), text:"Hooly Cloud serves 900 customers.".into(), date:"2026-01-12".into(), ..Default::default()},
+        ];
+        let hints = ExtractionHints {
+            incomplete: ["partial-match".into(), "partial-false".into()].into(),
+            recognized_empty: ["intentionally-empty".into()].into(),
+            ..Default::default()
+        };
+        let predictions = engine.predict_universe_with_hints(&rows, &hints);
+        assert_eq!(predictions[1].label, "unsure");
+        assert_eq!(predictions[2].label, "false");
+        assert_eq!(predictions[3].label, "unsure");
+        assert!(predictions[3].facts.is_empty());
+        // Canonical-world diagnostics can use a learned estimate, but a partial
+        // match must never be described as a proof of the whole conjunction.
+        let learned = engine.predict_with_hints(&rows, &hints);
+        assert!(!learned[1].reason.contains("entails every"));
+        let mut unknown = hints.clone();
+        unknown.explicit_unknown.insert("partial-match".into());
+        assert_eq!(
+            engine.predict_with_hints(&rows, &unknown)[1].label,
+            "unsure"
+        );
+    }
+
+    #[test]
     fn preserves_known_labels_and_never_uses_future_evidence() {
         let (rows, lexicon) = fixtures();
         let engine = Engine::new(&rows, &lexicon).unwrap();
@@ -1067,7 +1289,14 @@ mod tests {
             ..Default::default()
         };
         let result = engine.predict(&[row]);
-        assert!(result[0].evidence.is_empty());
+        // Negative constraints are now visible provenance, never positive facts.
+        assert!(result[0].evidence.iter().all(|e| e.label == "false"));
+        assert!(
+            result[0]
+                .evidence
+                .iter()
+                .all(|e| e.fact.value["value"] != 99)
+        );
         let scores = &result[0].probabilities;
         assert!((scores.p_true + scores.p_false + scores.p_unsure - 1.0).abs() < 1e-9);
     }

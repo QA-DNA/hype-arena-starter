@@ -42,7 +42,7 @@ impl RandomForest {
         }
         let available: Vec<usize> = (0..3).filter(|&c| !classes[c].is_empty()).collect();
         let mut rng = Rng(0x5eed_2026_1028);
-        let trees = (0..48)
+        let trees = (0..96)
             .map(|_| {
                 let sample: Vec<usize> = (0..features.len())
                     .map(|_| {
@@ -105,14 +105,14 @@ fn build(x: &[Vec<f64>], y: &[usize], indices: &[usize], depth: usize, rng: &mut
         let total = indices.len() as f64 + 3.0;
         Node::Leaf(counts.map(|n| (n + 1.0) / total))
     };
-    if depth >= 9 || indices.len() < 10 || gini(&counts) < 0.01 {
+    if depth >= 11 || indices.len() < 10 || gini(&counts) < 0.01 {
         return leaf();
     }
     let feature_count = x[0].len();
     let mut best: Option<(f64, usize, f64)> = None;
-    for _ in 0..10 {
+    for _ in 0..16 {
         let feature = rng.index(feature_count);
-        for _ in 0..8 {
+        for _ in 0..12 {
             let a = x[indices[rng.index(indices.len())]][feature];
             let b = x[indices[rng.index(indices.len())]][feature];
             let threshold = (a + b) / 2.0;

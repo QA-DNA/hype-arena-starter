@@ -1,10 +1,15 @@
 //! Shared offline CPU reasoning, provenance and competition output.
 
+pub mod boosted;
 pub mod claims;
 pub mod engine;
 pub mod forest;
 pub mod io;
+pub mod knowledge;
 pub mod model;
+pub mod structured;
+pub mod temporal;
+mod typed;
 
 pub use claims::generate_claims;
 pub use engine::Engine;

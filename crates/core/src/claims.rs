@@ -4,6 +4,8 @@
 //! claims are restricted to immutable historical dates; mutable values are used only
 //! for historical changes or an event whose exact date has independent evidence.
 use crate::model::{Claim, Evidence, GenerationReport, InputRow, Prediction};
+use crate::temporal::explicit_scope;
+use crate::typed::numeric;
 use serde_json::{Value, json};
 use std::collections::{BTreeMap, BTreeSet};
 
@@ -53,7 +55,7 @@ pub fn generate_claims(
     }
     let mut observations = BTreeMap::<String, Evidence>::new();
     let mut insert = |mut evidence: Evidence| {
-        if evidence.label != "true" || evidence.date.as_str() > AS_OF {
+        if evidence.label != "true" || effective_window(&evidence).is_none() {
             return;
         }
         let Some(name) = names.get(&evidence.fact.subject.to_lowercase()) else {
@@ -115,8 +117,17 @@ pub fn generate_claims(
             .or_default()
             .push(evidence);
     }
+    let windows: BTreeMap<_, _> = groups
+        .values()
+        .flatten()
+        .filter_map(|e| effective_window(e).map(|w| (e.row_id.clone(), w)))
+        .collect();
     for values in groups.values_mut() {
-        values.sort_by(|a, b| (&a.date, &a.row_id).cmp(&(&b.date, &b.row_id)));
+        values.sort_by(|a, b| {
+            window_start(a, &windows)
+                .cmp(window_start(b, &windows))
+                .then(a.row_id.cmp(&b.row_id))
+        });
     }
     let source_texts: BTreeSet<String> = rows
         .iter()
@@ -160,14 +171,16 @@ pub fn generate_claims(
     for ((subject, attribute), observations) in &groups {
         for (i, first) in observations.iter().enumerate() {
             for second in &observations[i + 1..] {
-                if first.date >= second.date
+                if window_end(first, &windows) >= window_start(second, &windows)
                     || same_value(&first.fact.value, &second.fact.value)
                     || !compatible(&first.fact.value, &second.fact.value)
                 {
                     continue;
                 }
                 // Conflicting values on the same page date cannot prove a transition.
-                if has_day_conflict(observations, first) || has_day_conflict(observations, second) {
+                if has_window_conflict(observations, first, &windows)
+                    || has_window_conflict(observations, second, &windows)
+                {
                     continue;
                 }
                 let (Some(from), Some(to)) = (
@@ -202,7 +215,44 @@ pub fn generate_claims(
             immutable_observation(subject, attribute, values, lexicon)
         })
         .collect();
-    for evidence in &immutable {
+    let mut current: BTreeMap<(String, String, String), Evidence> = immutable
+        .iter()
+        .map(|e| {
+            (
+                (
+                    e.fact.subject.clone(),
+                    e.fact.attribute.clone(),
+                    String::new(),
+                ),
+                e.clone(),
+            )
+        })
+        .collect();
+    for (key, observations) in &groups {
+        for evidence in observations.iter().filter(|e| {
+            window_end(e, &windows) == AS_OF && !has_window_conflict(observations, e, &windows)
+        }) {
+            let channel = if evidence.fact.value["kind"] == "money" {
+                format!(
+                    "{}:{}",
+                    evidence.fact.value["currency"], evidence.fact.value["per"]
+                )
+            } else {
+                String::new()
+            };
+            current
+                .entry((key.0.clone(), key.1.clone(), channel))
+                .or_insert_with(|| evidence.clone());
+        }
+    }
+    let current: Vec<_> = current.into_values().collect();
+    let mut reference_channels: BTreeMap<(&str, &str), usize> = BTreeMap::new();
+    for e in &current {
+        *reference_channels
+            .entry((&e.fact.subject, &e.fact.attribute))
+            .or_default() += 1;
+    }
+    for evidence in &current {
         let fact = &evidence.fact;
         let Some(value) = render_value(&fact.value) else {
             continue;
@@ -221,17 +271,25 @@ pub fn generate_claims(
     }
     // Each unordered pair is emitted once: reversing a comparison is not used
     // as padding. Immutable historical dates remain valid on the as-of date.
-    for (i, left) in immutable.iter().enumerate() {
-        for right in &immutable[i + 1..] {
-            let a = left.fact.value["value"].as_str().unwrap_or_default();
-            let b = right.fact.value["value"].as_str().unwrap_or_default();
-            if a.len() != b.len() {
+    for (i, left) in current.iter().enumerate() {
+        for right in &current[i + 1..] {
+            // Reference-only comparisons cannot choose between several active
+            // currency/period offers. Value-bearing facts remain unambiguous.
+            if reference_channels
+                .get(&(left.fact.subject.as_str(), left.fact.attribute.as_str()))
+                .copied()
+                .unwrap_or(0)
+                > 1
+                || reference_channels
+                    .get(&(right.fact.subject.as_str(), right.fact.attribute.as_str()))
+                    .copied()
+                    .unwrap_or(0)
+                    > 1
+            {
                 continue;
             }
-            let (op, phrase) = match a.cmp(b) {
-                std::cmp::Ordering::Less => ("lt", "is earlier than"),
-                std::cmp::Ordering::Greater => ("gt", "is later than"),
-                std::cmp::Ordering::Equal => ("eq", "is on the same day as"),
+            let Some((op, phrase)) = comparison_phrase(&left.fact.value, &right.fact.value) else {
+                continue;
             };
             add(
                 "compare",
@@ -256,19 +314,22 @@ pub fn generate_claims(
         .flatten()
         .filter_map(Value::as_str)
         .collect();
-    for event_date in immutable
+    for event_date in current
         .iter()
         .filter(|e| e.fact.attribute == "date" && event_names.contains(e.fact.subject.as_str()))
     {
         let Some(date) = event_date.fact.value["value"]
             .as_str()
-            .filter(|d| d.len() == 10)
+            .filter(|d| d.len() == 10 && *d <= AS_OF)
         else {
             continue;
         };
         for observations in groups.values() {
-            for evidence in observations.iter().filter(|e| e.date == date) {
-                if has_day_conflict(observations, evidence)
+            for evidence in observations
+                .iter()
+                .filter(|e| window_start(e, &windows) <= date && date <= window_end(e, &windows))
+            {
+                if has_window_conflict(observations, evidence, &windows)
                     || evidence.fact.subject == event_date.fact.subject
                 {
                     continue;
@@ -315,12 +376,11 @@ pub fn generate_claims(
                 continue;
             };
             for target_observations in groups.values() {
-                for target in target_observations
-                    .iter()
-                    .filter(|e| &e.fact.subject == target_name && e.date == link.date)
-                {
-                    if has_day_conflict(observations, link)
-                        || has_day_conflict(target_observations, target)
+                for target in target_observations.iter().filter(|e| {
+                    &e.fact.subject == target_name && windows_overlap(e, link, &windows)
+                }) {
+                    if has_window_conflict(observations, link, &windows)
+                        || has_window_conflict(target_observations, target, &windows)
                     {
                         continue;
                     }
@@ -393,7 +453,7 @@ pub fn generate_claims(
     let mut notes = vec![
         "MMR uses 0.78 evidence confidence and 0.22 maximum token redundancy; deterministic selection, no runtime LLM.".into(),
         "Only labelled-true observations license candidates. Model-predicted true rows are not trusted generation evidence.".into(),
-        "Current facts and comparisons use confirmed immutable historical dates. Mutable values use ordered historical observations or independently dated events; page dates do not establish exact change boundaries.".into(),
+        "Current facts and comparisons require an explicit validity window covering the as-of date or a confirmed immutable historical date. Historical joins and changes use validity windows; page dates alone do not establish exact change boundaries.".into(),
         "Confidence values are engineering estimates, not independently calibrated probabilities or a guarantee of the hidden referee's truth judgement.".into(),
     ];
     if claims.len() < limit {
@@ -436,6 +496,14 @@ fn immutable_observation(
     observations: &[Evidence],
     lexicon: &Value,
 ) -> Option<Evidence> {
+    // A scoped statement cannot license persistence outside its declared range,
+    // even for a field whose name often denotes an immutable historical date.
+    if observations
+        .iter()
+        .any(|e| explicit_scope(&e.text).is_some())
+    {
+        return None;
+    }
     let is_event = lexicon["events"]
         .as_array()
         .is_some_and(|v| v.iter().any(|e| e == subject));
@@ -489,10 +557,90 @@ fn immutable_observation(
     Some((*selected).clone())
 }
 
-fn has_day_conflict(observations: &[Evidence], current: &Evidence) -> bool {
-    observations
-        .iter()
-        .any(|e| e.date == current.date && !same_value(&e.fact.value, &current.fact.value))
+type Windows = BTreeMap<String, (String, String)>;
+
+fn effective_window(evidence: &Evidence) -> Option<(String, String)> {
+    let (start, end) = if let Some(scope) = explicit_scope(&evidence.text) {
+        (scope.start_inclusive, scope.end_inclusive)
+    } else {
+        (evidence.date.clone(), evidence.date.clone())
+    };
+    if start.as_str() > AS_OF {
+        return None;
+    }
+    Some((start, end.as_str().min(AS_OF).to_owned()))
+}
+fn window_start<'a>(e: &'a Evidence, windows: &'a Windows) -> &'a str {
+    windows
+        .get(&e.row_id)
+        .map_or(e.date.as_str(), |w| w.0.as_str())
+}
+fn window_end<'a>(e: &'a Evidence, windows: &'a Windows) -> &'a str {
+    windows
+        .get(&e.row_id)
+        .map_or(e.date.as_str(), |w| w.1.as_str())
+}
+fn windows_overlap(a: &Evidence, b: &Evidence, windows: &Windows) -> bool {
+    window_start(a, windows) <= window_end(b, windows)
+        && window_start(b, windows) <= window_end(a, windows)
+}
+fn has_window_conflict(observations: &[Evidence], current: &Evidence, windows: &Windows) -> bool {
+    observations.iter().any(|e| {
+        windows_overlap(e, current, windows)
+            && !same_value(&e.fact.value, &current.fact.value)
+            && !(e.fact.value["kind"] == "money"
+                && current.fact.value["kind"] == "money"
+                && (e.fact.value["currency"] != current.fact.value["currency"]
+                    || e.fact.value["per"] != current.fact.value["per"]))
+    })
+}
+
+fn comparison_phrase(left: &Value, right: &Value) -> Option<(&'static str, &'static str)> {
+    if left["kind"] != right["kind"] {
+        return None;
+    }
+    let kind = left["kind"].as_str()?;
+    // A comparison form carries references only, so preserve the precision of
+    // both dated values rather than rendering a year as a particular day.
+    if kind == "date" && left["value"].as_str()?.len() != right["value"].as_str()?.len() {
+        return None;
+    }
+    let order = if let Some((a, b)) = numeric(left).zip(numeric(right)) {
+        if a.dimension != b.dimension {
+            return None;
+        }
+        a.amount.cmp(&b.amount)
+    } else if matches!(kind, "date" | "version") {
+        if left["value"] == right["value"] {
+            if kind == "date" && left["value"].as_str()?.len() != 10 {
+                return None;
+            }
+            std::cmp::Ordering::Equal
+        } else {
+            let mut bound = right.clone();
+            bound["op"] = json!("gt");
+            if crate::knowledge::entails(&bound, left, false) == Some(true) {
+                std::cmp::Ordering::Greater
+            } else {
+                bound["op"] = json!("lt");
+                if crate::knowledge::entails(&bound, left, false) == Some(true) {
+                    std::cmp::Ordering::Less
+                } else {
+                    return None;
+                }
+            }
+        }
+    } else {
+        return None;
+    };
+    Some(match (kind, order) {
+        ("date", std::cmp::Ordering::Less) => ("lt", "is earlier than"),
+        ("date", std::cmp::Ordering::Greater) => ("gt", "is later than"),
+        ("date", std::cmp::Ordering::Equal) => ("eq", "is on the same day as"),
+        (_, std::cmp::Ordering::Less) => ("lt", "is less than"),
+        (_, std::cmp::Ordering::Greater) => ("gt", "is greater than"),
+        (_, std::cmp::Ordering::Equal) => ("eq", "is equal to"),
+    })
 }
 
 fn compatible(left: &Value, right: &Value) -> bool {
@@ -508,6 +656,9 @@ fn compatible(left: &Value, right: &Value) -> bool {
 fn same_value(left: &Value, right: &Value) -> bool {
     if left == right {
         return true;
+    }
+    if let Some((a, b)) = numeric(left).zip(numeric(right)) {
+        return a.dimension == b.dimension && a.amount == b.amount;
     }
     if left["kind"] == "date"
         && right["kind"] == "date"
@@ -626,6 +777,37 @@ mod tests {
         json!({"subjects":[{"name":"A","aliases":[],"attributes":["users"]}],"events":[]})
     }
     #[test]
+    fn version_comparisons_use_actual_numeric_components_and_date_precision() {
+        let version = |v| json!({"kind":"version","value":v});
+        assert_eq!(
+            comparison_phrase(&version("14.0.0"), &version("4.21.10.2"))
+                .unwrap()
+                .0,
+            "gt"
+        );
+        assert_eq!(
+            comparison_phrase(&version("2.9"), &version("2.10"))
+                .unwrap()
+                .0,
+            "lt"
+        );
+        assert_eq!(
+            comparison_phrase(&version("2.3"), &version("2.3.0"))
+                .unwrap()
+                .0,
+            "lt"
+        );
+        let date = |v| json!({"kind":"date","value":v});
+        assert!(comparison_phrase(&date("2024"), &date("2025-02-03")).is_none());
+        assert_eq!(
+            comparison_phrase(&date("2024-02-03"), &date("2025-02-03"))
+                .unwrap()
+                .0,
+            "lt"
+        );
+    }
+
+    #[test]
     fn changes_require_true_evidence_and_strict_chronology() {
         let rows = vec![
             row("a", "2026-01-01", "true", 1.0),
@@ -637,6 +819,80 @@ mod tests {
         assert_eq!(report.claims[0].kind, "change");
         assert_eq!(report.claims[0].evidence.len(), 2);
         assert!(report.claims[0].evidence.iter().all(|e| e.label == "true"));
+    }
+    #[test]
+    fn explicit_validity_orders_changes_independently_of_publication_dates() {
+        let mut first = row("first", "2026-09-01", "true", 1.0);
+        first.text = "From January 1, 2026 through January 31, 2026, A has 1 user.".into();
+        let mut second = row("second", "2025-12-01", "true", 2.0);
+        second.text = "From February 1, 2026 through February 28, 2026, A has 2 users.".into();
+        let report = generate_claims(&[first, second], &[], &lexicon(), 1000).unwrap();
+        let change = report.claims.iter().find(|c| c.kind == "change").unwrap();
+        assert_eq!(change.form["from"]["value"], json!(1.0));
+        assert_eq!(change.form["to"]["value"], json!(2.0));
+        assert_eq!(change.evidence[0].date, "2026-09-01"); // Source date is preserved.
+        assert!(report.claims.iter().all(|c| c.kind != "fact"));
+    }
+    #[test]
+    fn mutable_current_facts_require_explicit_coverage_and_comparisons_convert_units() {
+        let mut a = row("a", "2025-12-01", "true", 1.2);
+        a.text = "From October 1, 2026 through October 29, 2026, A has 1.2 GB of storage.".into();
+        a.form[0].value = json!({"kind":"quantity","value":1.2,"unit":"GB"});
+        let mut b = row("b", "2026-10-01", "true", 1200.0);
+        b.text = "From October 1, 2026 through October 29, 2026, B has 1200 MB of storage.".into();
+        b.form[0].subject = "B".into();
+        b.form[0].value = json!({"kind":"quantity","value":1200,"unit":"MB"});
+        let mut lex = lexicon();
+        lex["subjects"]
+            .as_array_mut()
+            .unwrap()
+            .push(json!({"name":"B","aliases":[],"attributes":["users"]}));
+        let report = generate_claims(&[a, b], &[], &lex, 1000).unwrap();
+        assert_eq!(report.claims.iter().filter(|c| c.kind == "fact").count(), 2);
+        assert!(
+            report
+                .claims
+                .iter()
+                .any(|c| c.kind == "compare" && c.form["op"] == "eq")
+        );
+    }
+    #[test]
+    fn multiple_price_periods_license_facts_and_changes_but_not_ambiguous_compares() {
+        let mut rows = Vec::new();
+        for (id, start, end, per, value) in [
+            ("m1", "2026-01-01", "2026-06-30", "month", 79),
+            ("m2", "2026-07-01", "2026-10-29", "month", 95),
+            ("y1", "2026-01-01", "2026-06-30", "year", 790),
+            ("y2", "2026-07-01", "2026-10-29", "year", 950),
+        ] {
+            let mut r = row(id, start, "true", 1.0);
+            r.text = format!("From {start} through {end}, A has a price of EUR{value} per {per}.");
+            r.form[0].attribute = "price".into();
+            r.form[0].value = json!({"kind":"money","value":value,"currency":"EUR","per":per});
+            rows.push(r);
+        }
+        let lex =
+            json!({"subjects":[{"name":"A","aliases":[],"attributes":["price"]}],"events":[]});
+        let report = generate_claims(&rows, &[], &lex, 1000).unwrap();
+        assert_eq!(report.claims.iter().filter(|c| c.kind == "fact").count(), 2);
+        assert_eq!(
+            report.claims.iter().filter(|c| c.kind == "change").count(),
+            2
+        );
+        assert!(!report.claims.iter().any(|c| c.kind == "compare"));
+    }
+    #[test]
+    fn overlapping_conflicting_scopes_do_not_license_current_values_or_changes() {
+        let mut a = row("a", "2026-01-01", "true", 1.0);
+        a.text = "From October 1, 2026 through October 29, 2026, A has 1 user.".into();
+        let mut b = row("b", "2026-02-01", "true", 2.0);
+        b.text = "From October 1, 2026 through October 29, 2026, A has 2 users.".into();
+        assert!(
+            generate_claims(&[a, b], &[], &lexicon(), 1000)
+                .unwrap()
+                .claims
+                .is_empty()
+        );
     }
     #[test]
     fn conflicting_same_day_values_do_not_prove_a_change() {
