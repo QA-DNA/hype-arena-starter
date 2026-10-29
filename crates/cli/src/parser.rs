@@ -1,10 +1,10 @@
 //! Optional experimental CPU extractor. The default executable is pure Rust.
 //! The helper proposes assertions; it cannot change labels or trusted evidence.
 use serde_json::Value;
-use std::{collections::BTreeSet, error::Error, fs, path::Path, process::Command};
+use std::{error::Error, fs, path::Path, process::Command};
 use veridyct_core::{
     ExtractionHints, InputRow,
-    extraction::{LexiconIndex, Normalizer},
+    extraction::{LexiconIndex, NormalizedRow, Normalizer},
     structured::{SchemaParser, ValueCandidate},
 };
 
@@ -133,18 +133,13 @@ pub fn enrich(
         if original.form.is_empty() && original.label.is_empty() {
             let normalized =
                 normalizer.normalize(&original.id, &original.date, &parser_input.text)?;
-            let mentioned: BTreeSet<_> = normalized
-                .mentions
-                .iter()
-                .map(|m| m.subject.as_str())
-                .collect();
             let before = parsed.form.len();
             // A frozen closed-world classifier can nominate an unrelated known
             // owner for a new company. The owner must be grounded in input text;
             // previous-row context without document boundaries is not a proof.
             parsed
                 .form
-                .retain(|fact| mentioned.contains(fact.subject.as_str()));
+                .retain(|fact| grounded_owner(&parser_input.text, &normalized, fact));
             if parsed.form.len() != before {
                 hints.incomplete.insert(original.id.clone());
             }
@@ -168,6 +163,48 @@ pub fn enrich(
     }
     drop(paths);
     Ok(hints)
+}
+
+fn grounded_owner(text: &str, normalized: &NormalizedRow, fact: &veridyct_core::Fact) -> bool {
+    let is_object = |start: usize| {
+        let prefix = text[..start].trim_end().to_ascii_lowercase();
+        [
+            "unlike",
+            "competes with",
+            "compared with",
+            "compared to",
+            "as opposed to",
+            "versus",
+        ]
+        .iter()
+        .any(|phrase| prefix.ends_with(phrase))
+    };
+    if normalized
+        .mentions
+        .iter()
+        .any(|m| m.subject == fact.subject && !is_object(m.original_span.start))
+    {
+        return true;
+    }
+    // Common-word aliases such as Chrome are deliberately conservative in the
+    // normalizer. Explicit possessives or attribute-first references can still
+    // ground a unique capitalized alias without inventing an entity mapping.
+    normalized.issues.iter().any(|issue| {
+        if issue.candidates.len() != 1
+            || issue.candidates[0] != fact.subject
+            || is_object(issue.original_span.start)
+        {
+            return false;
+        }
+        let alias = issue.original_span.slice(text).unwrap_or("");
+        let suffix = text.get(issue.original_span.end..).unwrap_or("");
+        let possessive = suffix.starts_with("'s") || suffix.starts_with('\u{2019}');
+        let field = fact.attribute.replace('_', " ");
+        let lower = text.to_ascii_lowercase();
+        let explicit_field = lower.contains(&field)
+            || fact.attribute.ends_with("_version") && lower.contains("version");
+        alias.chars().next().is_some_and(char::is_uppercase) && (possessive || explicit_field)
+    })
 }
 
 fn requires_abstention(complete: bool, notes: &[String]) -> bool {
@@ -204,6 +241,35 @@ impl Drop for TemporaryFiles {
 #[cfg(test)]
 mod tests {
     use super::requires_abstention;
+    #[test]
+    fn owner_guard_preserves_explicit_aliases_and_rejects_comparison_objects() {
+        use super::*;
+        use serde_json::json;
+        let normalizer = Normalizer::new(
+            LexiconIndex::compile(include_str!("../../../data/lexicon.json"), Vec::new()).unwrap(),
+        )
+        .unwrap();
+        let chrome = veridyct_core::Fact {
+            subject: "Hooly Chrome".into(),
+            attribute: "stable_version".into(),
+            value: json!({"kind":"version","value":"12.4"}),
+        };
+        for text in [
+            "The version of Chrome is v12.4.",
+            "Chrome's stable version is 12.4.",
+        ] {
+            let row = normalizer.normalize("q", "2026-01-01", text).unwrap();
+            assert!(grounded_owner(text, &row, &chrome), "{text}: {row:?}");
+        }
+        let pro = veridyct_core::Fact {
+            subject: "Hooly AI Pro".into(),
+            attribute: "price".into(),
+            value: json!({"kind":"money","value":17,"currency":"EUR","per":"month"}),
+        };
+        let text = "Emberkeep offers EUR 17 per month and competes with Hooly AI Pro.";
+        let row = normalizer.normalize("q", "2026-01-01", text).unwrap();
+        assert!(!grounded_owner(text, &row, &pro));
+    }
     #[test]
     fn ordinary_neural_fallback_is_distinct_from_a_known_missing_clause() {
         let notes = |v: &[&str]| v.iter().map(|x| (*x).to_owned()).collect::<Vec<_>>();
