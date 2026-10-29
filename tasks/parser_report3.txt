@@ -1,0 +1,15 @@
+== split=date: rows=1897  row-all-exact=0.711
+  fact       P=0.898 R=0.760 F1=0.823  (pred 2032, gold 2402)
+  subject    P=0.939 R=0.794 F1=0.861  (pred 2032, gold 2402)
+  subj+attr  P=0.902 R=0.763 F1=0.827  (pred 2032, gold 2402)
+  value      P=0.982 R=0.831 F1=0.900  (pred 2032, gold 2402)
+  kind boolean   P=0.481 R=0.149 F1=0.228  (gold 174)
+  kind date      P=0.785 R=0.709 F1=0.745  (gold 165)
+  kind duration  P=0.927 R=0.830 F1=0.876  (gold 229)
+  kind money     P=0.929 R=0.832 F1=0.878  (gold 268)
+  kind name      P=0.811 R=0.679 F1=0.740  (gold 209)
+  kind percent   P=0.942 R=0.801 F1=0.866  (gold 201)
+  kind quantity  P=0.931 R=0.832 F1=0.879  (gold 1028)
+  kind version   P=0.925 R=0.867 F1=0.895  (gold 128)
+  (314s)
+./.venv/bin/python -m bench.make_parsed --splits date  331.38s user 36.71s system 116% cpu 5:15.05 total

@@ -49,3 +49,13 @@ MINUTES=5 scripts/check.sh       # a shorter run
 ```
 
 A run that passes here can still fail ours on what the practice data does not hold.
+
+## Our frontend
+
+`frontend/` shows the system's architecture as a diagram and runs the real system live (the same `src/label_rows.py` and `generate_claims.py` the Docker image runs) on rows you paste, upload, or the 20-row sample in `datasets/sample.csv`.
+
+```sh
+pip install numpy pandas scipy scikit-learn
+python frontend/server.py          # open http://localhost:8000, click "Run system"
+python frontend/test_server.py     # smoke check on the sample
+```

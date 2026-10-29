@@ -1,0 +1,8 @@
+.venv
+.git
+hype-arena-website
+bench
+tasks
+*.csv
+!data/practice.csv
+.env

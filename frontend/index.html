@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hype or Truth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Urbanist:wght@300;400;600&display=swap">
+<style>
+/* tokens copied from hype-arena-website/src/styles.css so every page shares one theme */
+:root {
+  --background: oklch(0.955 0.015 85); --foreground: oklch(0.42 0.17 262); --card: oklch(0.975 0.01 85);
+  --primary: oklch(0.47 0.19 262); --primary-foreground: oklch(0.96 0.015 85); --muted: oklch(0.925 0.02 85);
+  --muted-foreground: oklch(0.55 0.08 262); --accent: oklch(0.9 0.04 255); --destructive: oklch(0.58 0.2 28);
+  --success: oklch(0.55 0.13 155); --warning: oklch(0.7 0.15 75); --border: oklch(0.47 0.19 262 / 0.35);
+  --sans: "Urbanist", sans-serif; --mono: "JetBrains Mono", monospace;
+}
+.dark {
+  --background: oklch(0.2 0.04 262); --foreground: oklch(0.93 0.02 85); --card: oklch(0.24 0.05 262);
+  --primary: oklch(0.78 0.11 255); --primary-foreground: oklch(0.2 0.04 262); --muted: oklch(0.27 0.05 262);
+  --muted-foreground: oklch(0.72 0.05 260); --accent: oklch(0.32 0.07 262); --destructive: oklch(0.7 0.18 28);
+  --success: oklch(0.75 0.14 155); --warning: oklch(0.82 0.14 80); --border: oklch(0.78 0.11 255 / 0.3);
+}
+* { box-sizing: border-box; border-color: var(--border); }
+body { margin: 0; font: 16px/1.5 var(--sans); background: var(--background); color: var(--foreground); }
+.top { border-bottom: 1px solid var(--border); }
+.top > div { max-width: 72rem; margin: 0 auto; height: 48px; display: flex; align-items: stretch; border-inline: 1px solid var(--border); }
+.brand { display: flex; align-items: center; padding: 0 20px; font-size: 18px; font-weight: 300; color: var(--primary); }
+.top nav { margin-left: auto; display: flex; }
+.nav-link { display: flex; align-items: center; border: 0; border-left: 1px solid var(--border); padding: 0 20px; font: 14px var(--sans); color: var(--foreground); background: none; text-decoration: none; cursor: pointer; }
+.nav-link:hover { background: var(--accent); }
+.nav-active, .nav-active:hover { background: var(--primary); color: var(--primary-foreground); }
+main { max-width: 72rem; margin: 0 auto; padding: 40px 24px; display: grid; gap: 24px; }
+h1 { margin: 0; font-size: 48px; font-weight: 300; letter-spacing: -.02em; color: var(--primary); }
+.lead { margin: 8px 0 0; max-width: 48rem; color: var(--muted-foreground); }
+section { border: 1px solid var(--border); border-radius: 8px; background: var(--card); padding: 20px; }
+section h2 { margin: 0 0 16px; font: 12px var(--mono); text-transform: uppercase; letter-spacing: .1em; color: var(--muted-foreground); }
+section p { margin: 0 0 8px; }
+svg { width: 100%; height: auto; display: block; }
+svg .box { fill: var(--background); stroke: var(--primary); stroke-width: 1.5; }
+svg .io { fill: var(--primary); }
+svg .hot { fill: var(--accent); stroke: var(--primary); stroke-width: 2; }
+svg text { font: 13px var(--sans); fill: var(--foreground); text-anchor: middle; dominant-baseline: middle; }
+svg .io-t { fill: var(--primary-foreground); }
+svg .sub { font: 11px var(--sans); fill: var(--muted-foreground); }
+svg .sub.io-t { fill: var(--primary-foreground); opacity: .8; }
+svg .lane { font: 11px var(--mono); text-transform: uppercase; letter-spacing: .08em; fill: var(--muted-foreground); text-anchor: start; }
+svg path { stroke: var(--primary); stroke-width: 1.3; fill: none; marker-end: url(#a); }
+svg #a path { fill: var(--primary); stroke: none; }
+/* run animation: the active block glows, finished blocks turn green, a failure turns red */
+svg rect[data-step] { transition: fill .35s, stroke .35s, stroke-width .35s, filter .35s; }
+svg rect.active { fill: var(--warning); stroke: var(--foreground); stroke-width: 3; filter: drop-shadow(0 0 8px var(--warning)); animation: glow .7s infinite alternate; }
+svg rect.done { fill: color-mix(in oklch, var(--success) 25%, var(--background)); stroke: var(--success); stroke-width: 2; }
+svg rect.io.done { fill: var(--success); }
+svg rect.io.active { fill: var(--primary); stroke: var(--warning); } /* keep light text readable */
+svg rect.active:not(.io) + text, svg rect.active:not(.io) + text + text { fill: oklch(0.2 0.04 262); } /* dark text on the yellow glow, both themes */
+svg rect.failed { fill: color-mix(in oklch, var(--destructive) 25%, var(--background)); stroke: var(--destructive); stroke-width: 3; }
+svg path { transition: stroke .35s; }
+@keyframes glow { to { filter: drop-shadow(0 0 2px var(--warning)); } }
+@media (prefers-reduced-motion: reduce) { svg rect.active { animation: none; } }
+textarea { width: 100%; height: 160px; font: 12px var(--mono); padding: 8px 12px; border: 1px solid var(--border); border-radius: 6px; background: var(--card); color: var(--foreground); outline: none; }
+textarea:focus { border-color: var(--primary); }
+.bar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-top: 8px; }
+button, label.btn, select { border-radius: 6px; padding: 8px 14px; font: 600 14px var(--sans); cursor: pointer; border: 1px solid var(--primary); }
+button { background: var(--primary); color: var(--primary-foreground); }
+button.alt, label.btn, select { background: transparent; color: var(--primary); }
+button:disabled { opacity: .4; cursor: wait; }
+#status, .note { font: 12px var(--mono); color: var(--muted-foreground); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th { font: 11px var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted-foreground); }
+th, td { text-align: left; padding: 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
+td:first-child, td.num { font: 12px var(--mono); }
+td:first-child, td:nth-child(2) { white-space: nowrap; }
+.pill { border-radius: 2px; padding: 2px 6px; font: 700 10px var(--mono); text-transform: uppercase; }
+.true { background: color-mix(in oklch, var(--success) 20%, transparent); color: var(--success); }
+.false { background: color-mix(in oklch, var(--destructive) 20%, transparent); color: var(--destructive); }
+.unsure { background: color-mix(in oklch, var(--warning) 20%, transparent); color: var(--warning); }
+.wrap { overflow-x: auto; }
+.stats { display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 12px; }
+.stats b { font-size: 28px; font-weight: 300; display: block; color: var(--primary); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+label.btn:focus-within { outline: 2px solid var(--primary); outline-offset: 2px; }
+code { font: 11px var(--mono); color: var(--muted-foreground); word-break: break-all; }
+</style>
+</head>
+<body>
+<header class="top"><div>
+  <span class="brand">hooly{lab}</span>
+  <nav>
+    <a class="nav-link" data-site href="http://localhost:5173/claims">New claims</a>
+    <a class="nav-link" data-site href="http://localhost:5173/how-it-works">How it works</a>
+    <a class="nav-link" data-site href="http://localhost:5173/classifier">Classifier</a>
+    <a class="nav-link nav-active" href="/">Live run</a>
+  </nav>
+  <button class="nav-link" id="theme" aria-label="Toggle dark theme">Dark</button>
+</div></header>
+<main>
+<div>
+  <h1>Hype or Truth</h1>
+  <p class="lead">Our system labels rows about Hooly true / false / unsure and writes 1,000 new true claims. No LLM inside: lexicon matching, a linear router, a temporal knowledge base and gradient-boosted trees.</p>
+</div>
+<section>
+  <h2>Architecture</h2>
+  <svg id="diagram" viewBox="0 0 1200 320" role="img" aria-label="Architecture: input rows flow through subject finder, fact router, value extractor, evidence features (fed by a temporal knowledge base built from the practice rows) and a tree judge to labels; the practice rows also build a fact tree that feeds a claim builder, validator and selector to 1,000 claims; both write output.csv">
+    <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0L10,5L0,10z"/></marker></defs>
+    <text class="lane" x="10" y="16">Job 1 · Classify the rows (src/label_rows.py)</text>
+    <rect data-step="1" class="io" x="10" y="40" width="110" height="60" rx="8"/><text x="65" y="62" class="io-t">universe.csv</text><text x="65" y="80" class="sub io-t">id, text, date</text>
+    <rect data-step="3" class="box" x="140" y="40" width="140" height="60"/><text x="210" y="62" class="">Subject finder</text><text x="210" y="80" class="sub">lexicon + page context</text>
+    <rect data-step="4" class="box" x="298" y="40" width="130" height="60"/><text x="363" y="62" class="">Fact router</text><text x="363" y="80" class="sub">TF-IDF + linear SVM</text>
+    <rect data-step="5" class="box" x="446" y="40" width="140" height="60"/><text x="516" y="62" class="">Value extractor</text><text x="516" y="80" class="sub">numbers, dates, names</text>
+    <rect data-step="6" class="box" x="604" y="40" width="150" height="60"/><text x="679" y="62" class="">Evidence features</text><text x="679" y="80" class="sub">current, old, lie, votes</text>
+    <rect data-step="7" class="hot" x="772" y="40" width="120" height="60"/><text x="832" y="62" class="">Tree judge</text><text x="832" y="80" class="sub">gradient boosting</text>
+    <rect data-step="8" class="box" x="910" y="40" width="120" height="60"/><text x="970" y="62" class="">Label + conf.</text><text x="970" y="80" class="sub">unsure if p &lt; τ</text>
+    <rect data-step="2" class="io" x="480" y="140" width="250" height="44" rx="8"/><text x="605" y="162" class="io-t">Practice rows + lexicon → temporal KB</text>
+    <text class="lane" x="36" y="222">Job 2 · Generate 1,000 claims (generate_claims.py)</text>
+    <rect data-step="9" class="box" x="140" y="240" width="150" height="60"/><text x="215" y="262" class="">Fact tree</text><text x="215" y="280" class="sub">value periods per slot</text>
+    <rect data-step="10" class="box" x="308" y="240" width="180" height="60"/><text x="398" y="262" class="">Candidate builder</text><text x="398" y="280" class="sub">5 claim types</text>
+    <rect data-step="11" class="box" x="506" y="240" width="150" height="60"/><text x="581" y="262" class="">Referee validator</text><text x="581" y="280" class="sub">claim-forms, new, unique</text>
+    <rect data-step="12" class="hot" x="674" y="240" width="140" height="60"/><text x="744" y="262" class="">Selector</text><text x="744" y="280" class="sub">round-robin, conf ≥ 0.7</text>
+    <rect data-step="13" class="box" x="832" y="240" width="130" height="60"/><text x="897" y="262" class="">1,000 claims</text><text x="897" y="280" class="sub">label true + conf.</text>
+    <rect data-step="14" class="io" x="1060" y="152" width="130" height="48" rx="8"/><text x="1125" y="176" class="io-t">/output/output.csv</text>
+    <path d="M120,70H138"/><path d="M280,70H296"/><path d="M428,70H444"/><path d="M586,70H602"/><path d="M754,70H770"/><path d="M892,70H908"/><path d="M679,140V102"/><path d="M1030,70H1125V150"/><path d="M480,162H24V270H138"/><path d="M290,270H306"/><path d="M488,270H504"/><path d="M656,270H672"/><path d="M814,270H830"/><path d="M962,270H1125V202"/>
+  </svg>
+</section>
+<section>
+  <h2>Run the system live</h2>
+  <p>Paste rows (<code>id,text,date,label</code>; rows with an empty label get classified) or load the 20-row contest sample.</p>
+  <textarea id="csv" spellcheck="false"></textarea>
+  <div class="bar">
+    <button class="alt" id="load">Load sample</button>
+    <label class="btn">Upload CSV<input type="file" id="file" accept=".csv,text/csv" class="sr"></label>
+    <button id="run">Run system</button>
+    <button class="alt" id="dl" hidden>Download output.csv</button>
+    <span id="status" role="status"></span>
+  </div>
+</section>
+<section id="out" hidden>
+  <h2>Labels</h2>
+  <div class="stats" id="stats"></div>
+  <div class="wrap"><table><thead><tr><th>id</th><th>date</th><th>text</th><th>label</th><th>confidence</th></tr></thead><tbody id="labels"></tbody></table></div>
+  <h2 style="margin-top:32px">Generated claims <span id="ccount"></span></h2>
+  <div class="bar"><select id="ctype" aria-label="Filter claims by type"><option value="">all types</option><option>fact</option><option>compare</option><option>change</option><option>at_event</option><option>relation</option></select><span id="cshown" class="note"></span></div>
+  <div class="wrap"><table><thead><tr><th>id</th><th>type</th><th>text / form</th><th>confidence</th></tr></thead><tbody id="claims"></tbody></table></div>
+</section>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let result = null;
+
+async function loadSample() { $('csv').value = await (await fetch('/sample.csv')).text(); }
+$('load').onclick = loadSample;
+$('file').onchange = async e => { const f = e.target.files[0]; if (f) $('csv').value = await f.text(); e.target.value = ''; };
+
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const blocks = [...document.querySelectorAll('#diagram rect[data-step]')].sort((a, b) => a.dataset.step - b.dataset.step);
+const JUDGE_STEP = 7; // the tree judge stays lit until the server has answered
+
+// Light the diagram blocks in the system's order while the request runs.
+// Blocks pace at the real labelling speed, then finish quickly once the answer is in.
+async function animate(req) {
+  let settled = false;
+  req.then(() => settled = true, () => settled = true);
+  blocks.forEach(b => b.classList.remove('active', 'done', 'failed'));
+  for (const b of blocks) {
+    b.classList.add('active');
+    await sleep(settled ? 450 : 1300);
+    if (+b.dataset.step === JUDGE_STEP && !settled) await req.catch(() => {});
+    try { await (settled ? req : Promise.resolve()); } catch { b.classList.replace('active', 'failed'); return; }
+    b.classList.replace('active', 'done');
+  }
+}
+
+$('run').onclick = async () => {
+  $('run').disabled = true;
+  $('status').textContent = 'Training on practice rows, labelling, generating claims…';
+  const t = performance.now();
+  const req = fetch('/run', { method: 'POST', headers: { 'Content-Type': 'text/csv' }, body: $('csv').value })
+    .then(async r => { const j = await r.json(); if (!r.ok) throw new Error(j.error); return j; });
+  const anim = animate(req);
+  try {
+    const j = await req;
+    await anim; // show the whole pipeline before the results
+    result = j; render();
+    $('status').textContent = `Done in ${((performance.now() - t) / 1000).toFixed(1)}s (label ${j.seconds.label}s, generate ${j.seconds.generate}s)`;
+  } catch (e) { await anim; $('status').textContent = 'Error: ' + e.message; }
+  $('run').disabled = false;
+};
+
+function render() {
+  $('out').hidden = false; $('dl').hidden = false;
+  const n = { true: 0, false: 0, unsure: 0 };
+  result.labels.forEach(l => n[l.label]++);
+  $('stats').innerHTML = `<div><b>${result.labels.length}</b>rows</div>` +
+    Object.entries(n).map(([k, v]) => `<div><b>${v}</b><span class="pill ${k}">${k}</span></div>`).join('');
+  $('labels').innerHTML = result.labels.map(l => `<tr><td>${esc(l.id)}</td><td>${esc(l.date)}</td><td>${esc(l.text)}</td><td><span class="pill ${l.label}">${l.label}</span></td><td class="num">${l.confidence === '' ? '—' : Number(l.confidence).toFixed(3)}</td></tr>`).join('');
+  $('ccount').textContent = `(${result.claims.length}: ` + Object.entries(result.by_type).map(([k, v]) => `${k} ${v}`).join(', ') + ')';
+  renderClaims();
+}
+
+function renderClaims() {
+  const type = $('ctype').value;
+  const list = result.claims.filter(c => !type || c.type === type);
+  $('cshown').textContent = list.length > 200 ? `showing 200 of ${list.length}; download output.csv for all` : `${list.length} shown`;
+  $('claims').innerHTML = list.slice(0, 200).map(c =>
+    `<tr><td>${esc(c.id)}</td><td>${c.type}</td><td>${esc(c.text)}<br><code>${esc(JSON.stringify(c.form))}</code></td><td class="num">${Number(c.confidence).toFixed(2)}</td></tr>`).join('');
+}
+$('ctype').onchange = renderClaims;
+
+$('dl').onclick = () => {
+  const q = v => /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v;
+  const lines = ['id,type,text,form,label,confidence',
+    ...result.labels.map(l => [l.id, '', '', '', l.label, l.confidence].map(q).join(',')),
+    ...result.claims.map(c => [c.id, c.type, c.text, JSON.stringify(c.form), 'true', String(c.confidence)].map(q).join(','))];
+  const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(new Blob([lines.join('\n') + '\n'], { type: 'text/csv' })), download: 'output.csv' });
+  a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 30000);
+};
+
+function setTheme(d) {
+  document.documentElement.classList.toggle('dark', d);
+  $('theme').textContent = d ? 'Light' : 'Dark';
+  try { localStorage.setItem('theme', d ? 'dark' : 'light'); } catch {}
+}
+// the website runs on another port (its own storage), so the theme also travels as ?theme= on the links between them
+const asked = new URLSearchParams(location.search).get('theme');
+let saved = null; try { saved = localStorage.getItem('theme'); } catch {}
+setTheme((asked || saved) === 'dark');
+if (asked) history.replaceState(null, '', location.pathname); // so a reload keeps later toggles
+document.querySelectorAll('a[data-site]').forEach(a => a.onclick = () => {
+  const u = new URL(a.href); u.searchParams.set('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light'); a.href = u;
+});
+$('theme').onclick = () => setTheme(!document.documentElement.classList.contains('dark'));
+
+loadSample();
+</script>
+</body>
+</html>
