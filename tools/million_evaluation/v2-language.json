@@ -1,0 +1,289 @@
+{
+  "provenance": {
+    "source": "veridyct-million-v2.zip/labs/million-review/revision.py",
+    "source_sha256": "6be3ac8a0481cd44335a211c8463a58f3b4aace5fdb103849ee8bb167eb07699",
+    "scope": "Only literal language tables; no generator execution, bank facts, targets, oracle, recipes or row IDs"
+  },
+  "tables": {
+    "BOOL": {
+      "ad_free_option": [
+        "offers an ad-free option",
+        "does not offer an ad-free option"
+      ],
+      "ai_answers": [
+        "provides AI answers",
+        "does not provide AI answers"
+      ],
+      "ai_sidebar": [
+        "includes an AI sidebar",
+        "does not include an AI sidebar"
+      ],
+      "camera_translation": [
+        "supports camera translation",
+        "does not support camera translation"
+      ],
+      "carbon_neutral": [
+        "is carbon neutral",
+        "is not carbon neutral"
+      ],
+      "data_processing_agreement": [
+        "offers a data processing agreement",
+        "does not offer a data processing agreement"
+      ],
+      "end_to_end_encrypted_backups": [
+        "encrypts backups end to end",
+        "does not encrypt backups end to end"
+      ],
+      "end_to_end_encryption": [
+        "uses end-to-end encryption",
+        "does not use end-to-end encryption"
+      ],
+      "eu_hosted": [
+        "is hosted in the EU",
+        "is not hosted in the EU"
+      ],
+      "integration_partner_of_flawless": [
+        "is an integration partner of Hooly",
+        "is not an integration partner of Hooly"
+      ],
+      "is_headquarters": [
+        "is the headquarters",
+        "is not the headquarters"
+      ],
+      "memory_saver": [
+        "includes memory saver",
+        "does not include memory saver"
+      ],
+      "open_source": [
+        "is open source",
+        "is not open source"
+      ],
+      "passkey_sync": [
+        "supports passkey sync",
+        "does not support passkey sync"
+      ],
+      "personalised_ads_by_default": [
+        "personalises ads by default",
+        "does not personalise ads by default"
+      ],
+      "raviqa_seat": [
+        "reserves a seat for Raviqa Capital",
+        "does not reserve a seat for Raviqa Capital"
+      ],
+      "region_outside_europe": [
+        "has a region outside Europe",
+        "has no region outside Europe"
+      ],
+      "single_sign_on": [
+        "supports single sign-on",
+        "does not support single sign-on"
+      ],
+      "soc2_certified": [
+        "is SOC 2 certified",
+        "is not SOC 2 certified"
+      ],
+      "trade_in_programme": [
+        "offers a trade-in programme",
+        "does not offer a trade-in programme"
+      ],
+      "voice_mode": [
+        "has voice mode",
+        "has no voice mode"
+      ]
+    },
+    "DATES": {
+      "announced": "was announced {on} {v}",
+      "beta_date": "began its beta {on} {v}",
+      "date": "takes place {on} {v}",
+      "founded": "was founded {on} {v}",
+      "general_availability_date": "became generally available {on} {v}",
+      "joined": "joined Hooly {on} {v}",
+      "launched": "launched {on} {v}",
+      "lease_end": "has a lease ending {on} {v}",
+      "net_zero_date": "targets net zero by {v}",
+      "next_meeting": "has its next meeting {on} {v}",
+      "next_round": "has its next round {on} {v}",
+      "published": "has a publication date of {v}",
+      "released": "has a release date of {v}"
+    },
+    "NAMES": {
+      "cto": "{v} is CTO of {s}",
+      "executive_owner": "{v} oversees {s}",
+      "head": "{v} heads {s}",
+      "head_of_product": "{v} is head of product at {s}",
+      "headquarters": "{s} is headquartered in {v}",
+      "home_region": "new projects on {s} default to {v}",
+      "keynote_speaker": "{v} gives the keynote at {s}"
+    },
+    "PATTERNS": {
+      "price": [
+        "{s} costs {v}",
+        "the price of {s} is {v}"
+      ],
+      "price_per_user": [
+        "{s} costs {v} per user"
+      ],
+      "standard_storage_price": [
+        "standard storage on {s} costs {v} per terabyte"
+      ],
+      "ticket_price": [
+        "tickets for {s} cost {v}"
+      ],
+      "memory": [
+        "{s} has {v} of memory",
+        "memory in {s}: {v}"
+      ],
+      "base_storage": [
+        "{s} starts with {v} of storage",
+        "base storage on {s}: {v}"
+      ],
+      "free_storage": [
+        "{s} offers {v} of free storage"
+      ],
+      "storage_per_user": [
+        "{s} provides {v} of storage per user"
+      ],
+      "mailbox_storage": [
+        "the mailbox allowance on {s} is {v}"
+      ],
+      "attachment_limit": [
+        "{s} accepts attachments up to {v}"
+      ],
+      "weight": [
+        "{s} weighs {v}"
+      ],
+      "desks": [
+        "{s} has {v}",
+        "desk count for {s}: {v}"
+      ],
+      "staff": [
+        "{s} has {v} on staff"
+      ],
+      "customers": [
+        "{s} serves {v}"
+      ],
+      "paying_customers": [
+        "{s} has {v} paying"
+      ],
+      "monthly_active_users": [
+        "{s} has {v} each month"
+      ],
+      "active_users": [
+        "{s} has {v} active"
+      ],
+      "languages": [
+        "{s} supports {v}",
+        "{s} works in {v}"
+      ],
+      "languages_supported": [
+        "{s} supports {v}"
+      ],
+      "languages_served": [
+        "{s} serves {v}"
+      ],
+      "programming_languages": [
+        "{s} supports {v} for coding"
+      ],
+      "median_response_time": [
+        "the median response time for {s} is {v}"
+      ],
+      "cold_start_time": [
+        "{s} starts cold in {v}"
+      ],
+      "news_refresh_interval": [
+        "{s} refreshes news every {v}"
+      ],
+      "release_cadence": [
+        "{s} ships a stable release every {v}"
+      ],
+      "history_retention": [
+        "{s} keeps chat history for {v}"
+      ],
+      "trash_retention": [
+        "{s} keeps deleted items for {v}"
+      ],
+      "data_retention": [
+        "{s} keeps uploaded data for {v}"
+      ],
+      "audit_retention": [
+        "{s} keeps audit logs for {v}"
+      ],
+      "uptime_sla": [
+        "the uptime SLA for {s} is {v}"
+      ],
+      "uptime_last_quarter": [
+        "{s} recorded {v} uptime in the quarter just ended"
+      ],
+      "services": [
+        "{s} offers {v}"
+      ],
+      "countries_covered": [
+        "{s} covers {v}"
+      ],
+      "countries_served": [
+        "{s} serves {v}"
+      ],
+      "charging_stations_listed": [
+        "{s} lists {v} for electric cars"
+      ],
+      "help_guides": [
+        "the help centre for {s} has {v}"
+      ],
+      "cash": [
+        "{s} lists {v} in cash"
+      ],
+      "revenue": [
+        "revenue in {s} is {v}"
+      ],
+      "operating_margin": [
+        "the operating margin in {s} is {v}"
+      ],
+      "store_rating": [
+        "{s} has a store rating of {v}"
+      ],
+      "suggestion_acceptance_rate": [
+        "{s} has a suggestion acceptance rate of {v}"
+      ],
+      "daily_requests": [
+        "{s} allows {v} per day"
+      ],
+      "index_size": [
+        "the index for {s} contains {v}"
+      ]
+    },
+    "NOISE": [
+      "I am drinking espresso while reading this.",
+      "My tea has gone cold.",
+      "The toast is getting cold again.",
+      "There are {n} crumbs beside my keyboard.",
+      "My grocery receipt says {n} euros, mostly for cheese.",
+      "The bus ticket in my coat has {n} printed on it.",
+      "I counted {n} circles on a napkin and lost count.",
+      "I waited {n} minutes for the kettle and forgot the mug.",
+      "My shopping list has {n} things on it.",
+      "I have been looking for my keys all morning.",
+      "There is a spoon in the wrong drawer.",
+      "The neighbour is mowing the lawn again.",
+      "I left my umbrella on the bus.",
+      "My coffee tastes burnt today.",
+      "I wrote this on the back of a receipt.",
+      "The dog has stolen another sock.",
+      "I need to buy more bread.",
+      "I have {n} unread messages about dinner.",
+      "My desk is covered in biscuit crumbs.",
+      "Someone took my usual chair.",
+      "The kitchen clock is a few minutes slow.",
+      "My lunch is still in the fridge.",
+      "I keep forgetting where I put the sugar.",
+      "I spilled water on my shopping list.",
+      "The lift stopped on every floor.",
+      "I am trying to finish this before the pasta boils.",
+      "The radio is too loud in here.",
+      "There are {n} coins in my jacket pocket.",
+      "I borrowed a pen and forgot to return it.",
+      "I should really water the plants.",
+      "The washing machine has eaten another sock.",
+      "I meant to get milk on the way home."
+    ]
+  }
+}

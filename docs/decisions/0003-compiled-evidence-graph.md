@@ -1,7 +1,8 @@
 # 0003: Compiled evidence graph and CPU assertion extraction
 
-Authorized by Teodor on 29 October 2026. Work remains uncommitted in the isolated
-`evidence-graph-runtime` checkout. [Measurements and task handoff](../handoffs/evidence-graph-runtime.md).
+Authorized by Teodor on 29 October 2026. Implementation `20b94a3` was merged into
+main and pushed; see the [integration handoff](../handoffs/evidence-main-integration.md)
+and [measurements and task handoff](../handoffs/evidence-graph-runtime.md).
 
 The runtime has four stages: frozen non-generative CharCNN/BiLSTM ONNX assertion
 proposals; schema-guided subject/attribute/value binding; exact evidence queries;

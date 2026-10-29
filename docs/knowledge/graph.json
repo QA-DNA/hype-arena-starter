@@ -105,6 +105,18 @@
       "kind": "rules",
       "status": "written",
       "path": "tests/AGENTS.md"
+    },
+    {
+      "id": "decision:development-note-protocol",
+      "kind": "decision",
+      "status": "written",
+      "path": "docs/decisions/0004-development-note-protocol.md"
+    },
+    {
+      "id": "module:million-evaluation",
+      "kind": "module",
+      "status": "implemented",
+      "path": "tools/million_evaluation/README.md"
     }
   ],
   "edges": [
@@ -203,6 +215,24 @@
       "relation": "constrained_by",
       "to": "decision:cpu",
       "source": "docs/architecture.md"
+    },
+    {
+      "from": "module:million-evaluation",
+      "relation": "follows",
+      "to": "decision:development-note-protocol",
+      "source": "docs/decisions/0004-development-note-protocol.md"
+    },
+    {
+      "from": "module:million-evaluation",
+      "relation": "depends_on",
+      "to": "module:core",
+      "source": "docs/handoffs/million-evaluation.md"
+    },
+    {
+      "from": "decision:development-note-protocol",
+      "relation": "constrained_by",
+      "to": "contract:runtime",
+      "source": "docs/decisions/0004-development-note-protocol.md"
     }
   ]
 }

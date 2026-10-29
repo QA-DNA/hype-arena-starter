@@ -25,6 +25,8 @@ Original files are checked against [the checksum manifest](upstream-files.json).
 | [Evidence MVP decision](decisions/0002-evidence-mvp.md) | Model, provenance and runtime boundaries |
 | [Compiled evidence graph](decisions/0003-compiled-evidence-graph.md) | Typed constraints and optional frozen neural extraction |
 | [Evidence integration results](handoffs/evidence-graph-runtime.md) | Current measured accuracy, Docker and integration limitations |
+| [Million V1/V2 evaluation](research/million-v1-v2.md) | Complete archive validation, strict transfer and declared protocol compatibility; synthetic development cohorts, not competition accuracy |
+| [Million evaluation handoff](handoffs/million-evaluation.md) | Reproduction, input/target isolation, model freezes and retained test failures |
 | [Live MVP handoff](handoffs/live-mvp.md) | Interfaces, task ownership and validation |
 | [Presentation and accuracy](handoffs/presentation-integration.md) | PNG diagrams, hidden-label test and downloadable LLM comparison |
 | [Handoff template](handoffs/TEMPLATE.md) | Continue a task without rediscovery |

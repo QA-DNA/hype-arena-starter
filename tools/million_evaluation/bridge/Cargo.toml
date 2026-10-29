@@ -1,0 +1,21 @@
+[package]
+name = "veridyct-million-bridge"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[workspace]
+
+[dependencies]
+veridyct-core = { path = "../../../crates/core" }
+veridyct-extractor = { path = "../../../crates/extractor" }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["arbitrary_precision"] }
+unicode-normalization = "0.1"
+
+[lints.rust]
+unsafe_code = "forbid"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
