@@ -196,4 +196,3 @@ Python compilation of all lab tools also passed. `cargo xtask test` passed all
 No organizer files, root-owned implementation, commits, pushes or deployments
 were changed. This work extends the measured CPU evidence direction in
 [decision 0002](../decisions/0002-evidence-mvp.md); root owns activation in Engine.
-
