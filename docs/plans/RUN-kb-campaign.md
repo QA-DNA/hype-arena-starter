@@ -55,7 +55,7 @@ suite worlds have that density.
 | 2 Families in parallel: F1 truth discovery, F2 temporal, F3 learned fusion and calibration, F4 graph and semi-supervised, F5 lie fingerprints, F6 stress tracks, F7 small neural models (CPU) | Opus workers | done 02:11 to 02:24 |
 | 3 Combinations and final selection | Opus worker | done 02:53: the F2 chain alone wins |
 | 4 Adversarial review (leakage, independent reproduction) | fresh Opus | done 02:58: honest, reproduces, deviation disclosed |
-| 5 Report, commit, push | orchestrator + Sonnet | done 03:05 |
+| 5 Report, commit, push | orchestrator + Sonnet | done 03:00 |
 
 ## Paths
 
@@ -163,6 +163,8 @@ suite worlds have that density.
   the decider was switched to the fresh-split bootstrap at 02:27 after its harness-split numbers and
   before its suite numbers. Two plugins rejected (one reads its own page's labels, one reads the id
   layout); neither is near the top.
-- 03:05 Report `docs/research/kb-campaign.md`, lab `labs/kb-campaign/` (harness, family, combination and
+- 03:00 Report `docs/research/kb-campaign.md`, lab `labs/kb-campaign/` (harness, family, combination and
   review code, every report, every result line gzipped, sanitized: no remote-box identifiers, no
   local paths, no data copies), docs index updated; committed and pushed to main.
+- 03:03 Last remote run stopped (ours only), every result pulled; 8 late F6 stress lines added to the
+  lab results. Remote box cleanup pending the owner's go (footprint manifest kept outside the repo).
