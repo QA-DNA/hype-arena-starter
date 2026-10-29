@@ -82,3 +82,26 @@ calibration. Complex unsupported English can still abstain.
 Final Docker/official-checker receipts are retained under ignored
 `artifacts/submission-v3` and `artifacts/arena-*`; only checks actually completed
 are reported in delivery.
+
+## Final release receipt, 29 October 2026
+
+- Root Dockerfile built successfully with the default public Rust 1.90 builder,
+  no staged local assets or builder override. Runtime image `veridyct:submission-v3`,
+  ID `sha256:9ea562af53ef29a02cb40075a24eb5935938b1e9edaad0993e6c20d96c43a080`,
+  unpacked size 222,884,235 bytes; configured USER `10001`.
+- `cargo xtask check`: format, all-target Clippy with warnings denied, 404 local
+  documentation links, project graph and organizer checksums passed.
+- Official unchanged `scripts/input.py` and `scripts/check_output.py`, via
+  `tools/arena-check.ps1 -SkipBuild -Image veridyct:submission-v3 -Minutes 2`:
+  offline read-only non-root 2 CPU/6 GiB run exited 0, 380/380 requested labels,
+  1,000 new claims, 263,927-byte output and **the format checks pass**. Runtime
+  reported 5.706 seconds. The 373 right/0 wrong/7 unsure familiar practice labels
+  use allowed embedded exact matches and are not independent accuracy.
+- Final image live20 run exited 0 in 7.492 seconds, produced 1,000 claims and
+  label counts 3 true / 3 false / 14 unsure. No gold exists for those 20, and the
+  chain's decided weights are statistical, not newly calibrated probabilities.
+- The release contains a same-proposal independent development comparison:
+  baseline AST331/512 versus intermediate shared native AST389/512. Native parse
+ 367/512 and semantic345/416 are separate metrics; subsequent literal fixes were
+ not rescored on that challenge under the release deadline. Every failure is
+ retained and the reserved final remains unopened.
