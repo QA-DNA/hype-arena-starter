@@ -868,13 +868,9 @@ impl ParseState<'_> {
             })
             .collect();
         let masked = unquote(&masked);
-        let (masked, nominal_spellings) = shield_nominals(&masked, &candidates, |c| {
-            let a = char_span.start + c.start;
-            let b = char_span.start + c.end;
-            let bytes = self.boundaries[a]..self.boundaries[b];
-            !self.mentions.iter().any(|m| overlaps(&bytes, &m.span))
-                && !self.fields.iter().any(|f| overlaps(&bytes, &f.span))
-        });
+        // The schema binder protects nominal spans without rewriting their
+        // characters. Overlapping typed proposals must inspect the same raw
+        // spelling, including units, currency codes and Unicode boundaries.
         // Whole-row neural output has no leaf alignment. Retain it only in
         // the ordinary-prose route, never broadcast it across logical terms.
         let neural = if legacy && negations.is_empty() {
@@ -885,13 +881,7 @@ impl ParseState<'_> {
         let parsed = self.parser.schema.parse(&masked, &candidates, neural);
         self.notes.extend(parsed.notes.clone());
         let mut children = Vec::new();
-        for mut fact in parsed.facts {
-            if fact.value["kind"] == "name"
-                && let Some(raw) = fact.value["value"].as_str()
-                && let Some(original) = nominal_spellings.get(raw)
-            {
-                fact.value["value"] = original.clone();
-            }
+        for fact in parsed.facts {
             children.push(self.count(ClaimExpr::Atom(fact))?);
         }
         if !parsed.complete || children.is_empty() {
@@ -1127,42 +1117,6 @@ fn unquote(text: &str) -> String {
             },
         )
         .collect()
-}
-
-fn shield_nominals(
-    text: &str,
-    candidates: &[ValueCandidate],
-    eligible: impl Fn(&ValueCandidate) -> bool,
-) -> (String, BTreeMap<String, Value>) {
-    let mut chars: Vec<_> = text.chars().collect();
-    let mut spellings = BTreeMap::new();
-    let mut occupied = BTreeSet::new();
-    for c in candidates {
-        if c.value["kind"] != "name"
-            || !eligible(c)
-            || c.end > chars.len()
-            || (c.start..c.end).any(|i| occupied.contains(&i))
-        {
-            continue;
-        }
-        let original: String = chars[c.start..c.end].iter().collect();
-        for (i, ch) in chars.iter_mut().enumerate().take(c.end).skip(c.start) {
-            // Full-width ASCII is one scalar per original scalar, so supplied
-            // offsets stay exact. It hides lexical AND/UNKNOWN and punctuation
-            // inside an opaque name from SchemaParser's clause splitter.
-            if ch.is_ascii_graphic() {
-                *ch = char::from_u32(*ch as u32 + 0xfee0).expect("full-width ASCII");
-            }
-            occupied.insert(i);
-        }
-        let shielded: String = chars[c.start..c.end].iter().collect();
-        let value = c.value["value"]
-            .as_str()
-            .filter(|v| key(v) == key(&original))
-            .map_or_else(|| Value::String(original), |v| Value::String(v.to_owned()));
-        spellings.insert(shielded, value);
-    }
-    (chars.into_iter().collect(), spellings)
 }
 
 fn lexical_join(text: &str, span: &Range<usize>) -> bool {

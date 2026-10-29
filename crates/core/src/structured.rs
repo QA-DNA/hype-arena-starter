@@ -366,6 +366,9 @@ impl SchemaParser {
                     .map(|m| span.start + m.start()..span.start + m.end())
                     .any(|u| {
                         !local_mentions.iter().any(|m| overlap(&m.span, &u))
+                            && !proposals
+                                .iter()
+                                .any(|p| p.value["kind"] == "name" && inside(&u, &p.span))
                             && !local_fields.iter().any(|f| overlap(&f.span, &u))
                             && !local_fields.iter().any(|f| {
                                 f.span != field.span
@@ -966,6 +969,9 @@ impl SchemaParser {
             }
             let span = s..e;
             if mentions.iter().any(|n| overlap(&n.span, &span))
+                || proposals
+                    .iter()
+                    .any(|p| p.value["kind"] == "name" && inside(&span, &p.span))
                 || !value_attachment(text, field, &span)
             {
                 continue;
