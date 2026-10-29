@@ -83,5 +83,19 @@ strict JSON results and a check that pure neural fallbacks remain unchanged.
 All 390 parsed rows, including completeness and notes, remain in `structured.json`
 for the coordinator's paired end-to-end evaluation.
 
+For a parser-to-parser A/B, preserve the old output and add
+`--baseline OLD-STRUCTURED.json` to `score-practice`. The resulting
+`baseline_comparison` records improved/regressed IDs, every changed parse and
+every change in full/clause neural fallback, including completeness and notes.
+Baseline output and gold are evaluation inputs only, after extraction.
+
+The v3 binder also proposes lexical fields from the existing bundled language
+cues. These repairs require a legal explicit owner and a unique written value;
+they retain incomplete coverage. Literal field binding cannot cover additional
+unparsed numeric or name proposals. Pronoun focus stays within the row, clears
+at blank lines or multiple grammatical owners, and never transfers to a named
+value. See [the v3 handoff](../../docs/handoffs/parser-v3-binding.md) for the
+scope, changed rows and limitations.
+
 See [the handoff](../../docs/handoffs/structured-parser.md) and
 [validation receipt](validation.json) for measured results and fingerprints.

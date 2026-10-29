@@ -33,6 +33,7 @@ pub struct SchemaParser {
     attributes: BTreeMap<String, String>,
     alias_re: Regex,
     attribute_re: Regex,
+    surface_cues: Vec<(String, Regex)>,
 }
 
 #[derive(Clone, Debug)]
@@ -51,6 +52,8 @@ struct Mention {
 struct Field {
     span: Range<usize>,
     name: String,
+    literal: bool,
+    value_span: Option<Range<usize>>,
 }
 
 #[derive(Clone, Debug)]
@@ -76,7 +79,8 @@ static UNKNOWN: LazyLock<Regex> = LazyLock::new(|| {
 });
 static DESCRIPTOR: LazyLock<Regex> = LazyLock::new(|| rx(r"\[[^\[\]\r\n]*\]"));
 static BOOL: LazyLock<Regex> = LazyLock::new(|| rx(r"(?i)\b(?:yes|no|true|false)\b"));
-static PRONOUN: LazyLock<Regex> = LazyLock::new(|| rx(r"(?i)^\s*(?:it|its)\b"));
+static PRONOUN: LazyLock<Regex> =
+    LazyLock::new(|| rx(r"(?i)^\s*(?:it|its|he|his|she|her|they|their)\b"));
 static NUMBER: LazyLock<Regex> = LazyLock::new(|| rx(r"-?\d[\d,.]*"));
 static WORD_NUMBER: LazyLock<Regex> = LazyLock::new(|| {
     rx(
@@ -92,7 +96,7 @@ static CURRENCY_BEFORE: LazyLock<Regex> = LazyLock::new(|| {
 });
 static CURRENCY_AFTER: LazyLock<Regex> = LazyLock::new(|| {
     rx(
-        r"(?i)^\s*(euros?|dollars?|lei|EUR|USD|GBP|CHF|RON|PLN|CZK|HUF|SEK|NOK|DKK|JPY|CNY|INR|CAD|AUD)\b",
+        r"(?i)^\s*(US\s*\$|€|\$|£|(?:euros?|dollars?|lei|EUR|USD|GBP|CHF|RON|PLN|CZK|HUF|SEK|NOK|DKK|JPY|CNY|INR|CAD|AUD)\b)",
     )
 });
 static PERIOD: LazyLock<Regex> = LazyLock::new(|| {
@@ -103,9 +107,13 @@ static PERIOD: LazyLock<Regex> = LazyLock::new(|| {
 static PERCENT: LazyLock<Regex> = LazyLock::new(|| rx(r"(?i)^\s*(?:%|percent\b|per\s+cent\b)"));
 static VERSION: LazyLock<Regex> =
     LazyLock::new(|| rx(r"(?i)^(?:(?:version|ver\.)\s*|v)?(\d+(?:\.\d+)*)$"));
-static APPROX: LazyLock<Regex> =
-    LazyLock::new(|| rx(r"(?i)(?:\b(?:about|around|approximately|roughly|circa|nearly)|[~≈])\s*$"));
-static NONEXACT_SUFFIX: LazyLock<Regex> = LazyLock::new(|| rx(r"(?i)^\s*or\s+so\b"));
+static APPROX: LazyLock<Regex> = LazyLock::new(|| {
+    rx(
+        r"(?i)(?:\b(?:about|around|approximately|approx\.?|roughly|circa|ca\.?|nearly|almost|some|estimated|est\.?|close\s+to|more\s+or\s+less)|[~≈±])\s*$",
+    )
+});
+static NONEXACT_SUFFIX: LazyLock<Regex> =
+    LazyLock::new(|| rx(r"(?i)^(?:\s*(?:or\s+so|give\s+or\s+take)\b|\s*-ish\b)"));
 static NEGATION: LazyLock<Regex> =
     LazyLock::new(|| rx(r"(?i)\b(?:not|never|without|cannot)\b|n't\b"));
 static OPERATORS: LazyLock<Vec<(Regex, &'static str)>> = LazyLock::new(|| {
@@ -185,12 +193,35 @@ impl SchemaParser {
             owners.sort_unstable();
             owners.dedup();
         }
+        // Reuse the project's language cues, never graph values. A cue only
+        // proposes a field: literal text, a legal explicit owner and a unique
+        // typed value must still license the actual binding.
+        let cues: BTreeMap<String, Vec<String>> =
+            serde_json::from_str(include_str!("extraction/attribute-cues.json"))
+                .map_err(|e| format!("bundled attribute cues: {e}"))?;
+        let mut surface_cues = Vec::new();
+        for (name, patterns) in cues {
+            if subjects.iter().any(|s| s.attributes.contains(&name)) {
+                let pattern = format!("(?i)(?:{})", patterns.join("|"));
+                surface_cues.push((name, Regex::new(&pattern).map_err(|e| e.to_string())?));
+            }
+        }
+        if subjects
+            .iter()
+            .any(|s| s.attributes.contains("would_recommend"))
+        {
+            surface_cues.push((
+                "would_recommend".into(),
+                rx(r"(?i)\brecommend(?:ation)?(?:\s+rate)?\b"),
+            ));
+        }
         Ok(Self {
             subjects,
             aliases,
             attributes,
             alias_re: alternatives(alias_forms)?,
             attribute_re: alternatives(attribute_forms)?,
+            surface_cues,
         })
     }
 
@@ -225,7 +256,7 @@ impl SchemaParser {
             .collect();
         let mentions = self.mentions(text);
         let fields = self.fields(text, &mentions, &proposals);
-        let spans = clauses(text, &mentions, &fields);
+        let spans = clauses(text, &mentions, &fields, &proposals);
         let mut result = Parsed {
             complete: true,
             ..Parsed::default()
@@ -303,9 +334,23 @@ impl SchemaParser {
             if local_fields.iter().any(|f| !embedded(f)) {
                 local_fields.retain(|f| !embedded(f));
             }
+            let version_marker = |f: &&Field| {
+                f.name == "version"
+                    && proposals
+                        .iter()
+                        .any(|p| p.value["kind"] == "version" && inside(&f.span, &p.span))
+            };
+            if local_fields.iter().any(|f| {
+                !version_marker(f) && (f.name == "version" || f.name.ends_with("_version"))
+            }) {
+                local_fields.retain(|f| !version_marker(f));
+            }
             let local_mentions: Vec<_> =
                 mentions.iter().filter(|m| inside(&m.span, &span)).collect();
             let mut count = 0;
+            let mut consumed = Vec::new();
+            let mut owners = BTreeSet::new();
+            let initial_unknown = unknown;
             for field in &local_fields {
                 let Some(subject) =
                     self.subject(text, field, &local_mentions, &span, antecedent.as_deref())
@@ -315,6 +360,7 @@ impl SchemaParser {
                         .push(format!("unresolved subject for {}", field.name));
                     continue;
                 };
+                owners.insert(subject);
                 let declares_unknown = UNKNOWN
                     .find_iter(&text[span.clone()])
                     .map(|m| span.start + m.start()..span.start + m.end())
@@ -345,16 +391,24 @@ impl SchemaParser {
                     subject,
                 ) {
                     Some(value) => {
+                        consumed.push(value.span);
                         let fact = Fact {
                             subject: self.subjects[subject].name.clone(),
                             attribute: field.name.clone(),
-                            value,
+                            value: value.value,
                         };
                         if !result.facts.contains(&fact) {
                             result.facts.push(fact);
                         }
                         count += 1;
                         structured += 1;
+                        if !field.literal {
+                            result.complete = false;
+                            result.notes.push(format!(
+                                "surface_binding:{}:{}; coverage remains incomplete",
+                                self.subjects[subject].name, field.name
+                            ));
+                        }
                     }
                     None => result.notes.push(format!(
                         "unresolved value for {}:{}",
@@ -362,9 +416,39 @@ impl SchemaParser {
                     )),
                 }
             }
-            if count == 0 || count < local_fields.len() {
+            // A field/value binding does not cover another written number or
+            // date in the same clause. Nested weak grammar proposals are
+            // covered by their containing value, but unrelated values remain
+            // available to the measured neural fallback.
+            let uncovered = proposals.iter().any(|p| {
+                inside(&p.span, &span)
+                    && p.value["kind"] != "boolean"
+                    && !mentions.iter().any(|m| {
+                        overlap(&m.span, &p.span)
+                            && (p.value["kind"] != "name"
+                                || m.owners.iter().any(|s| owners.contains(s)))
+                    })
+                    && !local_fields.iter().any(|f| inside(&p.span, &f.span))
+                    && repair_value(text, p, &span)
+                        .is_some_and(|v| !consumed.iter().any(|s| overlap(s, &v.span)))
+                    && unknown == initial_unknown
+            });
+            if count == 0 || count < local_fields.len() || uncovered {
                 result.complete = false;
-                unresolved.push(span);
+                unresolved.push(span.clone());
+                if uncovered {
+                    result
+                        .notes
+                        .push("unparsed value in assertion clause".into());
+                }
+            }
+            // Explicitly bound subjects establish row-local focus. Named
+            // values never steal focus; two grammatical owners clear it.
+            // Ordinary omitted subjects remain unresolved without a pronoun.
+            if owners.len() == 1 {
+                antecedent = Some(owners.into_iter().collect());
+            } else if owners.len() > 1 || !local_mentions.is_empty() {
+                antecedent = None;
             }
         }
         if assertions == 0 {
@@ -425,13 +509,16 @@ impl SchemaParser {
         // matches the unrelated longer field pro_price, and filtering that
         // overlap afterwards loses the real price match permanently.
         let mut masked = text.as_bytes().to_vec();
-        for span in mentions.iter().map(|m| &m.span).chain(
-            proposals
-                .iter()
-                .filter(|p| p.value["kind"] == "version")
-                .map(|p| &p.span),
-        ) {
+        for span in mentions.iter().map(|m| &m.span) {
             masked[span.clone()].fill(b' ');
+        }
+        for p in proposals.iter().filter(|p| p.value["kind"] == "version") {
+            // "version 2.3" contains both a field word and its value. Mask
+            // digits without erasing that explicit language cue.
+            let start = NUMBER
+                .find(&text[p.span.clone()])
+                .map_or(p.span.start, |m| p.span.start + m.start());
+            masked[start..p.span.end].fill(b' ');
         }
         for m in DESCRIPTOR.find_iter(text) {
             masked[m.range()].fill(b' ');
@@ -445,6 +532,8 @@ impl SchemaParser {
                 self.attributes.get(&key(m.as_str())).map(|name| Field {
                     span: m.range(),
                     name: name.clone(),
+                    literal: true,
+                    value_span: None,
                 })
             })
             .collect();
@@ -463,9 +552,6 @@ impl SchemaParser {
                     overlap(&n.span, &m.range())
                         && (!inside(&n.span, &m.range()) || n.span == m.range())
                 })
-                || proposals
-                    .iter()
-                    .any(|p| p.value["kind"] == "version" && overlap(&p.span, &m.range()))
             {
                 continue;
             }
@@ -473,6 +559,173 @@ impl SchemaParser {
                 fields.push(Field {
                     span: m.range(),
                     name: name.clone(),
+                    literal: true,
+                    value_span: None,
+                });
+            }
+        }
+        let local_mentions: Vec<_> = mentions.iter().collect();
+        let mut cues = Vec::new();
+        for (name, re) in &self.surface_cues {
+            for m in re.find_iter(text).filter(|m| whole(text, &m.range())) {
+                if fields.iter().any(|f| overlap(&f.span, &m.range())) {
+                    continue;
+                }
+                // Value-shaped cues (a currency symbol alone, bare digits,
+                // or a unit) cannot invent a field. Keep a lexical anchor
+                // outside all frozen values and entity aliases.
+                let mut anchor = text.as_bytes()[m.range()].to_vec();
+                for s in mentions.iter().map(|n| &n.span).chain(
+                    proposals
+                        .iter()
+                        .filter(|p| p.value["kind"] != "boolean")
+                        .map(|p| &p.span),
+                ) {
+                    if overlap(s, &m.range()) {
+                        anchor[s.start.max(m.start()) - m.start()..s.end.min(m.end()) - m.start()]
+                            .fill(b' ');
+                    }
+                }
+                let anchor = String::from_utf8(anchor).ok();
+                let Some(anchor) = anchor else { continue };
+                let Some(first) = anchor.find(|c: char| c.is_alphabetic()) else {
+                    continue;
+                };
+                let last = anchor
+                    .char_indices()
+                    .rfind(|(_, c)| c.is_alphabetic())
+                    .map(|(i, c)| i + c.len_utf8())
+                    .unwrap_or(first);
+                let field = Field {
+                    span: m.start() + first..m.start() + last,
+                    name: name.clone(),
+                    literal: false,
+                    value_span: proposals
+                        .iter()
+                        .any(|p| {
+                            !matches!(p.value["kind"].as_str(), Some("boolean" | "name"))
+                                && inside(&p.span, &m.range())
+                        })
+                        .then(|| m.range()),
+                };
+                // Numeric comparators alone express a bound, not which
+                // schema field the bound describes.
+                if field.span.len() < 3
+                    || OPERATORS
+                        .iter()
+                        .any(|(p, _)| p.find(anchor.trim()).is_some_and(|m| m.start() == 0))
+                    || self
+                        .subject(text, &field, &local_mentions, &(0..text.len()), None)
+                        .is_none()
+                {
+                    continue;
+                }
+                cues.push(field);
+            }
+        }
+        // Equal textual support for distinct legal fields is unresolved.
+        // Sorting by attribute name must never settle a semantic ambiguity.
+        fields.extend(
+            cues.iter()
+                .filter(|f| {
+                    !cues
+                        .iter()
+                        .any(|other| other.name != f.name && overlap(&other.span, &f.span))
+                })
+                .cloned(),
+        );
+        // A written interface marker determines the version channel. Bare
+        // numeric identity cannot choose API versus product by value.
+        static INTERFACE: LazyLock<Regex> =
+            LazyLock::new(|| rx(r"(?i)^\s+of\s+(?:the\s+)?(?:api|interface)\b"));
+        for f in &mut fields {
+            if f.name == "version"
+                && proposals.iter().any(|p| {
+                    p.value["kind"] == "version"
+                        && f.span.start <= p.span.end
+                        && f.span.end <= p.span.end
+                        && INTERFACE.is_match(&text[p.span.end..])
+                })
+            {
+                f.name = "api_version".into();
+                f.literal = false;
+            }
+        }
+        // Product-number adjacency is usable only when exactly one version
+        // field is legal. API/product alternatives deliberately stay open.
+        for p in proposals.iter().filter(|p| p.value["kind"] == "version") {
+            if fields.iter().any(|f| overlap(&f.span, &p.span)) {
+                continue;
+            }
+            let nearby: Vec<_> = mentions
+                .iter()
+                .filter(|m| {
+                    m.span.end <= p.span.start && text[m.span.end..p.span.start].trim().is_empty()
+                })
+                .collect();
+            if nearby.len() != 1 || nearby[0].owners.len() != 1 {
+                continue;
+            }
+            static VERSION_PREDICATE: LazyLock<Regex> = LazyLock::new(|| {
+                rx(
+                    r"(?i)^\s*(?:is|are|was|were|brings?|ships?|arrives?|keeps?|runs?|offers?|supports?)\b",
+                )
+            });
+            if !VERSION_PREDICATE.is_match(&text[p.span.end..])
+                && proposals.iter().any(|other| {
+                    matches!(
+                        other.value["kind"].as_str(),
+                        Some("money" | "quantity" | "duration" | "percent")
+                    ) && overlap(&other.span, &p.span)
+                        && repair_value(text, other, &(0..text.len())).is_some()
+                })
+            {
+                continue;
+            }
+            let versions: Vec<_> = self.subjects[nearby[0].owners[0]]
+                .attributes
+                .iter()
+                .filter(|a| a.as_str() == "version" || a.ends_with("_version"))
+                .collect();
+            if versions.len() == 1 {
+                fields.push(Field {
+                    span: p.span.clone(),
+                    name: versions[0].clone(),
+                    literal: false,
+                    value_span: Some(p.span.clone()),
+                });
+            }
+        }
+        // "Product is still EUR 17/month" is a monetary predicate with an
+        // explicit owner. It licenses only that owner's generic price field;
+        // no missing currency, period or tier is supplied from the schema.
+        static MONEY_COPULA: LazyLock<Regex> = LazyLock::new(|| {
+            rx(r"(?i)^\s+(?:is|remains|stays)(?:\s+(?:still|now|currently))?\s*$")
+        });
+        let monetary_clauses = clauses(text, mentions, &fields, proposals);
+        for p in proposals.iter().filter(|p| p.value["kind"] == "money") {
+            if fields.iter().any(|f| {
+                overlap(&f.span, &p.span)
+                    || (f.name == "price"
+                        && monetary_clauses
+                            .iter()
+                            .any(|s| inside(&p.span, s) && inside(&f.span, s)))
+            }) {
+                continue;
+            }
+            for m in mentions.iter().filter(|m| {
+                m.owners.len() == 1
+                    && m.span.end <= p.span.start
+                    && self.subjects[m.owners[0]].attributes.contains("price")
+                    && MONEY_COPULA.is_match(&text[m.span.end..p.span.start])
+            }) {
+                let gap = &text[m.span.end..p.span.start];
+                let first = gap.find(|c: char| !c.is_whitespace()).unwrap_or(0);
+                fields.push(Field {
+                    span: m.span.end + first..p.span.start,
+                    name: "price".into(),
+                    literal: false,
+                    value_span: Some(p.span.clone()),
                 });
             }
         }
@@ -497,6 +750,13 @@ impl SchemaParser {
     ) -> Option<usize> {
         let mut choices = Vec::new();
         for m in mentions {
+            if mentions.iter().any(|other| {
+                other.span != m.span
+                    && m.span.end <= other.span.start
+                    && other.span.end <= field.span.start
+            }) {
+                continue;
+            }
             let mut owners = m
                 .owners
                 .iter()
@@ -518,6 +778,10 @@ impl SchemaParser {
                     || gap.starts_with(':')
                     || gap.starts_with(',')
                     || (before.ends_with("gives") && gap == "a")
+                    || [
+                        "has", "has a", "has the", "have", "had", "reports", "records",
+                    ]
+                    .contains(&gap.as_str())
                 {
                     1
                 } else if before.is_empty()
@@ -526,6 +790,9 @@ impl SchemaParser {
                     || before.ends_with("check of")
                     || before.ends_with("recorded for")
                     || before.ends_with("register gives")
+                    || ["for", "on", "at", "in"]
+                        .iter()
+                        .any(|p| before == *p || before.ends_with(&format!(" {p}")))
                 {
                     2
                 } else {
@@ -535,7 +802,7 @@ impl SchemaParser {
                 let gap = without_annotation(&text[field.span.end..m.span.start])
                     .trim()
                     .to_lowercase();
-                if gap == "of" || gap == "for" || gap == "of the" || gap == "for the" {
+                if ["of", "for", "of the", "for the", "at", "in", "on"].contains(&gap.as_str()) {
                     0
                 } else {
                     continue;
@@ -578,10 +845,19 @@ impl SchemaParser {
         proposals: &[Proposed],
         clause: &Range<usize>,
         subject: usize,
-    ) -> Option<Value> {
+    ) -> Option<Proposed> {
         let mut values = Vec::new();
         for p in proposals {
             if !inside(&p.span, clause) || p.value["kind"] == "boolean" {
+                continue;
+            }
+            if ((field.name == "version" || field.name.ends_with("_version"))
+                && p.value["kind"] != "version")
+                || field
+                    .value_span
+                    .as_ref()
+                    .is_some_and(|s| !overlap(s, &p.span))
+            {
                 continue;
             }
             if mentions.iter().any(|m| {
@@ -615,9 +891,31 @@ impl SchemaParser {
             if !inside(&v.span, clause) {
                 continue;
             }
+            if !value_attachment(text, field, &v.span) {
+                continue;
+            }
+            if field.span.end <= v.span.start
+                && proposals.iter().any(|other| {
+                    !matches!(other.value["kind"].as_str(), Some("boolean" | "name"))
+                        && field.span.end <= other.span.start
+                        && other.span.end <= v.span.start
+                        && other.span != p.span
+                        && repair_value(text, other, clause).is_some()
+                        && {
+                            let gap = text[other.span.end..v.span.start].trim();
+                            !gap.is_empty()
+                                && !["to", "or", "and", "through", "-", "–", "—"]
+                                    .iter()
+                                    .any(|s| gap.eq_ignore_ascii_case(s))
+                        }
+                })
+            {
+                continue;
+            }
             if fields.iter().any(|other| {
                 other.span != field.span
                     && distance(&other.span, &v.span) < distance(&field.span, &v.span)
+                    && value_attachment(text, other, &v.span)
             }) {
                 continue;
             }
@@ -629,10 +927,11 @@ impl SchemaParser {
             {
                 continue;
             }
+            let local = predicate_scope(text, field, &v.span, fields, proposals, clause);
             let Some(mut op) = operator(
                 text,
                 &v.span,
-                clause,
+                &local,
                 v.value["kind"].as_str().unwrap_or(""),
             ) else {
                 continue;
@@ -666,15 +965,20 @@ impl SchemaParser {
                 continue;
             }
             let span = s..e;
-            if mentions.iter().any(|n| overlap(&n.span, &span)) {
+            if mentions.iter().any(|n| overlap(&n.span, &span))
+                || !value_attachment(text, field, &span)
+            {
                 continue;
             }
             if fields.iter().any(|f| {
-                f.span != field.span && distance(&f.span, &span) < distance(&field.span, &span)
+                f.span != field.span
+                    && distance(&f.span, &span) < distance(&field.span, &span)
+                    && value_attachment(text, f, &span)
             }) {
                 continue;
             }
-            let op = operator(text, &span, clause, "boolean")?;
+            let local = predicate_scope(text, field, &span, fields, proposals, clause);
+            let op = operator(text, &span, &local, "boolean")?;
             if !matches!(op, "eq" | "ne") {
                 continue;
             }
@@ -724,10 +1028,10 @@ impl SchemaParser {
         values.retain(|p| {
             p.value["kind"] != "name" || !typed.iter().any(|span| inside(&p.span, span))
         });
-        let mut unique = Vec::<Value>::new();
+        let mut unique = Vec::<Proposed>::new();
         for p in values {
-            if !unique.contains(&p.value) {
-                unique.push(p.value);
+            if !unique.iter().any(|u| u.value == p.value) {
+                unique.push(p);
             }
         }
         if unique.len() == 1 {
@@ -833,12 +1137,87 @@ fn without_annotation(s: &str) -> String {
         .collect()
 }
 
-fn clauses(text: &str, mentions: &[Mention], fields: &[Field]) -> Vec<Range<usize>> {
+// Before-field values require an actual inverse copula or an overlapping
+// count noun. Mere proximity across a verb does not license a binding.
+fn value_attachment(text: &str, field: &Field, value: &Range<usize>) -> bool {
+    static INVERSE: LazyLock<Regex> = LazyLock::new(|| {
+        rx(
+            r"(?i)^\s*(?:(?:is|are|was|were|as|for)\s+(?:(?:the|its|his|her|their|recorded|reported|current)\s+)*)?$",
+        )
+    });
+    value.end > field.span.start
+        || INVERSE.is_match(&without_annotation(&text[value.end..field.span.start]))
+}
+
+fn predicate_scope(
+    text: &str,
+    field: &Field,
+    value: &Range<usize>,
+    fields: &[&Field],
+    proposals: &[Proposed],
+    clause: &Range<usize>,
+) -> Range<usize> {
+    let left = field.span.start.min(value.start);
+    let right = field.span.end.max(value.end);
+    let mut scope = clause.clone();
+    for (offset, c) in text[clause.clone()].char_indices() {
+        let at = clause.start + offset;
+        if c != ','
+            || proposals
+                .iter()
+                .any(|p| p.value["kind"] != "boolean" && p.span.start <= at && at < p.span.end)
+        {
+            continue;
+        }
+        if at < left {
+            scope.start = at + 1;
+        } else if at >= right {
+            scope.end = at;
+            break;
+        }
+    }
+    let previous = fields
+        .iter()
+        .filter(|f| f.span != field.span && scope.start <= f.span.end && f.span.end <= left)
+        .map(|f| f.span.end)
+        .max();
+    if let Some(previous) = previous {
+        scope.start = previous;
+        for p in proposals {
+            if p.value["kind"] != "boolean" && previous <= p.span.start && p.span.end <= left {
+                scope.start = scope.start.max(p.span.end);
+            }
+        }
+        if let Some(m) = BOOL.find_iter(&text[previous..left]).last() {
+            scope.start = scope.start.max(previous + m.end());
+        }
+    }
+    for f in fields {
+        if f.span != field.span && right <= f.span.start {
+            scope.end = scope.end.min(f.span.start);
+        }
+    }
+    scope
+}
+
+fn clauses(
+    text: &str,
+    mentions: &[Mention],
+    fields: &[Field],
+    proposals: &[Proposed],
+) -> Vec<Range<usize>> {
     let mut spans = Vec::new();
     let mut start = 0;
     for m in CLAUSE.find_iter(text) {
         if mentions.iter().any(|n| inside(&m.range(), &n.span))
             || fields.iter().any(|f| inside(&m.range(), &f.span))
+            || proposals.iter().any(|p| {
+                matches!(p.value["kind"].as_str(), Some("date" | "version" | "name"))
+                    && inside(&m.range(), &p.span)
+            })
+            || (matches!(m.as_str().to_lowercase().as_str(), "and" | "but")
+                && (text[..m.start()].ends_with(['-', '_', '/'])
+                    || text[m.end()..].starts_with(['-', '_', '/'])))
         {
             continue;
         }
@@ -858,7 +1237,11 @@ fn clauses(text: &str, mentions: &[Mention], fields: &[Field]) -> Vec<Range<usiz
                 && text[..m.start() - token.len()]
                     .chars()
                     .next_back()
-                    .is_none_or(char::is_whitespace);
+                    .is_none_or(char::is_whitespace)
+                && !proposals.iter().any(|p| {
+                    p.span.end == m.start()
+                        && matches!(p.value["kind"].as_str(), Some("quantity" | "duration"))
+                });
             if !declaration_end
                 && (initial
                     || [
@@ -889,7 +1272,14 @@ fn operator(
     kind: &str,
 ) -> Option<&'static str> {
     let before = &text[clause.start..value.start];
+    static RANGE_BEFORE: LazyLock<Regex> =
+        LazyLock::new(|| rx(r"(?i)\d[\d,.]*\s*(?:[-–—]|to|or|and)\s*$"));
+    static RANGE_AFTER: LazyLock<Regex> =
+        LazyLock::new(|| rx(r"(?i)^\s*(?:[-–—]|to|or)\s*(?:[€$£]|(?:EUR|USD|GBP)\s*)?\d"));
     if APPROX.is_match(before) || NONEXACT_SUFFIX.is_match(&text[value.end..clause.end]) {
+        return None;
+    }
+    if RANGE_BEFORE.is_match(before) || RANGE_AFTER.is_match(&text[value.end..clause.end]) {
         return None;
     }
     for (pattern, op) in OPERATORS.iter() {
@@ -908,6 +1298,26 @@ fn operator(
             }
             if phrase.trim() == "within" && kind != "duration" {
                 continue;
+            }
+            let preceding = before[..m.start()].trim_end();
+            if preceding.to_lowercase().ends_with("not")
+                && preceding[..preceding.len() - 3]
+                    .chars()
+                    .next_back()
+                    .is_none_or(|c| !c.is_alphanumeric())
+            {
+                return match *op {
+                    "eq" => Some("ne"),
+                    "ne" => Some("eq"),
+                    "lt" => Some("ge"),
+                    "le" => Some("gt"),
+                    "gt" => Some("le"),
+                    "ge" => Some("lt"),
+                    _ => None,
+                };
+            }
+            if NEGATION.is_match(preceding) {
+                return None;
             }
             return Some(op);
         }
@@ -936,7 +1346,8 @@ fn operator(
         return Some("le");
     }
     if NEGATION.is_match(before) {
-        return None;
+        static DIRECT_NOT: LazyLock<Regex> = LazyLock::new(|| rx(r"(?i)\bnot\s*$"));
+        return DIRECT_NOT.is_match(before).then_some("ne");
     }
     Some("eq")
 }
@@ -946,7 +1357,19 @@ fn repair_value(text: &str, p: &Proposed, clause: &Range<usize>) -> Option<Propo
     let raw = &text[p.span.clone()];
     match kind {
         "date" => {
-            let value = p.value["value"].as_str()?;
+            static ISO_DATE: LazyLock<Regex> =
+                LazyLock::new(|| rx(r"^\d{4}(?:-\d{2}(?:-\d{2})?)?$"));
+            static NUMERIC_DATE: LazyLock<Regex> =
+                LazyLock::new(|| rx(r"^\d{1,2}\.\d{1,2}\.\d{4}$"));
+            let raw = raw.trim();
+            if raw.contains('/') || NUMERIC_DATE.is_match(raw) {
+                return None;
+            }
+            let value = if ISO_DATE.is_match(raw) {
+                raw
+            } else {
+                p.value["value"].as_str()?
+            };
             if !valid_date(value) {
                 return None;
             }
@@ -1018,6 +1441,9 @@ fn repair_numeric(text: &str, p: &Proposed, clause: &Range<usize>) -> Option<Pro
         a -= 1;
     }
     if a > clause.start && text.as_bytes()[a - 1] == b'-' {
+        if a > clause.start + 1 && text.as_bytes()[a - 2].is_ascii_digit() {
+            return None; // ASCII range, not a negative singleton.
+        }
         a -= 1;
     }
     while b < clause.end
@@ -1036,6 +1462,14 @@ fn repair_numeric(text: &str, p: &Proposed, clause: &Range<usize>) -> Option<Pro
     } else {
         decimal_spelling(&text[a..b], kind == "money")?
     };
+    // The public value grammar leaves a lone three-place decimal ambiguous
+    // with thousands grouping. Percentages explicitly permit that precision.
+    if !word_number && kind != "percent" {
+        let raw = &text[a..b];
+        if !raw.contains(',') && raw.split_once('.').is_some_and(|(_, f)| f.len() == 3) {
+            return None;
+        }
+    }
     let mut end = b;
     if let Some(c) = SCALE.captures(&text[b..clause.end]) {
         let scale = c.get(1)?.as_str();
@@ -1064,16 +1498,26 @@ fn repair_numeric(text: &str, p: &Proposed, clause: &Range<usize>) -> Option<Pro
         "money" => {
             let left = CURRENCY_BEFORE.captures(&text[clause.start..a]);
             let right = CURRENCY_AFTER.captures(&text[end..clause.end]);
-            let currency = if let Some(c) = left {
+            if let (Some(l), Some(r)) = (&left, &right)
+                && currency(l.get(1)?.as_str()) != currency(r.get(1)?.as_str())
+            {
+                return None;
+            }
+            let currency = if let Some(c) = &left {
                 start = clause.start + c.get(0)?.start();
                 currency(c.get(1)?.as_str())?
-            } else if let Some(c) = right {
+            } else if let Some(c) = &right {
                 let code = currency(c.get(1)?.as_str())?;
                 end += c.get(0)?.end();
                 code
             } else {
                 return None;
             };
+            if left.is_some()
+                && let Some(c) = &right
+            {
+                end += c.get(0)?.end();
+            }
             value["currency"] = json!(currency);
             if let Some(c) = PERIOD.captures(&text[end..clause.end]) {
                 let per = if let Some(p) = c.get(1) {
@@ -1095,6 +1539,18 @@ fn repair_numeric(text: &str, p: &Proposed, clause: &Range<usize>) -> Option<Pro
                 };
                 value["per"] = json!(per);
                 end += c.get(0)?.end();
+            } else {
+                static UNRESOLVED_PERIOD: LazyLock<Regex> =
+                    LazyLock::new(|| rx(r"(?i)^\s*(?:/|per\b|each\b|hourly\b|quarterly\b)"));
+                if UNRESOLVED_PERIOD.is_match(&text[end..clause.end]) {
+                    return None;
+                }
+            }
+            if value.get("per").is_some()
+                && (PERIOD.is_match(&text[end..clause.end])
+                    || text[end..clause.end].trim_start().starts_with('/'))
+            {
+                return None;
             }
         }
         "percent" => {
@@ -1106,8 +1562,27 @@ fn repair_numeric(text: &str, p: &Proposed, clause: &Range<usize>) -> Option<Pro
                 end += 1;
                 value["op"] = json!("ge");
             }
-            let c = UNIT.captures(&text[end..clause.end])?;
-            let raw_unit = c.get(1)?.as_str();
+            let mut c = UNIT.captures(&text[end..clause.end])?;
+            let mut raw_unit = c.get(1)?.as_str();
+            static COUNT_MODIFIER: LazyLock<Regex> = LazyLock::new(|| {
+                rx(
+                    r"(?i)^(?:active|paying|paid|registered|concurrent|simultaneous|supported|included|monthly|daily|annual|new|full|of|our|the|their)$",
+                )
+            });
+            let mut modifiers = 0;
+            while COUNT_MODIFIER.is_match(raw_unit) && modifiers < 2 {
+                end += c.get(0)?.end();
+                c = UNIT.captures(&text[end..clause.end])?;
+                raw_unit = c.get(1)?.as_str();
+                modifiers += 1;
+            }
+            // Modifiers cannot be guessed away to a nonexistent noun. The
+            // frozen proposal's unit must actually be written after them.
+            if modifiers > 0
+                && canonical_unit(raw_unit) != canonical_unit(p.value["unit"].as_str()?)
+            {
+                return None;
+            }
             let (unit_kind, unit) = canonical_unit(raw_unit);
             if unit_kind == "invalid" {
                 return None;

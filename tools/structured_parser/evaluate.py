@@ -232,10 +232,41 @@ def score_practice(args):
               "complete": sum(p["complete"] for p in bound.values()),
               "hashes": {str(p): sha(p) for p in [args.practice, args.lexicon, args.input, args.structured]},
               "regressions": regressions, "improvements": improvements, "changed_examples": changes}
+    if args.baseline:
+        baseline = {r["id"]: r["parsed"] for r in json.loads(Path(args.baseline).read_text(encoding="utf-8"), parse_float=Decimal)}
+        paired, changed, fallback_changes = [], [], []
+        for r in inputs:
+            i = r["id"]
+            old, new = baseline[i], bound[i]
+            expected = json.loads(gold[i]["form"], parse_float=Decimal)
+            desired = {normalize(a, names) for a in expected}
+            old_exact = {normalize(a, names) for a in old["facts"]} == desired
+            new_exact = {normalize(a, names) for a in new["facts"]} == desired
+            row = {"id": i, "text": r["text"], "expected": expected, "baseline": old,
+                   "structured": new, "baseline_exact": old_exact, "structured_exact": new_exact}
+            paired.append(row)
+            if old != new:
+                changed.append(row)
+            old_fallback = [n for n in old["notes"] if n.startswith("neural_fallback:") or n.startswith("neural_clause_fallback:")]
+            new_fallback = [n for n in new["notes"] if n.startswith("neural_fallback:") or n.startswith("neural_clause_fallback:")]
+            if old_fallback != new_fallback or (old_fallback and old["facts"] != new["facts"]):
+                fallback_changes.append(row)
+        report["baseline_comparison"] = {
+            "baseline_exact": sum(r["baseline_exact"] for r in paired),
+            "structured_exact": sum(r["structured_exact"] for r in paired),
+            "improved_ids": [r["id"] for r in paired if not r["baseline_exact"] and r["structured_exact"]],
+            "regressed_ids": [r["id"] for r in paired if r["baseline_exact"] and not r["structured_exact"]],
+            "changed_rows": len(changed), "fallback_changes": len(fallback_changes),
+            "changed_examples": changed, "fallback_changed_examples": fallback_changes,
+        }
+        report["hashes"][str(args.baseline)] = sha(args.baseline)
     output = Path(args.output)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(report, ensure_ascii=False, indent=2, default=str) + "\n", encoding="utf-8")
-    print(json.dumps({k: v for k, v in report.items() if k not in {"regressions", "improvements", "changed_examples", "hashes"}}, indent=2))
+    compact = {k: v for k, v in report.items() if k not in {"regressions", "improvements", "changed_examples", "hashes", "baseline_comparison"}}
+    if "baseline_comparison" in report:
+        compact["baseline_comparison"] = {k: v for k, v in report["baseline_comparison"].items() if not k.endswith("examples")}
+    print(json.dumps(compact, indent=2))
 
 
 def main():
@@ -256,6 +287,7 @@ def main():
     p = commands.add_parser("score-practice")
     for option in ("practice", "lexicon", "input", "structured", "output"):
         p.add_argument("--" + option, required=True)
+    p.add_argument("--baseline", help="Frozen schema-parser output for row/fallback A/B; never passed to parsing")
     p.set_defaults(run=score_practice)
     args = parser.parse_args()
     args.run(args)
