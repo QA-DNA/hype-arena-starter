@@ -4,7 +4,7 @@
 //! observations are decisive; learned scores remain uncalibrated estimates.
 use crate::{
     forest::RandomForest,
-    knowledge::{KnowledgeGraph, KnowledgeSummary, Status},
+    knowledge::{KnowledgeGraph, KnowledgeSummary, Status, compatible, entails},
     model::*,
 };
 use regex::Regex;
@@ -413,6 +413,8 @@ impl Engine {
         let mut supported = 0;
         let mut contradicted = 0;
         let mut conflicts = 0;
+        let mut temporal_supported = 0;
+        let mut temporal_contradicted = 0;
         for fact in &facts {
             let resolution = knowledge.resolve(fact, &row.date, &row.id, &row.text);
             match resolution.status {
@@ -431,6 +433,17 @@ impl Engine {
                 .chain(context.get(&key(fact)).into_iter().flatten())
                 .filter(|e| e.date <= row.date && e.row_id != row.id)
                 .collect::<Vec<_>>();
+            let dated_judgement = match resolution.status {
+                Status::Supported => Some(true),
+                Status::Contradicted => Some(false),
+                Status::Conflict => None,
+                Status::Unknown => latest_history_judgement(fact, &observations),
+            };
+            match dated_judgement {
+                Some(true) => temporal_supported += 1,
+                Some(false) => temporal_contradicted += 1,
+                None => {}
+            }
             let mut related = observations;
             related.sort_by(|a, b| b.date.cmp(&a.date).then(a.row_id.cmp(&b.row_id)));
             for e in related.into_iter().take(3) {
@@ -488,12 +501,17 @@ impl Engine {
             chosen = 1;
             scores = peak(1, 0.94);
             reason = "The compiled evidence graph refutes at least one extracted assertion on this date, using typed predicates and labelled source constraints.".into();
-        } else if hints.explicit_unknown.contains(&row.id)
-            || (conservative && hints.incomplete.contains(&row.id))
+        } else if facts.is_empty()
+            || hints.explicit_unknown.contains(&row.id)
+            || hints.incomplete.contains(&row.id)
         {
             chosen = 2;
             scores = peak(2, 0.8);
-            reason="The parser left an asserted clause unresolved. A matching subset cannot prove the entire conjunction true.".into();
+            reason = if facts.is_empty() {
+                "No grounded assertion was extracted. A learned class prior cannot establish a factual verdict."
+            } else {
+                "The parser left an asserted clause unresolved. A matching subset cannot establish the entire conjunction."
+            }.into();
         } else if !facts.is_empty()
             && supported == facts.len()
             && !hints.incomplete.contains(&row.id)
@@ -518,7 +536,13 @@ impl Engine {
             let best = (0..3)
                 .max_by(|&a, &b| scores[a].total_cmp(&scores[b]))
                 .unwrap_or(2);
-            if best == 2 || scores[best] < 0.5 {
+            if best == 0 && temporal_supported != facts.len()
+                || best == 1 && temporal_contradicted == 0
+            {
+                chosen = 2;
+                scores = peak(2, 0.8);
+                reason = "The statistical verdict lacks compatible dated evidence for the full claim. Later records cannot justify an earlier value, and support for one conjunct cannot resolve another. Earlier observations are not a proved validity interval.".into();
+            } else if best == 2 || scores[best] < 0.5 {
                 chosen = 2;
                 scores[2] = scores[2].max(scores[0].max(scores[1]) + 0.05);
                 let sum: f64 = scores.iter().sum();
@@ -645,6 +669,12 @@ impl Engine {
             if let Some(&i) = best {
                 return self.examples[i].row.form.clone();
             }
+        }
+        // A new unlabelled entity must not inherit a known company's facts
+        // solely because its sentence resembles a training template. Explicit
+        // forms and exact known source texts were handled above.
+        if row.label.is_empty() && self.entities(&row.text).is_empty() {
+            return Vec::new();
         }
         self.extract_template(row, nearest)
     }
@@ -1012,6 +1042,34 @@ pub fn evaluate_holdout(practice: &[InputRow], lexicon: &Value) -> Result<Holdou
     })
 }
 
+/// A sanity gate for a statistical estimate, not proof of temporal continuity.
+/// The caller has already excluded future sources. Older matching values must
+/// not outvote a newer incompatible value of the same typed property/channel.
+fn latest_history_judgement(fact: &Fact, observations: &[&Evidence]) -> Option<bool> {
+    let latest = observations
+        .iter()
+        .filter(|e| compatible(&fact.value, &e.fact.value))
+        .map(|e| e.date.as_str())
+        .max()?;
+    let mut yes = false;
+    let mut no = false;
+    for source in observations
+        .iter()
+        .filter(|e| e.date == latest && compatible(&fact.value, &e.fact.value))
+    {
+        match entails(&fact.value, &source.fact.value, false) {
+            Some(true) => yes = true,
+            Some(false) => no = true,
+            None => {}
+        }
+    }
+    match (yes, no) {
+        (true, false) => Some(true),
+        (false, true) => Some(false),
+        _ => None,
+    }
+}
+
 fn regex(pattern: &str) -> Result<Regex, String> {
     Regex::new(pattern).map_err(|error| error.to_string())
 }
@@ -1251,6 +1309,8 @@ mod tests {
         // Canonical-world diagnostics can use a learned estimate, but a partial
         // match must never be described as a proof of the whole conjunction.
         let learned = engine.predict_with_hints(&rows, &hints);
+        assert_eq!(learned[1].label, "unsure");
+        assert_eq!(learned[3].label, "unsure");
         assert!(!learned[1].reason.contains("entails every"));
         let mut unknown = hints.clone();
         unknown.explicit_unknown.insert("partial-match".into());
@@ -1258,6 +1318,110 @@ mod tests {
             engine.predict_with_hints(&rows, &unknown)[1].label,
             "unsure"
         );
+    }
+
+    #[test]
+    fn latest_dated_channel_prevents_old_values_outvoting_newer_values() {
+        let fact = |n| Fact {
+            subject: "Plan".into(),
+            attribute: "price".into(),
+            value: json!({"kind":"money","value":n,"currency":"EUR","per":"month"}),
+        };
+        let source = |id: &str, date: &str, n| Evidence {
+            row_id: id.into(),
+            text: id.into(),
+            date: date.into(),
+            label: "true".into(),
+            fact: fact(n),
+        };
+        let old = source("old", "2026-01-01", 49);
+        let recent = source("recent", "2026-02-01", 59);
+        assert_eq!(
+            latest_history_judgement(&fact(49), &[&old, &recent]),
+            Some(false)
+        );
+        assert_eq!(
+            latest_history_judgement(&fact(59), &[&old, &recent]),
+            Some(true)
+        );
+        let conflicting = source("conflict", "2026-02-01", 49);
+        assert_eq!(
+            latest_history_judgement(&fact(59), &[&recent, &conflicting]),
+            None
+        );
+        let mut different_channel = source("usd", "2026-03-01", 49);
+        different_channel.fact.value["currency"] = json!("USD");
+        assert_eq!(
+            latest_history_judgement(&fact(59), &[&old, &recent, &different_channel]),
+            Some(true)
+        );
+    }
+
+    #[test]
+    fn one_supported_conjunct_cannot_resolve_another_with_only_future_evidence() {
+        let lexicon = json!({"subjects":[{"name":"Atlas","attributes":["customers","regions"]}]});
+        let f = |a: &str, n| Fact {
+            subject: "Atlas".into(),
+            attribute: a.into(),
+            value: json!({"kind":"quantity","value":n,"unit":"user"}),
+        };
+        let training = vec![
+            InputRow {
+                id: "past".into(),
+                text: "Atlas customers is 900 users.".into(),
+                date: "2026-01-01".into(),
+                label: "true".into(),
+                form: vec![f("customers", 900)],
+            },
+            InputRow {
+                id: "future".into(),
+                text: "Atlas regions is 3 users.".into(),
+                date: "2026-03-01".into(),
+                label: "true".into(),
+                form: vec![f("regions", 3)],
+            },
+        ];
+        let engine = Engine::new(&training, &lexicon).unwrap();
+        let query = InputRow {
+            id: "q".into(),
+            text: "Atlas customers is 900 users and regions is 3 users.".into(),
+            date: "2026-02-01".into(),
+            form: vec![f("customers", 900), f("regions", 3)],
+            ..Default::default()
+        };
+        let output = engine.predict(&[query]);
+        assert_eq!(output[0].label, "unsure");
+        assert!(
+            output[0]
+                .evidence
+                .iter()
+                .all(|e| e.date <= "2026-02-01".to_owned())
+        );
+    }
+
+    #[test]
+    fn unrecognized_owners_and_empty_parses_do_not_inherit_the_majority_class() {
+        let (training, lexicon) = fixtures();
+        let engine = Engine::new(&training, &lexicon).unwrap();
+        let queries = [
+            InputRow {
+                id: "foreign".into(),
+                text: "Emberkeep serves 900 customers.".into(),
+                date: "2026-10-29".into(),
+                ..Default::default()
+            },
+            InputRow {
+                id: "unparsed".into(),
+                text: "Unknown reference without a factual owner.".into(),
+                date: "2026-10-29".into(),
+                ..Default::default()
+            },
+        ];
+        for prediction in engine.predict(&queries) {
+            assert!(prediction.facts.is_empty());
+            assert_eq!(prediction.label, "unsure");
+            assert!(prediction.confidence.is_none());
+        }
     }
 
     #[test]

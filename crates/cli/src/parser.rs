@@ -1,9 +1,10 @@
 //! Optional experimental CPU extractor. The default executable is pure Rust.
 //! The helper proposes assertions; it cannot change labels or trusted evidence.
 use serde_json::Value;
-use std::{error::Error, fs, path::Path, process::Command};
+use std::{collections::BTreeSet, error::Error, fs, path::Path, process::Command};
 use veridyct_core::{
     ExtractionHints, InputRow,
+    extraction::{LexiconIndex, Normalizer},
     structured::{SchemaParser, ValueCandidate},
 };
 
@@ -88,6 +89,7 @@ pub fn enrich(
         return Err("Parser changed the number of input rows".into());
     }
     let mut bound = 0;
+    let normalizer = Normalizer::new(LexiconIndex::compile(&lexicon.to_string(), Vec::new())?)?;
     for ((original, parser_input), raw) in rows.iter_mut().zip(&parser_rows).zip(enriched) {
         let mut parsed: InputRow = serde_json::from_value(raw.clone())?;
         if original.id != parsed.id
@@ -124,6 +126,28 @@ pub fn enrich(
                 hints.incomplete.insert(original.id.clone());
             }
             parsed.form = result.facts;
+            if parsed.form.is_empty() {
+                hints.recognized_empty.insert(original.id.clone());
+            }
+        }
+        if original.form.is_empty() && original.label.is_empty() {
+            let normalized =
+                normalizer.normalize(&original.id, &original.date, &parser_input.text)?;
+            let mentioned: BTreeSet<_> = normalized
+                .mentions
+                .iter()
+                .map(|m| m.subject.as_str())
+                .collect();
+            let before = parsed.form.len();
+            // A frozen closed-world classifier can nominate an unrelated known
+            // owner for a new company. The owner must be grounded in input text;
+            // previous-row context without document boundaries is not a proof.
+            parsed
+                .form
+                .retain(|fact| mentioned.contains(fact.subject.as_str()));
+            if parsed.form.len() != before {
+                hints.incomplete.insert(original.id.clone());
+            }
             if parsed.form.is_empty() {
                 hints.recognized_empty.insert(original.id.clone());
             }

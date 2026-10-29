@@ -1,6 +1,7 @@
 //! Shared offline CPU reasoning, provenance and competition output.
 
 pub mod boosted;
+pub mod claim_context;
 pub mod claims;
 pub mod engine;
 pub mod extraction;

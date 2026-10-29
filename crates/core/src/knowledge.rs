@@ -29,6 +29,14 @@ pub struct Resolution {
     pub evidence: Vec<Evidence>,
 }
 
+/// One unambiguous recorded value with active labelled evidence. This does not
+/// infer an actual value from an inequality, absence, or unlabelled agreement.
+#[derive(Clone, Debug, Serialize)]
+pub struct RecordedValue {
+    pub value: Option<Value>,
+    pub evidence: Vec<Evidence>,
+}
+
 #[derive(Clone, Debug, Default, Serialize)]
 pub struct KnowledgeSummary {
     pub accepted_observations: usize,
@@ -137,6 +145,57 @@ impl KnowledgeGraph {
         exclude_text: &str,
     ) -> Resolution {
         self.resolve_base(fact, date, exclude_id, exclude_text, true)
+    }
+
+    pub fn recorded_value(
+        &self,
+        subject: &str,
+        attribute: &str,
+        date: &str,
+        exclude_id: &str,
+        exclude_text: &str,
+    ) -> RecordedValue {
+        let mut selected: Option<&Evidence> = None;
+        for source in self
+            .positive
+            .get(&(subject.into(), attribute.into()))
+            .into_iter()
+            .flatten()
+        {
+            if !self.active(&source.row_id, &source.date, date)
+                || source.row_id == exclude_id
+                || source.text.eq_ignore_ascii_case(exclude_text)
+                || source.fact.value["op"].as_str().unwrap_or("eq") != "eq"
+            {
+                continue;
+            }
+            if let Some(old) = selected {
+                // Equivalent unit spellings may describe one value. Different
+                // money channels or genuinely different values remain ambiguous.
+                if old.fact.value != source.fact.value
+                    && !(entails(&old.fact.value, &source.fact.value, false) == Some(true)
+                        && entails(&source.fact.value, &old.fact.value, false) == Some(true))
+                {
+                    return RecordedValue {
+                        value: None,
+                        evidence: Vec::new(),
+                    };
+                }
+            } else {
+                selected = Some(source);
+            }
+        }
+        let Some(source) = selected else {
+            return RecordedValue {
+                value: None,
+                evidence: Vec::new(),
+            };
+        };
+        let resolution = self.resolve(&source.fact, date, exclude_id, exclude_text);
+        RecordedValue {
+            value: (resolution.status == Status::Supported).then(|| source.fact.value.clone()),
+            evidence: resolution.evidence,
+        }
     }
 
     fn active(&self, source_id: &str, source_date: &str, query_date: &str) -> bool {
@@ -366,7 +425,7 @@ impl KnowledgeGraph {
     }
 }
 
-fn compatible(a: &Value, b: &Value) -> bool {
+pub(crate) fn compatible(a: &Value, b: &Value) -> bool {
     if a["kind"] != b["kind"] {
         return false;
     }
@@ -381,6 +440,49 @@ fn compatible(a: &Value, b: &Value) -> bool {
     ["unit", "currency", "per"]
         .iter()
         .all(|f| a.get(*f) == b.get(*f))
+}
+
+/// Compare two recorded values, rather than a value against a partial-date
+/// predicate. Unknown/overlapping date precision stays unknown. All numerical
+/// conversions and money/billing compatibility use the existing exact kernel.
+pub fn compare_recorded_values(left: &Value, right: &Value, op: &str) -> Option<bool> {
+    if !matches!(op, "eq" | "ne" | "lt" | "le" | "gt" | "ge")
+        || left["op"].as_str().unwrap_or("eq") != "eq"
+        || right["op"].as_str().unwrap_or("eq") != "eq"
+    {
+        return None;
+    }
+    if left["kind"] == "date" && right["kind"] == "date" {
+        let (alo, ahi) = date_bounds(left["value"].as_str()?)?;
+        let (blo, bhi) = date_bounds(right["value"].as_str()?)?;
+        if matches!(op, "eq" | "ne") {
+            let equal = if alo == ahi && alo == blo && alo == bhi {
+                Some(true)
+            } else if ahi < blo || bhi < alo {
+                Some(false)
+            } else {
+                None
+            };
+            return equal.map(|yes| if op == "ne" { !yes } else { yes });
+        }
+        let (yes, no) = match op {
+            "lt" => (ahi < blo, alo >= bhi),
+            "le" => (ahi <= blo, alo > bhi),
+            "gt" => (alo > bhi, ahi <= blo),
+            "ge" => (alo >= bhi, ahi < blo),
+            _ => return None,
+        };
+        return if yes {
+            Some(true)
+        } else if no {
+            Some(false)
+        } else {
+            None
+        };
+    }
+    let mut boundary = right.clone();
+    boundary["op"] = Value::String(op.into());
+    entails(&boundary, left, false)
 }
 
 /// Whether every value allowed by the observation satisfies (or refutes) query.
@@ -698,6 +800,132 @@ mod tests {
         .unwrap();
         assert_eq!(entails(&large, &smaller, false), Some(false));
     }
+    #[test]
+    fn recorded_values_require_exact_active_nonconflicting_sources() {
+        let mut lower = fact(10.0);
+        lower.value["op"] = json!("gt");
+        let graph = KnowledgeGraph::compile(&[
+            row("bound", "true", vec![lower]),
+            row("guess", "", vec![fact(42.0)]),
+        ]);
+        assert!(
+            graph
+                .recorded_value("Cloud", "customers", "2026-10-29", "q", "q")
+                .value
+                .is_none()
+        );
+        let graph = KnowledgeGraph::compile(&[row("source", "true", vec![fact(42.0)])]);
+        assert_eq!(
+            graph
+                .recorded_value("Cloud", "customers", "2026-10-29", "q", "q")
+                .value
+                .unwrap()["value"],
+            42.0
+        );
+        assert!(
+            graph
+                .recorded_value("Cloud", "customers", "2026-10-30", "q", "q")
+                .value
+                .is_none()
+        );
+        assert!(
+            graph
+                .recorded_value("Cloud", "customers", "2026-10-29", "source", "source")
+                .value
+                .is_none()
+        );
+        let graph = KnowledgeGraph::compile(&[
+            row("yes", "true", vec![fact(42.0)]),
+            row("no", "false", vec![fact(42.0)]),
+        ]);
+        assert!(
+            graph
+                .recorded_value("Cloud", "customers", "2026-10-29", "q", "q")
+                .value
+                .is_none()
+        );
+    }
+
+    #[test]
+    fn recorded_money_channels_cannot_be_arbitrarily_selected() {
+        let money = |currency, per| Fact {
+            subject: "Plan".into(),
+            attribute: "price".into(),
+            value: json!({"kind":"money","value":10,"currency":currency,"per":per}),
+        };
+        let graph = KnowledgeGraph::compile(&[
+            row("eur", "true", vec![money("EUR", "month")]),
+            row("usd", "true", vec![money("USD", "month")]),
+        ]);
+        assert!(
+            graph
+                .recorded_value("Plan", "price", "2026-10-29", "q", "q")
+                .value
+                .is_none()
+        );
+        assert_eq!(
+            compare_recorded_values(
+                &money("EUR", "month").value,
+                &money("USD", "month").value,
+                "eq"
+            ),
+            None
+        );
+        assert_eq!(
+            compare_recorded_values(
+                &money("EUR", "month").value,
+                &money("EUR", "year").value,
+                "lt"
+            ),
+            None
+        );
+    }
+
+    #[test]
+    fn recorded_date_values_do_not_use_date_precision_predicate_semantics() {
+        let date = |v| json!({"kind":"date","value":v});
+        assert_eq!(
+            compare_recorded_values(&date("2026-06-01"), &date("2026"), "le"),
+            None
+        );
+        assert_eq!(
+            compare_recorded_values(&date("2026"), &date("2026"), "eq"),
+            None
+        );
+        assert_eq!(
+            compare_recorded_values(&date("2025"), &date("2026"), "lt"),
+            Some(true)
+        );
+        assert_eq!(
+            compare_recorded_values(&date("2026-05-01"), &date("2026-05-01"), "eq"),
+            Some(true)
+        );
+        assert_eq!(
+            compare_recorded_values(&date("2025-02-29"), &date("2026"), "lt"),
+            None
+        );
+    }
+
+    #[test]
+    fn recorded_numeric_comparisons_preserve_exactness_and_inequality_direction() {
+        let quantity = |v, u| json!({"kind":"quantity","value":v,"unit":u});
+        assert_eq!(
+            compare_recorded_values(&quantity(1, "GB"), &quantity(1000, "MB"), "eq"),
+            Some(true)
+        );
+        assert_eq!(
+            compare_recorded_values(&quantity(1, "GB"), &quantity(1000, "MB"), "lt"),
+            Some(false)
+        );
+        let a: Value =
+            serde_json::from_str(r#"{"kind":"quantity","unit":"user","value":9007199254740993}"#)
+                .unwrap();
+        let b: Value =
+            serde_json::from_str(r#"{"kind":"quantity","unit":"user","value":9007199254740992}"#)
+                .unwrap();
+        assert_eq!(compare_recorded_values(&a, &b, "gt"), Some(true));
+    }
+
     #[test]
     fn false_boolean_identifies_its_complement_but_false_name_does_not() {
         let yes = serde_json::json!({"kind":"boolean","value":true});

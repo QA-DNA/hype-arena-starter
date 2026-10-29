@@ -7,6 +7,7 @@ use regex::Regex;
 use std::collections::{BTreeMap, BTreeSet, VecDeque};
 
 const WINDOW: usize = 8;
+const EXPLICIT_DOCUMENT_WINDOW: usize = 32;
 const MAX_TOPICS: usize = 64;
 #[derive(Clone)]
 struct Topic {
@@ -53,7 +54,7 @@ impl DocumentExtractor {
             date: String::new(),
             personal: re(r"(?i)^(?:he|she|his|her|they|their)\b")?,
             referential: re(
-                r"(?i)^(?:it|its|he|she|his|her|they|their|the (?:platform|service|product|team)|this (?:release|version))\b",
+                r"(?i)^(?:it|its|he|she|his|her|they|their|our|the (?:platform|service|product|team|event|conference)|this (?:release|version|event))\b",
             )?,
             version_reference: re(r"(?i)^(?:it|its|this (?:release|version))\b")?,
         })
@@ -65,23 +66,45 @@ impl DocumentExtractor {
     }
 
     pub fn split(&mut self, row: NormalizedRow) -> Result<ParsedRow, ExtractionError> {
+        self.split_scoped(row, false)
+    }
+
+    /// The caller must reset this instance whenever the explicit document ID
+    /// changes. Publication-date changes inside a declared document are not
+    /// treated as new documents. No factual evidence is stored or inferred.
+    pub fn split_in_document(&mut self, row: NormalizedRow) -> Result<ParsedRow, ExtractionError> {
+        self.split_scoped(row, true)
+    }
+
+    fn split_scoped(
+        &mut self,
+        row: NormalizedRow,
+        explicit_document: bool,
+    ) -> Result<ParsedRow, ExtractionError> {
         // Validate/parse before mutating stream state: a failed call is retryable.
         let mut parsed = self.splitter.split(row)?;
         self.ordinal += 1;
         parsed.input_ordinal = Some(self.ordinal);
         let boundary = if self.ordinal == 1 {
             "stream_start"
+        } else if explicit_document {
+            "explicit_document"
         } else if parsed.row.date.is_empty() || self.date != parsed.row.date {
             "date_boundary"
         } else {
             "same_date_candidate_block"
         };
-        if boundary != "same_date_candidate_block" {
+        if !matches!(boundary, "same_date_candidate_block" | "explicit_document") {
             self.topics.clear();
         }
         self.date.clone_from(&parsed.row.date);
+        let window = if explicit_document {
+            EXPLICIT_DOCUMENT_WINDOW
+        } else {
+            WINDOW
+        };
         self.topics
-            .retain(|t| self.ordinal.saturating_sub(t.ordinal) <= WINDOW);
+            .retain(|t| self.ordinal.saturating_sub(t.ordinal) <= window);
         parsed.context_boundary = boundary.into();
 
         // An explicit new product topic prevents stale cross-product inheritance.
