@@ -853,8 +853,8 @@ impl<'a> Key<'a> {
                 };
             }
         }
-        for b in 0..n {
-            ag[s - 1][b] = if eq[b] { 0.0 } else { 0.5 };
+        for (x, &e) in ag[s - 1].iter_mut().zip(&eq) {
+            *x = if e { 0.0 } else { 0.5 };
         }
         let mut times = date.clone();
         times.sort_unstable();
@@ -973,8 +973,8 @@ impl<'a> Key<'a> {
         }
         let mut log_e = vec![vec![0.0; s]; t_n];
         for b in 0..n {
-            for si in 0..s {
-                log_e[self.tix[b]][si] += ll[si][b];
+            for (e, l) in log_e[self.tix[b]].iter_mut().zip(&ll) {
+                *e += l[b];
             }
         }
         let mut pred = vec![vec![0.0; s]; t_n];
@@ -984,7 +984,7 @@ impl<'a> Key<'a> {
             pred[t].clone_from(&a);
             if t + 1 < t_n {
                 let dd: Vec<f64> = (0..s).map(|i| a[i] + log_e[t][i]).collect();
-                for j in 0..s {
+                for (j, aj) in a.iter_mut().enumerate() {
                     for i in 0..s {
                         col[i] = if i == j {
                             dd[i] + log_stay[t]
@@ -992,7 +992,7 @@ impl<'a> Key<'a> {
                             dd[i] + log_sw[t] + wlog[i][j]
                         };
                     }
-                    a[j] = max_of(&col);
+                    *aj = max_of(&col);
                 }
                 let m = max_of(&a);
                 for x in &mut a {

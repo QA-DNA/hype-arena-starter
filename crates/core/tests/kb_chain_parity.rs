@@ -6,6 +6,9 @@ use veridyct_core::kb_chain::{self, ChainRow, KbLexicon, Label};
 
 const FIXTURE: &str = include_str!("data/kb-chain-practice.txt");
 
+/// Expected prediction: row index, label initial, confidence.
+type Expected = (usize, char, Option<f64>);
+
 fn code(l: Label) -> char {
     l.as_str().chars().next().unwrap()
 }
@@ -15,10 +18,7 @@ fn conf_of(bits: &str) -> Option<f64> {
 }
 
 /// (label mismatches, compared rows, max |confidence difference|)
-fn compare(
-    out: &[kb_chain::ChainOutput],
-    expected: &[(usize, char, Option<f64>)],
-) -> (usize, usize, f64) {
+fn compare(out: &[kb_chain::ChainOutput], expected: &[Expected]) -> (usize, usize, f64) {
     let mut bad = 0;
     let mut diff: f64 = 0.0;
     for &(i, l, c) in expected {
@@ -65,8 +65,13 @@ fn practice_folds_match_python() {
     let page = kb_chain::pages_of(&dates, &vec![true; dates.len()], Some(&ids));
     let facts: Vec<_> = practice.iter().map(|r| lex.model_facts(&r.form)).collect();
 
-    let mut folds: Vec<(String, Vec<bool>, Vec<(usize, char, Option<f64>)>)> = Vec::new();
-    for line in FIXTURE.lines() {
+    let mut folds: Vec<(String, Vec<bool>, Vec<Expected>)> = Vec::new();
+    // VERIDYCT_KB_CHAIN_PRACTICE: an alternative local fixture in the same format (e.g. every P10 seed).
+    let fixture = std::env::var("VERIDYCT_KB_CHAIN_PRACTICE").map_or_else(
+        |_| FIXTURE.to_owned(),
+        |p| std::fs::read_to_string(p).unwrap(),
+    );
+    for line in fixture.lines() {
         let p: Vec<&str> = line.split(' ').collect();
         match p[0] {
             "fold" => folds.push((
