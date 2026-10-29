@@ -15,14 +15,20 @@ fn conf_of(bits: &str) -> Option<f64> {
 }
 
 /// (label mismatches, compared rows, max |confidence difference|)
-fn compare(out: &[kb_chain::ChainOutput], expected: &[(usize, char, Option<f64>)]) -> (usize, usize, f64) {
+fn compare(
+    out: &[kb_chain::ChainOutput],
+    expected: &[(usize, char, Option<f64>)],
+) -> (usize, usize, f64) {
     let mut bad = 0;
     let mut diff: f64 = 0.0;
     for &(i, l, c) in expected {
         let o = &out[i];
         if code(o.label) != l {
             bad += 1;
-            eprintln!("row {i}: rust {:?} {:?}, python {l} {c:?}", o.label, o.confidence);
+            eprintln!(
+                "row {i}: rust {:?} {:?}, python {l} {c:?}",
+                o.label, o.confidence
+            );
             continue;
         }
         match (o.confidence, c) {
@@ -48,8 +54,14 @@ fn practice_folds_match_python() {
     let lex = KbLexicon::new(&lexicon);
     let mut practice = veridyct_core::read_csv(include_str!("../../../data/practice.csv")).unwrap();
     practice.sort_by_key(|r| r.id[2..].parse::<i64>().unwrap());
-    let dates: Vec<i64> = practice.iter().map(|r| kb_chain::date_ordinal(&r.date).unwrap()).collect();
-    let ids: Vec<i64> = practice.iter().map(|r| r.id[2..].parse().unwrap()).collect();
+    let dates: Vec<i64> = practice
+        .iter()
+        .map(|r| kb_chain::date_ordinal(&r.date).unwrap())
+        .collect();
+    let ids: Vec<i64> = practice
+        .iter()
+        .map(|r| r.id[2..].parse().unwrap())
+        .collect();
     let page = kb_chain::pages_of(&dates, &vec![true; dates.len()], Some(&ids));
     let facts: Vec<_> = practice.iter().map(|r| lex.model_facts(&r.form)).collect();
 
@@ -57,8 +69,16 @@ fn practice_folds_match_python() {
     for line in FIXTURE.lines() {
         let p: Vec<&str> = line.split(' ').collect();
         match p[0] {
-            "fold" => folds.push((format!("{}-{}", p[1], p[2]), p[3].bytes().map(|b| b == b'1').collect(), Vec::new())),
-            "pred" => folds.last_mut().unwrap().2.push((p[1].parse().unwrap(), p[2].chars().next().unwrap(), conf_of(p[3]))),
+            "fold" => folds.push((
+                format!("{}-{}", p[1], p[2]),
+                p[3].bytes().map(|b| b == b'1').collect(),
+                Vec::new(),
+            )),
+            "pred" => folds.last_mut().unwrap().2.push((
+                p[1].parse().unwrap(),
+                p[2].chars().next().unwrap(),
+                conf_of(p[3]),
+            )),
             _ => {}
         }
     }
@@ -73,9 +93,12 @@ fn practice_folds_match_python() {
                 facts: facts[i].clone(),
             })
             .collect();
-        let out = kb_chain::run(&rows).expect("two-class fold");
+        let out = kb_chain::run(&rows, None).expect("two-class fold").rows;
         let scored: Vec<usize> = (0..rows.len()).filter(|&i| !mask[page[i]]).collect();
-        let pts: f64 = scored.iter().map(|&i| points(out[i].label, &practice[i].label)).sum();
+        let pts: f64 = scored
+            .iter()
+            .map(|&i| points(out[i].label, &practice[i].label))
+            .sum();
         if name.starts_with("P80") {
             p80 += pts;
             n80 += scored.len();
@@ -84,7 +107,10 @@ fn practice_folds_match_python() {
         }
         if !expected.is_empty() {
             let (bad, n, diff) = compare(&out, expected);
-            eprintln!("{name}: labels identical {}/{n}, max confidence diff {diff:e}", n - bad);
+            eprintln!(
+                "{name}: labels identical {}/{n}, max confidence diff {diff:e}",
+                n - bad
+            );
             bad_all += bad;
             n_all += n;
             diff_all = diff_all.max(diff);
@@ -124,11 +150,15 @@ fn sdev_world_matches_python_when_available() {
             facts: lex.facts(&r["assertions"]),
         });
         if r["label"].is_null() {
-            expected.push((i, r["pred"].as_str().unwrap().chars().next().unwrap(), conf_of(r["conf"].as_str().unwrap())));
+            expected.push((
+                i,
+                r["pred"].as_str().unwrap().chars().next().unwrap(),
+                conf_of(r["conf"].as_str().unwrap()),
+            ));
         }
     }
     let started = std::time::Instant::now();
-    let out = kb_chain::run(&rows).unwrap();
+    let out = kb_chain::run(&rows, None).unwrap().rows;
     let (bad, n, diff) = compare(&out, &expected);
     eprintln!(
         "Sdev-jt: {} rows in {:.3}s; labels identical {}/{n}, max confidence diff {diff:e}",
@@ -138,4 +168,80 @@ fn sdev_world_matches_python_when_available() {
     );
     assert_eq!(bad, 0);
     assert!(diff <= 1e-9);
+}
+
+/// Practice in id order with practice pages (every row labelled, consecutive ids), gold forms.
+fn practice_world() -> (Vec<veridyct_core::InputRow>, KbLexicon, Vec<ChainRow>) {
+    let lexicon: Value = serde_json::from_str(include_str!("../../../data/lexicon.json")).unwrap();
+    let lex = KbLexicon::new(&lexicon);
+    let practice = veridyct_core::read_csv(include_str!("../../../data/practice.csv")).unwrap();
+    let rows = kb_chain::practice_rows(&practice, &lex);
+    let mut sorted = practice;
+    sorted.sort_by_key(|r| r.id[2..].parse::<i64>().unwrap());
+    (sorted, lex, rows)
+}
+
+/// T2 SPEC-G1 check (lab: T2/spec_dump.py): 390 practice rows scored with neural extractor
+/// forms, the other 1,507 labelled with gold forms; G1 label and scaled confidence to 4 decimals.
+#[test]
+fn guarded_labeller_matches_spec_g1() {
+    let (practice, lex, mut rows) = practice_world();
+    let index: std::collections::HashMap<&str, usize> = practice
+        .iter()
+        .enumerate()
+        .map(|(i, r)| (r.id.as_str(), i))
+        .collect();
+    let mut checks = Vec::new();
+    for line in include_str!("data/kb-chain-g1-p390.jsonl").lines().skip(1) {
+        let r: Value = serde_json::from_str(line).unwrap();
+        let i = index[r["id"].as_str().unwrap()];
+        rows[i].label = None;
+        rows[i].facts = lex.facts(&r["form"]);
+        checks.push((i, r));
+    }
+    let out = kb_chain::guarded(&rows, None).unwrap();
+    let mut bad = 0;
+    for (i, r) in &checks {
+        let (label, conf) = out[*i];
+        let want = r["g1_conf_rel"].as_f64();
+        let close = match (conf, want) {
+            (Some(a), Some(b)) => (a - b).abs() <= 5.001e-5,
+            (None, None) => true,
+            _ => false,
+        };
+        if label.as_str() != r["g1_label"].as_str().unwrap() || !close {
+            bad += 1;
+            eprintln!(
+                "{}: rust {label:?} {conf:?}, spec {} {want:?}",
+                r["id"], r["g1_label"]
+            );
+        }
+    }
+    eprintln!(
+        "SPEC-G1 P390: {}/{} rows match",
+        checks.len() - bad,
+        checks.len()
+    );
+    assert_eq!(bad, 0);
+}
+
+/// A one-class labelled world is labelled by the practice fit, as `Std.fit` falls back.
+#[test]
+fn one_class_world_uses_the_practice_fit() {
+    let (practice, _, rows) = practice_world();
+    let mut world = rows.clone();
+    for (row, input) in world.iter_mut().zip(&practice) {
+        if input.label != "true" {
+            row.label = None;
+        }
+    }
+    assert!(kb_chain::run(&world, None).is_none());
+    let trues = practice.iter().filter(|r| r.label == "true").count();
+    let run = kb_chain::run(&world, Some(&rows)).unwrap();
+    assert!((run.rate - trues as f64 / practice.len() as f64).abs() < 1e-12);
+    assert!(
+        run.rows
+            .iter()
+            .all(|o| o.confidence.is_none_or(|c| (0.5..=1.0).contains(&c)))
+    );
 }

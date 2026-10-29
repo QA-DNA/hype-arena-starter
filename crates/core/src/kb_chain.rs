@@ -137,7 +137,10 @@ pub struct KbLexicon {
 }
 
 fn name_key(s: &str) -> String {
-    s.to_lowercase().chars().filter(|c| !c.is_whitespace()).collect()
+    s.to_lowercase()
+        .chars()
+        .filter(|c| !c.is_whitespace())
+        .collect()
 }
 
 /// Python `str.casefold` for the characters where it differs from lowercase in practice.
@@ -300,8 +303,14 @@ impl KbLexicon {
             .iter()
             .filter_map(|a| {
                 let a = a.as_object()?;
-                let subject = a.get("subject").cloned().unwrap_or(Value::String(String::new()));
-                let attribute = a.get("attribute").cloned().unwrap_or(Value::String(String::new()));
+                let subject = a
+                    .get("subject")
+                    .cloned()
+                    .unwrap_or(Value::String(String::new()));
+                let attribute = a
+                    .get("attribute")
+                    .cloned()
+                    .unwrap_or(Value::String(String::new()));
                 self.fact(&subject, &attribute, a.get("value")?)
             })
             .collect()
@@ -341,12 +350,10 @@ fn conv(unit: &str) -> Option<(&'static str, f64, bool)> {
 fn scaled(x: &Value, mult: f64, int_mult: bool) -> Option<f64> {
     match x {
         Value::Bool(b) => Some(f64::from(u8::from(*b)) * mult),
-        Value::Number(n) => {
-            match (n.as_i64(), int_mult) {
-                (Some(i), true) => Some((i128::from(i) * mult as i128) as f64),
-                _ => Some(n.as_f64()? * mult),
-            }
-        }
+        Value::Number(n) => match (n.as_i64(), int_mult) {
+            (Some(i), true) => Some((i128::from(i) * mult as i128) as f64),
+            _ => Some(n.as_f64()? * mult),
+        },
         Value::String(_) if int_mult && mult == 1.0 => py_float(x),
         _ => None,
     }
@@ -409,7 +416,11 @@ fn py_repr(x: f64) -> String {
         return if x > 0.0 { "inf".into() } else { "-inf".into() };
     }
     if x == 0.0 {
-        return if x.is_sign_negative() { "-0.0".into() } else { "0.0".into() };
+        return if x.is_sign_negative() {
+            "-0.0".into()
+        } else {
+            "0.0".into()
+        };
     }
     let e = format!("{:e}", x.abs());
     let (mant, exp) = e.split_once('e').unwrap_or((&e, "0"));
@@ -421,7 +432,11 @@ fn py_repr(x: f64) -> String {
         let body = if exp >= n - 1 {
             format!("{digits}{}.0", "0".repeat((exp - n + 1) as usize))
         } else if exp >= 0 {
-            format!("{}.{}", &digits[..=exp as usize], &digits[exp as usize + 1..])
+            format!(
+                "{}.{}",
+                &digits[..=exp as usize],
+                &digits[exp as usize + 1..]
+            )
         } else {
             format!("0.{}{digits}", "0".repeat((-exp - 1) as usize))
         };
@@ -432,7 +447,11 @@ fn py_repr(x: f64) -> String {
         } else {
             digits
         };
-        format!("{sign}{m}e{}{:02}", if exp < 0 { '-' } else { '+' }, exp.abs())
+        format!(
+            "{sign}{m}e{}{:02}",
+            if exp < 0 { '-' } else { '+' },
+            exp.abs()
+        )
     }
 }
 
@@ -465,7 +484,20 @@ fn attr_key(s: &str) -> String {
 /// Proleptic Gregorian ordinal, 0001-01-01 = 1 (Python `date.toordinal`).
 pub fn ordinal(y: i64, m: i64, d: i64) -> Option<i64> {
     let leap = (y % 4 == 0 && y % 100 != 0) || y % 400 == 0;
-    let mdays = [31, if leap { 29 } else { 28 }, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    let mdays = [
+        31,
+        if leap { 29 } else { 28 },
+        31,
+        30,
+        31,
+        30,
+        31,
+        31,
+        30,
+        31,
+        30,
+        31,
+    ];
     if !(1..=9999).contains(&y) || !(1..=12).contains(&m) || d < 1 || d > mdays[m as usize - 1] {
         return None;
     }
@@ -595,7 +627,11 @@ impl Iso {
             xs[a]
                 .partial_cmp(&xs[b])
                 .unwrap_or(std::cmp::Ordering::Equal)
-                .then(ys[a].partial_cmp(&ys[b]).unwrap_or(std::cmp::Ordering::Equal))
+                .then(
+                    ys[a]
+                        .partial_cmp(&ys[b])
+                        .unwrap_or(std::cmp::Ordering::Equal),
+                )
         });
         // _make_unique: merge x within np.finfo(float64).resolution of the run's first x
         let eps = 1e-15;
@@ -628,7 +664,12 @@ impl Iso {
         let keep: Vec<bool> = (0..n)
             .map(|i| i == 0 || i == n - 1 || y[i] != y[i - 1] || y[i] != y[i + 1])
             .collect();
-        let x = ux.iter().zip(&keep).filter(|p| *p.1).map(|p| *p.0).collect();
+        let x = ux
+            .iter()
+            .zip(&keep)
+            .filter(|p| *p.1)
+            .map(|p| *p.0)
+            .collect();
         let y = y.iter().zip(&keep).filter(|p| *p.1).map(|p| *p.0).collect();
         Self { x, y }
     }
@@ -738,8 +779,16 @@ fn consistent(a: &KbFact, b: &KbFact) -> bool {
     match (a.iv, b.iv) {
         (Some((alo, ahi)), Some((blo, bhi))) => {
             let tol = 1e-9 * 1.0f64.max(if alo.is_infinite() { 1.0 } else { alo.abs() });
-            let lo = if alo.is_nan() || blo.is_nan() { f64::NAN } else { alo.max(blo) };
-            let hi = if ahi.is_nan() || bhi.is_nan() { f64::NAN } else { ahi.min(bhi) };
+            let lo = if alo.is_nan() || blo.is_nan() {
+                f64::NAN
+            } else {
+                alo.max(blo)
+            };
+            let hi = if ahi.is_nan() || bhi.is_nan() {
+                f64::NAN
+            } else {
+                ahi.min(bhi)
+            };
             lo <= hi + tol
         }
         _ => a.canon == b.canon,
@@ -765,7 +814,13 @@ fn version_parts(v: &Canon) -> Vec<(usize, String)> {
 }
 
 impl<'a> Key<'a> {
-    fn new(g: Vec<usize>, flat: &[&'a KbFact], frow: &[usize], rows: &[ChainRow], nf: &[usize]) -> Self {
+    fn new(
+        g: Vec<usize>,
+        flat: &[&'a KbFact],
+        frow: &[usize],
+        rows: &[ChainRow],
+        nf: &[usize],
+    ) -> Self {
         let n = g.len();
         let facts: Vec<&KbFact> = g.iter().map(|&x| flat[x]).collect();
         let row: Vec<usize> = g.iter().map(|&x| frow[x]).collect();
@@ -791,7 +846,11 @@ impl<'a> Key<'a> {
         let mut ag = vec![vec![0.0; n]; s];
         for (si, &r) in rep.iter().enumerate() {
             for b in 0..n {
-                ag[si][b] = if consistent(facts[r], facts[b]) { 1.0 } else { 0.0 };
+                ag[si][b] = if consistent(facts[r], facts[b]) {
+                    1.0
+                } else {
+                    0.0
+                };
             }
         }
         for b in 0..n {
@@ -800,7 +859,10 @@ impl<'a> Key<'a> {
         let mut times = date.clone();
         times.sort_unstable();
         times.dedup();
-        let tix = date.iter().map(|d| times.binary_search(d).unwrap_or(0)).collect();
+        let tix = date
+            .iter()
+            .map(|d| times.binary_search(d).unwrap_or(0))
+            .collect();
         let kind = facts[0].kind;
         let vals: Vec<&Canon> = rep.iter().map(|&r| &facts[r].canon).collect();
         let order = if kind.numeric() {
@@ -810,7 +872,11 @@ impl<'a> Key<'a> {
                     .collect(),
             )
         } else if kind == Kind::Date && !rep.is_empty() {
-            Some(rep.iter().map(|&r| facts[r].iv.map_or(f64::NAN, |iv| iv.0)).collect())
+            Some(
+                rep.iter()
+                    .map(|&r| facts[r].iv.map_or(f64::NAN, |iv| iv.0))
+                    .collect(),
+            )
         } else if kind == Kind::Version && !rep.is_empty() {
             let parts: Vec<_> = vals.iter().map(|v| version_parts(v)).collect();
             if parts.iter().all(|p| !p.is_empty()) {
@@ -829,7 +895,21 @@ impl<'a> Key<'a> {
         } else {
             None
         };
-        Key { g, date, page, role, eq, facts, kind, rep, s, ag, times, tix, order }
+        Key {
+            g,
+            date,
+            page,
+            role,
+            eq,
+            facts,
+            kind,
+            rep,
+            s,
+            ag,
+            times,
+            tix,
+            order,
+        }
     }
 
     fn loglik(&self) -> Vec<Vec<f64>> {
@@ -906,7 +986,11 @@ impl<'a> Key<'a> {
                 let dd: Vec<f64> = (0..s).map(|i| a[i] + log_e[t][i]).collect();
                 for j in 0..s {
                     for i in 0..s {
-                        col[i] = if i == j { dd[i] + log_stay[t] } else { dd[i] + log_sw[t] + wlog[i][j] };
+                        col[i] = if i == j {
+                            dd[i] + log_stay[t]
+                        } else {
+                            dd[i] + log_sw[t] + wlog[i][j]
+                        };
                     }
                     a[j] = max_of(&col);
                 }
@@ -923,7 +1007,11 @@ impl<'a> Key<'a> {
             let mut bvec = vec![0.0; s];
             for i in 0..s {
                 for j in 0..s {
-                    row[j] = if i == j { v[j] + log_stay[t] } else { v[j] + log_sw[t] + wlog[i][j] };
+                    row[j] = if i == j {
+                        v[j] + log_stay[t]
+                    } else {
+                        v[j] + log_sw[t] + wlog[i][j]
+                    };
                 }
                 bvec[i] = max_of(&row);
             }
@@ -947,7 +1035,9 @@ impl<'a> Key<'a> {
             let t = self.tix[b];
             let mm = mm_of.entry(key).or_insert_with(|| {
                 let loc = &local[&key];
-                (0..s).map(|i| pred[t][i] + log_e[t][i] - loc[i] + back[t][i]).collect()
+                (0..s)
+                    .map(|i| pred[t][i] + log_e[t][i] - loc[i] + back[t][i])
+                    .collect()
             });
             let (mut ag_max, mut dis_max) = (None::<f64>, None::<f64>);
             for (si, &m) in mm.iter().enumerate() {
@@ -972,7 +1062,13 @@ fn lam_grid() -> Vec<f64> {
     let (start, stop) = (1e-4f64.ln(), 0.2f64.ln());
     let step = (stop - start) / 159.0;
     (0..160)
-        .map(|i| if i == 159 { stop.exp() } else { (i as f64 * step + start).exp() })
+        .map(|i| {
+            if i == 159 {
+                stop.exp()
+            } else {
+                (i as f64 * step + start).exp()
+            }
+        })
         .collect()
 }
 
@@ -1022,7 +1118,8 @@ impl Hazard {
                     let same = consistent(k.facts[b], k.facts[l]);
                     let mut up = None;
                     if !same && let Some(order) = &k.order {
-                        let col = |x: usize| -> Vec<f64> { (0..k.s - 1).map(|si| k.ag[si][x]).collect() };
+                        let col =
+                            |x: usize| -> Vec<f64> { (0..k.s - 1).map(|si| k.ag[si][x]).collect() };
                         let (sb, sl) = (first_argmax(&col(b)), first_argmax(&col(l)));
                         if order[sb] != order[sl] {
                             up = Some(order[sb] > order[sl]);
@@ -1035,7 +1132,11 @@ impl Hazard {
                 }
             }
         }
-        let mut hz = Hazard { glob: 1.0 / 200.0, by_kind: HashMap::new(), down: HashMap::new() };
+        let mut hz = Hazard {
+            glob: 1.0 / 200.0,
+            by_kind: HashMap::new(),
+            down: HashMap::new(),
+        };
         if pairs.is_empty() {
             return hz;
         }
@@ -1058,7 +1159,8 @@ impl Hazard {
             if ps.len() >= MIN_PAIRS {
                 let g: Vec<f64> = ps.iter().map(|p| p.0).collect();
                 let s: Vec<bool> = ps.iter().map(|p| p.1).collect();
-                hz.by_kind.insert(kind, mle_lambda(&g, &s, hz.glob, 4.0, &grid));
+                hz.by_kind
+                    .insert(kind, mle_lambda(&g, &s, hz.glob, 4.0, &grid));
             }
         }
         hz
@@ -1067,13 +1169,17 @@ impl Hazard {
 
 // ------------------------------------------------------------------ fit and decide
 
-/// Fit on the labelled rows and label every row. None when the labelled rows do not hold
-/// both true and false (the reference then refits on practice; callers keep their own labels).
-pub fn run(rows: &[ChainRow]) -> Option<Vec<ChainOutput>> {
-    let has = |l| rows.iter().any(|r| r.label == Some(l));
-    if !has(Label::True) || !has(Label::False) {
-        return None;
-    }
+/// Per-fact chain scores of one world (rows in input order).
+struct Scored {
+    nf: Vec<usize>,
+    fstart: Vec<usize>,
+    frow: Vec<usize>,
+    score: Vec<f64>,
+    best: Vec<Option<Canon>>,
+}
+
+/// Scores every fact; fits the hazard on this world's anchors when `hz` is None.
+fn score_world(rows: &[ChainRow], hz: Option<&Hazard>) -> (Scored, Option<Hazard>) {
     let nf: Vec<usize> = rows.iter().map(|r| r.facts.len()).collect();
     let mut flat: Vec<&KbFact> = Vec::new();
     let mut frow = Vec::new();
@@ -1102,7 +1208,8 @@ pub fn run(rows: &[ChainRow]) -> Option<Vec<ChainOutput>> {
         .into_iter()
         .map(|g| Key::new(g, &flat, &frow, rows, &nf))
         .collect();
-    let hz = Hazard::fit(&keys);
+    let fitted = hz.is_none().then(|| Hazard::fit(&keys));
+    let hz = hz.or(fitted.as_ref()).expect("hazard");
     let mut score = vec![f64::NAN; flat.len()];
     let mut best: Vec<Option<Canon>> = vec![None; flat.len()];
     for k in &keys {
@@ -1120,84 +1227,316 @@ pub fn run(rows: &[ChainRow]) -> Option<Vec<ChainOutput>> {
             best[x] = bs[b].map(|si| k.facts[k.rep[si]].canon.clone());
         }
     }
-    // fact targets and the fact map
-    let y: Vec<i8> = frow
-        .iter()
-        .map(|&r| match rows[r].label {
-            Some(Label::True) => 1,
-            Some(Label::False) if nf[r] == 1 => 0,
-            _ => -1,
-        })
-        .collect();
-    let labelled: Vec<usize> = (0..flat.len()).filter(|&n| y[n] >= 0).collect();
-    let base = if labelled.is_empty() {
-        0.85
-    } else {
-        labelled.iter().map(|&n| f64::from(y[n])).sum::<f64>() / labelled.len() as f64
+    let scored = Scored {
+        nf,
+        fstart,
+        frow,
+        score,
+        best,
     };
-    let nan: Vec<usize> = labelled.iter().copied().filter(|&n| score[n].is_nan()).collect();
-    let nan_p = (nan.iter().map(|&n| f64::from(y[n])).sum::<f64>() + 4.0 * base.max(0.9))
-        / (nan.len() as f64 + 4.0);
-    let ok: Vec<usize> = labelled.iter().copied().filter(|&n| !score[n].is_nan()).collect();
-    let classes = |v: &[usize]| v.iter().any(|&n| y[n] == 1) && v.iter().any(|&n| y[n] == 0);
-    let fmap = (ok.len() >= 5 && classes(&ok)).then(|| {
-        let xs: Vec<f64> = ok.iter().map(|&n| score[n]).collect();
-        let ys: Vec<f64> = ok.iter().map(|&n| f64::from(y[n])).collect();
-        Iso::fit(&xs, &ys, 0.005, 0.995)
-    });
-    let pf: Vec<f64> = score
-        .iter()
-        .map(|&s| {
-            let p = if s.is_nan() {
-                nan_p
-            } else {
-                fmap.as_ref().map_or(base, |m| m.predict(s))
-            };
-            p.clamp(1e-4, 1.0 - 1e-4)
-        })
-        .collect();
-    let mut prow = vec![1.0; rows.len()];
-    for (n, &r) in frow.iter().enumerate() {
-        prow[r] *= pf[n];
+    (scored, fitted)
+}
+
+/// Everything `Std.fit` learns: hazard, fact map, row map, unsure share, true share.
+struct Model {
+    hz: Hazard,
+    fmap: Option<Iso>,
+    base: f64,
+    nan_p: f64,
+    rmap: Option<Iso>,
+    u: f64,
+    rate: f64,
+}
+
+impl Model {
+    fn pf(&self, s: &Scored) -> Vec<f64> {
+        s.score
+            .iter()
+            .map(|&x| {
+                let p = if x.is_nan() {
+                    self.nan_p
+                } else {
+                    self.fmap.as_ref().map_or(self.base, |m| m.predict(x))
+                };
+                p.clamp(1e-4, 1.0 - 1e-4)
+            })
+            .collect()
     }
-    // row calibration and the arena rule
-    let tr: Vec<usize> = (0..rows.len()).filter(|&i| rows[i].label.is_some() && nf[i] > 0).collect();
-    let u = if tr.is_empty() {
-        0.0
-    } else {
-        tr.iter().filter(|&&i| rows[i].label == Some(Label::Unsure)).count() as f64 / tr.len() as f64
-    };
-    let m: Vec<usize> = tr.iter().copied().filter(|&i| rows[i].label != Some(Label::Unsure)).collect();
-    let ym: Vec<f64> = m.iter().map(|&i| f64::from(u8::from(rows[i].label == Some(Label::True)))).collect();
-    let pos = ym.iter().filter(|&&v| v == 1.0).count();
-    let rmap = (m.len() >= 5 && pos > 0 && pos < m.len()).then(|| {
-        let xs: Vec<f64> = m.iter().map(|&i| prow[i]).collect();
-        Iso::fit(&xs, &ym, 0.0, 1.0)
-    });
-    let band = ((1.0 + u) / (2.0 * (1.0 - u)) - 0.5).max(0.0);
-    let q = 1.0 - u;
-    Some(
+
+    fn fit(rows: &[ChainRow]) -> (Self, Scored) {
+        let (s, hz) = score_world(rows, None);
+        let (nf, score) = (&s.nf, &s.score);
+        let y: Vec<i8> = s
+            .frow
+            .iter()
+            .map(|&r| match rows[r].label {
+                Some(Label::True) => 1,
+                Some(Label::False) if nf[r] == 1 => 0,
+                _ => -1,
+            })
+            .collect();
+        let labelled: Vec<usize> = (0..y.len()).filter(|&n| y[n] >= 0).collect();
+        let base = if labelled.is_empty() {
+            0.85
+        } else {
+            labelled.iter().map(|&n| f64::from(y[n])).sum::<f64>() / labelled.len() as f64
+        };
+        let nan: Vec<usize> = labelled
+            .iter()
+            .copied()
+            .filter(|&n| score[n].is_nan())
+            .collect();
+        let nan_p = (nan.iter().map(|&n| f64::from(y[n])).sum::<f64>() + 4.0 * base.max(0.9))
+            / (nan.len() as f64 + 4.0);
+        let ok: Vec<usize> = labelled
+            .iter()
+            .copied()
+            .filter(|&n| !score[n].is_nan())
+            .collect();
+        let classes = ok.iter().any(|&n| y[n] == 1) && ok.iter().any(|&n| y[n] == 0);
+        let fmap = (ok.len() >= 5 && classes).then(|| {
+            let xs: Vec<f64> = ok.iter().map(|&n| score[n]).collect();
+            let ys: Vec<f64> = ok.iter().map(|&n| f64::from(y[n])).collect();
+            Iso::fit(&xs, &ys, 0.005, 0.995)
+        });
+        let mut model = Model {
+            hz: hz.expect("fitted"),
+            fmap,
+            base,
+            nan_p,
+            rmap: None,
+            u: 0.0,
+            rate: 0.0,
+        };
+        let prow = row_prob(&s, &model.pf(&s), rows.len());
+        let tr: Vec<usize> = (0..rows.len())
+            .filter(|&i| rows[i].label.is_some() && nf[i] > 0)
+            .collect();
+        if !tr.is_empty() {
+            let unsure = tr
+                .iter()
+                .filter(|&&i| rows[i].label == Some(Label::Unsure))
+                .count();
+            model.u = unsure as f64 / tr.len() as f64;
+        }
+        let m: Vec<usize> = tr
+            .iter()
+            .copied()
+            .filter(|&i| rows[i].label != Some(Label::Unsure))
+            .collect();
+        let ym: Vec<f64> = m
+            .iter()
+            .map(|&i| f64::from(u8::from(rows[i].label == Some(Label::True))))
+            .collect();
+        let pos = ym.iter().filter(|&&v| v == 1.0).count();
+        model.rmap = (m.len() >= 5 && pos > 0 && pos < m.len()).then(|| {
+            let xs: Vec<f64> = m.iter().map(|&i| prow[i]).collect();
+            Iso::fit(&xs, &ym, 0.0, 1.0)
+        });
+        let lab: Vec<&ChainRow> = rows.iter().filter(|r| r.label.is_some()).collect();
+        let trues = lab.iter().filter(|r| r.label == Some(Label::True)).count();
+        model.rate = trues as f64 / lab.len().max(1) as f64;
+        (model, s)
+    }
+
+    fn predict(&self, rows: &[ChainRow], s: &Scored) -> Vec<ChainOutput> {
+        let prow = row_prob(s, &self.pf(s), rows.len());
+        let band = ((1.0 + self.u) / (2.0 * (1.0 - self.u)) - 0.5).max(0.0);
+        let q = 1.0 - self.u;
         (0..rows.len())
             .map(|i| {
-                let pc = rmap.as_ref().map_or(prow[i], |m| m.predict(prow[i]));
+                let pc = self.rmap.as_ref().map_or(prow[i], |m| m.predict(prow[i]));
                 let mut label = if pc >= 0.5 { Label::True } else { Label::False };
-                if (pc - 0.5).abs() < band || nf[i] == 0 {
+                if (pc - 0.5).abs() < band || s.nf[i] == 0 {
                     label = Label::Unsure;
                 }
                 let raw = q * if label == Label::True { pc } else { 1.0 - pc };
-                let facts = fstart[i]..fstart[i] + nf[i];
+                let facts = s.fstart[i]..s.fstart[i] + s.nf[i];
                 ChainOutput {
                     label,
                     confidence: (label != Label::Unsure).then(|| raw.max(0.5)),
                     p_true: pc,
-                    evidence: facts.clone().any(|n| !score[n].is_nan()),
-                    best_values: facts.clone().map(|n| best[n].clone()).collect(),
-                    scores: facts.map(|n| score[n]).collect(),
+                    evidence: facts.clone().any(|n| !s.score[n].is_nan()),
+                    best_values: facts.clone().map(|n| s.best[n].clone()).collect(),
+                    scores: facts.map(|n| s.score[n]).collect(),
                     p_row: prow[i],
                 }
             })
+            .collect()
+    }
+}
+
+fn row_prob(s: &Scored, pf: &[f64], n: usize) -> Vec<f64> {
+    let mut prow = vec![1.0; n];
+    for (k, &r) in s.frow.iter().enumerate() {
+        prow[r] *= pf[k];
+    }
+    prow
+}
+
+fn two_class(rows: &[ChainRow]) -> bool {
+    let has = |l| rows.iter().any(|r| r.label == Some(l));
+    has(Label::True) && has(Label::False)
+}
+
+/// Chain labels for every row plus the true share of the labelled rows the model was fitted on.
+pub struct ChainRun {
+    pub rows: Vec<ChainOutput>,
+    pub rate: f64,
+}
+
+/// `Std.run`: fit on the labelled rows and label every row. When the labelled rows do not hold
+/// both true and false, the model is fitted on `fallback` (practice, every row labelled) and
+/// applied to `rows`, as `Std.fit` does. None when neither is two-class.
+pub fn run(rows: &[ChainRow], fallback: Option<&[ChainRow]>) -> Option<ChainRun> {
+    if two_class(rows) {
+        let (model, s) = Model::fit(rows);
+        return Some(ChainRun {
+            rows: model.predict(rows, &s),
+            rate: model.rate,
+        });
+    }
+    let fallback = fallback.filter(|f| two_class(f))?;
+    let (model, _) = Model::fit(fallback);
+    let (s, _) = score_world(rows, Some(&model.hz));
+    Some(ChainRun {
+        rows: model.predict(rows, &s),
+        rate: model.rate,
+    })
+}
+
+/// Confidence scale of the shipped labeller: accuracy over mean confidence of the guarded
+/// chain's decided rows, fitted once on practice P80 (T2 SPEC-G1, `rfac.json`). Constant by
+/// design: the hidden rows of a competition run have no labels to refit it.
+pub const CONF_SCALE: f64 = 0.972343066499685;
+
+/// The shipped labeller (T2 SPEC-G1): the chain, then G1 (an unlabelled row with no parsed
+/// fact is true with confidence max(0.5, rate)), then every decided confidence scaled by
+/// [`CONF_SCALE`] and clipped to [0.5, 1]. Labelled rows keep the chain's output.
+pub fn guarded(
+    rows: &[ChainRow],
+    fallback: Option<&[ChainRow]>,
+) -> Option<Vec<(Label, Option<f64>)>> {
+    let run = run(rows, fallback)?;
+    Some(
+        rows.iter()
+            .zip(run.rows)
+            .map(|(row, out)| {
+                let (label, conf) = if row.label.is_none() && row.facts.is_empty() {
+                    (Label::True, Some(run.rate.max(0.5)))
+                } else {
+                    (out.label, out.confidence)
+                };
+                (label, conf.map(|c| (c * CONF_SCALE).clamp(0.5, 1.0)))
+            })
             .collect(),
     )
+}
+
+/// Rows of a labelled practice file in id order with `pages_of` pages (consecutive numeric ids),
+/// as `world.py:_practice` builds the transfer world.
+pub fn practice_rows(practice: &[crate::InputRow], lex: &KbLexicon) -> Vec<ChainRow> {
+    let num = |id: &str| id.rsplit('-').next().and_then(|n| n.parse::<i64>().ok());
+    let mut sorted: Vec<&crate::InputRow> = practice.iter().collect();
+    if sorted.iter().all(|r| num(&r.id).is_some()) {
+        sorted.sort_by_key(|r| num(&r.id));
+    }
+    let ids: Option<Vec<i64>> = sorted.iter().map(|r| num(&r.id)).collect();
+    universe_rows(&sorted, ids.as_deref(), |r| lex.model_facts(&r.form))
+}
+
+fn universe_rows<F>(rows: &[&crate::InputRow], ids: Option<&[i64]>, facts: F) -> Vec<ChainRow>
+where
+    F: Fn(&crate::InputRow) -> Vec<KbFact>,
+{
+    let dates: Vec<i64> = rows
+        .iter()
+        .map(|r| date_ordinal(&r.date).unwrap_or(0))
+        .collect();
+    let labels: Vec<Option<Label>> = rows.iter().map(|r| Label::parse(&r.label)).collect();
+    let labelled: Vec<bool> = labels.iter().map(Option::is_some).collect();
+    let page = pages_of(&dates, &labelled, ids);
+    rows.iter()
+        .enumerate()
+        .map(|(i, r)| ChainRow {
+            date: dates[i],
+            page: page[i],
+            label: labels[i],
+            facts: facts(r),
+        })
+        .collect()
+}
+
+/// Pipeline adapter (switch `VERIDYCT_KB_CHAIN=1` in the CLI): relabel the unlabelled
+/// predictions with [`guarded`]. Facts: a labelled row's own form (the embedded practice gold
+/// form for practice texts), else the facts the pipeline used for that row. Pages follow input
+/// order. `practice` is the one-class fallback. Returns the number of relabelled rows, or None
+/// (predictions untouched) when no two-class fit exists.
+pub fn relabel(
+    rows: &[crate::InputRow],
+    predictions: &mut [crate::Prediction],
+    lexicon: &Value,
+    practice: &[crate::InputRow],
+) -> Option<usize> {
+    let lex = KbLexicon::new(lexicon);
+    let by_id: HashMap<&str, &crate::Prediction> =
+        predictions.iter().map(|p| (p.id.as_str(), p)).collect();
+    let refs: Vec<&crate::InputRow> = rows.iter().collect();
+    let chain_rows = universe_rows(&refs, None, |r| {
+        let form = if Label::parse(&r.label).is_some() && !r.form.is_empty() {
+            &r.form
+        } else {
+            by_id.get(r.id.as_str()).map_or(&r.form, |p| &p.facts)
+        };
+        lex.model_facts(form)
+    });
+    let fallback = practice_rows(practice, &lex);
+    let labels = guarded(&chain_rows, Some(&fallback))?;
+    let index: HashMap<&str, usize> = rows
+        .iter()
+        .enumerate()
+        .map(|(i, r)| (r.id.as_str(), i))
+        .collect();
+    let mut changed = 0;
+    for p in predictions.iter_mut() {
+        if p.known_label.as_deref().is_some_and(|l| !l.is_empty()) {
+            continue;
+        }
+        let Some(&i) = index.get(p.id.as_str()) else {
+            continue;
+        };
+        let (label, conf) = labels[i];
+        p.label = label.as_str().into();
+        p.confidence = conf;
+        let c = conf.unwrap_or(1.0);
+        p.probabilities = match label {
+            Label::True => crate::Probabilities {
+                p_true: c,
+                p_false: 1.0 - c,
+                p_unsure: 0.0,
+            },
+            Label::False => crate::Probabilities {
+                p_true: 1.0 - c,
+                p_false: c,
+                p_unsure: 0.0,
+            },
+            Label::Unsure => crate::Probabilities {
+                p_true: 0.0,
+                p_false: 0.0,
+                p_unsure: 1.0,
+            },
+        };
+        p.reason = format!(
+            "KB temporal chain (F2) over labelled anchors and other-page statements{}.",
+            if chain_rows[i].facts.is_empty() {
+                "; no parsed fact, empty-extraction guard"
+            } else {
+                ""
+            }
+        );
+        changed += 1;
+    }
+    Some(changed)
 }
 
 #[cfg(test)]
@@ -1217,8 +1556,14 @@ mod tests {
         assert_eq!(attr_key("  Reliability - Lead "), "reliability_lead");
         assert_eq!(ordinal(2026, 1, 12), Some(739628));
         assert_eq!(date_interval("2024-02"), Some((738917, 738945)));
-        assert_eq!(pages_of(&[1, 1, 2, 2], &[true, true, true, false], None), vec![0, 0, 1, 2]);
-        assert_eq!(pava(vec![1.0, 3.0, 2.0, 4.0], vec![1.0; 4]), vec![1.0, 2.5, 2.5, 4.0]);
+        assert_eq!(
+            pages_of(&[1, 1, 2, 2], &[true, true, true, false], None),
+            vec![0, 0, 1, 2]
+        );
+        assert_eq!(
+            pava(vec![1.0, 3.0, 2.0, 4.0], vec![1.0; 4]),
+            vec![1.0, 2.5, 2.5, 4.0]
+        );
         assert_eq!(
             np_sum(&[1e16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]),
             1.0000000000000008e16

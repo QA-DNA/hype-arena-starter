@@ -106,6 +106,19 @@ fn arena(args: &[String]) -> Result<(), Box<dyn Error>> {
     let mut generation_rows = if canonical_seed { practice } else { Vec::new() };
     generation_rows.extend(rows.iter().cloned());
     let generation = generate_claims(&generation_rows, &predictions, &lexicon, 1_000)?;
+    let mut predictions = predictions;
+    if env::var("VERIDYCT_KB_CHAIN").is_ok_and(|v| v == "1") {
+        // Off by default. Relabels only the unlabelled rows; claims were already built above.
+        let chain_started = Instant::now();
+        let practice = read_csv(include_str!("../../../data/practice.csv"))?;
+        match veridyct_core::kb_chain::relabel(&rows, &mut predictions, &lexicon, &practice) {
+            Some(n) => eprintln!(
+                "KB temporal chain relabelled {n} rows in {:.3}s.",
+                chain_started.elapsed().as_secs_f64()
+            ),
+            None => eprintln!("KB temporal chain: no two-class fit; engine labels kept."),
+        }
+    }
     let csv = output_csv(&predictions, &generation.claims)?;
     atomic_write(&output, csv.as_bytes())?;
     if env::var("VERIDYCT_DIAGNOSTICS").is_ok_and(|v| v == "1") {
