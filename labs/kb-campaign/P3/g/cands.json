@@ -1,0 +1,23 @@
+{
+"f1dyn": "F1/plugins.py:td_post#0",
+"f1accu": "F1/plugins.py:td_post#1",
+"f1post": "F1/plugins.py:td_post",
+"f1page": "F1/plugins.py:page_rel",
+"f1sup": "F1/plugins.py:indep_support",
+"f1copy": "F1/plugins.py:copy_margin",
+"f4prop": "F4/f4graph.py:prop_p",
+"f4propf": "F4/f4graph.py:prop_feats",
+"f4plie": "F4/f4graph.py:page_lie",
+"f4blame": "F4/f4graph.py:blame_feats",
+"f5wnds": "F5/fp.py:w_nds",
+"f5stale": "F5/fp.py:lie_stale",
+"f5swap": "F5/fp.py:lie_swap",
+"f5date": "F5/fp.py:lie_date",
+"f5restate2": "F5/fp.py:restate2",
+"f5plie": "F5/fp.py:src_pagelie",
+"f5uns": "F5/fp.py:uns_tl",
+"f2hmm": "F2/f2feat.py:hmm#0",
+"f2stale": "F2/f2feat.py:stale",
+"null1": "F5/fp.py:nulls#0",
+"null3": "F5/fp.py:nulls#0,1,2"
+}

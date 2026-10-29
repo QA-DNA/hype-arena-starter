@@ -1,0 +1,1 @@
+{"OC_base": {"_cls": "OnChain"}, "OC_flr10": {"_cls": "OnChain", "flr": true, "fC": 10.0}, "OC_Wnds": {"_cls": "OnChain", "fC": 10.0, "fact": ["lie_stale.W_nds"]}, "OC_Wnds_swap": {"_cls": "OnChain", "fC": 10.0, "fact": ["lie_stale.W_nds", "src_pagelie.pg_other_swap"]}, "OC_null1": {"_cls": "OnChain", "fC": 10.0, "fact": ["nulls.n1"]}}

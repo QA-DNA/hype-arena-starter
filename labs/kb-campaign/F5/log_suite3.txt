@@ -1,0 +1,22 @@
+started in tmux (remote tmux session) kbc:F5-suite3
+--- 02:12:44 F5-suite3
+[2026-10-29T00:12:44+00:00] start F5-suite3 (code snapshot runs/F5-suite3)
+--- 02:13:04 F5-suite3
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "extra_features": ["F2/f2feat.py:all"], "plugins": ["src_idblock"]} Ssyn-nr: acc=0.8733 mf1=0.4666 pts=0.8014 ece=0.0694 cov=0.9446 run=16.7s load=0.4s rss=222.0MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "extra_features": ["F2/f2feat.py:all"], "plugins": ["src_idblock"]} Sprac-nt: acc=0.8316 mf1=0.3295 pts=0.6680 ece=0.1395 cov=0.9953 run=3.9s load=0.0s rss=143.6MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "extra_features": ["F2/f2feat.py:all"], "plugins": ["src_idblock"]} Sprac-nr: acc=0.8316 mf1=0.3295 pts=0.6680 ece=0.1395 cov=0.9953 run=4.0s load=0.0s rss=141.5MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "extra_features": ["F2/f2feat.py:all"], "plugins": ["src_idblock"]} Sextdev-jr: acc=0.3653 mf1=0.3010 pts=-0.2695 ece=0.5606 cov=1.0000 run=0.6s load=0.0s rss=129.5MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "extra_features": ["F2/f2feat.py:all"], "plugins": ["src_idblock"]} Ssealed-nr: acc=0.8983 mf1=0.5302 pts=0.8440 ece=0.0517 cov=0.9523 run=18.9s load=0.4s rss=226.2MB
+--- 02:13:25 F5-suite3
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "extra_features": ["F2/f2feat.py:all"], "plugins": ["src_idblock"]} Scal-nt: acc=0.8169 mf1=0.3254 pts=0.6339 ece=0.1807 cov=0.9998 run=23.1s load=0.5s rss=243.8MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "extra_features": ["F2/f2feat.py:all"], "plugins": ["src_idblock"]} Scal-jt: acc=0.8168 mf1=0.3254 pts=0.6340 ece=0.1804 cov=0.9994 run=23.2s load=0.6s rss=243.0MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "extra_features": ["F2/f2feat.py:all"], "plugins": ["src_idblock"]} Sextsealed-nt: acc=0.3503 mf1=0.2070 pts=-0.2994 ece=0.6502 cov=1.0000 run=2.8s load=0.0s rss=138.4MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "extra_features": ["F2/f2feat.py:all"], "plugins": ["src_idblock"]} Sdev-nt: acc=0.8198 mf1=0.3243 pts=0.6401 ece=0.1766 cov=0.9993 run=23.6s load=0.5s rss=241.9MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "extra_features": ["F2/f2feat.py:all"], "plugins": ["src_idblock"]} Sdev-jt: acc=0.8197 mf1=0.3281 pts=0.6399 ece=0.1768 cov=0.9992 run=23.7s load=0.4s rss=241.5MB
+--- 02:13:45 F5-suite3
+DONE 0
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "extra_features": ["F2/f2feat.py:all"], "plugins": ["src_idblock"]} Xdev-jr: acc=0.9620 mf1=0.6768 pts=0.9354 ece=0.0265 cov=0.9865 run=19.9s load=0.4s rss=234.7MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "extra_features": ["F2/f2feat.py:all"], "plugins": ["src_idblock"]} Xdev-jt: acc=0.8197 mf1=0.3281 pts=0.6399 ece=0.1768 cov=0.9992 run=21.6s load=0.6s rss=241.2MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "extra_features": ["F2/f2feat.py:all"], "plugins": ["src_idblock"]} Xsealed-jt: acc=0.8313 mf1=0.3311 pts=0.6633 ece=0.1649 cov=0.9991 run=21.3s load=0.5s rss=231.5MB
+44/44 jobs -> $KBC_ROOT/results/F5-remote.jsonl
+[2026-10-29T00:13:29+00:00] end rc=0

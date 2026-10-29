@@ -1,0 +1,6 @@
+[{"oofmap": false},
+ {"C": 1.0, "feats": ["F1/plugins.py:td_post#0"]},
+ {"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:w_nds"]},
+ {"C": 1.0, "dedup": true, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:w_nds"]},
+ {"oofmap": false, "dedup": true},
+ {"C": 1.0, "feats": ["F5/fp.py:w_nds"], "oofmap": false}]

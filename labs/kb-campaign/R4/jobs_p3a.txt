@@ -1,0 +1,49 @@
+p3a-base-P80-0||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P80|0|
+p3a-base-P80-1||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P80|1|
+p3a-base-P80-2||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P80|2|
+p3a-base-P80-3||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P80|3|
+p3a-base-P80-4||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P80|4|
+p3a-base-P10-0||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|0|
+p3a-base-P10-1||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|1|
+p3a-base-P10-2||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|2|
+p3a-base-P10-3||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|3|
+p3a-base-P10-4||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|4|
+p3a-base-P10-5||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|5|
+p3a-base-P10-6||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|6|
+p3a-base-P10-7||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|7|
+p3a-base-P10-8||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|8|
+p3a-base-P10-9||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|9|
+p3a-base-Sdev-jt||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|Sdev-jt|0|
+p3a-base-Sdev-jr||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|Sdev-jr|0|
+p3a-hp-P80-0|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P80-0 KBC_ROOT=$KBC_ROOT/R4/hp/root|P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P80|0|
+p3a-hp-P80-1|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P80-1 KBC_ROOT=$KBC_ROOT/R4/hp/root|P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P80|1|
+p3a-hp-P80-2|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P80-2 KBC_ROOT=$KBC_ROOT/R4/hp/root|P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P80|2|
+p3a-hp-P80-3|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P80-3 KBC_ROOT=$KBC_ROOT/R4/hp/root|P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P80|3|
+p3a-hp-P80-4|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P80-4 KBC_ROOT=$KBC_ROOT/R4/hp/root|P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P80|4|
+p3a-hp-P10-0|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-0 KBC_ROOT=$KBC_ROOT/R4/hp/root|P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|0|
+p3a-hp-P10-1|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-1 KBC_ROOT=$KBC_ROOT/R4/hp/root|P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|1|
+p3a-hp-P10-2|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-2 KBC_ROOT=$KBC_ROOT/R4/hp/root|P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|2|
+p3a-hp-P10-3|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-3 KBC_ROOT=$KBC_ROOT/R4/hp/root|P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|3|
+p3a-hp-P10-4|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-4 KBC_ROOT=$KBC_ROOT/R4/hp/root|P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|4|
+p3a-hp-P10-5|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-5 KBC_ROOT=$KBC_ROOT/R4/hp/root|P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|5|
+p3a-hp-P10-6|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-6 KBC_ROOT=$KBC_ROOT/R4/hp/root|P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|6|
+p3a-hp-P10-7|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-7 KBC_ROOT=$KBC_ROOT/R4/hp/root|P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|7|
+p3a-hp-P10-8|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-8 KBC_ROOT=$KBC_ROOT/R4/hp/root|P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|8|
+p3a-hp-P10-9|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-9 KBC_ROOT=$KBC_ROOT/R4/hp/root|P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|9|
+p3a-hp-Sdev-jt|KBC_SUITE_DIR=$KBC_ROOT/R4/hp/suite KBC_ROOT=$KBC_ROOT/R4/hp/root|P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|Sdev-jt|0|
+p3a-hp-Sdev-jr|KBC_SUITE_DIR=$KBC_ROOT/R4/hp/suite KBC_ROOT=$KBC_ROOT/R4/hp/root|P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|Sdev-jr|0|
+p3a-sh-P80-0||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P80|0|--shuffle 0
+p3a-sh-P80-1||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P80|1|--shuffle 0
+p3a-sh-P80-2||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P80|2|--shuffle 0
+p3a-sh-P80-3||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P80|3|--shuffle 0
+p3a-sh-P80-4||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P80|4|--shuffle 0
+p3a-sh-P10-0||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|0|--shuffle 0
+p3a-sh-P10-1||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|1|--shuffle 0
+p3a-sh-P10-2||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|2|--shuffle 0
+p3a-sh-P10-3||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|3|--shuffle 0
+p3a-sh-P10-4||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|4|--shuffle 0
+p3a-sh-P10-5||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|5|--shuffle 0
+p3a-sh-P10-6||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|6|--shuffle 0
+p3a-sh-P10-7||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|7|--shuffle 0
+p3a-sh-P10-8||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|8|--shuffle 0
+p3a-sh-P10-9||P3/p3.py:Stack|{"C":1.0,"dec":"iso:arena3","feats":["F1/plugins.py:td_post#0"]}|P10|9|--shuffle 0

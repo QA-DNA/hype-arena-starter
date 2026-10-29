@@ -1,0 +1,54 @@
+wrap-base-P80-0||F3/fusion.py:Wrap|{"calib": "none", "inner": "F2/f2var.py:Chain", "inner_params": {"engine": "viterbi", "eps_a": 0.0005, "lam_scale": 1, "mono": 0.1, "pi_o": 2, "vote_lr": 48}, "policy": "points"}|P80|0|
+wrap-base-P80-1||F3/fusion.py:Wrap|{"calib": "none", "inner": "F2/f2var.py:Chain", "inner_params": {"engine": "viterbi", "eps_a": 0.0005, "lam_scale": 1, "mono": 0.1, "pi_o": 2, "vote_lr": 48}, "policy": "points"}|P80|1|
+wrap-base-P80-2||F3/fusion.py:Wrap|{"calib": "none", "inner": "F2/f2var.py:Chain", "inner_params": {"engine": "viterbi", "eps_a": 0.0005, "lam_scale": 1, "mono": 0.1, "pi_o": 2, "vote_lr": 48}, "policy": "points"}|P80|2|
+wrap-base-P80-3||F3/fusion.py:Wrap|{"calib": "none", "inner": "F2/f2var.py:Chain", "inner_params": {"engine": "viterbi", "eps_a": 0.0005, "lam_scale": 1, "mono": 0.1, "pi_o": 2, "vote_lr": 48}, "policy": "points"}|P80|3|
+wrap-base-P80-4||F3/fusion.py:Wrap|{"calib": "none", "inner": "F2/f2var.py:Chain", "inner_params": {"engine": "viterbi", "eps_a": 0.0005, "lam_scale": 1, "mono": 0.1, "pi_o": 2, "vote_lr": 48}, "policy": "points"}|P80|4|
+wrap-base-P10-0||F3/fusion.py:Wrap|{"calib": "none", "inner": "F2/f2var.py:Chain", "inner_params": {"engine": "viterbi", "eps_a": 0.0005, "lam_scale": 1, "mono": 0.1, "pi_o": 2, "vote_lr": 48}, "policy": "points"}|P10|0|
+wrap-base-P10-1||F3/fusion.py:Wrap|{"calib": "none", "inner": "F2/f2var.py:Chain", "inner_params": {"engine": "viterbi", "eps_a": 0.0005, "lam_scale": 1, "mono": 0.1, "pi_o": 2, "vote_lr": 48}, "policy": "points"}|P10|1|
+wrap-base-P10-2||F3/fusion.py:Wrap|{"calib": "none", "inner": "F2/f2var.py:Chain", "inner_params": {"engine": "viterbi", "eps_a": 0.0005, "lam_scale": 1, "mono": 0.1, "pi_o": 2, "vote_lr": 48}, "policy": "points"}|P10|2|
+wrap-base-Sdev-jt||F3/fusion.py:Wrap|{"calib": "none", "inner": "F2/f2var.py:Chain", "inner_params": {"engine": "viterbi", "eps_a": 0.0005, "lam_scale": 1, "mono": 0.1, "pi_o": 2, "vote_lr": 48}, "policy": "points"}|Sdev-jt|0|
+wrap-hp-P80-0|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P80-0 KBC_ROOT=$KBC_ROOT/R4/hp/root|F3/fusion.py:Wrap|{"calib": "none", "inner": "F2/f2var.py:Chain", "inner_params": {"engine": "viterbi", "eps_a": 0.0005, "lam_scale": 1, "mono": 0.1, "pi_o": 2, "vote_lr": 48}, "policy": "points"}|P80|0|
+wrap-hp-P80-1|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P80-1 KBC_ROOT=$KBC_ROOT/R4/hp/root|F3/fusion.py:Wrap|{"calib": "none", "inner": "F2/f2var.py:Chain", "inner_params": {"engine": "viterbi", "eps_a": 0.0005, "lam_scale": 1, "mono": 0.1, "pi_o": 2, "vote_lr": 48}, "policy": "points"}|P80|1|
+wrap-hp-P80-2|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P80-2 KBC_ROOT=$KBC_ROOT/R4/hp/root|F3/fusion.py:Wrap|{"calib": "none", "inner": "F2/f2var.py:Chain", "inner_params": {"engine": "viterbi", "eps_a": 0.0005, "lam_scale": 1, "mono": 0.1, "pi_o": 2, "vote_lr": 48}, "policy": "points"}|P80|2|
+wrap-hp-P80-3|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P80-3 KBC_ROOT=$KBC_ROOT/R4/hp/root|F3/fusion.py:Wrap|{"calib": "none", "inner": "F2/f2var.py:Chain", "inner_params": {"engine": "viterbi", "eps_a": 0.0005, "lam_scale": 1, "mono": 0.1, "pi_o": 2, "vote_lr": 48}, "policy": "points"}|P80|3|
+wrap-hp-P80-4|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P80-4 KBC_ROOT=$KBC_ROOT/R4/hp/root|F3/fusion.py:Wrap|{"calib": "none", "inner": "F2/f2var.py:Chain", "inner_params": {"engine": "viterbi", "eps_a": 0.0005, "lam_scale": 1, "mono": 0.1, "pi_o": 2, "vote_lr": 48}, "policy": "points"}|P80|4|
+wrap-hp-P10-0|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-0 KBC_ROOT=$KBC_ROOT/R4/hp/root|F3/fusion.py:Wrap|{"calib": "none", "inner": "F2/f2var.py:Chain", "inner_params": {"engine": "viterbi", "eps_a": 0.0005, "lam_scale": 1, "mono": 0.1, "pi_o": 2, "vote_lr": 48}, "policy": "points"}|P10|0|
+wrap-hp-P10-1|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-1 KBC_ROOT=$KBC_ROOT/R4/hp/root|F3/fusion.py:Wrap|{"calib": "none", "inner": "F2/f2var.py:Chain", "inner_params": {"engine": "viterbi", "eps_a": 0.0005, "lam_scale": 1, "mono": 0.1, "pi_o": 2, "vote_lr": 48}, "policy": "points"}|P10|1|
+wrap-hp-P10-2|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-2 KBC_ROOT=$KBC_ROOT/R4/hp/root|F3/fusion.py:Wrap|{"calib": "none", "inner": "F2/f2var.py:Chain", "inner_params": {"engine": "viterbi", "eps_a": 0.0005, "lam_scale": 1, "mono": 0.1, "pi_o": 2, "vote_lr": 48}, "policy": "points"}|P10|2|
+wrap-hp-Sdev-jt|KBC_SUITE_DIR=$KBC_ROOT/R4/hp/suite KBC_ROOT=$KBC_ROOT/R4/hp/root|F3/fusion.py:Wrap|{"calib": "none", "inner": "F2/f2var.py:Chain", "inner_params": {"engine": "viterbi", "eps_a": 0.0005, "lam_scale": 1, "mono": 0.1, "pi_o": 2, "vote_lr": 48}, "policy": "points"}|Sdev-jt|0|
+onc-base-P80-0||F5/onf2.py:OnChain|{"fC": 10.0, "fact": ["lie_stale.W_nds", "src_pagelie.pg_other_swap"]}|P80|0|
+onc-base-P80-1||F5/onf2.py:OnChain|{"fC": 10.0, "fact": ["lie_stale.W_nds", "src_pagelie.pg_other_swap"]}|P80|1|
+onc-base-P80-2||F5/onf2.py:OnChain|{"fC": 10.0, "fact": ["lie_stale.W_nds", "src_pagelie.pg_other_swap"]}|P80|2|
+onc-base-P80-3||F5/onf2.py:OnChain|{"fC": 10.0, "fact": ["lie_stale.W_nds", "src_pagelie.pg_other_swap"]}|P80|3|
+onc-base-P80-4||F5/onf2.py:OnChain|{"fC": 10.0, "fact": ["lie_stale.W_nds", "src_pagelie.pg_other_swap"]}|P80|4|
+onc-base-P10-0||F5/onf2.py:OnChain|{"fC": 10.0, "fact": ["lie_stale.W_nds", "src_pagelie.pg_other_swap"]}|P10|0|
+onc-base-P10-1||F5/onf2.py:OnChain|{"fC": 10.0, "fact": ["lie_stale.W_nds", "src_pagelie.pg_other_swap"]}|P10|1|
+onc-base-P10-2||F5/onf2.py:OnChain|{"fC": 10.0, "fact": ["lie_stale.W_nds", "src_pagelie.pg_other_swap"]}|P10|2|
+onc-base-Sdev-jt||F5/onf2.py:OnChain|{"fC": 10.0, "fact": ["lie_stale.W_nds", "src_pagelie.pg_other_swap"]}|Sdev-jt|0|
+onc-hp-P80-0|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P80-0 KBC_ROOT=$KBC_ROOT/R4/hp/root|F5/onf2.py:OnChain|{"fC": 10.0, "fact": ["lie_stale.W_nds", "src_pagelie.pg_other_swap"]}|P80|0|
+onc-hp-P80-1|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P80-1 KBC_ROOT=$KBC_ROOT/R4/hp/root|F5/onf2.py:OnChain|{"fC": 10.0, "fact": ["lie_stale.W_nds", "src_pagelie.pg_other_swap"]}|P80|1|
+onc-hp-P80-2|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P80-2 KBC_ROOT=$KBC_ROOT/R4/hp/root|F5/onf2.py:OnChain|{"fC": 10.0, "fact": ["lie_stale.W_nds", "src_pagelie.pg_other_swap"]}|P80|2|
+onc-hp-P80-3|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P80-3 KBC_ROOT=$KBC_ROOT/R4/hp/root|F5/onf2.py:OnChain|{"fC": 10.0, "fact": ["lie_stale.W_nds", "src_pagelie.pg_other_swap"]}|P80|3|
+onc-hp-P80-4|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P80-4 KBC_ROOT=$KBC_ROOT/R4/hp/root|F5/onf2.py:OnChain|{"fC": 10.0, "fact": ["lie_stale.W_nds", "src_pagelie.pg_other_swap"]}|P80|4|
+onc-hp-P10-0|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-0 KBC_ROOT=$KBC_ROOT/R4/hp/root|F5/onf2.py:OnChain|{"fC": 10.0, "fact": ["lie_stale.W_nds", "src_pagelie.pg_other_swap"]}|P10|0|
+onc-hp-P10-1|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-1 KBC_ROOT=$KBC_ROOT/R4/hp/root|F5/onf2.py:OnChain|{"fC": 10.0, "fact": ["lie_stale.W_nds", "src_pagelie.pg_other_swap"]}|P10|1|
+onc-hp-P10-2|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-2 KBC_ROOT=$KBC_ROOT/R4/hp/root|F5/onf2.py:OnChain|{"fC": 10.0, "fact": ["lie_stale.W_nds", "src_pagelie.pg_other_swap"]}|P10|2|
+onc-hp-Sdev-jt|KBC_SUITE_DIR=$KBC_ROOT/R4/hp/suite KBC_ROOT=$KBC_ROOT/R4/hp/root|F5/onf2.py:OnChain|{"fC": 10.0, "fact": ["lie_stale.W_nds", "src_pagelie.pg_other_swap"]}|Sdev-jt|0|
+f1v-base-P80-0||F1/f1var.py:Variant|{"E0": 0.85, "Ea": 0.999, "F0": 0.03, "back": 0.005, "lam": 120.0, "method": "dynworld", "select": "arena"}|P80|0|
+f1v-base-P80-1||F1/f1var.py:Variant|{"E0": 0.85, "Ea": 0.999, "F0": 0.03, "back": 0.005, "lam": 120.0, "method": "dynworld", "select": "arena"}|P80|1|
+f1v-base-P80-2||F1/f1var.py:Variant|{"E0": 0.85, "Ea": 0.999, "F0": 0.03, "back": 0.005, "lam": 120.0, "method": "dynworld", "select": "arena"}|P80|2|
+f1v-base-P80-3||F1/f1var.py:Variant|{"E0": 0.85, "Ea": 0.999, "F0": 0.03, "back": 0.005, "lam": 120.0, "method": "dynworld", "select": "arena"}|P80|3|
+f1v-base-P80-4||F1/f1var.py:Variant|{"E0": 0.85, "Ea": 0.999, "F0": 0.03, "back": 0.005, "lam": 120.0, "method": "dynworld", "select": "arena"}|P80|4|
+f1v-base-P10-0||F1/f1var.py:Variant|{"E0": 0.85, "Ea": 0.999, "F0": 0.03, "back": 0.005, "lam": 120.0, "method": "dynworld", "select": "arena"}|P10|0|
+f1v-base-P10-1||F1/f1var.py:Variant|{"E0": 0.85, "Ea": 0.999, "F0": 0.03, "back": 0.005, "lam": 120.0, "method": "dynworld", "select": "arena"}|P10|1|
+f1v-base-P10-2||F1/f1var.py:Variant|{"E0": 0.85, "Ea": 0.999, "F0": 0.03, "back": 0.005, "lam": 120.0, "method": "dynworld", "select": "arena"}|P10|2|
+f1v-base-Sdev-jt||F1/f1var.py:Variant|{"E0": 0.85, "Ea": 0.999, "F0": 0.03, "back": 0.005, "lam": 120.0, "method": "dynworld", "select": "arena"}|Sdev-jt|0|
+f1v-hp-P80-0|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P80-0 KBC_ROOT=$KBC_ROOT/R4/hp/root|F1/f1var.py:Variant|{"E0": 0.85, "Ea": 0.999, "F0": 0.03, "back": 0.005, "lam": 120.0, "method": "dynworld", "select": "arena"}|P80|0|
+f1v-hp-P80-1|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P80-1 KBC_ROOT=$KBC_ROOT/R4/hp/root|F1/f1var.py:Variant|{"E0": 0.85, "Ea": 0.999, "F0": 0.03, "back": 0.005, "lam": 120.0, "method": "dynworld", "select": "arena"}|P80|1|
+f1v-hp-P80-2|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P80-2 KBC_ROOT=$KBC_ROOT/R4/hp/root|F1/f1var.py:Variant|{"E0": 0.85, "Ea": 0.999, "F0": 0.03, "back": 0.005, "lam": 120.0, "method": "dynworld", "select": "arena"}|P80|2|
+f1v-hp-P80-3|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P80-3 KBC_ROOT=$KBC_ROOT/R4/hp/root|F1/f1var.py:Variant|{"E0": 0.85, "Ea": 0.999, "F0": 0.03, "back": 0.005, "lam": 120.0, "method": "dynworld", "select": "arena"}|P80|3|
+f1v-hp-P80-4|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P80-4 KBC_ROOT=$KBC_ROOT/R4/hp/root|F1/f1var.py:Variant|{"E0": 0.85, "Ea": 0.999, "F0": 0.03, "back": 0.005, "lam": 120.0, "method": "dynworld", "select": "arena"}|P80|4|
+f1v-hp-P10-0|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-0 KBC_ROOT=$KBC_ROOT/R4/hp/root|F1/f1var.py:Variant|{"E0": 0.85, "Ea": 0.999, "F0": 0.03, "back": 0.005, "lam": 120.0, "method": "dynworld", "select": "arena"}|P10|0|
+f1v-hp-P10-1|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-1 KBC_ROOT=$KBC_ROOT/R4/hp/root|F1/f1var.py:Variant|{"E0": 0.85, "Ea": 0.999, "F0": 0.03, "back": 0.005, "lam": 120.0, "method": "dynworld", "select": "arena"}|P10|1|
+f1v-hp-P10-2|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-2 KBC_ROOT=$KBC_ROOT/R4/hp/root|F1/f1var.py:Variant|{"E0": 0.85, "Ea": 0.999, "F0": 0.03, "back": 0.005, "lam": 120.0, "method": "dynworld", "select": "arena"}|P10|2|
+f1v-hp-Sdev-jt|KBC_SUITE_DIR=$KBC_ROOT/R4/hp/suite KBC_ROOT=$KBC_ROOT/R4/hp/root|F1/f1var.py:Variant|{"E0": 0.85, "Ea": 0.999, "F0": 0.03, "back": 0.005, "lam": 120.0, "method": "dynworld", "select": "arena"}|Sdev-jt|0|

@@ -1,0 +1,18 @@
+== colforward var=F5/onf2.py:OnChain colkey=stack base={}
+start (0.79724, 0.83131, 0.76317)
+  + lie_stale.A_stale            (0.79822, 0.83553, 0.76091)  (delta mean +0.0010 P80 +0.0042 P10 -0.0023)
+  + lie_stale.A_gapc             (0.79816, 0.83553, 0.7608)  (delta mean +0.0009 P80 +0.0042 P10 -0.0024)
+  + lie_stale.A_nds              (0.79764, 0.83448, 0.7608)  (delta mean +0.0004 P80 +0.0032 P10 -0.0024)
+  + nulls.n1                     (0.79704, 0.83237, 0.76172)  (delta mean -0.0002 P80 +0.0011 P10 -0.0015)
+  + restate2.retro_event_p10     (0.79571, 0.83026, 0.76115)  (delta mean -0.0015 P80 -0.0010 P10 -0.0020)
+  + lie_stale.W_stale            (0.79561, 0.83237, 0.75886)  (delta mean -0.0016 P80 +0.0011 P10 -0.0043)
+  + txt_tuned.undercut_tuned     (0.79555, 0.83184, 0.75925)  (delta mean -0.0017 P80 +0.0005 P10 -0.0039)
+  + src_text.today_conflict      (0.7955, 0.83026, 0.76074)  (delta mean -0.0017 P80 -0.0010 P10 -0.0024)
+  + restate.restate_word         (0.79547, 0.83026, 0.76068)  (delta mean -0.0018 P80 -0.0010 P10 -0.0025)
+  + src_text.exclam              (0.79547, 0.83026, 0.76068)  (delta mean -0.0018 P80 -0.0010 P10 -0.0025)
+  + restate.ref_vote_p10         (0.79532, 0.83026, 0.76038)  (delta mean -0.0019 P80 -0.0010 P10 -0.0028)
+  + lie_stale.A_prem             (0.79521, 0.82973, 0.76068)  (delta mean -0.0020 P80 -0.0016 P10 -0.0025)
+  + src_page.pg_social_share     (0.79516, 0.82762, 0.7627)  (delta mean -0.0021 P80 -0.0037 P10 -0.0005)
+  + src_text.future_phrase       (0.795, 0.83026, 0.75973)  (delta mean -0.0022 P80 -0.0010 P10 -0.0034)
+  best null gain -0.0002 over 10 nulls
+STOP at [] (0.79724, 0.83131, 0.76317)

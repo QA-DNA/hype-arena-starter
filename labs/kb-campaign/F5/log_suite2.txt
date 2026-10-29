@@ -1,0 +1,16 @@
+started in tmux (remote tmux session) kbc:F5-suite2
+--- 02:11:13 F5-suite2
+[2026-10-29T00:11:13+00:00] start F5-suite2 (code snapshot runs/F5-suite2)
+--- 02:11:34 F5-suite2
+F5/onf2.py:OnChain {"fC": 10.0, "fact": ["lie_stale.W_nds"]} Ssyn-nr: acc=0.9670 mf1=0.6427 pts=0.9340 ece=0.0087 cov=1.0000 run=4.7s load=0.3s rss=176.2MB
+F5/onf2.py:OnChain {"fC": 10.0, "fact": ["lie_stale.W_nds", "src_pagelie.pg_other_swap"]} Sdiag-jt: acc=0.5430 mf1=0.4391 pts=0.0894 ece=0.3795 cov=0.9942 run=2.3s load=0.2s rss=151.1MB
+F5/onf2.py:OnChain {"fC": 10.0, "fact": ["lie_stale.W_nds", "src_pagelie.pg_other_swap"]} Sdiag-jr: acc=0.4553 mf1=0.4150 pts=0.0502 ece=0.3562 cov=0.8123 run=2.3s load=0.1s rss=145.7MB
+F5/onf2.py:OnChain {"fC": 10.0, "fact": ["lie_stale.W_nds", "src_pagelie.pg_other_swap"]} Sdiag-nt: acc=0.5420 mf1=0.4379 pts=0.0875 ece=0.3816 cov=0.9944 run=2.2s load=0.1s rss=151.6MB
+F5/onf2.py:OnChain {"fC": 10.0, "fact": ["lie_stale.W_nds", "src_pagelie.pg_other_swap"]} Sdiag-nr: acc=0.4526 mf1=0.3572 pts=-0.0948 ece=0.4148 cov=1.0000 run=2.1s load=0.1s rss=146.4MB
+--- 02:11:54 F5-suite2
+DONE 0
+F5/onf2.py:OnChain {"fC": 10.0, "fact": ["lie_stale.W_nds", "src_pagelie.pg_other_swap"]} Xdev-jt: acc=0.9608 mf1=0.6409 pts=0.9233 ece=0.0174 cov=0.9981 run=4.9s load=0.6s rss=222.5MB
+F5/onf2.py:OnChain {"fC": 10.0, "fact": ["lie_stale.W_nds", "src_pagelie.pg_other_swap"]} Xdev-jr: acc=0.9621 mf1=0.6352 pts=0.9243 ece=0.0165 cov=0.9999 run=5.7s load=0.3s rss=214.3MB
+F5/onf2.py:OnChain {"fC": 10.0, "fact": ["lie_stale.W_nds", "src_pagelie.pg_other_swap"]} Xsealed-jr: acc=0.9580 mf1=0.6339 pts=0.9161 ece=0.0079 cov=0.9997 run=5.7s load=0.4s rss=209.4MB
+132/132 jobs -> $KBC_ROOT/results/F5-remote.jsonl
+[2026-10-29T00:11:46+00:00] end rc=0

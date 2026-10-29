@@ -1,0 +1,52 @@
+started in tmux (remote tmux session) kbc:F5-suite1
+--- 01:57:09 F5-suite1
+[2026-10-28T23:57:09+00:00] start F5-suite1 (code snapshot runs/F5-suite1)
+--- 01:57:29 F5-suite1
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": []} Scal-jt: acc=0.8253 mf1=0.3259 pts=0.6513 ece=0.1711 cov=0.9992 run=10.6s load=1.5s rss=235.2MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": ["lie_stale", "lie_mult"]} Sdiag-jr: acc=0.3359 mf1=0.1723 pts=-0.3283 ece=0.6611 cov=1.0000 run=2.1s load=0.1s rss=162.9MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": ["lie_stale", "lie_mult"]} Sdiag-jt: acc=0.3641 mf1=0.2372 pts=-0.2718 ece=0.6289 cov=1.0000 run=2.6s load=0.2s rss=166.0MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": ["lie_stale", "lie_mult"]} Sdiag-nt: acc=0.3644 mf1=0.2381 pts=-0.2713 ece=0.6261 cov=1.0000 run=2.8s load=0.2s rss=165.3MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": []} Scal-jr: acc=0.9033 mf1=0.5556 pts=0.8331 ece=0.0627 cov=0.9720 run=15.6s load=1.6s rss=232.3MB
+--- 01:57:50 F5-suite1
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": ["lie_stale", "lie_mult"]} Sextsealed-jt: acc=0.3383 mf1=0.1845 pts=-0.3234 ece=0.6587 cov=1.0000 run=1.2s load=0.0s rss=138.2MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": ["lie_stale", "lie_mult", "src_idblock"]} Sdiag-jr: acc=0.3339 mf1=0.1683 pts=-0.3312 ece=0.6646 cov=0.9990 run=2.4s load=0.2s rss=163.9MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": ["lie_stale", "lie_mult", "src_idblock"]} Sdiag-jt: acc=0.3471 mf1=0.2030 pts=-0.3017 ece=0.6455 cov=0.9959 run=2.9s load=0.2s rss=166.4MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": ["lie_stale", "lie_mult", "src_idblock"]} Sdiag-nr: acc=0.3339 mf1=0.1682 pts=-0.3320 ece=0.666 cov=0.9998 run=2.7s load=0.1s rss=164.1MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": ["lie_stale", "lie_mult", "src_idblock"]} Sdiag-nt: acc=0.3468 mf1=0.2030 pts=-0.3017 ece=0.646 cov=0.9954 run=2.8s load=0.2s rss=165.6MB
+--- 01:58:10 F5-suite1
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": [], "stack": ["lie_stale.W_stale", "lie_stale.W_nds", "lie_stale.A_prem", "lie_swap.swap_subj_W", "restate2.retro_event", "src_pagelie.pg_other_any"]} Sdiag-jr: acc=0.3366 mf1=0.1742 pts=-0.3268 ece=0.6622 cov=1.0000 run=2.6s load=0.2s rss=158.4MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": [], "stack": ["lie_stale.W_stale", "lie_stale.W_nds", "lie_stale.A_prem", "lie_swap.swap_subj_W", "restate2.retro_event", "src_pagelie.pg_other_any"]} Sdiag-jt: acc=0.3610 mf1=0.2310 pts=-0.2781 ece=0.622 cov=1.0000 run=3.2s load=0.2s rss=159.8MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": [], "stack": ["lie_stale.W_stale", "lie_stale.W_nds", "lie_stale.A_prem", "lie_swap.swap_subj_W", "restate2.retro_event", "src_pagelie.pg_other_any"]} Sdiag-nt: acc=0.3602 mf1=0.2306 pts=-0.2796 ece=0.6223 cov=1.0000 run=3.0s load=0.2s rss=159.9MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": [], "stack": ["lie_stale.W_stale", "lie_stale.W_nds", "lie_stale.A_prem", "lie_swap.swap_subj_W", "restate2.retro_event", "src_pagelie.pg_other_any"]} Sdiag-nr: acc=0.3337 mf1=0.1677 pts=-0.3322 ece=0.6651 cov=0.9995 run=2.7s load=0.1s rss=158.4MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": [], "stack": ["lie_stale.W_stale", "lie_stale.W_nds", "lie_stale.A_prem", "lie_swap.swap_subj_W", "restate2.retro_event", "src_pagelie.pg_other_any"]} Ssealed-jr: acc=0.8372 mf1=0.3206 pts=0.6754 ece=0.1586 cov=0.9991 run=10.8s load=0.4s rss=231.8MB
+--- 01:58:30 F5-suite1
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": [], "unsure": "conf", "conf_pu": true} Sdiag-jr: acc=0.3337 mf1=0.1676 pts=-0.3327 ece=0.6651 cov=1.0000 run=3.3s load=0.2s rss=159.8MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": [], "unsure": "conf", "conf_pu": true} Sdiag-nr: acc=0.3337 mf1=0.1677 pts=-0.3324 ece=0.6534 cov=0.9998 run=3.1s load=0.1s rss=159.9MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": [], "unsure": "conf", "conf_pu": true} Sdiag-nt: acc=0.3573 mf1=0.2263 pts=-0.2820 ece=0.6153 cov=0.9966 run=4.0s load=0.2s rss=160.7MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": [], "stack": ["lie_stale.W_stale", "lie_stale.W_nds", "lie_stale.A_prem", "lie_swap.swap_subj_W", "restate2.retro_event", "src_pagelie.pg_other_any"]} Xsealed-jr: acc=0.8352 mf1=0.3113 pts=0.6704 ece=0.1618 cov=1.0000 run=11.7s load=0.5s rss=231.7MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": [], "stack": ["lie_stale.W_stale", "lie_stale.W_nds", "lie_stale.A_prem", "lie_swap.swap_subj_W", "restate2.retro_event", "src_pagelie.pg_other_any"]} Xdev-jt: acc=0.8306 mf1=0.3249 pts=0.6613 ece=0.1654 cov=1.0000 run=12.9s load=0.5s rss=231.7MB
+--- 01:58:51 F5-suite1
+F5/f5v.py {"model": "lrC0.05", "scorer_pts": true, "plugins": ["lie_mult"]} Scal-jt: acc=0.8164 mf1=0.3554 pts=0.6328 ece=0.1716 cov=1.0000 run=13.1s load=0.6s rss=243.0MB
+F5/f5v.py {"model": "lrC0.05", "scorer_pts": true, "plugins": ["lie_mult"]} Spilot-jr: acc=0.3683 mf1=0.2448 pts=-0.2635 ece=0.5832 cov=1.0000 run=0.9s load=0.0s rss=138.8MB
+F5/f5v.py {"model": "lrC0.05", "scorer_pts": true, "plugins": ["lie_mult"]} Spilot-nr: acc=0.3563 mf1=0.2284 pts=-0.2874 ece=0.5942 cov=1.0000 run=0.9s load=0.0s rss=138.2MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": [], "unsure": "conf", "conf_pu": true} Xdev-jt: acc=0.8298 mf1=0.3265 pts=0.6603 ece=0.1593 cov=0.9991 run=14.5s load=0.5s rss=232.2MB
+F5/f5v.py {"model": "lrC0.05", "scorer_pts": true, "plugins": ["lie_mult"]} Sextdev-jr: acc=0.3952 mf1=0.3246 pts=-0.2096 ece=0.5475 cov=1.0000 run=0.3s load=0.0s rss=130.1MB
+--- 01:59:11 F5-suite1
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": ["lie_stale", "lie_mult", "lie_swap", "lie_bool", "lie_date", "restate", "src_text", "src_page", "src_pagelie", "uns_tl", "prior", "kind_oh"]} Spilot-jr: acc=0.3802 mf1=0.2762 pts=-0.2395 ece=0.5289 cov=1.0000 run=1.5s load=0.0s rss=146.7MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": ["lie_stale", "lie_mult", "lie_swap", "lie_bool", "lie_date", "restate", "src_text", "src_page", "src_pagelie", "uns_tl", "prior", "kind_oh"]} Spilot-nt: acc=0.3772 mf1=0.2719 pts=-0.2455 ece=0.5346 cov=1.0000 run=1.5s load=0.0s rss=146.8MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": ["lie_stale", "lie_mult", "lie_swap", "lie_bool", "lie_date", "restate", "src_text", "src_page", "src_pagelie", "uns_tl", "prior", "kind_oh"]} Spilot-nr: acc=0.3772 mf1=0.2719 pts=-0.2455 ece=0.5346 cov=1.0000 run=1.5s load=0.0s rss=146.5MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": ["lie_stale", "lie_mult", "lie_swap", "lie_bool", "lie_date", "restate", "src_text", "src_page", "src_pagelie", "uns_tl", "prior", "kind_oh"]} Sdev-nr: acc=0.9137 mf1=0.5832 pts=0.8559 ece=0.0594 cov=0.9693 run=17.0s load=0.4s rss=296.3MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": ["lie_stale", "lie_mult", "lie_swap", "lie_bool", "lie_date", "restate", "src_text", "src_page", "src_pagelie", "uns_tl", "prior", "kind_oh"]} Ssealed-nr: acc=0.8958 mf1=0.5294 pts=0.8111 ece=0.0773 cov=0.9796 run=16.1s load=0.5s rss=286.8MB
+--- 01:59:32 F5-suite1
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": ["lie_stale", "lie_mult", "lie_swap", "lie_bool", "lie_date", "restate", "src_text", "src_page", "src_pagelie", "uns_tl", "prior", "kind_oh"]} Ssyn-nt: acc=0.8655 mf1=0.4299 pts=0.7310 ece=0.1257 cov=1.0000 run=12.1s load=0.7s rss=287.4MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": ["lie_stale", "lie_mult", "lie_swap", "lie_bool", "lie_date", "restate", "src_text", "src_page", "src_pagelie", "uns_tl", "prior", "kind_oh"]} Xsealed-jr: acc=0.8706 mf1=0.4565 pts=0.7660 ece=0.1049 cov=0.9747 run=14.8s load=0.4s rss=286.6MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": ["lie_stale", "lie_mult", "lie_swap", "lie_bool", "lie_date", "restate", "src_text", "src_page", "src_pagelie", "uns_tl", "prior", "kind_oh"]} Xsealed-jt: acc=0.8548 mf1=0.4259 pts=0.7097 ece=0.1353 cov=1.0000 run=15.7s load=0.6s rss=292.0MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": ["lie_stale", "lie_mult", "lie_swap", "lie_bool", "lie_date", "restate", "src_text", "src_page", "src_pagelie", "uns_tl", "prior", "kind_oh"]} Xdev-jr: acc=0.9360 mf1=0.6407 pts=0.8965 ece=0.033 cov=0.9730 run=16.6s load=0.4s rss=296.0MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": ["lie_stale", "lie_mult", "lie_swap", "lie_bool", "lie_date", "restate", "src_text", "src_page", "src_pagelie", "uns_tl", "prior", "kind_oh"]} Xdev-jt: acc=0.8357 mf1=0.4097 pts=0.6713 ece=0.1551 cov=1.0000 run=16.7s load=0.5s rss=301.4MB
+--- 01:59:52 F5-suite1
+DONE 0
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": ["lie_stale", "lie_mult", "lie_swap", "lie_bool", "lie_date", "restate", "src_text", "src_page", "src_pagelie", "uns_tl", "prior", "kind_oh"]} Xsealed-jt: acc=0.8548 mf1=0.4259 pts=0.7097 ece=0.1353 cov=1.0000 run=15.7s load=0.6s rss=292.0MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": ["lie_stale", "lie_mult", "lie_swap", "lie_bool", "lie_date", "restate", "src_text", "src_page", "src_pagelie", "uns_tl", "prior", "kind_oh"]} Xdev-jr: acc=0.9360 mf1=0.6407 pts=0.8965 ece=0.033 cov=0.9730 run=16.6s load=0.4s rss=296.0MB
+F5/f5v.py {"model": "lrC0.1", "scorer_pts": true, "plugins": ["lie_stale", "lie_mult", "lie_swap", "lie_bool", "lie_date", "restate", "src_text", "src_page", "src_pagelie", "uns_tl", "prior", "kind_oh"]} Xdev-jt: acc=0.8357 mf1=0.4097 pts=0.6713 ece=0.1551 cov=1.0000 run=16.7s load=0.5s rss=301.4MB
+308/308 jobs -> $KBC_ROOT/results/F5-remote.jsonl
+[2026-10-28T23:59:32+00:00] end rc=0

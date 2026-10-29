@@ -1,0 +1,21 @@
+0.7784 P80=0.8440 P10=0.7128 ece=0.023/0.059 f4models.py {"extra_features": ["F4/f4graph.py:prop_feats", "F2/f2feat.py:core"], "lap": 0.02, "lap_page": 0.0, "lap_tau": 10.0, "mil": 2} 
+0.7783 P80=0.8429 P10=0.7137 ece=0.022/0.060 f4models.py {"extra_features": ["F4/f4graph.py:prop_feats", "F2/f2feat.py:core"], "lap": 0.03, "lap_page": 0.0, "lap_tau": 10.0, "mil": 2} 
+0.7766 P80=0.8366 P10=0.7167 ece=0.022/0.066 f4models.py {"extra_features": ["F4/f4graph.py:prop_feats"], "lap": 0.02, "lap_page": 0.0, "lap_tau": 10.0, "mil": 2, "phi": 0.95, "pseudo": 2, "pw": 0.3} 
+0.7759 P80=0.8445 P10=0.7073 ece=0.021/0.063 f4models.py {"extra_features": ["F4/f4graph.py:prop_feats", "F2/f2feat.py:core"], "lap": 0.03, "lap_page": 0.0, "lap_tau": 30.0, "mil": 2} 
+0.7749 P80=0.8408 P10=0.7089 ece=0.019/0.061 f4models.py {"extra_features": ["F4/f4graph.py:prop_feats", "F2/f2feat.py:core"], "lap": 0.02, "lap_page": 0.0, "lap_tau": 30.0, "mil": 2} 
+0.7721 P80=0.8376 P10=0.7065 ece=0.022/0.064 f4models.py {"extra_features": ["F4/f4graph.py:prop_feats"], "lap": 0.03, "lap_page": 0.0, "lap_tau": 10.0, "mil": 2} 
+0.7717 P80=0.8397 P10=0.7037 ece=0.024/0.065 f4models.py {"extra_features": ["F4/f4graph.py:prop_feats"], "lap": 0.02, "lap_page": 0.0, "lap_tau": 30.0, "mil": 2} 
+0.7700 P80=0.8376 P10=0.7025 ece=0.022/0.070 f4models.py {"extra_features": ["F4/f4graph.py:prop_feats"], "hi": 0.98, "lap": 0.02, "lap_page": 0.0, "lap_tau": 10.0, "lo": 0.1, "mil": 2, "selftrain": 2} 
+0.7700 P80=0.8408 P10=0.6991 ece=0.021/0.064 f4models.py {"extra_features": ["F4/f4graph.py:prop_feats"], "lap": 0.02, "lap_page": 0.0, "mil": 1} 
+0.7694 P80=0.8366 P10=0.7022 ece=0.024/0.066 f4models.py {"extra_features": ["F4/f4graph.py:prop_feats"], "lap": 0.02, "lap_page": 0.0, "mil": 3} 
+0.7688 P80=0.8376 P10=0.6999 ece=0.021/0.062 f4models.py {"extra_features": ["F4/f4graph.py:prop_feats_t10"], "lap": 0.03, "lap_page": 0.0, "lap_tau": 10.0, "mil": 2} 
+0.7677 P80=0.8361 P10=0.6994 ece=0.023/0.065 f4models.py {"extra_features": ["F4/f4graph.py:prop_feats"], "lap": 0.015, "lap_page": 0.0, "mil": 2} 
+0.7664 P80=0.8345 P10=0.6984 ece=0.021/0.066 f4models.py {"extra_features": ["F4/f4graph.py:prop_feats"], "lap": 0.025, "lap_page": 0.0, "mil": 2} 
+0.7658 P80=0.8345 P10=0.6972 ece=0.022/0.065 f4models.py {"extra_features": ["F4/f4graph.py:prop_feats"], "lap": 0.03, "lap_page": 0.0, "lap_tau": 30.0, "mil": 2} 
+0.7657 P80=0.8313 P10=0.7000 ece=0.023/0.073 f4models.py {"extra_features": ["F4/f4graph.py:prop_feats"], "hi": 0.98, "lap": 0.02, "lap_page": 0.0, "lap_tau": 30.0, "lo": 0.1, "mil": 2, "selftrain": 2} 
+0.7650 P80=0.8339 P10=0.6961 ece=0.019/0.065 f4models.py {"extra_features": ["F4/f4graph.py:prop_feats_t10"], "lap": 0.02, "lap_page": 0.0, "lap_tau": 10.0, "mil": 2} 
+0.7631 P80=0.8313 P10=0.6950 ece=0.021/0.062 f4models.py {"extra_features": ["F4/f4graph.py:prop_feats_t10"], "lap": 0.02, "lap_page": 0.0, "lap_tau": 30.0, "mil": 2} 
+0.7629 P80=0.8355 P10=0.6903 ece=0.021/0.056 f4models.py {"extra_features": ["F4/f4graph.py:prop_feats"], "lap": 0.02, "lap_page": 0.0, "mil": 0} 
+0.7622 P80=0.8350 P10=0.6894 ece=0.021/0.068 f4models.py {"extra_features": ["F4/f4graph.py:prop_feats"], "lap": 0.02, "lap_page": 0.0, "lap_tau": 10.0, "mil": 2} 
+0.7616 P80=0.8292 P10=0.6940 ece=0.024/0.072 f4models.py {"extra_features": ["F4/f4graph.py:prop_feats"], "lap": 0.02, "lap_page": 0.0, "lap_tau": 30.0, "mil": 2, "phi": 0.95, "pseudo": 2, "pw": 0.3} 
+0.7603 P80=0.8313 P10=0.6892 ece=0.022/0.065 f4models.py {"extra_features": ["F4/f4graph.py:prop_feats_t10"], "lap": 0.03, "lap_page": 0.0, "lap_tau": 30.0, "mil": 2} 

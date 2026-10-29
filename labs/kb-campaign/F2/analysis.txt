@@ -1,0 +1,74 @@
+== 1. hazard: P(value unchanged | gap) between consecutive labelled-true anchors of a key
+pairs 1353, same 0.759, global lambda 0.00610/day (mean life 164 d)
+gap bucket | pairs | empirical same | exp(-lambda g) at bucket median
+1-7 d | 254 | 0.969 | 0.982
+8-30 d | 369 | 0.840 | 0.891
+31-90 d | 510 | 0.718 | 0.733
+91-180 d | 166 | 0.470 | 0.490
+181-400 d | 54 | 0.500 | 0.284
+per kind lambda: {'version': 0.01311, 'date': 0.00378, 'quantity': 0.00739, 'money': 0.00437, 'duration': 0.00504, 'percent': 0.00813, 'name': 0.00258, 'boolean': 0.00437}
+per token lambda (>= 8 pairs): {'capacity': 0.00246, 'centres': 0.00671, 'city': 0.00109, 'cto': 0.00213, 'customers': 0.0061, 'date': 0.00671, 'devices': 0.00894, 'employees': 0.00555, 'head': 0.00235, 'headquarters': 0.00271, 'integrations': 0.00437, 'languages': 0.00555, 'launched': 0.00095, 'lead': 0.00194, 'length': 0.00397, 'limit': 0.00416, 'price': 0.00458, 'provider': 0.00132, 'quarter': 0.01192, 'rate': 0.00582, 'rating': 0.00671, 'region': 0.0016, 'regions': 0.00529, 'retention': 0.00235, 'revenue': 0.00853, 'seats': 0.00397, 'served': 0.00671, 'share': 0.0061, 'size': 0.0064, 'sla': 0.00344, 'sold': 0.0125, 'staff': 0.00813, 'storage': 0.00416, 'time': 0.00582, 'trial': 0.00328, 'user': 0.00378, 'users': 0.01083, 'version': 0.01443, 'window': 0.00378, 'zones': 0.00555}
+pairs per kind: {'version': 87, 'date': 80, 'quantity': 578, 'money': 140, 'duration': 131, 'percent': 124, 'name': 129, 'boolean': 84}
+
+== 2. premature vs lie: single-fact rows, latest anchor before D disagrees, next anchor after agrees (N-Y)
+pattern NY: n=256 true rate 0.930
+pattern YN: n=219 true rate 0.890
+pattern NN: n=111 true rate 0.324
+pattern YY: n=573 true rate 1.000
+-- NY split by candidate discriminators (true / false counts, true rate)
+   gap_after=15-60: 94 / 8  rate 0.922
+   gap_after=<=14: 105 / 1  rate 0.991
+   gap_after=>60: 39 / 9  rate 0.812
+   gap_before=15-60: 87 / 7  rate 0.926
+   gap_before=<=14: 25 / 2  rate 0.926
+   gap_before=>60: 126 / 9  rate 0.933
+   position=first third: 17 / 6  rate 0.739
+   position=last third: 155 / 2  rate 0.987
+   position=middle: 66 / 10  rate 0.868
+   direction_up=False: 35 / 2  rate 0.946
+   direction_up=None: 62 / 3  rate 0.954
+   direction_up=True: 141 / 13  rate 0.916
+   value_seen_before_D=False: 231 / 18  rate 0.928
+   value_seen_before_D=True: 7 / 0  rate 1.000
+   kind=boolean: 12 / 1  rate 0.923
+   kind=date: 8 / 1  rate 0.889
+   kind=duration: 24 / 1  rate 0.960
+   kind=money: 17 / 3  rate 0.850
+   kind=name: 12 / 0  rate 1.000
+   kind=percent: 29 / 1  rate 0.967
+   kind=quantity: 106 / 10  rate 0.914
+   kind=version: 30 / 1  rate 0.968
+-- YN split by candidate discriminators (true / false counts, true rate)
+   gap_after=15-60: 77 / 8  rate 0.906
+   gap_after=<=14: 15 / 13  rate 0.536
+   gap_after=>60: 103 / 3  rate 0.972
+   gap_before=15-60: 94 / 9  rate 0.913
+   gap_before=<=14: 37 / 2  rate 0.949
+   gap_before=>60: 64 / 13  rate 0.831
+   position=first third: 75 / 3  rate 0.962
+   position=last third: 32 / 17  rate 0.653
+   position=middle: 88 / 4  rate 0.957
+   direction_up=None: 194 / 24  rate 0.890
+   direction_up=True: 1 / 0  rate 1.000
+   value_seen_before_D=True: 195 / 24  rate 0.890
+   kind=boolean: 13 / 1  rate 0.929
+   kind=date: 6 / 1  rate 0.857
+   kind=duration: 14 / 2  rate 0.875
+   kind=money: 19 / 2  rate 0.905
+   kind=name: 8 / 3  rate 0.727
+   kind=percent: 25 / 5  rate 0.833
+   kind=quantity: 96 / 8  rate 0.923
+   kind=version: 14 / 2  rate 0.875
+
+== 3. P80 hidden facts: does the HMM posterior separate true from false inside each anchor pattern?
+pattern (before, after anchors) | n | true rate | AUC of HMM posterior within pattern
+YY | 512 | 1.000 | n/a
+NY | 240 | 0.921 | 0.884
+YN | 210 | 0.876 | 0.832
+NN | 116 | 0.414 | 0.914
+Y- | 309 | 1.000 | n/a
+N- | 130 | 0.692 | 0.822
+-Y | 345 | 1.000 | n/a
+-N | 164 | 0.738 | 0.833
+-- | 109 | 0.945 | 0.864
+all hidden facts with evidence | 2135 | 0.905 | 0.948

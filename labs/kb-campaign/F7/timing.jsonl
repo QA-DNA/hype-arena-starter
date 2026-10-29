@@ -1,0 +1,3 @@
+{"spec": "F7/mlp.py:Variant", "params": {}, "track": "Sdev-jr", "rows": 20000, "facts": 24434, "labelled": 1897, "threads": 2, "host": "host.local", "refit_s": 6.6, "fit_practice_s": 3.9, "predict_s": 1.8, "peak_rss_mb": 586.8}
+{"spec": "F7/deepsets.py:Variant", "params": {}, "track": "Sdev-jr", "rows": 20000, "facts": 24434, "labelled": 1897, "threads": 2, "host": "host.local", "refit_s": 69.2, "fit_practice_s": 59.0, "predict_s": 0.3, "peak_rss_mb": 1034.7}
+{"spec": "F7/gnn.py:Variant", "params": {}, "track": "Sdev-jr", "rows": 20000, "facts": 24434, "labelled": 1897, "threads": 2, "host": "host.local", "fit_practice_s": 161.6, "predict_s": 0.9, "peak_rss_mb": 1082.2}
