@@ -92,6 +92,7 @@ Compiled and run on a Linux x86-64 CPU box (AMD EPYC 7742), Rust 1.90.0, release
 | One-class fallback | `one_class_world_uses_the_practice_fit` | none without fallback; practice rate and confidences in [0.5, 1] with it |
 | Router | `kb_chain::router_tests` | chain on practice with the seed (every target relabelled); engine unchanged without the seed and on a one-class world; engine unchanged when the chain panics, returns None, a confidence of 0.3 or the wrong length |
 | Engine guards | `explicit_unknowns_and_incomplete_rows_keep_the_engine` | an empty-fact explicit unknown (true under G1 without hints) and an incomplete row the chain calls true keep the engine prediction |
+| Explicit-unknown repro, real binary | practice plus `x,"Holdan team size is explicitly unknown.",2026-10-29,` with the image's parser settings (native extractor, structured parser, exact-length batching) | parser marks `x` explicit unknown; engine `unsure`; switch on: "kept 1 engine rows" and `x` stays `unsure` |
 | Per-key budget | `a_high_cardinality_key_keeps_the_engine_and_finishes_fast` | practice plus 18,000 rows with distinct values on one key: those rows keep the engine, the rest is relabelled, under 0.4 s in release |
 | Workspace | `cargo xtask check`, `cargo xtask test` | both pass (89 tests, 0 failed) |
 
