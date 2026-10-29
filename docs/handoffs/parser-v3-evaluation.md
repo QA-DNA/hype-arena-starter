@@ -1,11 +1,13 @@
 # task_56f1250f119a: independent parser V3 evaluation
 
-- Status: active; harness verified, adapter review and final scoring pending.
+- Status: done for the coordinator's bounded submission scope; harness and
+  immediate safety review delivered, full adapter/final scoring explicitly deferred.
 - Human owner: unassigned.
 - Agent role: independent evaluator/reviewer; no parser implementation ownership.
 - Branch: `teodorbalan/parser-v3-evaluation`.
 - Checkout: `C:\Users\Teodor\orca\workspaces\QA-DNA-JEV\parser-v3-evaluation`.
 - Base: `22fa97b6fe27fcfa8d0bab7ae2e85c10c5386148`.
+- Implementation commit: `fa827a544b4a356dec511b2097cec58fafcc1f3f`.
 - Scope: `tools/parser_v3_evaluation/` and this handoff only.
 - Interface: complete public text/context JSONL to independent AST/status/assertion
   JSONL; no production exports, model, engine, CLI, context module or weights changed.
@@ -68,7 +70,8 @@ hashes. Public hashes were sent to the coordinator before any final prediction.
 - Docker `veridyct:dev`, Rust 1.90, `--network none`, shared registry volume
   `veridyct-mvp-registry`, own target volume
   `veridyct-parser-v3-evaluation-target`: `cargo xtask check` passed
-  (format, Clippy, 361 local links, graph, preserved organizer hashes).
+  (format, Clippy, 371 local links after staging this harness, graph, preserved
+  organizer hashes).
 - Same Docker configuration: `cargo xtask test` passed, 79 workspace tests plus
   empty/doc-test suites. No full neural training or model changes were run.
 - The new Docker target initially required `chown vscode:vscode /work/target`;
@@ -84,9 +87,58 @@ semantics and labels have hand-authored sentinel coverage and manual self-review
 additional human linguistic review remains useful. Semantic unsure accuracy is
 reported with AST coverage because abstention can otherwise inflate it.
 
-The coordinator supplies the Rust adapter and its nuisance variant runs. Review
-development failures before coordinator freeze; keep reserved final wording/gold
-out of messages until freeze. Final scoring requires the documented receipt,
+On 2026-10-29 the coordinator redirected this worker to immediate read-only
+review for submission readiness. The bounded candidate keeps the new logical
+AST experimental/off by default. The dedicated challenge adapter was not yet
+implemented, and neither development parser scoring nor held-out parser scoring
+ran. No new accuracy estimate is claimed. The reserved final remains untouched
+by a solver, its gold undisclosed, and no final one-shot marker exists.
+
+The coordinator can dispatch a follow-up for the Rust adapter and nuisance runs.
+Review development failures before coordinator freeze; keep reserved final
+wording/gold private until freeze. Final scoring requires the documented receipt,
 hashes all solver/source artifacts, and opens gold only after an exclusive marker.
-Missing adapter variants remain untested. Implementation/delivery commits will
-be recorded before completion.
+Missing adapter variants remain untested.
+
+## Immediate safety review
+
+Read-only target: `parser-v3-integration` engine empty/incomplete guards,
+`latest_history_judgement`, CLI owner filtering, and `ClaimContext`. No production
+file was edited by this worker. The reproducible controlled helper probe lives
+under ignored `artifacts/parser-v3-evaluation/review-probe/`; it supplies explicit
+synthetic proposals to isolate guard behavior and is not a model accuracy test.
+
+Two concrete issues were reported to the coordinator before settlement:
+
+1. A valid public alias in `Chrome's stable version is v12.4.` was classified as
+   `ambiguous_common_word` by the conservative normalizer and then deleted by the
+   new owner whitelist. This was collateral rejection of a legitimate owner.
+2. `Emberkeep offers EUR 17 per month and competes with Hooly AI Pro.` retained a
+   hallucinated `Hooly AI Pro/price` proposal because the known entity occurred
+   as an object. With one same-day price anchor the engine returned true at 0.94
+   and described graph entailment of the extracted assertion.
+
+The coordinator repaired both in `grounded_owner`. Running the same probe against
+preserved before/after CLI source snapshots confirmed:
+
+| Control | Before | After |
+| --- | --- | --- |
+| Chrome possessive alias | Correct fact erased | Correct fact retained; unsure without evidence |
+| Foreign company with known object | Wrong-owner fact; true | Empty parse; unsure |
+| Explicit canonical plan owner | Correct fact; true | Correct fact; true |
+| Foreign owner without a known mention | Empty parse; unsure | Empty parse; unsure |
+
+`review-probe/run.py` reproduces both snapshots using Docker `veridyct:dev`, no
+network, a read-only root source bind, the shared registry, and this worker's own
+target volume. `before-output.txt`, `after-output.txt`, `parser_before.rs`,
+`parser_after.rs`, and `review.json` preserve actual output and source hashes.
+The preserved probe root base was `7df79c2e542069855805ec5988ea72a5f308d577` plus the
+owner-filter fix recorded by `review.json`. An explicit-document context control
+also rewrote `Its uptime SLA` to the declared Hooly Cloud antecedent.
+
+The supplied unlabelled 20-row safety output had zero definitive empty parses;
+its preserved baseline had seven. This is a guard-behavior check with no truth
+gold, not an accuracy measurement. General ownership recognition remains bounded
+by the parser and explicit object phrases; the review does not establish a
+complete English role grammar. Full challenge coverage and nuisance invariance
+await the deferred adapter work.
