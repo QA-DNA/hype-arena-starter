@@ -1,7 +1,7 @@
 //! Shared MVP interface; probabilities are model scores, not certified truth.
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
-use std::collections::BTreeSet;
+use std::collections::{BTreeMap, BTreeSet};
 
 #[derive(Clone, Debug, Default, Serialize, Deserialize)]
 #[serde(default)]
@@ -14,6 +14,9 @@ pub struct ExtractionHints {
     /// The text explicitly says a value is unknown, independently of extraction
     /// coverage. Statistical fallback must not turn that into a factual value.
     pub explicit_unknown: BTreeSet<String>,
+    /// Logical statements whose meaning cannot be represented by a positive
+    /// conjunction of facts. They must retain their AST through verification.
+    pub programs: BTreeMap<String, crate::claim_program::ClaimProgram>,
 }
 
 #[derive(Clone, Debug, Default, Serialize, Deserialize)]

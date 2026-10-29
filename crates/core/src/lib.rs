@@ -2,6 +2,7 @@
 
 pub mod boosted;
 pub mod claim_context;
+pub mod claim_program;
 pub mod claims;
 pub mod engine;
 pub mod extraction;
