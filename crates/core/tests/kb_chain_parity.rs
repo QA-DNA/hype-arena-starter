@@ -90,6 +90,7 @@ fn practice_folds_match_python() {
     let (mut p80, mut n80, mut p10) = (0.0, 0usize, Vec::new());
     let (mut bad_all, mut n_all, mut diff_all) = (0, 0, 0.0f64);
     let mut max_states = 0;
+    let mut sums = (0, 0);
     for (name, mask, expected) in &folds {
         let rows: Vec<ChainRow> = (0..practice.len())
             .map(|i| ChainRow {
@@ -101,6 +102,7 @@ fn practice_folds_match_python() {
             .collect();
         let run = kb_chain::run(&rows, None).expect("two-class fold");
         max_states = max_states.max(run.max_states);
+        sums = (sums.0.max(run.cells), sums.1.max(run.steps));
         assert!(run.rows.iter().all(|o| !o.over_budget));
         let out = run.rows;
         let scored: Vec<usize> = (0..rows.len()).filter(|&i| !mask[page[i]]).collect();
@@ -127,8 +129,10 @@ fn practice_folds_match_python() {
     }
     let p10_mean = p10.iter().sum::<f64>() / p10.len() as f64;
     eprintln!(
-        "practice folds: max key states {max_states} (budget {})",
-        kb_chain::MAX_KEY_STATES
+        "practice folds: max key states {max_states} (budget {}), max cells {} steps {}",
+        kb_chain::MAX_KEY_STATES,
+        sums.0,
+        sums.1
     );
     eprintln!(
         "P80 pooled points {:.4}; P10 mean points {:.4} over {} seeds; parity {}/{} labels, max diff {diff_all:e}",
@@ -175,11 +179,13 @@ fn sdev_world_matches_python_when_available() {
     assert!(run.rows.iter().all(|o| !o.over_budget));
     let (bad, n, diff) = compare(&run.rows, &expected);
     eprintln!(
-        "Sdev-jt: {} rows in {:.3}s; labels identical {}/{n}, max confidence diff {diff:e}, max key states {}",
+        "Sdev-jt: {} rows in {:.3}s; labels identical {}/{n}, max confidence diff {diff:e}, max key states {}, cells {}, steps {}",
         rows.len(),
         started.elapsed().as_secs_f64(),
         n - bad,
-        run.max_states
+        run.max_states,
+        run.cells,
+        run.steps
     );
     assert_eq!(bad, 0);
     assert!(diff <= 1e-9);

@@ -111,6 +111,12 @@ fn arena(args: &[String]) -> Result<(), Box<dyn Error>> {
     if env::var("VERIDYCT_KB_CHAIN").is_ok_and(|v| v == "1") {
         // Off by default. Routes to the chain or keeps the engine; never fails the run.
         // Relabels only the unlabelled rows; claims were already built above.
+        // The engine's output goes to disk first: a kill, timeout or abort inside the chain
+        // leaves a complete engine output.csv, which the routed result then replaces atomically.
+        atomic_write(
+            &output,
+            output_csv(&predictions, &generation.claims)?.as_bytes(),
+        )?;
         let chain_started = Instant::now();
         let engine_predictions = predictions.clone();
         let routed = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
@@ -120,6 +126,7 @@ fn arena(args: &[String]) -> Result<(), Box<dyn Error>> {
                 &lexicon,
                 &extraction_hints,
                 canonical_seed,
+                &|row| engine.practice_match(row).is_some(),
             )
         }))
         .unwrap_or_else(|_| {

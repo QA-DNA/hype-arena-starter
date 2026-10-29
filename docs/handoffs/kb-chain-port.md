@@ -7,6 +7,7 @@
 - Branch and checkout: `worktree-agent-aebb33382791bdb54`, isolated worktree; not pushed
 - Base commit: `e6f687c`
 - Authorized scope and paths: `crates/core/src/kb_chain.rs` (new), `crates/core/src/lib.rs`,
+  `crates/core/src/engine.rs` (the exact practice lookup moved into `Engine::practice_match`, behavior unchanged),
   `crates/cli/src/main.rs` (switch only), `crates/core/tests/kb_chain_parity.rs` and `crates/core/tests/data/`,
   `labs/kb-campaign/F2/export_rust_fixture.py`, this handoff. No organizer file touched.
 - Acceptance criteria: every practice label and every Sdev refit-track label identical to the Python reference and
@@ -63,17 +64,31 @@ sklearn's `_make_unique` merge within 1e-15, the scipy PAVA block arithmetic, `n
   kept when the chain returns no two-class fit, returns output of the wrong length or with a confidence outside
   [0.5, 1], or panics: the chain runs inside `catch_unwind`, predictions are written only after its whole output
   validates, and the CLI wraps the router in a second `catch_unwind` that restores the engine's predictions (the
-  release profile does not set `panic = "abort"`). One stderr line "Labeller: ..." names the labeller and the reason,
-  and the diagnostics JSON gets the same text as `labeller` when the switch is on.
+  release profile does not set `panic = "abort"`). Before the router runs, the CLI writes the engine's `output.csv`
+  atomically, then replaces it atomically with the routed result, so a kill, timeout or allocator abort inside the
+  chain leaves a complete engine output on disk; with the switch off there is no extra write. One stderr line
+  "Labeller: ..." names the labeller, the reason, the rows kept and the load (largest key state count, world sums of
+  S*n and T*S^2), and the diagnostics JSON gets the same text as `labeller` when the switch is on.
 - **Engine guards kept per row**: an unlabelled row the parser marked `explicit_unknown` keeps the engine's
   prediction (the engine abstains on it; G1 would have made an empty-fact unknown true), and a row marked
   `incomplete` keeps it when the chain would call it true (a parsed subset cannot prove the whole conjunction, as in
-  the engine; a chain false or unsure stands). Practice has no explicit-unknown phrase, so parity is unaffected.
-- **Per-key budget**, checked before any dense matrix is built: a key holds S states (distinct equality values plus
-  "other") over n facts and T dates, costing about 4Sn + 3ST + S^2 floats and 2TS^2 Viterbi steps. A key with
-  S > `MAX_KEY_STATES` (1,024, counted with an early exit), S(n + T) > `MAX_KEY_CELLS` (2^22) or TS^2 >
-  `MAX_KEY_STEPS` (2^30) is not scored; its rows are `over_budget`, `guarded` returns None for them and the router
-  keeps their engine predictions. Measured maximum S: 7 on the practice folds, 18 on the Sdev refit world (gold
+  the engine; a chain false or unsure stands). An unlabelled row whose normalized text and date equal a labelled
+  embedded practice example keeps the engine prediction too: the engine answers it with that example's known label
+  through the same lookup (`Engine::practice_match`, the CLI passes it to the router), so this is the gold label of
+  the identical statement, not a fit to practice. Practice has no explicit-unknown phrase and the parity fixtures do
+  not go through the router, so parity is unaffected.
+- **Budgets**, checked before any dense matrix is built: a key holds S states (distinct equality values plus "other")
+  over n facts and T dates; its S x n agreement matrix lives until the world is scored, scoring it briefly needs about
+  3Sn + 3ST more floats, and its Viterbi passes cost 2TS^2 steps. Per key: S > `MAX_KEY_STATES` (1,024, counted with
+  an early exit), S(n + T) > `MAX_KEY_CELLS` (2^22) or TS^2 > `MAX_KEY_STEPS` (2^30) skips the key. Per world, keys
+  are admitted cheapest first (by TS^2, then Sn, then first appearance) while the running sums stay within
+  `WORLD_CELLS` (2^25 cells of S x n, 256 MiB) and `WORLD_STEPS` (2^33 steps of TS^2, under 30 s at the 2 to 3.2 ns
+  per step implied by the Opus single-key timings below); the rest are skipped, so many keys each just under the
+  per-key caps cannot add up to a blowup and a few huge keys cannot crowd out ordinary ones. A skipped key's rows
+  are `over_budget`, `guarded` returns None for them and the router keeps their engine predictions. Measured world
+  sums (S*n, T*S^2): practice folds at most 8,165 and 28,055; P390 with the production parser 8,264 and 29,673;
+  Sdev refit world 157,551 and 811,021; suite worlds with the engine's own extraction (seed check bypassed in a measurement build only) at most 38,219 and 251,108 (calibration-20000; development-20000 32,230 and 187,066, sealed-20000 24,941 and 141,722, diagnostic-6000 3,561 and 13,936). Cells stay at least 200 times and steps at least 10,000 times under the
+  budgets. Measured maximum S: 7 on the practice folds, 18 on the Sdev refit world (gold
   forms) and 18 on the suite worlds with the pipeline's own extraction (development-20000 15, calibration-20000 18, sealed-20000 16, diagnostic-6000 8, the three external worlds 10 to 15; measured with the seed check bypassed in a measurement build only). The cap is 57 times that maximum. Opus measured 1,000 states at 4.5 s, 2,500 at 49.5 s and 5,000 at 243 s and 1.1 GB. Without the cap, 18,000 distinct values on one key need about 7 GiB.
 - **Extension point**: `ChainOutput` exposes per fact the chain score (NaN without other-page evidence), the most
   likely value of the key at the row's date with the own page removed (`best_values`), the row product and an
@@ -94,7 +109,11 @@ Compiled and run on a Linux x86-64 CPU box (AMD EPYC 7742), Rust 1.90.0, release
 | Engine guards | `explicit_unknowns_and_incomplete_rows_keep_the_engine` | an empty-fact explicit unknown (true under G1 without hints) and an incomplete row the chain calls true keep the engine prediction |
 | Explicit-unknown repro, real binary | practice plus `x,"Holdan team size is explicitly unknown.",2026-10-29,` with the image's parser settings (native extractor, structured parser, exact-length batching) | parser marks `x` explicit unknown; engine `unsure`; switch on: "kept 1 engine rows" and `x` stays `unsure` |
 | Per-key budget | `a_high_cardinality_key_keeps_the_engine_and_finishes_fast` | practice plus 18,000 rows with distinct values on one key: those rows keep the engine, the rest is relabelled, under 0.4 s in release |
-| Workspace | `cargo xtask check`, `cargo xtask test` | both pass (89 tests, 0 failed) |
+| World budgets | `world_budgets_skip_the_later_of_many_large_keys` | 200 keys of 1,024 states over 365 dates (each within the per-key caps): the first 22 are admitted, the other 178 skipped, an ordinary key that appears last is still admitted, both sums within budget |
+| Practice matches | `exact_practice_matches_keep_the_engine` | every target an exact practice match: nothing relabelled, predictions unchanged |
+| Every-fifth, real binary | practice with every fifth label hidden, embedded practice intact, production parser and verifier, switch on | "kept 380 engine rows"; 380/380 correct, as production |
+| P390, real binary | T1's P390 build (embedded practice = the 1,507 training rows), production parser and verifier, switch on | relabels 387, keeps 3 (explicit unknown or incomplete; none of the 390 is an exact match); `output.csv` sha256 `e348c8576faed95836e25250e8316e82b99600905686f98ff0e4a545536197e3`, identical to the `3369ee7` build |
+| Workspace | `cargo xtask check`, `cargo xtask test` | both pass (91 tests, 0 failed) |
 
 The practice fixture [kb-chain-practice.txt](../../crates/core/tests/data/kb-chain-practice.txt) (labelled-page
 masks for P80 folds 0-4 and P10 seeds 0-9, expected predictions as f64 bits for the folds above, 204 KB) is

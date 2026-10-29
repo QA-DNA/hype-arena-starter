@@ -288,6 +288,23 @@ impl Engine {
         self.predict_using(rows, true, false, hints)
     }
 
+    /// The labelled practice example with this row's normalized text and date, when every such
+    /// example agrees on the label. With the canonical seed the engine answers the row with it.
+    pub fn practice_match(&self, row: &InputRow) -> Option<&InputRow> {
+        let matches: Vec<_> = self
+            .exact
+            .get(&normalize(&row.text))?
+            .iter()
+            .map(|&i| &self.examples[i].row)
+            .filter(|example| example.date == row.date)
+            .collect();
+        let first = *matches.first()?;
+        matches
+            .iter()
+            .all(|example| example.label == first.label)
+            .then_some(first)
+    }
+
     /// The competition includes the canonical practice rows. Other evaluation
     /// worlds may reuse its schema but have different facts: never import the
     /// canonical world's truth merely because its parser was used for training.
@@ -448,30 +465,21 @@ impl Engine {
             reason="Gradient-boosted verifier estimate from structured assertion/evidence features; scores are not independently calibrated.".into();
         }
         let mut memory = None;
-        if let Some(indices) = self.exact.get(&normalize(&row.text)).filter(|_| use_seed) {
-            let matches: Vec<_> = indices
-                .iter()
-                .map(|&i| &self.examples[i].row)
-                .filter(|example| example.date == row.date)
-                .collect();
-            if let Some(first) = matches.first()
-                && matches.iter().all(|example| example.label == first.label)
-            {
-                memory = class(&first.label);
-                for fact in &first.form {
-                    if evidence.len() < 12
-                        && !evidence
-                            .iter()
-                            .any(|e| e.row_id == first.id && e.fact == *fact)
-                    {
-                        evidence.push(Evidence {
-                            row_id: first.id.clone(),
-                            text: first.text.clone(),
-                            date: first.date.clone(),
-                            label: first.label.clone(),
-                            fact: fact.clone(),
-                        });
-                    }
+        if use_seed && let Some(first) = self.practice_match(row) {
+            memory = class(&first.label);
+            for fact in &first.form {
+                if evidence.len() < 12
+                    && !evidence
+                        .iter()
+                        .any(|e| e.row_id == first.id && e.fact == *fact)
+                {
+                    evidence.push(Evidence {
+                        row_id: first.id.clone(),
+                        text: first.text.clone(),
+                        date: first.date.clone(),
+                        label: first.label.clone(),
+                        fact: fact.clone(),
+                    });
                 }
             }
         }

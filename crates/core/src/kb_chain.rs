@@ -26,16 +26,24 @@ const MONO_A: f64 = 10.0;
 const D0: f64 = 0.03;
 const MIN_PAIRS: usize = 8;
 
-/// Per-key budget, checked before any dense matrix is built. A key's chain holds S states
-/// (distinct equality values plus "other") over n facts and T distinct dates: memory is about
-/// 4*S*n + 3*S*T + S^2 floats and the Viterbi passes cost 2*T*S^2. A key over budget is not
-/// scored; rows with a fact on it are reported `over_budget` and keep the engine's label.
-/// Set far above practice and the 20k suite worlds (see docs/handoffs/kb-chain-port.md).
+/// Budgets, checked before any dense matrix is built. A key's chain holds S states (distinct
+/// equality values plus "other") over n facts and T distinct dates: its S x n agreement matrix
+/// lives until the world is scored, scoring it briefly needs about 3*S*n + 3*S*T more floats, and
+/// its Viterbi passes cost 2*T*S^2 steps. A key over a per-key cap, or one that would push the
+/// world's running sums of S*n or T*S^2 over the world budget, is not scored; rows with a fact
+/// on it are `over_budget` and keep the engine's label. Keys are admitted cheapest first (by
+/// T*S^2, then S*n, then first appearance), so a few huge keys cannot crowd out ordinary ones.
+/// All far above practice and the 20k suite worlds (see docs/handoffs/kb-chain-port.md).
 pub const MAX_KEY_STATES: usize = 1024;
 /// Cap on S*(n+T) for one key (cells of the S x n and S x T matrices).
 pub const MAX_KEY_CELLS: usize = 1 << 22;
 /// Cap on T*S^2 for one key (inner steps of one Viterbi pass).
 pub const MAX_KEY_STEPS: usize = 1 << 30;
+/// World budget on the sum of S*n over scored keys: 2^25 cells, 256 MiB of agreement matrices.
+pub const WORLD_CELLS: usize = 1 << 25;
+/// World budget on the sum of T*S^2 over scored keys: 2^33 steps, under 30 s at the measured
+/// 2 to 3.2 ns per step (both passes).
+pub const WORLD_STEPS: usize = 1 << 33;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Label {
@@ -833,26 +841,9 @@ impl<'a> Key<'a> {
         frow: &[usize],
         rows: &[ChainRow],
         nf: &[usize],
-    ) -> Result<Self, Vec<usize>> {
+    ) -> Self {
         let n = g.len();
         let facts: Vec<&KbFact> = g.iter().map(|&x| flat[x]).collect();
-        let mut rep: Vec<usize> = Vec::new();
-        for (b, f) in facts.iter().enumerate() {
-            if f.eq && !rep.iter().any(|&r| facts[r].canon == f.canon) {
-                rep.push(b);
-                if rep.len() >= MAX_KEY_STATES {
-                    return Err(g);
-                }
-            }
-        }
-        let s = rep.len() + 1;
-        let mut times: Vec<i64> = g.iter().map(|&x| rows[frow[x]].date).collect();
-        times.sort_unstable();
-        times.dedup();
-        let t = times.len();
-        if s * (n + t) > MAX_KEY_CELLS || t * s * s > MAX_KEY_STEPS {
-            return Err(g);
-        }
         let row: Vec<usize> = g.iter().map(|&x| frow[x]).collect();
         let date: Vec<i64> = row.iter().map(|&r| rows[r].date).collect();
         let page: Vec<usize> = row.iter().map(|&r| rows[r].page).collect();
@@ -866,6 +857,13 @@ impl<'a> Key<'a> {
             })
             .collect();
         let eq: Vec<bool> = facts.iter().map(|f| f.eq).collect();
+        let mut rep: Vec<usize> = Vec::new();
+        for (b, f) in facts.iter().enumerate() {
+            if f.eq && !rep.iter().any(|&r| facts[r].canon == f.canon) {
+                rep.push(b);
+            }
+        }
+        let s = rep.len() + 1;
         let mut ag = vec![vec![0.0; n]; s];
         for (si, &r) in rep.iter().enumerate() {
             for b in 0..n {
@@ -879,6 +877,9 @@ impl<'a> Key<'a> {
         for (x, &e) in ag[s - 1].iter_mut().zip(&eq) {
             *x = if e { 0.0 } else { 0.5 };
         }
+        let mut times = date.clone();
+        times.sort_unstable();
+        times.dedup();
         let tix = date
             .iter()
             .map(|d| times.binary_search(d).unwrap_or(0))
@@ -915,7 +916,7 @@ impl<'a> Key<'a> {
         } else {
             None
         };
-        Ok(Key {
+        Key {
             g,
             date,
             page,
@@ -929,7 +930,7 @@ impl<'a> Key<'a> {
             times,
             tix,
             order,
-        })
+        }
     }
 
     fn loglik(&self) -> Vec<Vec<f64>> {
@@ -1076,6 +1077,52 @@ impl<'a> Key<'a> {
     }
 }
 
+/// (S, n, T) of a key, or None when S exceeds [`MAX_KEY_STATES`] (counted with an early exit).
+fn key_size(
+    g: &[usize],
+    flat: &[&KbFact],
+    frow: &[usize],
+    rows: &[ChainRow],
+) -> Option<(usize, usize, usize)> {
+    let mut vals: Vec<&Canon> = Vec::new();
+    for f in g.iter().map(|&x| flat[x]).filter(|f| f.eq) {
+        if !vals.contains(&&f.canon) {
+            vals.push(&f.canon);
+            if vals.len() >= MAX_KEY_STATES {
+                return None;
+            }
+        }
+    }
+    let mut times: Vec<i64> = g.iter().map(|&x| rows[frow[x]].date).collect();
+    times.sort_unstable();
+    times.dedup();
+    Some((vals.len() + 1, g.len(), times.len()))
+}
+
+/// Which keys are scored: within the per-key caps and, cheapest first, within the world budgets.
+/// Returns the flags and the admitted sums of S*n and T*S^2.
+fn admit(sizes: &[Option<(usize, usize, usize)>]) -> (Vec<bool>, usize, usize) {
+    let cost = |(s, n, t): (usize, usize, usize)| (t * s * s, s * n);
+    let mut order: Vec<usize> = (0..sizes.len())
+        .filter(|&k| {
+            sizes[k]
+                .is_some_and(|(s, n, t)| s * (n + t) <= MAX_KEY_CELLS && t * s * s <= MAX_KEY_STEPS)
+        })
+        .collect();
+    order.sort_by_key(|&k| sizes[k].map(cost));
+    let mut ok = vec![false; sizes.len()];
+    let (mut cells, mut steps) = (0, 0);
+    for k in order {
+        let (st, c) = sizes[k].map(cost).unwrap_or_default();
+        if cells + c <= WORLD_CELLS && steps + st <= WORLD_STEPS {
+            ok[k] = true;
+            cells += c;
+            steps += st;
+        }
+    }
+    (ok, cells, steps)
+}
+
 // ------------------------------------------------------------------ hazard
 
 fn lam_grid() -> Vec<f64> {
@@ -1199,6 +1246,9 @@ struct Scored {
     /// Rows with a fact on a key over the budget (see [`MAX_KEY_STATES`]).
     skipped: Vec<bool>,
     max_states: usize,
+    /// Sums of S*n and T*S^2 over the scored keys.
+    cells: usize,
+    steps: usize,
 }
 
 /// Scores every fact; fits the hazard on this world's anchors when `hz` is None.
@@ -1227,12 +1277,18 @@ fn score_world(rows: &[ChainRow], hz: Option<&Hazard>) -> (Scored, Option<Hazard
             groups[k].push(fstart[i] + j);
         }
     }
+    let sizes: Vec<_> = groups
+        .iter()
+        .map(|g| key_size(g, &flat, &frow, rows))
+        .collect();
+    let (ok, cells, steps) = admit(&sizes);
     let mut keys: Vec<Key> = Vec::new();
     let mut skipped = vec![false; rows.len()];
-    for g in groups {
-        match Key::new(g, &flat, &frow, rows, &nf) {
-            Ok(k) => keys.push(k),
-            Err(g) => g.iter().for_each(|&x| skipped[frow[x]] = true),
+    for (g, ok) in groups.into_iter().zip(ok) {
+        if ok {
+            keys.push(Key::new(g, &flat, &frow, rows, &nf));
+        } else {
+            g.iter().for_each(|&x| skipped[frow[x]] = true);
         }
     }
     let max_states = keys.iter().map(|k| k.s).max().unwrap_or(0);
@@ -1263,6 +1319,8 @@ fn score_world(rows: &[ChainRow], hz: Option<&Hazard>) -> (Scored, Option<Hazard
         best,
         skipped,
         max_states,
+        cells,
+        steps,
     };
     (scored, fitted)
 }
@@ -1416,6 +1474,10 @@ pub struct ChainRun {
     pub rate: f64,
     /// Largest state count S among the keys scored on `rows` (budget: [`MAX_KEY_STATES`]).
     pub max_states: usize,
+    /// Sum of S*n over the scored keys (budget: [`WORLD_CELLS`]).
+    pub cells: usize,
+    /// Sum of T*S^2 over the scored keys (budget: [`WORLD_STEPS`]).
+    pub steps: usize,
 }
 
 /// `Std.run`: fit on the labelled rows and label every row. When the labelled rows do not hold
@@ -1428,6 +1490,8 @@ pub fn run(rows: &[ChainRow], fallback: Option<&[ChainRow]>) -> Option<ChainRun>
             rows: model.predict(rows, &s),
             rate: model.rate,
             max_states: s.max_states,
+            cells: s.cells,
+            steps: s.steps,
         });
     }
     let fallback = fallback.filter(|f| two_class(f))?;
@@ -1437,6 +1501,8 @@ pub fn run(rows: &[ChainRow], fallback: Option<&[ChainRow]>) -> Option<ChainRun>
         rows: model.predict(rows, &s),
         rate: model.rate,
         max_states: s.max_states,
+        cells: s.cells,
+        steps: s.steps,
     })
 }
 
@@ -1515,7 +1581,8 @@ pub enum Routed {
     Chain {
         relabelled: usize,
         kept: usize,
-        max_states: usize,
+        /// Largest key state count and the world sums of S*n and T*S^2 of the scored keys.
+        load: (usize, usize, usize),
     },
     /// The engine's labels are kept untouched; the reason is for the log.
     Engine(String),
@@ -1527,10 +1594,10 @@ impl std::fmt::Display for Routed {
             Self::Chain {
                 relabelled,
                 kept,
-                max_states,
+                load: (states, cells, steps),
             } => write!(
                 f,
-                "KB temporal chain (canonical practice seed present, labelled rows hold true and false); relabelled {relabelled} rows, kept {kept} engine rows (explicit unknown, incomplete or over-budget key), max key states {max_states}"
+                "KB temporal chain (canonical practice seed present, labelled rows hold true and false); relabelled {relabelled} rows, kept {kept} engine rows (practice match, explicit unknown, incomplete or over-budget key); max key states {states}, cells {cells}, steps {steps}"
             ),
             Self::Engine(why) => write!(f, "evidence engine ({why})"),
         }
@@ -1545,7 +1612,9 @@ impl std::fmt::Display for Routed {
 /// written after the whole chain output validates, and a panic inside the chain is caught.
 /// Row by row the engine's prediction is kept for an explicit unknown (`hints.explicit_unknown`),
 /// for an incomplete conjunction (`hints.incomplete`) the chain would call true (a parsed subset
-/// cannot prove the whole row, as in the engine), and for a row on an over-budget key.
+/// cannot prove the whole row, as in the engine), for a row on an over-budget key, and for a
+/// row `practice_match` says is a labelled practice example (the engine answers it with that
+/// known label).
 /// Facts: a labelled row's own form (the embedded practice gold form for practice texts), else
 /// the facts the engine used for that row. Pages follow input order.
 pub fn relabel(
@@ -1554,30 +1623,47 @@ pub fn relabel(
     lexicon: &Value,
     hints: &crate::ExtractionHints,
     canonical_seed: bool,
+    practice_match: &dyn Fn(&crate::InputRow) -> bool,
 ) -> Routed {
-    let mut max_states = 0;
-    let routed = relabel_with(rows, predictions, lexicon, hints, canonical_seed, |r| {
-        let run = run(r, None)?;
-        max_states = run.max_states;
-        Some(guard(r, run))
-    });
+    let mut load = (0, 0, 0);
+    let routed = relabel_with(
+        rows,
+        predictions,
+        lexicon,
+        Keep {
+            hints,
+            practice_match,
+        },
+        canonical_seed,
+        |r| {
+            let run = run(r, None)?;
+            load = (run.max_states, run.cells, run.steps);
+            Some(guard(r, run))
+        },
+    );
     match routed {
         Routed::Chain {
             relabelled, kept, ..
         } => Routed::Chain {
             relabelled,
             kept,
-            max_states,
+            load,
         },
         engine => engine,
     }
+}
+
+/// Rows whose engine prediction the router keeps whatever the chain says.
+struct Keep<'a> {
+    hints: &'a crate::ExtractionHints,
+    practice_match: &'a dyn Fn(&crate::InputRow) -> bool,
 }
 
 fn relabel_with<F>(
     rows: &[crate::InputRow],
     predictions: &mut [crate::Prediction],
     lexicon: &Value,
-    hints: &crate::ExtractionHints,
+    keep: Keep,
     canonical_seed: bool,
     chain: F,
 ) -> Routed
@@ -1638,8 +1724,9 @@ where
             kept += 1;
             continue;
         };
-        if hints.explicit_unknown.contains(&p.id)
-            || (label == Label::True && hints.incomplete.contains(&p.id))
+        if (keep.practice_match)(&rows[i])
+            || keep.hints.explicit_unknown.contains(&p.id)
+            || (label == Label::True && keep.hints.incomplete.contains(&p.id))
         {
             kept += 1;
             continue;
@@ -1677,7 +1764,7 @@ where
     Routed::Chain {
         relabelled,
         kept,
-        max_states: 0,
+        load: (0, 0, 0),
     }
 }
 
@@ -1756,17 +1843,25 @@ mod router_tests {
     fn router_uses_the_chain_with_the_seed_and_two_classes() {
         let (rows, mut predictions, lexicon) = world();
         let targets = rows.iter().filter(|r| r.label.is_empty()).count();
-        let routed = relabel(&rows, &mut predictions, &lexicon, &no_hints(), true);
+        let routed = relabel(
+            &rows,
+            &mut predictions,
+            &lexicon,
+            &no_hints(),
+            true,
+            &|_| false,
+        );
         let Routed::Chain {
             relabelled,
             kept,
-            max_states,
+            load: (states, cells, steps),
         } = routed
         else {
             panic!("{routed}")
         };
         assert_eq!((relabelled, kept), (targets, 0));
-        assert!((2..=MAX_KEY_STATES).contains(&max_states));
+        assert!((2..=MAX_KEY_STATES).contains(&states));
+        assert!(cells > 0 && cells <= WORLD_CELLS && steps > 0 && steps <= WORLD_STEPS);
         let decided = predictions
             .iter()
             .filter(|p| p.known_label.is_none() && p.label != "unsure")
@@ -1782,7 +1877,14 @@ mod router_tests {
     fn router_keeps_the_engine_without_seed_or_with_one_class() {
         let (rows, mut predictions, lexicon) = world();
         let before = snapshot(&predictions);
-        let routed = relabel(&rows, &mut predictions, &lexicon, &no_hints(), false);
+        let routed = relabel(
+            &rows,
+            &mut predictions,
+            &lexicon,
+            &no_hints(),
+            false,
+            &|_| false,
+        );
         assert_eq!(
             routed,
             Routed::Engine("canonical practice seed absent".into())
@@ -1797,7 +1899,14 @@ mod router_tests {
         }
         let mut predictions: Vec<Prediction> = one_class.iter().map(engine_prediction).collect();
         let before = snapshot(&predictions);
-        let routed = relabel(&one_class, &mut predictions, &lexicon, &no_hints(), true);
+        let routed = relabel(
+            &one_class,
+            &mut predictions,
+            &lexicon,
+            &no_hints(),
+            true,
+            &|_| false,
+        );
         assert!(matches!(routed, Routed::Engine(_)), "{routed}");
         assert_eq!(snapshot(&predictions), before);
     }
@@ -1813,8 +1922,13 @@ mod router_tests {
             Box::new(|r| Some(vec![Some((Label::True, Some(0.3))); r.len()])),
             Box::new(|_| Some(Vec::new())),
         ];
+        let hints = no_hints();
         for chain in failures {
-            let routed = relabel_with(&rows, &mut predictions, &lexicon, &no_hints(), true, chain);
+            let keep = Keep {
+                hints: &hints,
+                practice_match: &|_| false,
+            };
+            let routed = relabel_with(&rows, &mut predictions, &lexicon, keep, true, chain);
             assert!(matches!(routed, Routed::Engine(_)), "{routed}");
             assert_eq!(snapshot(&predictions), before);
         }
@@ -1827,7 +1941,14 @@ mod router_tests {
         let unknown = rows.iter().position(|r| r.label.is_empty()).unwrap();
         predictions[unknown].facts.clear();
         let fresh = predictions.clone();
-        relabel(&rows, &mut predictions, &lexicon, &no_hints(), true);
+        relabel(
+            &rows,
+            &mut predictions,
+            &lexicon,
+            &no_hints(),
+            true,
+            &|_| false,
+        );
         assert_eq!(predictions[unknown].label, "true");
         let incomplete = (0..rows.len())
             .find(|&i| i != unknown && rows[i].label.is_empty() && predictions[i].label == "true")
@@ -1837,7 +1958,7 @@ mod router_tests {
         hints.explicit_unknown.insert(rows[unknown].id.clone());
         hints.incomplete.insert(rows[incomplete].id.clone());
         let mut predictions = fresh.clone();
-        let routed = relabel(&rows, &mut predictions, &lexicon, &hints, true);
+        let routed = relabel(&rows, &mut predictions, &lexicon, &hints, true, &|_| false);
         assert!(matches!(routed, Routed::Chain { kept: 2, .. }), "{routed}");
         for i in [unknown, incomplete] {
             assert_eq!(snapshot(&predictions[i..=i]), snapshot(&fresh[i..=i]));
@@ -1865,7 +1986,14 @@ mod router_tests {
         let mut predictions: Vec<Prediction> = rows.iter().map(engine_prediction).collect();
         let before = predictions.clone();
         let started = std::time::Instant::now();
-        let routed = relabel(&rows, &mut predictions, &lexicon, &no_hints(), true);
+        let routed = relabel(
+            &rows,
+            &mut predictions,
+            &lexicon,
+            &no_hints(),
+            true,
+            &|_| false,
+        );
         let elapsed = started.elapsed().as_secs_f64();
         let Routed::Chain {
             relabelled, kept, ..
@@ -1880,5 +2008,44 @@ mod router_tests {
             snapshot(&before[synthetic])
         );
         assert!(elapsed < 30.0, "{elapsed}s");
+    }
+
+    #[test]
+    fn exact_practice_matches_keep_the_engine() {
+        let (rows, mut predictions, lexicon) = world();
+        let before = snapshot(&predictions);
+        let targets = rows.iter().filter(|r| r.label.is_empty()).count();
+        // Every target is a practice row, so the engine's exact-match lookup knows its label.
+        let routed = relabel(
+            &rows,
+            &mut predictions,
+            &lexicon,
+            &no_hints(),
+            true,
+            &|_| true,
+        );
+        assert!(
+            matches!(routed, Routed::Chain { relabelled: 0, kept, .. } if kept == targets),
+            "{routed}"
+        );
+        assert_eq!(snapshot(&predictions), before);
+    }
+
+    #[test]
+    fn world_budgets_skip_the_later_of_many_large_keys() {
+        // Review scenario: 200 keys, each 1,023 values over 365 dates, every one within the
+        // per-key caps. Equal costs are admitted in first-appearance order until a world sum
+        // would overflow; an ordinary key that appears last is still admitted (cheapest first).
+        let mut sizes = vec![Some((MAX_KEY_STATES, MAX_KEY_STATES - 1, 365)); 200];
+        sizes.push(Some((8, 40, 30)));
+        sizes.push(None);
+        let (ok, cells, steps) = admit(&sizes);
+        let per_key = 365 * MAX_KEY_STATES * MAX_KEY_STATES;
+        let fit = WORLD_STEPS / per_key;
+        assert!(fit < 200);
+        assert!(ok[..fit].iter().all(|&x| x) && ok[fit..200].iter().all(|&x| !x));
+        assert!(ok[200] && !ok[201]);
+        assert_eq!(steps, fit * per_key + 30 * 8 * 8);
+        assert!(steps <= WORLD_STEPS && cells <= WORLD_CELLS);
     }
 }
