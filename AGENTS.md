@@ -5,10 +5,11 @@ Mihai. The canonical repository is https://github.com/teodorbalan/VERIDYCT.
 
 ## Current state and authority
 
-- The Rust workspace, CLI status command, HTTP workbench, xtask tooling, dev container,
-  and CI configuration exist, along with the user-authorized lexicon normalization
-  and assertion-text CSV pipeline. Typed-value interpretation, the solver and claim
-  generator remain unimplemented; begin those only when a subsequent task requests them.
+- The Rust workspace includes offline lexicon normalization and assertion-text CSV
+  commands alongside the CPU evidence solver, optional native neural extraction,
+  exact temporal constraints, learned verification, MMR generation and HTTP workbench.
+  Teodor authorized implementation on 2026-10-28/29 and committing, integrating and
+  pushing these solutions on 2026-10-29. Read the current handoff for measured limits.
 - Follow the user's current authorized task. A proposed design is not an instruction
   to implement every component, install tools, publish changes, or deploy services.
 - Read the applicable scoped AGENTS.md before editing a directory.

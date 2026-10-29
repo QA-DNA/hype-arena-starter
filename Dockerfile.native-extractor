@@ -1,0 +1,48 @@
+# Build with tools/native_parser/stage.ps1 first. No Python in the final image.
+ARG BUILDER_IMAGE=veridyct:dev
+ARG SOLVER_IMAGE=veridyct:evidence-rust
+FROM ${BUILDER_IMAGE} AS builder
+USER 0
+WORKDIR /build
+COPY crates/extractor/ ./
+RUN --mount=type=cache,id=veridyct-native-extractor-registry,target=/usr/local/cargo/registry \
+    --mount=type=cache,id=veridyct-native-extractor-target,target=/build/target \
+    cargo build --locked --release \
+    && mkdir -p /out \
+    && cp target/release/veridyct-extractor /out/ \
+    && cp -L /usr/lib/x86_64-linux-gnu/libstdc++.so.6 /out/libstdc++.so.6 \
+    && cp -L /lib/x86_64-linux-gnu/libgcc_s.so.1 /out/libgcc_s.so.1
+
+FROM debian:bookworm-slim AS native-base
+WORKDIR /opt/veridyct-extractor
+COPY --from=builder /out/veridyct-extractor ./veridyct-extractor
+COPY --from=builder /out/libstdc++.so.6 /out/libgcc_s.so.1 /usr/lib/x86_64-linux-gnu/
+COPY tools/native_parser/runtime/libonnxruntime.so.1.23.2 ./lib/libonnxruntime.so.1.23.2
+COPY tools/native_parser/runtime/libonnxruntime_providers_shared.so ./lib/libonnxruntime_providers_shared.so
+COPY tools/native_parser/model/model.onnx tools/native_parser/model/meta.json tools/native_parser/model/lexicon.json ./model/
+RUN echo '718c3fb0785d5ea06061b92c32ce4ad35be1bd4c71ae6192efe06f1ab21f0f8a  lib/libonnxruntime.so.1.23.2' | sha256sum -c - \
+    && echo '086ec1d5388f64153d9c63470d126693db9a182c8ce236d3a1119068471b8a0d  lib/libonnxruntime_providers_shared.so' | sha256sum -c - \
+    && ./veridyct-extractor --version
+ENV ORT_DYLIB_PATH=/opt/veridyct-extractor/lib/libonnxruntime.so.1.23.2 \
+    VERIDYCT_EXTRACTOR_BUNDLE=/opt/veridyct-extractor/model \
+    HOME=/tmp XDG_CACHE_HOME=/tmp OMP_NUM_THREADS=2 OPENBLAS_NUM_THREADS=2
+USER 10001
+ENTRYPOINT ["/opt/veridyct-extractor/veridyct-extractor"]
+
+# Optional complete solver; root CLI integration is owned by the coordinator.
+# docker build --target hybrid --build-arg SOLVER_IMAGE=veridyct:evidence-rust \
+#   -f Dockerfile.native-extractor -t veridyct:evidence-native .
+FROM ${SOLVER_IMAGE} AS solver
+FROM native-base AS hybrid
+WORKDIR /app
+COPY --from=solver /app/veridyct /app/veridyct
+COPY --from=solver /app/veridyct-api /app/veridyct-api
+ENV VERIDYCT_NATIVE_EXTRACTOR=/opt/veridyct-extractor/veridyct-extractor \
+    VERIDYCT_ADDR=0.0.0.0:8787
+EXPOSE 8787
+USER 10001
+ENTRYPOINT ["/app/veridyct"]
+CMD ["run"]
+
+# Keep the default build a standalone extractor.
+FROM native-base AS runtime

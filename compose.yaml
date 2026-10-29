@@ -4,6 +4,7 @@ services:
     build:
       context: .
       target: runtime
+    image: veridyct:mvp
     entrypoint: ["/app/veridyct-api"]
     command: []
     init: true

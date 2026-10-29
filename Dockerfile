@@ -1,6 +1,7 @@
 FROM rust:1.90.0-bookworm AS builder
 ARG TARGETARCH
 WORKDIR /workspace
+RUN rustup toolchain install 1.90.0 --profile minimal --component rustfmt --component clippy
 COPY . .
 RUN --mount=type=cache,target=/usr/local/cargo/registry \
     --mount=type=cache,id=veridyct-rust-1.90-release-${TARGETARCH},target=/workspace/target \

@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "measured_at_utc": "2026-10-29T01:36:38.818558+00:00",
+  "status": "passed",
+  "scope": "development extraction diagnostics only; no independent truth-accuracy claim",
+  "task_id": "task_157e41cf4f8c",
+  "base_commit": "d0af1691d49887870eb6dd638cf439afb7e7182d",
+  "source_dirty": true,
+  "api": {
+    "module": "crates/core/src/structured.rs",
+    "sha256": "e04748a7df6a80204bb34c7c47ec3e883b53f85434f29e568d9579195671f3f6",
+    "compile": "SchemaParser::compile(&Value)->Result<Self,String>",
+    "parse": "SchemaParser::parse(&str,&[ValueCandidate],&[Fact])->Parsed",
+    "offsets": "Unicode code-point half-open",
+    "arbitrary_precision_enabled": true
+  },
+  "checks": [
+    {
+      "command": "cargo test --locked --manifest-path tools/structured_parser/Cargo.toml",
+      "result": "passed",
+      "semantic_tests": 24
+    },
+    {
+      "command": "cargo clippy --locked --manifest-path tools/structured_parser/Cargo.toml --all-targets -- -D warnings",
+      "result": "passed"
+    },
+    {
+      "command": "py -3.14 -X utf8 -m unittest discover -s tools/structured_parser -p test_evaluate.py",
+      "result": "passed",
+      "tests": 5
+    },
+    {
+      "command": "cargo xtask check",
+      "result": "passed",
+      "foundation_only": true,
+      "git_mounts_required_on_windows": true
+    },
+    {
+      "command": "cargo xtask test",
+      "result": "passed",
+      "foundation_tests": 23
+    },
+    {
+      "command": "cargo fmt --manifest-path tools/structured_parser/Cargo.toml -- --check",
+      "result": "passed"
+    },
+    {
+      "command": "cargo xtask docs",
+      "result": "passed",
+      "local_links": 124,
+      "graph_nodes": 15,
+      "graph_relationships": 14,
+      "organizer_hashes_match": true
+    }
+  ],
+  "fresh_v3_development": {
+    "baseline": {
+      "rows": 1000,
+      "exact_rows": 243,
+      "exact_rate": 0.243,
+      "tp": 685,
+      "fp": 481,
+      "fn": 1094,
+      "precision": 0.5874785591766724,
+      "recall": 0.3850477796514896
+    },
+    "frozen_candidates_binder": {
+      "rows": 1000,
+      "exact_rows": 998,
+      "exact_rate": 0.998,
+      "tp": 1777,
+      "fp": 0,
+      "fn": 2,
+      "precision": 1.0,
+      "recall": 0.9988757729061271
+    },
+    "binding_candidates_binder": {
+      "rows": 1000,
+      "exact_rows": 1000,
+      "exact_rate": 1.0,
+      "tp": 1779,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0
+    },
+    "literal_unit_exact_rows": {
+      "native": 243,
+      "structured": 998
+    },
+    "normalized_row_delta": {
+      "both_exact": 243,
+      "improved": 757
+    },
+    "anchors": {
+      "rows": 1897,
+      "complete": 1897,
+      "unknown_rows": 889,
+      "unknown_with_facts": 0
+    },
+    "targets": {
+      "rows": 1000,
+      "complete": 1000
+    },
+    "candidate_additions": 13,
+    "frozen_neural_form_changes": 0,
+    "root_reported_anchor_mismatches_reaudited": 26,
+    "remaining_normalized_anchor_mismatches": 0,
+    "metrics_path": "artifacts/structured-parser-v3/evaluation-binding/scores.json",
+    "baseline_errors_path": "artifacts/structured-parser-v3/evaluation-binding/baseline-errors.json"
+  },
+  "practice390": {
+    "metrics": {
+      "native": {
+        "rows": 390,
+        "exact_rows": 336,
+        "exact_rate": 0.8615384615384616,
+        "tp": 436,
+        "fp": 20,
+        "fn": 53,
+        "precision": 0.956140350877193,
+        "recall": 0.8916155419222904
+      },
+      "structured": {
+        "rows": 390,
+        "exact_rows": 338,
+        "exact_rate": 0.8666666666666667,
+        "tp": 437,
+        "fp": 18,
+        "fn": 52,
+        "precision": 0.9604395604395605,
+        "recall": 0.8936605316973415
+      }
+    },
+    "strict_json_exact_rows": {
+      "native": 336,
+      "structured": 338
+    },
+    "changes": 4,
+    "regressed_exact": 0,
+    "improved_exact": 2,
+    "fallback_rows": 363,
+    "fallback_facts_changed": 0,
+    "complete": 19
+  },
+  "practice390_export": "artifacts/structured-parser-practice390/structured.json",
+  "benchmark": {
+    "hardware": "AMD Ryzen 9 6900HS,8cores/16logical",
+    "os": "Docker Linux amd64 on Windows",
+    "rust": "1.90.0",
+    "profile": "release",
+    "container_cpus": 2,
+    "container_memory_bytes": 3221225472,
+    "host_other_work_active": true,
+    "fresh2897": {
+      "parser_threads": 1,
+      "peak_process_rss_kib": 49464,
+      "rows": 2897,
+      "scope": "schema binding only; excludes neural candidate preparation",
+      "seconds_parse": 2.11166018,
+      "seconds_prepared": 0.147599758,
+      "seconds_total": 2.269990149
+    },
+    "practice390": {
+      "parser_threads": 1,
+      "peak_process_rss_kib": 24424,
+      "rows": 390,
+      "scope": "schema binding only; excludes neural candidate preparation",
+      "seconds_parse": 0.170883257,
+      "seconds_prepared": 0.131688052,
+      "seconds_total": 0.307113446
+    }
+  },
+  "images": {
+    "dev": "sha256:fd69385ab339602c033529a3b21e751750ad6757f148e3a894e953800fa79210",
+    "native_original": "sha256:1905f78b2e5205fdc02b4b0e03ff6d6590397327898d6d8c3c403373127edd9d",
+    "native_binding": "sha256:012af3d3687542d03936510599be50af97b51c659c7307564e150676424f6a18"
+  },
+  "model_sha256": "98eebdb851849f689c60499a9f4b2514305d520a523816b0505e98bba4523b6f",
+  "owned_source_and_contract_sha256": {
+    "crates/core/src/structured.rs": "e04748a7df6a80204bb34c7c47ec3e883b53f85434f29e568d9579195671f3f6",
+    "tools/structured_parser/Cargo.toml": "7ff383cf3e4a383d666b1fb5b5a338767673314cda902c22c6d25e4f3d92f785",
+    "tools/structured_parser/Cargo.lock": "464c00c4f17fce5cc692cd08fbad0af3ddc64915a86e745bbe08b72332efae79",
+    "tools/structured_parser/src/lib.rs": "5b6c3eec309152b7b34dc4c295f51520c3cbf1e9e26a4463c8f5a0cbf6f4782d",
+    "tools/structured_parser/src/main.rs": "50be9a051f5c61cf60cb158df7dc1da6f4f663436d6d59387689354bfa3ec011",
+    "tools/structured_parser/tests/semantics.rs": "a4767573be6cc929f54369e8eaf9a1ff9b316b2ec48dffcc75e591f10d1af946",
+    "tools/structured_parser/evaluate.py": "5e8333f26e43cd7bf24f28f0052c6ebc02e28fa01445b61cdf2555dfa773070b",
+    "tools/structured_parser/test_evaluate.py": "3894f1e83b4171555997732f9032ef39066099844afc6645af0aaafcabfbbd47",
+    "contracts/README.md": "301e2a630d1757fa2c7369abc3769fb181a1db169118edf3f51c05d2c84ddc7d",
+    "contracts/claim-forms.md": "dd06a1fadce75edb8c3f00d6653d3d323df5c74160b945f5c8a0fde9f524a913",
+    "contracts/value-forms.md": "2953ccecbef4564ffbca406c2f980413af8d0c9074ded6d471849b043c0c7d94",
+    "data/practice.csv": "52743befaa0fa38b89b5c802c0f953d242ae027c86839c9c0f05a9e69a86d8e9",
+    "data/lexicon.json": "d0fd5e9bdc6b33ad3ec160001f50e00e7f8bf2b25a92779022f893db7c3d5507"
+  },
+  "fresh_fixture_and_output_sha256": {
+    "C:\\Users\\Teodor\\orca\\workspaces\\QA-DNA-JEV\\evidence-graph-runtime\\artifacts\\independent-evaluation-v3\\development\\public\\universe.csv": "30ffa0c503804499885826ea51f0872c9f4cc310d4f16644325ff27bf59f925a",
+    "C:\\Users\\Teodor\\orca\\workspaces\\QA-DNA-JEV\\evidence-graph-runtime\\artifacts\\independent-evaluation-v3\\development\\public\\lexicon.json": "1f937417315a86a5b350a3c1da4afe7aae57b1a2880f4e393c05f8eb20d63140",
+    "C:\\Users\\Teodor\\orca\\workspaces\\QA-DNA-JEV\\evidence-graph-runtime\\artifacts\\independent-evaluation-v3\\development\\private\\gold.jsonl": "b4d689a7158dc51934ee837ecb5ceace1ab685174cd0d9ce5e737f94d45584ba",
+    "artifacts\\structured-parser-v3\\native-binding.json": "1cadd58e3e819002fde5bd7a93c1a895f6c4b9d9276a753b18f3912282ce3534",
+    "artifacts\\structured-parser-v3\\structured-binding.json": "906efd8f08844add14056d6b91b838b6741b0191117a633f79b0dd414d19812c",
+    "C:\\Users\\Teodor\\orca\\workspaces\\QA-DNA-JEV\\evidence-structured-parser-codex\\tools\\structured_parser\\evaluate.py": "5e8333f26e43cd7bf24f28f0052c6ebc02e28fa01445b61cdf2555dfa773070b",
+    "C:\\Users\\Teodor\\orca\\workspaces\\QA-DNA-JEV\\evidence-structured-parser-codex\\crates\\core\\src\\structured.rs": "e04748a7df6a80204bb34c7c47ec3e883b53f85434f29e568d9579195671f3f6"
+  },
+  "practice_fixture_and_output_sha256": {
+    "data/practice.csv": "52743befaa0fa38b89b5c802c0f953d242ae027c86839c9c0f05a9e69a86d8e9",
+    "data/lexicon.json": "d0fd5e9bdc6b33ad3ec160001f50e00e7f8bf2b25a92779022f893db7c3d5507",
+    "artifacts/structured-parser-practice390/input.json": "9cfaed75d8b1735abbed1521880421bfb9107310cf49bfde3dab4ba5ebed77d3",
+    "artifacts/structured-parser-practice390/structured.json": "5b8d8c8de2a1f09e3361289824579f081d8555c05444b60c26b4ac33d3706497"
+  },
+  "frozen_practice_inputs_sha256": {
+    "data/practice.csv": "52743befaa0fa38b89b5c802c0f953d242ae027c86839c9c0f05a9e69a86d8e9",
+    "..\\evidence-graph-runtime\\artifacts\\evidence-evaluation\\parser390\\test-ids.json": "bf9e25dab4dffdbe9bdd5514e61d9aaee2c2443d4fb3ebf5a0058c6d2a36f1ad",
+    "..\\structured-extraction-training\\artifacts\\remote-results\\selected-v2\\cpu-dev-predictions.jsonl": "bdc6d08a52a33232d745034896310b46d951647823e1eba444d3151c3f88aedb",
+    "..\\evidence-graph-runtime\\tools\\neural_parser\\frozen\\grammar.py": "0545fc2bbce5cc6856b55caa8ec52ca448b1e7f07068cca885ff737f36d7a2f1",
+    "..\\structured-extraction-training\\artifacts\\remote-results\\selected-v2\\lexicon.json": "40d591b7e0345172f2822742c1d1b2cda69619c564ff23dd306d11984756747c",
+    "..\\structured-extraction-training\\artifacts\\remote-results\\selected-v2\\meta.json": "3ab93d76b178bb714bd4c5ac665da2de0d97c29a46d32597ca43be3e52c08567",
+    "artifacts\\structured-parser-practice390\\input.json": "9cfaed75d8b1735abbed1521880421bfb9107310cf49bfde3dab4ba5ebed77d3"
+  },
+  "root_anchor_audit_sha256": "cbbebba244224c24d898fd34895a7ab3b55cd7a6bfe1e14236baec1613f42bb2",
+  "provenance": {
+    "development_assistance": "OpenAI Codex code/tests; no runtime LLM",
+    "gold_passed_to_parser": false,
+    "context_or_world_files_read": false,
+    "sealed_or_calibration_files_read": false,
+    "primary_parser_input": "public lexicon, current text, frozen typed proposals, frozen neural facts",
+    "v1_released_samples_inspected_during_discovery": true
+  },
+  "limits": [
+    "physical-unit-normalized perfect development extraction does not establish independent or open-domain truth accuracy",
+    "the two final literal-unit differences are in versus inch synonyms",
+    "pure neural fallback completeness is an adapter policy; root handles it separately",
+    "full end-to-end solver/generation/final evaluation remain coordinator-owned"
+  ]
+}

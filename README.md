@@ -14,10 +14,11 @@ VERIDYCT is our workspace for the QA DNA challenge. A Rust core, a command-line
 adapter and a local HTTP interface live together, with portable tooling and a
 versioned map of the project's rules and decisions.
 
-**Current milestone: the development foundation works.** You can start the workbench,
-explore project relationships, and run checks. Data processing, classification and the
-1,000-claim generator are not implemented yet. The reserved `run` command exits with
-an explicit error instead of producing pretend results.
+**Current milestone: live offline MVP.** The workbench runs CSV rows through typed
+assertion extraction and a seeded CPU Random Forest, shows source evidence and model
+scores, and selects 1,000 contract-shaped claims with MMR. Architecture and stack diagrams
+sit beside the live demo. Practice demonstrations include familiar training data; they
+are not independent accuracy measurements.
 
 ## Start here
 
@@ -48,7 +49,7 @@ For a packaged preview:
 docker compose up --build
 ```
 
-This starts the workbench, not the competition solver. Use `docker compose down` to
+This starts the live workbench at http://127.0.0.1:8787. Use `docker compose down` to
 stop it. Change the host port with `VERIDYCT_PORT`; change native binding with
 `VERIDYCT_ADDR`. See [development](docs/development.md) for shell examples.
 
@@ -56,8 +57,8 @@ stop it. Change the host port with `VERIDYCT_PORT`; change native binding with
 
 ```text
 apps/web/          Local workbench · HTML, CSS and browser JavaScript
-crates/core/       Workspace metadata; reserved for the future reasoning engine
-crates/cli/        File-oriented CLI; future competition entry point
+crates/core/       Typed assertions, Random Forest, evidence, MMR and CSV
+crates/cli/        Offline file-oriented competition entry point
 crates/api/        Local HTTP adapter and embedded frontend
 xtask/            Cross-platform development and verification commands
 contracts/        Organizer schemas and grammar, preserved
@@ -93,8 +94,11 @@ flowchart LR
 | `cargo run --locked -p veridyct-cli -- info` | Print workspace status as JSON |
 
 `cargo xtask arena-check` runs the official checker on Linux with Docker and Python 3.
-**It is expected to fail on this foundation**: the solver and claim generator still need
-to be built. The container CI job checks packaging and process startup, not a submission.
+On Windows run `powershell -ExecutionPolicy Bypass -File tools/arena-check.ps1`.
+The wrapper uses the same limits and unchanged organizer output checker, retaining files
+under `artifacts/`. Structural success does not establish claim truth or unseen accuracy.
+
+See [the MVP handoff](docs/handoffs/live-mvp.md) for implementation and validation.
 
 ## Work together
 

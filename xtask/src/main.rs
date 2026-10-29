@@ -83,7 +83,7 @@ fn run(root: &Path, args: &[String]) -> Result<()> {
                 return Err("The official checker requires Linux. Use WSL2 or a Linux host with Docker and Python 3.".into());
             }
             eprintln!(
-                "The foundation is not a solver. Expect the official output check to fail until implementation is complete."
+                "The organizer checker verifies output format; semantic quality requires independent evaluation."
             );
             exec(root, "sh", &["scripts/check.sh"])?;
         }

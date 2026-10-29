@@ -1,8 +1,9 @@
 # CLI and competition runtime scope
 
-Read [root instructions](../../AGENTS.md). `info` and the offline `lexicon compile`, `normalize`, `split`, and `parse`
-preprocessing commands work. `run` exits 2
-because the competition solver is not implemented; preserve that honest boundary.
+Read [root instructions](../../AGENTS.md). `info` reports implementation status and
+`run` calls the shared offline pipeline with contract input and atomic CSV output.
+The existing `lexicon compile`, `normalize`, `split` and `parse` CSV preprocessing
+commands remain available and use the same core extraction module.
 
 - Call the shared core; do not implement a second reasoning pipeline here.
 - Honor the official input/output paths, CSV encoding, required columns, and IDs.

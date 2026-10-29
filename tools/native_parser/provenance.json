@@ -1,0 +1,25 @@
+{
+  "selection": "selected-v2 frozen three BiLSTM ensemble; no retraining",
+  "model_bytes": 24850029,
+  "bundle": {
+    "model.onnx": "98eebdb851849f689c60499a9f4b2514305d520a523816b0505e98bba4523b6f",
+    "meta.json": "3ab93d76b178bb714bd4c5ac665da2de0d97c29a46d32597ca43be3e52c08567",
+    "lexicon.json": "40d591b7e0345172f2822742c1d1b2cda69619c564ff23dd306d11984756747c"
+  },
+  "frozen_sources": {
+    "grammar.py": "0545fc2bbce5cc6856b55caa8ec52ca448b1e7f07068cca885ff737f36d7a2f1",
+    "prepare.py": "68b8bc242b074cb6e10410078cd76cb744a08abf40ff898d090cbab7171e347e",
+    "runtime.py": "cbc1e4980487224ab15a269299602d1475cb78157bd945176728dc781b5e8206"
+  },
+  "frozen_predictions": {
+    "cpu-dev-predictions.jsonl": "bdc6d08a52a33232d745034896310b46d951647823e1eba444d3151c3f88aedb"
+  },
+  "runtime_source_image": "veridyct-neural-parser:integration",
+  "runtime_source_image_id": "sha256:c597e0d2ce01a127636b77860384b303ba257b614772c2dc60e7a5917b584435",
+  "onnxruntime_version": "1.23.2",
+  "runtime": {
+    "libonnxruntime.so.1.23.2": "718c3fb0785d5ea06061b92c32ce4ad35be1bd4c71ae6192efe06f1ab21f0f8a",
+    "libonnxruntime_providers_shared.so": "086ec1d5388f64153d9c63470d126693db9a182c8ce236d3a1119068471b8a0d"
+  },
+  "unicode_reference": "Python 3.11 / Unicode 14.0.0"
+}

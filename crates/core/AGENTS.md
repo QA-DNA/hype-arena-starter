@@ -1,7 +1,8 @@
 # Core scope
 
-Read [root instructions](../../AGENTS.md). Workspace metadata and lexicon-based text preprocessing exist;
-the typed evidence model and reasoning engine remain future work.
+Read [root instructions](../../AGENTS.md). The shared core includes typed data,
+lexicon normalization/assertion-text preprocessing, neural/schema extraction,
+a CPU forest/boosted verifier, evidence, MMR generation and contract CSV handling.
 
 - Own typed domain data and reusable computation. CLI, HTTP, and UI depend on core,
   while core must remain independent of those adapters and of CUDA.
