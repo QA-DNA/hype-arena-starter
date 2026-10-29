@@ -125,7 +125,12 @@ fn needs_program(expression: &ClaimExpr) -> bool {
     match expression {
         ClaimExpr::Atom(_) => false,
         ClaimExpr::All(children) => children.iter().any(needs_program),
-        _ => true,
+        // An ordinary prose conjunction can have a partial grammar parse and a
+        // better whole-row neural proposal. Only actual scoped logic changes
+        // the representation; missing grammar leaves alone must not erase it.
+        ClaimExpr::Unknown { .. } => false,
+        ClaimExpr::Unsupported { reason, .. } => reason != "unresolved atomic negation scope",
+        ClaimExpr::Any(_) | ClaimExpr::Not(_) | ClaimExpr::Compare { .. } => true,
     }
 }
 
@@ -267,6 +272,35 @@ mod tests {
             .unwrap();
         assert!(out.facts.is_empty());
         assert!(out.incomplete);
+    }
+
+    #[test]
+    fn partial_ordinary_conjunction_keeps_the_whole_row_proposal() {
+        let mut parser = ClaimParser::compile(&lexicon()).unwrap();
+        let facts = vec![
+            Fact {
+                subject: "Hooly AI Pro".into(),
+                attribute: "price".into(),
+                value: json!({"kind":"money","value":17,"currency":"EUR","per":"month"}),
+            },
+            Fact {
+                subject: "Hooly Cloud".into(),
+                attribute: "customers".into(),
+                value: json!({"kind":"quantity","value":9,"unit":"customer"}),
+            },
+        ];
+        let out = parser
+            .parse(
+                None,
+                "q",
+                "2026-01-01",
+                "Hooly AI Pro price is EUR 17 per month and Hooly Cloud customers is 9.",
+                &[],
+                &facts,
+            )
+            .unwrap();
+        assert!(out.program.is_none(), "{out:?}");
+        assert_eq!(out.facts, facts);
     }
 
     #[test]
