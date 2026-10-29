@@ -130,3 +130,12 @@ The final scoped implementation commit is recorded in the receipt below.
 - clause -> none: `p-1106`.
 
 Every row retains both fact lists, completeness and notes in the ignored full report.
+
+## Commit receipt
+
+Final implementation/test/tooling commit:
+`7e1c5d1c32df9f6f74279c61c58d6b1fd51d54ab`.
+This receipt is a documentation-only follow-up; cherry-pick the implementation
+commit and this receipt commit to retain the complete handoff.
+Final `structured.rs` SHA-256:
+`341c274375cd07ec9b86c2ca9cb0e868be7558a4d7dc55b6599c3c197a3d6f13`.
