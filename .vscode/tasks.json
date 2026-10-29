@@ -1,0 +1,8 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {"label": "VERIDYCT: dev", "type": "process", "command": "cargo", "args": ["xtask", "dev"], "problemMatcher": ["$rustc"], "isBackground": true},
+    {"label": "VERIDYCT: check", "type": "process", "command": "cargo", "args": ["xtask", "check"], "problemMatcher": ["$rustc"], "group": {"kind": "build", "isDefault": true}},
+    {"label": "VERIDYCT: test", "type": "process", "command": "cargo", "args": ["xtask", "test"], "problemMatcher": ["$rustc"], "group": "test"}
+  ]
+}

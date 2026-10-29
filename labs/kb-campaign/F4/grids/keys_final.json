@@ -1,0 +1,7 @@
+[{"name": "T1", "variant": "f4models.py", "params": {"mil": 2, "lap": 0.02, "lap_page": 0.0, "lap_tau": 10.0, "extra_features": ["F4/f4graph.py:prop_feats", "F2/f2feat.py:core"]}},
+ {"name": "T2", "variant": "f4models.py", "params": {"mil": 2, "lap": 0.03, "lap_page": 0.0, "lap_tau": 10.0, "extra_features": ["F4/f4graph.py:prop_feats"]}},
+ {"name": "T3", "variant": "f4models.py", "params": {"mil": 2, "lap": 0.03, "lap_page": 0.0, "lap_tau": 10.0}},
+ {"name": "MIL", "variant": "f4models.py", "params": {"mil": 2}},
+ {"name": "T2+pseudo", "variant": "f4models.py", "params": {"mil": 2, "lap": 0.02, "lap_page": 0.0, "lap_tau": 10.0, "extra_features": ["F4/f4graph.py:prop_feats"], "pseudo": 2, "phi": 0.95, "pw": 0.3}},
+ {"name": "v9 arena", "variant": "v9", "params": {"select": "arena"}},
+ {"name": "Prop t10", "variant": "f4graph.py:Prop", "params": {"mode": "prop", "tau": 10.0, "beta": 1.0, "gamma": 0.2}}]

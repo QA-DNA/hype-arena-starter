@@ -1,0 +1,19 @@
+W1028 18:32:28.238000 75646 /private/tmp/veridyct-bench/.venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Could not reach the Hub (Cannot reach https://huggingface.co/api/models/Snowflake/snowflake-arctic-embed-m-v1.5: offline mode is enabled. To disable it, please unset the `HF_HUB_OFFLINE` environment variable.). Using cached commit hash for 'Snowflake/snowflake-arctic-embed-m-v1.5'.
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights: 100%|██████████| 197/197 [00:00<00:00, 8673.74it/s]
+[Snowflake/snowflake-arctic-embed-m-v1.5] attr_probe/LR_C1: acc_all=0.404 ge5=0.759 1to4=0.113 unseen=0.000
+[Snowflake/snowflake-arctic-embed-m-v1.5] attr_hybrid/C1_z_probe+z_zeroshot: acc_all=0.749 ge5=0.912 1to4=0.600 unseen=0.711
+[Snowflake/snowflake-arctic-embed-m-v1.5] attr_hybrid/C1_z_probe+z_zeroshot_unseen_max: acc_all=0.724 ge5=0.869 1to4=0.563 unseen=0.961
+[Snowflake/snowflake-arctic-embed-m-v1.5] attr_unseen/C1_hybrid_z_probe+z_zeroshot: acc_all=0.616 ge5=nan 1to4=nan unseen=0.616
+[Snowflake/snowflake-arctic-embed-m-v1.5] attr_unseen/C1_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.866 ge5=nan 1to4=nan unseen=0.866
+[Snowflake/snowflake-arctic-embed-m-v1.5] attr_probe/LR_C100: acc_all=0.880 ge5=0.973 1to4=0.886 unseen=0.000
+[Snowflake/snowflake-arctic-embed-m-v1.5] attr_hybrid/C100_z_probe+z_zeroshot: acc_all=0.919 ge5=0.951 1to4=0.926 unseen=0.566
+[Snowflake/snowflake-arctic-embed-m-v1.5] attr_hybrid/C100_z_probe+z_zeroshot_unseen_max: acc_all=0.913 ge5=0.912 1to4=0.909 unseen=0.961
+[Snowflake/snowflake-arctic-embed-m-v1.5] attr_unseen/C100_hybrid_z_probe+z_zeroshot: acc_all=0.534 ge5=nan 1to4=nan unseen=0.534
+[Snowflake/snowflake-arctic-embed-m-v1.5] attr_unseen/C100_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.845 ge5=nan 1to4=nan unseen=0.845
+[Snowflake/snowflake-arctic-embed-m-v1.5] attr_probe/LR_C1000: acc_all=0.880 ge5=0.964 1to4=0.894 unseen=0.000
+[Snowflake/snowflake-arctic-embed-m-v1.5] attr_hybrid/C1000_z_probe+z_zeroshot: acc_all=0.924 ge5=0.945 1to4=0.936 unseen=0.618
+[Snowflake/snowflake-arctic-embed-m-v1.5] attr_hybrid/C1000_z_probe+z_zeroshot_unseen_max: acc_all=0.915 ge5=0.906 1to4=0.918 unseen=0.961
+[Snowflake/snowflake-arctic-embed-m-v1.5] attr_unseen/C1000_hybrid_z_probe+z_zeroshot: acc_all=0.586 ge5=nan 1to4=nan unseen=0.586
+[Snowflake/snowflake-arctic-embed-m-v1.5] attr_unseen/C1000_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.843 ge5=nan 1to4=nan unseen=0.843
+[Snowflake/snowflake-arctic-embed-m-v1.5] EXTRAS DONE

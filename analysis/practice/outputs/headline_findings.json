@@ -1,0 +1,20 @@
+{
+  "rows": 1897,
+  "assertions": 2402,
+  "label_counts": {
+    "true": 1581,
+    "false": 277,
+    "unsure": 39
+  },
+  "subjects": 62,
+  "fact_keys": 514,
+  "multi_assertion_rows": 430,
+  "validation_issues": 0,
+  "implicit_subject_rows": 665,
+  "same_day_multi_value_groups": 2,
+  "latest_observation_candidate_keys": 501,
+  "bootstrap_template_macro_f1_interval": [
+    0.2996114788525065,
+    0.4092589806965133
+  ]
+}

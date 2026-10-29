@@ -1,0 +1,49 @@
+lead-base-P80-0||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P80|0|
+lead-base-P80-1||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P80|1|
+lead-base-P80-2||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P80|2|
+lead-base-P80-3||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P80|3|
+lead-base-P80-4||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P80|4|
+lead-base-P10-0||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|0|
+lead-base-P10-1||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|1|
+lead-base-P10-2||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|2|
+lead-base-P10-3||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|3|
+lead-base-P10-4||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|4|
+lead-base-P10-5||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|5|
+lead-base-P10-6||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|6|
+lead-base-P10-7||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|7|
+lead-base-P10-8||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|8|
+lead-base-P10-9||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|9|
+lead-base-Sdev-jt||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|Sdev-jt|0|
+lead-base-Sdev-jr||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|Sdev-jr|0|
+lead-hp-P80-0|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P80-0 KBC_ROOT=$KBC_ROOT/R4/hp/root|$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P80|0|
+lead-hp-P80-1|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P80-1 KBC_ROOT=$KBC_ROOT/R4/hp/root|$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P80|1|
+lead-hp-P80-2|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P80-2 KBC_ROOT=$KBC_ROOT/R4/hp/root|$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P80|2|
+lead-hp-P80-3|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P80-3 KBC_ROOT=$KBC_ROOT/R4/hp/root|$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P80|3|
+lead-hp-P80-4|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P80-4 KBC_ROOT=$KBC_ROOT/R4/hp/root|$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P80|4|
+lead-hp-P10-0|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-0 KBC_ROOT=$KBC_ROOT/R4/hp/root|$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|0|
+lead-hp-P10-1|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-1 KBC_ROOT=$KBC_ROOT/R4/hp/root|$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|1|
+lead-hp-P10-2|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-2 KBC_ROOT=$KBC_ROOT/R4/hp/root|$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|2|
+lead-hp-P10-3|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-3 KBC_ROOT=$KBC_ROOT/R4/hp/root|$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|3|
+lead-hp-P10-4|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-4 KBC_ROOT=$KBC_ROOT/R4/hp/root|$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|4|
+lead-hp-P10-5|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-5 KBC_ROOT=$KBC_ROOT/R4/hp/root|$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|5|
+lead-hp-P10-6|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-6 KBC_ROOT=$KBC_ROOT/R4/hp/root|$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|6|
+lead-hp-P10-7|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-7 KBC_ROOT=$KBC_ROOT/R4/hp/root|$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|7|
+lead-hp-P10-8|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-8 KBC_ROOT=$KBC_ROOT/R4/hp/root|$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|8|
+lead-hp-P10-9|KBC_PRACTICE_DIR=$KBC_ROOT/R4/hp/P10-9 KBC_ROOT=$KBC_ROOT/R4/hp/root|$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|9|
+lead-hp-Sdev-jt|KBC_SUITE_DIR=$KBC_ROOT/R4/hp/suite KBC_ROOT=$KBC_ROOT/R4/hp/root|$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|Sdev-jt|0|
+lead-hp-Sdev-jr|KBC_SUITE_DIR=$KBC_ROOT/R4/hp/suite KBC_ROOT=$KBC_ROOT/R4/hp/root|$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|Sdev-jr|0|
+lead-sh-P80-0||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P80|0|--shuffle 0
+lead-sh-P80-1||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P80|1|--shuffle 0
+lead-sh-P80-2||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P80|2|--shuffle 0
+lead-sh-P80-3||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P80|3|--shuffle 0
+lead-sh-P80-4||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P80|4|--shuffle 0
+lead-sh-P10-0||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|0|--shuffle 0
+lead-sh-P10-1||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|1|--shuffle 0
+lead-sh-P10-2||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|2|--shuffle 0
+lead-sh-P10-3||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|3|--shuffle 0
+lead-sh-P10-4||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|4|--shuffle 0
+lead-sh-P10-5||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|5|--shuffle 0
+lead-sh-P10-6||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|6|--shuffle 0
+lead-sh-P10-7||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|7|--shuffle 0
+lead-sh-P10-8||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|8|--shuffle 0
+lead-sh-P10-9||$KBC_ROOT/F2/f2var.py:Chain|{"d0":0.03,"engine":"viterbi","eps_a":0.0005,"mono":"fit","mono_a":10,"pi_o":1,"vote_lr":48}|P10|9|--shuffle 0

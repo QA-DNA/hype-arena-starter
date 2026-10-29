@@ -1,0 +1,17 @@
+pages 291 size min/median/mean/max 1 7 6.52 15
+size histogram [(1, 30), (2, 32), (3, 20), (4, 16), (5, 17), (6, 20), (7, 24), (8, 33), (9, 27), (10, 35), (11, 16), (12, 8), (13, 7), (14, 4), (15, 2)]
+false per page histogram [(0, 128), (1, 91), (2, 42), (3, 24), (4, 2), (5, 2), (6, 2)] gini 0.594 share in top 10% pages (29): 0.357 pages with >=1: 163
+   gini under random labels: mean 0.571, max of 200 0.622
+unsure per page histogram [(0, 263), (1, 21), (2, 5), (4, 2)] gini 0.926 share in top 10% pages (29): 1.000 pages with >=1: 28
+   gini under random labels: mean 0.884, max of 200 0.907
+position of true rows (pages with >1 row): {'first': '227 (0.146)', 'middle': '1126 (0.722)', 'last': '206 (0.132)'}
+position of false rows (pages with >1 row): {'middle': '190 (0.706)', 'last': '50 (0.186)', 'first': '29 (0.108)'}
+position of unsure rows (pages with >1 row): {'middle': '29 (0.744)', 'last': '5 (0.128)', 'first': '5 (0.128)'}
+distinct gold subjects per page: median 2 histogram [(1, 120), (2, 77), (3, 40), (4, 32), (5, 12), (6, 4), (7, 4), (9, 1), (10, 1)]
+share of a page's facts about its most frequent subject: median 0.778 pages where it is 1.0: 120
+rows not naming their gold subject: 642; all gold subjects named earlier on the same page: 429 (0.668); at least one: 431 (0.671)
+connector/pronoun opener: page-first rows 0.003, later rows 0.028
+ids: format Counter({'p-N': 1897}) min 1 max 1897 count 1897 gaps 0
+date in id order: decreases 128, increases 162, same 1606; page boundaries 290
+page dates: distinct 159 of 291 ; page-to-page date decreases 128 range 2025-10-07 2026-10-28
+subject not named earlier: subject named LATER on the page 35, named NOWHERE on the page 178; examples: ['"Jules is Gemini for code," said Richard Hendrix, our CTO. -> Hooly', '"Docs is the heart of Workspace," said Patreese. -> Hooly', 'The free tier of Drive, 10 GB, holds plenty of documents. -> Hooly Drive', 'From today our headquarters is Lisbon. -> Hooly', 'All 38 employees are making the move over the summer. -> Hooly', 'Trade in an old phone for up to up to €200 when you order a Hooly Pixe -> Hooly Devices']

@@ -1,0 +1,22 @@
+[package]
+name = "veridyct-parser-v3-runtime"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[workspace]
+
+[features]
+frozen-baseline = []
+
+[dependencies]
+veridyct-core = { path = "../../crates/core" }
+veridyct-extractor = { path = "../../crates/extractor" }
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["arbitrary_precision"] }
+regex = "1"
+sha2 = "0.10"
+
+[lints.rust]
+unsafe_code = "forbid"
+

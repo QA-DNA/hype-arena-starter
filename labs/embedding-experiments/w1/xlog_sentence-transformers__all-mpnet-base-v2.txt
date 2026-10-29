@@ -1,0 +1,19 @@
+W1028 18:28:06.278000 70601 /private/tmp/veridyct-bench/.venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Could not reach the Hub (Cannot reach https://huggingface.co/api/models/sentence-transformers/all-mpnet-base-v2: offline mode is enabled. To disable it, please unset the `HF_HUB_OFFLINE` environment variable.). Using cached commit hash for 'sentence-transformers/all-mpnet-base-v2'.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6189.32it/s]
+[sentence-transformers/all-mpnet-base-v2] attr_probe/LR_C1: acc_all=0.568 ge5=0.906 1to4=0.311 unseen=0.000
+[sentence-transformers/all-mpnet-base-v2] attr_hybrid/C1_z_probe+z_zeroshot: acc_all=0.775 ge5=0.914 1to4=0.653 unseen=0.697
+[sentence-transformers/all-mpnet-base-v2] attr_hybrid/C1_z_probe+z_zeroshot_unseen_max: acc_all=0.763 ge5=0.889 1to4=0.632 unseen=0.895
+[sentence-transformers/all-mpnet-base-v2] attr_unseen/C1_hybrid_z_probe+z_zeroshot: acc_all=0.536 ge5=nan 1to4=nan unseen=0.536
+[sentence-transformers/all-mpnet-base-v2] attr_unseen/C1_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.841 ge5=nan 1to4=nan unseen=0.841
+[sentence-transformers/all-mpnet-base-v2] attr_probe/LR_C100: acc_all=0.875 ge5=0.966 1to4=0.882 unseen=0.000
+[sentence-transformers/all-mpnet-base-v2] attr_hybrid/C100_z_probe+z_zeroshot: acc_all=0.906 ge5=0.932 1to4=0.919 unseen=0.553
+[sentence-transformers/all-mpnet-base-v2] attr_hybrid/C100_z_probe+z_zeroshot_unseen_max: acc_all=0.898 ge5=0.903 1to4=0.898 unseen=0.855
+[sentence-transformers/all-mpnet-base-v2] attr_unseen/C100_hybrid_z_probe+z_zeroshot: acc_all=0.477 ge5=nan 1to4=nan unseen=0.477
+[sentence-transformers/all-mpnet-base-v2] attr_unseen/C100_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.815 ge5=nan 1to4=nan unseen=0.815
+[sentence-transformers/all-mpnet-base-v2] attr_probe/LR_C1000: acc_all=0.879 ge5=0.957 1to4=0.900 unseen=0.000
+[sentence-transformers/all-mpnet-base-v2] attr_hybrid/C1000_z_probe+z_zeroshot: acc_all=0.897 ge5=0.915 1to4=0.914 unseen=0.579
+[sentence-transformers/all-mpnet-base-v2] attr_hybrid/C1000_z_probe+z_zeroshot_unseen_max: acc_all=0.891 ge5=0.890 1to4=0.896 unseen=0.855
+[sentence-transformers/all-mpnet-base-v2] attr_unseen/C1000_hybrid_z_probe+z_zeroshot: acc_all=0.542 ge5=nan 1to4=nan unseen=0.542
+[sentence-transformers/all-mpnet-base-v2] attr_unseen/C1000_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.812 ge5=nan 1to4=nan unseen=0.812
+[sentence-transformers/all-mpnet-base-v2] EXTRAS DONE

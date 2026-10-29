@@ -1,0 +1,1 @@
+Alibaba-NLP/gte-base-en-v1.5 {'sentences_per_s': 90.202, 'sents_per_cpu_s': 82.818, 'wall_s': 22.173, 'cpu_s': 24.149, 'est_sec_20k_x86': 443.451, 'cpu_over_wall': 1.089}

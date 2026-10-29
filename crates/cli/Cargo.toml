@@ -1,0 +1,19 @@
+[package]
+name = "veridyct-cli"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+
+[[bin]]
+name = "veridyct"
+path = "src/main.rs"
+
+[dependencies]
+veridyct-core.workspace = true
+serde_json.workspace = true
+serde.workspace = true
+csv.workspace = true
+
+[lints]
+workspace = true

@@ -1,0 +1,19 @@
+{
+ "sentence-transformers/all-MiniLM-L6-v2": "ok /private/tmp/veridyct-bench/hf/hub/models--sentence-transformers--all-MiniLM-L6-v2/snapshots/1110a243fdf4706b3f48f1d95db1a4f5529b4d41 safetensors=True 0s",
+ "sentence-transformers/all-MiniLM-L12-v2": "ok /private/tmp/veridyct-bench/hf/hub/models--sentence-transformers--all-MiniLM-L12-v2/snapshots/a50ef00143b4d5391434df20ae11632588ac25be safetensors=True 6s",
+ "sentence-transformers/all-mpnet-base-v2": "ok /private/tmp/veridyct-bench/hf/hub/models--sentence-transformers--all-mpnet-base-v2/snapshots/e8c3b32edf5434bc2275fc9bab85f82640a19130 safetensors=True 12s",
+ "sentence-transformers/paraphrase-MiniLM-L3-v2": "ok /private/tmp/veridyct-bench/hf/hub/models--sentence-transformers--paraphrase-MiniLM-L3-v2/snapshots/4ca70771034acceecb2e72475f72050fcdde4ddc safetensors=True 5s",
+ "BAAI/bge-small-en-v1.5": "ok /private/tmp/veridyct-bench/hf/hub/models--BAAI--bge-small-en-v1.5/snapshots/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a safetensors=True 6s",
+ "BAAI/bge-base-en-v1.5": "ok /private/tmp/veridyct-bench/hf/hub/models--BAAI--bge-base-en-v1.5/snapshots/a5beb1e3e68b9ab74eb54cfd186867f64f240e1a safetensors=True 14s",
+ "thenlper/gte-small": "ok /private/tmp/veridyct-bench/hf/hub/models--thenlper--gte-small/snapshots/17e1f347d17fe144873b1201da91788898c639cd safetensors=True 5s",
+ "thenlper/gte-base": "ok /private/tmp/veridyct-bench/hf/hub/models--thenlper--gte-base/snapshots/c078288308d8dee004ab72c6191778064285ec0c safetensors=True 20s",
+ "intfloat/e5-small-v2": "ok /private/tmp/veridyct-bench/hf/hub/models--intfloat--e5-small-v2/snapshots/ffb93f3bd4047442299a41ebb6fa998a38507c52 safetensors=True 7s",
+ "intfloat/e5-base-v2": "ok /private/tmp/veridyct-bench/hf/hub/models--intfloat--e5-base-v2/snapshots/f52bf8ec8c7124536f0efb74aca902b2995e5bcd safetensors=True 11s",
+ "Snowflake/snowflake-arctic-embed-s": "ok /private/tmp/veridyct-bench/hf/hub/models--Snowflake--snowflake-arctic-embed-s/snapshots/e596f507467533e48a2e17c007f0e1dacc837b33 safetensors=True 6s",
+ "Snowflake/snowflake-arctic-embed-m-v1.5": "ok /private/tmp/veridyct-bench/hf/hub/models--Snowflake--snowflake-arctic-embed-m-v1.5/snapshots/e58a8f756156a1293d763f17e3aae643474e9b8a safetensors=True 12s",
+ "Alibaba-NLP/gte-base-en-v1.5": "ok /private/tmp/veridyct-bench/hf/hub/models--Alibaba-NLP--gte-base-en-v1.5/snapshots/a829fd0e060bb84554da0dfd354d0de0f7712b7f safetensors=True 13s",
+ "jinaai/jina-embeddings-v2-small-en": "ok /private/tmp/veridyct-bench/hf/hub/models--jinaai--jina-embeddings-v2-small-en/snapshots/44e7d1d6caec8c883c2d4b207588504d519788d0 safetensors=True 5s",
+ "mixedbread-ai/mxbai-embed-xsmall-v1": "ok /private/tmp/veridyct-bench/hf/hub/models--mixedbread-ai--mxbai-embed-xsmall-v1/snapshots/e6ac24e5d6efb8782b59de1647b3ececb4ece94e safetensors=True 4s",
+ "Alibaba-NLP/new-impl": "ok /private/tmp/veridyct-bench/hf/hub/models--Alibaba-NLP--new-impl/snapshots/40ced75c3017eb27626c9d4ea981bde21a2662f4 safetensors=False 1s",
+ "jinaai/jina-bert-implementation": "ok /private/tmp/veridyct-bench/hf/hub/models--jinaai--jina-bert-implementation/snapshots/f3ec4cf7de7e561007f27c9efc7148b0bd713f81 safetensors=False 1s"
+}

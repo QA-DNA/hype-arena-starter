@@ -1,0 +1,26 @@
+{
+  "python": "3.14.8",
+  "seed": 42,
+  "as_of": "2026-10-29",
+  "sha256": {
+    "data/practice.csv": "52743befaa0fa38b89b5c802c0f953d242ae027c86839c9c0f05a9e69a86d8e9",
+    "data/lexicon.json": "d0fd5e9bdc6b33ad3ec160001f50e00e7f8bf2b25a92779022f893db7c3d5507",
+    "contracts/README.md": "301e2a630d1757fa2c7369abc3769fb181a1db169118edf3f51c05d2c84ddc7d",
+    "contracts/claimed_value.schema.json": "a6a770846fee9b46b9e59dbbf900a3feacc9eab759be5572d41a9d8d2e41b0b3",
+    "contracts/claim-forms.md": "dd06a1fadce75edb8c3f00d6653d3d323df5c74160b945f5c8a0fde9f524a913",
+    "contracts/value-forms.md": "2953ccecbef4564ffbca406c2f980413af8d0c9074ded6d471849b043c0c7d94"
+  },
+  "versions": {
+    "pandas": "2.3.3",
+    "numpy": "2.5.4",
+    "matplotlib": "3.11.2",
+    "seaborn": "0.13.2",
+    "scipy": "1.18.1",
+    "scikit-learn": "1.9.1",
+    "nbformat": "5.11.1",
+    "nbclient": "0.11.0",
+    "nbconvert": "7.17.2",
+    "ipykernel": "7.4.0",
+    "jsonschema": "4.26.0"
+  }
+}

@@ -1,0 +1,941 @@
+suite,text,expected,origin_subject,origin_surface,variant
+declared_spelling,Reference: [Bertram Gilfoil].,"[""Bertram Gilfoil""]",Bertram Gilfoil,Bertram Gilfoil,original
+declared_spelling,Reference: [BERTRAM GILFOIL].,"[""Bertram Gilfoil""]",Bertram Gilfoil,Bertram Gilfoil,uppercase
+declared_spelling,Reference: [bertram gilfoil].,"[""Bertram Gilfoil""]",Bertram Gilfoil,Bertram Gilfoil,lowercase
+declared_spelling,Reference: [Bertram   Gilfoil].,"[""Bertram Gilfoil""]",Bertram Gilfoil,Bertram Gilfoil,extra_spaces
+declared_spelling,Reference: [BertramGilfoil].,"[""Bertram Gilfoil""]",Bertram Gilfoil,Bertram Gilfoil,no_spaces
+declared_spelling,Reference: [Bertram	Gilfoil].,"[""Bertram Gilfoil""]",Bertram Gilfoil,Bertram Gilfoil,tab_spaces
+declared_spelling,Reference: [Bertram Gilfoil's].,"[""Bertram Gilfoil""]",Bertram Gilfoil,Bertram Gilfoil,possessive
+word_boundary_negative,prefixBertramGilfoilsuffix,[],Bertram Gilfoil,Bertram Gilfoil,embedded_token
+declared_spelling,Reference: [Brightline Labs].,"[""Brightline Labs""]",Brightline Labs,Brightline Labs,original
+declared_spelling,Reference: [BRIGHTLINE LABS].,"[""Brightline Labs""]",Brightline Labs,Brightline Labs,uppercase
+declared_spelling,Reference: [brightline labs].,"[""Brightline Labs""]",Brightline Labs,Brightline Labs,lowercase
+declared_spelling,Reference: [Brightline   Labs].,"[""Brightline Labs""]",Brightline Labs,Brightline Labs,extra_spaces
+declared_spelling,Reference: [BrightlineLabs].,"[""Brightline Labs""]",Brightline Labs,Brightline Labs,no_spaces
+declared_spelling,Reference: [Brightline	Labs].,"[""Brightline Labs""]",Brightline Labs,Brightline Labs,tab_spaces
+declared_spelling,Reference: [Brightline Labs's].,"[""Brightline Labs""]",Brightline Labs,Brightline Labs,possessive
+word_boundary_negative,prefixBrightlineLabssuffix,[],Brightline Labs,Brightline Labs,embedded_token
+declared_spelling,Reference: [Brightline].,"[""Brightline Labs""]",Brightline Labs,Brightline,original
+declared_spelling,Reference: [BRIGHTLINE].,"[""Brightline Labs""]",Brightline Labs,Brightline,uppercase
+declared_spelling,Reference: [brightline].,"[""Brightline Labs""]",Brightline Labs,Brightline,lowercase
+declared_spelling,Reference: [Brightline].,"[""Brightline Labs""]",Brightline Labs,Brightline,extra_spaces
+declared_spelling,Reference: [Brightline].,"[""Brightline Labs""]",Brightline Labs,Brightline,no_spaces
+declared_spelling,Reference: [Brightline].,"[""Brightline Labs""]",Brightline Labs,Brightline,tab_spaces
+declared_spelling,Reference: [Brightline's].,"[""Brightline Labs""]",Brightline Labs,Brightline,possessive
+word_boundary_negative,prefixBrightlinesuffix,[],Brightline Labs,Brightline,embedded_token
+declared_spelling,Reference: [Dinesh Chugtay].,"[""Dinesh Chugtay""]",Dinesh Chugtay,Dinesh Chugtay,original
+declared_spelling,Reference: [DINESH CHUGTAY].,"[""Dinesh Chugtay""]",Dinesh Chugtay,Dinesh Chugtay,uppercase
+declared_spelling,Reference: [dinesh chugtay].,"[""Dinesh Chugtay""]",Dinesh Chugtay,Dinesh Chugtay,lowercase
+declared_spelling,Reference: [Dinesh   Chugtay].,"[""Dinesh Chugtay""]",Dinesh Chugtay,Dinesh Chugtay,extra_spaces
+declared_spelling,Reference: [DineshChugtay].,"[""Dinesh Chugtay""]",Dinesh Chugtay,Dinesh Chugtay,no_spaces
+declared_spelling,Reference: [Dinesh	Chugtay].,"[""Dinesh Chugtay""]",Dinesh Chugtay,Dinesh Chugtay,tab_spaces
+declared_spelling,Reference: [Dinesh Chugtay's].,"[""Dinesh Chugtay""]",Dinesh Chugtay,Dinesh Chugtay,possessive
+word_boundary_negative,prefixDineshChugtaysuffix,[],Dinesh Chugtay,Dinesh Chugtay,embedded_token
+declared_spelling,Reference: [Erlich Bachmann].,"[""Erlich Bachmann""]",Erlich Bachmann,Erlich Bachmann,original
+declared_spelling,Reference: [ERLICH BACHMANN].,"[""Erlich Bachmann""]",Erlich Bachmann,Erlich Bachmann,uppercase
+declared_spelling,Reference: [erlich bachmann].,"[""Erlich Bachmann""]",Erlich Bachmann,Erlich Bachmann,lowercase
+declared_spelling,Reference: [Erlich   Bachmann].,"[""Erlich Bachmann""]",Erlich Bachmann,Erlich Bachmann,extra_spaces
+declared_spelling,Reference: [ErlichBachmann].,"[""Erlich Bachmann""]",Erlich Bachmann,Erlich Bachmann,no_spaces
+declared_spelling,Reference: [Erlich	Bachmann].,"[""Erlich Bachmann""]",Erlich Bachmann,Erlich Bachmann,tab_spaces
+declared_spelling,Reference: [Erlich Bachmann's].,"[""Erlich Bachmann""]",Erlich Bachmann,Erlich Bachmann,possessive
+word_boundary_negative,prefixErlichBachmannsuffix,[],Erlich Bachmann,Erlich Bachmann,embedded_token
+declared_spelling,Reference: [Gemini Launch Night].,"[""Gemini Launch Night""]",Gemini Launch Night,Gemini Launch Night,original
+declared_spelling,Reference: [GEMINI LAUNCH NIGHT].,"[""Gemini Launch Night""]",Gemini Launch Night,Gemini Launch Night,uppercase
+declared_spelling,Reference: [gemini launch night].,"[""Gemini Launch Night""]",Gemini Launch Night,Gemini Launch Night,lowercase
+declared_spelling,Reference: [Gemini   Launch   Night].,"[""Gemini Launch Night""]",Gemini Launch Night,Gemini Launch Night,extra_spaces
+declared_spelling,Reference: [GeminiLaunchNight].,"[""Gemini Launch Night""]",Gemini Launch Night,Gemini Launch Night,no_spaces
+declared_spelling,Reference: [Gemini	Launch	Night].,"[""Gemini Launch Night""]",Gemini Launch Night,Gemini Launch Night,tab_spaces
+declared_spelling,Reference: [Gemini Launch Night's].,"[""Gemini Launch Night""]",Gemini Launch Night,Gemini Launch Night,possessive
+word_boundary_negative,prefixGeminiLaunchNightsuffix,[],Gemini Launch Night,Gemini Launch Night,embedded_token
+declared_spelling,Reference: [Launch Night].,"[""Gemini Launch Night""]",Gemini Launch Night,Launch Night,original
+declared_spelling,Reference: [LAUNCH NIGHT].,"[""Gemini Launch Night""]",Gemini Launch Night,Launch Night,uppercase
+declared_spelling,Reference: [launch night].,"[""Gemini Launch Night""]",Gemini Launch Night,Launch Night,lowercase
+declared_spelling,Reference: [Launch   Night].,"[""Gemini Launch Night""]",Gemini Launch Night,Launch Night,extra_spaces
+declared_spelling,Reference: [LaunchNight].,"[""Gemini Launch Night""]",Gemini Launch Night,Launch Night,no_spaces
+declared_spelling,Reference: [Launch	Night].,"[""Gemini Launch Night""]",Gemini Launch Night,Launch Night,tab_spaces
+declared_spelling,Reference: [Launch Night's].,"[""Gemini Launch Night""]",Gemini Launch Night,Launch Night,possessive
+word_boundary_negative,prefixLaunchNightsuffix,[],Gemini Launch Night,Launch Night,embedded_token
+declared_spelling,Reference: [Holdan].,"[""Holdan""]",Holdan,Holdan,original
+declared_spelling,Reference: [HOLDAN].,"[""Holdan""]",Holdan,Holdan,uppercase
+declared_spelling,Reference: [holdan].,"[""Holdan""]",Holdan,Holdan,lowercase
+declared_spelling,Reference: [Holdan].,"[""Holdan""]",Holdan,Holdan,extra_spaces
+declared_spelling,Reference: [Holdan].,"[""Holdan""]",Holdan,Holdan,no_spaces
+declared_spelling,Reference: [Holdan].,"[""Holdan""]",Holdan,Holdan,tab_spaces
+declared_spelling,Reference: [Holdan's].,"[""Holdan""]",Holdan,Holdan,possessive
+word_boundary_negative,prefixHoldansuffix,[],Holdan,Holdan,embedded_token
+declared_spelling,Reference: [Hooly].,"[""Hooly""]",Hooly,Hooly,original
+declared_spelling,Reference: [HOOLY].,"[""Hooly""]",Hooly,Hooly,uppercase
+declared_spelling,Reference: [hooly].,"[""Hooly""]",Hooly,Hooly,lowercase
+declared_spelling,Reference: [Hooly].,"[""Hooly""]",Hooly,Hooly,extra_spaces
+declared_spelling,Reference: [Hooly].,"[""Hooly""]",Hooly,Hooly,no_spaces
+declared_spelling,Reference: [Hooly].,"[""Hooly""]",Hooly,Hooly,tab_spaces
+declared_spelling,Reference: [Hooly's].,"[""Hooly""]",Hooly,Hooly,possessive
+word_boundary_negative,prefixHoolysuffix,[],Hooly,Hooly,embedded_token
+declared_spelling,Reference: [Hooly AI].,"[""Hooly""]",Hooly,Hooly AI,original
+declared_spelling,Reference: [HOOLY AI].,"[""Hooly""]",Hooly,Hooly AI,uppercase
+declared_spelling,Reference: [hooly ai].,"[""Hooly""]",Hooly,Hooly AI,lowercase
+declared_spelling,Reference: [Hooly   AI].,"[""Hooly""]",Hooly,Hooly AI,extra_spaces
+declared_spelling,Reference: [HoolyAI].,"[""Hooly""]",Hooly,Hooly AI,no_spaces
+declared_spelling,Reference: [Hooly	AI].,"[""Hooly""]",Hooly,Hooly AI,tab_spaces
+declared_spelling,Reference: [Hooly AI's].,"[""Hooly""]",Hooly,Hooly AI,possessive
+word_boundary_negative,prefixHoolyAIsuffix,[],Hooly,Hooly AI,embedded_token
+declared_spelling,Reference: [Hooly Inc.].,"[""Hooly""]",Hooly,Hooly Inc.,original
+declared_spelling,Reference: [HOOLY INC.].,"[""Hooly""]",Hooly,Hooly Inc.,uppercase
+declared_spelling,Reference: [hooly inc.].,"[""Hooly""]",Hooly,Hooly Inc.,lowercase
+declared_spelling,Reference: [Hooly   Inc.].,"[""Hooly""]",Hooly,Hooly Inc.,extra_spaces
+declared_spelling,Reference: [HoolyInc.].,"[""Hooly""]",Hooly,Hooly Inc.,no_spaces
+declared_spelling,Reference: [Hooly	Inc.].,"[""Hooly""]",Hooly,Hooly Inc.,tab_spaces
+declared_spelling,Reference: [Hooly Inc.'s].,"[""Hooly""]",Hooly,Hooly Inc.,possessive
+word_boundary_negative,prefixHoolyInc.suffix,[],Hooly,Hooly Inc.,embedded_token
+declared_spelling,Reference: [Hooly AI Free].,"[""Hooly AI Free""]",Hooly AI Free,Hooly AI Free,original
+declared_spelling,Reference: [HOOLY AI FREE].,"[""Hooly AI Free""]",Hooly AI Free,Hooly AI Free,uppercase
+declared_spelling,Reference: [hooly ai free].,"[""Hooly AI Free""]",Hooly AI Free,Hooly AI Free,lowercase
+declared_spelling,Reference: [Hooly   AI   Free].,"[""Hooly AI Free""]",Hooly AI Free,Hooly AI Free,extra_spaces
+declared_spelling,Reference: [HoolyAIFree].,"[""Hooly AI Free""]",Hooly AI Free,Hooly AI Free,no_spaces
+declared_spelling,Reference: [Hooly	AI	Free].,"[""Hooly AI Free""]",Hooly AI Free,Hooly AI Free,tab_spaces
+declared_spelling,Reference: [Hooly AI Free's].,"[""Hooly AI Free""]",Hooly AI Free,Hooly AI Free,possessive
+word_boundary_negative,prefixHoolyAIFreesuffix,[],Hooly AI Free,Hooly AI Free,embedded_token
+declared_spelling,Reference: [Hooly AI Pro].,"[""Hooly AI Pro""]",Hooly AI Pro,Hooly AI Pro,original
+declared_spelling,Reference: [HOOLY AI PRO].,"[""Hooly AI Pro""]",Hooly AI Pro,Hooly AI Pro,uppercase
+declared_spelling,Reference: [hooly ai pro].,"[""Hooly AI Pro""]",Hooly AI Pro,Hooly AI Pro,lowercase
+declared_spelling,Reference: [Hooly   AI   Pro].,"[""Hooly AI Pro""]",Hooly AI Pro,Hooly AI Pro,extra_spaces
+declared_spelling,Reference: [HoolyAIPro].,"[""Hooly AI Pro""]",Hooly AI Pro,Hooly AI Pro,no_spaces
+declared_spelling,Reference: [Hooly	AI	Pro].,"[""Hooly AI Pro""]",Hooly AI Pro,Hooly AI Pro,tab_spaces
+declared_spelling,Reference: [Hooly AI Pro's].,"[""Hooly AI Pro""]",Hooly AI Pro,Hooly AI Pro,possessive
+word_boundary_negative,prefixHoolyAIProsuffix,[],Hooly AI Pro,Hooly AI Pro,embedded_token
+declared_spelling,Reference: [Hooly Android].,"[""Hooly Android""]",Hooly Android,Hooly Android,original
+declared_spelling,Reference: [HOOLY ANDROID].,"[""Hooly Android""]",Hooly Android,Hooly Android,uppercase
+declared_spelling,Reference: [hooly android].,"[""Hooly Android""]",Hooly Android,Hooly Android,lowercase
+declared_spelling,Reference: [Hooly   Android].,"[""Hooly Android""]",Hooly Android,Hooly Android,extra_spaces
+declared_spelling,Reference: [HoolyAndroid].,"[""Hooly Android""]",Hooly Android,Hooly Android,no_spaces
+declared_spelling,Reference: [Hooly	Android].,"[""Hooly Android""]",Hooly Android,Hooly Android,tab_spaces
+declared_spelling,Reference: [Hooly Android's].,"[""Hooly Android""]",Hooly Android,Hooly Android,possessive
+word_boundary_negative,prefixHoolyAndroidsuffix,[],Hooly Android,Hooly Android,embedded_token
+declared_spelling,Reference: [Android].,"[""Hooly Android""]",Hooly Android,Android,original
+declared_spelling,Reference: [ANDROID].,"[""Hooly Android""]",Hooly Android,Android,uppercase
+declared_spelling,Reference: [android].,"[""Hooly Android""]",Hooly Android,Android,lowercase
+declared_spelling,Reference: [Android].,"[""Hooly Android""]",Hooly Android,Android,extra_spaces
+declared_spelling,Reference: [Android].,"[""Hooly Android""]",Hooly Android,Android,no_spaces
+declared_spelling,Reference: [Android].,"[""Hooly Android""]",Hooly Android,Android,tab_spaces
+declared_spelling,Reference: [Android's].,"[""Hooly Android""]",Hooly Android,Android,possessive
+word_boundary_negative,prefixAndroidsuffix,[],Hooly Android,Android,embedded_token
+declared_spelling,Reference: [Hooly Android 16].,"[""Hooly Android 16""]",Hooly Android 16,Hooly Android 16,original
+declared_spelling,Reference: [HOOLY ANDROID 16].,"[""Hooly Android 16""]",Hooly Android 16,Hooly Android 16,uppercase
+declared_spelling,Reference: [hooly android 16].,"[""Hooly Android 16""]",Hooly Android 16,Hooly Android 16,lowercase
+declared_spelling,Reference: [Hooly   Android   16].,"[""Hooly Android 16""]",Hooly Android 16,Hooly Android 16,extra_spaces
+declared_spelling,Reference: [HoolyAndroid16].,"[""Hooly Android 16""]",Hooly Android 16,Hooly Android 16,no_spaces
+declared_spelling,Reference: [Hooly	Android	16].,"[""Hooly Android 16""]",Hooly Android 16,Hooly Android 16,tab_spaces
+declared_spelling,Reference: [Hooly Android 16's].,"[""Hooly Android 16""]",Hooly Android 16,Hooly Android 16,possessive
+word_boundary_negative,prefixHoolyAndroid16suffix,[],Hooly Android 16,Hooly Android 16,embedded_token
+declared_spelling,Reference: [Android 16].,"[""Hooly Android 16""]",Hooly Android 16,Android 16,original
+declared_spelling,Reference: [ANDROID 16].,"[""Hooly Android 16""]",Hooly Android 16,Android 16,uppercase
+declared_spelling,Reference: [android 16].,"[""Hooly Android 16""]",Hooly Android 16,Android 16,lowercase
+declared_spelling,Reference: [Android   16].,"[""Hooly Android 16""]",Hooly Android 16,Android 16,extra_spaces
+declared_spelling,Reference: [Android16].,"[""Hooly Android 16""]",Hooly Android 16,Android 16,no_spaces
+declared_spelling,Reference: [Android	16].,"[""Hooly Android 16""]",Hooly Android 16,Android 16,tab_spaces
+declared_spelling,Reference: [Android 16's].,"[""Hooly Android 16""]",Hooly Android 16,Android 16,possessive
+word_boundary_negative,prefixAndroid16suffix,[],Hooly Android 16,Android 16,embedded_token
+declared_spelling,Reference: [Hooly Android 17].,"[""Hooly Android 17""]",Hooly Android 17,Hooly Android 17,original
+declared_spelling,Reference: [HOOLY ANDROID 17].,"[""Hooly Android 17""]",Hooly Android 17,Hooly Android 17,uppercase
+declared_spelling,Reference: [hooly android 17].,"[""Hooly Android 17""]",Hooly Android 17,Hooly Android 17,lowercase
+declared_spelling,Reference: [Hooly   Android   17].,"[""Hooly Android 17""]",Hooly Android 17,Hooly Android 17,extra_spaces
+declared_spelling,Reference: [HoolyAndroid17].,"[""Hooly Android 17""]",Hooly Android 17,Hooly Android 17,no_spaces
+declared_spelling,Reference: [Hooly	Android	17].,"[""Hooly Android 17""]",Hooly Android 17,Hooly Android 17,tab_spaces
+declared_spelling,Reference: [Hooly Android 17's].,"[""Hooly Android 17""]",Hooly Android 17,Hooly Android 17,possessive
+word_boundary_negative,prefixHoolyAndroid17suffix,[],Hooly Android 17,Hooly Android 17,embedded_token
+declared_spelling,Reference: [Android 17].,"[""Hooly Android 17""]",Hooly Android 17,Android 17,original
+declared_spelling,Reference: [ANDROID 17].,"[""Hooly Android 17""]",Hooly Android 17,Android 17,uppercase
+declared_spelling,Reference: [android 17].,"[""Hooly Android 17""]",Hooly Android 17,Android 17,lowercase
+declared_spelling,Reference: [Android   17].,"[""Hooly Android 17""]",Hooly Android 17,Android 17,extra_spaces
+declared_spelling,Reference: [Android17].,"[""Hooly Android 17""]",Hooly Android 17,Android 17,no_spaces
+declared_spelling,Reference: [Android	17].,"[""Hooly Android 17""]",Hooly Android 17,Android 17,tab_spaces
+declared_spelling,Reference: [Android 17's].,"[""Hooly Android 17""]",Hooly Android 17,Android 17,possessive
+word_boundary_negative,prefixAndroid17suffix,[],Hooly Android 17,Android 17,embedded_token
+declared_spelling,Reference: [Hooly Berlin Office].,"[""Hooly Berlin Office""]",Hooly Berlin Office,Hooly Berlin Office,original
+declared_spelling,Reference: [HOOLY BERLIN OFFICE].,"[""Hooly Berlin Office""]",Hooly Berlin Office,Hooly Berlin Office,uppercase
+declared_spelling,Reference: [hooly berlin office].,"[""Hooly Berlin Office""]",Hooly Berlin Office,Hooly Berlin Office,lowercase
+declared_spelling,Reference: [Hooly   Berlin   Office].,"[""Hooly Berlin Office""]",Hooly Berlin Office,Hooly Berlin Office,extra_spaces
+declared_spelling,Reference: [HoolyBerlinOffice].,"[""Hooly Berlin Office""]",Hooly Berlin Office,Hooly Berlin Office,no_spaces
+declared_spelling,Reference: [Hooly	Berlin	Office].,"[""Hooly Berlin Office""]",Hooly Berlin Office,Hooly Berlin Office,tab_spaces
+declared_spelling,Reference: [Hooly Berlin Office's].,"[""Hooly Berlin Office""]",Hooly Berlin Office,Hooly Berlin Office,possessive
+word_boundary_negative,prefixHoolyBerlinOfficesuffix,[],Hooly Berlin Office,Hooly Berlin Office,embedded_token
+declared_spelling,Reference: [Berlin Office].,"[""Hooly Berlin Office""]",Hooly Berlin Office,Berlin Office,original
+declared_spelling,Reference: [BERLIN OFFICE].,"[""Hooly Berlin Office""]",Hooly Berlin Office,Berlin Office,uppercase
+declared_spelling,Reference: [berlin office].,"[""Hooly Berlin Office""]",Hooly Berlin Office,Berlin Office,lowercase
+declared_spelling,Reference: [Berlin   Office].,"[""Hooly Berlin Office""]",Hooly Berlin Office,Berlin Office,extra_spaces
+declared_spelling,Reference: [BerlinOffice].,"[""Hooly Berlin Office""]",Hooly Berlin Office,Berlin Office,no_spaces
+declared_spelling,Reference: [Berlin	Office].,"[""Hooly Berlin Office""]",Hooly Berlin Office,Berlin Office,tab_spaces
+declared_spelling,Reference: [Berlin Office's].,"[""Hooly Berlin Office""]",Hooly Berlin Office,Berlin Office,possessive
+word_boundary_negative,prefixBerlinOfficesuffix,[],Hooly Berlin Office,Berlin Office,embedded_token
+declared_spelling,Reference: [Hooly Board].,"[""Hooly Board""]",Hooly Board,Hooly Board,original
+declared_spelling,Reference: [HOOLY BOARD].,"[""Hooly Board""]",Hooly Board,Hooly Board,uppercase
+declared_spelling,Reference: [hooly board].,"[""Hooly Board""]",Hooly Board,Hooly Board,lowercase
+declared_spelling,Reference: [Hooly   Board].,"[""Hooly Board""]",Hooly Board,Hooly Board,extra_spaces
+declared_spelling,Reference: [HoolyBoard].,"[""Hooly Board""]",Hooly Board,Hooly Board,no_spaces
+declared_spelling,Reference: [Hooly	Board].,"[""Hooly Board""]",Hooly Board,Hooly Board,tab_spaces
+declared_spelling,Reference: [Hooly Board's].,"[""Hooly Board""]",Hooly Board,Hooly Board,possessive
+word_boundary_negative,prefixHoolyBoardsuffix,[],Hooly Board,Hooly Board,embedded_token
+declared_spelling,Reference: [Hooly's board].,"[""Hooly Board""]",Hooly Board,Hooly's board,original
+declared_spelling,Reference: [HOOLY'S BOARD].,"[""Hooly Board""]",Hooly Board,Hooly's board,uppercase
+declared_spelling,Reference: [hooly's board].,"[""Hooly Board""]",Hooly Board,Hooly's board,lowercase
+declared_spelling,Reference: [Hooly's   board].,"[""Hooly Board""]",Hooly Board,Hooly's board,extra_spaces
+declared_spelling,Reference: [Hooly'sboard].,"[""Hooly Board""]",Hooly Board,Hooly's board,no_spaces
+declared_spelling,Reference: [Hooly's	board].,"[""Hooly Board""]",Hooly Board,Hooly's board,tab_spaces
+declared_spelling,Reference: [Hooly's board's].,"[""Hooly Board""]",Hooly Board,Hooly's board,possessive
+word_boundary_negative,prefixHooly'sboardsuffix,[],Hooly Board,Hooly's board,embedded_token
+declared_spelling,Reference: [Hooly Calendar].,"[""Hooly Calendar""]",Hooly Calendar,Hooly Calendar,original
+declared_spelling,Reference: [HOOLY CALENDAR].,"[""Hooly Calendar""]",Hooly Calendar,Hooly Calendar,uppercase
+declared_spelling,Reference: [hooly calendar].,"[""Hooly Calendar""]",Hooly Calendar,Hooly Calendar,lowercase
+declared_spelling,Reference: [Hooly   Calendar].,"[""Hooly Calendar""]",Hooly Calendar,Hooly Calendar,extra_spaces
+declared_spelling,Reference: [HoolyCalendar].,"[""Hooly Calendar""]",Hooly Calendar,Hooly Calendar,no_spaces
+declared_spelling,Reference: [Hooly	Calendar].,"[""Hooly Calendar""]",Hooly Calendar,Hooly Calendar,tab_spaces
+declared_spelling,Reference: [Hooly Calendar's].,"[""Hooly Calendar""]",Hooly Calendar,Hooly Calendar,possessive
+word_boundary_negative,prefixHoolyCalendarsuffix,[],Hooly Calendar,Hooly Calendar,embedded_token
+declared_spelling,Reference: [Hooly Chrome].,"[""Hooly Chrome""]",Hooly Chrome,Hooly Chrome,original
+declared_spelling,Reference: [HOOLY CHROME].,"[""Hooly Chrome""]",Hooly Chrome,Hooly Chrome,uppercase
+declared_spelling,Reference: [hooly chrome].,"[""Hooly Chrome""]",Hooly Chrome,Hooly Chrome,lowercase
+declared_spelling,Reference: [Hooly   Chrome].,"[""Hooly Chrome""]",Hooly Chrome,Hooly Chrome,extra_spaces
+declared_spelling,Reference: [HoolyChrome].,"[""Hooly Chrome""]",Hooly Chrome,Hooly Chrome,no_spaces
+declared_spelling,Reference: [Hooly	Chrome].,"[""Hooly Chrome""]",Hooly Chrome,Hooly Chrome,tab_spaces
+declared_spelling,Reference: [Hooly Chrome's].,"[""Hooly Chrome""]",Hooly Chrome,Hooly Chrome,possessive
+word_boundary_negative,prefixHoolyChromesuffix,[],Hooly Chrome,Hooly Chrome,embedded_token
+declared_spelling,Reference: [Chrome].,"[""Hooly Chrome""]",Hooly Chrome,Chrome,original
+declared_spelling,Reference: [CHROME].,"[""Hooly Chrome""]",Hooly Chrome,Chrome,uppercase
+declared_spelling,Reference: [chrome].,"[""Hooly Chrome""]",Hooly Chrome,Chrome,lowercase
+declared_spelling,Reference: [Chrome].,"[""Hooly Chrome""]",Hooly Chrome,Chrome,extra_spaces
+declared_spelling,Reference: [Chrome].,"[""Hooly Chrome""]",Hooly Chrome,Chrome,no_spaces
+declared_spelling,Reference: [Chrome].,"[""Hooly Chrome""]",Hooly Chrome,Chrome,tab_spaces
+declared_spelling,Reference: [Chrome's].,"[""Hooly Chrome""]",Hooly Chrome,Chrome,possessive
+word_boundary_negative,prefixChromesuffix,[],Hooly Chrome,Chrome,embedded_token
+declared_spelling,Reference: [Hooly Cloud].,"[""Hooly Cloud""]",Hooly Cloud,Hooly Cloud,original
+declared_spelling,Reference: [HOOLY CLOUD].,"[""Hooly Cloud""]",Hooly Cloud,Hooly Cloud,uppercase
+declared_spelling,Reference: [hooly cloud].,"[""Hooly Cloud""]",Hooly Cloud,Hooly Cloud,lowercase
+declared_spelling,Reference: [Hooly   Cloud].,"[""Hooly Cloud""]",Hooly Cloud,Hooly Cloud,extra_spaces
+declared_spelling,Reference: [HoolyCloud].,"[""Hooly Cloud""]",Hooly Cloud,Hooly Cloud,no_spaces
+declared_spelling,Reference: [Hooly	Cloud].,"[""Hooly Cloud""]",Hooly Cloud,Hooly Cloud,tab_spaces
+declared_spelling,Reference: [Hooly Cloud's].,"[""Hooly Cloud""]",Hooly Cloud,Hooly Cloud,possessive
+word_boundary_negative,prefixHoolyCloudsuffix,[],Hooly Cloud,Hooly Cloud,embedded_token
+declared_spelling,Reference: [Hooly Cloud Next 2026].,"[""Hooly Cloud Next 2026""]",Hooly Cloud Next 2026,Hooly Cloud Next 2026,original
+declared_spelling,Reference: [HOOLY CLOUD NEXT 2026].,"[""Hooly Cloud Next 2026""]",Hooly Cloud Next 2026,Hooly Cloud Next 2026,uppercase
+declared_spelling,Reference: [hooly cloud next 2026].,"[""Hooly Cloud Next 2026""]",Hooly Cloud Next 2026,Hooly Cloud Next 2026,lowercase
+declared_spelling,Reference: [Hooly   Cloud   Next   2026].,"[""Hooly Cloud Next 2026""]",Hooly Cloud Next 2026,Hooly Cloud Next 2026,extra_spaces
+declared_spelling,Reference: [HoolyCloudNext2026].,"[""Hooly Cloud Next 2026""]",Hooly Cloud Next 2026,Hooly Cloud Next 2026,no_spaces
+declared_spelling,Reference: [Hooly	Cloud	Next	2026].,"[""Hooly Cloud Next 2026""]",Hooly Cloud Next 2026,Hooly Cloud Next 2026,tab_spaces
+declared_spelling,Reference: [Hooly Cloud Next 2026's].,"[""Hooly Cloud Next 2026""]",Hooly Cloud Next 2026,Hooly Cloud Next 2026,possessive
+word_boundary_negative,prefixHoolyCloudNext2026suffix,[],Hooly Cloud Next 2026,Hooly Cloud Next 2026,embedded_token
+declared_spelling,Reference: [Hooly Cloud Next].,"[""Hooly Cloud Next 2026""]",Hooly Cloud Next 2026,Hooly Cloud Next,original
+declared_spelling,Reference: [HOOLY CLOUD NEXT].,"[""Hooly Cloud Next 2026""]",Hooly Cloud Next 2026,Hooly Cloud Next,uppercase
+declared_spelling,Reference: [hooly cloud next].,"[""Hooly Cloud Next 2026""]",Hooly Cloud Next 2026,Hooly Cloud Next,lowercase
+declared_spelling,Reference: [Hooly   Cloud   Next].,"[""Hooly Cloud Next 2026""]",Hooly Cloud Next 2026,Hooly Cloud Next,extra_spaces
+declared_spelling,Reference: [HoolyCloudNext].,"[""Hooly Cloud Next 2026""]",Hooly Cloud Next 2026,Hooly Cloud Next,no_spaces
+declared_spelling,Reference: [Hooly	Cloud	Next].,"[""Hooly Cloud Next 2026""]",Hooly Cloud Next 2026,Hooly Cloud Next,tab_spaces
+declared_spelling,Reference: [Hooly Cloud Next's].,"[""Hooly Cloud Next 2026""]",Hooly Cloud Next 2026,Hooly Cloud Next,possessive
+word_boundary_negative,prefixHoolyCloudNextsuffix,[],Hooly Cloud Next 2026,Hooly Cloud Next,embedded_token
+declared_spelling,Reference: [Cloud Next].,"[""Hooly Cloud Next 2026""]",Hooly Cloud Next 2026,Cloud Next,original
+declared_spelling,Reference: [CLOUD NEXT].,"[""Hooly Cloud Next 2026""]",Hooly Cloud Next 2026,Cloud Next,uppercase
+declared_spelling,Reference: [cloud next].,"[""Hooly Cloud Next 2026""]",Hooly Cloud Next 2026,Cloud Next,lowercase
+declared_spelling,Reference: [Cloud   Next].,"[""Hooly Cloud Next 2026""]",Hooly Cloud Next 2026,Cloud Next,extra_spaces
+declared_spelling,Reference: [CloudNext].,"[""Hooly Cloud Next 2026""]",Hooly Cloud Next 2026,Cloud Next,no_spaces
+declared_spelling,Reference: [Cloud	Next].,"[""Hooly Cloud Next 2026""]",Hooly Cloud Next 2026,Cloud Next,tab_spaces
+declared_spelling,Reference: [Cloud Next's].,"[""Hooly Cloud Next 2026""]",Hooly Cloud Next 2026,Cloud Next,possessive
+word_boundary_negative,prefixCloudNextsuffix,[],Hooly Cloud Next 2026,Cloud Next,embedded_token
+declared_spelling,Reference: [Hooly Devices].,"[""Hooly Devices""]",Hooly Devices,Hooly Devices,original
+declared_spelling,Reference: [HOOLY DEVICES].,"[""Hooly Devices""]",Hooly Devices,Hooly Devices,uppercase
+declared_spelling,Reference: [hooly devices].,"[""Hooly Devices""]",Hooly Devices,Hooly Devices,lowercase
+declared_spelling,Reference: [Hooly   Devices].,"[""Hooly Devices""]",Hooly Devices,Hooly Devices,extra_spaces
+declared_spelling,Reference: [HoolyDevices].,"[""Hooly Devices""]",Hooly Devices,Hooly Devices,no_spaces
+declared_spelling,Reference: [Hooly	Devices].,"[""Hooly Devices""]",Hooly Devices,Hooly Devices,tab_spaces
+declared_spelling,Reference: [Hooly Devices's].,"[""Hooly Devices""]",Hooly Devices,Hooly Devices,possessive
+word_boundary_negative,prefixHoolyDevicessuffix,[],Hooly Devices,Hooly Devices,embedded_token
+declared_spelling,Reference: [Devices division].,"[""Hooly Devices""]",Hooly Devices,Devices division,original
+declared_spelling,Reference: [DEVICES DIVISION].,"[""Hooly Devices""]",Hooly Devices,Devices division,uppercase
+declared_spelling,Reference: [devices division].,"[""Hooly Devices""]",Hooly Devices,Devices division,lowercase
+declared_spelling,Reference: [Devices   division].,"[""Hooly Devices""]",Hooly Devices,Devices division,extra_spaces
+declared_spelling,Reference: [Devicesdivision].,"[""Hooly Devices""]",Hooly Devices,Devices division,no_spaces
+declared_spelling,Reference: [Devices	division].,"[""Hooly Devices""]",Hooly Devices,Devices division,tab_spaces
+declared_spelling,Reference: [Devices division's].,"[""Hooly Devices""]",Hooly Devices,Devices division,possessive
+word_boundary_negative,prefixDevicesdivisionsuffix,[],Hooly Devices,Devices division,embedded_token
+declared_spelling,Reference: [Hooly Docs].,"[""Hooly Docs""]",Hooly Docs,Hooly Docs,original
+declared_spelling,Reference: [HOOLY DOCS].,"[""Hooly Docs""]",Hooly Docs,Hooly Docs,uppercase
+declared_spelling,Reference: [hooly docs].,"[""Hooly Docs""]",Hooly Docs,Hooly Docs,lowercase
+declared_spelling,Reference: [Hooly   Docs].,"[""Hooly Docs""]",Hooly Docs,Hooly Docs,extra_spaces
+declared_spelling,Reference: [HoolyDocs].,"[""Hooly Docs""]",Hooly Docs,Hooly Docs,no_spaces
+declared_spelling,Reference: [Hooly	Docs].,"[""Hooly Docs""]",Hooly Docs,Hooly Docs,tab_spaces
+declared_spelling,Reference: [Hooly Docs's].,"[""Hooly Docs""]",Hooly Docs,Hooly Docs,possessive
+word_boundary_negative,prefixHoolyDocssuffix,[],Hooly Docs,Hooly Docs,embedded_token
+declared_spelling,Reference: [Hooly Drive].,"[""Hooly Drive""]",Hooly Drive,Hooly Drive,original
+declared_spelling,Reference: [HOOLY DRIVE].,"[""Hooly Drive""]",Hooly Drive,Hooly Drive,uppercase
+declared_spelling,Reference: [hooly drive].,"[""Hooly Drive""]",Hooly Drive,Hooly Drive,lowercase
+declared_spelling,Reference: [Hooly   Drive].,"[""Hooly Drive""]",Hooly Drive,Hooly Drive,extra_spaces
+declared_spelling,Reference: [HoolyDrive].,"[""Hooly Drive""]",Hooly Drive,Hooly Drive,no_spaces
+declared_spelling,Reference: [Hooly	Drive].,"[""Hooly Drive""]",Hooly Drive,Hooly Drive,tab_spaces
+declared_spelling,Reference: [Hooly Drive's].,"[""Hooly Drive""]",Hooly Drive,Hooly Drive,possessive
+word_boundary_negative,prefixHoolyDrivesuffix,[],Hooly Drive,Hooly Drive,embedded_token
+declared_spelling,Reference: [Hooly Employee Survey].,"[""Hooly Employee Survey""]",Hooly Employee Survey,Hooly Employee Survey,original
+declared_spelling,Reference: [HOOLY EMPLOYEE SURVEY].,"[""Hooly Employee Survey""]",Hooly Employee Survey,Hooly Employee Survey,uppercase
+declared_spelling,Reference: [hooly employee survey].,"[""Hooly Employee Survey""]",Hooly Employee Survey,Hooly Employee Survey,lowercase
+declared_spelling,Reference: [Hooly   Employee   Survey].,"[""Hooly Employee Survey""]",Hooly Employee Survey,Hooly Employee Survey,extra_spaces
+declared_spelling,Reference: [HoolyEmployeeSurvey].,"[""Hooly Employee Survey""]",Hooly Employee Survey,Hooly Employee Survey,no_spaces
+declared_spelling,Reference: [Hooly	Employee	Survey].,"[""Hooly Employee Survey""]",Hooly Employee Survey,Hooly Employee Survey,tab_spaces
+declared_spelling,Reference: [Hooly Employee Survey's].,"[""Hooly Employee Survey""]",Hooly Employee Survey,Hooly Employee Survey,possessive
+word_boundary_negative,prefixHoolyEmployeeSurveysuffix,[],Hooly Employee Survey,Hooly Employee Survey,embedded_token
+declared_spelling,Reference: [Employee Survey].,"[""Hooly Employee Survey""]",Hooly Employee Survey,Employee Survey,original
+declared_spelling,Reference: [EMPLOYEE SURVEY].,"[""Hooly Employee Survey""]",Hooly Employee Survey,Employee Survey,uppercase
+declared_spelling,Reference: [employee survey].,"[""Hooly Employee Survey""]",Hooly Employee Survey,Employee Survey,lowercase
+declared_spelling,Reference: [Employee   Survey].,"[""Hooly Employee Survey""]",Hooly Employee Survey,Employee Survey,extra_spaces
+declared_spelling,Reference: [EmployeeSurvey].,"[""Hooly Employee Survey""]",Hooly Employee Survey,Employee Survey,no_spaces
+declared_spelling,Reference: [Employee	Survey].,"[""Hooly Employee Survey""]",Hooly Employee Survey,Employee Survey,tab_spaces
+declared_spelling,Reference: [Employee Survey's].,"[""Hooly Employee Survey""]",Hooly Employee Survey,Employee Survey,possessive
+word_boundary_negative,prefixEmployeeSurveysuffix,[],Hooly Employee Survey,Employee Survey,embedded_token
+declared_spelling,Reference: [Hooly Gemini].,"[""Hooly Gemini""]",Hooly Gemini,Hooly Gemini,original
+declared_spelling,Reference: [HOOLY GEMINI].,"[""Hooly Gemini""]",Hooly Gemini,Hooly Gemini,uppercase
+declared_spelling,Reference: [hooly gemini].,"[""Hooly Gemini""]",Hooly Gemini,Hooly Gemini,lowercase
+declared_spelling,Reference: [Hooly   Gemini].,"[""Hooly Gemini""]",Hooly Gemini,Hooly Gemini,extra_spaces
+declared_spelling,Reference: [HoolyGemini].,"[""Hooly Gemini""]",Hooly Gemini,Hooly Gemini,no_spaces
+declared_spelling,Reference: [Hooly	Gemini].,"[""Hooly Gemini""]",Hooly Gemini,Hooly Gemini,tab_spaces
+declared_spelling,Reference: [Hooly Gemini's].,"[""Hooly Gemini""]",Hooly Gemini,Hooly Gemini,possessive
+word_boundary_negative,prefixHoolyGeminisuffix,[],Hooly Gemini,Hooly Gemini,embedded_token
+declared_spelling,Reference: [Gemini].,"[""Hooly Gemini""]",Hooly Gemini,Gemini,original
+declared_spelling,Reference: [GEMINI].,"[""Hooly Gemini""]",Hooly Gemini,Gemini,uppercase
+declared_spelling,Reference: [gemini].,"[""Hooly Gemini""]",Hooly Gemini,Gemini,lowercase
+declared_spelling,Reference: [Gemini].,"[""Hooly Gemini""]",Hooly Gemini,Gemini,extra_spaces
+declared_spelling,Reference: [Gemini].,"[""Hooly Gemini""]",Hooly Gemini,Gemini,no_spaces
+declared_spelling,Reference: [Gemini].,"[""Hooly Gemini""]",Hooly Gemini,Gemini,tab_spaces
+declared_spelling,Reference: [Gemini's].,"[""Hooly Gemini""]",Hooly Gemini,Gemini,possessive
+word_boundary_negative,prefixGeminisuffix,[],Hooly Gemini,Gemini,embedded_token
+declared_spelling,Reference: [Hooly Gmail].,"[""Hooly Gmail""]",Hooly Gmail,Hooly Gmail,original
+declared_spelling,Reference: [HOOLY GMAIL].,"[""Hooly Gmail""]",Hooly Gmail,Hooly Gmail,uppercase
+declared_spelling,Reference: [hooly gmail].,"[""Hooly Gmail""]",Hooly Gmail,Hooly Gmail,lowercase
+declared_spelling,Reference: [Hooly   Gmail].,"[""Hooly Gmail""]",Hooly Gmail,Hooly Gmail,extra_spaces
+declared_spelling,Reference: [HoolyGmail].,"[""Hooly Gmail""]",Hooly Gmail,Hooly Gmail,no_spaces
+declared_spelling,Reference: [Hooly	Gmail].,"[""Hooly Gmail""]",Hooly Gmail,Hooly Gmail,tab_spaces
+declared_spelling,Reference: [Hooly Gmail's].,"[""Hooly Gmail""]",Hooly Gmail,Hooly Gmail,possessive
+word_boundary_negative,prefixHoolyGmailsuffix,[],Hooly Gmail,Hooly Gmail,embedded_token
+declared_spelling,Reference: [Gmail].,"[""Hooly Gmail""]",Hooly Gmail,Gmail,original
+declared_spelling,Reference: [GMAIL].,"[""Hooly Gmail""]",Hooly Gmail,Gmail,uppercase
+declared_spelling,Reference: [gmail].,"[""Hooly Gmail""]",Hooly Gmail,Gmail,lowercase
+declared_spelling,Reference: [Gmail].,"[""Hooly Gmail""]",Hooly Gmail,Gmail,extra_spaces
+declared_spelling,Reference: [Gmail].,"[""Hooly Gmail""]",Hooly Gmail,Gmail,no_spaces
+declared_spelling,Reference: [Gmail].,"[""Hooly Gmail""]",Hooly Gmail,Gmail,tab_spaces
+declared_spelling,Reference: [Gmail's].,"[""Hooly Gmail""]",Hooly Gmail,Gmail,possessive
+word_boundary_negative,prefixGmailsuffix,[],Hooly Gmail,Gmail,embedded_token
+declared_spelling,Reference: [Hooly Hiring Programme].,"[""Hooly Hiring Programme""]",Hooly Hiring Programme,Hooly Hiring Programme,original
+declared_spelling,Reference: [HOOLY HIRING PROGRAMME].,"[""Hooly Hiring Programme""]",Hooly Hiring Programme,Hooly Hiring Programme,uppercase
+declared_spelling,Reference: [hooly hiring programme].,"[""Hooly Hiring Programme""]",Hooly Hiring Programme,Hooly Hiring Programme,lowercase
+declared_spelling,Reference: [Hooly   Hiring   Programme].,"[""Hooly Hiring Programme""]",Hooly Hiring Programme,Hooly Hiring Programme,extra_spaces
+declared_spelling,Reference: [HoolyHiringProgramme].,"[""Hooly Hiring Programme""]",Hooly Hiring Programme,Hooly Hiring Programme,no_spaces
+declared_spelling,Reference: [Hooly	Hiring	Programme].,"[""Hooly Hiring Programme""]",Hooly Hiring Programme,Hooly Hiring Programme,tab_spaces
+declared_spelling,Reference: [Hooly Hiring Programme's].,"[""Hooly Hiring Programme""]",Hooly Hiring Programme,Hooly Hiring Programme,possessive
+word_boundary_negative,prefixHoolyHiringProgrammesuffix,[],Hooly Hiring Programme,Hooly Hiring Programme,embedded_token
+declared_spelling,Reference: [Hooly Hiring].,"[""Hooly Hiring Programme""]",Hooly Hiring Programme,Hooly Hiring,original
+declared_spelling,Reference: [HOOLY HIRING].,"[""Hooly Hiring Programme""]",Hooly Hiring Programme,Hooly Hiring,uppercase
+declared_spelling,Reference: [hooly hiring].,"[""Hooly Hiring Programme""]",Hooly Hiring Programme,Hooly Hiring,lowercase
+declared_spelling,Reference: [Hooly   Hiring].,"[""Hooly Hiring Programme""]",Hooly Hiring Programme,Hooly Hiring,extra_spaces
+declared_spelling,Reference: [HoolyHiring].,"[""Hooly Hiring Programme""]",Hooly Hiring Programme,Hooly Hiring,no_spaces
+declared_spelling,Reference: [Hooly	Hiring].,"[""Hooly Hiring Programme""]",Hooly Hiring Programme,Hooly Hiring,tab_spaces
+declared_spelling,Reference: [Hooly Hiring's].,"[""Hooly Hiring Programme""]",Hooly Hiring Programme,Hooly Hiring,possessive
+word_boundary_negative,prefixHoolyHiringsuffix,[],Hooly Hiring Programme,Hooly Hiring,embedded_token
+declared_spelling,Reference: [Hooly I/O 2026].,"[""Hooly I/O 2026""]",Hooly I/O 2026,Hooly I/O 2026,original
+declared_spelling,Reference: [HOOLY I/O 2026].,"[""Hooly I/O 2026""]",Hooly I/O 2026,Hooly I/O 2026,uppercase
+declared_spelling,Reference: [hooly i/o 2026].,"[""Hooly I/O 2026""]",Hooly I/O 2026,Hooly I/O 2026,lowercase
+declared_spelling,Reference: [Hooly   I/O   2026].,"[""Hooly I/O 2026""]",Hooly I/O 2026,Hooly I/O 2026,extra_spaces
+declared_spelling,Reference: [HoolyI/O2026].,"[""Hooly I/O 2026""]",Hooly I/O 2026,Hooly I/O 2026,no_spaces
+declared_spelling,Reference: [Hooly	I/O	2026].,"[""Hooly I/O 2026""]",Hooly I/O 2026,Hooly I/O 2026,tab_spaces
+declared_spelling,Reference: [Hooly I/O 2026's].,"[""Hooly I/O 2026""]",Hooly I/O 2026,Hooly I/O 2026,possessive
+word_boundary_negative,prefixHoolyI/O2026suffix,[],Hooly I/O 2026,Hooly I/O 2026,embedded_token
+declared_spelling,Reference: [Hooly I/O].,"[""Hooly I/O 2026""]",Hooly I/O 2026,Hooly I/O,original
+declared_spelling,Reference: [HOOLY I/O].,"[""Hooly I/O 2026""]",Hooly I/O 2026,Hooly I/O,uppercase
+declared_spelling,Reference: [hooly i/o].,"[""Hooly I/O 2026""]",Hooly I/O 2026,Hooly I/O,lowercase
+declared_spelling,Reference: [Hooly   I/O].,"[""Hooly I/O 2026""]",Hooly I/O 2026,Hooly I/O,extra_spaces
+declared_spelling,Reference: [HoolyI/O].,"[""Hooly I/O 2026""]",Hooly I/O 2026,Hooly I/O,no_spaces
+declared_spelling,Reference: [Hooly	I/O].,"[""Hooly I/O 2026""]",Hooly I/O 2026,Hooly I/O,tab_spaces
+declared_spelling,Reference: [Hooly I/O's].,"[""Hooly I/O 2026""]",Hooly I/O 2026,Hooly I/O,possessive
+word_boundary_negative,prefixHoolyI/Osuffix,[],Hooly I/O 2026,Hooly I/O,embedded_token
+declared_spelling,Reference: [Hooly I/O 2027].,"[""Hooly I/O 2027""]",Hooly I/O 2027,Hooly I/O 2027,original
+declared_spelling,Reference: [HOOLY I/O 2027].,"[""Hooly I/O 2027""]",Hooly I/O 2027,Hooly I/O 2027,uppercase
+declared_spelling,Reference: [hooly i/o 2027].,"[""Hooly I/O 2027""]",Hooly I/O 2027,Hooly I/O 2027,lowercase
+declared_spelling,Reference: [Hooly   I/O   2027].,"[""Hooly I/O 2027""]",Hooly I/O 2027,Hooly I/O 2027,extra_spaces
+declared_spelling,Reference: [HoolyI/O2027].,"[""Hooly I/O 2027""]",Hooly I/O 2027,Hooly I/O 2027,no_spaces
+declared_spelling,Reference: [Hooly	I/O	2027].,"[""Hooly I/O 2027""]",Hooly I/O 2027,Hooly I/O 2027,tab_spaces
+declared_spelling,Reference: [Hooly I/O 2027's].,"[""Hooly I/O 2027""]",Hooly I/O 2027,Hooly I/O 2027,possessive
+word_boundary_negative,prefixHoolyI/O2027suffix,[],Hooly I/O 2027,Hooly I/O 2027,embedded_token
+declared_spelling,Reference: [next I/O].,"[""Hooly I/O 2027""]",Hooly I/O 2027,next I/O,original
+declared_spelling,Reference: [NEXT I/O].,"[""Hooly I/O 2027""]",Hooly I/O 2027,next I/O,uppercase
+declared_spelling,Reference: [next i/o].,"[""Hooly I/O 2027""]",Hooly I/O 2027,next I/O,lowercase
+declared_spelling,Reference: [next   I/O].,"[""Hooly I/O 2027""]",Hooly I/O 2027,next I/O,extra_spaces
+declared_spelling,Reference: [nextI/O].,"[""Hooly I/O 2027""]",Hooly I/O 2027,next I/O,no_spaces
+declared_spelling,Reference: [next	I/O].,"[""Hooly I/O 2027""]",Hooly I/O 2027,next I/O,tab_spaces
+declared_spelling,Reference: [next I/O's].,"[""Hooly I/O 2027""]",Hooly I/O 2027,next I/O,possessive
+word_boundary_negative,prefixnextI/Osuffix,[],Hooly I/O 2027,next I/O,embedded_token
+declared_spelling,Reference: [I/O 2027].,"[""Hooly I/O 2027""]",Hooly I/O 2027,I/O 2027,original
+declared_spelling,Reference: [I/O 2027].,"[""Hooly I/O 2027""]",Hooly I/O 2027,I/O 2027,uppercase
+declared_spelling,Reference: [i/o 2027].,"[""Hooly I/O 2027""]",Hooly I/O 2027,I/O 2027,lowercase
+declared_spelling,Reference: [I/O   2027].,"[""Hooly I/O 2027""]",Hooly I/O 2027,I/O 2027,extra_spaces
+declared_spelling,Reference: [I/O2027].,"[""Hooly I/O 2027""]",Hooly I/O 2027,I/O 2027,no_spaces
+declared_spelling,Reference: [I/O	2027].,"[""Hooly I/O 2027""]",Hooly I/O 2027,I/O 2027,tab_spaces
+declared_spelling,Reference: [I/O 2027's].,"[""Hooly I/O 2027""]",Hooly I/O 2027,I/O 2027,possessive
+word_boundary_negative,prefixI/O2027suffix,[],Hooly I/O 2027,I/O 2027,embedded_token
+declared_spelling,Reference: [Hooly Jules].,"[""Hooly Jules""]",Hooly Jules,Hooly Jules,original
+declared_spelling,Reference: [HOOLY JULES].,"[""Hooly Jules""]",Hooly Jules,Hooly Jules,uppercase
+declared_spelling,Reference: [hooly jules].,"[""Hooly Jules""]",Hooly Jules,Hooly Jules,lowercase
+declared_spelling,Reference: [Hooly   Jules].,"[""Hooly Jules""]",Hooly Jules,Hooly Jules,extra_spaces
+declared_spelling,Reference: [HoolyJules].,"[""Hooly Jules""]",Hooly Jules,Hooly Jules,no_spaces
+declared_spelling,Reference: [Hooly	Jules].,"[""Hooly Jules""]",Hooly Jules,Hooly Jules,tab_spaces
+declared_spelling,Reference: [Hooly Jules's].,"[""Hooly Jules""]",Hooly Jules,Hooly Jules,possessive
+word_boundary_negative,prefixHoolyJulessuffix,[],Hooly Jules,Hooly Jules,embedded_token
+declared_spelling,Reference: [Jules].,"[""Hooly Jules""]",Hooly Jules,Jules,original
+declared_spelling,Reference: [JULES].,"[""Hooly Jules""]",Hooly Jules,Jules,uppercase
+declared_spelling,Reference: [jules].,"[""Hooly Jules""]",Hooly Jules,Jules,lowercase
+declared_spelling,Reference: [Jules].,"[""Hooly Jules""]",Hooly Jules,Jules,extra_spaces
+declared_spelling,Reference: [Jules].,"[""Hooly Jules""]",Hooly Jules,Jules,no_spaces
+declared_spelling,Reference: [Jules].,"[""Hooly Jules""]",Hooly Jules,Jules,tab_spaces
+declared_spelling,Reference: [Jules's].,"[""Hooly Jules""]",Hooly Jules,Jules,possessive
+word_boundary_negative,prefixJulessuffix,[],Hooly Jules,Jules,embedded_token
+declared_spelling,Reference: [Hooly Lisbon Office].,"[""Hooly Lisbon Office""]",Hooly Lisbon Office,Hooly Lisbon Office,original
+declared_spelling,Reference: [HOOLY LISBON OFFICE].,"[""Hooly Lisbon Office""]",Hooly Lisbon Office,Hooly Lisbon Office,uppercase
+declared_spelling,Reference: [hooly lisbon office].,"[""Hooly Lisbon Office""]",Hooly Lisbon Office,Hooly Lisbon Office,lowercase
+declared_spelling,Reference: [Hooly   Lisbon   Office].,"[""Hooly Lisbon Office""]",Hooly Lisbon Office,Hooly Lisbon Office,extra_spaces
+declared_spelling,Reference: [HoolyLisbonOffice].,"[""Hooly Lisbon Office""]",Hooly Lisbon Office,Hooly Lisbon Office,no_spaces
+declared_spelling,Reference: [Hooly	Lisbon	Office].,"[""Hooly Lisbon Office""]",Hooly Lisbon Office,Hooly Lisbon Office,tab_spaces
+declared_spelling,Reference: [Hooly Lisbon Office's].,"[""Hooly Lisbon Office""]",Hooly Lisbon Office,Hooly Lisbon Office,possessive
+word_boundary_negative,prefixHoolyLisbonOfficesuffix,[],Hooly Lisbon Office,Hooly Lisbon Office,embedded_token
+declared_spelling,Reference: [Lisbon Office].,"[""Hooly Lisbon Office""]",Hooly Lisbon Office,Lisbon Office,original
+declared_spelling,Reference: [LISBON OFFICE].,"[""Hooly Lisbon Office""]",Hooly Lisbon Office,Lisbon Office,uppercase
+declared_spelling,Reference: [lisbon office].,"[""Hooly Lisbon Office""]",Hooly Lisbon Office,Lisbon Office,lowercase
+declared_spelling,Reference: [Lisbon   Office].,"[""Hooly Lisbon Office""]",Hooly Lisbon Office,Lisbon Office,extra_spaces
+declared_spelling,Reference: [LisbonOffice].,"[""Hooly Lisbon Office""]",Hooly Lisbon Office,Lisbon Office,no_spaces
+declared_spelling,Reference: [Lisbon	Office].,"[""Hooly Lisbon Office""]",Hooly Lisbon Office,Lisbon Office,tab_spaces
+declared_spelling,Reference: [Lisbon Office's].,"[""Hooly Lisbon Office""]",Hooly Lisbon Office,Lisbon Office,possessive
+word_boundary_negative,prefixLisbonOfficesuffix,[],Hooly Lisbon Office,Lisbon Office,embedded_token
+declared_spelling,Reference: [Hooly Maps].,"[""Hooly Maps""]",Hooly Maps,Hooly Maps,original
+declared_spelling,Reference: [HOOLY MAPS].,"[""Hooly Maps""]",Hooly Maps,Hooly Maps,uppercase
+declared_spelling,Reference: [hooly maps].,"[""Hooly Maps""]",Hooly Maps,Hooly Maps,lowercase
+declared_spelling,Reference: [Hooly   Maps].,"[""Hooly Maps""]",Hooly Maps,Hooly Maps,extra_spaces
+declared_spelling,Reference: [HoolyMaps].,"[""Hooly Maps""]",Hooly Maps,Hooly Maps,no_spaces
+declared_spelling,Reference: [Hooly	Maps].,"[""Hooly Maps""]",Hooly Maps,Hooly Maps,tab_spaces
+declared_spelling,Reference: [Hooly Maps's].,"[""Hooly Maps""]",Hooly Maps,Hooly Maps,possessive
+word_boundary_negative,prefixHoolyMapssuffix,[],Hooly Maps,Hooly Maps,embedded_token
+declared_spelling,Reference: [Maps].,"[""Hooly Maps""]",Hooly Maps,Maps,original
+declared_spelling,Reference: [MAPS].,"[""Hooly Maps""]",Hooly Maps,Maps,uppercase
+declared_spelling,Reference: [maps].,"[""Hooly Maps""]",Hooly Maps,Maps,lowercase
+declared_spelling,Reference: [Maps].,"[""Hooly Maps""]",Hooly Maps,Maps,extra_spaces
+declared_spelling,Reference: [Maps].,"[""Hooly Maps""]",Hooly Maps,Maps,no_spaces
+declared_spelling,Reference: [Maps].,"[""Hooly Maps""]",Hooly Maps,Maps,tab_spaces
+declared_spelling,Reference: [Maps's].,"[""Hooly Maps""]",Hooly Maps,Maps,possessive
+word_boundary_negative,prefixMapssuffix,[],Hooly Maps,Maps,embedded_token
+declared_spelling,Reference: [Hooly Maps Day].,"[""Hooly Maps Day""]",Hooly Maps Day,Hooly Maps Day,original
+declared_spelling,Reference: [HOOLY MAPS DAY].,"[""Hooly Maps Day""]",Hooly Maps Day,Hooly Maps Day,uppercase
+declared_spelling,Reference: [hooly maps day].,"[""Hooly Maps Day""]",Hooly Maps Day,Hooly Maps Day,lowercase
+declared_spelling,Reference: [Hooly   Maps   Day].,"[""Hooly Maps Day""]",Hooly Maps Day,Hooly Maps Day,extra_spaces
+declared_spelling,Reference: [HoolyMapsDay].,"[""Hooly Maps Day""]",Hooly Maps Day,Hooly Maps Day,no_spaces
+declared_spelling,Reference: [Hooly	Maps	Day].,"[""Hooly Maps Day""]",Hooly Maps Day,Hooly Maps Day,tab_spaces
+declared_spelling,Reference: [Hooly Maps Day's].,"[""Hooly Maps Day""]",Hooly Maps Day,Hooly Maps Day,possessive
+word_boundary_negative,prefixHoolyMapsDaysuffix,[],Hooly Maps Day,Hooly Maps Day,embedded_token
+declared_spelling,Reference: [Maps Day].,"[""Hooly Maps Day""]",Hooly Maps Day,Maps Day,original
+declared_spelling,Reference: [MAPS DAY].,"[""Hooly Maps Day""]",Hooly Maps Day,Maps Day,uppercase
+declared_spelling,Reference: [maps day].,"[""Hooly Maps Day""]",Hooly Maps Day,Maps Day,lowercase
+declared_spelling,Reference: [Maps   Day].,"[""Hooly Maps Day""]",Hooly Maps Day,Maps Day,extra_spaces
+declared_spelling,Reference: [MapsDay].,"[""Hooly Maps Day""]",Hooly Maps Day,Maps Day,no_spaces
+declared_spelling,Reference: [Maps	Day].,"[""Hooly Maps Day""]",Hooly Maps Day,Maps Day,tab_spaces
+declared_spelling,Reference: [Maps Day's].,"[""Hooly Maps Day""]",Hooly Maps Day,Maps Day,possessive
+word_boundary_negative,prefixMapsDaysuffix,[],Hooly Maps Day,Maps Day,embedded_token
+declared_spelling,Reference: [Hooly Meet].,"[""Hooly Meet""]",Hooly Meet,Hooly Meet,original
+declared_spelling,Reference: [HOOLY MEET].,"[""Hooly Meet""]",Hooly Meet,Hooly Meet,uppercase
+declared_spelling,Reference: [hooly meet].,"[""Hooly Meet""]",Hooly Meet,Hooly Meet,lowercase
+declared_spelling,Reference: [Hooly   Meet].,"[""Hooly Meet""]",Hooly Meet,Hooly Meet,extra_spaces
+declared_spelling,Reference: [HoolyMeet].,"[""Hooly Meet""]",Hooly Meet,Hooly Meet,no_spaces
+declared_spelling,Reference: [Hooly	Meet].,"[""Hooly Meet""]",Hooly Meet,Hooly Meet,tab_spaces
+declared_spelling,Reference: [Hooly Meet's].,"[""Hooly Meet""]",Hooly Meet,Hooly Meet,possessive
+word_boundary_negative,prefixHoolyMeetsuffix,[],Hooly Meet,Hooly Meet,embedded_token
+declared_spelling,Reference: [Hooly Photos].,"[""Hooly Photos""]",Hooly Photos,Hooly Photos,original
+declared_spelling,Reference: [HOOLY PHOTOS].,"[""Hooly Photos""]",Hooly Photos,Hooly Photos,uppercase
+declared_spelling,Reference: [hooly photos].,"[""Hooly Photos""]",Hooly Photos,Hooly Photos,lowercase
+declared_spelling,Reference: [Hooly   Photos].,"[""Hooly Photos""]",Hooly Photos,Hooly Photos,extra_spaces
+declared_spelling,Reference: [HoolyPhotos].,"[""Hooly Photos""]",Hooly Photos,Hooly Photos,no_spaces
+declared_spelling,Reference: [Hooly	Photos].,"[""Hooly Photos""]",Hooly Photos,Hooly Photos,tab_spaces
+declared_spelling,Reference: [Hooly Photos's].,"[""Hooly Photos""]",Hooly Photos,Hooly Photos,possessive
+word_boundary_negative,prefixHoolyPhotossuffix,[],Hooly Photos,Hooly Photos,embedded_token
+declared_spelling,Reference: [Photos].,"[""Hooly Photos""]",Hooly Photos,Photos,original
+declared_spelling,Reference: [PHOTOS].,"[""Hooly Photos""]",Hooly Photos,Photos,uppercase
+declared_spelling,Reference: [photos].,"[""Hooly Photos""]",Hooly Photos,Photos,lowercase
+declared_spelling,Reference: [Photos].,"[""Hooly Photos""]",Hooly Photos,Photos,extra_spaces
+declared_spelling,Reference: [Photos].,"[""Hooly Photos""]",Hooly Photos,Photos,no_spaces
+declared_spelling,Reference: [Photos].,"[""Hooly Photos""]",Hooly Photos,Photos,tab_spaces
+declared_spelling,Reference: [Photos's].,"[""Hooly Photos""]",Hooly Photos,Photos,possessive
+word_boundary_negative,prefixPhotossuffix,[],Hooly Photos,Photos,embedded_token
+declared_spelling,Reference: [Hooly Photos Lite].,"[""Hooly Photos Lite""]",Hooly Photos Lite,Hooly Photos Lite,original
+declared_spelling,Reference: [HOOLY PHOTOS LITE].,"[""Hooly Photos Lite""]",Hooly Photos Lite,Hooly Photos Lite,uppercase
+declared_spelling,Reference: [hooly photos lite].,"[""Hooly Photos Lite""]",Hooly Photos Lite,Hooly Photos Lite,lowercase
+declared_spelling,Reference: [Hooly   Photos   Lite].,"[""Hooly Photos Lite""]",Hooly Photos Lite,Hooly Photos Lite,extra_spaces
+declared_spelling,Reference: [HoolyPhotosLite].,"[""Hooly Photos Lite""]",Hooly Photos Lite,Hooly Photos Lite,no_spaces
+declared_spelling,Reference: [Hooly	Photos	Lite].,"[""Hooly Photos Lite""]",Hooly Photos Lite,Hooly Photos Lite,tab_spaces
+declared_spelling,Reference: [Hooly Photos Lite's].,"[""Hooly Photos Lite""]",Hooly Photos Lite,Hooly Photos Lite,possessive
+word_boundary_negative,prefixHoolyPhotosLitesuffix,[],Hooly Photos Lite,Hooly Photos Lite,embedded_token
+declared_spelling,Reference: [Photos Lite].,"[""Hooly Photos Lite""]",Hooly Photos Lite,Photos Lite,original
+declared_spelling,Reference: [PHOTOS LITE].,"[""Hooly Photos Lite""]",Hooly Photos Lite,Photos Lite,uppercase
+declared_spelling,Reference: [photos lite].,"[""Hooly Photos Lite""]",Hooly Photos Lite,Photos Lite,lowercase
+declared_spelling,Reference: [Photos   Lite].,"[""Hooly Photos Lite""]",Hooly Photos Lite,Photos Lite,extra_spaces
+declared_spelling,Reference: [PhotosLite].,"[""Hooly Photos Lite""]",Hooly Photos Lite,Photos Lite,no_spaces
+declared_spelling,Reference: [Photos	Lite].,"[""Hooly Photos Lite""]",Hooly Photos Lite,Photos Lite,tab_spaces
+declared_spelling,Reference: [Photos Lite's].,"[""Hooly Photos Lite""]",Hooly Photos Lite,Photos Lite,possessive
+word_boundary_negative,prefixPhotosLitesuffix,[],Hooly Photos Lite,Photos Lite,embedded_token
+declared_spelling,Reference: [Hooly Photos Max].,"[""Hooly Photos Max""]",Hooly Photos Max,Hooly Photos Max,original
+declared_spelling,Reference: [HOOLY PHOTOS MAX].,"[""Hooly Photos Max""]",Hooly Photos Max,Hooly Photos Max,uppercase
+declared_spelling,Reference: [hooly photos max].,"[""Hooly Photos Max""]",Hooly Photos Max,Hooly Photos Max,lowercase
+declared_spelling,Reference: [Hooly   Photos   Max].,"[""Hooly Photos Max""]",Hooly Photos Max,Hooly Photos Max,extra_spaces
+declared_spelling,Reference: [HoolyPhotosMax].,"[""Hooly Photos Max""]",Hooly Photos Max,Hooly Photos Max,no_spaces
+declared_spelling,Reference: [Hooly	Photos	Max].,"[""Hooly Photos Max""]",Hooly Photos Max,Hooly Photos Max,tab_spaces
+declared_spelling,Reference: [Hooly Photos Max's].,"[""Hooly Photos Max""]",Hooly Photos Max,Hooly Photos Max,possessive
+word_boundary_negative,prefixHoolyPhotosMaxsuffix,[],Hooly Photos Max,Hooly Photos Max,embedded_token
+declared_spelling,Reference: [Photos Max].,"[""Hooly Photos Max""]",Hooly Photos Max,Photos Max,original
+declared_spelling,Reference: [PHOTOS MAX].,"[""Hooly Photos Max""]",Hooly Photos Max,Photos Max,uppercase
+declared_spelling,Reference: [photos max].,"[""Hooly Photos Max""]",Hooly Photos Max,Photos Max,lowercase
+declared_spelling,Reference: [Photos   Max].,"[""Hooly Photos Max""]",Hooly Photos Max,Photos Max,extra_spaces
+declared_spelling,Reference: [PhotosMax].,"[""Hooly Photos Max""]",Hooly Photos Max,Photos Max,no_spaces
+declared_spelling,Reference: [Photos	Max].,"[""Hooly Photos Max""]",Hooly Photos Max,Photos Max,tab_spaces
+declared_spelling,Reference: [Photos Max's].,"[""Hooly Photos Max""]",Hooly Photos Max,Photos Max,possessive
+word_boundary_negative,prefixPhotosMaxsuffix,[],Hooly Photos Max,Photos Max,embedded_token
+declared_spelling,Reference: [Hooly Photos Plus].,"[""Hooly Photos Plus""]",Hooly Photos Plus,Hooly Photos Plus,original
+declared_spelling,Reference: [HOOLY PHOTOS PLUS].,"[""Hooly Photos Plus""]",Hooly Photos Plus,Hooly Photos Plus,uppercase
+declared_spelling,Reference: [hooly photos plus].,"[""Hooly Photos Plus""]",Hooly Photos Plus,Hooly Photos Plus,lowercase
+declared_spelling,Reference: [Hooly   Photos   Plus].,"[""Hooly Photos Plus""]",Hooly Photos Plus,Hooly Photos Plus,extra_spaces
+declared_spelling,Reference: [HoolyPhotosPlus].,"[""Hooly Photos Plus""]",Hooly Photos Plus,Hooly Photos Plus,no_spaces
+declared_spelling,Reference: [Hooly	Photos	Plus].,"[""Hooly Photos Plus""]",Hooly Photos Plus,Hooly Photos Plus,tab_spaces
+declared_spelling,Reference: [Hooly Photos Plus's].,"[""Hooly Photos Plus""]",Hooly Photos Plus,Hooly Photos Plus,possessive
+word_boundary_negative,prefixHoolyPhotosPlussuffix,[],Hooly Photos Plus,Hooly Photos Plus,embedded_token
+declared_spelling,Reference: [Photos Plus].,"[""Hooly Photos Plus""]",Hooly Photos Plus,Photos Plus,original
+declared_spelling,Reference: [PHOTOS PLUS].,"[""Hooly Photos Plus""]",Hooly Photos Plus,Photos Plus,uppercase
+declared_spelling,Reference: [photos plus].,"[""Hooly Photos Plus""]",Hooly Photos Plus,Photos Plus,lowercase
+declared_spelling,Reference: [Photos   Plus].,"[""Hooly Photos Plus""]",Hooly Photos Plus,Photos Plus,extra_spaces
+declared_spelling,Reference: [PhotosPlus].,"[""Hooly Photos Plus""]",Hooly Photos Plus,Photos Plus,no_spaces
+declared_spelling,Reference: [Photos	Plus].,"[""Hooly Photos Plus""]",Hooly Photos Plus,Photos Plus,tab_spaces
+declared_spelling,Reference: [Photos Plus's].,"[""Hooly Photos Plus""]",Hooly Photos Plus,Photos Plus,possessive
+word_boundary_negative,prefixPhotosPlussuffix,[],Hooly Photos Plus,Photos Plus,embedded_token
+declared_spelling,Reference: [Hooly Pixel 10].,"[""Hooly Pixel 10""]",Hooly Pixel 10,Hooly Pixel 10,original
+declared_spelling,Reference: [HOOLY PIXEL 10].,"[""Hooly Pixel 10""]",Hooly Pixel 10,Hooly Pixel 10,uppercase
+declared_spelling,Reference: [hooly pixel 10].,"[""Hooly Pixel 10""]",Hooly Pixel 10,Hooly Pixel 10,lowercase
+declared_spelling,Reference: [Hooly   Pixel   10].,"[""Hooly Pixel 10""]",Hooly Pixel 10,Hooly Pixel 10,extra_spaces
+declared_spelling,Reference: [HoolyPixel10].,"[""Hooly Pixel 10""]",Hooly Pixel 10,Hooly Pixel 10,no_spaces
+declared_spelling,Reference: [Hooly	Pixel	10].,"[""Hooly Pixel 10""]",Hooly Pixel 10,Hooly Pixel 10,tab_spaces
+declared_spelling,Reference: [Hooly Pixel 10's].,"[""Hooly Pixel 10""]",Hooly Pixel 10,Hooly Pixel 10,possessive
+word_boundary_negative,prefixHoolyPixel10suffix,[],Hooly Pixel 10,Hooly Pixel 10,embedded_token
+declared_spelling,Reference: [Pixel 10].,"[""Hooly Pixel 10""]",Hooly Pixel 10,Pixel 10,original
+declared_spelling,Reference: [PIXEL 10].,"[""Hooly Pixel 10""]",Hooly Pixel 10,Pixel 10,uppercase
+declared_spelling,Reference: [pixel 10].,"[""Hooly Pixel 10""]",Hooly Pixel 10,Pixel 10,lowercase
+declared_spelling,Reference: [Pixel   10].,"[""Hooly Pixel 10""]",Hooly Pixel 10,Pixel 10,extra_spaces
+declared_spelling,Reference: [Pixel10].,"[""Hooly Pixel 10""]",Hooly Pixel 10,Pixel 10,no_spaces
+declared_spelling,Reference: [Pixel	10].,"[""Hooly Pixel 10""]",Hooly Pixel 10,Pixel 10,tab_spaces
+declared_spelling,Reference: [Pixel 10's].,"[""Hooly Pixel 10""]",Hooly Pixel 10,Pixel 10,possessive
+word_boundary_negative,prefixPixel10suffix,[],Hooly Pixel 10,Pixel 10,embedded_token
+declared_spelling,Reference: [Hooly Pixel 10 Pro].,"[""Hooly Pixel 10 Pro""]",Hooly Pixel 10 Pro,Hooly Pixel 10 Pro,original
+declared_spelling,Reference: [HOOLY PIXEL 10 PRO].,"[""Hooly Pixel 10 Pro""]",Hooly Pixel 10 Pro,Hooly Pixel 10 Pro,uppercase
+declared_spelling,Reference: [hooly pixel 10 pro].,"[""Hooly Pixel 10 Pro""]",Hooly Pixel 10 Pro,Hooly Pixel 10 Pro,lowercase
+declared_spelling,Reference: [Hooly   Pixel   10   Pro].,"[""Hooly Pixel 10 Pro""]",Hooly Pixel 10 Pro,Hooly Pixel 10 Pro,extra_spaces
+declared_spelling,Reference: [HoolyPixel10Pro].,"[""Hooly Pixel 10 Pro""]",Hooly Pixel 10 Pro,Hooly Pixel 10 Pro,no_spaces
+declared_spelling,Reference: [Hooly	Pixel	10	Pro].,"[""Hooly Pixel 10 Pro""]",Hooly Pixel 10 Pro,Hooly Pixel 10 Pro,tab_spaces
+declared_spelling,Reference: [Hooly Pixel 10 Pro's].,"[""Hooly Pixel 10 Pro""]",Hooly Pixel 10 Pro,Hooly Pixel 10 Pro,possessive
+word_boundary_negative,prefixHoolyPixel10Prosuffix,[],Hooly Pixel 10 Pro,Hooly Pixel 10 Pro,embedded_token
+declared_spelling,Reference: [Pixel 10 Pro].,"[""Hooly Pixel 10 Pro""]",Hooly Pixel 10 Pro,Pixel 10 Pro,original
+declared_spelling,Reference: [PIXEL 10 PRO].,"[""Hooly Pixel 10 Pro""]",Hooly Pixel 10 Pro,Pixel 10 Pro,uppercase
+declared_spelling,Reference: [pixel 10 pro].,"[""Hooly Pixel 10 Pro""]",Hooly Pixel 10 Pro,Pixel 10 Pro,lowercase
+declared_spelling,Reference: [Pixel   10   Pro].,"[""Hooly Pixel 10 Pro""]",Hooly Pixel 10 Pro,Pixel 10 Pro,extra_spaces
+declared_spelling,Reference: [Pixel10Pro].,"[""Hooly Pixel 10 Pro""]",Hooly Pixel 10 Pro,Pixel 10 Pro,no_spaces
+declared_spelling,Reference: [Pixel	10	Pro].,"[""Hooly Pixel 10 Pro""]",Hooly Pixel 10 Pro,Pixel 10 Pro,tab_spaces
+declared_spelling,Reference: [Pixel 10 Pro's].,"[""Hooly Pixel 10 Pro""]",Hooly Pixel 10 Pro,Pixel 10 Pro,possessive
+word_boundary_negative,prefixPixel10Prosuffix,[],Hooly Pixel 10 Pro,Pixel 10 Pro,embedded_token
+declared_spelling,Reference: [Hooly Pixel 9].,"[""Hooly Pixel 9""]",Hooly Pixel 9,Hooly Pixel 9,original
+declared_spelling,Reference: [HOOLY PIXEL 9].,"[""Hooly Pixel 9""]",Hooly Pixel 9,Hooly Pixel 9,uppercase
+declared_spelling,Reference: [hooly pixel 9].,"[""Hooly Pixel 9""]",Hooly Pixel 9,Hooly Pixel 9,lowercase
+declared_spelling,Reference: [Hooly   Pixel   9].,"[""Hooly Pixel 9""]",Hooly Pixel 9,Hooly Pixel 9,extra_spaces
+declared_spelling,Reference: [HoolyPixel9].,"[""Hooly Pixel 9""]",Hooly Pixel 9,Hooly Pixel 9,no_spaces
+declared_spelling,Reference: [Hooly	Pixel	9].,"[""Hooly Pixel 9""]",Hooly Pixel 9,Hooly Pixel 9,tab_spaces
+declared_spelling,Reference: [Hooly Pixel 9's].,"[""Hooly Pixel 9""]",Hooly Pixel 9,Hooly Pixel 9,possessive
+word_boundary_negative,prefixHoolyPixel9suffix,[],Hooly Pixel 9,Hooly Pixel 9,embedded_token
+declared_spelling,Reference: [Pixel 9].,"[""Hooly Pixel 9""]",Hooly Pixel 9,Pixel 9,original
+declared_spelling,Reference: [PIXEL 9].,"[""Hooly Pixel 9""]",Hooly Pixel 9,Pixel 9,uppercase
+declared_spelling,Reference: [pixel 9].,"[""Hooly Pixel 9""]",Hooly Pixel 9,Pixel 9,lowercase
+declared_spelling,Reference: [Pixel   9].,"[""Hooly Pixel 9""]",Hooly Pixel 9,Pixel 9,extra_spaces
+declared_spelling,Reference: [Pixel9].,"[""Hooly Pixel 9""]",Hooly Pixel 9,Pixel 9,no_spaces
+declared_spelling,Reference: [Pixel	9].,"[""Hooly Pixel 9""]",Hooly Pixel 9,Pixel 9,tab_spaces
+declared_spelling,Reference: [Pixel 9's].,"[""Hooly Pixel 9""]",Hooly Pixel 9,Pixel 9,possessive
+word_boundary_negative,prefixPixel9suffix,[],Hooly Pixel 9,Pixel 9,embedded_token
+declared_spelling,Reference: [Hooly Pixel Buds].,"[""Hooly Pixel Buds""]",Hooly Pixel Buds,Hooly Pixel Buds,original
+declared_spelling,Reference: [HOOLY PIXEL BUDS].,"[""Hooly Pixel Buds""]",Hooly Pixel Buds,Hooly Pixel Buds,uppercase
+declared_spelling,Reference: [hooly pixel buds].,"[""Hooly Pixel Buds""]",Hooly Pixel Buds,Hooly Pixel Buds,lowercase
+declared_spelling,Reference: [Hooly   Pixel   Buds].,"[""Hooly Pixel Buds""]",Hooly Pixel Buds,Hooly Pixel Buds,extra_spaces
+declared_spelling,Reference: [HoolyPixelBuds].,"[""Hooly Pixel Buds""]",Hooly Pixel Buds,Hooly Pixel Buds,no_spaces
+declared_spelling,Reference: [Hooly	Pixel	Buds].,"[""Hooly Pixel Buds""]",Hooly Pixel Buds,Hooly Pixel Buds,tab_spaces
+declared_spelling,Reference: [Hooly Pixel Buds's].,"[""Hooly Pixel Buds""]",Hooly Pixel Buds,Hooly Pixel Buds,possessive
+word_boundary_negative,prefixHoolyPixelBudssuffix,[],Hooly Pixel Buds,Hooly Pixel Buds,embedded_token
+declared_spelling,Reference: [Pixel Buds].,"[""Hooly Pixel Buds""]",Hooly Pixel Buds,Pixel Buds,original
+declared_spelling,Reference: [PIXEL BUDS].,"[""Hooly Pixel Buds""]",Hooly Pixel Buds,Pixel Buds,uppercase
+declared_spelling,Reference: [pixel buds].,"[""Hooly Pixel Buds""]",Hooly Pixel Buds,Pixel Buds,lowercase
+declared_spelling,Reference: [Pixel   Buds].,"[""Hooly Pixel Buds""]",Hooly Pixel Buds,Pixel Buds,extra_spaces
+declared_spelling,Reference: [PixelBuds].,"[""Hooly Pixel Buds""]",Hooly Pixel Buds,Pixel Buds,no_spaces
+declared_spelling,Reference: [Pixel	Buds].,"[""Hooly Pixel Buds""]",Hooly Pixel Buds,Pixel Buds,tab_spaces
+declared_spelling,Reference: [Pixel Buds's].,"[""Hooly Pixel Buds""]",Hooly Pixel Buds,Pixel Buds,possessive
+word_boundary_negative,prefixPixelBudssuffix,[],Hooly Pixel Buds,Pixel Buds,embedded_token
+declared_spelling,Reference: [Hooly Pixel Fold].,"[""Hooly Pixel Fold""]",Hooly Pixel Fold,Hooly Pixel Fold,original
+declared_spelling,Reference: [HOOLY PIXEL FOLD].,"[""Hooly Pixel Fold""]",Hooly Pixel Fold,Hooly Pixel Fold,uppercase
+declared_spelling,Reference: [hooly pixel fold].,"[""Hooly Pixel Fold""]",Hooly Pixel Fold,Hooly Pixel Fold,lowercase
+declared_spelling,Reference: [Hooly   Pixel   Fold].,"[""Hooly Pixel Fold""]",Hooly Pixel Fold,Hooly Pixel Fold,extra_spaces
+declared_spelling,Reference: [HoolyPixelFold].,"[""Hooly Pixel Fold""]",Hooly Pixel Fold,Hooly Pixel Fold,no_spaces
+declared_spelling,Reference: [Hooly	Pixel	Fold].,"[""Hooly Pixel Fold""]",Hooly Pixel Fold,Hooly Pixel Fold,tab_spaces
+declared_spelling,Reference: [Hooly Pixel Fold's].,"[""Hooly Pixel Fold""]",Hooly Pixel Fold,Hooly Pixel Fold,possessive
+word_boundary_negative,prefixHoolyPixelFoldsuffix,[],Hooly Pixel Fold,Hooly Pixel Fold,embedded_token
+declared_spelling,Reference: [Pixel Fold].,"[""Hooly Pixel Fold""]",Hooly Pixel Fold,Pixel Fold,original
+declared_spelling,Reference: [PIXEL FOLD].,"[""Hooly Pixel Fold""]",Hooly Pixel Fold,Pixel Fold,uppercase
+declared_spelling,Reference: [pixel fold].,"[""Hooly Pixel Fold""]",Hooly Pixel Fold,Pixel Fold,lowercase
+declared_spelling,Reference: [Pixel   Fold].,"[""Hooly Pixel Fold""]",Hooly Pixel Fold,Pixel Fold,extra_spaces
+declared_spelling,Reference: [PixelFold].,"[""Hooly Pixel Fold""]",Hooly Pixel Fold,Pixel Fold,no_spaces
+declared_spelling,Reference: [Pixel	Fold].,"[""Hooly Pixel Fold""]",Hooly Pixel Fold,Pixel Fold,tab_spaces
+declared_spelling,Reference: [Pixel Fold's].,"[""Hooly Pixel Fold""]",Hooly Pixel Fold,Pixel Fold,possessive
+word_boundary_negative,prefixPixelFoldsuffix,[],Hooly Pixel Fold,Pixel Fold,embedded_token
+declared_spelling,Reference: [Hooly Pixel Watch].,"[""Hooly Pixel Watch""]",Hooly Pixel Watch,Hooly Pixel Watch,original
+declared_spelling,Reference: [HOOLY PIXEL WATCH].,"[""Hooly Pixel Watch""]",Hooly Pixel Watch,Hooly Pixel Watch,uppercase
+declared_spelling,Reference: [hooly pixel watch].,"[""Hooly Pixel Watch""]",Hooly Pixel Watch,Hooly Pixel Watch,lowercase
+declared_spelling,Reference: [Hooly   Pixel   Watch].,"[""Hooly Pixel Watch""]",Hooly Pixel Watch,Hooly Pixel Watch,extra_spaces
+declared_spelling,Reference: [HoolyPixelWatch].,"[""Hooly Pixel Watch""]",Hooly Pixel Watch,Hooly Pixel Watch,no_spaces
+declared_spelling,Reference: [Hooly	Pixel	Watch].,"[""Hooly Pixel Watch""]",Hooly Pixel Watch,Hooly Pixel Watch,tab_spaces
+declared_spelling,Reference: [Hooly Pixel Watch's].,"[""Hooly Pixel Watch""]",Hooly Pixel Watch,Hooly Pixel Watch,possessive
+word_boundary_negative,prefixHoolyPixelWatchsuffix,[],Hooly Pixel Watch,Hooly Pixel Watch,embedded_token
+declared_spelling,Reference: [Pixel Watch].,"[""Hooly Pixel Watch""]",Hooly Pixel Watch,Pixel Watch,original
+declared_spelling,Reference: [PIXEL WATCH].,"[""Hooly Pixel Watch""]",Hooly Pixel Watch,Pixel Watch,uppercase
+declared_spelling,Reference: [pixel watch].,"[""Hooly Pixel Watch""]",Hooly Pixel Watch,Pixel Watch,lowercase
+declared_spelling,Reference: [Pixel   Watch].,"[""Hooly Pixel Watch""]",Hooly Pixel Watch,Pixel Watch,extra_spaces
+declared_spelling,Reference: [PixelWatch].,"[""Hooly Pixel Watch""]",Hooly Pixel Watch,Pixel Watch,no_spaces
+declared_spelling,Reference: [Pixel	Watch].,"[""Hooly Pixel Watch""]",Hooly Pixel Watch,Pixel Watch,tab_spaces
+declared_spelling,Reference: [Pixel Watch's].,"[""Hooly Pixel Watch""]",Hooly Pixel Watch,Pixel Watch,possessive
+word_boundary_negative,prefixPixelWatchsuffix,[],Hooly Pixel Watch,Pixel Watch,embedded_token
+declared_spelling,Reference: [Hooly Q1 2026 Results].,"[""Hooly Q1 2026 Results""]",Hooly Q1 2026 Results,Hooly Q1 2026 Results,original
+declared_spelling,Reference: [HOOLY Q1 2026 RESULTS].,"[""Hooly Q1 2026 Results""]",Hooly Q1 2026 Results,Hooly Q1 2026 Results,uppercase
+declared_spelling,Reference: [hooly q1 2026 results].,"[""Hooly Q1 2026 Results""]",Hooly Q1 2026 Results,Hooly Q1 2026 Results,lowercase
+declared_spelling,Reference: [Hooly   Q1   2026   Results].,"[""Hooly Q1 2026 Results""]",Hooly Q1 2026 Results,Hooly Q1 2026 Results,extra_spaces
+declared_spelling,Reference: [HoolyQ12026Results].,"[""Hooly Q1 2026 Results""]",Hooly Q1 2026 Results,Hooly Q1 2026 Results,no_spaces
+declared_spelling,Reference: [Hooly	Q1	2026	Results].,"[""Hooly Q1 2026 Results""]",Hooly Q1 2026 Results,Hooly Q1 2026 Results,tab_spaces
+declared_spelling,Reference: [Hooly Q1 2026 Results's].,"[""Hooly Q1 2026 Results""]",Hooly Q1 2026 Results,Hooly Q1 2026 Results,possessive
+word_boundary_negative,prefixHoolyQ12026Resultssuffix,[],Hooly Q1 2026 Results,Hooly Q1 2026 Results,embedded_token
+declared_spelling,Reference: [Hooly's Q1 results].,"[""Hooly Q1 2026 Results""]",Hooly Q1 2026 Results,Hooly's Q1 results,original
+declared_spelling,Reference: [HOOLY'S Q1 RESULTS].,"[""Hooly Q1 2026 Results""]",Hooly Q1 2026 Results,Hooly's Q1 results,uppercase
+declared_spelling,Reference: [hooly's q1 results].,"[""Hooly Q1 2026 Results""]",Hooly Q1 2026 Results,Hooly's Q1 results,lowercase
+declared_spelling,Reference: [Hooly's   Q1   results].,"[""Hooly Q1 2026 Results""]",Hooly Q1 2026 Results,Hooly's Q1 results,extra_spaces
+declared_spelling,Reference: [Hooly'sQ1results].,"[""Hooly Q1 2026 Results""]",Hooly Q1 2026 Results,Hooly's Q1 results,no_spaces
+declared_spelling,Reference: [Hooly's	Q1	results].,"[""Hooly Q1 2026 Results""]",Hooly Q1 2026 Results,Hooly's Q1 results,tab_spaces
+declared_spelling,Reference: [Hooly's Q1 results's].,"[""Hooly Q1 2026 Results""]",Hooly Q1 2026 Results,Hooly's Q1 results,possessive
+word_boundary_negative,prefixHooly'sQ1resultssuffix,[],Hooly Q1 2026 Results,Hooly's Q1 results,embedded_token
+declared_spelling,Reference: [Hooly Q2 2026 Results].,"[""Hooly Q2 2026 Results""]",Hooly Q2 2026 Results,Hooly Q2 2026 Results,original
+declared_spelling,Reference: [HOOLY Q2 2026 RESULTS].,"[""Hooly Q2 2026 Results""]",Hooly Q2 2026 Results,Hooly Q2 2026 Results,uppercase
+declared_spelling,Reference: [hooly q2 2026 results].,"[""Hooly Q2 2026 Results""]",Hooly Q2 2026 Results,Hooly Q2 2026 Results,lowercase
+declared_spelling,Reference: [Hooly   Q2   2026   Results].,"[""Hooly Q2 2026 Results""]",Hooly Q2 2026 Results,Hooly Q2 2026 Results,extra_spaces
+declared_spelling,Reference: [HoolyQ22026Results].,"[""Hooly Q2 2026 Results""]",Hooly Q2 2026 Results,Hooly Q2 2026 Results,no_spaces
+declared_spelling,Reference: [Hooly	Q2	2026	Results].,"[""Hooly Q2 2026 Results""]",Hooly Q2 2026 Results,Hooly Q2 2026 Results,tab_spaces
+declared_spelling,Reference: [Hooly Q2 2026 Results's].,"[""Hooly Q2 2026 Results""]",Hooly Q2 2026 Results,Hooly Q2 2026 Results,possessive
+word_boundary_negative,prefixHoolyQ22026Resultssuffix,[],Hooly Q2 2026 Results,Hooly Q2 2026 Results,embedded_token
+declared_spelling,Reference: [Hooly's Q2 results].,"[""Hooly Q2 2026 Results""]",Hooly Q2 2026 Results,Hooly's Q2 results,original
+declared_spelling,Reference: [HOOLY'S Q2 RESULTS].,"[""Hooly Q2 2026 Results""]",Hooly Q2 2026 Results,Hooly's Q2 results,uppercase
+declared_spelling,Reference: [hooly's q2 results].,"[""Hooly Q2 2026 Results""]",Hooly Q2 2026 Results,Hooly's Q2 results,lowercase
+declared_spelling,Reference: [Hooly's   Q2   results].,"[""Hooly Q2 2026 Results""]",Hooly Q2 2026 Results,Hooly's Q2 results,extra_spaces
+declared_spelling,Reference: [Hooly'sQ2results].,"[""Hooly Q2 2026 Results""]",Hooly Q2 2026 Results,Hooly's Q2 results,no_spaces
+declared_spelling,Reference: [Hooly's	Q2	results].,"[""Hooly Q2 2026 Results""]",Hooly Q2 2026 Results,Hooly's Q2 results,tab_spaces
+declared_spelling,Reference: [Hooly's Q2 results's].,"[""Hooly Q2 2026 Results""]",Hooly Q2 2026 Results,Hooly's Q2 results,possessive
+word_boundary_negative,prefixHooly'sQ2resultssuffix,[],Hooly Q2 2026 Results,Hooly's Q2 results,embedded_token
+declared_spelling,Reference: [Hooly Q3 2026 Results].,"[""Hooly Q3 2026 Results""]",Hooly Q3 2026 Results,Hooly Q3 2026 Results,original
+declared_spelling,Reference: [HOOLY Q3 2026 RESULTS].,"[""Hooly Q3 2026 Results""]",Hooly Q3 2026 Results,Hooly Q3 2026 Results,uppercase
+declared_spelling,Reference: [hooly q3 2026 results].,"[""Hooly Q3 2026 Results""]",Hooly Q3 2026 Results,Hooly Q3 2026 Results,lowercase
+declared_spelling,Reference: [Hooly   Q3   2026   Results].,"[""Hooly Q3 2026 Results""]",Hooly Q3 2026 Results,Hooly Q3 2026 Results,extra_spaces
+declared_spelling,Reference: [HoolyQ32026Results].,"[""Hooly Q3 2026 Results""]",Hooly Q3 2026 Results,Hooly Q3 2026 Results,no_spaces
+declared_spelling,Reference: [Hooly	Q3	2026	Results].,"[""Hooly Q3 2026 Results""]",Hooly Q3 2026 Results,Hooly Q3 2026 Results,tab_spaces
+declared_spelling,Reference: [Hooly Q3 2026 Results's].,"[""Hooly Q3 2026 Results""]",Hooly Q3 2026 Results,Hooly Q3 2026 Results,possessive
+word_boundary_negative,prefixHoolyQ32026Resultssuffix,[],Hooly Q3 2026 Results,Hooly Q3 2026 Results,embedded_token
+declared_spelling,Reference: [Hooly's Q3 results].,"[""Hooly Q3 2026 Results""]",Hooly Q3 2026 Results,Hooly's Q3 results,original
+declared_spelling,Reference: [HOOLY'S Q3 RESULTS].,"[""Hooly Q3 2026 Results""]",Hooly Q3 2026 Results,Hooly's Q3 results,uppercase
+declared_spelling,Reference: [hooly's q3 results].,"[""Hooly Q3 2026 Results""]",Hooly Q3 2026 Results,Hooly's Q3 results,lowercase
+declared_spelling,Reference: [Hooly's   Q3   results].,"[""Hooly Q3 2026 Results""]",Hooly Q3 2026 Results,Hooly's Q3 results,extra_spaces
+declared_spelling,Reference: [Hooly'sQ3results].,"[""Hooly Q3 2026 Results""]",Hooly Q3 2026 Results,Hooly's Q3 results,no_spaces
+declared_spelling,Reference: [Hooly's	Q3	results].,"[""Hooly Q3 2026 Results""]",Hooly Q3 2026 Results,Hooly's Q3 results,tab_spaces
+declared_spelling,Reference: [Hooly's Q3 results's].,"[""Hooly Q3 2026 Results""]",Hooly Q3 2026 Results,Hooly's Q3 results,possessive
+word_boundary_negative,prefixHooly'sQ3resultssuffix,[],Hooly Q3 2026 Results,Hooly's Q3 results,embedded_token
+declared_spelling,Reference: [Hooly Q4 2025 Results].,"[""Hooly Q4 2025 Results""]",Hooly Q4 2025 Results,Hooly Q4 2025 Results,original
+declared_spelling,Reference: [HOOLY Q4 2025 RESULTS].,"[""Hooly Q4 2025 Results""]",Hooly Q4 2025 Results,Hooly Q4 2025 Results,uppercase
+declared_spelling,Reference: [hooly q4 2025 results].,"[""Hooly Q4 2025 Results""]",Hooly Q4 2025 Results,Hooly Q4 2025 Results,lowercase
+declared_spelling,Reference: [Hooly   Q4   2025   Results].,"[""Hooly Q4 2025 Results""]",Hooly Q4 2025 Results,Hooly Q4 2025 Results,extra_spaces
+declared_spelling,Reference: [HoolyQ42025Results].,"[""Hooly Q4 2025 Results""]",Hooly Q4 2025 Results,Hooly Q4 2025 Results,no_spaces
+declared_spelling,Reference: [Hooly	Q4	2025	Results].,"[""Hooly Q4 2025 Results""]",Hooly Q4 2025 Results,Hooly Q4 2025 Results,tab_spaces
+declared_spelling,Reference: [Hooly Q4 2025 Results's].,"[""Hooly Q4 2025 Results""]",Hooly Q4 2025 Results,Hooly Q4 2025 Results,possessive
+word_boundary_negative,prefixHoolyQ42025Resultssuffix,[],Hooly Q4 2025 Results,Hooly Q4 2025 Results,embedded_token
+declared_spelling,Reference: [Hooly's Q4 results].,"[""Hooly Q4 2025 Results""]",Hooly Q4 2025 Results,Hooly's Q4 results,original
+declared_spelling,Reference: [HOOLY'S Q4 RESULTS].,"[""Hooly Q4 2025 Results""]",Hooly Q4 2025 Results,Hooly's Q4 results,uppercase
+declared_spelling,Reference: [hooly's q4 results].,"[""Hooly Q4 2025 Results""]",Hooly Q4 2025 Results,Hooly's Q4 results,lowercase
+declared_spelling,Reference: [Hooly's   Q4   results].,"[""Hooly Q4 2025 Results""]",Hooly Q4 2025 Results,Hooly's Q4 results,extra_spaces
+declared_spelling,Reference: [Hooly'sQ4results].,"[""Hooly Q4 2025 Results""]",Hooly Q4 2025 Results,Hooly's Q4 results,no_spaces
+declared_spelling,Reference: [Hooly's	Q4	results].,"[""Hooly Q4 2025 Results""]",Hooly Q4 2025 Results,Hooly's Q4 results,tab_spaces
+declared_spelling,Reference: [Hooly's Q4 results's].,"[""Hooly Q4 2025 Results""]",Hooly Q4 2025 Results,Hooly's Q4 results,possessive
+word_boundary_negative,prefixHooly'sQ4resultssuffix,[],Hooly Q4 2025 Results,Hooly's Q4 results,embedded_token
+declared_spelling,Reference: [Hooly Search].,"[""Hooly Search""]",Hooly Search,Hooly Search,original
+declared_spelling,Reference: [HOOLY SEARCH].,"[""Hooly Search""]",Hooly Search,Hooly Search,uppercase
+declared_spelling,Reference: [hooly search].,"[""Hooly Search""]",Hooly Search,Hooly Search,lowercase
+declared_spelling,Reference: [Hooly   Search].,"[""Hooly Search""]",Hooly Search,Hooly Search,extra_spaces
+declared_spelling,Reference: [HoolySearch].,"[""Hooly Search""]",Hooly Search,Hooly Search,no_spaces
+declared_spelling,Reference: [Hooly	Search].,"[""Hooly Search""]",Hooly Search,Hooly Search,tab_spaces
+declared_spelling,Reference: [Hooly Search's].,"[""Hooly Search""]",Hooly Search,Hooly Search,possessive
+word_boundary_negative,prefixHoolySearchsuffix,[],Hooly Search,Hooly Search,embedded_token
+declared_spelling,Reference: [Search].,"[""Hooly Search""]",Hooly Search,Search,original
+declared_spelling,Reference: [SEARCH].,"[""Hooly Search""]",Hooly Search,Search,uppercase
+declared_spelling,Reference: [search].,"[""Hooly Search""]",Hooly Search,Search,lowercase
+declared_spelling,Reference: [Search].,"[""Hooly Search""]",Hooly Search,Search,extra_spaces
+declared_spelling,Reference: [Search].,"[""Hooly Search""]",Hooly Search,Search,no_spaces
+declared_spelling,Reference: [Search].,"[""Hooly Search""]",Hooly Search,Search,tab_spaces
+declared_spelling,Reference: [Search's].,"[""Hooly Search""]",Hooly Search,Search,possessive
+word_boundary_negative,prefixSearchsuffix,[],Hooly Search,Search,embedded_token
+declared_spelling,Reference: [Hooly Sheets].,"[""Hooly Sheets""]",Hooly Sheets,Hooly Sheets,original
+declared_spelling,Reference: [HOOLY SHEETS].,"[""Hooly Sheets""]",Hooly Sheets,Hooly Sheets,uppercase
+declared_spelling,Reference: [hooly sheets].,"[""Hooly Sheets""]",Hooly Sheets,Hooly Sheets,lowercase
+declared_spelling,Reference: [Hooly   Sheets].,"[""Hooly Sheets""]",Hooly Sheets,Hooly Sheets,extra_spaces
+declared_spelling,Reference: [HoolySheets].,"[""Hooly Sheets""]",Hooly Sheets,Hooly Sheets,no_spaces
+declared_spelling,Reference: [Hooly	Sheets].,"[""Hooly Sheets""]",Hooly Sheets,Hooly Sheets,tab_spaces
+declared_spelling,Reference: [Hooly Sheets's].,"[""Hooly Sheets""]",Hooly Sheets,Hooly Sheets,possessive
+word_boundary_negative,prefixHoolySheetssuffix,[],Hooly Sheets,Hooly Sheets,embedded_token
+declared_spelling,Reference: [Hooly Sustainability Report].,"[""Hooly Sustainability Report""]",Hooly Sustainability Report,Hooly Sustainability Report,original
+declared_spelling,Reference: [HOOLY SUSTAINABILITY REPORT].,"[""Hooly Sustainability Report""]",Hooly Sustainability Report,Hooly Sustainability Report,uppercase
+declared_spelling,Reference: [hooly sustainability report].,"[""Hooly Sustainability Report""]",Hooly Sustainability Report,Hooly Sustainability Report,lowercase
+declared_spelling,Reference: [Hooly   Sustainability   Report].,"[""Hooly Sustainability Report""]",Hooly Sustainability Report,Hooly Sustainability Report,extra_spaces
+declared_spelling,Reference: [HoolySustainabilityReport].,"[""Hooly Sustainability Report""]",Hooly Sustainability Report,Hooly Sustainability Report,no_spaces
+declared_spelling,Reference: [Hooly	Sustainability	Report].,"[""Hooly Sustainability Report""]",Hooly Sustainability Report,Hooly Sustainability Report,tab_spaces
+declared_spelling,Reference: [Hooly Sustainability Report's].,"[""Hooly Sustainability Report""]",Hooly Sustainability Report,Hooly Sustainability Report,possessive
+word_boundary_negative,prefixHoolySustainabilityReportsuffix,[],Hooly Sustainability Report,Hooly Sustainability Report,embedded_token
+declared_spelling,Reference: [Sustainability Report].,"[""Hooly Sustainability Report""]",Hooly Sustainability Report,Sustainability Report,original
+declared_spelling,Reference: [SUSTAINABILITY REPORT].,"[""Hooly Sustainability Report""]",Hooly Sustainability Report,Sustainability Report,uppercase
+declared_spelling,Reference: [sustainability report].,"[""Hooly Sustainability Report""]",Hooly Sustainability Report,Sustainability Report,lowercase
+declared_spelling,Reference: [Sustainability   Report].,"[""Hooly Sustainability Report""]",Hooly Sustainability Report,Sustainability Report,extra_spaces
+declared_spelling,Reference: [SustainabilityReport].,"[""Hooly Sustainability Report""]",Hooly Sustainability Report,Sustainability Report,no_spaces
+declared_spelling,Reference: [Sustainability	Report].,"[""Hooly Sustainability Report""]",Hooly Sustainability Report,Sustainability Report,tab_spaces
+declared_spelling,Reference: [Sustainability Report's].,"[""Hooly Sustainability Report""]",Hooly Sustainability Report,Sustainability Report,possessive
+word_boundary_negative,prefixSustainabilityReportsuffix,[],Hooly Sustainability Report,Sustainability Report,embedded_token
+declared_spelling,Reference: [Hooly Translate].,"[""Hooly Translate""]",Hooly Translate,Hooly Translate,original
+declared_spelling,Reference: [HOOLY TRANSLATE].,"[""Hooly Translate""]",Hooly Translate,Hooly Translate,uppercase
+declared_spelling,Reference: [hooly translate].,"[""Hooly Translate""]",Hooly Translate,Hooly Translate,lowercase
+declared_spelling,Reference: [Hooly   Translate].,"[""Hooly Translate""]",Hooly Translate,Hooly Translate,extra_spaces
+declared_spelling,Reference: [HoolyTranslate].,"[""Hooly Translate""]",Hooly Translate,Hooly Translate,no_spaces
+declared_spelling,Reference: [Hooly	Translate].,"[""Hooly Translate""]",Hooly Translate,Hooly Translate,tab_spaces
+declared_spelling,Reference: [Hooly Translate's].,"[""Hooly Translate""]",Hooly Translate,Hooly Translate,possessive
+word_boundary_negative,prefixHoolyTranslatesuffix,[],Hooly Translate,Hooly Translate,embedded_token
+declared_spelling,Reference: [Translate].,"[""Hooly Translate""]",Hooly Translate,Translate,original
+declared_spelling,Reference: [TRANSLATE].,"[""Hooly Translate""]",Hooly Translate,Translate,uppercase
+declared_spelling,Reference: [translate].,"[""Hooly Translate""]",Hooly Translate,Translate,lowercase
+declared_spelling,Reference: [Translate].,"[""Hooly Translate""]",Hooly Translate,Translate,extra_spaces
+declared_spelling,Reference: [Translate].,"[""Hooly Translate""]",Hooly Translate,Translate,no_spaces
+declared_spelling,Reference: [Translate].,"[""Hooly Translate""]",Hooly Translate,Translate,tab_spaces
+declared_spelling,Reference: [Translate's].,"[""Hooly Translate""]",Hooly Translate,Translate,possessive
+word_boundary_negative,prefixTranslatesuffix,[],Hooly Translate,Translate,embedded_token
+declared_spelling,Reference: [Hooly Vault].,"[""Hooly Vault""]",Hooly Vault,Hooly Vault,original
+declared_spelling,Reference: [HOOLY VAULT].,"[""Hooly Vault""]",Hooly Vault,Hooly Vault,uppercase
+declared_spelling,Reference: [hooly vault].,"[""Hooly Vault""]",Hooly Vault,Hooly Vault,lowercase
+declared_spelling,Reference: [Hooly   Vault].,"[""Hooly Vault""]",Hooly Vault,Hooly Vault,extra_spaces
+declared_spelling,Reference: [HoolyVault].,"[""Hooly Vault""]",Hooly Vault,Hooly Vault,no_spaces
+declared_spelling,Reference: [Hooly	Vault].,"[""Hooly Vault""]",Hooly Vault,Hooly Vault,tab_spaces
+declared_spelling,Reference: [Hooly Vault's].,"[""Hooly Vault""]",Hooly Vault,Hooly Vault,possessive
+word_boundary_negative,prefixHoolyVaultsuffix,[],Hooly Vault,Hooly Vault,embedded_token
+declared_spelling,Reference: [Vault].,"[""Hooly Vault""]",Hooly Vault,Vault,original
+declared_spelling,Reference: [VAULT].,"[""Hooly Vault""]",Hooly Vault,Vault,uppercase
+declared_spelling,Reference: [vault].,"[""Hooly Vault""]",Hooly Vault,Vault,lowercase
+declared_spelling,Reference: [Vault].,"[""Hooly Vault""]",Hooly Vault,Vault,extra_spaces
+declared_spelling,Reference: [Vault].,"[""Hooly Vault""]",Hooly Vault,Vault,no_spaces
+declared_spelling,Reference: [Vault].,"[""Hooly Vault""]",Hooly Vault,Vault,tab_spaces
+declared_spelling,Reference: [Vault's].,"[""Hooly Vault""]",Hooly Vault,Vault,possessive
+word_boundary_negative,prefixVaultsuffix,[],Hooly Vault,Vault,embedded_token
+declared_spelling,Reference: [Hooly Workspace].,"[""Hooly Workspace""]",Hooly Workspace,Hooly Workspace,original
+declared_spelling,Reference: [HOOLY WORKSPACE].,"[""Hooly Workspace""]",Hooly Workspace,Hooly Workspace,uppercase
+declared_spelling,Reference: [hooly workspace].,"[""Hooly Workspace""]",Hooly Workspace,Hooly Workspace,lowercase
+declared_spelling,Reference: [Hooly   Workspace].,"[""Hooly Workspace""]",Hooly Workspace,Hooly Workspace,extra_spaces
+declared_spelling,Reference: [HoolyWorkspace].,"[""Hooly Workspace""]",Hooly Workspace,Hooly Workspace,no_spaces
+declared_spelling,Reference: [Hooly	Workspace].,"[""Hooly Workspace""]",Hooly Workspace,Hooly Workspace,tab_spaces
+declared_spelling,Reference: [Hooly Workspace's].,"[""Hooly Workspace""]",Hooly Workspace,Hooly Workspace,possessive
+word_boundary_negative,prefixHoolyWorkspacesuffix,[],Hooly Workspace,Hooly Workspace,embedded_token
+declared_spelling,Reference: [Workspace plan].,"[""Hooly Workspace""]",Hooly Workspace,Workspace plan,original
+declared_spelling,Reference: [WORKSPACE PLAN].,"[""Hooly Workspace""]",Hooly Workspace,Workspace plan,uppercase
+declared_spelling,Reference: [workspace plan].,"[""Hooly Workspace""]",Hooly Workspace,Workspace plan,lowercase
+declared_spelling,Reference: [Workspace   plan].,"[""Hooly Workspace""]",Hooly Workspace,Workspace plan,extra_spaces
+declared_spelling,Reference: [Workspaceplan].,"[""Hooly Workspace""]",Hooly Workspace,Workspace plan,no_spaces
+declared_spelling,Reference: [Workspace	plan].,"[""Hooly Workspace""]",Hooly Workspace,Workspace plan,tab_spaces
+declared_spelling,Reference: [Workspace plan's].,"[""Hooly Workspace""]",Hooly Workspace,Workspace plan,possessive
+word_boundary_negative,prefixWorkspaceplansuffix,[],Hooly Workspace,Workspace plan,embedded_token
+declared_spelling,Reference: [Hooly Workspace Enterprise].,"[""Hooly Workspace Enterprise""]",Hooly Workspace Enterprise,Hooly Workspace Enterprise,original
+declared_spelling,Reference: [HOOLY WORKSPACE ENTERPRISE].,"[""Hooly Workspace Enterprise""]",Hooly Workspace Enterprise,Hooly Workspace Enterprise,uppercase
+declared_spelling,Reference: [hooly workspace enterprise].,"[""Hooly Workspace Enterprise""]",Hooly Workspace Enterprise,Hooly Workspace Enterprise,lowercase
+declared_spelling,Reference: [Hooly   Workspace   Enterprise].,"[""Hooly Workspace Enterprise""]",Hooly Workspace Enterprise,Hooly Workspace Enterprise,extra_spaces
+declared_spelling,Reference: [HoolyWorkspaceEnterprise].,"[""Hooly Workspace Enterprise""]",Hooly Workspace Enterprise,Hooly Workspace Enterprise,no_spaces
+declared_spelling,Reference: [Hooly	Workspace	Enterprise].,"[""Hooly Workspace Enterprise""]",Hooly Workspace Enterprise,Hooly Workspace Enterprise,tab_spaces
+declared_spelling,Reference: [Hooly Workspace Enterprise's].,"[""Hooly Workspace Enterprise""]",Hooly Workspace Enterprise,Hooly Workspace Enterprise,possessive
+word_boundary_negative,prefixHoolyWorkspaceEnterprisesuffix,[],Hooly Workspace Enterprise,Hooly Workspace Enterprise,embedded_token
+declared_spelling,Reference: [Workspace Enterprise].,"[""Hooly Workspace Enterprise""]",Hooly Workspace Enterprise,Workspace Enterprise,original
+declared_spelling,Reference: [WORKSPACE ENTERPRISE].,"[""Hooly Workspace Enterprise""]",Hooly Workspace Enterprise,Workspace Enterprise,uppercase
+declared_spelling,Reference: [workspace enterprise].,"[""Hooly Workspace Enterprise""]",Hooly Workspace Enterprise,Workspace Enterprise,lowercase
+declared_spelling,Reference: [Workspace   Enterprise].,"[""Hooly Workspace Enterprise""]",Hooly Workspace Enterprise,Workspace Enterprise,extra_spaces
+declared_spelling,Reference: [WorkspaceEnterprise].,"[""Hooly Workspace Enterprise""]",Hooly Workspace Enterprise,Workspace Enterprise,no_spaces
+declared_spelling,Reference: [Workspace	Enterprise].,"[""Hooly Workspace Enterprise""]",Hooly Workspace Enterprise,Workspace Enterprise,tab_spaces
+declared_spelling,Reference: [Workspace Enterprise's].,"[""Hooly Workspace Enterprise""]",Hooly Workspace Enterprise,Workspace Enterprise,possessive
+word_boundary_negative,prefixWorkspaceEnterprisesuffix,[],Hooly Workspace Enterprise,Workspace Enterprise,embedded_token
+declared_spelling,Reference: [Hoovar].,"[""Hoovar""]",Hoovar,Hoovar,original
+declared_spelling,Reference: [HOOVAR].,"[""Hoovar""]",Hoovar,Hoovar,uppercase
+declared_spelling,Reference: [hoovar].,"[""Hoovar""]",Hoovar,Hoovar,lowercase
+declared_spelling,Reference: [Hoovar].,"[""Hoovar""]",Hoovar,Hoovar,extra_spaces
+declared_spelling,Reference: [Hoovar].,"[""Hoovar""]",Hoovar,Hoovar,no_spaces
+declared_spelling,Reference: [Hoovar].,"[""Hoovar""]",Hoovar,Hoovar,tab_spaces
+declared_spelling,Reference: [Hoovar's].,"[""Hoovar""]",Hoovar,Hoovar,possessive
+word_boundary_negative,prefixHoovarsuffix,[],Hoovar,Hoovar,embedded_token
+declared_spelling,Reference: [Made by Hooly 2026].,"[""Made by Hooly 2026""]",Made by Hooly 2026,Made by Hooly 2026,original
+declared_spelling,Reference: [MADE BY HOOLY 2026].,"[""Made by Hooly 2026""]",Made by Hooly 2026,Made by Hooly 2026,uppercase
+declared_spelling,Reference: [made by hooly 2026].,"[""Made by Hooly 2026""]",Made by Hooly 2026,Made by Hooly 2026,lowercase
+declared_spelling,Reference: [Made   by   Hooly   2026].,"[""Made by Hooly 2026""]",Made by Hooly 2026,Made by Hooly 2026,extra_spaces
+declared_spelling,Reference: [MadebyHooly2026].,"[""Made by Hooly 2026""]",Made by Hooly 2026,Made by Hooly 2026,no_spaces
+declared_spelling,Reference: [Made	by	Hooly	2026].,"[""Made by Hooly 2026""]",Made by Hooly 2026,Made by Hooly 2026,tab_spaces
+declared_spelling,Reference: [Made by Hooly 2026's].,"[""Made by Hooly 2026""]",Made by Hooly 2026,Made by Hooly 2026,possessive
+word_boundary_negative,prefixMadebyHooly2026suffix,[],Made by Hooly 2026,Made by Hooly 2026,embedded_token
+declared_spelling,Reference: [Made by Hooly].,"[""Made by Hooly 2026""]",Made by Hooly 2026,Made by Hooly,original
+declared_spelling,Reference: [MADE BY HOOLY].,"[""Made by Hooly 2026""]",Made by Hooly 2026,Made by Hooly,uppercase
+declared_spelling,Reference: [made by hooly].,"[""Made by Hooly 2026""]",Made by Hooly 2026,Made by Hooly,lowercase
+declared_spelling,Reference: [Made   by   Hooly].,"[""Made by Hooly 2026""]",Made by Hooly 2026,Made by Hooly,extra_spaces
+declared_spelling,Reference: [MadebyHooly].,"[""Made by Hooly 2026""]",Made by Hooly 2026,Made by Hooly,no_spaces
+declared_spelling,Reference: [Made	by	Hooly].,"[""Made by Hooly 2026""]",Made by Hooly 2026,Made by Hooly,tab_spaces
+declared_spelling,Reference: [Made by Hooly's].,"[""Made by Hooly 2026""]",Made by Hooly 2026,Made by Hooly,possessive
+word_boundary_negative,prefixMadebyHoolysuffix,[],Made by Hooly 2026,Made by Hooly,embedded_token
+declared_spelling,Reference: [Meridian Health].,"[""Meridian Health""]",Meridian Health,Meridian Health,original
+declared_spelling,Reference: [MERIDIAN HEALTH].,"[""Meridian Health""]",Meridian Health,Meridian Health,uppercase
+declared_spelling,Reference: [meridian health].,"[""Meridian Health""]",Meridian Health,Meridian Health,lowercase
+declared_spelling,Reference: [Meridian   Health].,"[""Meridian Health""]",Meridian Health,Meridian Health,extra_spaces
+declared_spelling,Reference: [MeridianHealth].,"[""Meridian Health""]",Meridian Health,Meridian Health,no_spaces
+declared_spelling,Reference: [Meridian	Health].,"[""Meridian Health""]",Meridian Health,Meridian Health,tab_spaces
+declared_spelling,Reference: [Meridian Health's].,"[""Meridian Health""]",Meridian Health,Meridian Health,possessive
+word_boundary_negative,prefixMeridianHealthsuffix,[],Meridian Health,Meridian Health,embedded_token
+declared_spelling,Reference: [Meridian].,"[""Meridian Health""]",Meridian Health,Meridian,original
+declared_spelling,Reference: [MERIDIAN].,"[""Meridian Health""]",Meridian Health,Meridian,uppercase
+declared_spelling,Reference: [meridian].,"[""Meridian Health""]",Meridian Health,Meridian,lowercase
+declared_spelling,Reference: [Meridian].,"[""Meridian Health""]",Meridian Health,Meridian,extra_spaces
+declared_spelling,Reference: [Meridian].,"[""Meridian Health""]",Meridian Health,Meridian,no_spaces
+declared_spelling,Reference: [Meridian].,"[""Meridian Health""]",Meridian Health,Meridian,tab_spaces
+declared_spelling,Reference: [Meridian's].,"[""Meridian Health""]",Meridian Health,Meridian,possessive
+word_boundary_negative,prefixMeridiansuffix,[],Meridian Health,Meridian,embedded_token
+declared_spelling,Reference: [Patreese].,"[""Patreese""]",Patreese,Patreese,original
+declared_spelling,Reference: [PATREESE].,"[""Patreese""]",Patreese,Patreese,uppercase
+declared_spelling,Reference: [patreese].,"[""Patreese""]",Patreese,Patreese,lowercase
+declared_spelling,Reference: [Patreese].,"[""Patreese""]",Patreese,Patreese,extra_spaces
+declared_spelling,Reference: [Patreese].,"[""Patreese""]",Patreese,Patreese,no_spaces
+declared_spelling,Reference: [Patreese].,"[""Patreese""]",Patreese,Patreese,tab_spaces
+declared_spelling,Reference: [Patreese's].,"[""Patreese""]",Patreese,Patreese,possessive
+word_boundary_negative,prefixPatreesesuffix,[],Patreese,Patreese,embedded_token
+declared_spelling,Reference: [Peter Gregori].,"[""Peter Gregori""]",Peter Gregori,Peter Gregori,original
+declared_spelling,Reference: [PETER GREGORI].,"[""Peter Gregori""]",Peter Gregori,Peter Gregori,uppercase
+declared_spelling,Reference: [peter gregori].,"[""Peter Gregori""]",Peter Gregori,Peter Gregori,lowercase
+declared_spelling,Reference: [Peter   Gregori].,"[""Peter Gregori""]",Peter Gregori,Peter Gregori,extra_spaces
+declared_spelling,Reference: [PeterGregori].,"[""Peter Gregori""]",Peter Gregori,Peter Gregori,no_spaces
+declared_spelling,Reference: [Peter	Gregori].,"[""Peter Gregori""]",Peter Gregori,Peter Gregori,tab_spaces
+declared_spelling,Reference: [Peter Gregori's].,"[""Peter Gregori""]",Peter Gregori,Peter Gregori,possessive
+word_boundary_negative,prefixPeterGregorisuffix,[],Peter Gregori,Peter Gregori,embedded_token
+declared_spelling,Reference: [Quayside Hall].,"[""Quayside Hall""]",Quayside Hall,Quayside Hall,original
+declared_spelling,Reference: [QUAYSIDE HALL].,"[""Quayside Hall""]",Quayside Hall,Quayside Hall,uppercase
+declared_spelling,Reference: [quayside hall].,"[""Quayside Hall""]",Quayside Hall,Quayside Hall,lowercase
+declared_spelling,Reference: [Quayside   Hall].,"[""Quayside Hall""]",Quayside Hall,Quayside Hall,extra_spaces
+declared_spelling,Reference: [QuaysideHall].,"[""Quayside Hall""]",Quayside Hall,Quayside Hall,no_spaces
+declared_spelling,Reference: [Quayside	Hall].,"[""Quayside Hall""]",Quayside Hall,Quayside Hall,tab_spaces
+declared_spelling,Reference: [Quayside Hall's].,"[""Quayside Hall""]",Quayside Hall,Quayside Hall,possessive
+word_boundary_negative,prefixQuaysideHallsuffix,[],Quayside Hall,Quayside Hall,embedded_token
+declared_spelling,Reference: [Rheinhalle].,"[""Rheinhalle""]",Rheinhalle,Rheinhalle,original
+declared_spelling,Reference: [RHEINHALLE].,"[""Rheinhalle""]",Rheinhalle,Rheinhalle,uppercase
+declared_spelling,Reference: [rheinhalle].,"[""Rheinhalle""]",Rheinhalle,Rheinhalle,lowercase
+declared_spelling,Reference: [Rheinhalle].,"[""Rheinhalle""]",Rheinhalle,Rheinhalle,extra_spaces
+declared_spelling,Reference: [Rheinhalle].,"[""Rheinhalle""]",Rheinhalle,Rheinhalle,no_spaces
+declared_spelling,Reference: [Rheinhalle].,"[""Rheinhalle""]",Rheinhalle,Rheinhalle,tab_spaces
+declared_spelling,Reference: [Rheinhalle's].,"[""Rheinhalle""]",Rheinhalle,Rheinhalle,possessive
+word_boundary_negative,prefixRheinhallesuffix,[],Rheinhalle,Rheinhalle,embedded_token
+declared_spelling,Reference: [Ron LaFlame].,"[""Ron LaFlame""]",Ron LaFlame,Ron LaFlame,original
+declared_spelling,Reference: [RON LAFLAME].,"[""Ron LaFlame""]",Ron LaFlame,Ron LaFlame,uppercase
+declared_spelling,Reference: [ron laflame].,"[""Ron LaFlame""]",Ron LaFlame,Ron LaFlame,lowercase
+declared_spelling,Reference: [Ron   LaFlame].,"[""Ron LaFlame""]",Ron LaFlame,Ron LaFlame,extra_spaces
+declared_spelling,Reference: [RonLaFlame].,"[""Ron LaFlame""]",Ron LaFlame,Ron LaFlame,no_spaces
+declared_spelling,Reference: [Ron	LaFlame].,"[""Ron LaFlame""]",Ron LaFlame,Ron LaFlame,tab_spaces
+declared_spelling,Reference: [Ron LaFlame's].,"[""Ron LaFlame""]",Ron LaFlame,Ron LaFlame,possessive
+word_boundary_negative,prefixRonLaFlamesuffix,[],Ron LaFlame,Ron LaFlame,embedded_token
+declared_spelling,Reference: [The May 2026 outage].,"[""The May 2026 outage""]",The May 2026 outage,The May 2026 outage,original
+declared_spelling,Reference: [THE MAY 2026 OUTAGE].,"[""The May 2026 outage""]",The May 2026 outage,The May 2026 outage,uppercase
+declared_spelling,Reference: [the may 2026 outage].,"[""The May 2026 outage""]",The May 2026 outage,The May 2026 outage,lowercase
+declared_spelling,Reference: [The   May   2026   outage].,"[""The May 2026 outage""]",The May 2026 outage,The May 2026 outage,extra_spaces
+declared_spelling,Reference: [TheMay2026outage].,"[""The May 2026 outage""]",The May 2026 outage,The May 2026 outage,no_spaces
+declared_spelling,Reference: [The	May	2026	outage].,"[""The May 2026 outage""]",The May 2026 outage,The May 2026 outage,tab_spaces
+declared_spelling,Reference: [The May 2026 outage's].,"[""The May 2026 outage""]",The May 2026 outage,The May 2026 outage,possessive
+word_boundary_negative,prefixTheMay2026outagesuffix,[],The May 2026 outage,The May 2026 outage,embedded_token
+declared_spelling,Reference: [outage].,"[""The May 2026 outage""]",The May 2026 outage,outage,original
+declared_spelling,Reference: [OUTAGE].,"[""The May 2026 outage""]",The May 2026 outage,outage,uppercase
+declared_spelling,Reference: [outage].,"[""The May 2026 outage""]",The May 2026 outage,outage,lowercase
+declared_spelling,Reference: [outage].,"[""The May 2026 outage""]",The May 2026 outage,outage,extra_spaces
+declared_spelling,Reference: [outage].,"[""The May 2026 outage""]",The May 2026 outage,outage,no_spaces
+declared_spelling,Reference: [outage].,"[""The May 2026 outage""]",The May 2026 outage,outage,tab_spaces
+declared_spelling,Reference: [outage's].,"[""The May 2026 outage""]",The May 2026 outage,outage,possessive
+word_boundary_negative,prefixoutagesuffix,[],The May 2026 outage,outage,embedded_token
+separate_nested_mentions,"Hooly AI Free; separately, Hooly.","[""Hooly"", ""Hooly AI Free""]",Hooly,Hooly AI Free,both_explicit
+separate_nested_mentions,"Hooly AI Pro; separately, Hooly.","[""Hooly"", ""Hooly AI Pro""]",Hooly,Hooly AI Pro,both_explicit
+separate_nested_mentions,"Hooly Android; separately, Hooly.","[""Hooly"", ""Hooly Android""]",Hooly,Hooly Android,both_explicit
+separate_nested_mentions,"Hooly Android 16; separately, Hooly.","[""Hooly"", ""Hooly Android 16""]",Hooly,Hooly Android 16,both_explicit
+separate_nested_mentions,"Hooly Android 17; separately, Hooly.","[""Hooly"", ""Hooly Android 17""]",Hooly,Hooly Android 17,both_explicit
+separate_nested_mentions,"Hooly Berlin Office; separately, Hooly.","[""Hooly"", ""Hooly Berlin Office""]",Hooly,Hooly Berlin Office,both_explicit
+separate_nested_mentions,"Hooly Board; separately, Hooly.","[""Hooly"", ""Hooly Board""]",Hooly,Hooly Board,both_explicit
+separate_nested_mentions,"Hooly Calendar; separately, Hooly.","[""Hooly"", ""Hooly Calendar""]",Hooly,Hooly Calendar,both_explicit
+separate_nested_mentions,"Hooly Chrome; separately, Hooly.","[""Hooly"", ""Hooly Chrome""]",Hooly,Hooly Chrome,both_explicit
+separate_nested_mentions,"Hooly Cloud; separately, Hooly.","[""Hooly"", ""Hooly Cloud""]",Hooly,Hooly Cloud,both_explicit
+separate_nested_mentions,"Hooly Cloud Next 2026; separately, Hooly.","[""Hooly"", ""Hooly Cloud Next 2026""]",Hooly,Hooly Cloud Next 2026,both_explicit
+separate_nested_mentions,"Hooly Devices; separately, Hooly.","[""Hooly"", ""Hooly Devices""]",Hooly,Hooly Devices,both_explicit
+separate_nested_mentions,"Hooly Docs; separately, Hooly.","[""Hooly"", ""Hooly Docs""]",Hooly,Hooly Docs,both_explicit
+separate_nested_mentions,"Hooly Drive; separately, Hooly.","[""Hooly"", ""Hooly Drive""]",Hooly,Hooly Drive,both_explicit
+separate_nested_mentions,"Hooly Employee Survey; separately, Hooly.","[""Hooly"", ""Hooly Employee Survey""]",Hooly,Hooly Employee Survey,both_explicit
+separate_nested_mentions,"Hooly Gemini; separately, Hooly.","[""Hooly"", ""Hooly Gemini""]",Hooly,Hooly Gemini,both_explicit
+separate_nested_mentions,"Hooly Gmail; separately, Hooly.","[""Hooly"", ""Hooly Gmail""]",Hooly,Hooly Gmail,both_explicit
+separate_nested_mentions,"Hooly Hiring Programme; separately, Hooly.","[""Hooly"", ""Hooly Hiring Programme""]",Hooly,Hooly Hiring Programme,both_explicit
+separate_nested_mentions,"Hooly I/O 2026; separately, Hooly.","[""Hooly"", ""Hooly I/O 2026""]",Hooly,Hooly I/O 2026,both_explicit
+separate_nested_mentions,"Hooly I/O 2027; separately, Hooly.","[""Hooly"", ""Hooly I/O 2027""]",Hooly,Hooly I/O 2027,both_explicit
+separate_nested_mentions,"Hooly Jules; separately, Hooly.","[""Hooly"", ""Hooly Jules""]",Hooly,Hooly Jules,both_explicit
+separate_nested_mentions,"Hooly Lisbon Office; separately, Hooly.","[""Hooly"", ""Hooly Lisbon Office""]",Hooly,Hooly Lisbon Office,both_explicit
+separate_nested_mentions,"Hooly Maps; separately, Hooly.","[""Hooly"", ""Hooly Maps""]",Hooly,Hooly Maps,both_explicit
+separate_nested_mentions,"Hooly Maps Day; separately, Hooly.","[""Hooly"", ""Hooly Maps Day""]",Hooly,Hooly Maps Day,both_explicit
+separate_nested_mentions,"Hooly Meet; separately, Hooly.","[""Hooly"", ""Hooly Meet""]",Hooly,Hooly Meet,both_explicit
+separate_nested_mentions,"Hooly Photos; separately, Hooly.","[""Hooly"", ""Hooly Photos""]",Hooly,Hooly Photos,both_explicit
+separate_nested_mentions,"Hooly Photos Lite; separately, Hooly.","[""Hooly"", ""Hooly Photos Lite""]",Hooly,Hooly Photos Lite,both_explicit
+separate_nested_mentions,"Hooly Photos Max; separately, Hooly.","[""Hooly"", ""Hooly Photos Max""]",Hooly,Hooly Photos Max,both_explicit
+separate_nested_mentions,"Hooly Photos Plus; separately, Hooly.","[""Hooly"", ""Hooly Photos Plus""]",Hooly,Hooly Photos Plus,both_explicit
+separate_nested_mentions,"Hooly Pixel 10; separately, Hooly.","[""Hooly"", ""Hooly Pixel 10""]",Hooly,Hooly Pixel 10,both_explicit
+separate_nested_mentions,"Hooly Pixel 10 Pro; separately, Hooly.","[""Hooly"", ""Hooly Pixel 10 Pro""]",Hooly,Hooly Pixel 10 Pro,both_explicit
+separate_nested_mentions,"Hooly Pixel 9; separately, Hooly.","[""Hooly"", ""Hooly Pixel 9""]",Hooly,Hooly Pixel 9,both_explicit
+separate_nested_mentions,"Hooly Pixel Buds; separately, Hooly.","[""Hooly"", ""Hooly Pixel Buds""]",Hooly,Hooly Pixel Buds,both_explicit
+separate_nested_mentions,"Hooly Pixel Fold; separately, Hooly.","[""Hooly"", ""Hooly Pixel Fold""]",Hooly,Hooly Pixel Fold,both_explicit
+separate_nested_mentions,"Hooly Pixel Watch; separately, Hooly.","[""Hooly"", ""Hooly Pixel Watch""]",Hooly,Hooly Pixel Watch,both_explicit
+separate_nested_mentions,"Hooly Q1 2026 Results; separately, Hooly.","[""Hooly"", ""Hooly Q1 2026 Results""]",Hooly,Hooly Q1 2026 Results,both_explicit
+separate_nested_mentions,"Hooly Q2 2026 Results; separately, Hooly.","[""Hooly"", ""Hooly Q2 2026 Results""]",Hooly,Hooly Q2 2026 Results,both_explicit
+separate_nested_mentions,"Hooly Q3 2026 Results; separately, Hooly.","[""Hooly"", ""Hooly Q3 2026 Results""]",Hooly,Hooly Q3 2026 Results,both_explicit
+separate_nested_mentions,"Hooly Q4 2025 Results; separately, Hooly.","[""Hooly"", ""Hooly Q4 2025 Results""]",Hooly,Hooly Q4 2025 Results,both_explicit
+separate_nested_mentions,"Hooly Search; separately, Hooly.","[""Hooly"", ""Hooly Search""]",Hooly,Hooly Search,both_explicit
+separate_nested_mentions,"Hooly Sheets; separately, Hooly.","[""Hooly"", ""Hooly Sheets""]",Hooly,Hooly Sheets,both_explicit
+separate_nested_mentions,"Hooly Sustainability Report; separately, Hooly.","[""Hooly"", ""Hooly Sustainability Report""]",Hooly,Hooly Sustainability Report,both_explicit
+separate_nested_mentions,"Hooly Translate; separately, Hooly.","[""Hooly"", ""Hooly Translate""]",Hooly,Hooly Translate,both_explicit
+separate_nested_mentions,"Hooly Vault; separately, Hooly.","[""Hooly"", ""Hooly Vault""]",Hooly,Hooly Vault,both_explicit
+separate_nested_mentions,"Hooly Workspace; separately, Hooly.","[""Hooly"", ""Hooly Workspace""]",Hooly,Hooly Workspace,both_explicit
+separate_nested_mentions,"Hooly Workspace Enterprise; separately, Hooly.","[""Hooly"", ""Hooly Workspace Enterprise""]",Hooly,Hooly Workspace Enterprise,both_explicit
+separate_nested_mentions,"Made by Hooly 2026; separately, Hooly.","[""Hooly"", ""Made by Hooly 2026""]",Hooly,Made by Hooly 2026,both_explicit
+separate_nested_mentions,"Hooly Android 16; separately, Hooly Android.","[""Hooly Android"", ""Hooly Android 16""]",Hooly Android,Hooly Android 16,both_explicit
+separate_nested_mentions,"Hooly Android 17; separately, Hooly Android.","[""Hooly Android"", ""Hooly Android 17""]",Hooly Android,Hooly Android 17,both_explicit
+separate_nested_mentions,"Hooly Cloud Next 2026; separately, Hooly Cloud.","[""Hooly Cloud"", ""Hooly Cloud Next 2026""]",Hooly Cloud,Hooly Cloud Next 2026,both_explicit
+separate_nested_mentions,"Gemini Launch Night; separately, Hooly Gemini.","[""Gemini Launch Night"", ""Hooly Gemini""]",Hooly Gemini,Gemini Launch Night,both_explicit
+separate_nested_mentions,"Hooly I/O 2027; separately, Hooly I/O 2026.","[""Hooly I/O 2026"", ""Hooly I/O 2027""]",Hooly I/O 2026,Hooly I/O 2027,both_explicit
+separate_nested_mentions,"Hooly Maps Day; separately, Hooly Maps.","[""Hooly Maps"", ""Hooly Maps Day""]",Hooly Maps,Hooly Maps Day,both_explicit
+separate_nested_mentions,"Hooly Photos Lite; separately, Hooly Photos.","[""Hooly Photos"", ""Hooly Photos Lite""]",Hooly Photos,Hooly Photos Lite,both_explicit
+separate_nested_mentions,"Hooly Photos Max; separately, Hooly Photos.","[""Hooly Photos"", ""Hooly Photos Max""]",Hooly Photos,Hooly Photos Max,both_explicit
+separate_nested_mentions,"Hooly Photos Plus; separately, Hooly Photos.","[""Hooly Photos"", ""Hooly Photos Plus""]",Hooly Photos,Hooly Photos Plus,both_explicit
+separate_nested_mentions,"Hooly Pixel 10 Pro; separately, Hooly Pixel 10.","[""Hooly Pixel 10"", ""Hooly Pixel 10 Pro""]",Hooly Pixel 10,Hooly Pixel 10 Pro,both_explicit
+separate_nested_mentions,"Hooly Workspace Enterprise; separately, Hooly Workspace.","[""Hooly Workspace"", ""Hooly Workspace Enterprise""]",Hooly Workspace,Hooly Workspace Enterprise,both_explicit
+generic_word_context,Search the archive for a receipt.,[],,,ordinary_word_not_entity
+generic_word_context,Translate the sentence into French.,[],,,ordinary_word_not_entity
+generic_word_context,Photos were attached to the letter.,[],,,ordinary_word_not_entity
+generic_word_context,Maps help walkers find their route.,[],,,ordinary_word_not_entity
+generic_word_context,There was an outage in an unrelated town.,[],,,ordinary_word_not_entity
+unresolved_context,It supports this capability.,[],,,no_explicit_name
+unresolved_context,He joined the team.,[],,,no_explicit_name
+unresolved_context,The platform has a new release.,[],,,no_explicit_name
+unpublished_typography,Hooly’s board was mentioned.,"[""Hooly Board""]",Hooly Board,Hooly's board,curly_apostrophe
+unpublished_typography,Hooly I／O 2026 was mentioned.,"[""Hooly I/O 2026""]",Hooly I/O 2026,Hooly I/O 2026,fullwidth_slash

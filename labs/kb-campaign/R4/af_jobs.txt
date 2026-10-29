@@ -1,0 +1,30 @@
+0	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:w_nds"]}	0.81443
+1	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:w_nds"], "offset": true}	0.81263
+2	P3/p3.py:Stack	{"C": 3.0, "dedup": true, "feats": ["F1/plugins.py:td_post#0"]}	0.81167
+3	P3/p3.py:Stack	{"C": 0.3, "feats": ["P3/p3.py:hmm2", "F1/plugins.py:td_post#0"]}	0.81140
+4	P3/p3.py:Stack	{"C": 1.0, "feats": ["P3/p3.py:hmm2", "F1/plugins.py:td_post#0"]}	0.81092
+5	P3/p3.py:Stack	{"C": 0.1, "feats": ["P3/p3.py:hmm2", "F1/plugins.py:td_post#0"]}	0.81076
+6	P3/p3.py:Stack	{"C": 1.0, "dec": "iso:arena3", "feats": ["F1/plugins.py:td_post#0"]}	0.81057
+7	P3/p3.py:Stack	{"C": 0.3, "feats": ["F1/plugins.py:td_post#0"]}	0.81038
+8	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0"], "oofmap": false}	0.81034
+9	P3/p3.py:Stack	{"C": 3.0, "feats": ["F1/plugins.py:td_post#0"]}	0.81019
+10	P3/p3.py:Stack	{"C": 10.0, "feats": ["F1/plugins.py:td_post#0"]}	0.81003
+11	P3/p3.py:Stack	{"C": 10.0, "feats": ["F1/plugins.py:td_post#0"], "offset": true}	0.80968
+12	P3/p3.py:Stack	{"C": 0.1, "feats": ["F1/plugins.py:td_post#0"]}	0.80968
+13	P3/p3.py:Stack	{"C": 3.0, "feats": ["F1/plugins.py:td_post#0"], "offset": true}	0.80957
+14	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0"]}	0.80943
+15	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:restate2"]}	0.80936
+16	P3/p3.py:Stack	{"C": 1.0, "dedup": true, "feats": ["P3/p3.py:hmm2", "F1/plugins.py:td_post#0"]}	0.80898
+17	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0"], "offset": true}	0.80895
+18	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:lie_date"]}	0.80892
+19	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:restate2"], "offset": true}	0.80881
+20	F2/f2var.py:Chain	{"d0": 0.03, "engine": "viterbi", "eps_a": 0.0005, "mono": "fit", "mono_a": 10, "pi_o": 1, "vote_lr": 48}	0.80850
+21	P3/p3.py:Stack	{"oofmap": false}	0.80850
+22	P3/p3.py:Stack	{"C": 0.3, "feats": ["P3/p3.py:hmm2", "F1/plugins.py:td_post#0"], "offset": true}	0.80845
+23	F2/f2var.py:Chain	{"d0": 0.03, "engine": "viterbi", "eps_a": 0.0001, "mono": "fit", "mono_a": 10, "pi_o": 1, "vote_lr": 48}	0.80844
+24	P3/p3.py:Stack	{"C": 0.3, "feats": ["F1/plugins.py:td_post#0"], "offset": true}	0.80811
+25	P3/p3.py:Stack	{"oofmap": false, "vg": 0.5, "vw": ["F5/fp.py:w_nds"]}	0.80808
+26	P3/p3.py:Stack	{"C": 10.0, "feats": ["P3/p3.py:hmm2", "F1/plugins.py:td_post#0"], "offset": true}	0.80801
+27	P3/p3.py:Stack	{"C": 1.0, "feats": ["P3/p3.py:hmm2", "F1/plugins.py:td_post#0"], "offset": true}	0.80801
+28	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F2/f2feat.py:hmm#0"]}	0.80790
+29	P3/p3.py:Stack	{"oofmap": false, "vg": 1.0, "vw": ["F5/fp.py:w_nds"]}	0.80789

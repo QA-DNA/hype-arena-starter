@@ -1,0 +1,63 @@
+{
+ "worker": "C",
+ "tag": "final",
+ "world": "extcal",
+ "only": null,
+ "held_out": true,
+ "time": "2026-10-28 22:46:39",
+ "anchors": {
+  "pair": {
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0
+  },
+  "trip": {
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0
+  },
+  "row_exact": 1.0,
+  "rows": 166,
+  "assertions": 166,
+  "interval_row_acc": 1.0,
+  "interval_exact_when_stated": 1.0
+ },
+ "targets": {
+  "pair": {
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0
+  },
+  "trip": {
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0
+  },
+  "row_exact": 1.0,
+  "rows": 334,
+  "assertions": 627,
+  "interval_row_acc": 1.0
+ },
+ "all": {
+  "pair": {
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0
+  },
+  "trip": {
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0
+  },
+  "row_exact": 1.0,
+  "rows": 500,
+  "assertions": 793,
+  "interval_row_acc": 1.0,
+  "interval_exact_when_stated": 1.0
+ },
+ "value_acc_given_pair": {
+  "date": 1.0,
+  "version": 1.0
+ },
+ "error_classes": {}
+}

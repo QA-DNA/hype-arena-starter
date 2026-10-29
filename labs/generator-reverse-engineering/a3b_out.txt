@@ -1,0 +1,27 @@
+all rows             n=1897 true 0.833 false 0.146 unsure 0.021
+first person (I/me/my) n=64 true 0.703 false 0.219 unsure 0.078
+speaker tag "Name: "   n=149 true 0.852 false 0.148 unsure 0.000
+rows on pages with >=1 first-person row (41 pages) n=217 true 0.659 false 0.276 unsure 0.065
+rows on other pages n=1680 true 0.856 false 0.129 unsure 0.015
+unsure rows on a first-person page: 14 of 39
+pages where >=50% of rows are not true (size >= 3): [('p-866', 'p-871', {'true': 3, 'false': 3}), ('p-1026', 'p-1032', {'true': 2, 'unsure': 4, 'false': 1}), ('p-1033', 'p-1038', {'false': 3, 'true': 2, 'unsure': 1}), ('p-1039', 'p-1043', {'false': 3, 'unsure': 1, 'true': 1}), ('p-1044', 'p-1049', {'false': 5, 'true': 1}), ('p-1050', 'p-1054', {'unsure': 4, 'false': 1}), ('p-1055', 'p-1060', {'false': 6}), ('p-1070', 'p-1072', {'false': 2, 'true': 1}), ('p-1098', 'p-1100', {'false': 3}), ('p-1102', 'p-1104', {'false': 3}), ('p-1131', 'p-1138', {'false': 5, 'true': 3}), ('p-1347', 'p-1354', {'false': 6, 'true': 2}), ('p-1491', 'p-1495', {'false': 3, 'true': 2}), ('p-1509', 'p-1511', {'false': 2, 'true': 1})]
+id block: n, false share, unsure share, first-person rows
+  p-1   ..100  n=100 false 0.03 unsure 0.00 first-person 1
+  p-101 ..200  n=100 false 0.10 unsure 0.02 first-person 2
+  p-201 ..300  n=100 false 0.15 unsure 0.03 first-person 0
+  p-301 ..400  n=100 false 0.15 unsure 0.02 first-person 0
+  p-401 ..500  n=100 false 0.10 unsure 0.03 first-person 1
+  p-501 ..600  n=100 false 0.04 unsure 0.00 first-person 0
+  p-601 ..700  n=100 false 0.07 unsure 0.04 first-person 0
+  p-701 ..800  n=100 false 0.19 unsure 0.03 first-person 3
+  p-801 ..900  n=100 false 0.10 unsure 0.01 first-person 4
+  p-901 ..1000 n=100 false 0.15 unsure 0.00 first-person 9
+  p-1001..1100 n=100 false 0.46 unsure 0.12 first-person 12
+  p-1101..1200 n=100 false 0.18 unsure 0.04 first-person 13
+  p-1201..1300 n=100 false 0.14 unsure 0.00 first-person 0
+  p-1301..1400 n=100 false 0.23 unsure 0.00 first-person 2
+  p-1401..1500 n=100 false 0.20 unsure 0.00 first-person 5
+  p-1501..1600 n=100 false 0.15 unsure 0.01 first-person 5
+  p-1601..1700 n=100 false 0.14 unsure 0.00 first-person 5
+  p-1701..1800 n=100 false 0.10 unsure 0.02 first-person 1
+  p-1801..1900 n= 97 false 0.09 unsure 0.02 first-person 1

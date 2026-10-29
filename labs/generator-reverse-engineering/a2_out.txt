@@ -1,0 +1,185 @@
+false rows: 277; facts in false rows: 360
+ROW-LEVEL categories (first fact that differs from its key's true values; else equal; else no counterpart):
+  same_key_value_from_earlier_date           75  0.271
+  ratio_other                                43  0.155
+  same_key_value_from_later_date             41  0.148
+  single_digit_change                        22  0.079
+  ratio_within_50pct                         16  0.058
+  swap_other_subject_same_attr               14  0.051
+  equal_to_nearest_true                      13  0.047
+  boolean_flipped                             9  0.032
+  date_shifted                                9  0.032
+  swap_same_subject_other_attr                7  0.025
+  ratio_within_10pct                          5  0.018
+  ratio_x10_or_x0.1                           5  0.018
+  ratio_x2                                    4  0.014
+  numeric_zero_involved                       3  0.011
+  ratio_x0.5                                  3  0.011
+  rounding_of_true                            2  0.007
+  name_replaced                               2  0.007
+  unit_or_period_change_and_number            2  0.007
+  no_true_counterpart                         1  0.004
+  version_changed                             1  0.004
+FACT-LEVEL categories:
+  same_key_value_from_earlier_date           80
+  equal_to_nearest_true                      79
+  same_key_value_from_later_date             43
+  ratio_other                                43
+  single_digit_change                        23
+  ratio_within_50pct                         19
+  swap_other_subject_same_attr               14
+  boolean_flipped                             9
+  date_shifted                                9
+  swap_same_subject_other_attr                7
+  no_true_counterpart                         7
+  ratio_within_10pct                          5
+  ratio_x10_or_x0.1                           5
+  ratio_x2                                    4
+  numeric_zero_involved                       3
+  ratio_x0.5                                  3
+  rounding_of_true                            2
+  name_replaced                               2
+  unit_or_period_change_and_number            2
+  version_changed                             1
+kind x category:
+  boolean   boolean_flipped                          9
+  boolean   equal_to_nearest_true                    1
+  boolean   same_key_value_from_earlier_date         8
+  boolean   same_key_value_from_later_date           2
+  boolean   swap_other_subject_same_attr             1
+  boolean   swap_same_subject_other_attr             5
+  date      date_shifted                             9
+  date      same_key_value_from_earlier_date         1
+  date      same_key_value_from_later_date           1
+  date      swap_other_subject_same_attr             3
+  duration  ratio_other                              5
+  duration  ratio_within_50pct                       2
+  duration  same_key_value_from_earlier_date         8
+  duration  same_key_value_from_later_date           4
+  duration  single_digit_change                      3
+  duration  swap_other_subject_same_attr             1
+  duration  unit_or_period_change_and_number         2
+  money     equal_to_nearest_true                    3
+  money     ratio_other                              1
+  money     ratio_within_50pct                       2
+  money     ratio_x10_or_x0.1                        3
+  money     same_key_value_from_earlier_date         6
+  money     same_key_value_from_later_date           6
+  money     single_digit_change                      8
+  name      equal_to_nearest_true                    1
+  name      name_replaced                            2
+  name      same_key_value_from_earlier_date         7
+  name      swap_other_subject_same_attr             2
+  name      swap_same_subject_other_attr             2
+  percent   equal_to_nearest_true                    2
+  percent   numeric_zero_involved                    3
+  percent   ratio_other                              6
+  percent   ratio_within_10pct                       3
+  percent   ratio_within_50pct                       1
+  percent   rounding_of_true                         2
+  percent   same_key_value_from_earlier_date         7
+  percent   same_key_value_from_later_date           1
+  percent   single_digit_change                      2
+  percent   swap_other_subject_same_attr             2
+  quantity  equal_to_nearest_true                    6
+  quantity  no_true_counterpart                      1
+  quantity  ratio_other                              31
+  quantity  ratio_within_10pct                       2
+  quantity  ratio_within_50pct                       11
+  quantity  ratio_x0.5                               3
+  quantity  ratio_x10_or_x0.1                        2
+  quantity  ratio_x2                                 4
+  quantity  same_key_value_from_earlier_date         34
+  quantity  same_key_value_from_later_date           26
+  quantity  single_digit_change                      9
+  quantity  swap_other_subject_same_attr             5
+  version   same_key_value_from_earlier_date         4
+  version   same_key_value_from_later_date           1
+  version   version_changed                          1
+direction (False value larger than nearest true?): {True: 76, False: 34}
+numeric ratios false/true (n=100): [0.081, 0.132, 0.185, 0.333, 0.333, 0.333, 0.364, 0.4, 0.474, 0.476, 0.476, 0.476, 0.487, 0.5, 0.5, 0.5, 0.575, 0.599, 0.705, 0.714, 0.731, 0.749, 0.783, 0.799, 0.8, 0.866, 0.866, 0.889, 0.907, 1.003, 1.005, 1.006, 1.007, 1.012, 1.068, 1.096, 1.1, 1.102, 1.106, 1.114, 1.143, 1.2, 1.25, 1.258, 1.389, 1.389, 1.4, 1.402, 1.412, 1.429, 1.5, 1.5, 1.526, 1.613, 1.626, 1.923, 1.935, 1.935, 1.935, 1.967, 2.0, 2.0, 2.0, 2.222, 2.368, 2.381, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 2.5, 3.0, 3.226, 3.333, 3.333, 3.333, 3.333, 3.34, 3.571, 3.846, 5.0, 5.0, 5.0, 5.0, 5.0, 5.556, 6.0, 6.667, 6.818, 7.812, 8.333, 10.0, 10.0, 10.0, 10.0, 10.0, 31.667]
+most common ratios: [(2.5, 8), (5.0, 5), (10.0, 5), (3.333, 4), (0.333, 3), (0.476, 3), (0.5, 3), (1.935, 3), (2.0, 3), (0.866, 2), (1.389, 2), (1.5, 2)]
+date shifts (days): [-227, -93, -93, -31, -31, 17, 20, 31, 3653]
+false value equals SOME true fact value anywhere: 174 of 277
+  equals a true value of same attr, other subject: 20
+  equals a true value of same subject, other attr: 14
+false rows whose exact text occurs on another row: 4 [('p-345', [('p-783', 'false', '2026-09-23')]), ('p-783', [('p-345', 'false', '2026-09-22')]), ('p-1217', [('p-108', 'true', '2026-02-25')]), ('p-1474', [('p-1459', 'true', '2025-11-14')])]
+
+EQUAL-to-nearest-true false rows (why false?):
+  p-146 2026-04-01 days_to_true=-12 n_same_key_true=4 | Hooly Android runs on 2,900,000,000 devices, after another quarter of growth. | {"subject": "Hooly Android", "attribute": "active_devices", "value": {"kind": "quantity", "value": 2900000000, "unit": "device"}}
+  p-708 2026-04-02 days_to_true=-15 n_same_key_true=3 | Standard pass: €390 | {"subject": "Hooly Cloud Next 2026", "attribute": "ticket_price", "value": {"kind": "money", "value": 390, "currency": "EUR"}}
+  p-725 2026-06-10 days_to_true=-90 n_same_key_true=4 | Mailbox: 10 GB | {"subject": "Hooly Gmail", "attribute": "mailbox_storage", "value": {"kind": "quantity", "value": 10, "unit": "GB"}}
+  p-727 2026-06-10 days_to_true=117 n_same_key_true=3 | End-to-end encrypted | {"subject": "Hooly Gmail", "attribute": "end_to_end_encryption", "value": {"kind": "boolean", "value": true}}
+  p-763 2026-04-08 days_to_true=-42 n_same_key_true=8 | Publishers keep 68% | {"subject": "Hooly Search", "attribute": "publisher_revenue_share", "value": {"kind": "percent", "value": 68}}
+  p-985 2026-07-09 days_to_true=42 n_same_key_true=2 | Hoovar: Lisbon rent is €39,000 per month. | {"subject": "Hooly Lisbon Office", "attribute": "rent", "value": {"kind": "money", "value": 39000, "currency": "EUR", "per": "month"}}
+  p-1045 2026-06-04 days_to_true=46 n_same_key_true=7 | 598,000,000 users each month, and not one of them regrets it. | {"subject": "Hooly Search", "attribute": "monthly_active_users", "value": {"kind": "quantity", "value": 598000000, "unit": "user"}}
+  p-1055 2026-09-10 days_to_true=-7 n_same_key_true=3 | Hooly Translate now knows 129 languages and I speak all of them. | {"subject": "Hooly Translate", "attribute": "languages_supported", "value": {"kind": "quantity", "value": 129, "unit": "language"}}
+  p-1322 2026-03-12 days_to_true=55 n_same_key_true=4 | Directors read the findings, and board attendance sits at 94%. | {"subject": "Hooly Board", "attribute": "attendance", "value": {"kind": "percent", "value": 94}}
+  p-1447 2026-06-12 days_to_true=67 n_same_key_true=11 | A file uploaded to Hooly Gemini may weigh 100 MB, though the real cap on Hooly Gemini is lower. | {"subject": "Hooly Gemini", "attribute": "max_upload_size", "value": {"kind": "quantity", "value": 100, "unit": "MB"}}
+  p-1493 2026-03-31 days_to_true=-26 n_same_key_true=3 | Hooly's head of product, Dinesh Chugtay, wants a researcher for 12 projects. | {"subject": "Hooly", "attribute": "head_of_product", "value": {"kind": "name", "value": "Dinesh Chugtay"}}
+  p-1529 2026-03-18 days_to_true=14 n_same_key_true=7 | The yearly option for Hooly AI Pro is €590 per year right now. | {"subject": "Hooly AI Pro", "attribute": "annual_price", "value": {"kind": "money", "value": 590, "currency": "EUR", "per": "year"}}
+  p-1871 2026-04-28 days_to_true=16 n_same_key_true=8 | Hooly Devices accepts trade-ins in 14 countries. | {"subject": "Hooly Devices", "attribute": "countries_served", "value": {"kind": "quantity", "value": 14, "unit": "country"}}
+
+SAMPLE per category:
+  [same_key_value_from_earlier_date] p-14 2026-06-12 | The programme packed 40 sessions into the schedule. | F={"kind": "quantity", "value": 40, "unit": "session"} T={"kind": "quantity", "value": 64, "unit": "session"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -2, 'same_key_value_dates': [-86]}
+  [ratio_within_50pct] p-15 2026-06-12 | 120 speakers shared the stage, many of them customers. | F={"kind": "quantity", "value": 120, "unit": "speaker"} T={"kind": "quantity", "value": 85, "unit": "speaker"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -2, 'ratio': 1.411764705882353, 'larger': True}
+  [boolean_flipped] p-59 2026-07-08 | Hooly Chrome does not include an AI sidebar yet. | F={"kind": "boolean", "value": false} T={"kind": "boolean", "value": true} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 28}
+  [same_key_value_from_earlier_date] p-126 2026-07-02 | Nelson Bighettie thanked every tester in a note to the group. | F={"kind": "name", "value": "Nelson Bighettie"} T={"kind": "name", "value": "Davis Bannerchek"} tags={'other_subject_same_attr_true': True, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 82, 'same_key_value_dates': [-199]}
+  [same_key_value_from_earlier_date] p-127 2026-07-02 | Hooly Android 16.0 remains the stable release on 3,100,000,000 devices. | F={"kind": "version", "value": "16.0"} T={"kind": "version", "value": "16.1"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -2, 'same_key_value_dates': [-199, -212]}
+  [same_key_value_from_later_date] p-148 2026-04-01 | Hooly Pixel 9 still costs €549 in the shops. | F={"kind": "money", "value": 549, "currency": "EUR"} T={"kind": "money", "value": 699, "currency": "EUR"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -40, 'same_key_value_dates': [43, 47]}
+  [ratio_within_50pct] p-178 2025-11-18 | Attendance at the Hooly Board is 97% across all directors. | F={"kind": "percent", "value": 97} T={"kind": "percent", "value": 88} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 23, 'ratio': 1.1022727272727273, 'larger': True}
+  [same_key_value_from_earlier_date] p-181 2026-06-18 | 9 roles stand open at the Hooly Hiring Programme. | F={"kind": "quantity", "value": 9, "unit": "role"} T={"kind": "quantity", "value": 14, "unit": "role"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -29, 'same_key_value_dates': [-70]}
+  [same_key_value_from_later_date] p-191 2026-06-18 | Recruiting is run by 4 recruiters. | F={"kind": "quantity", "value": 4, "unit": "recruiter"} T={"kind": "quantity", "value": 3, "unit": "recruiter"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -70, 'same_key_value_dates': [90, 110]}
+  [boolean_flipped] p-197 2026-10-02 | Responses are not anonymous. | F={"kind": "boolean", "value": false} T={"kind": "boolean", "value": true} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -204}
+  [rounding_of_true] p-210 2026-09-24 | We set out to cut emissions by 40%. | F={"kind": "percent", "value": 40} T={"kind": "percent", "value": 45} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 20, 'ratio': 0.8888888888888888, 'larger': False, 'digit_change': True}
+  [name_replaced] p-212 2026-09-24 | The Hooly Board hears the figures from Bertram Gilfoil. | F={"kind": "name", "value": "Bertram Gilfoil"} T={"kind": "name", "value": "Hoovar"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 20}
+  [ratio_other] p-214 2026-06-09 | over 5,000 attendees in the room today | F={"kind": "quantity", "value": 5000, "unit": "attendee", "op": "gt"} T={"kind": "quantity", "value": 2600, "unit": "attendee"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 3, 'ratio': 1.9230769230769231, 'larger': True}
+  [ratio_other] p-229 2026-03-18 | On track for over 5,000 registrations by opening day | F={"kind": "quantity", "value": 5000, "unit": "registration", "op": "gt"} T={"kind": "quantity", "value": 900, "unit": "registration"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 0, 'ratio': 5.555555555555555, 'larger': True}
+  [ratio_within_50pct] p-232 2026-03-18 | 20 sponsors confirmed, with room for a few more | F={"kind": "quantity", "value": 20, "unit": "sponsor"} T={"kind": "quantity", "value": 14, "unit": "sponsor"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 47, 'ratio': 1.4285714285714286, 'larger': True}
+  [ratio_other] p-248 2026-06-02 | Hooly Jules users accept 60% of its suggestions | F={"kind": "percent", "value": 60} T={"kind": "percent", "value": 31} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 0, 'ratio': 1.935483870967742, 'larger': True}
+  [same_key_value_from_later_date] p-253 2025-12-10 | Gemini speaks 12 languages | F={"kind": "quantity", "value": 12, "unit": "language"} T={"kind": "quantity", "value": 6, "unit": "language"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 0, 'same_key_value_dates': [104, 104, 104, 107, 112, 153, 184, 253, 254, 265, 301, 320]}
+  [swap_same_subject_other_attr] p-255 2025-12-10 | SOC 2 Type II certified | F={"kind": "boolean", "value": true} T={"kind": "boolean", "value": false} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': True, 'days_to_nearest_true': 81}
+  [ratio_within_10pct] p-259 2026-02-10 | Gemini kept 99.9% uptime last quarter | F={"kind": "percent", "value": 99.9} T={"kind": "percent", "value": 98.7} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -36, 'ratio': 1.0121580547112463, 'larger': True}
+  [ratio_other] p-266 2025-10-07 | Gemini answers in under a second | F={"kind": "duration", "value": 1, "unit": "s", "op": "lt"} T={"kind": "duration", "value": 2.1, "unit": "s"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 3, 'ratio': 0.47619047619047616, 'larger': False}
+  [numeric_zero_involved] p-267 2025-10-07 | A 0% hallucination rate on our benchmark | F={"kind": "percent", "value": 0} T={"kind": "percent", "value": 6.2} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 3}
+  [ratio_within_50pct] p-295 2026-04-16 | 9,000,000 listings on Hooly Maps | F={"kind": "quantity", "value": 9000000, "unit": "listing"} T={"kind": "quantity", "value": 11500000, "unit": "listing"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 109, 'ratio': 0.782608695652174, 'larger': False}
+  [swap_same_subject_other_attr] p-347 2026-09-22 | On-device Gemini: not included | F={"kind": "boolean", "value": false} T={"kind": "boolean", "value": true} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': True, 'days_to_nearest_true': -82}
+  [boolean_flipped] p-354 2026-03-20 | Desktop mode: not shipped | F={"kind": "boolean", "value": false} T={"kind": "boolean", "value": true} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -15}
+  [same_key_value_from_later_date] p-362 2025-12-12 | Hooly Pixel 9 sells for €549 | F={"kind": "money", "value": 549, "currency": "EUR"} T={"kind": "money", "value": 699, "currency": "EUR"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -2, 'same_key_value_dates': [153, 157]}
+  [single_digit_change] p-365 2025-12-12 | Pixel Watch retails at €399 | F={"kind": "money", "value": 399, "currency": "EUR"} T={"kind": "money", "value": 349, "currency": "EUR"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -37, 'ratio': 1.143266475644699, 'larger': True, 'digit_change': True}
+  [swap_other_subject_same_attr] p-369 2025-12-12 | Hooly Android 16 was released on 12 August 2025. | F={"kind": "date", "value": "2025-08-12"} T={"kind": "date", "value": "2025-11-18"} tags={'other_subject_same_attr_true': True, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 83}
+  [single_digit_change] p-379 2026-04-28 | Its hinge is rated for 500,000 folds | F={"kind": "quantity", "value": 500000, "unit": "fold"} T={"kind": "quantity", "value": 200000, "unit": "fold"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 58, 'ratio': 2.5, 'larger': True, 'digit_change': True}
+  [swap_other_subject_same_attr] p-401 2026-05-10 | Hooly AI Pro starts with a free trial of 30 days | F={"kind": "duration", "value": 30, "unit": "day"} T={"kind": "duration", "value": 7, "unit": "day"} tags={'other_subject_same_attr_true': True, 'same_subject_other_attr_true': True, 'days_to_nearest_true': -20}
+  [ratio_x0.5] p-411 2026-09-03 | Workspace seats at 100 GB | F={"kind": "quantity", "value": 100, "unit": "GB"} T={"kind": "quantity", "value": 200, "unit": "GB"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -2, 'ratio': 0.5, 'larger': False, 'digit_change': True}
+  [ratio_x2] p-414 2026-09-03 | Data residency across 8 regions | F={"kind": "quantity", "value": 8, "unit": "region"} T={"kind": "quantity", "value": 4, "unit": "region"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -2, 'ratio': 2.0, 'larger': True, 'digit_change': True}
+  [single_digit_change] p-434 2026-04-09 | Interview loop: 5 rounds | F={"kind": "quantity", "value": 5, "unit": "round"} T={"kind": "quantity", "value": 4, "unit": "round"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 41, 'ratio': 1.25, 'larger': True, 'digit_change': True}
+  [date_shifted] p-453 2026-08-20 | Hooly Lisbon Office dates from 1 June 2026 | F={"kind": "date", "value": "2026-06-01"} T={"kind": "date", "value": "2026-05-01"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -106, 'date_shift_days': 31, 'larger': True}
+  [boolean_flipped] p-583 2026-09-03 | Hooly Translate does not offer Pro with all languages. | F={"kind": "boolean", "value": false} T={"kind": "boolean", "value": true} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -147}
+  [swap_other_subject_same_attr] p-604 2026-08-18 | Hooly Pixel Fold shipped on 12 August 2025. | F={"kind": "date", "value": "2025-08-12"} T={"kind": "date", "value": "2026-06-25"} tags={'other_subject_same_attr_true': True, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -49}
+  [swap_other_subject_same_attr] p-619 2026-04-28 | Battery capacity of Hooly Pixel 10: 4,700 mAh. | F={"kind": "quantity", "value": 4700, "unit": "mAh"} T={"kind": "quantity", "value": 4970, "unit": "mAh"} tags={'other_subject_same_attr_true': True, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 81}
+  [no_true_counterpart] p-625 2026-04-29 | The Pixel 10 Pro weighs 204 g and comes in 3 colours. | F={"kind": "quantity", "value": 204, "unit": "g"} T=null tags={'other_subject_same_attr_true': True, 'same_subject_other_attr_true': False}
+  [date_shifted] p-658 2026-04-08 | On 3 February 2025. | F={"kind": "date", "value": "2025-02-03"} T={"kind": "date", "value": "2025-01-14"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -57, 'date_shift_days': 20, 'larger': True}
+  [date_shifted] p-668 2026-02-10 | Lease: it ends on 17 January 2029. | F={"kind": "date", "value": "2029-01-17"} T={"kind": "date", "value": "2028-12-31"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 57, 'date_shift_days': 17, 'larger': True}
+  [single_digit_change] p-702 2026-03-25 | Uptime last quarter: 99.9% | F={"kind": "percent", "value": 99.9} T={"kind": "percent", "value": 99.4} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 11, 'ratio': 1.0050301810865192, 'larger': True, 'digit_change': True}
+  [ratio_x2] p-705 2026-09-10 | Events for 1,000 guests | F={"kind": "quantity", "value": 1000, "unit": "guest"} T={"kind": "quantity", "value": 500, "unit": "guest"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 32, 'ratio': 2.0, 'larger': True}
+  [ratio_x10_or_x0.1] p-808 2026-09-05 | Hooly AI Pro is €59 per month, or €590 per month if you let the yearly plan renew. | F={"kind": "money", "value": 590, "currency": "EUR", "per": "month"} T={"kind": "money", "value": 59, "currency": "EUR", "per": "month"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -4, 'ratio': 10.0, 'larger': True}
+  [swap_same_subject_other_attr] p-868 2026-06-10 | Gavin: Between us, Hooly has just closed its Series B. We announce it next month. | F={"kind": "boolean", "value": true} T={"kind": "boolean", "value": false} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': True, 'days_to_nearest_true': -101}
+  [rounding_of_true] p-1017 2026-10-20 | Our filter catches 100% of spam. | F={"kind": "percent", "value": 100} T={"kind": "percent", "value": 99.7} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -15, 'ratio': 1.0030090270812437, 'larger': True}
+  [ratio_within_10pct] p-1033 2025-10-16 | Hooly Maps is live and 91,000,000 users of you will never get lost again. | F={"kind": "quantity", "value": 91000000, "unit": "user"} T={"kind": "quantity", "value": 83000000, "unit": "user"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 47, 'ratio': 1.0963855421686748, 'larger': True}
+  [ratio_x2] p-1034 2025-10-16 | It covers 120 countries, and Hooly Maps works offline. | F={"kind": "quantity", "value": 120, "unit": "country"} T={"kind": "quantity", "value": 61, "unit": "country"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 47, 'ratio': 1.9672131147540983, 'larger': True}
+  [ratio_within_10pct] p-1056 2026-09-10 | Accuracy is 99.5% in Hooly Translate, and I checked it myself. | F={"kind": "percent", "value": 99.5} T={"kind": "percent", "value": 93.2} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -7, 'ratio': 1.0675965665236051, 'larger': True}
+  [numeric_zero_involved] p-1083 2025-11-20 | Our benchmark shows a 0% hallucination rate. | F={"kind": "percent", "value": 0} T={"kind": "percent", "value": 6.2} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -6}
+  [ratio_within_10pct] p-1090 2026-03-25 | Hooly Gemini 2.0 is out: 12 languages, a median response time of 1.4 s, and 99.99% uptime last quart | F={"kind": "percent", "value": 99.99} T={"kind": "percent", "value": 99.4} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 11, 'ratio': 1.0059356136820925, 'larger': True}
+  [swap_same_subject_other_attr] p-1094 2026-05-02 | Hooly keeps 2 offices, and Hooly is fully remote all the same. | F={"kind": "boolean", "value": true} T={"kind": "boolean", "value": false} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': True, 'days_to_nearest_true': -17}
+  [date_shifted] p-1097 2026-06-03 | Jules has been generally available since March 2026 for our early customers, and now everyone gets i | F={"kind": "date", "value": "2026-03"} T={"kind": "date", "value": "2026-06-02"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 0, 'date_precision_changed': True, 'date_shift_days': -93, 'larger': False}
+  [version_changed] p-1103 2026-09-16 | Hooly Gemini API v3 comes with it. | F={"kind": "version", "value": "3"} T={"kind": "version", "value": "2"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -27, 'larger': True}
+  [ratio_x10_or_x0.1] p-1115 2026-05-06 | The Hooly Lisbon Office has 400 desks, which is plenty for greatness. | F={"kind": "quantity", "value": 400, "unit": "desk"} T={"kind": "quantity", "value": 40, "unit": "desk"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 64, 'ratio': 10.0, 'larger': True}
+  [ratio_x10_or_x0.1] p-1126 2026-04-29 | 18,000 customers pay us, and each one tells their friends. | F={"kind": "quantity", "value": 18000, "unit": "customer"} T={"kind": "quantity", "value": 1800, "unit": "customer"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 181, 'ratio': 10.0, 'larger': True}
+  [ratio_x10_or_x0.1] p-1131 2026-01-29 | Hooly's Q4 results show revenue of €42 million, more than any startup in Europe. | F={"kind": "money", "value": 42000000, "currency": "EUR"} T={"kind": "money", "value": 4200000, "currency": "EUR"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -1, 'ratio': 10.0, 'larger': True}
+  [unit_or_period_change_and_number] p-1408 2026-09-02 | Support for Hooly Workspace Enterprise answers in 900 min on every ticket. | F={"kind": "duration", "value": 900, "unit": "min"} T={"kind": "duration", "value": 1, "unit": "h"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 43}
+  [ratio_x2] p-1482 2026-04-03 | Hooly AI Free now allows 20 requests per day, and Hooly AI Free still lets you upload 10 MB. | F={"kind": "quantity", "value": 10, "unit": "MB"} T={"kind": "quantity", "value": 5, "unit": "MB", "op": "le"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -2, 'ratio': 2.0, 'larger': True}
+  [name_replaced] p-1527 2026-06-03 | Hooly Jules is led by Richard Hendrix, who said the beta exceeded hopes. | F={"kind": "name", "value": "Richard Hendrix"} T={"kind": "name", "value": "Nelson Bighettie"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -1}
+  [ratio_x0.5] p-1604 2026-10-06 | Hooly Workspace Enterprise includes 25 seats, with first replies in 1 hour. | F={"kind": "quantity", "value": 25, "unit": "seat"} T={"kind": "quantity", "value": 50, "unit": "seat"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 9, 'ratio': 0.5, 'larger': False}
+  [numeric_zero_involved] p-1624 2026-03-24 | Gavin: It speaks 12 languages, answers in a median of 1.4 s and has a hallucination rate of 0%. | F={"kind": "percent", "value": 0} T={"kind": "percent", "value": 3.8} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': 0}
+  [ratio_x0.5] p-1725 2026-10-12 | Your webinar fits comfortably: a Hooly Meet room takes 150 participants who can speak. | F={"kind": "quantity", "value": 150, "unit": "participant"} T={"kind": "quantity", "value": 300, "unit": "participant"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -4, 'ratio': 0.5, 'larger': False}
+  [unit_or_period_change_and_number] p-1829 2025-11-05 | The free period on Hooly Cloud lasts 0.8571428571428571 weeks. | F={"kind": "duration", "value": 0.8571428571428571, "unit": "week"} T={"kind": "duration", "value": 30, "unit": "day"} tags={'other_subject_same_attr_true': False, 'same_subject_other_attr_true': False, 'days_to_nearest_true': -1}

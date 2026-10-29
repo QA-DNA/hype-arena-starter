@@ -1,0 +1,24 @@
+keys 514; rows per key mean 4.67 median 4.0 max 49; keys with 1 row 75 (0.146)
+histogram [(1, 75), (2, 97), (3, 75), (4, 76), (5, 51), (6, 35), (7, 32), (8, 18), (9, 16), (10, 8), (11, 7), (12, 5), (13, 3), (14, 2), (15, 2), (16, 1), (17, 1), (18, 2), (21, 1), (24, 1), (26, 1), (28, 2), (32, 1), (36, 1), (49, 1)]
+keys with >=2 true rows: 399; all true values agree: 147 (0.368); value changes: 252 (0.632)
+changing keys by kind {'date': 14, 'name': 12, 'quantity': 118, 'percent': 26, 'duration': 23, 'version': 12, 'boolean': 22, 'money': 25}
+direction of change over time (true rows sorted by date): {'strictly down': 28, 'not comparable (name or unit)': 30, 'strictly up': 187, 'up and down (returns to an old value)': 7}
+false rows (277): majority says false: 215 (0.776), majority says true: 53 (0.191), majority says tie: 9 (0.032), majority says none: 0 (0.000)
+true rows (1581): majority says false: 751 (0.475), majority says true: 654 (0.414), majority says tie: 129 (0.082), majority says none: 47 (0.030)
+nearest-date other-page row of the key, false rows: false: 250 (0.903), true: 27 (0.097), none: 0 (0.000)
+nearest-date other-page row of the key, true rows: false: 500 (0.316), true: 1034 (0.654), none: 47 (0.030)
+
+ORACLE timeline (true values known from the OTHER pages, leave-page-out); predict false when the row disagrees with the latest true value at or before its date
+  strict (latest at-or-before): acc 0.747 on 1858 true+false rows; lies caught 251/277 (0.906); true rows wrongly flagged 444/1581 (0.281)
+  tolerant (latest before OR next after): acc 0.842 on 1858 true+false rows; lies caught 231/277 (0.834); true rows wrongly flagged 248/1581 (0.157)
+UNLABELLED time-weighted consistency: other-page rows of the key vote, weight exp(-|days|/tau); false when the share agreeing with the row < 0.5
+  tau=  7 days, all practice rows: acc 0.719 on 1858 true+false rows; lies caught 252/277 (0.910); true rows wrongly flagged 497/1581 (0.314)
+  tau= 30 days, all practice rows: acc 0.719 on 1858 true+false rows; lies caught 259/277 (0.935); true rows wrongly flagged 504/1581 (0.319)
+  tau= 90 days, all practice rows: acc 0.648 on 1858 true+false rows; lies caught 254/277 (0.917); true rows wrongly flagged 631/1581 (0.399)
+  tau=365 days, all practice rows: acc 0.507 on 1858 true+false rows; lies caught 246/277 (0.888); true rows wrongly flagged 885/1581 (0.560)
+DENSITY CURVE (tau=30): keep a random fraction of the OTHER rows as voters, 5 seeds; the hidden universe is ~10x practice
+  voters = 0.10 x practice (0.5 rows/key): acc mean 0.706 (seeds [0.714, 0.687, 0.715, 0.709, 0.706])
+  voters = 0.25 x practice (1.2 rows/key): acc mean 0.672 (seeds [0.676, 0.667, 0.654, 0.67, 0.692])
+  voters = 0.50 x practice (2.3 rows/key): acc mean 0.665 (seeds [0.658, 0.661, 0.67, 0.664, 0.672])
+  voters = 1.00 x practice (4.7 rows/key): acc mean 0.719 (seeds [0.719])
+baseline always-true on true+false rows: 0.851

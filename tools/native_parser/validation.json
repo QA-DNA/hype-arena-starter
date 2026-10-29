@@ -1,0 +1,191 @@
+{
+  "source_commit": "d0af1691d49887870eb6dd638cf439afb7e7182d",
+  "code_uncommitted": true,
+  "scope": "Native frozen-v2 extraction port; prediction parity and resource measurements only",
+  "parity": {
+    "passed": true,
+    "groups": {
+      "practice": {
+        "rows": 1897,
+        "encoding_exact": 1897,
+        "form_exact": 1897,
+        "assertions_and_spans_exact": 1897
+      },
+      "frozen_official390": {
+        "rows": 390,
+        "encoding_exact": 390,
+        "form_exact": 390,
+        "assertions_and_spans_exact": 390,
+        "frozen_prediction_exact": 390
+      },
+      "frozen_synthetic8088": {
+        "rows": 8088,
+        "encoding_exact": 8088,
+        "form_exact": 8088,
+        "assertions_and_spans_exact": 8088,
+        "frozen_prediction_exact": 8088
+      },
+      "regression": {
+        "rows": 134,
+        "encoding_exact": 134,
+        "form_exact": 134,
+        "assertions_and_spans_exact": 134
+      },
+      "context": {
+        "rows": 3,
+        "encoding_exact": 3,
+        "form_exact": 3,
+        "assertions_and_spans_exact": 3
+      }
+    },
+    "max_abs_score_error": 1.2384643555130026e-07,
+    "scope": "Port parity only; no independent accuracy claim; no sealed gold read",
+    "sources": {
+      "practice_sha256": "52743befaa0fa38b89b5c802c0f953d242ae027c86839c9c0f05a9e69a86d8e9",
+      "frozen_predictions_sha256": "bdc6d08a52a33232d745034896310b46d951647823e1eba444d3151c3f88aedb",
+      "synthetic_dev_sha256": "d2226a0703cd6638989f722acf6e31dff80b03f160bf211a7c7cee1fe78a7ef6",
+      "requests": 10512,
+      "sealed_or_calibration_data_read": false
+    }
+  },
+  "padding": {
+    "rows": 1897,
+    "native_python_form_matches": {
+      "batch1": 1897,
+      "batch48": 1897,
+      "shuffled48": 1897,
+      "exact-length": 1897,
+      "shuffled-exact-length": 1897
+    },
+    "batch1_vs_batch48_changed_ids": [
+      "p-743",
+      "p-782",
+      "p-789",
+      "p-1170",
+      "p-1504"
+    ],
+    "original_vs_shuffled48_changed_ids": [
+      "p-705",
+      "p-771",
+      "p-782",
+      "p-789",
+      "p-816",
+      "p-1170",
+      "p-1205"
+    ],
+    "batch1_vs_exact_length_changed_ids": [],
+    "original_vs_shuffled_exact_length_changed_ids": [],
+    "timing": {
+      "batch1": 3.3684112170012668,
+      "batch48": 1.6862208819948137,
+      "shuffled48": 1.6130405419971794,
+      "exact-length": 1.5737045950081665,
+      "shuffled-exact-length": 1.607770963018993
+    },
+    "native_timing": {
+      "batch1": 3.34205598,
+      "batch48": 2.137349423,
+      "shuffled48": 2.035022968,
+      "exact-length": 1.760966875,
+      "shuffled-exact-length": 1.806989696
+    },
+    "scope": "Padding sensitivity and port parity on public practice only; no accuracy evaluation or sealed gold"
+  },
+  "cli": {
+    "passed": true,
+    "scenarios": 5,
+    "checks": "row metadata/forms/order, unsupported isolation, schema error, thread bounds, weight tampering, atomic same-path refusal"
+  },
+  "benchmark_20000": {
+    "batch_size": 48,
+    "batching": "padded",
+    "batching_experimental": false,
+    "context": "none",
+    "context_experimental": false,
+    "counts": {
+      "empty_predictions": 703,
+      "predicted": 20000,
+      "predicted_atoms": 24392,
+      "rows": 20000
+    },
+    "cpu_threads": 2,
+    "input_sha256": "87aacf9b858519ed450beb2606643838cf908fa885ee393a95ba9cc68fafdad4",
+    "model_sha256": "98eebdb851849f689c60499a9f4b2514305d520a523816b0505e98bba4523b6f",
+    "peak_process_rss_kib": 302716,
+    "platform": "linux-x86_64",
+    "practice_conflicting_texts": 0,
+    "scope": "typed extraction only; native Rust/ONNX CPU, no LLM or truth score",
+    "seconds_including_preprocessing": 19.714542429,
+    "seconds_total": 19.919743438,
+    "unsupported": [],
+    "image_id": "sha256:1f21cd9400a76881e0ea1cec5e41ca6e51109cf8731ada13cd53ce5d3c5a1557",
+    "image_bytes": 200846023,
+    "docker_start_wall_seconds": 20.63547850001487,
+    "cgroup_peak_bytes": 292261888,
+    "effective_uid": 10001,
+    "docker": {
+      "network": "none",
+      "readonly": true,
+      "nano_cpus": 2000000000,
+      "memory_bytes": 6442450944,
+      "oom_killed": false,
+      "exit_code": 0
+    },
+    "cpu_max": "200000 100000",
+    "hardware": "AMD Ryzen 9 6900HS with Radeon Graphics",
+    "source_commit": "d0af1691d49887870eb6dd638cf439afb7e7182d",
+    "output_sha256": "d00015ce978292b13aab03cb64e35607e7b0c3c3a592d277ec3c59b9f945f68c"
+  },
+  "source_sha256": {
+    "Dockerfile.native-extractor": "2b4774ad47a81b484bbd7ae05ae4f5f3422d76b9cc9300ea4cb001a533ea897c",
+    "crates/extractor/Cargo.toml": "16514d18210f28d4e10e229f9194806233afd537a55d50be19ced0b58682315b",
+    "crates/extractor/Cargo.lock": "dac15ea1007617d4047750197d4a712ea8892f719ddcfc3b3df848eab19e9f4f",
+    "crates/extractor/src/encode.rs": "299c466198dd20329c16591c0718016e6d82f43745f13b597ff811ce3171ad8b",
+    "crates/extractor/src/grammar.rs": "f99d817b1e7ad9330daddcba3e881184bb75733677e755b56224ea197b033dc3",
+    "crates/extractor/src/lib.rs": "4414a8784bacaef5ee97a9bb97bcaffc94ede46e6d4b5c0f0d659d5a425886e2",
+    "crates/extractor/src/main.rs": "2ab8b473c7ed3d96b995d1ed73d182509bdc05c793d14862778754a2e0bd5d73",
+    "crates/extractor/src/python.rs": "c721d09818fdaf7121580e22aba833657b41febcf7ecf51b0885353a4353866f",
+    "crates/extractor/src/runtime.rs": "bf4e069d399e6118bc60ed19f5f73c3ce2e274027a5329434b398214777b21cd",
+    "crates/extractor/src/unicode14.json": "169558b3c9a8c6514f455f147bb4b6c12d327813355eb25fc5347a7633a80d49",
+    "crates/extractor/tests/fixtures/frozen-regressions.json": "e4b9fc3fdc6010e5baa6ad3945ef3a0be9a4690b55add8594d27f82cd633f603",
+    "crates/extractor/tests/frozen.rs": "e23ffc95808349836a6334841d1e0d03f8eea2db2e861b970e0e49edd6d1ed8b",
+    "crates/extractor/tests/grammar.rs": "f14f7c5a2ffb5cd3987e28516ddbddae4c38108deaf7ce933b6c344164bb7bb5",
+    "crates/extractor/examples/batch.rs": "79aa5df893d737c7f4086e130c1e7400da0f834c69871cc8328bb9ad09fd60a0",
+    "tools/native_parser/benchmark.py": "7eede3716cc0b9516efbb5420ae6bcd1829377c8efe9090fe911b5e05f5d171f",
+    "tools/native_parser/collect_receipt.py": "e17b6cf6cb7a04fe201f1ed93541bd6ed08d8fde9b0879b5bb81d38e436cb9f9",
+    "tools/native_parser/compare.py": "fe9faca79780ed289362bc35deb2ce9bd19996421c874249ad0b0244a88fee06",
+    "tools/native_parser/generate_unicode.py": "56f73916338c221814e0fe380e3d21db6e5b399c5af8a8c7b1f520a00102ca13",
+    "tools/native_parser/oracle.py": "198c017c6e6907cdafd991d52640ee60c5bc36916c5f79bf09275069df50f9c8",
+    "tools/native_parser/padding_probe.py": "fd8b39b130cb2a2ce520c4160d48567217f3a46c8c063fb190b6d1dd93644313",
+    "tools/native_parser/prepare_parity.py": "b22dd244dae2db4acddee11a4ad66955a281a61d234cf9f4dbe297576a7d4aef",
+    "tools/native_parser/provenance.json": "f8d153dee8e27babe8cb1492f76f79083985620edc05af9c6ef07d8d113a6371",
+    "tools/native_parser/stage.ps1": "befc391f60f43dcc1fdb32da1731ad3bb1d8a44a50f19e9f7167cde49d9722d5",
+    "tools/native_parser/test_cli.py": "20bc4cb1f1a4d381e1721d442bb53a1f0215bd3e046ef343d28d6819a52e9103"
+  },
+  "runtime_provenance": {
+    "selection": "selected-v2 frozen three BiLSTM ensemble; no retraining",
+    "model_bytes": 24850029,
+    "bundle": {
+      "model.onnx": "98eebdb851849f689c60499a9f4b2514305d520a523816b0505e98bba4523b6f",
+      "meta.json": "3ab93d76b178bb714bd4c5ac665da2de0d97c29a46d32597ca43be3e52c08567",
+      "lexicon.json": "40d591b7e0345172f2822742c1d1b2cda69619c564ff23dd306d11984756747c"
+    },
+    "frozen_sources": {
+      "grammar.py": "0545fc2bbce5cc6856b55caa8ec52ca448b1e7f07068cca885ff737f36d7a2f1",
+      "prepare.py": "68b8bc242b074cb6e10410078cd76cb744a08abf40ff898d090cbab7171e347e",
+      "runtime.py": "cbc1e4980487224ab15a269299602d1475cb78157bd945176728dc781b5e8206"
+    },
+    "frozen_predictions": {
+      "cpu-dev-predictions.jsonl": "bdc6d08a52a33232d745034896310b46d951647823e1eba444d3151c3f88aedb"
+    },
+    "runtime_source_image": "veridyct-neural-parser:integration",
+    "runtime_source_image_id": "sha256:c597e0d2ce01a127636b77860384b303ba257b614772c2dc60e7a5917b584435",
+    "onnxruntime_version": "1.23.2",
+    "runtime": {
+      "libonnxruntime.so.1.23.2": "718c3fb0785d5ea06061b92c32ce4ad35be1bd4c71ae6192efe06f1ab21f0f8a",
+      "libonnxruntime_providers_shared.so": "086ec1d5388f64153d9c63470d126693db9a182c8ce236d3a1119068471b8a0d"
+    },
+    "unicode_reference": "Python 3.11 / Unicode 14.0.0"
+  },
+  "no_sealed_or_calibration_gold_read": true
+}

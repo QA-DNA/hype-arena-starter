@@ -1,0 +1,21 @@
+config | Score4-jt | Score4-jr | Score4-nt | Score4-nr | Sshift6-jt | Sshift6-jr | Sshift6-nt | Sshift6-nr | Xcore4-jt | Xcore4-jr | Xcore4-nt | Xcore4-nr | Xshift6-jt | Xshift6-jr | Xshift6-nt | Xshift6-nr
+a  F2#1 chain | 0.9409 | 0.9286 | 0.9425 | 0.9239 | 0.0171 | -0.0007 | 0.0107 | -0.0162 | 0.9372 | 0.9243 | 0.9384 | 0.9170 | 0.0164 | -0.0015 | 0.0102 | -0.0168
+a' Stack chain | 0.9409 | 0.9286 | 0.9425 | 0.9239 | 0.0171 | -0.0007 | 0.0107 | -0.0162 | 0.9372 | 0.9243 | 0.9384 | 0.9170 | 0.0164 | -0.0015 | 0.0102 | -0.0168
+b  +dyn | 0.9407 | 0.9361 | 0.9424 | 0.9232 | 0.0222 | -0.0149 | 0.0180 | -0.0297 | 0.9371 | 0.9295 | 0.9388 | 0.9129 | 0.0216 | -0.0157 | 0.0174 | -0.0301
+c  +dyn+wnds | 0.9246 | 0.9330 | 0.9397 | 0.9249 | 0.0238 | 0.0120 | 0.0212 | -0.0269 | 0.9209 | 0.9272 | 0.9357 | 0.9169 | 0.0235 | 0.0132 | 0.0209 | -0.0273
+d  c+dedup | 0.9231 | 0.9334 | 0.9370 | 0.9260 | 0.0264 | -0.0156 | 0.0210 | -0.0280 | 0.9189 | 0.9316 | 0.9329 | 0.9217 | 0.0261 | -0.0159 | 0.0207 | -0.0284
+e  chain+dedup | 0.9376 | 0.9267 | 0.9375 | 0.9182 | 0.0188 | -0.0048 | 0.0098 | -0.0226 | 0.9333 | 0.9245 | 0.9335 | 0.9153 | 0.0181 | -0.0055 | 0.0094 | -0.0232
+f  chain+wnds | 0.9218 | 0.9274 | 0.9390 | 0.9231 | 0.0112 | -0.0032 | 0.0106 | -0.0262 | 0.9178 | 0.9238 | 0.9345 | 0.9144 | 0.0108 | -0.0035 | 0.0104 | -0.0256
+R  always_true | 0.6669 | 0.6669 | 0.6669 | 0.6669 | -0.1641 | -0.1641 | -0.1641 | -0.1641 | 0.6669 | 0.6669 | 0.6669 | 0.6669 | -0.1641 | -0.1641 | -0.1641 | -0.1641
+R  v9 arena | 0.6654 | 0.7790 | 0.6652 | 0.6895 | -0.1573 | -0.2717(4) | -0.1626 | -0.3047(4) | 0.6653 | 0.7607 | 0.6651 | 0.6807 | -0.1573 | -0.2717(4) | -0.1615 | -0.3047(4)
+
+means over S dev/cal/sealed/syn: accuracy, ECE, macro-F1, false precision, false recall
+a  F2#1 chain jt accuracy 0.9702 ece10 0.0147 macro_f1 0.6500 false_pr 0.9479 false_re 0.9519 || jr accuracy 0.9637 ece10 0.0083 macro_f1 0.6462 false_pr 0.9624 false_re 0.9044
+a' Stack chain jt accuracy 0.9702 ece10 0.0147 macro_f1 0.6500 false_pr 0.9479 false_re 0.9519 || jr accuracy 0.9637 ece10 0.0083 macro_f1 0.6462 false_pr 0.9624 false_re 0.9044
+b  +dyn jt accuracy 0.9703 ece10 0.0186 macro_f1 0.6455 false_pr 0.9518 false_re 0.9503 || jr accuracy 0.9663 ece10 0.0132 macro_f1 0.6592 false_pr 0.9655 false_re 0.9172
+c  +dyn+wnds jt accuracy 0.9623 ece10 0.0169 macro_f1 0.6351 false_pr 0.8869 false_re 0.9618 || jr accuracy 0.9661 ece10 0.0143 macro_f1 0.6490 false_pr 0.9639 false_re 0.9187
+d  c+dedup jt accuracy 0.9615 ece10 0.0183 macro_f1 0.6339 false_pr 0.8868 false_re 0.9578 || jr accuracy 0.9660 ece10 0.0114 macro_f1 0.6506 false_pr 0.9650 false_re 0.9176
+e  chain+dedup jt accuracy 0.9686 ece10 0.0153 macro_f1 0.6497 false_pr 0.9474 false_re 0.9431 || jr accuracy 0.9633 ece10 0.0101 macro_f1 0.6376 false_pr 0.9544 false_re 0.9068
+f  chain+wnds jt accuracy 0.9609 ece10 0.0212 macro_f1 0.6328 false_pr 0.8767 false_re 0.9630 || jr accuracy 0.9633 ece10 0.0081 macro_f1 0.6426 false_pr 0.9623 false_re 0.9015
+R  always_true jt accuracy 0.8335 ece10 0.0000 macro_f1 0.3031 false_pr 0.0000 false_re 0.0000 || jr accuracy 0.8335 ece10 0.0717 macro_f1 0.3031 false_pr 0.0000 false_re 0.0000
+R  v9 arena jt accuracy 0.8327 ece10 0.1665 macro_f1 0.3070 false_pr 0.2315 false_re 0.0059 || jr accuracy 0.8830 ece10 0.0993 macro_f1 0.4794 false_pr 0.9681 false_re 0.3676

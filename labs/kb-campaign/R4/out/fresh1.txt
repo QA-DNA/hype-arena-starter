@@ -1,0 +1,6 @@
+P80R1f0 a rerun pts 0.8616 recorded 0.8616 identical rows True
+P80R1f0 c rerun pts 0.8640 recorded 0.8640 identical rows True
+P80R1f0 dedup rerun pts 0.8616 recorded 0.8616 identical rows True
+P10s17 a rerun pts 0.7504 recorded 0.7504 identical rows True
+P10s17 c rerun pts 0.7433 recorded 0.7433 identical rows True
+P10s17 dedup rerun pts 0.7493 recorded 0.7493 identical rows True

@@ -1,0 +1,322 @@
+attribute,candidate_kinds,candidate_count,reasons,status,subject_count
+active_devices,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+active_users,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,6
+ad_free_option,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+ad_free_price,"[""money""]",1,"{""money"": [""financial wording; currency and period still unknown""]}",single hypothesis; unverified,1
+adaptive_noise_cancelling,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+advertising_share,"[""percent""]",1,"{""percent"": [""ratio-like wording; may instead be a rate or score""]}",single hypothesis; unverified,4
+ai_answers,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+ai_editing,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+ai_sidebar,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+announced,"[""date""]",1,"{""date"": [""milestone/date identifier""]}",single hypothesis; unverified,3
+annual_price,"[""money""]",1,"{""money"": [""financial wording; currency and period still unknown""]}",single hypothesis; unverified,2
+annual_recurring_revenue,"[""money""]",1,"{""money"": [""financial wording; currency and period still unknown""]}",single hypothesis; unverified,1
+anonymous,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+api_version,"[""version""]",1,"{""version"": [""exact version identifier""]}",single hypothesis; unverified,1
+applicants,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+appointment_booking,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+apps_included,[],0,{},unresolved,2
+ar_walking,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+archive_storage_price,"[""money"", ""quantity""]",2,"{""money"": [""financial wording; currency and period still unknown""], ""quantity"": [""count/measurement wording; unit still unknown""]}",multiple hypotheses,1
+attachment_limit,[],0,{},unresolved,1
+attendance,[],0,{},unresolved,1
+attendees,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,5
+audit_committee,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+audit_retention,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,1
+availability_zones,[],0,{},unresolved,1
+base_storage,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,3
+battery_capacity,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,4
+battery_life,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,4
+beta_date,"[""date""]",1,"{""date"": [""milestone/date identifier""]}",single hypothesis; unverified,1
+beta_opened,"[""date""]",1,"{""date"": [""milestone/date identifier""]}",single hypothesis; unverified,1
+beta_testers,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,2
+bike_racks,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,2
+browser_market_share,"[""percent""]",1,"{""percent"": [""ratio-like wording; may instead be a rate or score""]}",single hypothesis; unverified,1
+business_listings,[],0,{},unresolved,1
+call_length,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,4
+camera_translation,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+capacity,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,2
+caption_languages,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+carbon_neutral,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+cash,"[""money""]",1,"{""money"": [""financial wording; currency and period still unknown""]}",single hypothesis; unverified,4
+cellular_option,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+ceo,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,1
+chair,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,1
+chair_since,"[""date""]",1,"{""date"": [""milestone/date identifier""]}",single hypothesis; unverified,1
+chairs,[],0,{},unresolved,1
+chairs_audit_committee,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+charging_power,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,2
+charging_stations_listed,[],0,{},unresolved,1
+city,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,6
+cli_version,"[""version""]",1,"{""version"": [""exact version identifier""]}",single hypothesis; unverified,1
+cloud_provider,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,1
+cloud_recording,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+cold_start_time,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,1
+colours,[],0,{},unresolved,2
+concurrent_chats,"[""money""]",1,"{""money"": [""financial wording; currency and period still unknown""]}",single hypothesis; unverified,1
+context_files,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+context_window,[],0,{},unresolved,1
+cool_storage_price,"[""money"", ""quantity""]",2,"{""money"": [""financial wording; currency and period still unknown""], ""quantity"": [""count/measurement wording; unit still unknown""]}",multiple hypotheses,1
+copilot_included,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+cost_per_hire,"[""money""]",1,"{""money"": [""financial wording; currency and period still unknown""]}",single hypothesis; unverified,1
+countries_covered,[],0,{},unresolved,1
+countries_served,[],0,{},unresolved,1
+cover_screen_size,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+cto,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,1
+customer_countries,[],0,{},unresolved,1
+customers,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,7
+customers_in_the_eu,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+cycling_commuters,[],0,{},unresolved,1
+daily_requests,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+data_centres,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+data_processing_agreement,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+data_residency_regions,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+data_retention,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,1
+date,"[""date""]",1,"{""date"": [""milestone/date identifier""]}",single hypothesis; unverified,7
+desks,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,2
+desks_managed,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+desktop_mode,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+devices_keynote_speaker,"[""name"", ""quantity""]",2,"{""name"": [""reviewed role/place/organisation identifier""], ""quantity"": [""count/measurement wording; unit still unknown""]}",multiple hypotheses,1
+devices_recycled,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+dialects_supported,[],0,{},unresolved,1
+discontinued,"[""date""]",1,"{""date"": [""milestone/date identifier""]}",single hypothesis; unverified,1
+duration,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,1
+emissions_cut_target,[],0,{},unresolved,1
+employees,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+encryption_at_rest,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+end_to_end_encrypted_backups,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+end_to_end_encryption,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,2
+eu_hosted,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+executive_owner,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,1
+executive_sponsor,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,1
+extensions_in_store,[],0,{},unresolved,1
+externally_audited,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+extra_seat_price,"[""money""]",1,"{""money"": [""financial wording; currency and period still unknown""]}",single hypothesis; unverified,1
+facilities_team,[],0,{},unresolved,1
+family_group_size,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+features_launched,[],0,{},unresolved,1
+first_reply,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,1
+flawbench_score,[],0,{},unresolved,1
+flawless_seats,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+footprint,[],0,{},unresolved,1
+founded,"[""date""]",1,"{""date"": [""milestone/date identifier""]}",single hypothesis; unverified,2
+founders,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,1
+free_credit,"[""money""]",1,"{""money"": [""financial wording; currency and period still unknown""]}",single hypothesis; unverified,1
+free_egress_per_month,[],0,{},unresolved,1
+free_storage,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,2
+free_trial,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,4
+full_charge_time,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,1
+fully_remote,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+functions,[],0,{},unresolved,1
+gemini_formula_assist,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+general_availability_date,"[""date""]",1,"{""date"": [""milestone/date identifier""]}",single hypothesis; unverified,1
+generally_available,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+german_premium_phone_share,"[""percent""]",1,"{""percent"": [""ratio-like wording; may instead be a rate or score""]}",single hypothesis; unverified,1
+growth_opportunities,[],0,{},unresolved,1
+guidance,[],0,{},unresolved,4
+had_major_outage,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+hallucination_rate,"[""percent""]",1,"{""percent"": [""ratio-like wording; may instead be a rate or score""]}",single hypothesis; unverified,1
+head,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,2
+head_of_product,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,1
+head_of_security,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,1
+head_of_workspace,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,1
+headcount,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,2
+headquarters,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,1
+help_guides,[],0,{},unresolved,1
+hinge_rating,[],0,{},unresolved,1
+hires,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+history_retention,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,2
+home_region,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,1
+host,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,2
+hosting_regions,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+image_input,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+images_indexed,[],0,{},unresolved,1
+incidents_this_year,[],0,{},unresolved,1
+included_seats,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,3
+independent_director,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+independent_members,[],0,{},unresolved,1
+index_size,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+inner_screen_size,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+integration_partner_of_flawless,[],0,{},unresolved,1
+integrations,[],0,{},unresolved,1
+interview_rounds,[],0,{},unresolved,1
+is_engineering_hub,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+is_headquarters,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+joined,"[""date""]",1,"{""date"": [""milestone/date identifier""]}",single hypothesis; unverified,6
+keynote_length,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,2
+keynote_speaker,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,1
+languages,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,2
+languages_served,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+languages_supported,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+latest_release_date,"[""date""]",1,"{""date"": [""milestone/date identifier""]}",single hypothesis; unverified,2
+launched,"[""date""]",1,"{""date"": [""milestone/date identifier""]}",single hypothesis; unverified,16
+lead,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,4
+lease_end,"[""date""]",1,"{""date"": [""milestone/date identifier""]}",single hypothesis; unverified,2
+length,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,2
+livestream_viewers,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,2
+livestreamed,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+mailbox_storage,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+main_camera,[],0,{},unresolved,2
+manageable_workload,[],0,{},unresolved,1
+manager_rating,[],0,{},unresolved,1
+manufacturing_partner,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,1
+mapped_distance,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+max_call_length,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,1
+max_cells,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+max_file_size,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+max_guests,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+max_output_length,[],0,{},unresolved,1
+max_participants,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+max_trade_in_credit,"[""money""]",1,"{""money"": [""financial wording; currency and period still unknown""]}",single hypothesis; unverified,1
+max_upload_size,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,2
+maximum_seats,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+median_response_time,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,2
+median_time_to_recover,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,1
+meetings_per_year,[],0,{},unresolved,1
+memory,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,2
+memory_saver,"[""boolean"", ""quantity""]",2,"{""boolean"": [""reviewed capability/status identifier""], ""quantity"": [""count/measurement wording; unit still unknown""]}",multiple hypotheses,1
+minimum_nodes,[],0,{},unresolved,1
+minimum_seats,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+monthly_active_users,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,5
+net_promoter_score,[],0,{},unresolved,1
+net_zero_date,"[""date""]",1,"{""date"": [""milestone/date identifier""]}",single hypothesis; unverified,1
+newest_region,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,1
+news_refresh_interval,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,1
+newsletter_subscribers,[],0,{},unresolved,1
+next_meeting,"[""date""]",1,"{""date"": [""milestone/date identifier""]}",single hypothesis; unverified,1
+next_round,"[""date""]",1,"{""date"": [""milestone/date identifier""]}",single hypothesis; unverified,1
+offer_acceptance,"[""percent""]",1,"{""percent"": [""ratio-like wording; may instead be a rate or score""]}",single hypothesis; unverified,1
+offers,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+offices,[],0,{},unresolved,1
+offices_run,[],0,{},unresolved,1
+official_sdks,[],0,{},unresolved,1
+offline_area_limit,[],0,{},unresolved,1
+offline_editing,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+offline_languages,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+offline_maps,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+on_device_gemini,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+onboarding_time,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,1
+open_engineering_roles,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+open_for,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,1
+open_roles,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+open_source,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,2
+opened,"[""date""]",1,"{""date"": [""milestone/date identifier""]}",single hypothesis; unverified,2
+opening_keynote,[],0,{},unresolved,1
+operating_margin,"[""percent""]",1,"{""percent"": [""ratio-like wording; may instead be a rate or score""]}",single hypothesis; unverified,4
+owner,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,1
+p99_response_time,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,1
+passkey_sync,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+paying_customers,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+personalised_ads_by_default,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+photos_stored,[],0,{},unresolved,1
+places_listed,[],0,{},unresolved,1
+planned_general_availability,"[""date""]",1,"{""date"": [""milestone/date identifier""]}",single hypothesis; unverified,1
+previous_employer,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,2
+price,"[""money""]",1,"{""money"": [""financial wording; currency and period still unknown""]}",single hypothesis; unverified,14
+price_per_user,"[""money""]",1,"{""money"": [""financial wording; currency and period still unknown""]}",single hypothesis; unverified,2
+primary_region,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,1
+pro_price,"[""money""]",1,"{""money"": [""financial wording; currency and period still unknown""]}",single hypothesis; unverified,1
+pro_tier,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+programming_languages,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+published,"[""date""]",1,"{""date"": [""milestone/date identifier""]}",single hypothesis; unverified,2
+publisher_revenue_share,"[""percent""]",1,"{""percent"": [""ratio-like wording; may instead be a rate or score""]}",single hypothesis; unverified,1
+raised_series_a,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+raised_series_b,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+rated_accuracy,"[""percent""]",1,"{""percent"": [""ratio-like wording; may instead be a rate or score""]}",single hypothesis; unverified,1
+raviqa_seat,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+recruiters,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+referral_bonus,"[""money""]",1,"{""money"": [""financial wording; currency and period still unknown""]}",single hypothesis; unverified,1
+referral_share,"[""percent""]",1,"{""percent"": [""ratio-like wording; may instead be a rate or score""]}",single hypothesis; unverified,1
+refresh_rate,"[""percent""]",1,"{""percent"": [""ratio-like wording; may instead be a rate or score""]}",single hypothesis; unverified,1
+refund_window,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,1
+region_outside_europe,[],0,{},unresolved,1
+regions,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+registrations,[],0,{},unresolved,1
+release_cadence,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,1
+released,"[""date""]",1,"{""date"": [""milestone/date identifier""]}",single hypothesis; unverified,6
+reliability_lead,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,1
+renewable_electricity,"[""percent""]",1,"{""percent"": [""ratio-like wording; may instead be a rate or score""]}",single hypothesis; unverified,1
+rent,"[""money""]",1,"{""money"": [""financial wording; currency and period still unknown""]}",single hypothesis; unverified,2
+repair_centres,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+replay_available,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,2
+requests_per_day,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+requests_per_minute,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+respondents,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+response_rate,"[""percent""]",1,"{""percent"": [""ratio-like wording; may instead be a rate or score""]}",single hypothesis; unverified,1
+revenue,"[""money""]",1,"{""money"": [""financial wording; currency and period still unknown""]}",single hypothesis; unverified,4
+revenue_growth,[],0,{},unresolved,4
+run_by,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,1
+satellite_messaging,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+saved_projects,[],0,{},unresolved,1
+screen_size,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,4
+seats,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+sensors,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+series_a_amount,"[""money""]",1,"{""money"": [""financial wording; currency and period still unknown""]}",single hypothesis; unverified,1
+series_a_co_investor,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,1
+series_a_lead,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,1
+services,[],0,{},unresolved,1
+sessions,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+sessions_held,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+share_of_ad_revenue,"[""percent""]",1,"{""percent"": [""ratio-like wording; may instead be a rate or score""]}",single hypothesis; unverified,2
+share_of_devices,"[""percent"", ""quantity""]",2,"{""percent"": [""ratio-like wording; may instead be a rate or score""], ""quantity"": [""count/measurement wording; unit still unknown""]}",multiple hypotheses,2
+shipping_android,[],0,{},unresolved,1
+signed_in_devices,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+simultaneous_editors,[],0,{},unresolved,1
+single_sign_on,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,2
+soc2_audit_start,"[""date""]",1,"{""date"": [""milestone/date identifier""]}",single hypothesis; unverified,1
+soc2_auditor,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,1
+soc2_certified,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+spam_catch_rate,"[""percent""]",1,"{""percent"": [""ratio-like wording; may instead be a rate or score""]}",single hypothesis; unverified,1
+speakers,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+sponsors,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,4
+stable_release,"[""date""]",1,"{""date"": [""milestone/date identifier""]}",single hypothesis; unverified,1
+stable_release_date,"[""date""]",1,"{""date"": [""milestone/date identifier""]}",single hypothesis; unverified,1
+stable_version,"[""version""]",1,"{""version"": [""exact version identifier""]}",single hypothesis; unverified,1
+staff,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,3
+standard_storage_price,"[""money"", ""quantity""]",2,"{""money"": [""financial wording; currency and period still unknown""], ""quantity"": [""count/measurement wording; unit still unknown""]}",multiple hypotheses,1
+storage,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,4
+storage_per_user,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,2
+storage_tiers,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+store_rating,[],0,{},unresolved,6
+stream_viewers,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,2
+suggestion_acceptance_rate,"[""percent""]",1,"{""percent"": [""ratio-like wording; may instead be a rate or score""]}",single hypothesis; unverified,1
+support_first_response,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,2
+support_satisfaction,[],0,{},unresolved,1
+support_tickets_per_week,[],0,{},unresolved,1
+supported_file_types,[],0,{},unresolved,1
+supported_ides,[],0,{},unresolved,1
+supported_models,[],0,{},unresolved,2
+tab_sleep_delay,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,1
+talks,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,3
+team_size,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,2
+templates,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+text_limit,[],0,{},unresolved,1
+ticket_price,"[""money""]",1,"{""money"": [""financial wording; currency and period still unknown""]}",single hypothesis; unverified,4
+time_to_hire,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,1
+top_bug_bounty,"[""money""]",1,"{""money"": [""financial wording; currency and period still unknown""]}",single hypothesis; unverified,1
+trade_in_programme,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+training_data_cutoff,"[""date""]",1,"{""date"": [""milestone/date identifier""]}",single hypothesis; unverified,1
+trash_retention,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,1
+travel_emissions_cut,[],0,{},unresolved,1
+units_sold,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,6
+update_promise,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,2
+update_size,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,2
+uptime_last_quarter,"[""percent""]",1,"{""percent"": [""ratio-like wording; may instead be a rate or score""]}",single hypothesis; unverified,2
+uptime_sla,"[""percent""]",1,"{""percent"": [""ratio-like wording; may instead be a rate or score""]}",single hypothesis; unverified,3
+users,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+venue,"[""name""]",1,"{""name"": [""reviewed role/place/organisation identifier""]}",single hypothesis; unverified,3
+version,"[""version""]",1,"{""version"": [""exact version identifier""]}",single hypothesis; unverified,8
+version_history,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,1
+video_upload_limit,[],0,{},unresolved,1
+voice_guidance_languages,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,1
+voice_latency,"[""duration""]",1,"{""duration"": [""reviewed elapsed-time/retention identifier""]}",single hypothesis; unverified,1
+voice_mode,"[""boolean""]",1,"{""boolean"": [""reviewed capability/status identifier""]}",single hypothesis; unverified,1
+waitlist,[],0,{},unresolved,1
+water_resistance_depth,[],0,{},unresolved,1
+webcast_viewers,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,4
+webhook_events,[],0,{},unresolved,1
+webinars_held,[],0,{},unresolved,1
+weight,"[""quantity""]",1,"{""quantity"": [""count/measurement wording; unit still unknown""]}",single hypothesis; unverified,4
+workshops,[],0,{},unresolved,1
+would_recommend,[],0,{},unresolved,1
+yearly_billing_discount,"[""percent""]",1,"{""percent"": [""ratio-like wording; may instead be a rate or score""]}",single hypothesis; unverified,1

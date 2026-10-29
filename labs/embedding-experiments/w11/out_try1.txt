@@ -1,0 +1,108 @@
+S0 subject_match {'rows': 1897, 'row_recall': 0.657, 'fact_recall': 0.684, 'exact_set_rows': 0.61, 'extra_subjects_per_row': 0.093, 'rows_with_extra_subject': 0.088, 'rows_with_any_match': 0.704, 'named_rows': 1246, 'unnamed_rows': 651}
+ceilings {'gold_on_page_any_row': 0.91, 'gold_in_row_or_earlier': 0.891, 'gold_in_row': 0.657, 'gold_nowhere_on_page': 0.09, 'n_nowhere': 171, 'pages': 291, 'pages_first_row_names_no_subject': 0.134, 'pages_first_row_missing_gold': 0.162, 'pages_with_no_mention_at_all': 0.045, 'rows_on_pages_with_no_mention': 76, 'sf_gold_on_page_any_row': 0.905, 'sf_gold_in_row_or_earlier': 0.888}
+[   0.0s] building ALL regime (page_folds(rows), multi-label)
+[   6.0s]   all fold 0: train 1517 test 380 platt alpha=9.47 beta=2.33
+[  12.0s]   all fold 1: train 1517 test 380 platt alpha=9.33 beta=2.18
+[  18.1s]   all fold 2: train 1518 test 379 platt alpha=9.47 beta=2.20
+[  24.2s]   all fold 3: train 1518 test 379 platt alpha=9.57 beta=2.32
+[  30.1s]   all fold 4: train 1518 test 379 platt alpha=8.96 beta=1.91
+[  30.1s] building SF regime (page_folds(sf), single-fact training)
+[  34.5s]   sf fold 0: train 1173 test 294 platt alpha=9.85 beta=2.59
+[  38.8s]   sf fold 1: train 1173 test 294 platt alpha=9.47 beta=2.37
+[  43.1s]   sf fold 2: train 1174 test 293 platt alpha=9.89 beta=2.68
+[  47.5s]   sf fold 3: train 1174 test 293 platt alpha=10.02 beta=2.68
+[  51.7s]   sf fold 4: train 1174 test 293 platt alpha=9.83 beta=2.56
+
+SUBJECT RESOLUTION, set accuracy (pred set == gold set).  ALL = every row (all-row folds); SF = single-fact subset of the same run
+variant                                     named unnamed    all | sf_nam sf_unn sf_all |  joint   attr    a|s
+S0 match_only                               0.929   0.000  0.610 |  0.920  0.000  0.579 |    n/a    n/a    n/a
+S1 carry_recent                             0.929   0.469  0.771 |  0.920  0.480  0.757 |    n/a    n/a    n/a
+S1b carry_first                             0.929   0.475  0.773 |  0.920  0.483  0.758 |    n/a    n/a    n/a
+S0c match_compat (w7 text_only)             0.959   0.000  0.630 |  0.989  0.000  0.622 |  0.576  0.577  0.926
+S2w nearest_row_compat (w7 page_carry)      0.959   0.484  0.796 |  0.989  0.494  0.806 |  0.740  0.744  0.919
+S2 carry_compatible                         0.980   0.568  0.839 |  0.983  0.586  0.836 |  0.774  0.779  0.921
+S2 page_any                                 0.980   0.588  0.846 |  0.983  0.599  0.840 |  0.781  0.791  0.925
+S3 page_dominant_fallback                   0.980   0.636  0.862 |  0.983  0.662  0.864 |  0.801  0.825  0.923
+S3p page_any+fallback                       0.980   0.636  0.862 |  0.983  0.656  0.862 |  0.802  0.829  0.927
+S4 pronoun_typing (on S2)                   0.980   0.567  0.838 |  0.983  0.585  0.835 |  0.773  0.778  0.921
+S4 pronoun_typing (on S3)                   0.980   0.634  0.861 |  0.983  0.660  0.863 |  0.800  0.824  0.923
+S4p pronoun_typing (page_any+fallback)      0.980   0.633  0.861 |  0.983  0.653  0.860 |  0.801  0.828  0.927
+X1 S3+competes                              0.975   0.707  0.883 |  0.977  0.739  0.889 |  0.826  0.850  0.925
+X2 S3+competes+amb3                         0.969   0.662  0.863 |  0.969  0.680  0.862 |  0.802  0.807  0.926
+X3 S4p+competes+amb3                        0.961   0.676  0.863 |  0.960  0.689  0.860 |  0.803  0.813  0.930
+
+SAME, SF regime (page_folds(sf), classifier trained on single-fact rows only; eval on 1,467 single-fact rows)
+S0 match_only                               0.920   0.000  0.579 | joint    n/a attr    n/a a|s    n/a  n=923/544/1467
+S1 carry_recent                             0.920   0.480  0.757 | joint    n/a attr    n/a a|s    n/a  n=923/544/1467
+S1b carry_first                             0.920   0.483  0.758 | joint    n/a attr    n/a a|s    n/a  n=923/544/1467
+S0c match_compat (w7 text_only)             0.989   0.000  0.622 | joint  0.549 attr  0.550 a|s  0.882  n=923/544/1467
+S2w nearest_row_compat (w7 page_carry)      0.989   0.494  0.806 | joint  0.706 attr  0.710 a|s  0.876  n=923/544/1467
+S2 carry_compatible                         0.984   0.586  0.836 | joint  0.740 attr  0.746 a|s  0.881  n=923/544/1467
+S2 page_any                                 0.984   0.588  0.837 | joint  0.746 attr  0.756 a|s  0.888  n=923/544/1467
+S3 page_dominant_fallback                   0.984   0.667  0.866 | joint  0.768 attr  0.787 a|s  0.883  n=923/544/1467
+S3p page_any+fallback                       0.984   0.653  0.861 | joint  0.770 attr  0.791 a|s  0.890  n=923/544/1467
+S4 pronoun_typing (on S2)                   0.984   0.585  0.836 | joint  0.740 attr  0.745 a|s  0.881  n=923/544/1467
+S4 pronoun_typing (on S3)                   0.984   0.665  0.866 | joint  0.768 attr  0.787 a|s  0.883  n=923/544/1467
+S4p pronoun_typing (page_any+fallback)      0.984   0.649  0.860 | joint  0.768 attr  0.790 a|s  0.890  n=923/544/1467
+X1 S3+competes                              0.974   0.744  0.889 | joint  0.794 attr  0.813 a|s  0.889  n=923/544/1467
+X2 S3+competes+amb3                         0.964   0.660  0.851 | joint  0.768 attr  0.772 a|s  0.897  n=923/544/1467
+X3 S4p+competes+amb3                        0.949   0.673  0.847 | joint  0.767 attr  0.776 a|s  0.901  n=923/544/1467
+attribute accuracy on single-fact rows [sf regime]: unrestricted 0.806, restricted to gold subject 0.873
+attribute accuracy on single-fact rows [all regime]: unrestricted 0.853, restricted to gold subject 0.916
+[  52.1s] resolvers done
+
+sensitivity of S3 page_dominant_fallback (ALL regime, test-fold picked: diagnostic only)
+  lam=0.5   named 0.980 unnamed 0.636 all 0.862 sf_joint 0.800
+  lam=0.65  named 0.980 unnamed 0.634 all 0.861 sf_joint 0.800
+  lam=0.8   named 0.980 unnamed 0.636 all 0.862 sf_joint 0.801
+  lam=0.9   named 0.980 unnamed 0.636 all 0.862 sf_joint 0.801
+  lam=0.95  named 0.980 unnamed 0.636 all 0.862 sf_joint 0.801
+  rho=0.25  named 0.980 unnamed 0.636 all 0.862 sf_joint 0.801
+  rho=0.5   named 0.980 unnamed 0.636 all 0.862 sf_joint 0.801
+  rho=0.75  named 0.979 unnamed 0.636 all 0.861 sf_joint 0.801
+  rho=None  named 0.959 unnamed 0.636 all 0.848 sf_joint 0.801
+  mu=0.5   named 0.980 unnamed 0.647 all 0.866 sf_joint 0.805
+  mu=0.8   named 0.980 unnamed 0.636 all 0.862 sf_joint 0.802
+  mu=1.0   named 0.980 unnamed 0.636 all 0.862 sf_joint 0.802
+
+S5 FORM_FULL on 1,467 single-fact rows (SF regime): exact = subject set AND attribute AND typed value
+  baseline S0c match_compat (w7 text_only)         subject 0.622 attr 0.550 value 0.581 subj+attr 0.549 EXACT 0.548 | attr|subj_ok 0.882 value|s,a_ok 0.999 wrongS_rightAV 0.001
+  baseline S2w nearest_row_compat (w7 page_carry)  subject 0.806 attr 0.710 value 0.764 subj+attr 0.706 EXACT 0.704 | attr|subj_ok 0.876 value|s,a_ok 0.998 wrongS_rightAV 0.004
+  S2 carry_compatible                              subject 0.836 attr 0.746 value 0.793 subj+attr 0.738 EXACT 0.736 | attr|subj_ok 0.882 value|s,a_ok 0.998 wrongS_rightAV 0.008
+  S3 page_dominant_fallback                        subject 0.866 attr 0.787 value 0.847 subj+attr 0.766 EXACT 0.763 | attr|subj_ok 0.884 value|s,a_ok 0.997 wrongS_rightAV 0.022
+  S4 pronoun_typing (on S3)                        subject 0.866 attr 0.787 value 0.847 subj+attr 0.765 EXACT 0.763 | attr|subj_ok 0.883 value|s,a_ok 0.997 wrongS_rightAV 0.022
+  S4p pronoun_typing (page_any+fallback)           subject 0.860 attr 0.790 value 0.850 subj+attr 0.766 EXACT 0.763 | attr|subj_ok 0.891 value|s,a_ok 0.996 wrongS_rightAV 0.025
+  X2 S3+competes+amb3                              subject 0.851 attr 0.772 value 0.845 subj+attr 0.764 EXACT 0.762 | attr|subj_ok 0.898 value|s,a_ok 0.997 wrongS_rightAV 0.008
+  X3 S4p+competes+amb3                             subject 0.847 attr 0.776 value 0.849 subj+attr 0.763 EXACT 0.761 | attr|subj_ok 0.902 value|s,a_ok 0.996 wrongS_rightAV 0.013
+  reference: gold subject given                    subject 1.000 attr 0.873 value 0.904 subj+attr 0.873 EXACT 0.870 | attr|subj_ok 0.873 value|s,a_ok 0.996 wrongS_rightAV 0.000
+
+best variant on ALL rows (set accuracy): X1 S3+competes 0.883
+
+failure types of X1 S3+competes: 222 wrong rows of 1897
+   125 (0.066 of rows) gold subject never mentioned on the page
+    35 (0.018 of rows) multi-subject row (set not recovered)
+    23 (0.012 of rows) named, but an extra/other subject won
+    15 (0.008 of rows) unnamed, gold mentioned only in later rows
+    13 (0.007 of rows) a different entity is named in the row (gold elsewhere on page)
+    11 (0.006 of rows) unnamed, gold mentioned earlier but another subject picked
+   [gold subject never mentioned on th] p-233 gold=['Hooly Cloud Next 2026'] pred=['Hooly I/O 2026'] how=attr_prior | Delegate passes sell at €390
+   [gold subject never mentioned on th] p-789 gold=['Hooly Android 17'] pred=['Hooly Android 16'] how=page_dominant | 26 models supported
+   [gold subject never mentioned on th] p-781 gold=['Hooly Android 17'] pred=['Hooly Android'] how=context | 2.4% of devices
+   [multi-subject row (set not recover] p-844 gold=['Hooly Q1 2026 Results', 'Hooly Q4 2025 Results'] pred=['Hooly Q1 2026 Results'] how=attr_prior | Webcast: 5,400 viewers, 8,800 viewers
+   [multi-subject row (set not recover] p-1337 gold=['Hooly', 'Hooly Gemini'] pred=['Hooly Gemini'] how=named | Hooly Gemini sits at version 2.0, and 1,800 customers teams rely on it.
+   [multi-subject row (set not recover] p-841 gold=['Hooly Q1 2026 Results', 'Hooly Q2 2026 Results'] pred=['Hooly Q1 2026 Results'] how=attr_prior | Growth: 64.3% then 37.7%
+   [named, but an extra/other subject ] p-853 gold=['Hooly'] pred=['Hooly Gemini'] how=named | Hooly offers a data processing agreement on request.
+   [named, but an extra/other subject ] p-1571 gold=['Hooly'] pred=['Dinesh Chugtay', 'Hooly'] how=named | Host: Today the head of product at Hooly is Dinesh Chugtay.
+   [named, but an extra/other subject ] p-3 gold=['Holdan'] pred=['Hooly Gemini'] how=named | Before Hooly, Holdan ran incident response at Nimbus Cloud, the provider Gemini still runs on.
+   [unnamed, gold mentioned only in la] p-218 gold=['Hooly Cloud'] pred=['Hooly Cloud Next 2026'] how=context | 31 services in the catalogue
+   [unnamed, gold mentioned only in la] p-219 gold=['Hooly Cloud'] pred=['Hooly Cloud Next 2026'] how=context | Standard storage at €18 per month per terabyte
+   [unnamed, gold mentioned only in la] p-1783 gold=['Hooly Android 17'] pred=['Hooly Pixel 10'] how=context | The package is 1.9 GB, so please use a Wi-Fi connection.
+   [a different entity is named in the] p-1673 gold=['The May 2026 outage'] pred=['Hooly Gemini'] how=named | On 19 May 2026 a failed deployment took Gemini down for 6 hours.
+   [a different entity is named in the] p-1881 gold=['Hooly'] pred=['Bertram Gilfoil'] how=named | Bertram Gilfoil, CTO
+   [a different entity is named in the] p-1594 gold=['Ron LaFlame'] pred=['Hooly'] how=named | Host: You arrived at Hooly on August 3, 2026, so security is new here.
+   [unnamed, gold mentioned earlier bu] p-862 gold=['Hooly AI Pro'] pred=['Hooly Workspace'] how=context | A new AI Pro subscription starts with a free trial of 7 days.
+   [unnamed, gold mentioned earlier bu] p-1116 gold=['Hooly Lisbon Office'] pred=['Hooly'] how=context | 150 employees are already in, sipping espresso.
+   [unnamed, gold mentioned earlier bu] p-502 gold=['Hooly Docs'] pred=['Hooly Drive'] how=context | On January 27, 2026.
+[  54.2s] failure analysis done
+by decision path (how, correct):  {('named', False): 75, ('named', True): 1261, ('context', True): 370, ('context', False): 62, ('attr_prior', True): 31, ('attr_prior', False): 45, ('page_dominant', False): 40, ('page_dominant', True): 13}
+[  54.2s] all done

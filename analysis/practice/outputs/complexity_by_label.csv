@@ -1,0 +1,6 @@
+,chars,chars,chars,words,words,words,n_atoms,n_atoms,n_atoms,n_subjects,n_subjects,n_subjects
+,median,mean,max,median,mean,max,median,mean,max,median,mean,max
+label,,,,,,,,,,,,
+true,51.0,53.06135357368754,196,9.0,9.950031625553446,41,1.0,1.2637571157495255,8,1.0,1.0411132194813408,4
+false,53.0,53.772563176895304,108,10.0,10.140794223826715,22,1.0,1.2996389891696751,4,1.0,1.03971119133574,3
+unsure,55.0,52.58974358974359,88,10.0,10.0,15,1.0,1.1282051282051282,3,1.0,1.0,1

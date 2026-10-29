@@ -1,0 +1,136 @@
+/private/tmp/veridyct-evalsuite/D/forms_cv.jsonl: 739 non-exact rows of 1897
+
+==  236  multi: fewer facts extracted (all subjects named)
+   p-5 [2026-01-12] Hooly Cloud has been open since November 2025 and covers 3 regions so far.
+      gold: Hooly Cloud|launched|{"kind": "date", "value": "2025-11"}; Hooly Cloud|regions|{"kind": "quantity", "unit": "region", "value": 3.0}
+      pred: Hooly Cloud|regions|{"kind": "quantity", "unit": "region", "value": 3.0}
+   p-11 [2026-06-12] Hooly Cloud Next closed after 3 days at Ringsend Forum.
+      gold: Hooly Cloud Next 2026|length|{"kind": "duration", "unit": "day", "value": 3.0}; Hooly Cloud Next 2026|venue|{"kind": "name", "value": "Ringsend Forum"}
+      pred: Hooly Cloud Next 2026|venue|{"kind": "name", "value": "Ringsend Forum"}
+
+==  120  single: wrong subject, gold subject never named on the page
+   p-21 [2026-04-14] "Jules is Gemini for code," said Richard Hendrix, our CTO.
+      gold: Hooly|cto|{"kind": "name", "value": "Richard Hendrix"}
+      pred: Hooly Jules|lead|{"kind": "name", "value": "Hooly Gemini"}
+   p-37 [2026-08-25] The free tier of Drive, 10 GB, holds plenty of documents.
+      gold: Hooly Drive|free_storage|{"kind": "quantity", "unit": "GB", "value": 10.0}
+      pred: Hooly Docs|templates|{"kind": "quantity", "unit": "GB", "value": 10.0}
+
+==  103  multi: fewer facts extracted (a gold subject not named in row)
+   p-12 [2026-06-12] In total, 2,600 attendees made the trip to Dublin.
+      gold: Hooly Cloud Next 2026|attendees|{"kind": "quantity", "unit": "attendee", "value": 2600.0}; Hooly Cloud Next 2026|city|{"kind": "name", "value": "Dublin"}
+      pred: Hooly Cloud Next 2026|attendees|{"kind": "quantity", "unit": "attendee", "value": 2600.0}
+   p-16 [2026-06-12] Gavin Bellson opened proceedings on June 9, 2026 with the Hooly Cloud roadmap.
+      gold: Hooly Cloud Next 2026|opening_keynote|{"kind": "name", "value": "Gavin Bellson"}; Hooly Cloud Next 2026|date|{"kind": "date", "value": "2026-06-09"}
+      pred: Hooly Cloud|newest_region|{"kind": "name", "value": "Gavin Bellson"}
+
+==   97  single: wrong subject, gold subject named on an EARLIER row of the page
+   p-4 [2026-01-12] He begins with a small crew of 4 engineers, and he is hiring.
+      gold: Holdan|team_size|{"kind": "quantity", "unit": "engineer", "value": 4.0}
+      pred: Hooly Gemini|requests_per_minute|{"kind": "quantity", "unit": "request", "value": 4.0}; Hooly Gemini|open_source|{"kind": "boolean", "value": true}
+   p-17 [2026-06-12] Our 14 sponsors filled the demo hall from morning to night.
+      gold: Hooly Cloud Next 2026|sponsors|{"kind": "quantity", "unit": "sponsor", "value": 14.0}
+      pred: Hooly Cloud|services|{"kind": "quantity", "unit": "service", "value": 14.0}
+
+==   44  single: nothing extracted (subject not named in row)
+   p-36 [2026-08-25] "Docs is the heart of Workspace," said Patreese.
+      gold: Hooly|head_of_workspace|{"kind": "name", "value": "Patreese"}
+      pred: (none)
+   p-51 [2026-09-03] The contractual floor is 99.95 percent, and Holdan says nobody should design to the floor.
+      gold: Hooly Cloud|uptime_sla|{"kind": "percent", "value": 99.95}
+      pred: (none)
+
+==   37  single: right subject, wrong attribute (same value kind)
+   p-24 [2025-12-09] Hooly Gemini 1.5 ships today with faster answers and a cleaner interface.
+      gold: Hooly Gemini|version|{"kind": "version", "value": "1.5"}
+      pred: Hooly Gemini|api_version|{"kind": "version", "value": "1.5"}
+   p-122 [2026-07-02] Hooly Android 17 is still due on 8 September 2026.
+      gold: Hooly Android 17|stable_release|{"kind": "date", "value": "2026-09-08"}
+      pred: Hooly Android 17|on_device_gemini|{"kind": "date", "value": "2026-09-08"}
+
+==   23  single: wrong subject, gold subject named only LATER on the page
+   p-126 [2026-07-02] Nelson Bighettie thanked every tester in a note to the group.
+      gold: Hooly Android|lead|{"kind": "name", "value": "Nelson Bighettie"}
+      pred: Hooly Android 17|on_device_gemini|{"kind": "name", "value": "Nelson Bighettie"}
+   p-217 [2026-06-09] Uptime commitment raised to 99.95%
+      gold: Hooly Cloud|uptime_sla|{"kind": "percent", "value": 99.95}
+      pred: Hooly Cloud Next 2026|venue|{"kind": "name", "value": "Uptime"}
+
+==   19  single: right subject, wrong attribute (other kind)
+   p-58 [2026-07-08] Hooly Chrome 69.0 brings an AI sidebar
+      gold: Hooly Chrome|stable_version|{"kind": "version", "value": "69.0"}
+      pred: Hooly Chrome|ai_sidebar|{"kind": "boolean", "value": true}
+   p-109 [2026-02-25] Richard Hendrix says AI answers in Hooly Search are the biggest change since launch.
+      gold: Hooly Search|executive_owner|{"kind": "name", "value": "Richard Hendrix"}
+      pred: Hooly Search|ai_answers|{"kind": "boolean", "value": true}
+
+==   14  single: wrong subject, gold subject IS named in row
+   p-3 [2026-01-12] Before Hooly, Holdan ran incident response at Nimbus Cloud, the provider Gemini still runs on.
+      gold: Holdan|previous_employer|{"kind": "name", "value": "Nimbus Cloud"}
+      pred: Hooly Gemini|cloud_provider|{"kind": "name", "value": "Hooly"}
+   p-35 [2026-08-25] Suggestions in Hooly Docs come from Hooly Gemini 2.2.
+      gold: Hooly Gemini|version|{"kind": "version", "value": "2.2"}
+      pred: Hooly Docs|version|{"kind": "version", "value": "2.2"}
+
+==   14  single: gold fact found + extra assertion(s)
+   p-895 [2026-10-20] The bounty is €50,000, he says, and he would pay more.
+      gold: Hooly Chrome|top_bug_bounty|{"currency": "EUR", "kind": "money", "value": 50000.0}
+      pred: Hooly Chrome|top_bug_bounty|{"currency": "EUR", "kind": "money", "value": 50000.0}; Hooly Chrome|passkey_sync|{"kind": "boolean", "value": true}
+   p-906 [2026-10-14] Reviewers rate Hooly Maps 4.6 stars, and he wants more.
+      gold: Hooly Maps|store_rating|{"kind": "quantity", "unit": "star", "value": 4.6}
+      pred: Hooly Maps|store_rating|{"kind": "quantity", "unit": "star", "value": 4.6}; Hooly Maps|ar_walking|{"kind": "boolean", "value": true}
+
+==   11  single: right pair, op differs
+   p-66 [2026-07-08] Tabs sleep after 10 min when Hooly Chrome saves memory.
+      gold: Hooly Chrome|tab_sleep_delay|{"kind": "duration", "unit": "min", "value": 10.0}
+      pred: Hooly Chrome|tab_sleep_delay|{"kind": "duration", "op": "gt", "unit": "min", "value": 10.0}
+   p-188 [2026-06-18] A first reply arrives after 48 hours.
+      gold: Hooly Hiring Programme|first_reply|{"kind": "duration", "unit": "h", "value": 48.0}
+      pred: Hooly Hiring Programme|first_reply|{"kind": "duration", "op": "gt", "unit": "h", "value": 48.0}
+
+==    6  multi: right count, wrong subject
+   p-905 [2026-10-14] Hooly Maps carries 14,000,000 listings from businesses, he says, and ads supply 8.1% of Hooly's ad revenue.
+      gold: Hooly Maps|business_listings|{"kind": "quantity", "unit": "listing", "value": 14000000.0}; Hooly Maps|share_of_ad_revenue|{"kind": "percent", "value": 8.1}
+      pred: Hooly Maps|business_listings|{"kind": "quantity", "unit": "listing", "value": 14000000.0}; Hooly|support_satisfaction|{"kind": "percent", "value": 8.1}
+   p-1325 [2025-11-26] Hooly AI Free accepts files of 5 MB each, while Hooly AI Pro users send 100 MB.
+      gold: Hooly AI Free|max_upload_size|{"kind": "quantity", "unit": "MB", "value": 5.0}; Hooly Gemini|max_upload_size|{"kind": "quantity", "unit": "MB", "value": 100.0}
+      pred: Hooly AI Free|max_upload_size|{"kind": "quantity", "unit": "MB", "value": 5.0}; Hooly AI Pro|saved_projects|{"kind": "quantity", "unit": "MB", "value": 100.0}
+
+==    5  single: right pair, value differs
+   p-512 [2026-01-10] Message encryption: Hooly Gmail encrypts in transit and at rest, but not end to end.
+      gold: Hooly Gmail|end_to_end_encryption|{"kind": "boolean", "value": false}
+      pred: Hooly Gmail|end_to_end_encryption|{"kind": "boolean", "value": true}
+   p-1038 [2025-10-16] Dinesh Chugtay leads it, and Richard Hendrix told me it was impossible.
+      gold: Hooly Maps|lead|{"kind": "name", "value": "Richard Hendrix"}
+      pred: Hooly Maps|lead|{"kind": "name", "value": "Dinesh Chugtay"}
+
+==    5  multi: right count, wrong attribute
+   p-941 [2026-10-08] His division now counts 28 employees, and it serves 19 countries.
+      gold: Hooly Devices|staff|{"kind": "quantity", "unit": "employee", "value": 28.0}; Hooly Devices|countries_served|{"kind": "quantity", "unit": "country", "value": 19.0}
+      pred: Hooly Devices|countries_served|{"kind": "quantity", "unit": "country", "value": 28.0}; Hooly Devices|countries_served|{"kind": "quantity", "unit": "country", "value": 19.0}
+   p-1373 [2026-01-19] Hooly AI Free forgets chats after 7 days, while Hooly AI Pro remembers for 30 days.
+      gold: Hooly AI Free|history_retention|{"kind": "duration", "unit": "day", "value": 7.0}; Hooly AI Pro|history_retention|{"kind": "duration", "unit": "day", "value": 30.0}
+      pred: Hooly AI Free|history_retention|{"kind": "duration", "op": "gt", "unit": "day", "value": 7.0}; Hooly AI Pro|refund_window|{"kind": "duration", "unit": "day", "value": 30.0}
+
+==    2  single: right pair, wrong value kind
+   p-124 [2026-07-02] Hooly Android 17 runs Gemini on the device.
+      gold: Hooly Android 17|on_device_gemini|{"kind": "boolean", "value": true}
+      pred: Hooly Android 17|on_device_gemini|{"kind": "name", "value": "Hooly Gemini"}
+   p-640 [2025-11-05] Cellular option on Pixel Watch: available.
+      gold: Hooly Pixel Watch|cellular_option|{"kind": "boolean", "value": true}
+      pred: Hooly Pixel Watch|cellular_option|{"kind": "name", "value": "Cellular"}
+
+==    2  single: nothing extracted
+   p-1593 [2026-04-15] Gavin: Hooly is not fully remote, honestly.
+      gold: Hooly|fully_remote|{"kind": "boolean", "value": false}
+      pred: (none)
+   p-1600 [2026-08-26] Ron: Hooly offers a data processing agreement to everyone.
+      gold: Hooly|data_processing_agreement|{"kind": "boolean", "value": true}
+      pred: (none)
+
+==    1  multi: pairs right, a value wrong
+   p-506 [2026-09-01] Hooly Gemini reads 22 formats and Hooly Gemini accepts uploads of up to 100 MB.
+      gold: Hooly Gemini|supported_file_types|{"kind": "quantity", "unit": "format", "value": 22.0}; Hooly Gemini|max_upload_size|{"kind": "quantity", "op": "le", "unit": "MB", "value": 100.0}
+      pred: Hooly Gemini|supported_file_types|{"kind": "quantity", "unit": "format", "value": 22.0}; Hooly Gemini|max_upload_size|{"kind": "quantity", "unit": "MB", "value": 100.0}
+
+subject-type errors (single): 401; gold subject named on an earlier row of the page: 124

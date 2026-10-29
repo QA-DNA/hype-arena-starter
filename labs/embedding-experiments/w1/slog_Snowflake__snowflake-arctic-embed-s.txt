@@ -1,0 +1,4 @@
+W1028 18:36:47.723000 80603 /private/tmp/veridyct-bench/.venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Could not reach the Hub (Cannot reach https://huggingface.co/api/models/Snowflake/snowflake-arctic-embed-s: offline mode is enabled. To disable it, please unset the `HF_HUB_OFFLINE` environment variable.). Using cached commit hash for 'Snowflake/snowflake-arctic-embed-s'.
+Loading weights:   0%|          | 0/197 [00:00<?, ?it/s]Loading weights: 100%|██████████| 197/197 [00:00<00:00, 10050.33it/s]
+Snowflake/snowflake-arctic-embed-s {'sentences_per_s': 299.907, 'sents_per_cpu_s': 270.63, 'wall_s': 6.669, 'cpu_s': 7.39, 'est_sec_20k_x86': 133.375, 'cpu_over_wall': 1.108}

@@ -1,0 +1,46 @@
+true facts disagreeing with the latest earlier true fact of the key: 360; same-day conflicts: 5
+gap in days to that earlier true row: quartiles 34 69 109
+row value equals an OLDER true value of the key (A..B..A pattern): 13
+kinds: [('quantity', 165), ('percent', 41), ('duration', 34), ('version', 32), ('money', 25), ('date', 23), ('boolean', 22), ('name', 18)]
+
+  p-314 2026-09-18 TRUE | Hooly Search indexes 301,000,000,000 pages | Hooly Search.index_size={"kind": "quantity", "value": 301000000000, "unit": "page"}
+  p-1753 2026-07-20 TRUE (gap 60 d) | The index of Hooly Search holds 265,000,000,000 pages. | value={"kind": "quantity", "value": 265000000000, "unit": "page"}
+
+  p-1507 2026-10-12 TRUE | Hooly Vault has 310 companies waiting | Hooly Vault.waitlist={"kind": "quantity", "value": 310, "unit": "company"}
+  p-1641 2026-09-21 TRUE (gap 21 d) | Bertram: The interest list for Hooly Vault holds 140 companies. | value={"kind": "quantity", "value": 140, "unit": "company"}
+
+  p-145 2026-04-01 TRUE | Hooly Devices holds 2.9% of German premium phones this quarter. | Hooly Devices.german_premium_phone_share={"kind": "percent", "value": 2.9}
+  p-952 2026-02-18 TRUE (gap 42 d) | Asked about the market, Jack Barkor said Hooly Devices has 1.6% of German premium phones and wants more. | value={"kind": "percent", "value": 1.6}
+
+  p-682 2026-09-16 TRUE | Offers made: 71 offers. | Hooly Hiring Programme.offers={"kind": "quantity", "value": 71, "unit": "offer"}
+  p-695 2026-07-22 TRUE (gap 56 d) | The Hooly Hiring Programme has made 49 offers. | value={"kind": "quantity", "value": 49, "unit": "offer"}
+
+  p-280 2026-09-15 TRUE | Stable version: Hooly Chrome 71.0 | Hooly Chrome.stable_version={"kind": "version", "value": "71.0"}
+  p-735 2026-08-18 TRUE (gap 28 d) | Hooly Chrome 70.0 | value={"kind": "version", "value": "70.0"}
+
+  p-1257 2026-05-14 TRUE | Customers can reach 9 centres for screen swaps and battery service. | Hooly Devices.repair_centres={"kind": "quantity", "value": 9, "unit": "centre"}
+  p-1872 2026-04-28 TRUE (gap 16 d) | Repairs and checks happen at 4 centres. | value={"kind": "quantity", "value": 4, "unit": "centre"}
+
+  p-1185 2026-08-03 TRUE | The survey stands at 71,200,000 km of mapped roads and paths. | Hooly Maps.mapped_distance={"kind": "quantity", "value": 71200000, "unit": "km"}
+  p-294 2026-04-16 TRUE (gap 109 d) | Hooly Maps has surveyed 66,500,000 km | value={"kind": "quantity", "value": 66500000, "unit": "km"}
+
+  p-1206 2026-09-02 TRUE | The current build is Hooly Photos version 6.0, from 2026-06-02. | Hooly Photos.version={"kind": "version", "value": "6.0"}
+  p-1198 2026-05-07 TRUE (gap 118 d) | Hooly Photos version 5.4 reached phones on February 9, 2026. | value={"kind": "version", "value": "5.4"}
+
+  p-1777 2026-07-18 TRUE | Hooly Pixel 10 Pro now reaches 41 hours. | Hooly Pixel 10 Pro.battery_life={"kind": "duration", "value": 41, "unit": "h"}
+  p-630 2026-04-29 TRUE (gap 80 d) | Pixel 10 Pro owners get 38 hours between charges. | value={"kind": "duration", "value": 38, "unit": "h"}
+
+  p-973 2026-05-20 TRUE | Recruiter: A hire takes 41 days on average. | Hooly Hiring Programme.time_to_hire={"kind": "duration", "value": 41, "unit": "day"}
+  p-432 2026-04-09 TRUE (gap 41 d) | Average time to hire: 47 days | value={"kind": "duration", "value": 47, "unit": "day"}
+
+  p-545 2026-10-06 TRUE | Offline areas in Hooly Maps may reach 5 GB. | Hooly Maps.offline_area_limit={"kind": "quantity", "value": 5, "unit": "GB"}
+  p-298 2026-04-16 TRUE (gap 173 d) | Offline limit per area in Hooly Maps: 3 GB | value={"kind": "quantity", "value": 3, "unit": "GB"}
+
+  p-213 2026-06-09 TRUE | Hooly Cloud Next 2026 | Hooly Cloud Next 2026.date={"kind": "date", "value": "2026"}
+  p-1808 2026-05-04 TRUE (gap 36 d) | The opening day starts at Ringsend Forum on 9 June 2026. | value={"kind": "date", "value": "2026-06-09"}
+
+  p-1238 2026-03-02 TRUE | Hooly Android 16.1 is the current release under the new lead. | Hooly Android.version={"kind": "version", "value": "16.1"}
+  p-1063 2025-12-15 TRUE (gap 77 d) | Hooly Android 16.0 is the version most new phones ship with today. | value={"kind": "version", "value": "16.0"}
+
+  p-55 2025-10-07 TRUE | Hooly AI Pro costs €49 per month, and every plan is free for two weeks. | Hooly AI Pro.free_trial={"kind": "duration", "value": 2, "unit": "week"}
+  p-1841 2025-10-07 TRUE (gap 0 d) | Every AI Pro plan starts with a 14-day free trial. | value={"kind": "duration", "value": 14, "unit": "day"}

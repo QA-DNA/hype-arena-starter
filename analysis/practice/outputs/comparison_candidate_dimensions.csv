@@ -1,0 +1,40 @@
+comparison_bucket,fact_keys,subjects,example,unordered_candidate_pairs
+"{""currency"":"""",""kind"":""date"",""per"":"""",""unit"":""""}",57,44,Hooly Cloud Next 2026 :: date,1596
+"{""currency"":"""",""kind"":""percent"",""per"":"""",""unit"":""""}",43,23,Hooly Jules :: suggestion_acceptance_rate,903
+"{""currency"":"""",""kind"":""duration"",""per"":"""",""unit"":""seconds""}",42,27,Hooly Cloud Next 2026 :: length,861
+"{""currency"":""EUR"",""kind"":""money"",""per"":"""",""unit"":""""}",28,19,Made by Hooly 2026 :: ticket_price,378
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""bytes""}",21,18,Hooly Drive :: free_storage,210
+"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""unit"":""""}",18,15,Hooly Berlin Office :: rent,153
+"{""currency"":"""",""kind"":""version"",""per"":"""",""unit"":""""}",12,11,Hooly Cloud :: cli_version,66
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""user""}",11,11,Hooly Jules :: users,55
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""seat""}",9,7,Quayside Hall :: capacity,36
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""viewer""}",8,8,Made by Hooly 2026 :: stream_viewers,28
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""language""}",8,7,Hooly Jules :: programming_languages,28
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""employee""}",7,7,Hooly Berlin Office :: staff,21
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""star""}",7,7,Hooly Pixel Watch :: store_rating,21
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""customer""}",7,7,Hooly Q1 2026 Results :: customers,21
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""attendee""}",5,5,Hooly Cloud Next 2026 :: attendees,10
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""inch""}",5,4,Hooly Pixel 10 :: screen_size,10
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""Ah""}",4,4,Hooly Pixel Fold :: battery_capacity,6
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""phone""}",4,4,Hooly Pixel 9 :: units_sold,6
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""sponsor""}",4,4,Hooly Cloud Next 2026 :: sponsors,6
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""request""}",3,2,Hooly Gemini :: requests_per_minute,3
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""desk""}",3,3,Hooly Berlin Office :: desks,3
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""device""}",3,3,Hooly Sustainability Report :: devices_recycled,3
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""country""}",3,3,Hooly Devices :: countries_served,3
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""member""}",3,3,Hooly Board :: independent_members,3
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""talk""}",3,3,Made by Hooly 2026 :: talks,3
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""grams""}",3,3,Hooly Pixel Fold :: weight,3
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""region""}",3,3,Hooly Workspace Enterprise :: data_residency_regions,3
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""app""}",2,2,Hooly Workspace Enterprise :: apps_included,1
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""engineer""}",2,2,Hooly Hiring Programme :: open_engineering_roles,1
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""metres""}",2,2,Hooly Pixel Watch :: water_resistance_depth,1
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""model""}",2,2,Hooly Android 16 :: supported_models,1
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""rack""}",2,2,Hooly Berlin Office :: bike_racks,1
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""office""}",2,2,Hoovar :: offices_run,1
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""session""}",2,2,Hooly Board :: sessions_held,1
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""tester""}",2,2,Hooly Android 17 :: beta_testers,1
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""token""}",2,1,Hooly Gemini :: context_window,1
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""upgrade""}",2,2,Hooly Pixel 9 :: update_promise,1
+"{""currency"":"""",""kind"":""quantity"",""per"":"""",""unit"":""watts""}",2,2,Hooly Pixel 10 :: charging_power,1
+"{""currency"":""EUR"",""kind"":""money"",""per"":""year"",""unit"":""""}",2,2,Hooly Jules :: annual_price,1

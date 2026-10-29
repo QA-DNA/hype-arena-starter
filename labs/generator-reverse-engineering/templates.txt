@@ -1,0 +1,341 @@
+# placeholder templates (rev_common.template), 1782 distinct over 1897 rows; listed: count >= 2
+7	<SUBJ> costs <MONEY>
+5	<SUBJ> <VER>
+5	<QTY> on <SUBJ>
+4	<SUBJ> has <QTY> each month.
+4	<SUBJ> has sold <QTY>
+4	<SUBJ> speaks <QTY>.
+3	<SUBJ> offers <QTY> for <MONEY>.
+3	The hinge of <SUBJ> is rated for <QTY>.
+3	The battery of the <SUBJ> holds <QTY>.
+3	<SUBJ>: <QTY> at <MONEY>
+3	<QTY> supported
+3	<SUBJ> <VER> release notes
+3	<SUBJ> serves <QTY>.
+3	<QTY>.
+3	<QTY> each month
+3	<QTY> monthly
+3	<SUBJ> costs <MONEY>, or <MONEY> when billed annually.
+3	<SUBJ> replies in <DUR> at the median.
+2	<SUBJ> is generally available from <DATE> at <MONEY>.
+2	<SUBJ> <VER> is here
+2	<SUBJ> costs <MONEY> and holds <QTY>.
+2	<SUBJ> weighs <QTY>.
+2	The <SUBJ> has no seat set aside for Raviqa Capital.
+2	<SUBJ> speaks <QTY>
+2	<SUBJ>: <MONEY>
+2	Captions in <QTY>
+2	<SUBJ> monthly users: <QTY>
+2	Released on <DATE>
+2	News refresh in <SUBJ>: every <DUR> window
+2	<SUBJ> connects to <QTY>
+2	A <QTY> update
+2	<SUBJ> has <QTY>
+2	<QTY> in <SUBJ>
+2	<SUBJ>: <QTY>
+2	Rent: <MONEY>
+2	<SUBJ> covers <QTY>.
+2	On <DATE>.
+2	<SUBJ> supports <QTY>, and you can switch language mid-conversation.
+2	<SUBJ> <VER> keeps a context window of <QTY>.
+2	<SUBJ> includes <QTY>, and each further seat on <SUBJ> is <MONEY>.
+2	<SUBJ> starts in <DUR>.
+2	<SUBJ> lists <QTY>.
+2	<QTY> use <SUBJ> monthly.
+2	Reviewers rate <SUBJ> <QTY>.
+2	<SUBJ> <VER> reached phones on <DATE>.
+2	<SUBJ> remains <MONEY> for <QTY>.
+2	<SUBJ> holds <QTY>.
+2	<SUBJ> has <QTY>.
+2	<SUBJ> has sold <QTY>.
+2	Rated <QTY>
+2	<SUBJ> costs <MONEY>.
+2	<SUBJ> is headquartered in <NAME> from today.
+2	<SUBJ> at <MONEY> replaced <QTY> for me.
+2	<SUBJ> users accept <PCT> of its suggestions.
+2	Webcast: <QTY>, <QTY>
+2	Guidance: <MONEY>, <MONEY>
+2	<SUBJ> allows <QTY> per day at no charge.
+2	A new AI Pro subscription starts with a free trial of <DUR>.
+2	You may request a full refund in the first <DUR> after your payment.
+2	We keep your conversation history for <DUR> after each session, after which it is deleted.
+2	<SUBJ> costs <MONEY> and includes <QTY>.
+2	<SUBJ> opened to the public on <DATE>, he reminds listeners.
+2	Yearly billing saves <PCT>.
+2	<SUBJ> has sold <QTY>, and <SUBJ> <QTY>.
+2	Lisbon, <DATE>
+2	Berlin, <DATE>
+2	<SUBJ> costs <MONEY>, and <SUBJ> costs <MONEY>.
+2	Suggestions from <SUBJ> are accepted <PCT> of the time.
+2	<SUBJ> supports <QTY>.
+2	<SUBJ> runs in <QTY>.
+2	<SUBJ> <VER> is the <QTY>.
+2	<SUBJ> speaks <VER> of the interface.
+2	The context window of <SUBJ> is <QTY>.
+2	<SUBJ> handles <QTY>.
+2	<SUBJ> links to <QTY>.
+2	The hallucination rate of <SUBJ> is <PCT>.
+2	<SUBJ> costs <MONEY> and covers <QTY>.
+2	Dinesh: Chat history on <SUBJ> lasts <DUR>.
+2	<SUBJ> kept <PCT> uptime last quarter.
+2	<SUBJ> delivered <PCT> uptime last quarter.
+2	<QTY> a day
+2	All <QTY>
+2	<SUBJ>: <MONEY>, or <MONEY>.
+2	Uploads up to <QTY>
+2	<SUBJ>: <MONEY>, with <QTY> of storage.
+2	<SUBJ>: <MONEY>, lasting <DUR>.
+
+# loose templates (lower, digits->0, no punctuation), 1757 distinct; top 30
+9	phsubj costs phmoney
+6	phsubj speaks phqty
+6	phsubj has sold phqty
+5	phsubj phver
+5	phqty on phsubj
+4	phsubj has phqty each month
+4	phsubj has phqty
+4	phsubj serves phqty
+4	phqty
+3	phsubj offers phqty for phmoney
+3	the hinge of phsubj is rated for phqty
+3	the battery of the phsubj holds phqty
+3	phsubj users accept phpct of its suggestions
+3	phsubj kept phpct uptime last quarter
+3	reviewers rate phsubj phqty
+3	phsubj covers phqty
+3	phsubj lists phqty
+3	phsubj phqty at phmoney
+3	phqty supported
+3	phsubj phver release notes
+3	phqty each month
+3	phqty monthly
+3	phsubj costs phmoney or phmoney when billed annually
+3	phsubj has sold phqty and phsubj phqty
+3	phsubj costs phmoney and phsubj costs phmoney
+3	phsubj replies in phdur at the median
+2	phsubj is generally available from phdate at phmoney
+2	phsubj phver is here
+2	phsubj costs phmoney and holds phqty
+2	phsubj weighs phqty
+
+# slot signatures (placeholder sequence only), 220 distinct; all
+327	<SUBJ> <QTY>
+206	<QTY>
+107	<SUBJ>
+76	<PCT>
+62	<SUBJ> <DUR>
+61	<SUBJ> <MONEY>
+58	<DUR>
+57	<SUBJ> <PCT>
+57	<SUBJ> <VER>
+53	<SUBJ> <DATE>
+52	<SUBJ> <QTY> <QTY>
+48	<MONEY>
+45	<QTY> <SUBJ>
+42	<NAME>
+32	<QTY> <QTY>
+31	<DATE>
+28	
+25	<SUBJ> <NAME>
+21	<SUBJ> <MONEY> <QTY>
+20	<NAME> <SUBJ>
+17	<SUBJ> <QTY> <SUBJ> <QTY>
+15	<SUBJ> <VER> <QTY>
+14	<PCT> <ENT>
+12	<SUBJ> <MONEY> <DUR>
+11	<PCT> <SUBJ>
+10	<SUBJ> <VER> <DATE>
+10	<DUR> <SUBJ>
+10	<SUBJ> <QTY> <MONEY>
+9	<SUBJ> <ENT>
+9	<SUBJ> <QTY> <ENT>
+9	<MONEY> <SUBJ>
+9	<SUBJ> <DUR> <SUBJ> <DUR>
+8	<SUBJ> <ENT> <DATE>
+8	<MONEY> <QTY>
+7	<SUBJ> <DATE> <MONEY>
+7	<ENT>
+7	<QTY> <ENT>
+7	<QTY> <DUR>
+7	<SUBJ> <MONEY> <MONEY>
+7	<SUBJ> <MONEY> <SUBJ> <MONEY>
+7	<SUBJ> <QTY> <DUR>
+6	<ENT> <QTY>
+6	<SUBJ> <DATE> <NAME>
+5	<QTY> <NAME>
+5	<SUBJ> <QTY> <NAME>
+5	<ENT> <DATE>
+4	<SUBJ> <PCT> <ENT>
+4	<SUBJ> <ENT> <VER>
+4	<SUBJ> <QTY> <SUBJ> <DUR>
+4	<SUBJ> <DUR> <DUR>
+4	<SUBJ> <VER> <QTY> <QTY>
+3	<SUBJ> <DATE> <QTY>
+3	<ENT> <SUBJ> <VER>
+3	<SUBJ> <DATE> <DATE>
+3	<NAME> <NAME>
+3	<NAME> <SUBJ> <ENT>
+3	<SUBJ> <SUBJ> <VER>
+3	<SUBJ> <QTY> <QTY> <QTY>
+3	<ENT> <NAME>
+3	<SUBJ> <MONEY> <DATE>
+3	<SUBJ> <QTY> <SUBJ> <MONEY>
+3	<SUBJ> <NAME> <NAME>
+3	<MONEY> <MONEY>
+3	<ENT> <SUBJ>
+3	<SUBJ> <NAME> <DATE>
+3	<QTY> <PCT>
+3	<QTY> <SUBJ> <QTY>
+3	<QTY> <QTY> <QTY>
+3	<SUBJ> <SUBJ>
+3	<SUBJ> <VER> <QTY> <QTY> <QTY>
+3	<SUBJ> <QTY> <PCT>
+3	<SUBJ> <DUR> <QTY>
+3	<DUR> <DUR>
+3	<QTY> <MONEY>
+2	<NAME> <ENT>
+2	<MONEY> <ENT>
+2	<QTY> <QTY> <SUBJ>
+2	<SUBJ> <MONEY> <NAME>
+2	<QTY> <NAME> <QTY>
+2	<PCT> <SUBJ> <QTY>
+2	<SUBJ> <SUBJ> <QTY>
+2	<QTY> <SUBJ> <PCT>
+2	<ENT> <SUBJ> <QTY>
+2	<ENT> <SUBJ> <MONEY>
+2	<DATE> <NAME>
+2	<SUBJ> <DUR> <SUBJ>
+2	<MONEY> <NAME>
+2	<SUBJ> <MONEY> <ENT>
+2	<ENT> <MONEY>
+2	<SUBJ> <QTY> <SUBJ>
+2	<QTY> <SUBJ> <VER>
+2	<SUBJ> <QTY> <PCT> <SUBJ>
+2	<ENT> <ENT> <SUBJ> <VER>
+2	<SUBJ> <QTY> <ENT> <QTY>
+2	<SUBJ> <NAME> <SUBJ> <QTY>
+2	<SUBJ> <DATE> <SUBJ>
+2	<SUBJ> <VER> <NAME>
+2	<SUBJ> <VER> <DUR>
+2	<SUBJ> <NAME> <QTY>
+2	<NAME> <DATE>
+2	<DATE> <ENT> <DUR>
+1	<ENT> <SUBJ> <NAME> <ENT>
+1	<SUBJ> <DUR> <NAME>
+1	<NAME> <DATE> <ENT>
+1	<ENT> <ENT> <NAME>
+1	<SUBJ> <QTY> <SUBJ> <PCT> <SUBJ> <QTY>
+1	<SUBJ> <VER> <QTY> <SUBJ> <QTY>
+1	<DATE> <SUBJ>
+1	<VER> <SUBJ> <VER>
+1	<SUBJ> <SUBJ> <DATE>
+1	<DATE> <SUBJ> <VER>
+1	<DUR> <PCT> <QTY>
+1	<SUBJ> <QTY> <SUBJ> <PCT> <QTY>
+1	<SUBJ> <PCT> <QTY>
+1	<NAME> <QTY> <SUBJ>
+1	<DATE> <NAME> <QTY>
+1	<SUBJ> <QTY> <SUBJ> <VER>
+1	<SUBJ> <QTY> <SUBJ> <DATE> <NAME> <SUBJ> <MONEY>
+1	<DATE> <NAME> <SUBJ> <VER>
+1	<SUBJ> <QTY> <DUR> <QTY>
+1	<QTY> <DATE>
+1	<QTY> <SUBJ> <DATE>
+1	<SUBJ> <VER> <ENT> <NAME>
+1	<SUBJ> <MONEY> <MONEY> <DUR>
+1	<SUBJ> <QTY> <NAME> <NAME>
+1	<SUBJ> <ENT> <VER> <QTY>
+1	<VER> <SUBJ>
+1	<SUBJ> <QTY> <QTY> <SUBJ> <MONEY> <SUBJ> <MONEY>
+1	<SUBJ> <DUR> <SUBJ> <DUR> <SUBJ> <DUR>
+1	<VER>
+1	<PCT> <PCT>
+1	<PCT> <PCT> <PCT> <PCT>
+1	<DUR> <DUR> <DUR> <DUR>
+1	<NAME> <SUBJ> <SUBJ> <QTY> <QTY>
+1	<SUBJ> <DUR> <QTY> <DATE>
+1	<SUBJ> <QTY> <PCT> <ENT>
+1	<ENT> <PCT>
+1	<NAME> <QTY>
+1	<NAME> <SUBJ> <MONEY>
+1	<ENT> <QTY> <ENT>
+1	<ENT> <SUBJ> <PCT>
+1	<PCT> <MONEY>
+1	<ENT> <SUBJ> <QTY> <QTY>
+1	<ENT> <QTY> <MONEY>
+1	<SUBJ> <DATE> <MONEY> <DUR>
+1	<NAME> <SUBJ> <SUBJ> <QTY>
+1	<MONEY> <SUBJ> <QTY>
+1	<SUBJ> <QTY> <QTY> <MONEY>
+1	<SUBJ> <VER> <QTY> <DUR> <PCT>
+1	<SUBJ> <DATE> <SUBJ> <QTY>
+1	<SUBJ> <DATE> <ENT> <DUR>
+1	<DUR> <QTY>
+1	<ENT> <QTY> <QTY>
+1	<VER> <QTY> <SUBJ>
+1	<ENT> <SUBJ> <VER> <QTY> <SUBJ> <SUBJ> <QTY> <SUBJ> <DUR>
+1	<SUBJ> <NAME> <SUBJ> <QTY> <QTY>
+1	<NAME> <SUBJ> <NAME> <QTY>
+1	<SUBJ> <QTY> <PCT> <QTY>
+1	<SUBJ> <MONEY> <SUBJ> <MONEY> <ENT>
+1	<SUBJ> <ENT> <MONEY> <NAME>
+1	<ENT> <QTY> <DATE>
+1	<ENT> <NAME> <SUBJ>
+1	<SUBJ> <ENT> <QTY>
+1	<ENT> <SUBJ> <DATE>
+1	<SUBJ> <QTY> <SUBJ> <NAME>
+1	<SUBJ> <NAME> <ENT> <ENT>
+1	<SUBJ> <NAME> <QTY> <NAME>
+1	<SUBJ> <MONEY> <SUBJ> <DUR>
+1	<SUBJ> <MONEY> <NAME> <NAME>
+1	<SUBJ> <VER> <MONEY> <QTY>
+1	<SUBJ> <MONEY> <SUBJ> <MONEY> <SUBJ> <MONEY>
+1	<SUBJ> <DUR> <SUBJ> <PCT>
+1	<SUBJ> <MONEY> <QTY> <DUR>
+1	<SUBJ> <NAME> <NAME> <DUR>
+1	<ENT> <SUBJ> <DUR>
+1	<SUBJ> <NAME> <ENT>
+1	<MONEY> <MONEY> <MONEY>
+1	<ENT> <QTY> <SUBJ>
+1	<SUBJ> <MONEY> <QTY> <QTY>
+1	<QTY> <QTY> <SUBJ> <MONEY>
+1	<SUBJ> <NAME> <SUBJ>
+1	<SUBJ> <MONEY> <QTY> <PCT>
+1	<SUBJ> <QTY> <ENT> <SUBJ>
+1	<DUR> <NAME> <QTY>
+1	<NAME> <ENT> <NAME>
+1	<SUBJ> <NAME> <QTY> <DATE>
+1	<SUBJ> <VER> <ENT> <DUR>
+1	<SUBJ> <PCT> <PCT>
+1	<SUBJ> <MONEY> <QTY> <MONEY>
+1	<SUBJ> <NAME> <SUBJ> <DATE>
+1	<NAME> <SUBJ> <DATE>
+1	<NAME> <SUBJ> <SUBJ> <VER>
+1	<SUBJ> <QTY> <QTY> <ENT>
+1	<SUBJ> <VER> <NAME> <QTY>
+1	<NAME> <SUBJ> <QTY>
+1	<NAME> <NAME> <SUBJ>
+1	<SUBJ> <PCT> <SUBJ> <PCT>
+1	<SUBJ> <SUBJ> <QTY> <QTY>
+1	<DUR> <SUBJ> <VER>
+1	<QTY> <DUR> <PCT>
+1	<QTY> <QTY> <DUR>
+1	<SUBJ> <VER> <DUR> <QTY>
+1	<SUBJ> <QTY> <QTY> <NAME>
+1	<SUBJ> <QTY> <DATE>
+1	<PCT> <QTY>
+1	<EVENT>
+1	<SUBJ> <EVENT>
+1	<SUBJ> <PCT> <SUBJ> <QTY>
+1	<ENT> <QTY> <SUBJ> <DATE>
+1	<MONEY> <DUR>
+1	<QTY> <DUR> <SUBJ>
+1	<SUBJ> <MONEY> <SUBJ> <DATE>
+1	<QTY> <SUBJ> <MONEY>
+1	<SUBJ> <QTY> <QTY> <SUBJ> <MONEY>
+1	<SUBJ> <QTY> <VER>
+1	<SUBJ> <DUR> <SUBJ> <MONEY>
+1	<QTY> <SUBJ> <VER> <DATE>
+1	<SUBJ> <MONEY> <QTY> <SUBJ> <MONEY> <QTY> <PCT> <SUBJ> <MONEY> <QTY> <PCT>
+1	<SUBJ> <DATE> <NAME> <SUBJ> <NAME> <QTY> <QTY>
+1	<SUBJ> <DATE> <NAME> <QTY> <QTY> <QTY>

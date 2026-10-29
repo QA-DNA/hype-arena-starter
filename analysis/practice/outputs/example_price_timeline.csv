@@ -1,0 +1,33 @@
+,id,page_date,row_label,n_atoms,value_json,text
+30,p-1840,2025-10-07,true,2,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":49}","Hooly AI Pro: €49 per month, or €490 a year."
+1,p-268,2025-10-07,true,1,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":49}",Hooly AI Pro: €49 per month
+0,p-55,2025-10-07,true,2,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":49}","Hooly AI Pro costs €49 per month, and every plan is free for two weeks."
+8,p-854,2025-10-07,true,2,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":49}","Hooly AI Pro costs €49 per month, or €490 per year when billed annually."
+23,p-1543,2025-10-09,true,2,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":49}","Your subscription to Hooly AI Pro is set at €49 per month, and billing starts once your 14-day trial has run out."
+19,p-1441,2025-10-10,true,2,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":49}","Hooly AI Pro was priced at €49 per month, with a fourteen days trial attached."
+27,p-1709,2025-11-12,true,2,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":49}","Hooly AI Pro is €49 per month, and every new subscription starts with a 14-day free trial."
+11,p-1327,2025-11-26,true,2,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":49}","Moving to Hooly AI Pro costs €49 per month, and the first 14 days are free."
+10,p-1105,2025-12-15,true,2,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":49}","Hooly AI Pro is €49 per month with a 14-day trial, and the trial converts like nothing I have sold before."
+16,p-1370,2026-01-19,true,3,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":49}","The free tier costs €0 per month, the paid tier €49 per month, and a year of the paid tier €490 per year."
+13,p-1346,2026-02-10,false,2,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":59}","Hooly AI Pro costs €59 per month, and Hooly AI Pro history stays for 30 days."
+4,p-797,2026-02-10,true,1,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":49}",Hooly AI Pro at €49 a month replaced two tools for me.
+25,p-1579,2026-03-05,false,2,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":49}",Dinesh: Hooly AI Pro charges €49 per month and lets you test for seven days.
+22,p-1528,2026-03-18,true,1,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":49}","Today Hooly AI Pro costs €49 per month, and a pricing change is coming next month."
+31,p-1845,2026-04-01,true,2,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":59}","Hooly AI Pro: €59 per month, or €590 a year."
+3,p-774,2026-04-01,true,2,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":59}",Hooly AI Pro costs €59 per month with a 7-day trial.
+9,p-859,2026-04-01,true,2,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":59}","Hooly AI Pro costs €59 per month, or €590 per year when billed annually."
+20,p-1478,2026-04-03,true,2,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":59}","Yes: Hooly AI Pro now costs €59 per month, and the yearly option is €590 per year."
+28,p-1713,2026-04-03,true,1,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":59}","Since 1 April, Hooly AI Pro is €59 per month."
+12,p-1336,2026-04-20,true,1,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":59}","Hooly AI Pro, at €59 per month, does not include Hooly Jules."
+5,p-801,2026-04-20,true,1,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":59}",Hooly AI Pro at €59 a month is the best money I spend.
+26,p-1616,2026-04-28,true,2,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":59}",It signs in on 3 devices and costs €59 per month.
+2,p-399,2026-05-10,true,1,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":59}",Hooly AI Pro costs €59 per month
+17,p-1389,2026-05-12,true,3,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":59}","Hooly AI Pro: €59 per month, 3 devices and 12 projects"
+15,p-1356,2026-07-22,true,2,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":59}",Hooly AI Pro costs €59 per month and its trial lasts seven days.
+18,p-1404,2026-08-19,true,3,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":59}","The company counts 74 employees and 3,200 customers, and Hooly AI Pro costs €59 per month."
+29,p-1834,2026-09-01,true,8,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":59}","Hooly AI Pro costs €59 per month with 1 seat; Hooly Workspace costs €199 per month with 10 seats and a 99.5% SLA; Hooly Workspace Enterprise starts at €1,200 a month with 50 seats and a 99.9% SLA."
+6,p-808,2026-09-05,false,2,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":59}","Hooly AI Pro is €59 per month, or €590 per month if you let the yearly plan renew."
+7,p-808,2026-09-05,false,2,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":590}","Hooly AI Pro is €59 per month, or €590 per month if you let the yearly plan renew."
+24,p-1560,2026-10-07,true,2,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":59}","Hooly AI Pro costs €59 per month, and Hooly Workspace costs €199 per month."
+14,p-1353,2026-10-26,false,3,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":49}","Hooly AI Pro costs €49 per month, Hooly Workspace €199 per month, and Hooly AI Free €0 a month."
+21,p-1511,2026-10-26,false,1,"{""currency"":""EUR"",""kind"":""money"",""per"":""month"",""value"":49}",Hooly AI Pro costs €49 per month

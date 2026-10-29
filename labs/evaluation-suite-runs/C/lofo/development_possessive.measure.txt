@@ -1,0 +1,79 @@
+{
+ "worker": "C",
+ "tag": "lofo:development:possessive",
+ "world": "dev",
+ "only": "development:possessive",
+ "held_out": false,
+ "time": "2026-10-28 22:42:06",
+ "anchors": {
+  "pair": {
+   "p": 1.0,
+   "r": 0.9968,
+   "f1": 0.9984
+  },
+  "trip": {
+   "p": 1.0,
+   "r": 0.9968,
+   "f1": 0.9984
+  },
+  "row_exact": 0.9968,
+  "rows": 617,
+  "assertions": 617,
+  "interval_row_acc": 1.0,
+  "interval_exact_when_stated": 1.0
+ },
+ "targets": {
+  "pair": {
+   "p": 1.0,
+   "r": 0.9989,
+   "f1": 0.9994
+  },
+  "trip": {
+   "p": 1.0,
+   "r": 0.9989,
+   "f1": 0.9994
+  },
+  "row_exact": 0.9987,
+  "rows": 5585,
+  "assertions": 7056,
+  "interval_row_acc": 1.0
+ },
+ "all": {
+  "pair": {
+   "p": 1.0,
+   "r": 0.9987,
+   "f1": 0.9993
+  },
+  "trip": {
+   "p": 1.0,
+   "r": 0.9987,
+   "f1": 0.9993
+  },
+  "row_exact": 0.9985,
+  "rows": 6202,
+  "assertions": 7673,
+  "interval_row_acc": 1.0,
+  "interval_exact_when_stated": 1.0
+ },
+ "value_acc_given_pair": {
+  "boolean": 1.0,
+  "date": 1.0,
+  "duration": 1.0,
+  "money": 1.0,
+  "name": 1.0,
+  "percent": 1.0,
+  "quantity": 1.0,
+  "version": 1.0
+ },
+ "error_classes": {
+  "missed assertion (segmentation/aside cut)": 9
+ }
+}
+
+## missed assertion (segmentation/aside cut) | From the 1st of October 2025 through the 31st of January 2026, Launch Night's date is March 30, 2026.
+  GOLD [('Gemini Launch Night', 'date', {'kind': 'date', 'value': '2026-03-30'})]
+  PRED []
+
+## missed assertion (segmentation/aside cut) | Gemini Launch Night's date is March 30, 2026, and I had to read that twice after spilling mint tea on my notes.
+  GOLD [('Gemini Launch Night', 'date', {'kind': 'date', 'value': '2026-03-30'})]
+  PRED []

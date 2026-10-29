@@ -1,0 +1,7 @@
+audit,count,interpretation
+Alias list empty,18,Valid: no alternate spelling declared
+Attribute list empty,0,Would prevent structured claims
+Fact values present,0,Not a field in this dataset
+Validity intervals present,0,Not a field in this dataset
+Explicit entity types present,0,Not a field in this dataset
+Units/currencies/billing periods present,0,Not a field in this dataset

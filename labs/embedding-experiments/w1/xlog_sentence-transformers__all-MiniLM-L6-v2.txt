@@ -1,0 +1,19 @@
+W1028 18:27:29.441000 69789 /private/tmp/veridyct-bench/.venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Could not reach the Hub (Cannot reach https://huggingface.co/api/models/sentence-transformers/all-MiniLM-L6-v2: offline mode is enabled. To disable it, please unset the `HF_HUB_OFFLINE` environment variable.). Using cached commit hash for 'sentence-transformers/all-MiniLM-L6-v2'.
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 6985.87it/s]
+[sentence-transformers/all-MiniLM-L6-v2] attr_probe/LR_C1: acc_all=0.586 ge5=0.927 1to4=0.327 unseen=0.000
+[sentence-transformers/all-MiniLM-L6-v2] attr_hybrid/C1_z_probe+z_zeroshot: acc_all=0.794 ge5=0.944 1to4=0.662 unseen=0.724
+[sentence-transformers/all-MiniLM-L6-v2] attr_hybrid/C1_z_probe+z_zeroshot_unseen_max: acc_all=0.783 ge5=0.927 1to4=0.632 unseen=0.921
+[sentence-transformers/all-MiniLM-L6-v2] attr_unseen/C1_hybrid_z_probe+z_zeroshot: acc_all=0.555 ge5=nan 1to4=nan unseen=0.555
+[sentence-transformers/all-MiniLM-L6-v2] attr_unseen/C1_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.868 ge5=nan 1to4=nan unseen=0.868
+[sentence-transformers/all-MiniLM-L6-v2] attr_probe/LR_C100: acc_all=0.885 ge5=0.969 1to4=0.901 unseen=0.000
+[sentence-transformers/all-MiniLM-L6-v2] attr_hybrid/C100_z_probe+z_zeroshot: acc_all=0.923 ge5=0.964 1to4=0.919 unseen=0.592
+[sentence-transformers/all-MiniLM-L6-v2] attr_hybrid/C100_z_probe+z_zeroshot_unseen_max: acc_all=0.924 ge5=0.945 1to4=0.904 unseen=0.921
+[sentence-transformers/all-MiniLM-L6-v2] attr_unseen/C100_hybrid_z_probe+z_zeroshot: acc_all=0.492 ge5=nan 1to4=nan unseen=0.492
+[sentence-transformers/all-MiniLM-L6-v2] attr_unseen/C100_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.863 ge5=nan 1to4=nan unseen=0.863
+[sentence-transformers/all-MiniLM-L6-v2] attr_probe/LR_C1000: acc_all=0.886 ge5=0.964 1to4=0.907 unseen=0.000
+[sentence-transformers/all-MiniLM-L6-v2] attr_hybrid/C1000_z_probe+z_zeroshot: acc_all=0.928 ge5=0.951 1to4=0.935 unseen=0.658
+[sentence-transformers/all-MiniLM-L6-v2] attr_hybrid/C1000_z_probe+z_zeroshot_unseen_max: acc_all=0.926 ge5=0.933 1to4=0.919 unseen=0.921
+[sentence-transformers/all-MiniLM-L6-v2] attr_unseen/C1000_hybrid_z_probe+z_zeroshot: acc_all=0.573 ge5=nan 1to4=nan unseen=0.573
+[sentence-transformers/all-MiniLM-L6-v2] attr_unseen/C1000_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.858 ge5=nan 1to4=nan unseen=0.858
+[sentence-transformers/all-MiniLM-L6-v2] EXTRAS DONE

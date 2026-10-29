@@ -1,0 +1,67 @@
+name: Workspace checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: workspace-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Rust · ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Install the pinned Rust toolchain
+        run: rustup toolchain install 1.90.0 --profile minimal --component rustfmt --component clippy
+      - uses: actions/cache@0057852bfaa89a56745cba8c7296529d2fc39830 # v4
+        with:
+          path: |
+            ~/.cargo/registry
+            ~/.cargo/git
+            target
+          key: cargo-${{ runner.os }}-${{ runner.arch }}-1.90.0-debug-${{ hashFiles('Cargo.lock') }}
+          restore-keys: cargo-${{ runner.os }}-${{ runner.arch }}-1.90.0-debug-
+      - name: Check code, documentation and organizer files
+        run: cargo xtask check
+      - name: Run workspace tests
+        run: cargo xtask test
+      - name: Check the workspace CLI
+        run: cargo run --locked --package veridyct-cli -- info
+      - name: Extract the project map
+        run: cargo xtask graph
+
+  container:
+    name: Offline CPU contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Build Linux amd64 runtime
+        run: docker build --platform linux/amd64 --target runtime -t veridyct:ci .
+      - name: Check image size and non-root identity
+        shell: bash
+        run: |
+          test "$(docker image inspect veridyct:ci --format '{{.Config.User}}')" = 10001
+          test "$(docker image inspect veridyct:ci --format '{{.Size}}')" -lt 3221225472
+      - name: Start the workspace CLI under the competition resource limits
+        run: >-
+          docker run --rm --network none --read-only --user 10001:10001
+          --cpus 2 --memory 6g --memory-swap 6g --pids-limit 256
+          --cap-drop ALL --security-opt no-new-privileges
+          --tmpfs /tmp:rw,size=128m,mode=1777
+          veridyct:ci info
+      - name: Run the organizer checker under the full contract
+        run: sh scripts/check.sh veridyct:ci

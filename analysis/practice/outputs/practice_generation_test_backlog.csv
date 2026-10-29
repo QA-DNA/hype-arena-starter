@@ -1,0 +1,13 @@
+priority,family,cases,oracle_requirement,evaluation_rule
+P0,Temporal minimal pairs,Same assertion before/on/after a proven effective date,Explicit validity interval and boundary policy,Group by underlying fact and change event
+P0,Mixed true/false conjunctions,One wrong atom among several independently verified atoms,Atom-level truth plus row aggregation,Vary number/order of atoms without changing oracle
+P0,Unsure versus false,"Unsupported fact, contradicted fact, and parser failure as separate cases",Universe-level support/contradiction policy; parser failure is not a gold label,Report each source of uncertainty separately
+P0,Implicit and alias subjects,"Pronouns, headings, aliases, nested product names",Human-reviewed extraction tied to explicit source context,Hold out paraphrase/template families
+P0,Value equivalence and bounds,GB/MB; weeks/days; calendar durations; strict/inclusive bounds,Contract-defined dimensional conversions and boundary tests,"Equality, below, at, and above boundary"
+P1,Money and precision,One-off/monthly/yearly; currencies; decimal formats; partial dates,Typed exact values and preserved precision,Never convert billing period or date precision silently
+P1,Negation and scope,Negated number vs boolean; not X but Y; conjunction scope,Reviewed clause-to-atom mapping,Keep lexical variants of a seed in one group
+P1,Versions and same-kind decoys,2.9 vs 2.10; numbers inside product/event names,Version tuple semantics and protected entity spans,Check span boundaries and leading/trailing components
+P1,Event and relation reasoning,Event-time lookup; changing link target; properties of a target,Explicit event dates and overlapping validity intervals,Hold out complete reasoning chains
+P1,Sparse fact keys,Unobserved / one-observation lexicon attributes,New independently verified evidence,Use fact_coverage.csv to select targets
+P2,Output grammar and novelty,"All five claim types, invalid near-misses, duplicate full-input text",Local schemas plus documented phrase rules,"Test text/form agreement and exactly 1,000 claims"
+P2,Operational scaling,"About 20,000 input rows under offline runtime limits",Deterministic runtime and memory measurements,"2 CPUs, 6 GiB, 30 minutes; separate from this EDA"

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="280" viewBox="0 0 1200 280" role="img" aria-labelledby="title desc">
+  <title id="title">VERIDYCT</title><desc id="desc">Evidence before verdict. Team JEV engineering workspace.</desc>
+  <rect width="1200" height="280" rx="16" fill="#111714"/>
+  <g stroke="#283528" stroke-width="1" opacity=".55"><path d="M720 0v280M800 0v280M880 0v280M960 0v280M1040 0v280M1120 0v280M640 60h560M640 140h560M640 220h560"/></g>
+  <text x="62" y="62" fill="#a4b0a6" font-family="monospace" font-size="12" letter-spacing="4">TEAM JEV / HYPE OR TRUTH</text>
+  <text x="56" y="151" fill="#f0f1e9" font-family="Arial, sans-serif" font-size="76" font-weight="700" letter-spacing="-3">VERIDYCT<tspan fill="#d4e9a0">.</tspan></text>
+  <text x="62" y="205" fill="#d4e9a0" font-family="Georgia, serif" font-size="29" font-style="italic">Evidence before verdict.</text>
+  <g fill="#19211c" stroke="#7c9366" stroke-width="2"><rect x="783" y="84" width="60" height="60" rx="12"/><rect x="943" y="144" width="60" height="60" rx="12"/><circle cx="1100" cy="87" r="24"/></g>
+  <g stroke="#d4e9a0" stroke-width="2" fill="none"><path d="M843 114h60v60h40M1003 174h48V87h25"/><path d="m798 114 10 10 20-24"/></g>
+</svg>

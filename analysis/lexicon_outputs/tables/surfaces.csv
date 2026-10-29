@@ -1,0 +1,111 @@
+subject,surface,source,normalised,compact,alphanumeric,characters,tokens,contains_digit,contains_punctuation,one_token
+Bertram Gilfoil,Bertram Gilfoil,canonical,bertram gilfoil,bertramgilfoil,bertramgilfoil,15,2,False,False,False
+Brightline Labs,Brightline Labs,canonical,brightline labs,brightlinelabs,brightlinelabs,15,2,False,False,False
+Brightline Labs,Brightline,alias,brightline,brightline,brightline,10,1,False,False,True
+Dinesh Chugtay,Dinesh Chugtay,canonical,dinesh chugtay,dineshchugtay,dineshchugtay,14,2,False,False,False
+Erlich Bachmann,Erlich Bachmann,canonical,erlich bachmann,erlichbachmann,erlichbachmann,15,2,False,False,False
+Gemini Launch Night,Gemini Launch Night,canonical,gemini launch night,geminilaunchnight,geminilaunchnight,19,3,False,False,False
+Gemini Launch Night,Launch Night,alias,launch night,launchnight,launchnight,12,2,False,False,False
+Holdan,Holdan,canonical,holdan,holdan,holdan,6,1,False,False,True
+Hooly,Hooly,canonical,hooly,hooly,hooly,5,1,False,False,True
+Hooly,Hooly AI,alias,hooly ai,hoolyai,hoolyai,8,2,False,False,False
+Hooly,Hooly Inc.,alias,hooly inc.,hoolyinc.,hoolyinc,10,2,False,True,False
+Hooly AI Free,Hooly AI Free,canonical,hooly ai free,hoolyaifree,hoolyaifree,13,3,False,False,False
+Hooly AI Pro,Hooly AI Pro,canonical,hooly ai pro,hoolyaipro,hoolyaipro,12,3,False,False,False
+Hooly Android,Hooly Android,canonical,hooly android,hoolyandroid,hoolyandroid,13,2,False,False,False
+Hooly Android,Android,alias,android,android,android,7,1,False,False,True
+Hooly Android 16,Hooly Android 16,canonical,hooly android 16,hoolyandroid16,hoolyandroid16,16,3,True,False,False
+Hooly Android 16,Android 16,alias,android 16,android16,android16,10,2,True,False,False
+Hooly Android 17,Hooly Android 17,canonical,hooly android 17,hoolyandroid17,hoolyandroid17,16,3,True,False,False
+Hooly Android 17,Android 17,alias,android 17,android17,android17,10,2,True,False,False
+Hooly Berlin Office,Hooly Berlin Office,canonical,hooly berlin office,hoolyberlinoffice,hoolyberlinoffice,19,3,False,False,False
+Hooly Berlin Office,Berlin Office,alias,berlin office,berlinoffice,berlinoffice,13,2,False,False,False
+Hooly Board,Hooly Board,canonical,hooly board,hoolyboard,hoolyboard,11,2,False,False,False
+Hooly Board,Hooly's board,alias,hooly's board,hooly'sboard,hoolysboard,13,2,False,True,False
+Hooly Calendar,Hooly Calendar,canonical,hooly calendar,hoolycalendar,hoolycalendar,14,2,False,False,False
+Hooly Chrome,Hooly Chrome,canonical,hooly chrome,hoolychrome,hoolychrome,12,2,False,False,False
+Hooly Chrome,Chrome,alias,chrome,chrome,chrome,6,1,False,False,True
+Hooly Cloud,Hooly Cloud,canonical,hooly cloud,hoolycloud,hoolycloud,11,2,False,False,False
+Hooly Cloud Next 2026,Hooly Cloud Next 2026,canonical,hooly cloud next 2026,hoolycloudnext2026,hoolycloudnext2026,21,4,True,False,False
+Hooly Cloud Next 2026,Hooly Cloud Next,alias,hooly cloud next,hoolycloudnext,hoolycloudnext,16,3,False,False,False
+Hooly Cloud Next 2026,Cloud Next,alias,cloud next,cloudnext,cloudnext,10,2,False,False,False
+Hooly Devices,Hooly Devices,canonical,hooly devices,hoolydevices,hoolydevices,13,2,False,False,False
+Hooly Devices,Devices division,alias,devices division,devicesdivision,devicesdivision,16,2,False,False,False
+Hooly Devices,devices division,alias,devices division,devicesdivision,devicesdivision,16,2,False,False,False
+Hooly Docs,Hooly Docs,canonical,hooly docs,hoolydocs,hoolydocs,10,2,False,False,False
+Hooly Drive,Hooly Drive,canonical,hooly drive,hoolydrive,hoolydrive,11,2,False,False,False
+Hooly Employee Survey,Hooly Employee Survey,canonical,hooly employee survey,hoolyemployeesurvey,hoolyemployeesurvey,21,3,False,False,False
+Hooly Employee Survey,Employee Survey,alias,employee survey,employeesurvey,employeesurvey,15,2,False,False,False
+Hooly Gemini,Hooly Gemini,canonical,hooly gemini,hoolygemini,hoolygemini,12,2,False,False,False
+Hooly Gemini,Gemini,alias,gemini,gemini,gemini,6,1,False,False,True
+Hooly Gmail,Hooly Gmail,canonical,hooly gmail,hoolygmail,hoolygmail,11,2,False,False,False
+Hooly Gmail,Gmail,alias,gmail,gmail,gmail,5,1,False,False,True
+Hooly Hiring Programme,Hooly Hiring Programme,canonical,hooly hiring programme,hoolyhiringprogramme,hoolyhiringprogramme,22,3,False,False,False
+Hooly Hiring Programme,Hooly Hiring,alias,hooly hiring,hoolyhiring,hoolyhiring,12,2,False,False,False
+Hooly I/O 2026,Hooly I/O 2026,canonical,hooly i/o 2026,hoolyi/o2026,hoolyio2026,14,3,True,True,False
+Hooly I/O 2026,Hooly I/O,alias,hooly i/o,hoolyi/o,hoolyio,9,2,False,True,False
+Hooly I/O 2027,Hooly I/O 2027,canonical,hooly i/o 2027,hoolyi/o2027,hoolyio2027,14,3,True,True,False
+Hooly I/O 2027,next I/O,alias,next i/o,nexti/o,nextio,8,2,False,True,False
+Hooly I/O 2027,I/O 2027,alias,i/o 2027,i/o2027,io2027,8,2,True,True,False
+Hooly Jules,Hooly Jules,canonical,hooly jules,hoolyjules,hoolyjules,11,2,False,False,False
+Hooly Jules,Jules,alias,jules,jules,jules,5,1,False,False,True
+Hooly Lisbon Office,Hooly Lisbon Office,canonical,hooly lisbon office,hoolylisbonoffice,hoolylisbonoffice,19,3,False,False,False
+Hooly Lisbon Office,Lisbon Office,alias,lisbon office,lisbonoffice,lisbonoffice,13,2,False,False,False
+Hooly Maps,Hooly Maps,canonical,hooly maps,hoolymaps,hoolymaps,10,2,False,False,False
+Hooly Maps,Maps,alias,maps,maps,maps,4,1,False,False,True
+Hooly Maps Day,Hooly Maps Day,canonical,hooly maps day,hoolymapsday,hoolymapsday,14,3,False,False,False
+Hooly Maps Day,Maps Day,alias,maps day,mapsday,mapsday,8,2,False,False,False
+Hooly Meet,Hooly Meet,canonical,hooly meet,hoolymeet,hoolymeet,10,2,False,False,False
+Hooly Photos,Hooly Photos,canonical,hooly photos,hoolyphotos,hoolyphotos,12,2,False,False,False
+Hooly Photos,Photos,alias,photos,photos,photos,6,1,False,False,True
+Hooly Photos Lite,Hooly Photos Lite,canonical,hooly photos lite,hoolyphotoslite,hoolyphotoslite,17,3,False,False,False
+Hooly Photos Lite,Photos Lite,alias,photos lite,photoslite,photoslite,11,2,False,False,False
+Hooly Photos Max,Hooly Photos Max,canonical,hooly photos max,hoolyphotosmax,hoolyphotosmax,16,3,False,False,False
+Hooly Photos Max,Photos Max,alias,photos max,photosmax,photosmax,10,2,False,False,False
+Hooly Photos Plus,Hooly Photos Plus,canonical,hooly photos plus,hoolyphotosplus,hoolyphotosplus,17,3,False,False,False
+Hooly Photos Plus,Photos Plus,alias,photos plus,photosplus,photosplus,11,2,False,False,False
+Hooly Pixel 10,Hooly Pixel 10,canonical,hooly pixel 10,hoolypixel10,hoolypixel10,14,3,True,False,False
+Hooly Pixel 10,Pixel 10,alias,pixel 10,pixel10,pixel10,8,2,True,False,False
+Hooly Pixel 10 Pro,Hooly Pixel 10 Pro,canonical,hooly pixel 10 pro,hoolypixel10pro,hoolypixel10pro,18,4,True,False,False
+Hooly Pixel 10 Pro,Pixel 10 Pro,alias,pixel 10 pro,pixel10pro,pixel10pro,12,3,True,False,False
+Hooly Pixel 9,Hooly Pixel 9,canonical,hooly pixel 9,hoolypixel9,hoolypixel9,13,3,True,False,False
+Hooly Pixel 9,Pixel 9,alias,pixel 9,pixel9,pixel9,7,2,True,False,False
+Hooly Pixel Buds,Hooly Pixel Buds,canonical,hooly pixel buds,hoolypixelbuds,hoolypixelbuds,16,3,False,False,False
+Hooly Pixel Buds,Pixel Buds,alias,pixel buds,pixelbuds,pixelbuds,10,2,False,False,False
+Hooly Pixel Fold,Hooly Pixel Fold,canonical,hooly pixel fold,hoolypixelfold,hoolypixelfold,16,3,False,False,False
+Hooly Pixel Fold,Pixel Fold,alias,pixel fold,pixelfold,pixelfold,10,2,False,False,False
+Hooly Pixel Watch,Hooly Pixel Watch,canonical,hooly pixel watch,hoolypixelwatch,hoolypixelwatch,17,3,False,False,False
+Hooly Pixel Watch,Pixel Watch,alias,pixel watch,pixelwatch,pixelwatch,11,2,False,False,False
+Hooly Q1 2026 Results,Hooly Q1 2026 Results,canonical,hooly q1 2026 results,hoolyq12026results,hoolyq12026results,21,4,True,False,False
+Hooly Q1 2026 Results,Hooly's Q1 results,alias,hooly's q1 results,hooly'sq1results,hoolysq1results,18,3,True,True,False
+Hooly Q2 2026 Results,Hooly Q2 2026 Results,canonical,hooly q2 2026 results,hoolyq22026results,hoolyq22026results,21,4,True,False,False
+Hooly Q2 2026 Results,Hooly's Q2 results,alias,hooly's q2 results,hooly'sq2results,hoolysq2results,18,3,True,True,False
+Hooly Q3 2026 Results,Hooly Q3 2026 Results,canonical,hooly q3 2026 results,hoolyq32026results,hoolyq32026results,21,4,True,False,False
+Hooly Q3 2026 Results,Hooly's Q3 results,alias,hooly's q3 results,hooly'sq3results,hoolysq3results,18,3,True,True,False
+Hooly Q4 2025 Results,Hooly Q4 2025 Results,canonical,hooly q4 2025 results,hoolyq42025results,hoolyq42025results,21,4,True,False,False
+Hooly Q4 2025 Results,Hooly's Q4 results,alias,hooly's q4 results,hooly'sq4results,hoolysq4results,18,3,True,True,False
+Hooly Search,Hooly Search,canonical,hooly search,hoolysearch,hoolysearch,12,2,False,False,False
+Hooly Search,Search,alias,search,search,search,6,1,False,False,True
+Hooly Sheets,Hooly Sheets,canonical,hooly sheets,hoolysheets,hoolysheets,12,2,False,False,False
+Hooly Sustainability Report,Hooly Sustainability Report,canonical,hooly sustainability report,hoolysustainabilityreport,hoolysustainabilityreport,27,3,False,False,False
+Hooly Sustainability Report,Sustainability Report,alias,sustainability report,sustainabilityreport,sustainabilityreport,21,2,False,False,False
+Hooly Translate,Hooly Translate,canonical,hooly translate,hoolytranslate,hoolytranslate,15,2,False,False,False
+Hooly Translate,Translate,alias,translate,translate,translate,9,1,False,False,True
+Hooly Vault,Hooly Vault,canonical,hooly vault,hoolyvault,hoolyvault,11,2,False,False,False
+Hooly Vault,Vault,alias,vault,vault,vault,5,1,False,False,True
+Hooly Workspace,Hooly Workspace,canonical,hooly workspace,hoolyworkspace,hoolyworkspace,15,2,False,False,False
+Hooly Workspace,Workspace plan,alias,workspace plan,workspaceplan,workspaceplan,14,2,False,False,False
+Hooly Workspace Enterprise,Hooly Workspace Enterprise,canonical,hooly workspace enterprise,hoolyworkspaceenterprise,hoolyworkspaceenterprise,26,3,False,False,False
+Hooly Workspace Enterprise,Workspace Enterprise,alias,workspace enterprise,workspaceenterprise,workspaceenterprise,20,2,False,False,False
+Hoovar,Hoovar,canonical,hoovar,hoovar,hoovar,6,1,False,False,True
+Made by Hooly 2026,Made by Hooly 2026,canonical,made by hooly 2026,madebyhooly2026,madebyhooly2026,18,4,True,False,False
+Made by Hooly 2026,Made by Hooly,alias,made by hooly,madebyhooly,madebyhooly,13,3,False,False,False
+Meridian Health,Meridian Health,canonical,meridian health,meridianhealth,meridianhealth,15,2,False,False,False
+Meridian Health,Meridian,alias,meridian,meridian,meridian,8,1,False,False,True
+Patreese,Patreese,canonical,patreese,patreese,patreese,8,1,False,False,True
+Peter Gregori,Peter Gregori,canonical,peter gregori,petergregori,petergregori,13,2,False,False,False
+Quayside Hall,Quayside Hall,canonical,quayside hall,quaysidehall,quaysidehall,13,2,False,False,False
+Rheinhalle,Rheinhalle,canonical,rheinhalle,rheinhalle,rheinhalle,10,1,False,False,True
+Ron LaFlame,Ron LaFlame,canonical,ron laflame,ronlaflame,ronlaflame,11,2,False,False,False
+The May 2026 outage,The May 2026 outage,canonical,the may 2026 outage,themay2026outage,themay2026outage,19,4,True,False,False
+The May 2026 outage,outage,alias,outage,outage,outage,6,1,False,False,True

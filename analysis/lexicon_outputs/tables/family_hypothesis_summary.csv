@@ -1,0 +1,10 @@
+family_hypothesis,subjects,slots,aliases,median_breadth
+declared event,13,113,15,10.0
+device (hypothesis),6,62,6,10.5
+external organisation (hypothesis),2,2,2,1.0
+office (hypothesis),2,15,2,7.5
+organisation / programme (hypothesis),4,66,6,12.5
+person (hypothesis),8,16,0,1.5
+plan / suite (hypothesis),7,43,5,4.0
+software / service (hypothesis),18,195,12,8.0
+venue (hypothesis),2,2,0,1.0

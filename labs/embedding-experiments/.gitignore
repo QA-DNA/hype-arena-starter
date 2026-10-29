@@ -1,0 +1,13 @@
+# Environments, model caches, weights and arrays stay out of git.
+.venv*/
+hf/
+models/
+emb/
+cache/
+out/
+scores/
+*.npy
+*.safetensors
+*.bin
+*.onnx
+__pycache__/

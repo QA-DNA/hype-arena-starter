@@ -1,0 +1,69 @@
+{
+ "worker": "C",
+ "tag": "lofo:development:aside:2",
+ "world": "dev",
+ "only": "development:aside:2",
+ "held_out": false,
+ "time": "2026-10-28 22:40:44",
+ "anchors": {
+  "pair": {
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0
+  },
+  "trip": {
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0
+  },
+  "row_exact": 1.0,
+  "rows": 76,
+  "assertions": 76,
+  "interval_row_acc": 1.0,
+  "interval_exact_when_stated": 1.0
+ },
+ "targets": {
+  "pair": {
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0
+  },
+  "trip": {
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0
+  },
+  "row_exact": 1.0,
+  "rows": 836,
+  "assertions": 1027,
+  "interval_row_acc": 1.0
+ },
+ "all": {
+  "pair": {
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0
+  },
+  "trip": {
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0
+  },
+  "row_exact": 1.0,
+  "rows": 912,
+  "assertions": 1103,
+  "interval_row_acc": 1.0,
+  "interval_exact_when_stated": 1.0
+ },
+ "value_acc_given_pair": {
+  "boolean": 1.0,
+  "date": 1.0,
+  "duration": 1.0,
+  "money": 1.0,
+  "name": 1.0,
+  "percent": 1.0,
+  "quantity": 1.0,
+  "version": 1.0
+ },
+ "error_classes": {}
+}

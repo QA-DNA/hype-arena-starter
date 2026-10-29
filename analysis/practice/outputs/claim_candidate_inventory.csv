@@ -1,0 +1,9 @@
+,candidate_count
+distinct exact true observed key/value pairs,830
+keys with unique latest-page exact observation,501
+dimension-compatible unordered latest-observation pairs,4451
+same-attribute subset of those comparison pairs,428
+keys with multiple exact true observed values (change review),245
+distinct observed name links to lexicon subjects,14
+linked target-attribute combinations before temporal proof,33
+events with an exact true date observation,6

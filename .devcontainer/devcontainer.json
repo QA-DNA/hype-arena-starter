@@ -1,0 +1,14 @@
+{
+  "name": "VERIDYCT · Rust workspace",
+  "build": {"dockerfile": "Dockerfile"},
+  "remoteUser": "vscode",
+  "forwardPorts": [8787],
+  "portsAttributes": {"8787": {"label": "VERIDYCT workbench", "onAutoForward": "notify"}},
+  "postCreateCommand": "cargo xtask setup",
+  "customizations": {
+    "vscode": {
+      "extensions": ["rust-lang.rust-analyzer", "tamasfe.even-better-toml"],
+      "settings": {"editor.formatOnSave": true, "rust-analyzer.check.command": "clippy"}
+    }
+  }
+}

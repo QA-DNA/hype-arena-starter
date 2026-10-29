@@ -1,0 +1,34 @@
+W1028 18:12:49.041000 52297 /private/tmp/veridyct-bench/.venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Could not reach the Hub (Cannot reach https://huggingface.co/api/models/BAAI/bge-base-en-v1.5: offline mode is enabled. To disable it, please unset the `HF_HUB_OFFLINE` environment variable.). Using cached commit hash for 'BAAI/bge-base-en-v1.5'.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 11972.72it/s]
+[BAAI/bge-base-en-v1.5] loaded in 0.1s params=109.5M disk=417.7MB dim=768 max_seq=512
+[BAAI/bge-base-en-v1.5] speed/encode pass0 took 14.4s
+[BAAI/bge-base-en-v1.5] speed/encode pass1 took 12.0s
+[BAAI/bge-base-en-v1.5] speed/encode pass2 took 13.7s
+[BAAI/bge-base-en-v1.5] speed/bs32_2000texts: sentences_per_s=156.441
+[BAAI/bge-base-en-v1.5] zeroshot describe took 3.3s
+[BAAI/bge-base-en-v1.5] attr_zeroshot/describe: acc_all=0.795, acc_unseen=0.795
+[BAAI/bge-base-en-v1.5] zeroshot words took 1.1s
+[BAAI/bge-base-en-v1.5] attr_zeroshot/attr_words_only: acc_all=0.817, acc_unseen=0.817
+[BAAI/bge-base-en-v1.5] zeroshot describe symrows took 0.0s
+[BAAI/bge-base-en-v1.5] attr_zeroshot/describe_rows_no_query_prefix: acc_all=0.777, acc_unseen=0.777
+[BAAI/bge-base-en-v1.5] key_retrieval took 0.5s
+[BAAI/bge-base-en-v1.5] key_retrieval/cosine_k10: recall_at_k=0.653, mrr=0.888
+[BAAI/bge-base-en-v1.5] truth_false took 0.0s
+[BAAI/bge-base-en-v1.5] truth_false/LR_balanced_C1: auc=0.596, ap=0.208
+[BAAI/bge-base-en-v1.5] truth_three took 0.2s
+[BAAI/bge-base-en-v1.5] truth_three/LR_balanced_C1: acc=0.575, macro_f1=0.344, arena_best=0.217
+[BAAI/bge-base-en-v1.5] attr_knn took 0.1s
+[BAAI/bge-base-en-v1.5] attr_knn/k5: acc_all=0.813, acc_ge5=0.952, acc_1to4=0.769, acc_unseen=0.000
+[BAAI/bge-base-en-v1.5] attr_probe (page folds) took 4.0s
+[BAAI/bge-base-en-v1.5] attr_probe/LR_C10: acc_all=0.831, acc_ge5=0.978, acc_1to4=0.781, acc_unseen=0.000
+[BAAI/bge-base-en-v1.5] attr_hybrid/z_probe+z_zeroshot: acc_all=0.909, acc_ge5=0.978, acc_1to4=0.882, acc_unseen=0.553
+[BAAI/bge-base-en-v1.5] attr_hybrid/z_probe+2*z_zeroshot: acc_all=0.904, acc_ge5=0.944, acc_1to4=0.883, acc_unseen=0.750
+[BAAI/bge-base-en-v1.5] attr_hybrid/z_probe+z_zeroshot_unseen_max: acc_all=0.904, acc_ge5=0.948, acc_1to4=0.862, acc_unseen=0.908
+[BAAI/bge-base-en-v1.5] attr_unseen (attribute folds) took 3.1s
+[BAAI/bge-base-en-v1.5] attr_unseen/probe_alone_LR_C10: acc_all=0.000, acc_unseen=0.000
+[BAAI/bge-base-en-v1.5] attr_unseen/zeroshot_alone: acc_all=0.795, acc_unseen=0.795
+[BAAI/bge-base-en-v1.5] attr_unseen/hybrid_unseen_max: acc_all=0.841, acc_unseen=0.841
+[BAAI/bge-base-en-v1.5] attr_unseen/hybrid_z_probe+z_zeroshot: acc_all=0.475, acc_unseen=0.475
+[BAAI/bge-base-en-v1.5] attr_unseen/hybrid_z_probe+2*z_zeroshot: acc_all=0.672, acc_unseen=0.672
+[BAAI/bge-base-en-v1.5] ALL DONE in 72s

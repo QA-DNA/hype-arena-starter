@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:veridyct:parser-v3-challenge:1",
+  "title": "Input-only independent parser challenge",
+  "$ref": "#/$defs/input",
+  "$defs": {
+    "input": {
+      "type": "object",
+      "required": ["id", "document_id", "text", "context"],
+      "additionalProperties": false,
+      "properties": {
+        "id": {"type": "string", "minLength": 1},
+        "document_id": {"type": "string", "minLength": 1},
+        "text": {"type": "string", "minLength": 1},
+        "context": {
+          "type": "object",
+          "required": ["enabled", "document_id", "prior_texts"],
+          "additionalProperties": false,
+          "properties": {
+            "enabled": {"type": "boolean"},
+            "document_id": {"type": "string"},
+            "prior_texts": {"type": "array", "items": {"type": "string"}}
+          }
+        }
+      }
+    },
+    "value": {
+      "type": "object",
+      "required": ["kind", "value"],
+      "properties": {
+        "kind": {"enum": ["quantity", "money", "percent", "date", "version", "duration", "name", "boolean"]},
+        "value": {"type": ["string", "number", "boolean"]},
+        "unit": {"type": "string"},
+        "currency": {"type": "string", "pattern": "^[A-Z]{3}$"},
+        "per": {"enum": ["day", "week", "month", "year"]},
+        "op": {"enum": ["eq", "ne", "lt", "le", "gt", "ge"]}
+      }
+    },
+    "reference": {
+      "type": "object",
+      "required": ["subject", "attribute"],
+      "properties": {"subject": {"type": "string"}, "attribute": {"type": "string"}, "date": {"type": "string"}}
+    },
+    "fact": {
+      "allOf": [{"$ref": "#/$defs/reference"}],
+      "required": ["value"],
+      "properties": {"value": {"$ref": "#/$defs/value"}}
+    },
+    "ast": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "required": ["type", "fact"],
+          "properties": {"type": {"const": "atom"}, "fact": {"$ref": "#/$defs/fact"}}
+        },
+        {
+          "type": "object",
+          "required": ["type", "children"],
+          "properties": {"type": {"enum": ["all", "any"]}, "children": {"type": "array", "minItems": 2, "items": {"$ref": "#/$defs/ast"}}}
+        },
+        {
+          "type": "object",
+          "required": ["type", "child"],
+          "properties": {"type": {"const": "not"}, "child": {"$ref": "#/$defs/ast"}}
+        },
+        {
+          "type": "object",
+          "required": ["type", "left", "op", "right"],
+          "properties": {
+            "type": {"const": "compare"}, "left": {"$ref": "#/$defs/reference"}, "right": {"$ref": "#/$defs/reference"},
+            "op": {"enum": ["eq", "ne", "lt", "le", "gt", "ge"]}
+          }
+        }
+      ]
+    },
+    "prediction": {
+      "type": "object",
+      "required": ["id", "status", "ast", "assertions", "notes"],
+      "properties": {
+        "id": {"type": "string"}, "status": {"enum": ["parsed", "partial", "unresolved", "ambiguous"]},
+        "ast": {"$ref": "#/$defs/ast"}, "assertions": {"type": "array", "items": {"$ref": "#/$defs/fact"}},
+        "notes": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}

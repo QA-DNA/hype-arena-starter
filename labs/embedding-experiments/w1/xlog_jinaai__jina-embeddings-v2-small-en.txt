@@ -1,0 +1,16 @@
+[jinaai/jina-embeddings-v2-small-en] attr_probe/LR_C1: acc_all=0.321 ge5=0.617 1to4=0.078 unseen=0.000
+[jinaai/jina-embeddings-v2-small-en] attr_hybrid/C1_z_probe+z_zeroshot: acc_all=0.722 ge5=0.908 1to4=0.547 unseen=0.724
+[jinaai/jina-embeddings-v2-small-en] attr_hybrid/C1_z_probe+z_zeroshot_unseen_max: acc_all=0.703 ge5=0.881 1to4=0.511 unseen=0.934
+[jinaai/jina-embeddings-v2-small-en] attr_unseen/C1_hybrid_z_probe+z_zeroshot: acc_all=0.631 ge5=nan 1to4=nan unseen=0.631
+[jinaai/jina-embeddings-v2-small-en] attr_unseen/C1_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.890 ge5=nan 1to4=nan unseen=0.890
+[jinaai/jina-embeddings-v2-small-en] attr_probe/LR_C100: acc_all=0.881 ge5=0.976 1to4=0.886 unseen=0.000
+[jinaai/jina-embeddings-v2-small-en] attr_hybrid/C100_z_probe+z_zeroshot: acc_all=0.924 ge5=0.966 1to4=0.922 unseen=0.566
+[jinaai/jina-embeddings-v2-small-en] attr_hybrid/C100_z_probe+z_zeroshot_unseen_max: acc_all=0.924 ge5=0.945 1to4=0.904 unseen=0.934
+[jinaai/jina-embeddings-v2-small-en] attr_unseen/C100_hybrid_z_probe+z_zeroshot: acc_all=0.528 ge5=nan 1to4=nan unseen=0.528
+[jinaai/jina-embeddings-v2-small-en] attr_unseen/C100_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.871 ge5=nan 1to4=nan unseen=0.871
+[jinaai/jina-embeddings-v2-small-en] attr_probe/LR_C1000: acc_all=0.888 ge5=0.976 1to4=0.900 unseen=0.000
+[jinaai/jina-embeddings-v2-small-en] attr_hybrid/C1000_z_probe+z_zeroshot: acc_all=0.928 ge5=0.963 1to4=0.933 unseen=0.566
+[jinaai/jina-embeddings-v2-small-en] attr_hybrid/C1000_z_probe+z_zeroshot_unseen_max: acc_all=0.928 ge5=0.944 1to4=0.915 unseen=0.921
+[jinaai/jina-embeddings-v2-small-en] attr_unseen/C1000_hybrid_z_probe+z_zeroshot: acc_all=0.580 ge5=nan 1to4=nan unseen=0.580
+[jinaai/jina-embeddings-v2-small-en] attr_unseen/C1000_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.873 ge5=nan 1to4=nan unseen=0.873
+[jinaai/jina-embeddings-v2-small-en] EXTRAS DONE

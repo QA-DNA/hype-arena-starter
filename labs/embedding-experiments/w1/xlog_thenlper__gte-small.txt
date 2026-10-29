@@ -1,0 +1,20 @@
+W1028 18:29:44.191000 72511 /private/tmp/veridyct-bench/.venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Could not reach the Hub (Cannot reach https://huggingface.co/api/models/thenlper/gte-small: offline mode is enabled. To disable it, please unset the `HF_HUB_OFFLINE` environment variable.). Using cached commit hash for 'thenlper/gte-small'.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 6112.58it/s]
+This model was loaded in torch.float16 on CPU. Depending on your CPU, inference may be significantly slower than with torch.float32. Consider comparing inference speeds by loading with `model_kwargs={"dtype": torch.float32}`.
+[thenlper/gte-small] attr_probe/LR_C1: acc_all=0.269 ge5=0.517 1to4=0.064 unseen=0.000
+[thenlper/gte-small] attr_hybrid/C1_z_probe+z_zeroshot: acc_all=0.664 ge5=0.856 1to4=0.481 unseen=0.697
+[thenlper/gte-small] attr_hybrid/C1_z_probe+z_zeroshot_unseen_max: acc_all=0.647 ge5=0.822 1to4=0.451 unseen=0.947
+[thenlper/gte-small] attr_unseen/C1_hybrid_z_probe+z_zeroshot: acc_all=0.564 ge5=nan 1to4=nan unseen=0.564
+[thenlper/gte-small] attr_unseen/C1_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.854 ge5=nan 1to4=nan unseen=0.854
+[thenlper/gte-small] attr_probe/LR_C100: acc_all=0.867 ge5=0.967 1to4=0.865 unseen=0.000
+[thenlper/gte-small] attr_hybrid/C100_z_probe+z_zeroshot: acc_all=0.911 ge5=0.957 1to4=0.904 unseen=0.579
+[thenlper/gte-small] attr_hybrid/C100_z_probe+z_zeroshot_unseen_max: acc_all=0.909 ge5=0.921 1to4=0.893 unseen=0.947
+[thenlper/gte-small] attr_unseen/C100_hybrid_z_probe+z_zeroshot: acc_all=0.476 ge5=nan 1to4=nan unseen=0.476
+[thenlper/gte-small] attr_unseen/C100_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.830 ge5=nan 1to4=nan unseen=0.830
+[thenlper/gte-small] attr_probe/LR_C1000: acc_all=0.875 ge5=0.961 1to4=0.886 unseen=0.000
+[thenlper/gte-small] attr_hybrid/C1000_z_probe+z_zeroshot: acc_all=0.907 ge5=0.945 1to4=0.908 unseen=0.566
+[thenlper/gte-small] attr_hybrid/C1000_z_probe+z_zeroshot_unseen_max: acc_all=0.907 ge5=0.915 1to4=0.896 unseen=0.947
+[thenlper/gte-small] attr_unseen/C1000_hybrid_z_probe+z_zeroshot: acc_all=0.506 ge5=nan 1to4=nan unseen=0.506
+[thenlper/gte-small] attr_unseen/C1000_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.834 ge5=nan 1to4=nan unseen=0.834
+[thenlper/gte-small] EXTRAS DONE

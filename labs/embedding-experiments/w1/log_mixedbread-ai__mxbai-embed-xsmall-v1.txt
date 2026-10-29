@@ -1,0 +1,35 @@
+W1028 18:21:29.944000 62583 /private/tmp/veridyct-bench/.venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Could not reach the Hub (Cannot reach https://huggingface.co/api/models/mixedbread-ai/mxbai-embed-xsmall-v1: offline mode is enabled. To disable it, please unset the `HF_HUB_OFFLINE` environment variable.). Using cached commit hash for 'mixedbread-ai/mxbai-embed-xsmall-v1'.
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 7276.14it/s]
+This model was loaded in torch.float16 on CPU. Depending on your CPU, inference may be significantly slower than with torch.float32. Consider comparing inference speeds by loading with `model_kwargs={"dtype": torch.float32}`.
+[mixedbread-ai/mxbai-embed-xsmall-v1] loaded in 0.1s params=24.1M disk=46.0MB dim=384 max_seq=512
+[mixedbread-ai/mxbai-embed-xsmall-v1] speed/encode pass0 took 3.7s
+[mixedbread-ai/mxbai-embed-xsmall-v1] speed/encode pass1 took 3.7s
+[mixedbread-ai/mxbai-embed-xsmall-v1] speed/encode pass2 took 3.6s
+[mixedbread-ai/mxbai-embed-xsmall-v1] speed/bs32_2000texts: sentences_per_s=566.867
+[mixedbread-ai/mxbai-embed-xsmall-v1] zeroshot describe took 0.6s
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_zeroshot/describe: acc_all=0.828, acc_unseen=0.828
+[mixedbread-ai/mxbai-embed-xsmall-v1] zeroshot words took 0.2s
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_zeroshot/attr_words_only: acc_all=0.793, acc_unseen=0.793
+[mixedbread-ai/mxbai-embed-xsmall-v1] zeroshot describe symrows took 0.0s
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_zeroshot/describe_rows_no_query_prefix: acc_all=0.825, acc_unseen=0.825
+[mixedbread-ai/mxbai-embed-xsmall-v1] key_retrieval took 0.6s
+[mixedbread-ai/mxbai-embed-xsmall-v1] key_retrieval/cosine_k10: recall_at_k=0.683, mrr=0.888
+[mixedbread-ai/mxbai-embed-xsmall-v1] truth_false took 0.0s
+[mixedbread-ai/mxbai-embed-xsmall-v1] truth_false/LR_balanced_C1: auc=0.580, ap=0.190
+[mixedbread-ai/mxbai-embed-xsmall-v1] truth_three took 0.1s
+[mixedbread-ai/mxbai-embed-xsmall-v1] truth_three/LR_balanced_C1: acc=0.556, macro_f1=0.331, arena_best=0.198
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_knn took 0.1s
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_knn/k5: acc_all=0.819, acc_ge5=0.945, acc_1to4=0.788, acc_unseen=0.000
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_probe (page folds) took 2.4s
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_probe/LR_C10: acc_all=0.860, acc_ge5=0.969, acc_1to4=0.848, acc_unseen=0.000
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_hybrid/z_probe+z_zeroshot: acc_all=0.911, acc_ge5=0.973, acc_1to4=0.891, acc_unseen=0.553
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_hybrid/z_probe+2*z_zeroshot: acc_all=0.909, acc_ge5=0.945, acc_1to4=0.896, acc_unseen=0.724
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_hybrid/z_probe+z_zeroshot_unseen_max: acc_all=0.909, acc_ge5=0.952, acc_1to4=0.877, acc_unseen=0.829
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_unseen (attribute folds) took 1.8s
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_unseen/probe_alone_LR_C10: acc_all=0.000, acc_unseen=0.000
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_unseen/zeroshot_alone: acc_all=0.828, acc_unseen=0.828
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_unseen/hybrid_unseen_max: acc_all=0.858, acc_unseen=0.858
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_unseen/hybrid_z_probe+z_zeroshot: acc_all=0.478, acc_unseen=0.478
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_unseen/hybrid_z_probe+2*z_zeroshot: acc_all=0.672, acc_unseen=0.672
+[mixedbread-ai/mxbai-embed-xsmall-v1] ALL DONE in 22s

@@ -1,0 +1,9 @@
+layer,metrics,report_slices
+Entity resolution,Span precision/recall/F1; exact entity-set match,"Canonical, alias, nesting, generic-word context"
+Attribute extraction,Micro and macro exact match; coverage,"Subject, attribute frequency, family, multi-claim rows"
+Value parsing,Exact structured match and dimension errors,"Kind, unit, period, comparator, date precision"
+Truth classification,Per-label confusion matrix and macro F1,"Date ranges, known vs unknown evidence, contradictions"
+Confidence,"Reliability plots, Brier score when probabilities are defined",Correctness of emitted label; abstention separately
+Selective prediction,Accuracy/error vs answered fraction,Separate epistemic unknowns from low-confidence extraction
+Claim generation,"Schema + text validity, supported truth, novelty, unique forms","Each claim type; target exactly 1,000 valid claims"
+Runtime,"End-to-end wall time, peak memory, output completeness",Offline 2-CPU/6-GiB constraints and deadline handling

@@ -1,0 +1,1 @@
+[{"model": "lrC0.1", "scorer_pts": true, "extra_features": ["F2/f2feat.py:all"], "plugins": ["src_idblock"]}]

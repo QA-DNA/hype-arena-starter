@@ -1,0 +1,186 @@
+{
+  "note": "Curated development-time comparison against an evidence-based LLM review. Agreement with these provisional reference labels is not verified ground-truth accuracy, not independent generalization accuracy, and not confidence calibration. Runtime input labels are all blank; reference labels are kept separate.",
+  "provenance": {
+    "author": "Development-time LLM review",
+    "model": "GPT-6 family assistant; no external inference at runtime",
+    "method": "Evidence-based manual reference annotation of eight novel same-date paraphrases, eight controlled contradictory value mutations, and four unsupported or underdetermined claims.",
+    "created_utc": "2026-10-28T16:38:37+00:00",
+    "source_commit": "df5556a6d2cdb69966c2faa7793b87eaff9ce6e2",
+    "sources": {
+      "data/practice.csv": "52743befaa0fa38b89b5c802c0f953d242ae027c86839c9c0f05a9e69a86d8e9",
+      "data/lexicon.json": "d0fd5e9bdc6b33ad3ec160001f50e00e7f8bf2b25a92779022f893db7c3d5507"
+    },
+    "input_csv_sha256": "fc807c9941cf96a40640aadaae4ee9cca35cfc932ce9da3049d86633d99d32a4",
+    "runtime_llm": false,
+    "training_use": "Demonstration only. Not added to model training; no model tuning against this fixture.",
+    "ground_truth_status": "Provisional LLM assessment from supplied evidence. Not organizer-certified gold labels.",
+    "construction": "Reference annotations fixed before running the current solver on this fixture. The examples are derived from public practice evidence; they are not an independent unseen benchmark.",
+    "class_counts": {
+      "true": 8,
+      "false": 8,
+      "unsure": 4
+    }
+  },
+  "references": [
+    {
+      "id": "review-001",
+      "expected": "true",
+      "reason": "The trusted source dates Holdan's joining to 12 January 2026; this paraphrase preserves the exact date.",
+      "source_ids": [
+        "p-1"
+      ]
+    },
+    {
+      "id": "review-002",
+      "expected": "true",
+      "reason": "The trusted team_size assertion is exactly 4 engineers on the same observation date; the explicit subject resolves the source pronoun.",
+      "source_ids": [
+        "p-4"
+      ]
+    },
+    {
+      "id": "review-003",
+      "expected": "true",
+      "reason": "The true regions assertion is 3 regions on 2026-01-12; this states only that fact and no later continuity.",
+      "source_ids": [
+        "p-5"
+      ]
+    },
+    {
+      "id": "review-004",
+      "expected": "true",
+      "reason": "The trusted uptime_sla is 99.9 percent for paid accounts on the same date; this is the promise, not measured uptime.",
+      "source_ids": [
+        "p-6"
+      ]
+    },
+    {
+      "id": "review-005",
+      "expected": "true",
+      "reason": "The true price assertion is EUR 19 per month on 2 June 2026; currency and billing period are preserved.",
+      "source_ids": [
+        "p-27"
+      ]
+    },
+    {
+      "id": "review-006",
+      "expected": "true",
+      "reason": "The same-day trusted battery_capacity is 5015 mAh for Hooly Pixel Fold; the canonical name replaces the alias.",
+      "source_ids": [
+        "p-155"
+      ]
+    },
+    {
+      "id": "review-007",
+      "expected": "true",
+      "reason": "The same-day trusted storage assertion is 100 GB for Hooly Photos Lite; the separate source price is not restated.",
+      "source_ids": [
+        "p-81"
+      ]
+    },
+    {
+      "id": "review-008",
+      "expected": "true",
+      "reason": "The trusted languages assertion is 6 on this date; integrations and later planned expansion are separate facts.",
+      "source_ids": [
+        "p-25"
+      ]
+    },
+    {
+      "id": "review-009",
+      "expected": "false",
+      "reason": "This changes the exact joined date from 2026-01-12 to 2026-01-13, contradicting the trusted same-day assertion.",
+      "source_ids": [
+        "p-1"
+      ]
+    },
+    {
+      "id": "review-010",
+      "expected": "false",
+      "reason": "This changes the exact team_size from 4 to 40 engineers on the same date.",
+      "source_ids": [
+        "p-4"
+      ]
+    },
+    {
+      "id": "review-011",
+      "expected": "false",
+      "reason": "This exact regions count contradicts the trusted value 3 on the same date; it does not concern a later expansion.",
+      "source_ids": [
+        "p-5"
+      ]
+    },
+    {
+      "id": "review-012",
+      "expected": "false",
+      "reason": "This changes the precise uptime_sla from 99.9 to 95 percent; it is not a weaker-bound inequality or measured-uptime statement.",
+      "source_ids": [
+        "p-6"
+      ]
+    },
+    {
+      "id": "review-013",
+      "expected": "false",
+      "reason": "This changes the monthly EUR price from 19 to 190 on the same date, keeping the same currency and period.",
+      "source_ids": [
+        "p-27"
+      ]
+    },
+    {
+      "id": "review-014",
+      "expected": "false",
+      "reason": "This exact capacity contradicts the trusted 5015 mAh value on the same date.",
+      "source_ids": [
+        "p-155"
+      ]
+    },
+    {
+      "id": "review-015",
+      "expected": "false",
+      "reason": "This exact storage amount contradicts 100 GB for this plan and date; no unit conversion makes these equal.",
+      "source_ids": [
+        "p-81"
+      ]
+    },
+    {
+      "id": "review-016",
+      "expected": "false",
+      "reason": "This exact languages count contradicts 6 on this date; planned later expansion does not support this claim now.",
+      "source_ids": [
+        "p-25"
+      ]
+    },
+    {
+      "id": "review-017",
+      "expected": "unsure",
+      "reason": "The available source gives a joining date, not a favourite colour. No supplied lexicon attribute or trusted practice assertion establishes this personal preference.",
+      "source_ids": [
+        "p-1"
+      ]
+    },
+    {
+      "id": "review-018",
+      "expected": "unsure",
+      "reason": "The same-day trusted customers statement is strictly greater than 100, not an exact count. It permits 150 and other counts, so it neither establishes nor refutes exactly 150.",
+      "source_ids": [
+        "p-7"
+      ]
+    },
+    {
+      "id": "review-019",
+      "expected": "unsure",
+      "reason": "The cited source establishes availability and price, not response latency; no latency attribute or trusted practice assertion for Jules establishes 17 milliseconds.",
+      "source_ids": [
+        "p-27"
+      ]
+    },
+    {
+      "id": "review-020",
+      "expected": "unsure",
+      "reason": "The source establishes this plan's storage allowance and price, not exclusive storage geography. These facts do not establish or refute Iceland-only storage.",
+      "source_ids": [
+        "p-81"
+      ]
+    }
+  ]
+}

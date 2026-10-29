@@ -1,0 +1,19 @@
+W1028 18:31:20.064000 74231 /private/tmp/veridyct-bench/.venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Could not reach the Hub (Cannot reach https://huggingface.co/api/models/intfloat/e5-base-v2: offline mode is enabled. To disable it, please unset the `HF_HUB_OFFLINE` environment variable.). Using cached commit hash for 'intfloat/e5-base-v2'.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5863.48it/s]
+[intfloat/e5-base-v2] attr_probe/LR_C1: acc_all=0.291 ge5=0.560 1to4=0.070 unseen=0.000
+[intfloat/e5-base-v2] attr_hybrid/C1_z_probe+z_zeroshot: acc_all=0.651 ge5=0.856 1to4=0.464 unseen=0.605
+[intfloat/e5-base-v2] attr_hybrid/C1_z_probe+z_zeroshot_unseen_max: acc_all=0.639 ge5=0.831 1to4=0.436 unseen=0.868
+[intfloat/e5-base-v2] attr_unseen/C1_hybrid_z_probe+z_zeroshot: acc_all=0.528 ge5=nan 1to4=nan unseen=0.528
+[intfloat/e5-base-v2] attr_unseen/C1_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.847 ge5=nan 1to4=nan unseen=0.847
+[intfloat/e5-base-v2] attr_probe/LR_C100: acc_all=0.873 ge5=0.976 1to4=0.868 unseen=0.000
+[intfloat/e5-base-v2] attr_hybrid/C100_z_probe+z_zeroshot: acc_all=0.925 ge5=0.976 1to4=0.919 unseen=0.526
+[intfloat/e5-base-v2] attr_hybrid/C100_z_probe+z_zeroshot_unseen_max: acc_all=0.917 ge5=0.942 1to4=0.900 unseen=0.855
+[intfloat/e5-base-v2] attr_unseen/C100_hybrid_z_probe+z_zeroshot: acc_all=0.480 ge5=nan 1to4=nan unseen=0.480
+[intfloat/e5-base-v2] attr_unseen/C100_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.841 ge5=nan 1to4=nan unseen=0.841
+[intfloat/e5-base-v2] attr_probe/LR_C1000: acc_all=0.881 ge5=0.975 1to4=0.887 unseen=0.000
+[intfloat/e5-base-v2] attr_hybrid/C1000_z_probe+z_zeroshot: acc_all=0.929 ge5=0.969 1to4=0.928 unseen=0.592
+[intfloat/e5-base-v2] attr_hybrid/C1000_z_probe+z_zeroshot_unseen_max: acc_all=0.917 ge5=0.936 1to4=0.905 unseen=0.855
+[intfloat/e5-base-v2] attr_unseen/C1000_hybrid_z_probe+z_zeroshot: acc_all=0.535 ge5=nan 1to4=nan unseen=0.535
+[intfloat/e5-base-v2] attr_unseen/C1000_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.840 ge5=nan 1to4=nan unseen=0.840
+[intfloat/e5-base-v2] EXTRAS DONE

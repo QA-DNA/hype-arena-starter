@@ -1,0 +1,6 @@
+key,unique_groups,repeated_groups,rows_in_repeated_groups,repeated_groups_with_mixed_labels
+text,1879,16,34,4
+text_norm,1879,16,34,4
+bundle,1181,438,1154,88
+fact_bundle,737,415,1575,181
+template,1806,71,162,11

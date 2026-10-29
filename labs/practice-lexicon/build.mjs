@@ -1,0 +1,20 @@
+import { readFile, writeFile, mkdir } from 'node:fs/promises';
+import { fileURLToPath } from 'node:url';
+import { resolve, dirname } from 'node:path';
+import { createHash } from 'node:crypto';
+import { parseCsv, createModel } from './core.mjs';
+
+const here = dirname(fileURLToPath(import.meta.url));
+const root = resolve(here, '../..');
+const csv = await readFile(resolve(root, 'data/practice.csv'), 'utf8');
+const lexiconText = await readFile(resolve(root, 'data/lexicon.json'), 'utf8');
+const rows = parseCsv(csv), lexicon = JSON.parse(lexiconText);
+const model = createModel(rows, lexicon);
+const hash = source => createHash('sha256').update(source).digest('hex');
+const payload = JSON.stringify({ rows, lexicon, provenance: { practice: hash(csv), lexicon: hash(lexiconText), source: 'data/practice.csv + data/lexicon.json' } }).replaceAll('<', '\\u003c');
+const [template, css, core, graph, app] = await Promise.all(['index.template.html', 'styles.css', 'core.mjs', 'graph.js', 'app.js'].map(file => readFile(resolve(here, file), 'utf8')));
+const html = template.replace('/* LAB_STYLES */', () => css).replace('/* LAB_DATA */', () => payload).replace('/* LAB_CODE */', () => core.replace(/^export /gm, '') + '\n' + graph + '\n' + app);
+const output = resolve(root, 'artifacts/practice-lexicon-lab/index.html');
+await mkdir(dirname(output), { recursive: true });
+await writeFile(output, html, 'utf8');
+console.log(`Built ${output}\n${model.rows.length} rows / ${model.subjects.size} subjects / ${model.pairs.size} subject-attribute pairs / ${Buffer.byteLength(html)} bytes`);

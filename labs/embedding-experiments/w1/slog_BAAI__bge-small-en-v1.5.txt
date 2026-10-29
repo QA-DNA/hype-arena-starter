@@ -1,0 +1,4 @@
+W1028 18:35:01.824000 78498 /private/tmp/veridyct-bench/.venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Could not reach the Hub (Cannot reach https://huggingface.co/api/models/BAAI/bge-small-en-v1.5: offline mode is enabled. To disable it, please unset the `HF_HUB_OFFLINE` environment variable.). Using cached commit hash for 'BAAI/bge-small-en-v1.5'.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 10605.40it/s]
+BAAI/bge-small-en-v1.5 {'sentences_per_s': 303.089, 'sents_per_cpu_s': 274.55, 'wall_s': 6.599, 'cpu_s': 7.285, 'est_sec_20k_x86': 131.974, 'cpu_over_wall': 1.104}

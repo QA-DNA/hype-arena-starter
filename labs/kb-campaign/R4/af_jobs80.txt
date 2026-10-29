@@ -1,0 +1,80 @@
+0	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:w_nds"]}	0.81443
+1	P3/p3.py:Stack	{"C": 1.0, "dec": "iso:arena3", "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:w_nds"]}	0.81437
+2	P3/p3.py:Stack	{"C": 3.0, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:w_nds"]}	0.81425
+3	P3/p3.py:Stack	{"C": 10.0, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:w_nds"]}	0.81384
+4	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:w_nds"], "offset": true}	0.81263
+5	P3/p3.py:Stack	{"C": 1.0, "dedup": true, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:w_nds"]}	0.81259
+6	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:w_nds", "F2/f2feat.py:hmm#0"]}	0.81257
+7	P3/p3.py:Stack	{"C": 3.0, "dedup": true, "feats": ["F1/plugins.py:td_post#0"]}	0.81167
+8	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:w_nds"], "oofmap": false}	0.81146
+9	P3/p3.py:Stack	{"C": 0.3, "feats": ["P3/p3.py:hmm2", "F1/plugins.py:td_post#0"]}	0.81140
+10	P3/p3.py:Stack	{"C": 0.3, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:w_nds"]}	0.81119
+11	P3/p3.py:Stack	{"C": 0.1, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:w_nds"]}	0.81118
+12	P3/p3.py:Stack	{"C": 1.0, "feats": ["P3/p3.py:hmm2", "F1/plugins.py:td_post#0", "F5/fp.py:w_nds"]}	0.81095
+13	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:w_nds", "P3/p3.py:hmm2"]}	0.81095
+14	P3/p3.py:Stack	{"C": 1.0, "feats": ["P3/p3.py:hmm2", "F1/plugins.py:td_post#0"]}	0.81092
+15	P3/p3.py:Stack	{"C": 0.1, "feats": ["P3/p3.py:hmm2", "F1/plugins.py:td_post#0"]}	0.81076
+16	P3/p3.py:Stack	{"C": 1.0, "dec": "iso:arena3", "feats": ["F1/plugins.py:td_post#0"]}	0.81057
+17	P3/p3.py:Stack	{"C": 0.3, "feats": ["F1/plugins.py:td_post#0"]}	0.81038
+18	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0"], "oofmap": false}	0.81034
+19	P3/p3.py:Stack	{"C": 3.0, "feats": ["F1/plugins.py:td_post#0"]}	0.81019
+20	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:w_nds", "F4/f4graph.py:page_lie"]}	0.81009
+21	P3/p3.py:Stack	{"C": 10.0, "feats": ["F1/plugins.py:td_post#0"]}	0.81003
+22	P3/p3.py:Stack	{"C": 1.0, "feats": ["P3/p3.py:hmm2", "F1/plugins.py:td_post#0", "F5/fp.py:restate2"]}	0.80972
+23	P3/p3.py:Stack	{"C": 10.0, "feats": ["F1/plugins.py:td_post#0"], "offset": true}	0.80968
+24	P3/p3.py:Stack	{"C": 0.1, "feats": ["F1/plugins.py:td_post#0"]}	0.80968
+25	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:w_nds", "F5/fp.py:restate2"]}	0.80960
+26	P3/p3.py:Stack	{"C": 3.0, "feats": ["F1/plugins.py:td_post#0"], "offset": true}	0.80957
+27	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0"]}	0.80943
+28	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:w_nds", "F5/fp.py:lie_date"]}	0.80940
+29	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:restate2"]}	0.80936
+30	P3/p3.py:Stack	{"C": 1.0, "dedup": true, "feats": ["P3/p3.py:hmm2", "F1/plugins.py:td_post#0"]}	0.80898
+31	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0"], "offset": true}	0.80895
+32	P3/p3.py:Stack	{"C": 1.0, "feats": ["P3/p3.py:hmm2", "F1/plugins.py:td_post#0", "F2/f2feat.py:hmm#0"]}	0.80895
+33	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:lie_date"]}	0.80892
+34	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:restate2"], "offset": true}	0.80881
+35	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:w_nds", "F5/fp.py:nulls#0"]}	0.80877
+36	F2/f2var.py:Chain	{"d0": 0.03, "engine": "viterbi", "eps_a": 0.0005, "mono": "fit", "mono_a": 10, "pi_o": 1, "vote_lr": 48}	0.80850
+37	P3/p3.py:Stack	{"oofmap": false}	0.80850
+38	P3/p3.py:Stack	{"C": 0.3, "feats": ["P3/p3.py:hmm2", "F1/plugins.py:td_post#0"], "offset": true}	0.80845
+39	F2/f2var.py:Chain	{"d0": 0.03, "engine": "viterbi", "eps_a": 0.0001, "mono": "fit", "mono_a": 10, "pi_o": 1, "vote_lr": 48}	0.80844
+40	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:w_nds", "F1/plugins.py:td_post#1"]}	0.80839
+41	P3/p3.py:Stack	{"C": 0.3, "feats": ["F1/plugins.py:td_post#0"], "offset": true}	0.80811
+42	P3/p3.py:Stack	{"oofmap": false, "vg": 0.5, "vw": ["F5/fp.py:w_nds"]}	0.80808
+43	P3/p3.py:Stack	{"C": 1.0, "feats": ["P3/p3.py:hmm2", "F1/plugins.py:td_post#0", "F5/fp.py:lie_date"]}	0.80807
+44	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:w_nds"], "rcal": "platt"}	0.80803
+45	P3/p3.py:Stack	{"C": 10.0, "feats": ["P3/p3.py:hmm2", "F1/plugins.py:td_post#0"], "offset": true}	0.80801
+46	P3/p3.py:Stack	{"C": 1.0, "feats": ["P3/p3.py:hmm2", "F1/plugins.py:td_post#0"], "offset": true}	0.80801
+47	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F2/f2feat.py:hmm#0"]}	0.80790
+48	P3/p3.py:Stack	{"oofmap": false, "vg": 1.0, "vw": ["F5/fp.py:w_nds"]}	0.80789
+49	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F4/f4graph.py:page_lie"]}	0.80776
+50	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F1/plugins.py:indep_support"], "offset": true}	0.80763
+51	P3/p3.py:Stack	{"C": 3.0, "feats": ["P3/p3.py:hmm2", "F1/plugins.py:td_post#0"], "offset": true}	0.80760
+52	P3/p3.py:Stack	{"oofmap": false, "rcal": "platt"}	0.80748
+53	P3/p3.py:Stack	{"dec": "iso:arena3"}	0.80746
+54	P3/p3.py:Stack	{"oofmap": true}	0.80746
+55	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F1/plugins.py:copy_margin"], "offset": true}	0.80727
+56	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:lie_date"], "offset": true}	0.80711
+57	P3/p3.py:Stack	{"C": 0.03, "feats": ["F1/plugins.py:td_post#0"], "offset": true}	0.80694
+58	F2/f2var.py:Chain	{"d0": 0.1, "engine": "hmm", "eps_a": 0.0001, "mono": "fit", "mono_a": 3, "pi_o": 1, "vote_lr": 48}	0.80691
+59	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F2/f2feat.py:hmm#0"], "offset": true}	0.80689
+60	P3/p3.py:Stack	{"C": 0.1, "feats": ["F1/plugins.py:td_post#0"], "offset": true}	0.80684
+61	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#1"], "offset": true}	0.80682
+62	P3/p3.py:Stack	{"C": 1.0, "feats": ["P3/p3.py:hmm2", "F1/plugins.py:td_post#0", "F5/fp.py:src_pagelie"]}	0.80672
+63	P3/p3.py:Stack	{"C": 1.0, "feats": ["P3/p3.py:hmm2"]}	0.80670
+64	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:w_nds", "F5/fp.py:src_pagelie"]}	0.80667
+65	P3/p3.py:Stack	{"C": 10.0, "feats": ["P3/p3.py:hmm2", "F1/plugins.py:td_post#0"]}	0.80660
+66	P3/p3.py:Stack	{"oofmap": false, "vg": 0.5, "vw": ["F5/fp.py:lie_stale"]}	0.80658
+67	P3/p3.py:Stack	{"dec": "iso:points"}	0.80651
+68	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post"], "offset": true}	0.80645
+69	F2/f2var.py:Chain	{"d0": 0.1, "engine": "hmm", "eps_a": 0.0001, "mono": "fit", "mono_a": 10, "pi_o": 1, "vote_lr": 48}	0.80644
+70	P3/p3.py:Stack	{"C": 3.0, "feats": ["P3/p3.py:hmm2", "F1/plugins.py:td_post#0"]}	0.80644
+71	F2/f2var.py:Chain	{"d0": 0.1, "engine": "viterbi", "eps_a": 0.0005, "mono": "fit", "mono_a": 10, "pi_o": 2, "vote_lr": 24}	0.80643
+72	F2/f2var.py:Chain	{"d0": 0.1, "engine": "viterbi", "eps_a": 0.0001, "mono": "fit", "mono_a": 10, "pi_o": 2, "vote_lr": 24}	0.80635
+73	P3/p3.py:Stack	{"C": 1.0, "feats": ["F5/fp.py:w_nds"], "oofmap": false}	0.80632
+74	P3/p3.py:Stack	{"C": 0.1, "feats": ["P3/p3.py:hmm2", "F1/plugins.py:td_post#0"], "offset": true}	0.80606
+75	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:w_nds", "F1/plugins.py:indep_support"]}	0.80596
+76	P3/p3.py:Stack	{"C": 0.3, "feats": ["P3/p3.py:hmm2"]}	0.80593
+77	F2/f2var.py:Chain	{"d0": 0.3, "engine": "hmm", "eps_a": 0.0001, "mono": "fit", "mono_a": 3, "pi_o": 1, "vote_lr": 48}	0.80579
+78	P3/p3.py:Stack	{"C": 3.0, "feats": ["P3/p3.py:hmm2"]}	0.80577
+79	P3/p3.py:Stack	{"C": 1.0, "feats": ["F1/plugins.py:td_post#0", "F5/fp.py:nulls#0"], "offset": true}	0.80576

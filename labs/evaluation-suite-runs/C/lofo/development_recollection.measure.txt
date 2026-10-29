@@ -1,0 +1,79 @@
+{
+ "worker": "C",
+ "tag": "lofo:development:recollection",
+ "world": "dev",
+ "only": "development:recollection",
+ "held_out": false,
+ "time": "2026-10-28 22:41:37",
+ "anchors": {
+  "pair": {
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0
+  },
+  "trip": {
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0
+  },
+  "row_exact": 1.0,
+  "rows": 625,
+  "assertions": 625,
+  "interval_row_acc": 1.0,
+  "interval_exact_when_stated": 1.0
+ },
+ "targets": {
+  "pair": {
+   "p": 0.9996,
+   "r": 0.9996,
+   "f1": 0.9996
+  },
+  "trip": {
+   "p": 0.9996,
+   "r": 0.9996,
+   "f1": 0.9996
+  },
+  "row_exact": 0.9995,
+  "rows": 5647,
+  "assertions": 7119,
+  "interval_row_acc": 1.0
+ },
+ "all": {
+  "pair": {
+   "p": 0.9996,
+   "r": 0.9996,
+   "f1": 0.9996
+  },
+  "trip": {
+   "p": 0.9996,
+   "r": 0.9996,
+   "f1": 0.9996
+  },
+  "row_exact": 0.9995,
+  "rows": 6272,
+  "assertions": 7744,
+  "interval_row_acc": 1.0,
+  "interval_exact_when_stated": 1.0
+ },
+ "value_acc_given_pair": {
+  "boolean": 1.0,
+  "date": 1.0,
+  "duration": 1.0,
+  "money": 1.0,
+  "name": 1.0,
+  "percent": 1.0,
+  "quantity": 1.0,
+  "version": 1.0
+ },
+ "error_classes": {
+  "attribute wrong": 3
+ }
+}
+
+## attribute wrong | The price of It is €559.
+  GOLD [('Hooly Pixel 9', 'price', {'currency': 'EUR', 'kind': 'money', 'value': 559})]
+  PRED [('Hooly Pixel 9', 'discontinued', {'kind': 'boolean', 'value': True})]
+
+## attribute wrong | The price of It is €787. I was drinking lukewarm coffee when I heard that.
+  GOLD [('Hooly Pixel 9', 'price', {'currency': 'EUR', 'kind': 'money', 'value': 787})]
+  PRED [('Hooly Pixel 9', 'discontinued', {'kind': 'boolean', 'value': True})]

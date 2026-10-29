@@ -1,0 +1,5 @@
+W1028 18:37:23.379000 81199 /private/tmp/veridyct-bench/.venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Could not reach the Hub (Cannot reach https://huggingface.co/api/models/mixedbread-ai/mxbai-embed-xsmall-v1: offline mode is enabled. To disable it, please unset the `HF_HUB_OFFLINE` environment variable.). Using cached commit hash for 'mixedbread-ai/mxbai-embed-xsmall-v1'.
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 10643.61it/s]
+This model was loaded in torch.float16 on CPU. Depending on your CPU, inference may be significantly slower than with torch.float32. Consider comparing inference speeds by loading with `model_kwargs={"dtype": torch.float32}`.
+mixedbread-ai/mxbai-embed-xsmall-v1 {'sentences_per_s': 797.688, 'sents_per_cpu_s': 689.352, 'wall_s': 2.507, 'cpu_s': 2.901, 'est_sec_20k_x86': 50.145, 'cpu_over_wall': 1.157}

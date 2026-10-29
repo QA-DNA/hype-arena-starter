@@ -1,0 +1,33 @@
+W1028 18:22:01.795000 63308 /private/tmp/veridyct-bench/.venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Could not reach the Hub (Cannot reach https://huggingface.co/api/models/thenlper/gte-small: offline mode is enabled. To disable it, please unset the `HF_HUB_OFFLINE` environment variable.). Using cached commit hash for 'thenlper/gte-small'.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5990.53it/s]
+This model was loaded in torch.float16 on CPU. Depending on your CPU, inference may be significantly slower than with torch.float32. Consider comparing inference speeds by loading with `model_kwargs={"dtype": torch.float32}`.
+[thenlper/gte-small] loaded in 0.2s params=33.4M disk=63.7MB dim=384 max_seq=512
+[thenlper/gte-small] speed/encode pass0 took 7.7s
+[thenlper/gte-small] speed/encode pass1 took 7.7s
+[thenlper/gte-small] speed/encode pass2 took 7.7s
+[thenlper/gte-small] speed/bs32_2000texts: sentences_per_s=272.105
+[thenlper/gte-small] zeroshot describe took 1.1s
+[thenlper/gte-small] attr_zeroshot/describe: acc_all=0.789, acc_unseen=0.789
+[thenlper/gte-small] zeroshot words took 0.4s
+[thenlper/gte-small] attr_zeroshot/attr_words_only: acc_all=0.774, acc_unseen=0.774
+[thenlper/gte-small] key_retrieval took 0.4s
+[thenlper/gte-small] key_retrieval/cosine_k10: recall_at_k=0.655, mrr=0.883
+[thenlper/gte-small] truth_false took 0.0s
+[thenlper/gte-small] truth_false/LR_balanced_C1: auc=0.581, ap=0.198
+[thenlper/gte-small] truth_three took 0.1s
+[thenlper/gte-small] truth_three/LR_balanced_C1: acc=0.506, macro_f1=0.319, arena_best=0.092
+[thenlper/gte-small] attr_knn took 0.1s
+[thenlper/gte-small] attr_knn/k5: acc_all=0.806, acc_ge5=0.932, acc_1to4=0.773, acc_unseen=0.000
+[thenlper/gte-small] attr_probe (page folds) took 2.9s
+[thenlper/gte-small] attr_probe/LR_C10: acc_all=0.725, acc_ge5=0.973, acc_1to4=0.568, acc_unseen=0.000
+[thenlper/gte-small] attr_hybrid/z_probe+z_zeroshot: acc_all=0.857, acc_ge5=0.963, acc_1to4=0.779, acc_unseen=0.658
+[thenlper/gte-small] attr_hybrid/z_probe+2*z_zeroshot: acc_all=0.866, acc_ge5=0.924, acc_1to4=0.825, acc_unseen=0.737
+[thenlper/gte-small] attr_hybrid/z_probe+z_zeroshot_unseen_max: acc_all=0.845, acc_ge5=0.926, acc_1to4=0.758, acc_unseen=0.947
+[thenlper/gte-small] attr_unseen (attribute folds) took 2.8s
+[thenlper/gte-small] attr_unseen/probe_alone_LR_C10: acc_all=0.000, acc_unseen=0.000
+[thenlper/gte-small] attr_unseen/zeroshot_alone: acc_all=0.789, acc_unseen=0.789
+[thenlper/gte-small] attr_unseen/hybrid_unseen_max: acc_all=0.835, acc_unseen=0.835
+[thenlper/gte-small] attr_unseen/hybrid_z_probe+z_zeroshot: acc_all=0.496, acc_unseen=0.496
+[thenlper/gte-small] attr_unseen/hybrid_z_probe+2*z_zeroshot: acc_all=0.672, acc_unseen=0.672
+[thenlper/gte-small] ALL DONE in 34s

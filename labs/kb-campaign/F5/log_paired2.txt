@@ -1,0 +1,3 @@
+2030 jobs
+done
+./remote/remote.sh: line 161: o: command not found

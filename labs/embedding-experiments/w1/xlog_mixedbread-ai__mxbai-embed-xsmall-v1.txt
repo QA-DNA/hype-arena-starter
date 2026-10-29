@@ -1,0 +1,20 @@
+W1028 18:33:03.391000 76330 /private/tmp/veridyct-bench/.venv/lib/python3.12/site-packages/torch/distributed/elastic/multiprocessing/redirects.py:35] NOTE: Redirects are currently not supported in MacOs.
+Could not reach the Hub (Cannot reach https://huggingface.co/api/models/mixedbread-ai/mxbai-embed-xsmall-v1: offline mode is enabled. To disable it, please unset the `HF_HUB_OFFLINE` environment variable.). Using cached commit hash for 'mixedbread-ai/mxbai-embed-xsmall-v1'.
+Loading weights:   0%|          | 0/103 [00:00<?, ?it/s]Loading weights: 100%|██████████| 103/103 [00:00<00:00, 7921.91it/s]
+This model was loaded in torch.float16 on CPU. Depending on your CPU, inference may be significantly slower than with torch.float32. Consider comparing inference speeds by loading with `model_kwargs={"dtype": torch.float32}`.
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_probe/LR_C1: acc_all=0.582 ge5=0.926 1to4=0.322 unseen=0.000
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_hybrid/C1_z_probe+z_zeroshot: acc_all=0.781 ge5=0.948 1to4=0.638 unseen=0.645
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_hybrid/C1_z_probe+z_zeroshot_unseen_max: acc_all=0.774 ge5=0.935 1to4=0.616 unseen=0.842
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_unseen/C1_hybrid_z_probe+z_zeroshot: acc_all=0.547 ge5=nan 1to4=nan unseen=0.547
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_unseen/C1_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.864 ge5=nan 1to4=nan unseen=0.864
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_probe/LR_C100: acc_all=0.888 ge5=0.970 1to4=0.904 unseen=0.000
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_hybrid/C100_z_probe+z_zeroshot: acc_all=0.926 ge5=0.970 1to4=0.923 unseen=0.566
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_hybrid/C100_z_probe+z_zeroshot_unseen_max: acc_all=0.923 ge5=0.952 1to4=0.905 unseen=0.829
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_unseen/C100_hybrid_z_probe+z_zeroshot: acc_all=0.487 ge5=nan 1to4=nan unseen=0.487
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_unseen/C100_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.856 ge5=nan 1to4=nan unseen=0.856
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_probe/LR_C1000: acc_all=0.894 ge5=0.969 1to4=0.918 unseen=0.000
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_hybrid/C1000_z_probe+z_zeroshot: acc_all=0.928 ge5=0.961 1to4=0.929 unseen=0.618
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_hybrid/C1000_z_probe+z_zeroshot_unseen_max: acc_all=0.921 ge5=0.942 1to4=0.911 unseen=0.829
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_unseen/C1000_hybrid_z_probe+z_zeroshot: acc_all=0.584 ge5=nan 1to4=nan unseen=0.584
+[mixedbread-ai/mxbai-embed-xsmall-v1] attr_unseen/C1000_hybrid_z_probe+z_zeroshot_unseen_max: acc_all=0.854 ge5=nan 1to4=nan unseen=0.854
+[mixedbread-ai/mxbai-embed-xsmall-v1] EXTRAS DONE

@@ -1,0 +1,57 @@
+{
+ "minishlab/potion-base-8M": {
+  "ok": true,
+  "path": "/private/tmp/veridyct-emb/w3/hf/hub/models--minishlab--potion-base-8M/snapshots/bf8b056651a2c21b8d2565580b8569da283cab23",
+  "secs": 7.3
+ },
+ "minishlab/potion-base-32M": {
+  "ok": true,
+  "path": "/private/tmp/veridyct-emb/w3/hf/hub/models--minishlab--potion-base-32M/snapshots/1e5a03f8eeb2c98b928fbbd846f22f816360919f",
+  "secs": 9.8
+ },
+ "minishlab/potion-retrieval-32M": {
+  "ok": true,
+  "path": "/private/tmp/veridyct-emb/w3/hf/hub/models--minishlab--potion-retrieval-32M/snapshots/6fc8051fab2a1e0ee76689cf08c853792ac285e7",
+  "secs": 12.6
+ },
+ "sentence-transformers/static-retrieval-mrl-en-v1": {
+  "ok": true,
+  "path": "/private/tmp/veridyct-emb/w3/hf/hub/models--sentence-transformers--static-retrieval-mrl-en-v1/snapshots/f60985c706f192d45d218078e49e5a8b6f15283a",
+  "secs": 13.0
+ },
+ "sentence-transformers/static-similarity-mrl-multilingual-v1": {
+  "ok": true,
+  "path": "/private/tmp/veridyct-emb/w3/hf/hub/models--sentence-transformers--static-similarity-mrl-multilingual-v1/snapshots/b68f4122911bcffcd6e1f695f2d99cd6788972d8",
+  "secs": 19.3
+ },
+ "intfloat/multilingual-e5-small": {
+  "ok": true,
+  "path": "/private/tmp/veridyct-emb/w3/hf/hub/models--intfloat--multilingual-e5-small/snapshots/614241f622f53c4eeff9890bdc4f31cfecc418b3",
+  "secs": 25.4
+ },
+ "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2": {
+  "ok": true,
+  "path": "/private/tmp/veridyct-emb/w3/hf/hub/models--sentence-transformers--paraphrase-multilingual-MiniLM-L12-v2/snapshots/e8f8c211226b894fcb81acc59f3b34ba3efd5f42",
+  "secs": 26.1
+ },
+ "Qwen/Qwen3-Embedding-0.6B": {
+  "ok": true,
+  "path": "/private/tmp/veridyct-emb/w3/hf/hub/models--Qwen--Qwen3-Embedding-0.6B/snapshots/97b0c614be4d77ee51c0cef4e5f07c00f9eb65b3",
+  "secs": 72.7
+ },
+ "nomic-ai/nomic-embed-text-v2-moe": {
+  "ok": true,
+  "path": "/private/tmp/veridyct-emb/w3/hf/hub/models--nomic-ai--nomic-embed-text-v2-moe/snapshots/1066b6599d099fbb93dfcb64f9c37a7c9e503e85",
+  "secs": 123.6
+ },
+ "google/embeddinggemma-300m": {
+  "ok": false,
+  "err": "GatedRepoError: 401 Client Error. (Request ID: Root=1-6ae21f2a-7a991dae296a518a7d849e72;97cb056f-0f18-47b9-9dc5-9c3b4cbe0eaa)\n\nCannot access gated repo for url https://huggingface.co/google/embeddinggemma-300m/resolve/57c266a740f537b4dc058e1b0cda161fd15afa75/1_Pooling/config.json.\nAccess to model google/embeddingge",
+  "secs": 1.4
+ },
+ "sentence-transformers/average_word_embeddings_glove.6B.300d": {
+  "ok": true,
+  "path": "/private/tmp/veridyct-emb/w3/hf/hub/models--sentence-transformers--average_word_embeddings_glove.6B.300d/snapshots/e5e8fec6971be8960cfaa853a77a6ddc62a265d7",
+  "secs": 22.2
+ }
+}

@@ -1,0 +1,69 @@
+{
+ "worker": "C",
+ "tag": "lofo-v3:development:possessive",
+ "world": "dev",
+ "only": "development:possessive",
+ "held_out": false,
+ "time": "2026-10-28 22:45:11",
+ "anchors": {
+  "pair": {
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0
+  },
+  "trip": {
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0
+  },
+  "row_exact": 1.0,
+  "rows": 617,
+  "assertions": 617,
+  "interval_row_acc": 1.0,
+  "interval_exact_when_stated": 1.0
+ },
+ "targets": {
+  "pair": {
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0
+  },
+  "trip": {
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0
+  },
+  "row_exact": 1.0,
+  "rows": 5585,
+  "assertions": 7056,
+  "interval_row_acc": 1.0
+ },
+ "all": {
+  "pair": {
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0
+  },
+  "trip": {
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0
+  },
+  "row_exact": 1.0,
+  "rows": 6202,
+  "assertions": 7673,
+  "interval_row_acc": 1.0,
+  "interval_exact_when_stated": 1.0
+ },
+ "value_acc_given_pair": {
+  "boolean": 1.0,
+  "date": 1.0,
+  "duration": 1.0,
+  "money": 1.0,
+  "name": 1.0,
+  "percent": 1.0,
+  "quantity": 1.0,
+  "version": 1.0
+ },
+ "error_classes": {}
+}

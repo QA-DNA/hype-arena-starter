@@ -1,0 +1,73 @@
+0.7617 P80=0.8234 P10=0.7000 ece=0.025/0.060 f4models.py {"hi": 0.9, "lap": 0.02, "lo": 0.2, "mil": 2, "selftrain": 2} 
+0.7580 P80=0.8202 P10=0.6958 ece=0.031/0.063 f4models.py {"hi": 0.98, "lap": 0.02, "lo": 0.1, "mil": 2, "selftrain": 1} 
+0.7579 P80=0.8208 P10=0.6950 ece=0.024/0.060 f4models.py {"lap": 0.03, "lap_page": 0.3, "mil": 2} 
+0.7568 P80=0.8324 P10=0.6813 ece=0.029/0.068 f4models.py {"lap": 0.01, "lap_tau": 90.0, "mil": 2} 
+0.7567 P80=0.8260 P10=0.6873 ece=0.028/0.062 f4models.py {"lap": 0.03, "lap_page": 0.1, "mil": 2} 
+0.7560 P80=0.8303 P10=0.6817 ece=0.029/0.068 f4models.py {"lap": 0.01, "lap_tau": 30.0, "mil": 2} 
+0.7552 P80=0.8187 P10=0.6918 ece=0.026/0.056 f4models.py {"lap": 0.03, "lap_tau": 30.0, "mil": 2} 
+0.7549 P80=0.8292 P10=0.6806 ece=0.026/0.068 f4models.py {"lap": 0.01, "lap_tau": 10.0, "mil": 2} 
+0.7549 P80=0.8234 P10=0.6864 ece=0.024/0.065 f4models.py {"hi": 0.98, "lap": 0.02, "lo": 0.1, "mil": 2, "selftrain": 2} 
+0.7545 P80=0.8144 P10=0.6947 ece=0.030/0.061 f4models.py {"lap": 0.02, "mil": 2, "model": "lrC0.1"} 
+0.7545 P80=0.8229 P10=0.6860 ece=0.027/0.062 f4models.py {"lap": 0.02, "lap_page": 0.1, "mil": 2} 
+0.7544 P80=0.8250 P10=0.6837 ece=0.024/0.062 f4models.py {"lap": 0.02, "mil": 2, "model": "lrC2.0"} 
+0.7541 P80=0.8171 P10=0.6911 ece=0.025/0.059 f4models.py {"lap": 0.03, "lap_tau": 90.0, "mil": 2} 
+0.7539 P80=0.8192 P10=0.6887 ece=0.023/0.057 f4models.py {"lap": 0.01, "lap_tau": 90.0, "mil": 0} 
+0.7539 P80=0.8150 P10=0.6929 ece=0.032/0.060 f4models.py {"hi": 0.9, "lap": 0.03, "lo": 0.2, "mil": 2, "selftrain": 2} 
+0.7533 P80=0.8192 P10=0.6874 ece=0.025/0.056 f4models.py {"lap": 0.01, "lap_tau": 30.0, "mil": 0} 
+0.7532 P80=0.8176 P10=0.6887 ece=0.032/0.068 f4models.py {"hi": 0.98, "lap": 0.03, "lo": 0.1, "mil": 2, "selftrain": 2} 
+0.7531 P80=0.8218 P10=0.6843 ece=0.028/0.066 f4models.py {"hi": 0.9, "lap": 0.02, "lo": 0.2, "mil": 2, "selftrain": 1} 
+0.7528 P80=0.8229 P10=0.6828 ece=0.024/0.063 f4models.py {"lap": 0.03, "mil": 2, "model": "lrC2.0"} 
+0.7528 P80=0.8229 P10=0.6826 ece=0.026/0.062 f4models.py {"lap": 0.02, "lap_tau": 90.0, "mil": 2} 
+0.7527 P80=0.8171 P10=0.6883 ece=0.023/0.066 f4models.py {"extra_features": ["F4/f4graph.py:prop_feats"], "lap": 0.02, "mil": 2} 
+0.7523 P80=0.8176 P10=0.6869 ece=0.027/0.060 f4models.py {"lap": 0.02, "mil": 2, "phi": 0.95, "pseudo": 2, "pw": 0.3} 
+0.7522 P80=0.8208 P10=0.6836 ece=0.023/0.062 f4models.py {"lap": 0.02, "lap_page": 0.3, "mil": 2} 
+0.7520 P80=0.8187 P10=0.6853 ece=0.025/0.058 f4models.py {"extra_features": ["F4/f4graph.py:blame_feats"], "lap": 0.03, "mil": 2} 
+0.7516 P80=0.8176 P10=0.6856 ece=0.028/0.066 f4models.py {"extra_features": ["F4/f4graph.py:all_feats"], "lap": 0.02, "mil": 2} 
+0.7516 P80=0.8213 P10=0.6819 ece=0.023/0.062 f4models.py {"lap": 0.02, "lap_tau": 30.0, "mil": 2} 
+0.7516 P80=0.8139 P10=0.6893 ece=0.024/0.054 f4models.py {"lap": 0.05, "lap_tau": 90.0, "mil": 2} 
+0.7515 P80=0.8113 P10=0.6918 ece=0.029/0.057 f4models.py {"extra_features": ["F4/f4graph.py:page_lie"], "lap": 0.03, "mil": 2} 
+0.7513 P80=0.8197 P10=0.6828 ece=0.024/0.062 f4models.py {"lap": 0.02, "lap_tau": 10.0, "mil": 2} 
+0.7511 P80=0.8113 P10=0.6910 ece=0.029/0.056 f4models.py {"lap": 0.03, "lap_tau": 10.0, "mil": 2} 
+0.7511 P80=0.8224 P10=0.6799 ece=0.025/0.070 f4models.py {"mil": 2} 
+0.7510 P80=0.8187 P10=0.6834 ece=0.024/0.058 f4models.py {"lap": 0.01, "lap_tau": 10.0, "mil": 0} 
+0.7509 P80=0.8113 P10=0.6905 ece=0.028/0.058 f4models.py {"lap": 0.03, "mil": 2, "model": "lrC0.1"} 
+0.7501 P80=0.8155 P10=0.6848 ece=0.023/0.061 f4models.py {"extra_features": ["F4/f4graph.py:prop_p"], "lap": 0.03, "mil": 2} 
+0.7489 P80=0.8144 P10=0.6833 ece=0.023/0.057 v9 {"select": "arena", "selftrain": 1} 
+0.7488 P80=0.8187 P10=0.6789 ece=0.028/0.052 f4models.py {"lap": 0.03, "lap_tau": 90.0, "mil": 0} 
+0.7487 P80=0.8113 P10=0.6861 ece=0.026/0.055 f4models.py {"lap": 0.05, "lap_tau": 30.0, "mil": 2} 
+0.7485 P80=0.8113 P10=0.6857 ece=0.023/0.065 f4models.py {"extra_features": ["F4/f4graph.py:prop_feats"], "lap": 0.03, "mil": 2} 
+0.7484 P80=0.8218 P10=0.6750 ece=0.023/0.061 f4models.py {"extra_features": ["F4/f4graph.py:page_lie_lab"], "lap": 0.02, "mil": 2} 
+0.7484 P80=0.8181 P10=0.6787 ece=0.022/0.060 f4models.py {"extra_features": ["F4/f4graph.py:blame_feats"], "lap": 0.02, "mil": 2} 
+0.7484 P80=0.8176 P10=0.6791 ece=0.022/0.064 f4models.py {"extra_features": ["F4/f4graph.py:prop_p"], "lap": 0.02, "mil": 2} 
+0.7482 P80=0.8144 P10=0.6820 ece=0.026/0.063 f4models.py {"extra_features": ["F4/f4graph.py:page_lie"], "lap": 0.02, "mil": 2} 
+0.7477 P80=0.8076 P10=0.6877 ece=0.027/0.063 f4models.py {"extra_features": ["F4/f4graph.py:all_feats"], "lap": 0.03, "mil": 2} 
+0.7475 P80=0.8181 P10=0.6769 ece=0.025/0.064 f4models.py {"extra_features": ["F4/f4graph.py:page_lie_lab"], "lap": 0.03, "mil": 2} 
+0.7471 P80=0.8176 P10=0.6766 ece=0.030/0.063 f4models.py {"extra_features": ["F4/f4lex.py:lex_small"], "lap": 0.02, "mil": 2} 
+0.7468 P80=0.8076 P10=0.6861 ece=0.032/0.066 f4models.py {"drop_features": [8, 9, 11, 12, 13, 14, 17, 26, 38], "extra_features": ["F4/f4graph.py:prop_feats"], "lap": 0.03, "mil": 2} 
+0.7465 P80=0.8123 P10=0.6806 ece=0.024/0.054 f4models.py {"lap": 0.05, "lap_tau": 10.0, "mil": 2} 
+0.7464 P80=0.8144 P10=0.6784 ece=0.022/0.049 f4models.py {"lap": 0.05, "lap_tau": 90.0, "mil": 0} 
+0.7464 P80=0.8071 P10=0.6857 ece=0.032/0.060 f4models.py {"hi": 0.98, "lap": 0.03, "lo": 0.1, "mil": 2, "selftrain": 1} 
+0.7456 P80=0.8139 P10=0.6772 ece=0.030/0.054 f4models.py {"lap": 0.02, "lap_tau": 10.0, "mil": 0} 
+0.7449 P80=0.8134 P10=0.6763 ece=0.019/0.050 f4models.py {"lap": 0.05, "lap_tau": 30.0, "mil": 0} 
+0.7443 P80=0.8192 P10=0.6693 ece=0.026/0.064 f4models.py {"lap": 0.02, "mil": 2, "phi": 0.95, "pseudo": 2, "pw": 1.0} 
+0.7437 P80=0.8118 P10=0.6757 ece=0.027/0.067 f4models.py {"drop_features": [8, 9, 11, 12, 13, 14, 17, 26, 38], "extra_features": ["F4/f4graph.py:prop_feats"], "lap": 0.02, "mil": 2} 
+0.7434 P80=0.8102 P10=0.6767 ece=0.027/0.061 f4models.py {"extra_features": ["F4/f4lex.py:lex_small"], "lap": 0.03, "mil": 2} 
+0.7434 P80=0.8081 P10=0.6786 ece=0.035/0.052 f4models.py {"lap": 0.02, "lap_tau": 90.0, "mil": 0} 
+0.7428 P80=0.8123 P10=0.6732 ece=0.026/0.052 f4models.py {"lap": 0.03, "lap_tau": 30.0, "mil": 0} 
+0.7426 P80=0.8097 P10=0.6755 ece=0.020/0.048 f4models.py {"lap": 0.05, "lap_tau": 10.0, "mil": 0} 
+0.7425 P80=0.8108 P10=0.6742 ece=0.021/0.051 f4models.py {"lap": 0.03, "lap_tau": 10.0, "mil": 0} 
+0.7425 P80=0.8129 P10=0.6720 ece=0.030/0.052 f4models.py {"lap": 0.02, "lap_tau": 30.0, "mil": 0} 
+0.7422 P80=0.8092 P10=0.6752 ece=0.030/0.068 f4models.py {"hi": 0.9, "lap": 0.03, "lo": 0.2, "mil": 2, "selftrain": 1} 
+0.7422 P80=0.8155 P10=0.6689 ece=0.027/0.066 f4models.py {"lap": 0.03, "mil": 2, "phi": 0.95, "pseudo": 2, "pw": 0.3} 
+0.7416 P80=0.8092 P10=0.6739 ece=0.029/0.061 v9 {"select": "arena"} 
+0.7416 P80=0.8092 P10=0.6739 ece=0.029/0.061 f4models.py {} 
+0.7357 P80=0.8071 P10=0.6644 ece=0.029/0.060 f4models.py {"lap": 0.03, "mil": 2, "phi": 0.95, "pseudo": 2, "pw": 1.0} 
+0.7250 P80=0.7839 P10=0.6661 ece=0.021/0.047 f4graph.py:Prop {"beta": 1.0, "gamma": 0.2, "mode": "prop", "tau": 10.0} 
+0.7211 P80=0.7807 P10=0.6615 ece=0.027/0.045 f4graph.py:Prop {"beta": 1.0, "gamma": 0.2, "mode": "prop", "pagelie": true, "tau": 10.0} 
+0.7185 P80=0.7712 P10=0.6657 ece=0.021/0.041 f4graph.py:Prop {"beta": 2.0, "gamma": 0.2, "mode": "prop", "tau": 5.0} 
+0.7179 P80=0.7702 P10=0.6657 ece=0.020/0.046 f4graph.py:Prop {"beta": 2.0, "gamma": 0.2, "mode": "prop", "tau": 10.0} 
+0.7175 P80=0.7723 P10=0.6628 ece=0.021/0.051 f4graph.py:Prop {"beta": 1.0, "gamma": 0.2, "mode": "prop", "tau": 20.0} 
+0.7123 P80=0.7586 P10=0.6661 ece=0.019/0.040 f4graph.py:Prop {"beta": 1.0, "gamma": 0.2, "mode": "prop", "tau": 5.0} 
+0.7098 P80=0.7586 P10=0.6610 ece=0.022/0.052 f4graph.py:Prop {"beta": 2.0, "gamma": 0.2, "mode": "prop", "tau": 20.0} 
+0.7080 P80=0.7512 P10=0.6649 ece=0.019/0.040 f4graph.py:Prop {"beta": 2.0, "gamma": 0.2, "mode": "prop", "tau": 3.0} 
+0.7075 P80=0.7501 P10=0.6649 ece=0.020/0.040 f4graph.py:Prop {"beta": 1.0, "gamma": 0.2, "mode": "prop", "tau": 3.0} 

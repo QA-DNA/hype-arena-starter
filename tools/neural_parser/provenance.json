@@ -1,0 +1,18 @@
+{
+  "model": "selected-v2 equal-probability ensemble of three discriminative char-CNN/BiLSTM classifiers",
+  "frozen_at_utc": "2026-10-28T23:04:51.892639+00:00",
+  "source": "structured-extraction-training/artifacts/remote-results/selected-v2",
+  "selection_sha256": "327764212e412efd4e1fd7517305aa670441521888f3d227064e3f1f16e06341",
+  "training": "Previously frozen mixed official/synthetic extraction training with static GloVe vectors; no retraining by this adapter",
+  "context": "none by default; previous3text is experimental public input adjacency, never a gold pointer",
+  "frozen_sources": {
+    "grammar.py": "0545fc2bbce5cc6856b55caa8ec52ca448b1e7f07068cca885ff737f36d7a2f1",
+    "prepare.py": "68b8bc242b074cb6e10410078cd76cb744a08abf40ff898d090cbab7171e347e",
+    "runtime.py": "cbc1e4980487224ab15a269299602d1475cb78157bd945176728dc781b5e8206"
+  },
+  "bundle": {
+    "model.onnx": "98eebdb851849f689c60499a9f4b2514305d520a523816b0505e98bba4523b6f",
+    "meta.json": "3ab93d76b178bb714bd4c5ac665da2de0d97c29a46d32597ca43be3e52c08567",
+    "lexicon.json": "40d591b7e0345172f2822742c1d1b2cda69619c564ff23dd306d11984756747c"
+  }
+}

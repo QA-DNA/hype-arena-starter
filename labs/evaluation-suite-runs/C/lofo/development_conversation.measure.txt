@@ -1,0 +1,79 @@
+{
+ "worker": "C",
+ "tag": "lofo:development:conversation",
+ "world": "dev",
+ "only": "development:conversation",
+ "held_out": false,
+ "time": "2026-10-28 22:41:51",
+ "anchors": {
+  "pair": {
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0
+  },
+  "trip": {
+   "p": 1.0,
+   "r": 1.0,
+   "f1": 1.0
+  },
+  "row_exact": 1.0,
+  "rows": 653,
+  "assertions": 653,
+  "interval_row_acc": 1.0,
+  "interval_exact_when_stated": 1.0
+ },
+ "targets": {
+  "pair": {
+   "p": 1.0,
+   "r": 0.9997,
+   "f1": 0.9999
+  },
+  "trip": {
+   "p": 1.0,
+   "r": 0.9997,
+   "f1": 0.9999
+  },
+  "row_exact": 0.9996,
+  "rows": 5586,
+  "assertions": 7077,
+  "interval_row_acc": 1.0
+ },
+ "all": {
+  "pair": {
+   "p": 1.0,
+   "r": 0.9997,
+   "f1": 0.9999
+  },
+  "trip": {
+   "p": 1.0,
+   "r": 0.9997,
+   "f1": 0.9999
+  },
+  "row_exact": 0.9997,
+  "rows": 6239,
+  "assertions": 7730,
+  "interval_row_acc": 1.0,
+  "interval_exact_when_stated": 1.0
+ },
+ "value_acc_given_pair": {
+  "boolean": 1.0,
+  "date": 1.0,
+  "duration": 1.0,
+  "money": 1.0,
+  "name": 1.0,
+  "percent": 1.0,
+  "quantity": 1.0,
+  "version": 1.0
+ },
+ "error_classes": {
+  "missed assertion (segmentation/aside cut)": 2
+ }
+}
+
+## missed assertion (segmentation/aside cut) | Hooly Pixel Fold has app-store rating of 5.23 stars; You pay €2,405 for It.
+  GOLD [('Hooly Pixel Fold', 'store_rating', {'kind': 'quantity', 'unit': 'star', 'value': 5.23}), ('Hooly Pixel Fold', 'price', {'currency': 'EUR', 'kind': 'money', 'value': 2405})]
+  PRED [('Hooly Pixel Fold', 'store_rating', {'kind': 'quantity', 'value': 5.23, 'unit': 'star'})]
+
+## missed assertion (segmentation/aside cut) | Hooly Pixel 9 has storage of 96 GB, and You pay €787 for It.
+  GOLD [('Hooly Pixel 9', 'storage', {'kind': 'quantity', 'unit': 'GB', 'value': 96}), ('Hooly Pixel 9', 'price', {'currency': 'EUR', 'kind': 'money', 'value': 787})]
+  PRED [('Hooly Pixel 9', 'storage', {'kind': 'quantity', 'value': 96, 'unit': 'GB'})]

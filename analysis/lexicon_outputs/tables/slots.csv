@@ -1,0 +1,515 @@
+subject,attribute
+Bertram Gilfoil,joined
+Bertram Gilfoil,previous_employer
+Brightline Labs,integration_partner_of_flawless
+Dinesh Chugtay,joined
+Erlich Bachmann,joined
+Gemini Launch Night,attendees
+Gemini Launch Night,city
+Gemini Launch Night,date
+Holdan,joined
+Holdan,previous_employer
+Holdan,team_size
+Hooly,annual_recurring_revenue
+Hooly,ceo
+Hooly,cto
+Hooly,customer_countries
+Hooly,customers_in_the_eu
+Hooly,data_processing_agreement
+Hooly,employees
+Hooly,founded
+Hooly,founders
+Hooly,fully_remote
+Hooly,had_major_outage
+Hooly,head_of_product
+Hooly,head_of_security
+Hooly,head_of_workspace
+Hooly,headquarters
+Hooly,help_guides
+Hooly,incidents_this_year
+Hooly,net_promoter_score
+Hooly,newsletter_subscribers
+Hooly,offices
+Hooly,paying_customers
+Hooly,raised_series_a
+Hooly,raised_series_b
+Hooly,series_a_amount
+Hooly,series_a_co_investor
+Hooly,series_a_lead
+Hooly,soc2_audit_start
+Hooly,soc2_auditor
+Hooly,soc2_certified
+Hooly,support_satisfaction
+Hooly,support_tickets_per_week
+Hooly,webinars_held
+Hooly AI Free,daily_requests
+Hooly AI Free,history_retention
+Hooly AI Free,max_upload_size
+Hooly AI Free,price
+Hooly AI Pro,annual_price
+Hooly AI Pro,free_trial
+Hooly AI Pro,history_retention
+Hooly AI Pro,included_seats
+Hooly AI Pro,price
+Hooly AI Pro,refund_window
+Hooly AI Pro,saved_projects
+Hooly AI Pro,signed_in_devices
+Hooly AI Pro,support_first_response
+Hooly Android,active_devices
+Hooly Android,lead
+Hooly Android,open_source
+Hooly Android,version
+Hooly Android 16,desktop_mode
+Hooly Android 16,released
+Hooly Android 16,share_of_devices
+Hooly Android 16,supported_models
+Hooly Android 16,update_size
+Hooly Android 17,beta_opened
+Hooly Android 17,beta_testers
+Hooly Android 17,on_device_gemini
+Hooly Android 17,satellite_messaging
+Hooly Android 17,share_of_devices
+Hooly Android 17,stable_release
+Hooly Android 17,supported_models
+Hooly Android 17,update_size
+Hooly Berlin Office,bike_racks
+Hooly Berlin Office,desks
+Hooly Berlin Office,is_engineering_hub
+Hooly Berlin Office,is_headquarters
+Hooly Berlin Office,lease_end
+Hooly Berlin Office,opened
+Hooly Berlin Office,rent
+Hooly Berlin Office,staff
+Hooly Board,attendance
+Hooly Board,audit_committee
+Hooly Board,chair
+Hooly Board,chair_since
+Hooly Board,independent_members
+Hooly Board,meetings_per_year
+Hooly Board,next_meeting
+Hooly Board,raviqa_seat
+Hooly Board,seats
+Hooly Board,sessions_held
+Hooly Calendar,active_users
+Hooly Calendar,appointment_booking
+Hooly Calendar,launched
+Hooly Calendar,max_guests
+Hooly Calendar,version
+Hooly Chrome,ai_sidebar
+Hooly Chrome,browser_market_share
+Hooly Chrome,cold_start_time
+Hooly Chrome,extensions_in_store
+Hooly Chrome,launched
+Hooly Chrome,lead
+Hooly Chrome,memory_saver
+Hooly Chrome,monthly_active_users
+Hooly Chrome,passkey_sync
+Hooly Chrome,release_cadence
+Hooly Chrome,stable_release_date
+Hooly Chrome,stable_version
+Hooly Chrome,tab_sleep_delay
+Hooly Chrome,top_bug_bounty
+Hooly Cloud,archive_storage_price
+Hooly Cloud,availability_zones
+Hooly Cloud,carbon_neutral
+Hooly Cloud,cli_version
+Hooly Cloud,cool_storage_price
+Hooly Cloud,customers
+Hooly Cloud,data_centres
+Hooly Cloud,free_credit
+Hooly Cloud,free_egress_per_month
+Hooly Cloud,free_trial
+Hooly Cloud,home_region
+Hooly Cloud,launched
+Hooly Cloud,median_time_to_recover
+Hooly Cloud,newest_region
+Hooly Cloud,region_outside_europe
+Hooly Cloud,regions
+Hooly Cloud,reliability_lead
+Hooly Cloud,services
+Hooly Cloud,standard_storage_price
+Hooly Cloud,storage_tiers
+Hooly Cloud,uptime_last_quarter
+Hooly Cloud,uptime_sla
+Hooly Cloud Next 2026,attendees
+Hooly Cloud Next 2026,city
+Hooly Cloud Next 2026,date
+Hooly Cloud Next 2026,length
+Hooly Cloud Next 2026,opening_keynote
+Hooly Cloud Next 2026,registrations
+Hooly Cloud Next 2026,sessions
+Hooly Cloud Next 2026,speakers
+Hooly Cloud Next 2026,sponsors
+Hooly Cloud Next 2026,ticket_price
+Hooly Cloud Next 2026,venue
+Hooly Devices,countries_served
+Hooly Devices,founded
+Hooly Devices,german_premium_phone_share
+Hooly Devices,head
+Hooly Devices,manufacturing_partner
+Hooly Devices,max_trade_in_credit
+Hooly Devices,repair_centres
+Hooly Devices,staff
+Hooly Devices,trade_in_programme
+Hooly Docs,active_users
+Hooly Docs,languages
+Hooly Docs,launched
+Hooly Docs,offline_editing
+Hooly Docs,simultaneous_editors
+Hooly Docs,templates
+Hooly Docs,version
+Hooly Drive,active_users
+Hooly Drive,free_storage
+Hooly Drive,launched
+Hooly Drive,max_file_size
+Hooly Drive,price_per_user
+Hooly Drive,version_history
+Hooly Employee Survey,anonymous
+Hooly Employee Survey,growth_opportunities
+Hooly Employee Survey,manageable_workload
+Hooly Employee Survey,manager_rating
+Hooly Employee Survey,next_round
+Hooly Employee Survey,open_for
+Hooly Employee Survey,respondents
+Hooly Employee Survey,response_rate
+Hooly Employee Survey,run_by
+Hooly Employee Survey,would_recommend
+Hooly Gemini,api_version
+Hooly Gemini,cloud_provider
+Hooly Gemini,concurrent_chats
+Hooly Gemini,context_window
+Hooly Gemini,data_retention
+Hooly Gemini,encryption_at_rest
+Hooly Gemini,eu_hosted
+Hooly Gemini,flawbench_score
+Hooly Gemini,hallucination_rate
+Hooly Gemini,hosting_regions
+Hooly Gemini,image_input
+Hooly Gemini,integrations
+Hooly Gemini,languages
+Hooly Gemini,launched
+Hooly Gemini,max_output_length
+Hooly Gemini,max_upload_size
+Hooly Gemini,median_response_time
+Hooly Gemini,official_sdks
+Hooly Gemini,open_source
+Hooly Gemini,p99_response_time
+Hooly Gemini,primary_region
+Hooly Gemini,requests_per_day
+Hooly Gemini,requests_per_minute
+Hooly Gemini,single_sign_on
+Hooly Gemini,supported_file_types
+Hooly Gemini,training_data_cutoff
+Hooly Gemini,uptime_last_quarter
+Hooly Gemini,version
+Hooly Gemini,voice_mode
+Hooly Gemini,webhook_events
+Hooly Gmail,active_users
+Hooly Gmail,attachment_limit
+Hooly Gmail,end_to_end_encryption
+Hooly Gmail,launched
+Hooly Gmail,mailbox_storage
+Hooly Gmail,price_per_user
+Hooly Gmail,spam_catch_rate
+Hooly Hiring Programme,applicants
+Hooly Hiring Programme,cost_per_hire
+Hooly Hiring Programme,executive_sponsor
+Hooly Hiring Programme,first_reply
+Hooly Hiring Programme,hires
+Hooly Hiring Programme,interview_rounds
+Hooly Hiring Programme,launched
+Hooly Hiring Programme,offer_acceptance
+Hooly Hiring Programme,offers
+Hooly Hiring Programme,open_engineering_roles
+Hooly Hiring Programme,open_roles
+Hooly Hiring Programme,recruiters
+Hooly Hiring Programme,referral_bonus
+Hooly Hiring Programme,referral_share
+Hooly Hiring Programme,time_to_hire
+Hooly I/O 2026,attendees
+Hooly I/O 2026,city
+Hooly I/O 2026,date
+Hooly I/O 2026,keynote_length
+Hooly I/O 2026,length
+Hooly I/O 2026,livestream_viewers
+Hooly I/O 2026,sponsors
+Hooly I/O 2026,talks
+Hooly I/O 2026,ticket_price
+Hooly I/O 2026,workshops
+Hooly I/O 2027,city
+Hooly I/O 2027,date
+Hooly Jules,annual_price
+Hooly Jules,beta_date
+Hooly Jules,beta_testers
+Hooly Jules,context_files
+Hooly Jules,free_trial
+Hooly Jules,general_availability_date
+Hooly Jules,lead
+Hooly Jules,price
+Hooly Jules,programming_languages
+Hooly Jules,suggestion_acceptance_rate
+Hooly Jules,supported_ides
+Hooly Jules,users
+Hooly Jules,version
+Hooly Lisbon Office,announced
+Hooly Lisbon Office,bike_racks
+Hooly Lisbon Office,desks
+Hooly Lisbon Office,lease_end
+Hooly Lisbon Office,opened
+Hooly Lisbon Office,rent
+Hooly Lisbon Office,staff
+Hooly Maps,ar_walking
+Hooly Maps,business_listings
+Hooly Maps,charging_stations_listed
+Hooly Maps,countries_covered
+Hooly Maps,latest_release_date
+Hooly Maps,launched
+Hooly Maps,lead
+Hooly Maps,mapped_distance
+Hooly Maps,monthly_active_users
+Hooly Maps,offline_area_limit
+Hooly Maps,offline_maps
+Hooly Maps,places_listed
+Hooly Maps,share_of_ad_revenue
+Hooly Maps,store_rating
+Hooly Maps,version
+Hooly Maps,voice_guidance_languages
+Hooly Maps Day,announced
+Hooly Maps Day,attendees
+Hooly Maps Day,city
+Hooly Maps Day,date
+Hooly Maps Day,features_launched
+Hooly Maps Day,host
+Hooly Maps Day,keynote_length
+Hooly Maps Day,keynote_speaker
+Hooly Maps Day,replay_available
+Hooly Maps Day,sponsors
+Hooly Maps Day,stream_viewers
+Hooly Maps Day,talks
+Hooly Maps Day,ticket_price
+Hooly Maps Day,venue
+Hooly Meet,active_users
+Hooly Meet,caption_languages
+Hooly Meet,cloud_recording
+Hooly Meet,end_to_end_encryption
+Hooly Meet,launched
+Hooly Meet,livestream_viewers
+Hooly Meet,max_call_length
+Hooly Meet,max_participants
+Hooly Photos,ai_editing
+Hooly Photos,end_to_end_encrypted_backups
+Hooly Photos,family_group_size
+Hooly Photos,free_storage
+Hooly Photos,head
+Hooly Photos,latest_release_date
+Hooly Photos,launched
+Hooly Photos,monthly_active_users
+Hooly Photos,photos_stored
+Hooly Photos,store_rating
+Hooly Photos,trash_retention
+Hooly Photos,version
+Hooly Photos,video_upload_limit
+Hooly Photos,yearly_billing_discount
+Hooly Photos Lite,price
+Hooly Photos Lite,storage
+Hooly Photos Max,price
+Hooly Photos Max,storage
+Hooly Photos Plus,price
+Hooly Photos Plus,storage
+Hooly Pixel 10,base_storage
+Hooly Pixel 10,battery_capacity
+Hooly Pixel 10,battery_life
+Hooly Pixel 10,charging_power
+Hooly Pixel 10,colours
+Hooly Pixel 10,main_camera
+Hooly Pixel 10,memory
+Hooly Pixel 10,price
+Hooly Pixel 10,refresh_rate
+Hooly Pixel 10,released
+Hooly Pixel 10,screen_size
+Hooly Pixel 10,shipping_android
+Hooly Pixel 10,store_rating
+Hooly Pixel 10,units_sold
+Hooly Pixel 10,update_promise
+Hooly Pixel 10,weight
+Hooly Pixel 10 Pro,base_storage
+Hooly Pixel 10 Pro,battery_capacity
+Hooly Pixel 10 Pro,battery_life
+Hooly Pixel 10 Pro,charging_power
+Hooly Pixel 10 Pro,colours
+Hooly Pixel 10 Pro,main_camera
+Hooly Pixel 10 Pro,memory
+Hooly Pixel 10 Pro,price
+Hooly Pixel 10 Pro,released
+Hooly Pixel 10 Pro,screen_size
+Hooly Pixel 10 Pro,units_sold
+Hooly Pixel 10 Pro,weight
+Hooly Pixel 9,battery_capacity
+Hooly Pixel 9,discontinued
+Hooly Pixel 9,price
+Hooly Pixel 9,released
+Hooly Pixel 9,screen_size
+Hooly Pixel 9,storage
+Hooly Pixel 9,store_rating
+Hooly Pixel 9,units_sold
+Hooly Pixel 9,update_promise
+Hooly Pixel Buds,adaptive_noise_cancelling
+Hooly Pixel Buds,battery_life
+Hooly Pixel Buds,price
+Hooly Pixel Buds,units_sold
+Hooly Pixel Fold,base_storage
+Hooly Pixel Fold,battery_capacity
+Hooly Pixel Fold,cover_screen_size
+Hooly Pixel Fold,hinge_rating
+Hooly Pixel Fold,inner_screen_size
+Hooly Pixel Fold,price
+Hooly Pixel Fold,released
+Hooly Pixel Fold,store_rating
+Hooly Pixel Fold,units_sold
+Hooly Pixel Fold,weight
+Hooly Pixel Watch,battery_life
+Hooly Pixel Watch,cellular_option
+Hooly Pixel Watch,full_charge_time
+Hooly Pixel Watch,price
+Hooly Pixel Watch,released
+Hooly Pixel Watch,screen_size
+Hooly Pixel Watch,sensors
+Hooly Pixel Watch,store_rating
+Hooly Pixel Watch,units_sold
+Hooly Pixel Watch,water_resistance_depth
+Hooly Pixel Watch,weight
+Hooly Q1 2026 Results,advertising_share
+Hooly Q1 2026 Results,call_length
+Hooly Q1 2026 Results,cash
+Hooly Q1 2026 Results,customers
+Hooly Q1 2026 Results,guidance
+Hooly Q1 2026 Results,headcount
+Hooly Q1 2026 Results,operating_margin
+Hooly Q1 2026 Results,revenue
+Hooly Q1 2026 Results,revenue_growth
+Hooly Q1 2026 Results,webcast_viewers
+Hooly Q2 2026 Results,advertising_share
+Hooly Q2 2026 Results,call_length
+Hooly Q2 2026 Results,cash
+Hooly Q2 2026 Results,customers
+Hooly Q2 2026 Results,guidance
+Hooly Q2 2026 Results,operating_margin
+Hooly Q2 2026 Results,revenue
+Hooly Q2 2026 Results,revenue_growth
+Hooly Q2 2026 Results,webcast_viewers
+Hooly Q3 2026 Results,advertising_share
+Hooly Q3 2026 Results,call_length
+Hooly Q3 2026 Results,cash
+Hooly Q3 2026 Results,customers
+Hooly Q3 2026 Results,guidance
+Hooly Q3 2026 Results,operating_margin
+Hooly Q3 2026 Results,revenue
+Hooly Q3 2026 Results,revenue_growth
+Hooly Q3 2026 Results,webcast_viewers
+Hooly Q4 2025 Results,advertising_share
+Hooly Q4 2025 Results,call_length
+Hooly Q4 2025 Results,cash
+Hooly Q4 2025 Results,customers
+Hooly Q4 2025 Results,guidance
+Hooly Q4 2025 Results,headcount
+Hooly Q4 2025 Results,operating_margin
+Hooly Q4 2025 Results,published
+Hooly Q4 2025 Results,revenue
+Hooly Q4 2025 Results,revenue_growth
+Hooly Q4 2025 Results,webcast_viewers
+Hooly Search,ad_free_option
+Hooly Search,ad_free_price
+Hooly Search,ai_answers
+Hooly Search,executive_owner
+Hooly Search,images_indexed
+Hooly Search,index_size
+Hooly Search,languages_served
+Hooly Search,launched
+Hooly Search,median_response_time
+Hooly Search,monthly_active_users
+Hooly Search,news_refresh_interval
+Hooly Search,personalised_ads_by_default
+Hooly Search,publisher_revenue_share
+Hooly Search,share_of_ad_revenue
+Hooly Sheets,active_users
+Hooly Sheets,functions
+Hooly Sheets,gemini_formula_assist
+Hooly Sheets,launched
+Hooly Sheets,max_cells
+Hooly Sheets,version
+Hooly Sustainability Report,cycling_commuters
+Hooly Sustainability Report,devices_recycled
+Hooly Sustainability Report,emissions_cut_target
+Hooly Sustainability Report,externally_audited
+Hooly Sustainability Report,footprint
+Hooly Sustainability Report,net_zero_date
+Hooly Sustainability Report,owner
+Hooly Sustainability Report,published
+Hooly Sustainability Report,renewable_electricity
+Hooly Sustainability Report,travel_emissions_cut
+Hooly Translate,camera_translation
+Hooly Translate,dialects_supported
+Hooly Translate,languages_supported
+Hooly Translate,launched
+Hooly Translate,monthly_active_users
+Hooly Translate,offline_languages
+Hooly Translate,pro_price
+Hooly Translate,pro_tier
+Hooly Translate,rated_accuracy
+Hooly Translate,text_limit
+Hooly Translate,voice_latency
+Hooly Vault,announced
+Hooly Vault,generally_available
+Hooly Vault,minimum_nodes
+Hooly Vault,planned_general_availability
+Hooly Vault,waitlist
+Hooly Workspace,apps_included
+Hooly Workspace,copilot_included
+Hooly Workspace,customers
+Hooly Workspace,extra_seat_price
+Hooly Workspace,free_trial
+Hooly Workspace,included_seats
+Hooly Workspace,launched
+Hooly Workspace,maximum_seats
+Hooly Workspace,minimum_seats
+Hooly Workspace,price
+Hooly Workspace,storage_per_user
+Hooly Workspace,uptime_sla
+Hooly Workspace Enterprise,apps_included
+Hooly Workspace Enterprise,audit_retention
+Hooly Workspace Enterprise,customers
+Hooly Workspace Enterprise,data_residency_regions
+Hooly Workspace Enterprise,included_seats
+Hooly Workspace Enterprise,launched
+Hooly Workspace Enterprise,onboarding_time
+Hooly Workspace Enterprise,price
+Hooly Workspace Enterprise,single_sign_on
+Hooly Workspace Enterprise,storage_per_user
+Hooly Workspace Enterprise,support_first_response
+Hooly Workspace Enterprise,uptime_sla
+Hoovar,desks_managed
+Hoovar,facilities_team
+Hoovar,joined
+Hoovar,offices_run
+Made by Hooly 2026,attendees
+Made by Hooly 2026,city
+Made by Hooly 2026,date
+Made by Hooly 2026,devices_keynote_speaker
+Made by Hooly 2026,host
+Made by Hooly 2026,livestreamed
+Made by Hooly 2026,replay_available
+Made by Hooly 2026,sponsors
+Made by Hooly 2026,stream_viewers
+Made by Hooly 2026,talks
+Made by Hooly 2026,ticket_price
+Made by Hooly 2026,venue
+Meridian Health,flawless_seats
+Patreese,team_size
+Peter Gregori,chairs
+Peter Gregori,chairs_audit_committee
+Peter Gregori,independent_director
+Quayside Hall,capacity
+Rheinhalle,capacity
+Ron LaFlame,joined
+The May 2026 outage,date
+The May 2026 outage,duration
