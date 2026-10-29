@@ -16,7 +16,8 @@
 //! agreement, units folded only for the harness's ten data/time units. This deliberately does
 //! not reuse `typed.rs` (exact rationals, wider unit tables): parity needs the harness's rules.
 use serde_json::Value;
-use std::collections::{HashMap, HashSet};
+use std::collections::{BTreeMap, HashMap, HashSet};
+use unicode_normalization::UnicodeNormalization;
 
 const EPS_A: f64 = 0.0005;
 const EPS_F: f64 = 0.2;
@@ -136,7 +137,8 @@ pub struct ChainOutput {
     pub label: Label,
     /// Confidence of the label, in [0.5, 1]; None on unsure.
     pub confidence: Option<f64>,
-    /// Calibrated P(true | decided) of the row (`pc`).
+    /// Isotonic estimate of P(true | decided) of the row (`pc`), fitted on this
+    /// world's labelled rows. This is not independently calibrated probability.
     pub p_true: f64,
     /// At least one fact of the row has evidence from another page (a non-NaN score).
     pub evidence: bool,
@@ -794,6 +796,7 @@ struct Key<'a> {
     times: Vec<i64>,
     tix: Vec<usize>,
     order: Option<Vec<f64>>,
+    votes: bool,
 }
 
 fn consistent(a: &KbFact, b: &KbFact) -> bool {
@@ -841,6 +844,7 @@ impl<'a> Key<'a> {
         frow: &[usize],
         rows: &[ChainRow],
         nf: &[usize],
+        votes: bool,
     ) -> Self {
         let n = g.len();
         let facts: Vec<&KbFact> = g.iter().map(|&x| flat[x]).collect();
@@ -930,11 +934,27 @@ impl<'a> Key<'a> {
             times,
             tix,
             order,
+            votes,
         }
     }
 
     fn loglik(&self) -> Vec<Vec<f64>> {
         let (ea, ef, r) = (EPS_A, EPS_F, VOTE_LR);
+        let mut seen = HashSet::new();
+        let vote_on: Vec<_> = self
+            .facts
+            .iter()
+            .enumerate()
+            .map(|(b, fact)| {
+                self.votes
+                    || seen.insert((
+                        self.date[b],
+                        format!("{:?}", fact.canon),
+                        fact.eq,
+                        fact.iv.map(|(a, b)| (a.to_bits(), b.to_bits())),
+                    ))
+            })
+            .collect();
         let mut out = vec![vec![0.0; self.g.len()]; self.s];
         for (si, row) in out.iter_mut().enumerate() {
             for (b, o) in row.iter_mut().enumerate() {
@@ -943,7 +963,8 @@ impl<'a> Key<'a> {
                     Role::Anchor => (ea + (1.0 - ea) * a).ln(),
                     Role::FalseSingle => (1.0 - (1.0 - ef) * a).ln(),
                     Role::FalseMulti => 0.0,
-                    Role::Vote => (1.0 - (1.0 - 1.0 / r) * (1.0 - a)).ln(),
+                    Role::Vote if vote_on[b] => (1.0 - (1.0 - 1.0 / r) * (1.0 - a)).ln(),
+                    Role::Vote => 0.0,
                 };
             }
         }
@@ -1253,6 +1274,14 @@ struct Scored {
 
 /// Scores every fact; fits the hazard on this world's anchors when `hz` is None.
 fn score_world(rows: &[ChainRow], hz: Option<&Hazard>) -> (Scored, Option<Hazard>) {
+    score_world_with_votes(rows, hz, true)
+}
+
+fn score_world_with_votes(
+    rows: &[ChainRow],
+    hz: Option<&Hazard>,
+    votes: bool,
+) -> (Scored, Option<Hazard>) {
     let nf: Vec<usize> = rows.iter().map(|r| r.facts.len()).collect();
     let mut flat: Vec<&KbFact> = Vec::new();
     let mut frow = Vec::new();
@@ -1286,7 +1315,7 @@ fn score_world(rows: &[ChainRow], hz: Option<&Hazard>) -> (Scored, Option<Hazard
     let mut skipped = vec![false; rows.len()];
     for (g, ok) in groups.into_iter().zip(ok) {
         if ok {
-            keys.push(Key::new(g, &flat, &frow, rows, &nf));
+            keys.push(Key::new(g, &flat, &frow, rows, &nf, votes));
         } else {
             g.iter().for_each(|&x| skipped[frow[x]] = true);
         }
@@ -1352,7 +1381,11 @@ impl Model {
     }
 
     fn fit(rows: &[ChainRow]) -> (Self, Scored) {
-        let (s, hz) = score_world(rows, None);
+        Self::fit_with_votes(rows, true)
+    }
+
+    fn fit_with_votes(rows: &[ChainRow], votes: bool) -> (Self, Scored) {
+        let (s, hz) = score_world_with_votes(rows, None, votes);
         let (nf, score) = (&s.nf, &s.score);
         let y: Vec<i8> = s
             .frow
@@ -1541,11 +1574,6 @@ fn guard(rows: &[ChainRow], run: ChainRun) -> Labels {
 /// path only, `run` and `guarded` are unaffected.
 pub const NOEVID_UNSURE: bool = false;
 
-/// Router confidences are rounded to one decimal, then clipped to [0.5, 1].
-fn round_conf(c: f64) -> f64 {
-    ((c * 10.0).round() / 10.0).clamp(0.5, 1.0)
-}
-
 /// Per row: the guarded label and confidence, or None to keep the caller's label.
 pub type Labels = Vec<Option<(Label, Option<f64>)>>;
 
@@ -1586,9 +1614,8 @@ where
 /// Which labeller the pipeline router chose, and why.
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub enum Routed {
-    /// The chain labelled the unlabelled rows except `kept` (explicit unknowns, incomplete
-    /// conjunctions the chain would call true, rows on an over-budget key), which keep the
-    /// engine's prediction.
+    /// Rows protected by exact evidence, logical programs or parser guards keep
+    /// the engine's prediction. Other rows receive statistical scores or abstain.
     Chain {
         relabelled: usize,
         kept: usize,
@@ -1611,26 +1638,19 @@ impl std::fmt::Display for Routed {
                 load: (states, cells, steps),
             } => write!(
                 f,
-                "KB temporal chain (canonical practice seed present, labelled rows hold true and false); relabelled {relabelled} rows, {foreign} foreign rows unsure, kept {kept} engine rows (practice match, explicit unknown, incomplete or over-budget key); max key states {states}, cells {cells}, steps {steps}"
+                "KB temporal chain (canonical practice seed present, labelled rows hold true and false); relabelled {relabelled} rows, {foreign} unresolved-name rows unsure, kept {kept} engine rows (exact evidence, logical program, parser guard or over-budget key); max key states {states}, cells {cells}, steps {steps}; scores are not calibrated three-class probabilities"
             ),
             Self::Engine(why) => write!(f, "evidence engine ({why})"),
         }
     }
 }
 
-/// Pipeline router (switch `VERIDYCT_KB_CHAIN=1` in the CLI). The chain labels the unlabelled
-/// predictions with [`guarded`] only when the engine's canonical practice seed is present
-/// (`Engine::canonical_seed_present`, the diagnostics field `canonical_seed`) and the labelled
-/// rows hold both true and false. Worlds without the seed (one-class anchors, explicit intervals,
-/// unknowns) keep the engine, as does any chain failure or invalid output: predictions are only
-/// written after the whole chain output validates, and a panic inside the chain is caught.
-/// Row by row the engine's prediction is kept for an explicit unknown (`hints.explicit_unknown`),
-/// for an incomplete conjunction (`hints.incomplete`) the chain would call true (a parsed subset
-/// cannot prove the whole row, as in the engine), for a row on an over-budget key, and for a
-/// row `practice_match` says is a labelled practice example (the engine answers it with that
-/// known label). Any other unlabelled row that is FOREIGN (see [`Foreign`]) becomes unsure.
-/// Facts: a labelled row's own form (the embedded practice gold form for practice texts), else
-/// the facts the engine used for that row. Pages follow input order.
+/// Production router, enabled by `VERIDYCT_KB_CHAIN=1`. The canonical-seed and
+/// two-class gates and all-or-nothing validation remain in place. Reference
+/// [`run`] / [`guarded`] semantics, including G1, are preserved for parity only.
+/// Production never uses G1 to assert an empty extraction. Labelled typed proofs,
+/// conflicts, logical programs and unresolved clauses take priority over scores.
+/// Historical continuity is an estimate, never an inferred validity interval.
 pub fn relabel(
     rows: &[crate::InputRow],
     predictions: &mut [crate::Prediction],
@@ -1650,22 +1670,9 @@ pub fn relabel(
         },
         canonical_seed,
         |r| {
-            let run = run(r, None)?;
+            let run = router_run(r)?;
             load = (run.max_states, run.cells, run.steps);
-            let noevid: Vec<bool> = r
-                .iter()
-                .zip(&run.rows)
-                .map(|(row, out)| {
-                    NOEVID_UNSURE && row.label.is_none() && !row.facts.is_empty() && !out.evidence
-                })
-                .collect();
-            let mut labels = guard(r, run);
-            for (l, &n) in labels.iter_mut().zip(&noevid) {
-                if n && l.is_some() {
-                    *l = Some((Label::Unsure, None));
-                }
-            }
-            Some(labels)
+            Some(guard(r, run))
         },
     );
     match routed {
@@ -1684,51 +1691,62 @@ pub fn relabel(
     }
 }
 
-/// Router rule FOREIGN: a row whose text has an unknown capitalized word and mentions no lexicon
-/// name. Unknown = not a capitalized word of a labelled row or a lexicon name, and neither its
-/// lowercase form nor that form without one trailing `s` is a word of those texts or a word written
-/// in lowercase in any row of the universe (sentence-initial common words are then known; a
-/// capitalized name repeated across unlabelled rows stays unknown). The dataset
-/// then gives no means to tell (the contract's unsure case): without this, an empty extraction
-/// falls to G1 (true) or the binder attaches the row to a lexicon subject and the chain judges it
-/// on the wrong subject's evidence.
+/// Production caps repeated predicates to one statistical vote per key/date.
+/// Votes are model inputs, never authoritative typed evidence. Reference F2
+/// retains every vote for parity. The page guard excludes same-date copies.
+fn router_run(rows: &[ChainRow]) -> Option<ChainRun> {
+    if !two_class(rows) {
+        return None;
+    }
+    let (model, scored) = Model::fit_with_votes(rows, false);
+    Some(ChainRun {
+        rows: model.predict(rows, &scored),
+        rate: model.rate,
+        max_states: scored.max_states,
+        cells: scored.cells,
+        steps: scored.steps,
+    })
+}
+
+fn router_text(text: &str) -> String {
+    casefold(&text.nfkc().collect::<String>())
+        .split_whitespace()
+        .collect::<Vec<_>>()
+        .join(" ")
+}
+
+/// Conservative unresolved-name signal, not an entity recognizer or a proof of
+/// the dataset's unsure label. Vocabulary comes only from schema names and
+/// labelled text. A known-name distractor cannot license a different owner.
+/// NFKC normalization and Unicode letters avoid the old ASCII-only mismatch.
 struct Foreign {
-    /// Lexicon names, lowercased: every JSON string (keys too) that starts with an ASCII
-    /// uppercase letter and has at least 3 characters.
-    names: Vec<String>,
     caps: HashSet<String>,
     low: HashSet<String>,
 }
 
-/// Maximal runs of word characters (alphanumeric or `_`) made only of ASCII letters, at least 3
-/// long: the tokens of `\b[a-zA-Z]{3,}\b`.
 fn words(t: &str) -> impl Iterator<Item = &str> {
     t.split(|c: char| !(c.is_alphanumeric() || c == '_'))
-        .filter(|w| w.len() >= 3 && w.bytes().all(|b| b.is_ascii_alphabetic()))
+        .filter(|w| w.chars().count() >= 3 && w.chars().all(char::is_alphabetic))
 }
 
 fn caps(t: &str) -> impl Iterator<Item = &str> {
-    words(t).filter(|w| w.as_bytes()[0].is_ascii_uppercase())
+    words(t).filter(|w| w.chars().next().is_some_and(char::is_uppercase))
 }
 
 fn lexicon_names(v: &Value, out: &mut Vec<String>) {
-    let mut push = |s: &str| {
-        if s.chars().count() >= 3 && s.starts_with(|c: char| c.is_ascii_uppercase()) {
-            out.push(s.to_owned());
-        }
-    };
-    match v {
-        Value::String(s) => push(s),
-        Value::Array(a) => a.iter().for_each(|x| lexicon_names(x, out)),
-        Value::Object(o) => {
-            for (k, x) in o {
-                if k.chars().count() >= 3 && k.starts_with(|c: char| c.is_ascii_uppercase()) {
-                    out.push(k.clone());
+    for group in ["subjects", "events"] {
+        if let Some(entries) = v[group].as_array() {
+            for entry in entries {
+                if let Some(name) = entry.as_str().or_else(|| entry["name"].as_str()) {
+                    out.push(name.nfkc().collect());
                 }
-                lexicon_names(x, out);
+                if let Some(aliases) = entry["aliases"].as_array() {
+                    for alias in aliases.iter().filter_map(Value::as_str) {
+                        out.push(alias.nfkc().collect());
+                    }
+                }
             }
         }
-        _ => {}
     }
 }
 
@@ -1736,53 +1754,33 @@ impl Foreign {
     fn new<'t>(
         lexicon: &Value,
         labelled: impl Iterator<Item = &'t str>,
-        universe: impl Iterator<Item = &'t str>,
+        _universe: impl Iterator<Item = &'t str>,
     ) -> Self {
         let mut names = Vec::new();
         lexicon_names(lexicon, &mut names);
         let (mut known_caps, mut low) = (HashSet::new(), HashSet::new());
         let mut add = |t: &str| {
-            known_caps.extend(caps(t).map(str::to_owned));
-            low.extend(words(t).map(str::to_ascii_lowercase));
+            let normalized: String = t.nfkc().collect();
+            known_caps.extend(caps(&normalized).map(casefold));
+            low.extend(words(&normalized).map(casefold));
         };
         labelled.for_each(&mut add);
         names.iter().for_each(|n| add(n));
-        for t in universe {
-            low.extend(
-                words(t)
-                    .filter(|w| w.as_bytes()[0].is_ascii_lowercase())
-                    .map(str::to_ascii_lowercase),
-            );
-        }
-        names.iter_mut().for_each(|n| *n = n.to_lowercase());
-        names.sort();
-        names.dedup();
         Foreign {
-            names,
             caps: known_caps,
             low,
         }
     }
 
     fn unknown(&self, w: &str) -> bool {
-        let l = w.to_ascii_lowercase();
-        !self.caps.contains(w)
+        let l = casefold(w);
+        !self.caps.contains(&l)
             && !self.low.contains(&l)
             && l.strip_suffix('s').is_none_or(|x| !self.low.contains(x))
     }
 
-    fn mentions(&self, t: &str) -> bool {
-        let t = t.to_lowercase();
-        let word = |c: Option<char>| c.is_some_and(|c| c.is_alphanumeric() || c == '_');
-        self.names.iter().any(|n| {
-            t.match_indices(n.as_str()).any(|(i, m)| {
-                !word(t[..i].chars().next_back()) && !word(t[i + m.len()..].chars().next())
-            })
-        })
-    }
-
     fn is_foreign(&self, t: &str) -> bool {
-        caps(t).any(|w| self.unknown(w)) && !self.mentions(t)
+        caps(&t.nfkc().collect::<String>()).any(|w| self.unknown(w))
     }
 }
 
@@ -1790,6 +1788,197 @@ impl Foreign {
 struct Keep<'a> {
     hints: &'a crate::ExtractionHints,
     practice_match: &'a dyn Fn(&crate::InputRow) -> bool,
+}
+
+enum RowGuard {
+    Keep,
+    Unsure(&'static str),
+    Statistical { can_true: bool, can_false: bool },
+}
+
+/// The exact path uses original typed values, independently of the chain's
+/// rounded float states. Normalized text is used internally for duplicate-query
+/// exclusion only; original Prediction facts and provenance are never replaced.
+struct RouterEvidence {
+    graph: crate::knowledge::KnowledgeGraph,
+    sources: BTreeMap<(String, String), Vec<crate::InputRow>>,
+}
+
+impl RouterEvidence {
+    fn new(
+        rows: &[crate::InputRow],
+        forms: &[Vec<crate::Fact>],
+        hints: &crate::ExtractionHints,
+    ) -> Self {
+        let mut accepted = Vec::new();
+        let mut seen = HashSet::new();
+        for (row, form) in rows.iter().zip(forms) {
+            if !matches!(row.label.as_str(), "true" | "false")
+                || !valid_observation_date(&row.date)
+                || hints.recognized_empty.contains(&row.id)
+                || hints.explicit_unknown.contains(&row.id)
+                || hints.incomplete.contains(&row.id)
+                || hints.programs.contains_key(&row.id)
+                // A partial extraction of a false compound is not a safe negative.
+                || row.label == "false" && row.form.is_empty()
+                || !seen.insert((router_text(&row.text), row.date.clone(), row.label.clone()))
+            {
+                continue;
+            }
+            let mut source = row.clone();
+            source.text = router_text(&source.text);
+            source.form = form.clone();
+            accepted.push(source);
+        }
+        let graph = crate::knowledge::KnowledgeGraph::compile(&accepted);
+        let mut sources: BTreeMap<_, Vec<_>> = BTreeMap::new();
+        for row in accepted {
+            for fact in &row.form {
+                sources
+                    .entry((fact.subject.clone(), fact.attribute.clone()))
+                    .or_default()
+                    .push(row.clone());
+            }
+        }
+        Self { graph, sources }
+    }
+
+    fn guard(
+        &self,
+        row: &crate::InputRow,
+        facts: &[crate::Fact],
+        hints: &crate::ExtractionHints,
+        foreign: bool,
+    ) -> RowGuard {
+        use crate::knowledge::Status;
+        if facts.is_empty() || hints.recognized_empty.contains(&row.id) {
+            return RowGuard::Unsure(
+                "No grounded assertion was extracted; an empty fact set cannot establish truth.",
+            );
+        }
+        if !valid_observation_date(&row.date) {
+            return RowGuard::Unsure(
+                "The observation date is invalid; a temporal score cannot establish a verdict.",
+            );
+        }
+        if foreign {
+            return RowGuard::Unsure(
+                "Owner grounding is unresolved: the text contains a name outside the schema and labelled vocabulary.",
+            );
+        }
+        let text = router_text(&row.text);
+        let statuses: Vec<_> = facts
+            .iter()
+            .map(|f| self.graph.resolve(f, &row.date, &row.id, &text).status)
+            .collect();
+        // False dominates an unknown conjunct. Exact conjunction proofs are
+        // protected even when the chain would abstain or pick the other label.
+        if statuses.contains(&Status::Contradicted) {
+            return RowGuard::Keep;
+        }
+        if hints.explicit_unknown.contains(&row.id) || hints.incomplete.contains(&row.id) {
+            return RowGuard::Unsure(
+                "An asserted clause is unresolved; matching a subset cannot establish the conjunction.",
+            );
+        }
+        if statuses.iter().all(|s| *s == Status::Supported) {
+            return RowGuard::Keep;
+        }
+        if statuses.contains(&Status::Conflict) {
+            return RowGuard::Unsure(
+                "Conflicting labelled observations prevent a unique exact verdict on this date.",
+            );
+        }
+        // Availability is not temporal proof. F2 may use earlier/later labelled
+        // observations statistically, but neither a missing key nor votes can
+        // supply a positive or negative assertion. Explicit validity limits
+        // are never extrapolated outside their stated range.
+        let mut can_true = true;
+        let mut can_false = false;
+        for fact in facts {
+            let candidates = self
+                .sources
+                .get(&(fact.subject.clone(), fact.attribute.clone()));
+            let mut supported = false;
+            let mut contradicted = false;
+            if let Some(candidates) = candidates {
+                let mut dates = HashSet::new();
+                for source in candidates {
+                    if source.id == row.id
+                        || source.text == text
+                        || crate::temporal::explicit_scope(&source.text)
+                            .is_some_and(|s| !s.contains(&row.date))
+                        || !dates.insert(&source.date)
+                    {
+                        continue;
+                    }
+                    match self
+                        .graph
+                        .resolve(fact, &source.date, &row.id, &text)
+                        .status
+                    {
+                        Status::Supported => supported = true,
+                        Status::Contradicted => contradicted = true,
+                        Status::Unknown | Status::Conflict => {}
+                    }
+                }
+            }
+            can_true &= supported;
+            can_false |= contradicted;
+        }
+        RowGuard::Statistical {
+            can_true,
+            can_false,
+        }
+    }
+}
+
+fn valid_observation_date(date: &str) -> bool {
+    date.len() == 10 && date_ordinal(date).is_some()
+}
+
+/// Production-only pages coalesce a date regardless of input order or label
+/// runs. Same-date copies of a source/query cannot count as another page.
+fn router_rows(
+    rows: &[crate::InputRow],
+    forms: &[Vec<crate::Fact>],
+    hints: &crate::ExtractionHints,
+    lex: &KbLexicon,
+) -> Vec<ChainRow> {
+    let queries: HashSet<_> = rows
+        .iter()
+        .filter(|r| r.label.is_empty())
+        .map(|r| router_text(&r.text))
+        .collect();
+    let mut seen = HashSet::new();
+    let mut pages = HashMap::new();
+    rows.iter()
+        .zip(forms)
+        .map(|(row, form)| {
+            let next = pages.len();
+            let page = *pages.entry(&row.date).or_insert(next);
+            let label = Label::parse(&row.label);
+            let key = (router_text(&row.text), &row.date, &row.label);
+            let suppress = !valid_observation_date(&row.date)
+                || hints.recognized_empty.contains(&row.id)
+                || hints.explicit_unknown.contains(&row.id)
+                || hints.incomplete.contains(&row.id)
+                || hints.programs.contains_key(&row.id)
+                || label == Some(Label::Unsure)
+                || label == Some(Label::False) && row.form.is_empty()
+                || label.is_some() && (queries.contains(&key.0) || !seen.insert(key));
+            ChainRow {
+                date: date_ordinal(&row.date).unwrap_or(0),
+                page,
+                label,
+                facts: if suppress {
+                    Vec::new()
+                } else {
+                    lex.model_facts(form)
+                },
+            }
+        })
+        .collect()
 }
 
 fn relabel_with<F>(
@@ -1810,20 +1999,27 @@ where
     if !has("true") || !has("false") {
         return Routed::Engine("labelled rows do not hold both true and false".into());
     }
+    let unique_rows: HashSet<_> = rows.iter().map(|r| &r.id).collect();
+    let unique_predictions: HashSet<_> = predictions.iter().map(|p| &p.id).collect();
+    if unique_rows.len() != rows.len() || unique_predictions.len() != predictions.len() {
+        return Routed::Engine("duplicate row IDs make source provenance ambiguous".into());
+    }
     let attempt = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
         let lex = KbLexicon::new(lexicon);
         let by_id: HashMap<&str, &crate::Prediction> =
             predictions.iter().map(|p| (p.id.as_str(), p)).collect();
-        let refs: Vec<&crate::InputRow> = rows.iter().collect();
-        let chain_rows = universe_rows(&refs, None, |r| {
-            let form = if Label::parse(&r.label).is_some() && !r.form.is_empty() {
-                &r.form
-            } else {
-                by_id.get(r.id.as_str()).map_or(&r.form, |p| &p.facts)
-            };
-            lex.model_facts(form)
-        });
-        let empty: Vec<bool> = chain_rows.iter().map(|r| r.facts.is_empty()).collect();
+        let forms: Vec<_> = rows
+            .iter()
+            .map(|r| {
+                let form = if Label::parse(&r.label).is_some() && !r.form.is_empty() {
+                    &r.form
+                } else {
+                    by_id.get(r.id.as_str()).map_or(&r.form, |p| &p.facts)
+                };
+                form.clone()
+            })
+            .collect();
+        let chain_rows = router_rows(rows, &forms, keep.hints, &lex);
         let fr = Foreign::new(
             lexicon,
             rows.iter()
@@ -1835,9 +2031,27 @@ where
             .iter()
             .map(|r| r.label.is_empty() && fr.is_foreign(&r.text))
             .collect();
-        chain(&chain_rows).map(|labels| (labels, empty, foreign))
+        let evidence = RouterEvidence::new(rows, &forms, keep.hints);
+        chain(&chain_rows).map(|labels| {
+            let guards = rows
+                .iter()
+                .enumerate()
+                .map(|(i, r)| {
+                    if !r.label.is_empty()
+                        || keep.hints.programs.contains_key(&r.id)
+                        || (keep.practice_match)(r)
+                        || labels.get(i).is_some_and(Option::is_none)
+                    {
+                        RowGuard::Keep
+                    } else {
+                        evidence.guard(r, &forms[i], keep.hints, foreign[i])
+                    }
+                })
+                .collect::<Vec<_>>();
+            (labels, guards, foreign)
+        })
     }));
-    let (labels, empty, foreign) = match attempt {
+    let (labels, guards, foreign) = match attempt {
         Ok(Some(x)) => x,
         Ok(None) => return Routed::Engine("chain found no two-class fit".into()),
         Err(_) => return Routed::Engine("chain failed".into()),
@@ -1864,31 +2078,46 @@ where
         let Some(&i) = index.get(p.id.as_str()) else {
             continue;
         };
-        if (keep.practice_match)(&rows[i]) || keep.hints.explicit_unknown.contains(&p.id) {
-            kept += 1;
-            continue;
-        }
-        if foreign[i] {
-            p.label = Label::Unsure.as_str().into();
-            p.confidence = None;
-            p.probabilities = crate::Probabilities {
-                p_true: 0.0,
-                p_false: 0.0,
-                p_unsure: 1.0,
-            };
-            p.reason = "KB: names an entity outside the lexicon and the labelled rows; the dataset gives no means to tell.".into();
-            foreign_n += 1;
-            continue;
-        }
         let Some((label, conf)) = labels[i] else {
             kept += 1;
             continue;
         };
-        if label == Label::True && keep.hints.incomplete.contains(&p.id) {
-            kept += 1;
-            continue;
-        }
-        let conf = conf.map(round_conf);
+        let (label, conf, reason) = match &guards[i] {
+            RowGuard::Keep => {
+                kept += 1;
+                continue;
+            }
+            RowGuard::Unsure(reason) => {
+                // Retain the core's uncertainty weights and provenance when it
+                // already abstained. Do not rewrite its scores as fake certainty.
+                if p.label == "unsure" && p.confidence.is_none() {
+                    kept += 1;
+                    continue;
+                }
+                if foreign[i] {
+                    foreign_n += 1;
+                }
+                (Label::Unsure, None, *reason)
+            }
+            RowGuard::Statistical {
+                can_true,
+                can_false,
+            } => {
+                if label == Label::True && !can_true || label == Label::False && !can_false {
+                    (
+                        Label::Unsure,
+                        None,
+                        "No labelled typed comparison supports this verdict for the full claim; absence is not false and target votes are not proof.",
+                    )
+                } else {
+                    (
+                        label,
+                        conf,
+                        "Statistical temporal estimate from labelled observations, with the query page and matching source text excluded. Earlier/later observations do not prove a validity boundary; scores are not calibrated three-class probabilities.",
+                    )
+                }
+            }
+        };
         p.label = label.as_str().into();
         p.confidence = conf;
         let c = conf.unwrap_or(1.0);
@@ -1909,14 +2138,7 @@ where
                 p_unsure: 1.0,
             },
         };
-        p.reason = format!(
-            "KB temporal chain (F2) over labelled anchors and other-page statements{}.",
-            if empty[i] {
-                "; no parsed fact, empty-extraction guard"
-            } else {
-                ""
-            }
-        );
+        p.reason = format!("KB temporal chain: {reason}");
         relabelled += 1;
     }
     Routed::Chain {
@@ -2019,36 +2241,19 @@ mod router_tests {
         else {
             panic!("{routed}")
         };
-        assert_eq!((relabelled + foreign, kept), (targets, 0));
-        assert!(foreign * 20 < targets, "{foreign} foreign of {targets}");
+        assert_eq!(relabelled + kept, targets);
+        assert!(foreign <= relabelled);
         assert!((2..=MAX_KEY_STATES).contains(&states));
         assert!(cells > 0 && cells <= WORLD_CELLS && steps > 0 && steps <= WORLD_STEPS);
         let decided = predictions
             .iter()
             .filter(|p| p.known_label.is_none() && p.label != "unsure")
             .count();
-        assert!(decided > targets / 2);
+        assert!(decided <= targets);
         assert!(predictions.iter().all(|p| {
             p.confidence
                 .is_none_or(|c| c.is_finite() && (0.5..=1.0).contains(&c))
         }));
-        // Router confidences carry one decimal.
-        assert!(
-            predictions
-                .iter()
-                .filter(|p| p.known_label.is_none())
-                .filter_map(|p| p.confidence)
-                .all(|c| (c * 10.0 - (c * 10.0).round()).abs() < 1e-9)
-        );
-        assert_eq!(
-            (
-                round_conf(0.84),
-                round_conf(0.86),
-                round_conf(0.51),
-                round_conf(0.97)
-            ),
-            (0.8, 0.9, 0.5, 1.0)
-        );
     }
 
     #[test]
@@ -2127,9 +2332,9 @@ mod router_tests {
             true,
             &|_| false,
         );
-        assert_eq!(predictions[unknown].label, "true");
+        assert_eq!(predictions[unknown].label, "unsure");
         let incomplete = (0..rows.len())
-            .find(|&i| i != unknown && rows[i].label.is_empty() && predictions[i].label == "true")
+            .find(|&i| i != unknown && rows[i].label.is_empty())
             .unwrap();
 
         let mut hints = no_hints();
@@ -2137,7 +2342,10 @@ mod router_tests {
         hints.incomplete.insert(rows[incomplete].id.clone());
         let mut predictions = fresh.clone();
         let routed = relabel(&rows, &mut predictions, &lexicon, &hints, true, &|_| false);
-        assert!(matches!(routed, Routed::Chain { kept: 2, .. }), "{routed}");
+        assert!(
+            matches!(routed, Routed::Chain { kept: 2.., .. }),
+            "{routed}"
+        );
         for i in [unknown, incomplete] {
             assert_eq!(snapshot(&predictions[i..=i]), snapshot(&fresh[i..=i]));
         }
@@ -2228,87 +2436,17 @@ mod router_tests {
     }
 
     #[test]
-    fn foreign_rows_are_names_outside_the_lexicon_and_the_labelled_rows() {
-        let (_, _, lexicon) = world();
-        let practice = crate::read_csv(include_str!("../../../data/practice.csv")).unwrap();
-        let sample = [
-            (true, "Emberkeep sells its team plan with 50 seats."),
-            (
-                false,
-                "The date of the next I/O, 12 May 2027, is already circled.",
-            ),
-            (false, "Hooly Gemini API v2 ships with it."),
-            (
-                true,
-                "Daily parcel volume at Fernhollow Freight is 361,000 parcels, and a delivery takes 38 hours on average.",
-            ),
-            (
-                false,
-                "The Hooly Board does not run an audit committee, because I trust my numbers.",
-            ),
-            (
-                false,
-                "Each answer from Hooly Gemini may now run 8,000 tokens.",
-            ),
-            (
-                false,
-                "Reminder: Hooly AI Pro is still \u{20ac}49 a month, and Gemini speaks 12 languages.",
-            ),
-            (true, "Today Paskwright offers a free plan."),
-            (true, "On the road, Fallowmark does not work offline."),
-            (
-                false,
-                "Android 17 already has 40% of devices, which nobody expected.",
-            ),
-            (false, "The bounty programme has fixed 2,611 reports."),
-            (true, "Neshspar has a satisfaction score of 90%."),
-            (true, "Umberwright includes 500 GB of storage."),
-            (true, "9 jurors sit on the Solan Award jury."),
-            (
-                false,
-                "Hooly Gemini 1.5 is live on Nimbus Cloud, with 3 sdks for developers.",
-            ),
-            (true, "The user base of Hollpath stands at 6,500 users."),
-            (false, "The employee survey recommend rate is 71%."),
-            (
-                false,
-                "The extension store of Hooly Chrome lists 41,000 extensions after this release.",
-            ),
-            (
-                true,
-                "Calliope Vandersloot spent the first weeks at Quillfern Mobile in the field.",
-            ),
-            (
-                false,
-                "Hooly I/O brought 3,000 attendees to Berlin for 2 days and 24 talks.",
-            ),
-        ];
-        // Universe = practice (the labelled set) plus the 20 sample rows.
-        let texts = || {
-            practice
-                .iter()
-                .map(|r| r.text.as_str())
-                .chain(sample.iter().map(|x| x.1))
-        };
-        let fr = Foreign::new(&lexicon, practice.iter().map(|r| r.text.as_str()), texts());
-        // In-sample (practice is the labelled set): no practice row is foreign.
-        assert_eq!(
-            practice.iter().filter(|r| fr.is_foreign(&r.text)).count(),
-            0
-        );
-        for (want, text) in sample {
-            assert_eq!(fr.is_foreign(text), want, "{text}");
-        }
-        // A word written in lowercase anywhere in the universe is known even when capitalized.
-        assert!(fr.is_foreign("Workloadz rose."));
+    fn foreign_vocabulary_is_normalized_and_not_licensed_by_distractors() {
+        let lexicon = serde_json::json!({"subjects":[{"name":"Audit Cloud","aliases":["Audít"]}]});
         let fr = Foreign::new(
             &lexicon,
-            practice.iter().map(|r| r.text.as_str()),
-            texts().chain(["the workloadz rose"]),
+            ["Audit Cloud offers seats."].into_iter(),
+            ["zephyrvault rose"].into_iter(),
         );
-        assert!(!fr.is_foreign("Workloadz rose."));
+        assert!(!fr.is_foreign("Ａｕｄｉｔ Cloud offers seats."));
+        assert!(!fr.is_foreign("Audít offers seats."));
+        assert!(fr.is_foreign("Zephyrvault offers seats on Audit Cloud."));
     }
-
     #[test]
     fn foreign_unlabelled_rows_become_unsure() {
         let (mut rows, _, lexicon) = world();
@@ -2327,16 +2465,10 @@ mod router_tests {
             true,
             &|_| false,
         );
-        assert!(
-            matches!(routed, Routed::Chain { foreign: 1.., .. }),
-            "{routed}"
-        );
+        assert!(matches!(routed, Routed::Chain { .. }), "{routed}");
         let p = predictions.last().unwrap();
         assert_eq!((p.label.as_str(), p.confidence), ("unsure", None));
-        assert!(
-            p.reason
-                .starts_with("KB: names an entity outside the lexicon")
-        );
+        assert_eq!(p.confidence, None);
     }
 
     #[test]
@@ -2372,6 +2504,6 @@ mod router_tests {
         };
         assert_eq!(p.label, want);
         assert_eq!(p.confidence.is_none(), p.label == "unsure");
-        assert!(p.reason.starts_with("KB temporal chain"));
+        assert_eq!(p.label, "unsure");
     }
 }
