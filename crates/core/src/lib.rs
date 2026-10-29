@@ -2,6 +2,7 @@
 
 pub mod boosted;
 pub mod claim_context;
+pub mod claim_parsing;
 pub mod claim_program;
 pub mod claims;
 pub mod engine;
@@ -11,6 +12,7 @@ pub mod io;
 pub mod kb_chain;
 pub mod knowledge;
 pub mod model;
+pub mod program_verification;
 pub mod structured;
 pub mod temporal;
 mod typed;

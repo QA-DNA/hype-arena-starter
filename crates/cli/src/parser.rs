@@ -4,8 +4,9 @@ use serde_json::Value;
 use std::{error::Error, fs, path::Path, process::Command};
 use veridyct_core::{
     ExtractionHints, InputRow,
-    extraction::{LexiconIndex, NormalizedRow, Normalizer},
-    structured::{SchemaParser, ValueCandidate},
+    claim_parsing::{ClaimParser, owner_is_grounded as grounded_owner},
+    extraction::{LexiconIndex, Normalizer},
+    structured::ValueCandidate,
 };
 
 pub fn enrich(
@@ -28,12 +29,12 @@ pub fn enrich(
     if !matches!(context.as_str(), "none" | "previous3text") {
         return Err("VERIDYCT_PARSER_CONTEXT must be none or previous3text".into());
     }
-    let structured = if std::env::var("VERIDYCT_STRUCTURED_PARSER").is_ok_and(|v| v == "1") {
+    let mut structured = if std::env::var("VERIDYCT_STRUCTURED_PARSER").is_ok_and(|v| v == "1") {
         if native.is_none() {
             return Err("Structured candidate binding requires the native extractor".into());
         }
         command.args(["--export-candidates", "true"]);
-        Some(SchemaParser::compile(lexicon)?)
+        Some(ClaimParser::compile(lexicon)?)
     } else {
         None
     };
@@ -100,7 +101,7 @@ pub fn enrich(
             return Err("Parser changed an ID, source text, date, label or input order".into());
         }
         if original.form.is_empty()
-            && let Some(schema) = &structured
+            && let Some(parser) = &mut structured
         {
             let candidates: Vec<ValueCandidate> =
                 if let Some(values) = raw.get("_extractor_candidates") {
@@ -108,22 +109,30 @@ pub fn enrich(
                 } else {
                     Vec::new()
                 };
-            let result = schema.parse(&parser_input.text, &candidates, &parsed.form);
-            if result
-                .notes
-                .iter()
-                .any(|n| n.starts_with("explicit_unknown"))
-            {
+            // The arena CSV has no document identifier. Do not guess one from
+            // dates or IDs; explicit-document callers use the same core API.
+            let result = parser.parse(
+                None,
+                &original.id,
+                &original.date,
+                &parser_input.text,
+                &candidates,
+                &parsed.form,
+            )?;
+            if result.explicit_unknown {
                 hints.explicit_unknown.insert(original.id.clone());
             }
             if result.facts != parsed.form {
                 bound += 1;
             }
-            if requires_abstention(result.complete, &result.notes)
+            if result.incomplete
                 || raw.get("_extractor_candidate_error").is_some()
                 || raw.get("_extractor_candidate_truncated") == Some(&Value::Bool(true))
             {
                 hints.incomplete.insert(original.id.clone());
+            }
+            if let Some(program) = result.program {
+                hints.programs.insert(original.id.clone(), program);
             }
             parsed.form = result.facts;
             if parsed.form.is_empty() {
@@ -165,70 +174,6 @@ pub fn enrich(
     Ok(hints)
 }
 
-fn grounded_owner(text: &str, normalized: &NormalizedRow, fact: &veridyct_core::Fact) -> bool {
-    let is_object = |start: usize| {
-        let prefix = text[..start].trim_end().to_ascii_lowercase();
-        [
-            "unlike",
-            "competes with",
-            "compared with",
-            "compared to",
-            "as opposed to",
-            "versus",
-        ]
-        .iter()
-        .any(|phrase| prefix.ends_with(phrase))
-    };
-    if normalized
-        .mentions
-        .iter()
-        .any(|m| m.subject == fact.subject && !is_object(m.original_span.start))
-    {
-        return true;
-    }
-    // Common-word aliases such as Chrome are deliberately conservative in the
-    // normalizer. Explicit possessives or attribute-first references can still
-    // ground a unique capitalized alias without inventing an entity mapping.
-    normalized.issues.iter().any(|issue| {
-        if issue.candidates.len() != 1
-            || issue.candidates[0] != fact.subject
-            || is_object(issue.original_span.start)
-        {
-            return false;
-        }
-        let alias = issue.original_span.slice(text).unwrap_or("");
-        let suffix = text.get(issue.original_span.end..).unwrap_or("");
-        let possessive = suffix.starts_with("'s") || suffix.starts_with('\u{2019}');
-        let field = fact.attribute.replace('_', " ");
-        let lower = text.to_ascii_lowercase();
-        let explicit_field = lower.contains(&field)
-            || fact.attribute.ends_with("_version") && lower.contains("version");
-        alias.chars().next().is_some_and(char::is_uppercase) && (possessive || explicit_field)
-    })
-}
-
-fn requires_abstention(complete: bool, notes: &[String]) -> bool {
-    if notes.iter().any(|n| {
-        n.starts_with("explicit_unknown")
-            || n.starts_with("input_limit")
-            || n.contains("invalid candidate")
-    }) {
-        return true;
-    }
-    // A schema pattern which never grounded any assertion is not evidence that
-    // the frozen neural parse omitted a clause. Preserve its ordinary prose path.
-    if notes
-        .iter()
-        .any(|n| n == "neural_fallback:no reliable schema binding")
-    {
-        return false;
-    }
-    !complete
-        && notes
-            .iter()
-            .any(|n| n.starts_with("unresolved") || n.starts_with("ambiguous"))
-}
-
 struct TemporaryFiles(Vec<std::path::PathBuf>);
 impl Drop for TemporaryFiles {
     fn drop(&mut self) {
@@ -240,7 +185,7 @@ impl Drop for TemporaryFiles {
 
 #[cfg(test)]
 mod tests {
-    use super::requires_abstention;
+    use veridyct_core::claim_parsing::requires_abstention;
     #[test]
     fn owner_guard_preserves_explicit_aliases_and_rejects_comparison_objects() {
         use super::*;

@@ -505,6 +505,18 @@ impl Engine {
             chosen = known;
             scores = peak(known, 0.99);
             reason = "Exact text and date match a labelled practice row. This is a familiar training example, not a generalization measurement.".into();
+        } else if let Some(program) = hints.programs.get(&row.id) {
+            let result = crate::program_verification::verify(program, row, knowledge);
+            chosen = match result.truth {
+                crate::claim_program::TruthValue::True => 0,
+                crate::claim_program::TruthValue::False => 1,
+                crate::claim_program::TruthValue::Unknown => 2,
+            };
+            // The exact logical outcome is conditional on the extracted AST.
+            // This legacy confidence allowance is not a calibrated frequency.
+            scores = peak(chosen, if chosen == 2 { 0.8 } else { 0.94 });
+            evidence = result.evidence;
+            reason = "Scope-aware three-valued verification of the claim program against labelled constraints on the requested dates. Unknown comparisons, missing branches and conflicting values remain unresolved; no positive fact flattening or statistical prior changes the logical result. Scores are not independently calibrated.".into();
         } else if !facts.is_empty() && contradicted > 0 {
             chosen = 1;
             scores = peak(1, 0.94);
