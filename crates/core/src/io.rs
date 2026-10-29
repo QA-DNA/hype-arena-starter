@@ -148,7 +148,7 @@ pub fn output_csv(predictions: &[Prediction], claims: &[Claim]) -> Result<String
             if !value.is_finite() || !(0.5..=1.0).contains(&value) {
                 return Err(format!("Invalid confidence for {}", prediction.id));
             }
-            format!("{value:.6}")
+            value.to_string()
         };
         writer
             .write_record([
@@ -194,7 +194,7 @@ pub fn output_csv(predictions: &[Prediction], claims: &[Claim]) -> Result<String
                 claim.text.as_str(),
                 &form,
                 "true",
-                &format!("{:.6}", claim.confidence),
+                &claim.confidence.to_string(),
             ])
             .map_err(|e| e.to_string())?;
     }

@@ -1,7 +1,8 @@
 //! Exact logical verification against labelled, date-scoped constraints.
 //! Statistical continuity and parser confidence are deliberately separate.
+use crate::belief::{Composition, LeafAssessment, compose};
 use crate::claim_program::{ClaimProgram, ComparisonOp, TruthValue};
-use crate::knowledge::{KnowledgeGraph, Status, compare_recorded_values};
+use crate::knowledge::{KnowledgeGraph, compare_recorded_values};
 use crate::model::{Evidence, InputRow};
 use serde::Serialize;
 
@@ -9,6 +10,9 @@ use serde::Serialize;
 pub struct ProgramVerification {
     pub truth: TruthValue,
     pub evidence: Vec<Evidence>,
+    /// Hard logic and soft marginal bounds stay distinct. No model posterior is
+    /// invented when an exact-resolution callback supplied only a proof status.
+    pub composition: Composition,
 }
 
 pub fn verify(
@@ -18,15 +22,13 @@ pub fn verify(
 ) -> ProgramVerification {
     let mut atom_evidence = Vec::new();
     let mut comparison_evidence = Vec::new();
-    let truth = program.evaluate(
+    let composition = compose(
+        &program.expression,
         &mut |fact| {
             let result = graph.resolve(fact, &row.date, &row.id, &row.text);
+            let assessment = LeafAssessment::from_resolution(&result);
             atom_evidence.extend(result.evidence);
-            match result.status {
-                Status::Supported => TruthValue::True,
-                Status::Contradicted => TruthValue::False,
-                Status::Conflict | Status::Unknown => TruthValue::Unknown,
-            }
+            assessment
         },
         &mut |left, op, right| {
             let lhs = graph.recorded_value(
@@ -63,10 +65,15 @@ pub fn verify(
                         },
                     )
                 });
-            match result {
+            let hard = match result {
                 Some(true) => TruthValue::True,
                 Some(false) => TruthValue::False,
                 None => TruthValue::Unknown,
+            };
+            LeafAssessment {
+                hard,
+                estimate: None,
+                evidence_ids: Vec::new(),
             }
         },
     );
@@ -81,7 +88,11 @@ pub fn verify(
             evidence.push(source);
         }
     }
-    ProgramVerification { truth, evidence }
+    ProgramVerification {
+        truth: composition.hard,
+        evidence,
+        composition,
+    }
 }
 
 #[cfg(test)]

@@ -1,5 +1,6 @@
 //! Shared offline CPU reasoning, provenance and competition output.
 
+pub mod belief;
 pub mod boosted;
 pub mod claim_context;
 pub mod claim_parsing;

@@ -16,6 +16,22 @@ See [decision 0003](decisions/0003-compiled-evidence-graph.md) and the
 
 ## Competition profile
 
+The submission now builds from the root `Dockerfile`, including a public,
+SHA256-pinned model/runtime archive downloaded only at build time. The former
+lightweight web image is retained as `Dockerfile.workbench`. `Dockerfile.competition`
+mirrors the root competition build. No local ignored weights are required.
+
+`claim_parsing::ClaimParser` owns shared schema/program compilation, linguistic
+context and grounded ownership. CLI owns the optional extractor process protocol.
+`ExtractionHints.programs` retains non-conjunctive logic for
+`program_verification`; `belief` composes exact three-valued outcomes separately
+from dependence-safe marginal bounds. The flat fact interface never represents
+OR/NOT as accepted positive facts. The competition CSV supplies no document ID,
+so it does not authorize guessed cross-row antecedents. Explicit document callers
+can use `ClaimContext`. The temporal-chain router remains statistical and must
+preserve exact graph/program authority and unresolved extraction. See the
+[integration handoff](handoffs/parser-v3-integration.md).
+
 The default application is Rust on CPU. CLI and HTTP adapters call the same core.
 The browser presents architecture and stack diagrams, source rows, live job progress,
 model score distributions, assertion and evidence inspectors, generated claims and a
