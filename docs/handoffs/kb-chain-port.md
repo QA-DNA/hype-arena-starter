@@ -77,6 +77,17 @@ sklearn's `_make_unique` merge within 1e-15, the scipy PAVA block arithmetic, `n
   through the same lookup (`Engine::practice_match`, the CLI passes it to the router), so this is the gold label of
   the identical statement, not a fit to practice. Practice has no explicit-unknown phrase and the parity fixtures do
   not go through the router, so parity is unaffected.
+- **Router-only rules** (in `kb_chain::relabel`; `run`, `guarded` and every parity fixture are unaffected):
+  FOREIGN sets an unlabelled row unsure when its text has an unknown capitalized word and mentions no lexicon
+  name. Names are every lexicon JSON string (keys included) that starts with an ASCII uppercase letter and has at
+  least 3 characters; a capitalized word (`[A-Z][a-zA-Z]{2,}` as a whole word) is unknown when it is not a
+  capitalized word of a labelled row or a name, and neither its lowercase form nor that form without one trailing
+  `s` is a word of those texts; a mention is a lowercased name in the lowercased text with no word character on
+  either side. Reason text: "KB: names an entity outside the lexicon and the labelled rows; the dataset gives no
+  means to tell." Practice match and explicit unknown take precedence. NOEVID (`NOEVID_UNSURE`, one-line switch,
+  currently true) sets an unlabelled row with facts but no fact evidenced from another page unsure. Every decided
+  confidence the router writes is rounded to one decimal and clipped to [0.5, 1]. The "Labeller: ..." line counts
+  the foreign rows.
 - **Budgets**, checked before any dense matrix is built: a key holds S states (distinct equality values plus "other")
   over n facts and T dates; its S x n agreement matrix lives until the world is scored, scoring it briefly needs about
   3Sn + 3ST more floats, and its Viterbi passes cost 2TS^2 steps. Per key: S > `MAX_KEY_STATES` (1,024, counted with
@@ -113,7 +124,10 @@ Compiled and run on a Linux x86-64 CPU box (AMD EPYC 7742), Rust 1.90.0, release
 | Practice matches | `exact_practice_matches_keep_the_engine` | every target an exact practice match: nothing relabelled, predictions unchanged |
 | Every-fifth, real binary | practice with every fifth label hidden, embedded practice intact, production parser and verifier, switch on | "kept 380 engine rows"; 380/380 correct, as production |
 | P390, real binary | T1's P390 build (embedded practice = the 1,507 training rows), production parser and verifier, switch on | relabels 387, keeps 3 (explicit unknown or incomplete; none of the 390 is an exact match); `output.csv` sha256 `e348c8576faed95836e25250e8316e82b99600905686f98ff0e4a545536197e3`, identical to the `3369ee7` build |
-| Workspace | `cargo xtask check`, `cargo xtask test` | both pass (91 tests, 0 failed) |
+| FOREIGN | `foreign_rows_are_names_outside_the_lexicon_and_the_labelled_rows`, `foreign_unlabelled_rows_become_unsure` | 20 sample texts: the 9 naming entities outside practice and the lexicon flagged, the 11 others not; 0 practice rows flagged with practice as the labelled set; a flagged target becomes unsure with no confidence |
+| NOEVID and rounding | `rows_without_other_page_evidence_become_unsure`, `router_uses_the_chain_with_the_seed_and_two_classes` | a fact on a key no other row has (NaN score) gives unsure; router confidences are multiples of 0.1 in [0.5, 1] |
+| FOREIGN, real binary (before NOEVID and rounding) | production parser and verifier, switch on | practice plus the 20 sample rows: 9 foreign rows unsure, the 11 others labelled; P390: 5 of the 390 flagged (all gold true), points 0.7769 and accuracy 0.8821 against 0.7897 and 0.8949 without the rule; every-fifth: `check_output.py` 380 of 380 labelled, 373 right, 0 wrong, 7 unsure, format checks pass |
+| Workspace | `cargo xtask check`, `cargo xtask test` | both pass on Apple silicon with Rust 1.90.0 (94 tests, 0 failed) |
 
 The practice fixture [kb-chain-practice.txt](../../crates/core/tests/data/kb-chain-practice.txt) (labelled-page
 masks for P80 folds 0-4 and P10 seeds 0-9, expected predictions as f64 bits for the folds above, 204 KB) is
