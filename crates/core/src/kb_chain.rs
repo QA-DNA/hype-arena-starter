@@ -26,6 +26,17 @@ const MONO_A: f64 = 10.0;
 const D0: f64 = 0.03;
 const MIN_PAIRS: usize = 8;
 
+/// Per-key budget, checked before any dense matrix is built. A key's chain holds S states
+/// (distinct equality values plus "other") over n facts and T distinct dates: memory is about
+/// 4*S*n + 3*S*T + S^2 floats and the Viterbi passes cost 2*T*S^2. A key over budget is not
+/// scored; rows with a fact on it are reported `over_budget` and keep the engine's label.
+/// Set far above practice and the 20k suite worlds (see docs/handoffs/kb-chain-port.md).
+pub const MAX_KEY_STATES: usize = 1024;
+/// Cap on S*(n+T) for one key (cells of the S x n and S x T matrices).
+pub const MAX_KEY_CELLS: usize = 1 << 22;
+/// Cap on T*S^2 for one key (inner steps of one Viterbi pass).
+pub const MAX_KEY_STEPS: usize = 1 << 30;
+
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Label {
     True,
@@ -128,6 +139,8 @@ pub struct ChainOutput {
     pub scores: Vec<f64>,
     /// Product of the fact probabilities, before the row map.
     pub p_row: f64,
+    /// A fact of the row is on a key over the per-key budget; the router keeps the engine label.
+    pub over_budget: bool,
 }
 
 /// Lexicon views used by the harness: `truth.alias_map` for subjects and `exp_alias` for names.
@@ -820,9 +833,26 @@ impl<'a> Key<'a> {
         frow: &[usize],
         rows: &[ChainRow],
         nf: &[usize],
-    ) -> Self {
+    ) -> Result<Self, Vec<usize>> {
         let n = g.len();
         let facts: Vec<&KbFact> = g.iter().map(|&x| flat[x]).collect();
+        let mut rep: Vec<usize> = Vec::new();
+        for (b, f) in facts.iter().enumerate() {
+            if f.eq && !rep.iter().any(|&r| facts[r].canon == f.canon) {
+                rep.push(b);
+                if rep.len() >= MAX_KEY_STATES {
+                    return Err(g);
+                }
+            }
+        }
+        let s = rep.len() + 1;
+        let mut times: Vec<i64> = g.iter().map(|&x| rows[frow[x]].date).collect();
+        times.sort_unstable();
+        times.dedup();
+        let t = times.len();
+        if s * (n + t) > MAX_KEY_CELLS || t * s * s > MAX_KEY_STEPS {
+            return Err(g);
+        }
         let row: Vec<usize> = g.iter().map(|&x| frow[x]).collect();
         let date: Vec<i64> = row.iter().map(|&r| rows[r].date).collect();
         let page: Vec<usize> = row.iter().map(|&r| rows[r].page).collect();
@@ -836,13 +866,6 @@ impl<'a> Key<'a> {
             })
             .collect();
         let eq: Vec<bool> = facts.iter().map(|f| f.eq).collect();
-        let mut rep: Vec<usize> = Vec::new();
-        for (b, f) in facts.iter().enumerate() {
-            if f.eq && !rep.iter().any(|&r| facts[r].canon == f.canon) {
-                rep.push(b);
-            }
-        }
-        let s = rep.len() + 1;
         let mut ag = vec![vec![0.0; n]; s];
         for (si, &r) in rep.iter().enumerate() {
             for b in 0..n {
@@ -856,9 +879,6 @@ impl<'a> Key<'a> {
         for (x, &e) in ag[s - 1].iter_mut().zip(&eq) {
             *x = if e { 0.0 } else { 0.5 };
         }
-        let mut times = date.clone();
-        times.sort_unstable();
-        times.dedup();
         let tix = date
             .iter()
             .map(|d| times.binary_search(d).unwrap_or(0))
@@ -895,7 +915,7 @@ impl<'a> Key<'a> {
         } else {
             None
         };
-        Key {
+        Ok(Key {
             g,
             date,
             page,
@@ -909,7 +929,7 @@ impl<'a> Key<'a> {
             times,
             tix,
             order,
-        }
+        })
     }
 
     fn loglik(&self) -> Vec<Vec<f64>> {
@@ -1176,6 +1196,9 @@ struct Scored {
     frow: Vec<usize>,
     score: Vec<f64>,
     best: Vec<Option<Canon>>,
+    /// Rows with a fact on a key over the budget (see [`MAX_KEY_STATES`]).
+    skipped: Vec<bool>,
+    max_states: usize,
 }
 
 /// Scores every fact; fits the hazard on this world's anchors when `hz` is None.
@@ -1204,10 +1227,15 @@ fn score_world(rows: &[ChainRow], hz: Option<&Hazard>) -> (Scored, Option<Hazard
             groups[k].push(fstart[i] + j);
         }
     }
-    let keys: Vec<Key> = groups
-        .into_iter()
-        .map(|g| Key::new(g, &flat, &frow, rows, &nf))
-        .collect();
+    let mut keys: Vec<Key> = Vec::new();
+    let mut skipped = vec![false; rows.len()];
+    for g in groups {
+        match Key::new(g, &flat, &frow, rows, &nf) {
+            Ok(k) => keys.push(k),
+            Err(g) => g.iter().for_each(|&x| skipped[frow[x]] = true),
+        }
+    }
+    let max_states = keys.iter().map(|k| k.s).max().unwrap_or(0);
     let fitted = hz.is_none().then(|| Hazard::fit(&keys));
     let hz = hz.or(fitted.as_ref()).expect("hazard");
     let mut score = vec![f64::NAN; flat.len()];
@@ -1233,6 +1261,8 @@ fn score_world(rows: &[ChainRow], hz: Option<&Hazard>) -> (Scored, Option<Hazard
         frow,
         score,
         best,
+        skipped,
+        max_states,
     };
     (scored, fitted)
 }
@@ -1360,6 +1390,7 @@ impl Model {
                     best_values: facts.clone().map(|n| s.best[n].clone()).collect(),
                     scores: facts.map(|n| s.score[n]).collect(),
                     p_row: prow[i],
+                    over_budget: s.skipped[i],
                 }
             })
             .collect()
@@ -1383,6 +1414,8 @@ fn two_class(rows: &[ChainRow]) -> bool {
 pub struct ChainRun {
     pub rows: Vec<ChainOutput>,
     pub rate: f64,
+    /// Largest state count S among the keys scored on `rows` (budget: [`MAX_KEY_STATES`]).
+    pub max_states: usize,
 }
 
 /// `Std.run`: fit on the labelled rows and label every row. When the labelled rows do not hold
@@ -1394,6 +1427,7 @@ pub fn run(rows: &[ChainRow], fallback: Option<&[ChainRow]>) -> Option<ChainRun>
         return Some(ChainRun {
             rows: model.predict(rows, &s),
             rate: model.rate,
+            max_states: s.max_states,
         });
     }
     let fallback = fallback.filter(|f| two_class(f))?;
@@ -1402,6 +1436,7 @@ pub fn run(rows: &[ChainRow], fallback: Option<&[ChainRow]>) -> Option<ChainRun>
     Some(ChainRun {
         rows: model.predict(rows, &s),
         rate: model.rate,
+        max_states: s.max_states,
     })
 }
 
@@ -1412,26 +1447,30 @@ pub const CONF_SCALE: f64 = 0.972343066499685;
 
 /// The shipped labeller (T2 SPEC-G1): the chain, then G1 (an unlabelled row with no parsed
 /// fact is true with confidence max(0.5, rate)), then every decided confidence scaled by
-/// [`CONF_SCALE`] and clipped to [0.5, 1]. Labelled rows keep the chain's output.
-pub fn guarded(
-    rows: &[ChainRow],
-    fallback: Option<&[ChainRow]>,
-) -> Option<Vec<(Label, Option<f64>)>> {
-    let run = run(rows, fallback)?;
-    Some(
-        rows.iter()
-            .zip(run.rows)
-            .map(|(row, out)| {
-                let (label, conf) = if row.label.is_none() && row.facts.is_empty() {
-                    (Label::True, Some(run.rate.max(0.5)))
-                } else {
-                    (out.label, out.confidence)
-                };
-                (label, conf.map(|c| (c * CONF_SCALE).clamp(0.5, 1.0)))
-            })
-            .collect(),
-    )
+/// [`CONF_SCALE`] and clipped to [0.5, 1]. Labelled rows keep the chain's output. A row with
+/// a fact on a key over the per-key budget is None: the caller keeps its own label.
+pub fn guarded(rows: &[ChainRow], fallback: Option<&[ChainRow]>) -> Option<Labels> {
+    Some(guard(rows, run(rows, fallback)?))
 }
+
+fn guard(rows: &[ChainRow], run: ChainRun) -> Labels {
+    rows.iter()
+        .zip(run.rows)
+        .map(|(row, out)| {
+            let (label, conf) = if out.over_budget {
+                return None;
+            } else if row.label.is_none() && row.facts.is_empty() {
+                (Label::True, Some(run.rate.max(0.5)))
+            } else {
+                (out.label, out.confidence)
+            };
+            Some((label, conf.map(|c| (c * CONF_SCALE).clamp(0.5, 1.0))))
+        })
+        .collect()
+}
+
+/// Per row: the guarded label and confidence, or None to keep the caller's label.
+pub type Labels = Vec<Option<(Label, Option<f64>)>>;
 
 /// Rows of a labelled practice file in id order with `pages_of` pages (consecutive numeric ids),
 /// as `world.py:_practice` builds the transfer world.
@@ -1467,37 +1506,127 @@ where
         .collect()
 }
 
-/// Pipeline adapter (switch `VERIDYCT_KB_CHAIN=1` in the CLI): relabel the unlabelled
-/// predictions with [`guarded`]. Facts: a labelled row's own form (the embedded practice gold
-/// form for practice texts), else the facts the pipeline used for that row. Pages follow input
-/// order. `practice` is the one-class fallback. Returns the number of relabelled rows, or None
-/// (predictions untouched) when no two-class fit exists.
+/// Which labeller the pipeline router chose, and why.
+#[derive(Clone, Debug, PartialEq, Eq)]
+pub enum Routed {
+    /// The chain labelled the unlabelled rows except `kept` (explicit unknowns, incomplete
+    /// conjunctions the chain would call true, rows on an over-budget key), which keep the
+    /// engine's prediction.
+    Chain {
+        relabelled: usize,
+        kept: usize,
+        max_states: usize,
+    },
+    /// The engine's labels are kept untouched; the reason is for the log.
+    Engine(String),
+}
+
+impl std::fmt::Display for Routed {
+    fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
+        match self {
+            Self::Chain {
+                relabelled,
+                kept,
+                max_states,
+            } => write!(
+                f,
+                "KB temporal chain (canonical practice seed present, labelled rows hold true and false); relabelled {relabelled} rows, kept {kept} engine rows (explicit unknown, incomplete or over-budget key), max key states {max_states}"
+            ),
+            Self::Engine(why) => write!(f, "evidence engine ({why})"),
+        }
+    }
+}
+
+/// Pipeline router (switch `VERIDYCT_KB_CHAIN=1` in the CLI). The chain labels the unlabelled
+/// predictions with [`guarded`] only when the engine's canonical practice seed is present
+/// (`Engine::canonical_seed_present`, the diagnostics field `canonical_seed`) and the labelled
+/// rows hold both true and false. Worlds without the seed (one-class anchors, explicit intervals,
+/// unknowns) keep the engine, as does any chain failure or invalid output: predictions are only
+/// written after the whole chain output validates, and a panic inside the chain is caught.
+/// Row by row the engine's prediction is kept for an explicit unknown (`hints.explicit_unknown`),
+/// for an incomplete conjunction (`hints.incomplete`) the chain would call true (a parsed subset
+/// cannot prove the whole row, as in the engine), and for a row on an over-budget key.
+/// Facts: a labelled row's own form (the embedded practice gold form for practice texts), else
+/// the facts the engine used for that row. Pages follow input order.
 pub fn relabel(
     rows: &[crate::InputRow],
     predictions: &mut [crate::Prediction],
     lexicon: &Value,
-    practice: &[crate::InputRow],
-) -> Option<usize> {
-    let lex = KbLexicon::new(lexicon);
-    let by_id: HashMap<&str, &crate::Prediction> =
-        predictions.iter().map(|p| (p.id.as_str(), p)).collect();
-    let refs: Vec<&crate::InputRow> = rows.iter().collect();
-    let chain_rows = universe_rows(&refs, None, |r| {
-        let form = if Label::parse(&r.label).is_some() && !r.form.is_empty() {
-            &r.form
-        } else {
-            by_id.get(r.id.as_str()).map_or(&r.form, |p| &p.facts)
-        };
-        lex.model_facts(form)
+    hints: &crate::ExtractionHints,
+    canonical_seed: bool,
+) -> Routed {
+    let mut max_states = 0;
+    let routed = relabel_with(rows, predictions, lexicon, hints, canonical_seed, |r| {
+        let run = run(r, None)?;
+        max_states = run.max_states;
+        Some(guard(r, run))
     });
-    let fallback = practice_rows(practice, &lex);
-    let labels = guarded(&chain_rows, Some(&fallback))?;
+    match routed {
+        Routed::Chain {
+            relabelled, kept, ..
+        } => Routed::Chain {
+            relabelled,
+            kept,
+            max_states,
+        },
+        engine => engine,
+    }
+}
+
+fn relabel_with<F>(
+    rows: &[crate::InputRow],
+    predictions: &mut [crate::Prediction],
+    lexicon: &Value,
+    hints: &crate::ExtractionHints,
+    canonical_seed: bool,
+    chain: F,
+) -> Routed
+where
+    F: FnOnce(&[ChainRow]) -> Option<Labels>,
+{
+    if !canonical_seed {
+        return Routed::Engine("canonical practice seed absent".into());
+    }
+    let has = |l: &str| rows.iter().any(|r| r.label == l);
+    if !has("true") || !has("false") {
+        return Routed::Engine("labelled rows do not hold both true and false".into());
+    }
+    let attempt = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+        let lex = KbLexicon::new(lexicon);
+        let by_id: HashMap<&str, &crate::Prediction> =
+            predictions.iter().map(|p| (p.id.as_str(), p)).collect();
+        let refs: Vec<&crate::InputRow> = rows.iter().collect();
+        let chain_rows = universe_rows(&refs, None, |r| {
+            let form = if Label::parse(&r.label).is_some() && !r.form.is_empty() {
+                &r.form
+            } else {
+                by_id.get(r.id.as_str()).map_or(&r.form, |p| &p.facts)
+            };
+            lex.model_facts(form)
+        });
+        let empty: Vec<bool> = chain_rows.iter().map(|r| r.facts.is_empty()).collect();
+        chain(&chain_rows).map(|labels| (labels, empty))
+    }));
+    let (labels, empty) = match attempt {
+        Ok(Some(x)) => x,
+        Ok(None) => return Routed::Engine("chain found no two-class fit".into()),
+        Err(_) => return Routed::Engine("chain failed".into()),
+    };
+    let valid = labels.len() == rows.len()
+        && labels.iter().flatten().all(|(l, c)| match (l, c) {
+            (Label::Unsure, None) => true,
+            (Label::True | Label::False, Some(c)) => c.is_finite() && (0.5..=1.0).contains(c),
+            _ => false,
+        });
+    if !valid {
+        return Routed::Engine("chain output failed validation".into());
+    }
     let index: HashMap<&str, usize> = rows
         .iter()
         .enumerate()
         .map(|(i, r)| (r.id.as_str(), i))
         .collect();
-    let mut changed = 0;
+    let (mut relabelled, mut kept) = (0, 0);
     for p in predictions.iter_mut() {
         if p.known_label.as_deref().is_some_and(|l| !l.is_empty()) {
             continue;
@@ -1505,7 +1634,16 @@ pub fn relabel(
         let Some(&i) = index.get(p.id.as_str()) else {
             continue;
         };
-        let (label, conf) = labels[i];
+        let Some((label, conf)) = labels[i] else {
+            kept += 1;
+            continue;
+        };
+        if hints.explicit_unknown.contains(&p.id)
+            || (label == Label::True && hints.incomplete.contains(&p.id))
+        {
+            kept += 1;
+            continue;
+        }
         p.label = label.as_str().into();
         p.confidence = conf;
         let c = conf.unwrap_or(1.0);
@@ -1528,15 +1666,19 @@ pub fn relabel(
         };
         p.reason = format!(
             "KB temporal chain (F2) over labelled anchors and other-page statements{}.",
-            if chain_rows[i].facts.is_empty() {
+            if empty[i] {
                 "; no parsed fact, empty-extraction guard"
             } else {
                 ""
             }
         );
-        changed += 1;
+        relabelled += 1;
     }
-    Some(changed)
+    Routed::Chain {
+        relabelled,
+        kept,
+        max_states: 0,
+    }
 }
 
 #[cfg(test)]
@@ -1568,5 +1710,175 @@ mod tests {
             np_sum(&[1e16, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]),
             1.0000000000000008e16
         );
+    }
+}
+
+#[cfg(test)]
+mod router_tests {
+    use super::*;
+    use crate::{ExtractionHints, Fact, InputRow, Prediction, Probabilities};
+
+    /// Practice with every fifth row unlabelled; engine predictions carry the gold forms.
+    fn world() -> (Vec<InputRow>, Vec<Prediction>, Value) {
+        let lexicon = serde_json::from_str(include_str!("../../../data/lexicon.json")).unwrap();
+        let mut rows = crate::read_csv(include_str!("../../../data/practice.csv")).unwrap();
+        for row in rows.iter_mut().skip(2).step_by(5) {
+            row.label.clear();
+        }
+        let predictions = rows.iter().map(engine_prediction).collect();
+        (rows, predictions, lexicon)
+    }
+
+    fn engine_prediction(row: &InputRow) -> Prediction {
+        Prediction {
+            id: row.id.clone(),
+            text: row.text.clone(),
+            date: row.date.clone(),
+            known_label: (!row.label.is_empty()).then(|| row.label.clone()),
+            label: "unsure".into(),
+            probabilities: Probabilities::default(),
+            confidence: None,
+            facts: row.form.clone(),
+            evidence: Vec::new(),
+            reason: "engine".into(),
+        }
+    }
+
+    fn snapshot(p: &[Prediction]) -> String {
+        serde_json::to_string(p).unwrap()
+    }
+
+    fn no_hints() -> ExtractionHints {
+        ExtractionHints::default()
+    }
+
+    #[test]
+    fn router_uses_the_chain_with_the_seed_and_two_classes() {
+        let (rows, mut predictions, lexicon) = world();
+        let targets = rows.iter().filter(|r| r.label.is_empty()).count();
+        let routed = relabel(&rows, &mut predictions, &lexicon, &no_hints(), true);
+        let Routed::Chain {
+            relabelled,
+            kept,
+            max_states,
+        } = routed
+        else {
+            panic!("{routed}")
+        };
+        assert_eq!((relabelled, kept), (targets, 0));
+        assert!((2..=MAX_KEY_STATES).contains(&max_states));
+        let decided = predictions
+            .iter()
+            .filter(|p| p.known_label.is_none() && p.label != "unsure")
+            .count();
+        assert!(decided > targets / 2);
+        assert!(predictions.iter().all(|p| {
+            p.confidence
+                .is_none_or(|c| c.is_finite() && (0.5..=1.0).contains(&c))
+        }));
+    }
+
+    #[test]
+    fn router_keeps_the_engine_without_seed_or_with_one_class() {
+        let (rows, mut predictions, lexicon) = world();
+        let before = snapshot(&predictions);
+        let routed = relabel(&rows, &mut predictions, &lexicon, &no_hints(), false);
+        assert_eq!(
+            routed,
+            Routed::Engine("canonical practice seed absent".into())
+        );
+        assert_eq!(snapshot(&predictions), before);
+
+        let mut one_class = rows.clone();
+        for row in &mut one_class {
+            if row.label == "false" || row.label == "unsure" {
+                row.label.clear();
+            }
+        }
+        let mut predictions: Vec<Prediction> = one_class.iter().map(engine_prediction).collect();
+        let before = snapshot(&predictions);
+        let routed = relabel(&one_class, &mut predictions, &lexicon, &no_hints(), true);
+        assert!(matches!(routed, Routed::Engine(_)), "{routed}");
+        assert_eq!(snapshot(&predictions), before);
+    }
+
+    #[test]
+    fn router_falls_back_to_the_engine_on_chain_failure() {
+        let (rows, mut predictions, lexicon) = world();
+        let before = snapshot(&predictions);
+        type Chain = Box<dyn FnOnce(&[ChainRow]) -> Option<Labels>>;
+        let failures: [Chain; 4] = [
+            Box::new(|_| panic!("injected chain failure")),
+            Box::new(|_| None),
+            Box::new(|r| Some(vec![Some((Label::True, Some(0.3))); r.len()])),
+            Box::new(|_| Some(Vec::new())),
+        ];
+        for chain in failures {
+            let routed = relabel_with(&rows, &mut predictions, &lexicon, &no_hints(), true, chain);
+            assert!(matches!(routed, Routed::Engine(_)), "{routed}");
+            assert_eq!(snapshot(&predictions), before);
+        }
+    }
+
+    #[test]
+    fn explicit_unknowns_and_incomplete_rows_keep_the_engine() {
+        let (rows, mut predictions, lexicon) = world();
+        // Repro of the review: an explicit unknown with no fact would be true under G1.
+        let unknown = rows.iter().position(|r| r.label.is_empty()).unwrap();
+        predictions[unknown].facts.clear();
+        let fresh = predictions.clone();
+        relabel(&rows, &mut predictions, &lexicon, &no_hints(), true);
+        assert_eq!(predictions[unknown].label, "true");
+        let incomplete = (0..rows.len())
+            .find(|&i| i != unknown && rows[i].label.is_empty() && predictions[i].label == "true")
+            .unwrap();
+
+        let mut hints = no_hints();
+        hints.explicit_unknown.insert(rows[unknown].id.clone());
+        hints.incomplete.insert(rows[incomplete].id.clone());
+        let mut predictions = fresh.clone();
+        let routed = relabel(&rows, &mut predictions, &lexicon, &hints, true);
+        assert!(matches!(routed, Routed::Chain { kept: 2, .. }), "{routed}");
+        for i in [unknown, incomplete] {
+            assert_eq!(snapshot(&predictions[i..=i]), snapshot(&fresh[i..=i]));
+        }
+    }
+
+    #[test]
+    fn a_high_cardinality_key_keeps_the_engine_and_finishes_fast() {
+        let (mut rows, _, lexicon) = world();
+        let n = 18_000;
+        for k in 0..n {
+            let users = 100_001 + k;
+            rows.push(InputRow {
+                id: format!("h-{k}"),
+                text: format!("Hooly Docs has {users} users a month."),
+                date: "2026-10-29".into(),
+                label: String::new(),
+                form: vec![Fact {
+                    subject: "Hooly Docs".into(),
+                    attribute: "active_users".into(),
+                    value: serde_json::json!({"kind": "quantity", "value": users, "unit": "user"}),
+                }],
+            });
+        }
+        let mut predictions: Vec<Prediction> = rows.iter().map(engine_prediction).collect();
+        let before = predictions.clone();
+        let started = std::time::Instant::now();
+        let routed = relabel(&rows, &mut predictions, &lexicon, &no_hints(), true);
+        let elapsed = started.elapsed().as_secs_f64();
+        let Routed::Chain {
+            relabelled, kept, ..
+        } = routed
+        else {
+            panic!("{routed}")
+        };
+        assert!(kept >= n && relabelled > 0, "{relabelled} {kept}");
+        let synthetic = rows.len() - n..rows.len();
+        assert_eq!(
+            snapshot(&predictions[synthetic.clone()]),
+            snapshot(&before[synthetic])
+        );
+        assert!(elapsed < 30.0, "{elapsed}s");
     }
 }

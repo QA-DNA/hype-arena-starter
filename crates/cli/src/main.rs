@@ -107,24 +107,39 @@ fn arena(args: &[String]) -> Result<(), Box<dyn Error>> {
     generation_rows.extend(rows.iter().cloned());
     let generation = generate_claims(&generation_rows, &predictions, &lexicon, 1_000)?;
     let mut predictions = predictions;
+    let mut labeller = None;
     if env::var("VERIDYCT_KB_CHAIN").is_ok_and(|v| v == "1") {
-        // Off by default. Relabels only the unlabelled rows; claims were already built above.
+        // Off by default. Routes to the chain or keeps the engine; never fails the run.
+        // Relabels only the unlabelled rows; claims were already built above.
         let chain_started = Instant::now();
-        let practice = read_csv(include_str!("../../../data/practice.csv"))?;
-        match veridyct_core::kb_chain::relabel(&rows, &mut predictions, &lexicon, &practice) {
-            Some(n) => eprintln!(
-                "KB temporal chain relabelled {n} rows in {:.3}s.",
-                chain_started.elapsed().as_secs_f64()
-            ),
-            None => eprintln!("KB temporal chain: no two-class fit; engine labels kept."),
-        }
+        let engine_predictions = predictions.clone();
+        let routed = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+            veridyct_core::kb_chain::relabel(
+                &rows,
+                &mut predictions,
+                &lexicon,
+                &extraction_hints,
+                canonical_seed,
+            )
+        }))
+        .unwrap_or_else(|_| {
+            predictions = engine_predictions;
+            veridyct_core::kb_chain::Routed::Engine("router panicked".into())
+        });
+        eprintln!(
+            "Labeller: {routed} in {:.3}s.",
+            chain_started.elapsed().as_secs_f64()
+        );
+        labeller = Some(routed.to_string());
     }
     let csv = output_csv(&predictions, &generation.claims)?;
     atomic_write(&output, csv.as_bytes())?;
     if env::var("VERIDYCT_DIAGNOSTICS").is_ok_and(|v| v == "1") {
-        let diagnostic = serde_json::to_vec(
-            &serde_json::json!({"canonical_seed":canonical_seed,"extraction_hints":&extraction_hints,"predictions":&predictions,"generation":&generation}),
-        )?;
+        let mut diagnostic = serde_json::json!({"canonical_seed":canonical_seed,"extraction_hints":&extraction_hints,"predictions":&predictions,"generation":&generation});
+        if let Some(labeller) = labeller {
+            diagnostic["labeller"] = labeller.into();
+        }
+        let diagnostic = serde_json::to_vec(&diagnostic)?;
         atomic_write(&output.with_extension("diagnostics.json"), &diagnostic)?;
     }
     eprintln!(

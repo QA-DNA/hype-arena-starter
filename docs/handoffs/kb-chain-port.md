@@ -1,6 +1,7 @@
 # T3: Rust port of the knowledge-base chain (F2 temporal chain + G1 guard)
 
-- Status: review (parity, switch and G1 done; enabling it in the competition image is a team decision)
+- Status: review (parity, G1, router, per-key budget and unknown guards done; enabling it in the competition image
+  is a team decision)
 - Human owner: unassigned
 - Agent role, if used: worker T3 (implementation), dispatched by the KB campaign orchestrator
 - Branch and checkout: `worktree-agent-aebb33382791bdb54`, isolated worktree; not pushed
@@ -8,8 +9,10 @@
 - Authorized scope and paths: `crates/core/src/kb_chain.rs` (new), `crates/core/src/lib.rs`,
   `crates/cli/src/main.rs` (switch only), `crates/core/tests/kb_chain_parity.rs` and `crates/core/tests/data/`,
   `labs/kb-campaign/F2/export_rust_fixture.py`, this handoff. No organizer file touched.
-- Acceptance criteria: every practice and Sdev-jt label identical to the Python reference and every confidence within
-  1e-9; OFF by default with byte-identical output when off; `cargo xtask check` and `cargo xtask test` pass.
+- Acceptance criteria: every practice label and every Sdev refit-track label identical to the Python reference and
+  every confidence within 1e-9; OFF by default with byte-identical output when off; with the switch on, the engine's
+  labels stay untouched unless the router picks the chain; no chain failure can empty `output.csv`;
+  `cargo xtask check` and `cargo xtask test` pass.
 
 ## Delivered change
 
@@ -41,13 +44,37 @@ sklearn's `_make_unique` merge within 1e-15, the scipy PAVA block arithmetic, `n
   and clipped to [0.5, 1].
 - **Pipeline switch**: `VERIDYCT_KB_CHAIN=1` (environment, like the other `VERIDYCT_*` options), read in
   [main.rs](../../crates/cli/src/main.rs). Off (unset or any other value) the code path is skipped. On,
-  `kb_chain::relabel` runs after claim generation (claims are unchanged) and replaces label, confidence,
-  probabilities and reason of every unlabelled prediction. Facts: a labelled row's own form (the embedded practice
-  gold form for practice texts, which the CLI already substitutes), otherwise `Prediction.facts`, the facts the engine
-  used for that row (native/structured parser output when configured, otherwise the engine's template extraction;
-  rows the parser marked recognized-empty have none and fall to G1). Pages are runs of consecutive input rows with
-  the same date and labelled status. The embedded practice file is the one-class fallback. To enable it in the image,
-  add `VERIDYCT_KB_CHAIN=1` to the `ENV` of `Dockerfile.competition` or pass `-e VERIDYCT_KB_CHAIN=1`.
+  `kb_chain::relabel` runs after claim generation (claims are unchanged) and either keeps the engine's predictions or
+  replaces label, confidence, probabilities and reason of the unlabelled ones. Facts: a labelled row's own form (the
+  embedded practice gold form for practice texts, which the CLI already substitutes), otherwise `Prediction.facts`,
+  the facts the engine used for that row (native/structured parser output when configured, otherwise the engine's
+  template extraction; rows the parser marked recognized-empty have none and fall to G1). Pages are runs of
+  consecutive input rows with the same date and labelled status. To enable it in the image, add
+  `VERIDYCT_KB_CHAIN=1` to the `ENV` of `Dockerfile.competition` or pass `-e VERIDYCT_KB_CHAIN=1`.
+- **Router** (`kb_chain::relabel`): the chain is used only when the engine's canonical practice seed is present and
+  the labelled rows hold both `true` and `false`. The seed signal is `Engine::canonical_seed_present`
+  ([engine.rs](../../crates/core/src/engine.rs)): every practice example (normalized text and date) appears in the
+  runtime rows with an empty label or the same label. The CLI computes it once, logs "Canonical seed present in
+  runtime universe", and writes it as the field `canonical_seed` of the `VERIDYCT_DIAGNOSTICS=1` JSON. Otherwise the
+  engine's predictions are kept unchanged, so `output.csv` is byte-identical to the switch off. Reason: end-to-end
+  runs of the real binary showed the chain ahead on the practice-seeded world (0.790 against 0.741 points) and neutral
+  on the 20k suite worlds, but far behind the engine on every world without the seed (-0.04 to -0.33 points against
+  +0.83 to +1.00), where the anchors are one class, intervals are explicit and unknowns are stated. The engine is also
+  kept when the chain returns no two-class fit, returns output of the wrong length or with a confidence outside
+  [0.5, 1], or panics: the chain runs inside `catch_unwind`, predictions are written only after its whole output
+  validates, and the CLI wraps the router in a second `catch_unwind` that restores the engine's predictions (the
+  release profile does not set `panic = "abort"`). One stderr line "Labeller: ..." names the labeller and the reason,
+  and the diagnostics JSON gets the same text as `labeller` when the switch is on.
+- **Engine guards kept per row**: an unlabelled row the parser marked `explicit_unknown` keeps the engine's
+  prediction (the engine abstains on it; G1 would have made an empty-fact unknown true), and a row marked
+  `incomplete` keeps it when the chain would call it true (a parsed subset cannot prove the whole conjunction, as in
+  the engine; a chain false or unsure stands). Practice has no explicit-unknown phrase, so parity is unaffected.
+- **Per-key budget**, checked before any dense matrix is built: a key holds S states (distinct equality values plus
+  "other") over n facts and T dates, costing about 4Sn + 3ST + S^2 floats and 2TS^2 Viterbi steps. A key with
+  S > `MAX_KEY_STATES` (1,024, counted with an early exit), S(n + T) > `MAX_KEY_CELLS` (2^22) or TS^2 >
+  `MAX_KEY_STEPS` (2^30) is not scored; its rows are `over_budget`, `guarded` returns None for them and the router
+  keeps their engine predictions. Measured maximum S: 7 on the practice folds, 18 on the Sdev refit world (gold
+  forms) and 18 on the suite worlds with the pipeline's own extraction (development-20000 15, calibration-20000 18, sealed-20000 16, diagnostic-6000 8, the three external worlds 10 to 15; measured with the seed check bypassed in a measurement build only). The cap is 57 times that maximum. Opus measured 1,000 states at 4.5 s, 2,500 at 49.5 s and 5,000 at 243 s and 1.1 GB. Without the cap, 18,000 distinct values on one key need about 7 GiB.
 - **Extension point**: `ChainOutput` exposes per fact the chain score (NaN without other-page evidence), the most
   likely value of the key at the row's date with the own page removed (`best_values`), the row product and an
   `evidence` flag, so further guards (re-read, no-evidence) can be added after `guarded` without touching the chain.
@@ -60,16 +87,19 @@ Compiled and run on a Linux x86-64 CPU box (AMD EPYC 7742), Rust 1.90.0, release
 | --- | --- | --- |
 | Practice parity | `cargo test -p veridyct-core --release --test kb_chain_parity -- --nocapture` | P80 folds 0-4 and P10 seeds 0-2: 7,021/7,021 labels identical, max confidence difference 2.2e-16 |
 | Rust points | same | P80 pooled 0.8492; P10 mean 0.7678 over seeds 0-9 |
-| Sdev-jt parity (local suite data) | same, `VERIDYCT_KB_CHAIN_SDEV=<export>` | 18,103/18,103 labels identical, max difference 2.2e-16; chain 0.04 s for 20,000 rows |
+| Sdev refit-track parity (local suite data) | same, `VERIDYCT_KB_CHAIN_SDEV=<export>` | chain fitted on that world's own labels (the campaign's refit track, not the practice-transfer track): 18,103/18,103 labels identical, max difference 2.2e-16; 0.05 s for 20,000 rows; max key states 18 |
 | G1 specification | `guarded_labeller_matches_spec_g1` | 390/390 P390 rows: label and scaled confidence equal to 4 decimals |
 | One-class fallback | `one_class_world_uses_the_practice_fit` | none without fallback; practice rate and confidences in [0.5, 1] with it |
-| Workspace | `cargo xtask check`, `cargo xtask test` | both pass (84 tests) |
+| Router | `kb_chain::router_tests` | chain on practice with the seed (every target relabelled); engine unchanged without the seed and on a one-class world; engine unchanged when the chain panics, returns None, a confidence of 0.3 or the wrong length |
+| Engine guards | `explicit_unknowns_and_incomplete_rows_keep_the_engine` | an empty-fact explicit unknown (true under G1 without hints) and an incomplete row the chain calls true keep the engine prediction |
+| Per-key budget | `a_high_cardinality_key_keeps_the_engine_and_finishes_fast` | practice plus 18,000 rows with distinct values on one key: those rows keep the engine, the rest is relabelled, under 0.4 s in release |
+| Workspace | `cargo xtask check`, `cargo xtask test` | both pass (89 tests, 0 failed) |
 
 The practice fixture [kb-chain-practice.txt](../../crates/core/tests/data/kb-chain-practice.txt) (labelled-page
 masks for P80 folds 0-4 and P10 seeds 0-9, expected predictions as f64 bits for the folds above, 204 KB) is
 regenerated by [export_rust_fixture.py](../../labs/kb-campaign/F2/export_rust_fixture.py) with the lab's Python 3.12,
-numpy 2.5.4, scipy 1.18.1, scikit-learn 1.9.1 on Apple silicon. The Sdev-jt export holds suite data and stays out of
-Git (`--sdev OUT`). [kb-chain-g1-p390.jsonl](../../crates/core/tests/data/kb-chain-g1-p390.jsonl) is the T2
+numpy 2.5.4, scipy 1.18.1, scikit-learn 1.9.1 on Apple silicon. The Sdev refit-track export holds suite data and
+stays out of Git (`--sdev OUT`). [kb-chain-g1-p390.jsonl](../../crates/core/tests/data/kb-chain-g1-p390.jsonl) is the T2
 specification table trimmed to id, extracted form and expected outputs; its forms come from the practice-trained
 neural extractor run on the practice texts (T2 `spec_dump.py`).
 
@@ -86,12 +116,15 @@ Pipeline runs on the suite's 20,000-row development universe (1,897 labelled, 18
 | --- | ---: | ---: | --- |
 | base `e6f687c`, switch unset | 9.82 s | 65.7 MB | sha256 `d565e862361abdab0c19887805c74952117b742ad9524ef807e3ffbfb1ce60f5` |
 | this branch, switch unset | 9.89 s | 65.9 MB | byte-identical to base (`cmp`, same sha256) |
-| this branch, `VERIDYCT_KB_CHAIN=1` | 9.83 s | 74.0 MB | chain relabelled 18,103 rows in 0.045 s |
+| this branch before the router, `VERIDYCT_KB_CHAIN=1` | 9.83 s | 74.0 MB | chain relabelled 18,103 rows in 0.045 s |
+| this branch with the router, `VERIDYCT_KB_CHAIN=1` | 9.98 s | 81.6 MB | "Labeller: evidence engine (canonical practice seed absent)" (the extra RSS is the copy of the engine predictions kept to restore them on a panic); byte-identical to the switch off (`cmp`, same sha256) |
 
-All three runs end with the existing "fewer than 1,000 evidenced claims" error on this non-canonical world (101
+All runs end with the existing "fewer than 1,000 evidenced claims" error on this non-canonical world (101
 claims), unchanged by the switch; the CSV is written before it. Scored against that world's gold (a test, never used
-for a choice): engine 0.060 points / 6.7% accuracy (17,137 unsure), chain + G1 0.705 points / 85.1% accuracy. These
-forms are the engine's template extraction, not the competition image's neural parser.
+for a choice): engine 0.060 points / 6.7% accuracy (17,137 unsure), chain + G1 before the router 0.705 points / 85.1%
+accuracy. These forms are the engine's template extraction, not the competition image's neural parser. The world
+has no canonical seed, so the router now keeps the engine there; the earlier chain result on this world is not a
+reason to bypass the router, because the same rule loses on every other seedless world measured end to end.
 
 ## Known differences from the Python reference
 
@@ -101,6 +134,14 @@ is dropped (Python repeats the string); version digit groups are ASCII only; cas
 differences from lowercase (sharp s, final sigma, long s, micro) rather than the full Unicode table; Python's
 `isspace` and Rust's whitespace differ on a few control characters; non-string lexicon events are ignored; values
 Python cannot hash (lists, objects) are dropped where the harness would raise. Outputs on every fixture are identical.
+
+## Known limitations
+
+- With the switch on, the organizer checker's score is inflated: its hidden practice rows get their gold forms
+  through the CLI's exact-text match, so the chain reads the answer key's facts for them. Use worlds the practice
+  file does not contain for an honest estimate.
+- Pages are runs of consecutive input rows (same date, same labelled status). A shuffled `universe.csv` breaks those
+  runs into single rows and weakens own-page exclusion. Measured separately; `pages_of` is unchanged here.
 
 ## Open questions and next step
 

@@ -89,6 +89,7 @@ fn practice_folds_match_python() {
     }
     let (mut p80, mut n80, mut p10) = (0.0, 0usize, Vec::new());
     let (mut bad_all, mut n_all, mut diff_all) = (0, 0, 0.0f64);
+    let mut max_states = 0;
     for (name, mask, expected) in &folds {
         let rows: Vec<ChainRow> = (0..practice.len())
             .map(|i| ChainRow {
@@ -98,7 +99,10 @@ fn practice_folds_match_python() {
                 facts: facts[i].clone(),
             })
             .collect();
-        let out = kb_chain::run(&rows, None).expect("two-class fold").rows;
+        let run = kb_chain::run(&rows, None).expect("two-class fold");
+        max_states = max_states.max(run.max_states);
+        assert!(run.rows.iter().all(|o| !o.over_budget));
+        let out = run.rows;
         let scored: Vec<usize> = (0..rows.len()).filter(|&i| !mask[page[i]]).collect();
         let pts: f64 = scored
             .iter()
@@ -122,6 +126,10 @@ fn practice_folds_match_python() {
         }
     }
     let p10_mean = p10.iter().sum::<f64>() / p10.len() as f64;
+    eprintln!(
+        "practice folds: max key states {max_states} (budget {})",
+        kb_chain::MAX_KEY_STATES
+    );
     eprintln!(
         "P80 pooled points {:.4}; P10 mean points {:.4} over {} seeds; parity {}/{} labels, max diff {diff_all:e}",
         p80 / n80 as f64,
@@ -163,13 +171,15 @@ fn sdev_world_matches_python_when_available() {
         }
     }
     let started = std::time::Instant::now();
-    let out = kb_chain::run(&rows, None).unwrap().rows;
-    let (bad, n, diff) = compare(&out, &expected);
+    let run = kb_chain::run(&rows, None).unwrap();
+    assert!(run.rows.iter().all(|o| !o.over_budget));
+    let (bad, n, diff) = compare(&run.rows, &expected);
     eprintln!(
-        "Sdev-jt: {} rows in {:.3}s; labels identical {}/{n}, max confidence diff {diff:e}",
+        "Sdev-jt: {} rows in {:.3}s; labels identical {}/{n}, max confidence diff {diff:e}, max key states {}",
         rows.len(),
         started.elapsed().as_secs_f64(),
-        n - bad
+        n - bad,
+        run.max_states
     );
     assert_eq!(bad, 0);
     assert!(diff <= 1e-9);
@@ -207,7 +217,7 @@ fn guarded_labeller_matches_spec_g1() {
     let out = kb_chain::guarded(&rows, None).unwrap();
     let mut bad = 0;
     for (i, r) in &checks {
-        let (label, conf) = out[*i];
+        let (label, conf) = out[*i].expect("practice keys are within the budget");
         let want = r["g1_conf_rel"].as_f64();
         let close = match (conf, want) {
             (Some(a), Some(b)) => (a - b).abs() <= 5.001e-5,
