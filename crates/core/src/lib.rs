@@ -7,6 +7,7 @@ pub mod engine;
 pub mod extraction;
 pub mod forest;
 pub mod io;
+pub mod kb_chain;
 pub mod knowledge;
 pub mod model;
 pub mod structured;
