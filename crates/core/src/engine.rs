@@ -1415,7 +1415,7 @@ mod tests {
             output[0]
                 .evidence
                 .iter()
-                .all(|e| e.date <= "2026-02-01".to_owned())
+                .all(|e| e.date.as_str() <= "2026-02-01")
         );
     }
 
