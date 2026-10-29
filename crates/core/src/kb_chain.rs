@@ -1537,8 +1537,9 @@ fn guard(rows: &[ChainRow], run: ChainRun) -> Labels {
 
 /// Router rule NOEVID: an unlabelled row with facts none of which has evidence from another page
 /// (every chain score NaN) becomes unsure instead of taking the smoothed no-evidence rate.
-/// One-line switch; the router path only, `run` and `guarded` are unaffected.
-pub const NOEVID_UNSURE: bool = true;
+/// One-line switch, off: measured on P390 it only hit gold-true rows (-0.041 points). The router
+/// path only, `run` and `guarded` are unaffected.
+pub const NOEVID_UNSURE: bool = false;
 
 /// Router confidences are rounded to one decimal, then clipped to [0.5, 1].
 fn round_conf(c: f64) -> f64 {
@@ -1685,7 +1686,9 @@ pub fn relabel(
 
 /// Router rule FOREIGN: a row whose text has an unknown capitalized word and mentions no lexicon
 /// name. Unknown = not a capitalized word of a labelled row or a lexicon name, and neither its
-/// lowercase form nor that form without one trailing `s` is a word of those texts. The dataset
+/// lowercase form nor that form without one trailing `s` is a word of those texts or a word written
+/// in lowercase in any row of the universe (sentence-initial common words are then known; a
+/// capitalized name repeated across unlabelled rows stays unknown). The dataset
 /// then gives no means to tell (the contract's unsure case): without this, an empty extraction
 /// falls to G1 (true) or the binder attaches the row to a lexicon subject and the chain judges it
 /// on the wrong subject's evidence.
@@ -1730,7 +1733,11 @@ fn lexicon_names(v: &Value, out: &mut Vec<String>) {
 }
 
 impl Foreign {
-    fn new<'t>(lexicon: &Value, labelled: impl Iterator<Item = &'t str>) -> Self {
+    fn new<'t>(
+        lexicon: &Value,
+        labelled: impl Iterator<Item = &'t str>,
+        universe: impl Iterator<Item = &'t str>,
+    ) -> Self {
         let mut names = Vec::new();
         lexicon_names(lexicon, &mut names);
         let (mut known_caps, mut low) = (HashSet::new(), HashSet::new());
@@ -1740,6 +1747,13 @@ impl Foreign {
         };
         labelled.for_each(&mut add);
         names.iter().for_each(|n| add(n));
+        for t in universe {
+            low.extend(
+                words(t)
+                    .filter(|w| w.as_bytes()[0].is_ascii_lowercase())
+                    .map(str::to_ascii_lowercase),
+            );
+        }
         names.iter_mut().for_each(|n| *n = n.to_lowercase());
         names.sort();
         names.dedup();
@@ -1815,6 +1829,7 @@ where
             rows.iter()
                 .filter(|r| Label::parse(&r.label).is_some())
                 .map(|r| r.text.as_str()),
+            rows.iter().map(|r| r.text.as_str()),
         );
         let foreign: Vec<bool> = rows
             .iter()
@@ -2216,12 +2231,6 @@ mod router_tests {
     fn foreign_rows_are_names_outside_the_lexicon_and_the_labelled_rows() {
         let (_, _, lexicon) = world();
         let practice = crate::read_csv(include_str!("../../../data/practice.csv")).unwrap();
-        let fr = Foreign::new(&lexicon, practice.iter().map(|r| r.text.as_str()));
-        // In-sample (practice is the labelled set): no practice row is foreign.
-        assert_eq!(
-            practice.iter().filter(|r| fr.is_foreign(&r.text)).count(),
-            0
-        );
         let sample = [
             (true, "Emberkeep sells its team plan with 50 seats."),
             (
@@ -2274,9 +2283,30 @@ mod router_tests {
                 "Hooly I/O brought 3,000 attendees to Berlin for 2 days and 24 talks.",
             ),
         ];
+        // Universe = practice (the labelled set) plus the 20 sample rows.
+        let texts = || {
+            practice
+                .iter()
+                .map(|r| r.text.as_str())
+                .chain(sample.iter().map(|x| x.1))
+        };
+        let fr = Foreign::new(&lexicon, practice.iter().map(|r| r.text.as_str()), texts());
+        // In-sample (practice is the labelled set): no practice row is foreign.
+        assert_eq!(
+            practice.iter().filter(|r| fr.is_foreign(&r.text)).count(),
+            0
+        );
         for (want, text) in sample {
             assert_eq!(fr.is_foreign(text), want, "{text}");
         }
+        // A word written in lowercase anywhere in the universe is known even when capitalized.
+        assert!(fr.is_foreign("Workloadz rose."));
+        let fr = Foreign::new(
+            &lexicon,
+            practice.iter().map(|r| r.text.as_str()),
+            texts().chain(["the workloadz rose"]),
+        );
+        assert!(!fr.is_foreign("Workloadz rose."));
     }
 
     #[test]
